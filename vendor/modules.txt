@@ -1,68 +1,56 @@
-# github.com/gogo/protobuf v1.2.2-0.20190723190241-65acae22fc9d
-github.com/gogo/protobuf/proto
-github.com/gogo/protobuf/sortkeys
-# github.com/google/gofuzz v1.0.0
-github.com/google/gofuzz
+# github.com/aws/aws-sdk-go v1.28.9
+github.com/aws/aws-sdk-go/aws
+github.com/aws/aws-sdk-go/aws/awserr
+github.com/aws/aws-sdk-go/aws/awsutil
+github.com/aws/aws-sdk-go/aws/client
+github.com/aws/aws-sdk-go/aws/client/metadata
+github.com/aws/aws-sdk-go/aws/corehandlers
+github.com/aws/aws-sdk-go/aws/credentials
+github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds
+github.com/aws/aws-sdk-go/aws/credentials/endpointcreds
+github.com/aws/aws-sdk-go/aws/credentials/processcreds
+github.com/aws/aws-sdk-go/aws/credentials/stscreds
+github.com/aws/aws-sdk-go/aws/csm
+github.com/aws/aws-sdk-go/aws/defaults
+github.com/aws/aws-sdk-go/aws/ec2metadata
+github.com/aws/aws-sdk-go/aws/endpoints
+github.com/aws/aws-sdk-go/aws/request
+github.com/aws/aws-sdk-go/aws/session
+github.com/aws/aws-sdk-go/aws/signer/v4
+github.com/aws/aws-sdk-go/internal/ini
+github.com/aws/aws-sdk-go/internal/sdkio
+github.com/aws/aws-sdk-go/internal/sdkmath
+github.com/aws/aws-sdk-go/internal/sdkrand
+github.com/aws/aws-sdk-go/internal/sdkuri
+github.com/aws/aws-sdk-go/internal/shareddefaults
+github.com/aws/aws-sdk-go/internal/strings
+github.com/aws/aws-sdk-go/private/protocol
+github.com/aws/aws-sdk-go/private/protocol/json/jsonutil
+github.com/aws/aws-sdk-go/private/protocol/query
+github.com/aws/aws-sdk-go/private/protocol/query/queryutil
+github.com/aws/aws-sdk-go/private/protocol/rest
+github.com/aws/aws-sdk-go/private/protocol/xml/xmlutil
+github.com/aws/aws-sdk-go/service/rds
+github.com/aws/aws-sdk-go/service/rds/rdsiface
+github.com/aws/aws-sdk-go/service/sts
+github.com/aws/aws-sdk-go/service/sts/stsiface
 # github.com/inconshreveable/mousetrap v1.0.0
 github.com/inconshreveable/mousetrap
-# github.com/integr8ly/smtp-service v0.1.0
-github.com/integr8ly/smtp-service/pkg/sendgrid
-github.com/integr8ly/smtp-service/pkg/smtpdetails
-github.com/integr8ly/smtp-service/version
-# github.com/konsorten/go-windows-terminal-sequences v1.0.1
+# github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+github.com/jmespath/go-jmespath
+# github.com/konsorten/go-windows-terminal-sequences v1.0.2
 github.com/konsorten/go-windows-terminal-sequences
+# github.com/mattn/go-runewidth v0.0.8
+github.com/mattn/go-runewidth
+# github.com/olekukonko/tablewriter v0.0.4
+github.com/olekukonko/tablewriter
 # github.com/pkg/errors v0.9.1
 github.com/pkg/errors
-# github.com/sendgrid/rest v2.4.1+incompatible
-github.com/sendgrid/rest
-# github.com/sendgrid/sendgrid-go v3.5.0+incompatible
-github.com/sendgrid/sendgrid-go
-github.com/sendgrid/sendgrid-go/helpers/mail
-# github.com/sethvargo/go-password v0.1.3
-github.com/sethvargo/go-password/password
 # github.com/sirupsen/logrus v1.4.2
 github.com/sirupsen/logrus
 # github.com/spf13/cobra v0.0.5
 github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 github.com/spf13/pflag
-# golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa
-golang.org/x/net/http/httpguts
-golang.org/x/net/http2
-golang.org/x/net/http2/hpack
-golang.org/x/net/idna
-# golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456
+# golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5
 golang.org/x/sys/unix
-# golang.org/x/text v0.3.2
-golang.org/x/text/secure/bidirule
-golang.org/x/text/transform
-golang.org/x/text/unicode/bidi
-golang.org/x/text/unicode/norm
-# gopkg.in/inf.v0 v0.9.1
-gopkg.in/inf.v0
-# k8s.io/api v0.17.2
-k8s.io/api/core/v1
-# k8s.io/apimachinery v0.17.2
-k8s.io/apimachinery/pkg/api/resource
-k8s.io/apimachinery/pkg/apis/meta/v1
-k8s.io/apimachinery/pkg/conversion
-k8s.io/apimachinery/pkg/conversion/queryparams
-k8s.io/apimachinery/pkg/fields
-k8s.io/apimachinery/pkg/labels
-k8s.io/apimachinery/pkg/runtime
-k8s.io/apimachinery/pkg/runtime/schema
-k8s.io/apimachinery/pkg/selection
-k8s.io/apimachinery/pkg/types
-k8s.io/apimachinery/pkg/util/errors
-k8s.io/apimachinery/pkg/util/intstr
-k8s.io/apimachinery/pkg/util/json
-k8s.io/apimachinery/pkg/util/naming
-k8s.io/apimachinery/pkg/util/net
-k8s.io/apimachinery/pkg/util/runtime
-k8s.io/apimachinery/pkg/util/sets
-k8s.io/apimachinery/pkg/util/validation
-k8s.io/apimachinery/pkg/util/validation/field
-k8s.io/apimachinery/pkg/watch
-k8s.io/apimachinery/third_party/forked/golang/reflect
-# k8s.io/klog v1.0.0
-k8s.io/klog

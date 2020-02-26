@@ -14,7 +14,7 @@ const (
 	//ActionStatusInProgress Action is being performed currently
 	ActionStatusInProgress ActionStatus = "in progress"
 	//ActionStatusEmpty Blank status of action
-	c ActionStatus = ""
+	ActionStatusEmpty ActionStatus = ""
 )
 
 //Report Information about what resources are found in the AWS account related to the cluster

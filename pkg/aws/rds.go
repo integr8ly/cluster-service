@@ -30,44 +30,48 @@ func (r *RDSEngine) GetName() string {
 
 //Delete all RDS resources for a specified cluster
 func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
-	r.logger.Debugf("deleting resources for cluster, clusterId=%s dryRun=%t", clusterId, dryRun)
+	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
+	logger.Debug("deleting resources for cluster")
 	clusterDescribeInput := &rds.DescribeDBInstancesInput{}
 	clusterDescribeOutput, err := r.rdsClient.DescribeDBInstances(clusterDescribeInput)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to describe database clusters, clusterId=%s", clusterId)
 	}
 	var databasesToDelete []*rds.DBInstance
-	for _, dbCluster := range clusterDescribeOutput.DBInstances {
-		r.logger.Debugf("checking tags database cluster, clusterId=%s db=%s", clusterId, dbCluster.DBInstanceIdentifier)
+	for _, dbInstance := range clusterDescribeOutput.DBInstances {
+		dbLogger := logger.WithField("db", aws.StringValue(dbInstance.DBInstanceIdentifier))
+		dbLogger.Debug("checking tags database cluster")
 		tagListInput := &rds.ListTagsForResourceInput{
-			ResourceName: dbCluster.DBInstanceArn,
+			ResourceName: dbInstance.DBInstanceArn,
 		}
 		tagListOutput, err := r.rdsClient.ListTagsForResource(tagListInput)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to list tags for database cluster, clusterId=%s db=%s", clusterId, dbCluster.DBInstanceIdentifier)
+			return nil, errors.Wrapf(err, "failed to list tags for database cluster, clusterId=%s db=%s", clusterId, dbInstance.DBInstanceIdentifier)
 		}
-		r.logger.Debugf("checking cluster tag on database, clusterId=%s db=%s tagName=%s", clusterId, dbCluster.DBInstanceIdentifier, tagKeyClusterId)
+		dbLogger.Debugf("checking for cluster tag match (%s=%s) on database", tagKeyClusterId, clusterId)
 		if findTag(tagKeyClusterId, clusterId, tagListOutput.TagList) == nil {
-			r.logger.Debugf("database did not contain cluster tag, skipping, clusterId=%s db=%s tagName=%s", clusterId, dbCluster.DBInstanceIdentifier, tagKeyClusterId)
+			dbLogger.Debugf("database did not contain cluster tag match (%s=%s)", tagKeyClusterId, clusterId)
 			continue
 		}
 		extraTagsMatch := true
 		for extraTagKey, extraTagVal := range tags {
-			r.logger.Debugf("checking extra tag on database, clusterId=%s db=%s tagKey=%s tagVal=%s", clusterId, dbCluster.DBInstanceIdentifier, extraTagKey, extraTagVal)
+			dbLogger.Debugf("checking for additional tag match (%s=%s) on database", extraTagKey, extraTagVal)
 			if findTag(extraTagKey, extraTagVal, tagListOutput.TagList) == nil {
 				extraTagsMatch = false
 				break
 			}
 		}
 		if !extraTagsMatch {
-			r.logger.Debugf("additional tags did not match, ignoring database, clusterId=%s db=%s", clusterId, dbCluster.DBInstanceIdentifier)
+			dbLogger.Debug("additional tags did not match, ignoring database")
 			continue
 		}
-		databasesToDelete = append(databasesToDelete, dbCluster)
+		databasesToDelete = append(databasesToDelete, dbInstance)
 	}
-	r.logger.Debugf("filtering complete, %d databases were found to match filters, building report", len(databasesToDelete))
+	logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
 	var reportItems []*clusterservice.ReportItem
 	for _, dbInstance := range databasesToDelete {
+		dbLogger := logger.WithField("db", aws.StringValue(dbInstance.DBInstanceIdentifier))
+		dbLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
 			ID:           aws.StringValue(dbInstance.DBInstanceArn),
 			Name:         aws.StringValue(dbInstance.DBClusterIdentifier),
@@ -76,19 +80,19 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 		}
 		reportItems = append(reportItems, reportItem)
 		if dryRun {
-			r.logger.Debugf("dry run enabled, skipping deletion step")
+			dbLogger.Debug("dry run enabled, skipping deletion step")
 			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
 			continue
 		}
-		r.logger.Debugf("performing deletion of database, db=%s", dbInstance.DBInstanceIdentifier)
+		dbLogger.Debug("performing deletion of database")
 		reportItem.ActionStatus = clusterservice.ActionStatusInProgress
 		//deleting will return an error if the database is already in a deleting state
 		if aws.StringValue(dbInstance.DBInstanceStatus) == statusDeleting {
-			r.logger.Debugf("deletion of database already in progress, db=%s", dbInstance.DBClusterIdentifier)
+			dbLogger.Debugf("deletion of database already in progress")
 			continue
 		}
 		if aws.BoolValue(dbInstance.DeletionProtection) {
-			r.logger.Debugf("removing deletion protection on database, db=%s", dbInstance.DBInstanceIdentifier)
+			dbLogger.Debug("removing deletion protection on database")
 			modifyInput := &rds.ModifyDBInstanceInput{
 				DBInstanceIdentifier: dbInstance.DBInstanceIdentifier,
 				DeletionProtection:   aws.Bool(false),

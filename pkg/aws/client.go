@@ -28,6 +28,7 @@ func (c *Client) DeleteResourcesForCluster(clusterId string, tags map[string]str
 	c.logger.Debugf("deleting resources for cluster, clusterId=%s", clusterId)
 	report := &clusterservice.Report{}
 	for _, engine := range c.actionEngines {
+		c.logger.Debugf("using engine %s", engine.GetName())
 		reportItems, err := engine.DeleteResourcesForCluster(clusterId, tags, dryRun)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to run engine, engine=%s", engine.GetName())

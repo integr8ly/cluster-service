@@ -1,6 +1,6 @@
 package aws
 
 const (
-	tagKeyClusterId = "integreatly.org/clusterId"
+	tagKeyClusterId = "integreatly.org/clusterID"
 	statusDeleting  = "deleting"
 )
