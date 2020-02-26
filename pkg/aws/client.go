@@ -3,7 +3,7 @@ package aws
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
-	"github.com/pkg/errors"
+	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
@@ -25,13 +25,15 @@ func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client
 
 //DeleteResourcesForCluster Delete AWS resources based on tags using provided action engines
 func (c *Client) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) (*clusterservice.Report, error) {
-	c.logger.Debugf("deleting resources for cluster, clusterId=%s", clusterId)
+	logger := c.logger.WithField("clusterId", clusterId)
+	logger.Debugf("deleting resources for cluster")
 	report := &clusterservice.Report{}
 	for _, engine := range c.actionEngines {
-		c.logger.Debugf("using engine %s", engine.GetName())
+		engineLogger := logger.WithField("engine", engine.GetName())
+		engineLogger.Debugf("found logger")
 		reportItems, err := engine.DeleteResourcesForCluster(clusterId, tags, dryRun)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to run engine, engine=%s", engine.GetName())
+			return nil, errors.WrapLog(err, "failed to run engine", engineLogger)
 		}
 		report.Items = append(report.Items, reportItems...)
 	}
