@@ -24,7 +24,7 @@ _testmain.go
 *.prof
 
 ## Builds
-cli
+/cli
 
 ## Goland
 .idea
