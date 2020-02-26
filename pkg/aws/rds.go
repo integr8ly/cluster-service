@@ -46,7 +46,7 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 		}
 		tagListOutput, err := r.rdsClient.ListTagsForResource(tagListInput)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to list tags for database cluster, clusterId=%s db=%s", clusterId, dbInstance.DBInstanceIdentifier)
+			return nil, errors.Wrapf(err, "failed to list tags for database cluster, clusterId=%s db=%s", clusterId, *dbInstance.DBInstanceIdentifier)
 		}
 		dbLogger.Debugf("checking for cluster tag match (%s=%s) on database", tagKeyClusterId, clusterId)
 		if findTag(tagKeyClusterId, clusterId, tagListOutput.TagList) == nil {
@@ -99,7 +99,7 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 			}
 			modifyOutput, err := r.rdsClient.ModifyDBInstance(modifyInput)
 			if err != nil {
-				return nil, errors.Wrapf(err, "failed to remove instance protection on database, db=%s", dbInstance.DBInstanceIdentifier)
+				return nil, errors.Wrapf(err, "failed to remove instance protection on database, db=%s", *dbInstance.DBInstanceIdentifier)
 			}
 			dbInstance = modifyOutput.DBInstance
 		}
@@ -111,7 +111,7 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 		}
 		_, err := r.rdsClient.DeleteDBInstance(deleteInput)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to delete rds instance, db=%s", dbInstance.DBInstanceIdentifier)
+			return nil, errors.Wrapf(err, "failed to delete rds instance, db=%s", *dbInstance.DBInstanceIdentifier)
 		}
 	}
 	return reportItems, nil
