@@ -4,7 +4,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/rds"
-	"github.com/aws/aws-sdk-go/service/rds/rdsiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
@@ -13,7 +12,7 @@ import (
 var _ ActionEngine = &RDSEngine{}
 
 type RDSEngine struct {
-	rdsClient rdsiface.RDSAPI
+	rdsClient rdsClient
 	logger    *logrus.Entry
 }
 
@@ -68,13 +67,13 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 		databasesToDelete = append(databasesToDelete, dbInstance)
 	}
 	logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
-	var reportItems []*clusterservice.ReportItem
+	reportItems := make([]*clusterservice.ReportItem, 0)
 	for _, dbInstance := range databasesToDelete {
 		dbLogger := logger.WithField("db", aws.StringValue(dbInstance.DBInstanceIdentifier))
 		dbLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
 			ID:           aws.StringValue(dbInstance.DBInstanceArn),
-			Name:         aws.StringValue(dbInstance.DBClusterIdentifier),
+			Name:         aws.StringValue(dbInstance.DBInstanceIdentifier),
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusEmpty,
 		}
