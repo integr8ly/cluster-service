@@ -5,21 +5,27 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	"strings"
 )
 
 var _ ActionEngine = &ElasticacheEngine{}
+var TagFilters []*resourcegroupstaggingapi.TagFilter
 
 type ElasticacheEngine struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI
+	taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
 	logger            *logrus.Entry
 }
 
 func NewDefaultElastiCacheEngine(session *session.Session, logger *logrus.Entry) *ElasticacheEngine {
 	return &ElasticacheEngine{
 		elasticacheClient: elasticache.New(session),
+		taggingClient: resourcegroupstaggingapi.New(session),
 		logger:            logger.WithField("engine", "aws_elasticache"),
 	}
 }
@@ -41,75 +47,108 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 	for _, replicationGroup := range elasticacheReplicationGroupDescribeOutput.ReplicationGroups {
 		dbLogger := logger.WithField("elasticache", aws.StringValue(replicationGroup.ReplicationGroupId))
 		dbLogger.Debug("checking tags database cluster")
-		tagListInput := &elasticache.ListTagsForResourceInput{
-			ResourceName: replicationGroup.ReplicationGroupId,
+		databasesToDelete = append(databasesToDelete, replicationGroup)
+		//tagListInput := &elasticache.ListTagsForResourceInput{
+		//	ResourceName: replicationGroup.ReplicationGroupId,
+		//}
+		resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
+			ResourceTypeFilters: aws.StringSlice([]string{"elasticache:cluster"}),
+			TagFilters: []*resourcegroupstaggingapi.TagFilter{
+				{
+					Key: aws.String(tagKeyClusterId),
+					Values: aws.StringSlice([]string{
+						clusterId,
+					}),
+				},
+			},
 		}
-		tagListOutput, err := r.elasticacheClient.ListTagsForResource(tagListInput)
+		resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to list tags for database cluster, clusterId=%s db=%s", clusterId, *replicationGroup.ReplicationGroupId)
+			return nil, errors.Wrapf(err, "failed to Get resources for clusterID : %s", clusterId)
 		}
-		dbLogger.Debugf("checking for cluster tag match (%s=%s) on database", tagKeyClusterId, clusterId)
-		if findElasitCacheTag(tagKeyClusterId, clusterId, tagListOutput.TagList) == nil {
-			dbLogger.Debugf("database did not contain cluster tag match (%s=%s)", tagKeyClusterId, clusterId)
-			continue
-		}
-		extraTagsMatch := true
-		for extraTagKey, extraTagVal := range tags {
-			dbLogger.Debugf("checking for additional tag match (%s=%s) on database", extraTagKey, extraTagVal)
-			if findElasitCacheTag(extraTagKey, extraTagVal, tagListOutput.TagList) == nil {
-				extraTagsMatch = false
-				break
+		//TODO declare replication group id list
+		var replicationGroupsToDelete []string
+
+		for _, resourceTagMapping := range resourceOutput.ResourceTagMappingList {
+			arn := aws.StringValue(resourceTagMapping.ResourceARN)
+			arnSplit := strings.Split(arn, ":")
+			cacheClusterId := arnSplit[len(arnSplit)-1]
+			cacheClusterInput := &elasticache.DescribeCacheClustersInput{
+				CacheClusterId: aws.String(cacheClusterId),
+			}
+			cacheClusterOutput, err := r.elasticacheClient.DescribeCacheClusters(cacheClusterInput)
+			if err != nil {
+				return nil, errors.Wrapf(err, "cannot get cacheclusterOutput for : %s", cacheClusterInput)
+			}
+			for _, cacheCluster := range cacheClusterOutput.CacheClusters {
+				for _, replicationGroupToDeleteID := range replicationGroupsToDelete {
+					if !contains(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId) {
+						replicationGroupsToDelete = append(replicationGroupsToDelete, *replicationGroup.ReplicationGroupId)
+					}
+					if contains(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId) {
+						dbLogger.Debugf("Replication Group already exists in deletion list (%s=%s)", replicationGroupToDeleteID, clusterId)
+						break
+					}
+				}
+			}
+			//delete each replication group in the list
+			for _, replicationGroupID := range replicationGroupsToDelete {
+				deleteReplicationGroupInput := &elasticache.DeleteReplicationGroupInput{
+					ReplicationGroupId:   aws.String(replicationGroupID),
+					RetainPrimaryCluster: aws.Bool(false),
+				}
+
+				logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
+				var reportItems []*clusterservice.ReportItem
+				for _, replicationGroup := range databasesToDelete {
+					dbLogger := logger.WithField("replicationGroup", aws.StringValue(replicationGroup.ReplicationGroupId))
+					dbLogger.Debugf("building report for database")
+					reportItem := &clusterservice.ReportItem{
+						ID:           aws.StringValue(replicationGroup.ReplicationGroupId),
+						Name:         "elasticache ReplicationGroup",
+						Action:       clusterservice.ActionDelete,
+						ActionStatus: clusterservice.ActionStatusEmpty,
+					}
+					reportItems = append(reportItems, reportItem)
+					if dryRun {
+						dbLogger.Debug("dry run enabled, skipping deletion step")
+						reportItem.ActionStatus = clusterservice.ActionStatusDryRun
+						continue
+					}
+					dbLogger.Debug("performing deletion of database")
+					reportItem.ActionStatus = clusterservice.ActionStatusInProgress
+					//deleting will return an error if the database is already in a deleting state
+					if aws.StringValue(replicationGroup.Status) == statusDeleting {
+						dbLogger.Debugf("deletion of database already in progress")
+						continue
+					}
+
+					_, err := r.elasticacheClient.DeleteReplicationGroup(deleteReplicationGroupInput)
+					if err != nil {
+						return nil, errors.Wrapf(err, "failed to delete elasticache replicationGroup, db=%s", *replicationGroup.ReplicationGroupId)
+					}
+
+				}
 			}
 		}
-		if !extraTagsMatch {
-			dbLogger.Debug("additional tags did not match, ignoring database")
-			continue
-		}
-		databasesToDelete = append(databasesToDelete, replicationGroup)
 	}
-	logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
-	var reportItems []*clusterservice.ReportItem
-	for _, replicationGroup := range databasesToDelete {
-		dbLogger := logger.WithField("replicationGroup", aws.StringValue(replicationGroup.ReplicationGroupId))
-		dbLogger.Debugf("building report for database")
-		reportItem := &clusterservice.ReportItem{
-			ID:           aws.StringValue(replicationGroup.ReplicationGroupId),
-			Name:         "elasticache ReplicationGroup",
-			Action:       clusterservice.ActionDelete,
-			ActionStatus: clusterservice.ActionStatusEmpty,
-		}
-		reportItems = append(reportItems, reportItem)
-		if dryRun {
-			dbLogger.Debug("dry run enabled, skipping deletion step")
-			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
-			continue
-		}
-		dbLogger.Debug("performing deletion of database")
-		reportItem.ActionStatus = clusterservice.ActionStatusInProgress
-		//deleting will return an error if the database is already in a deleting state
-		if aws.StringValue(replicationGroup.Status) == statusDeleting {
-			dbLogger.Debugf("deletion of database already in progress")
-			continue
-		}
-
-		deleteInput := &elasticache.DeleteReplicationGroupInput{
-			FinalSnapshotIdentifier: nil,
-			ReplicationGroupId:      replicationGroup.ReplicationGroupId,
-			RetainPrimaryCluster:    nil,
-		}
-		_, err := r.elasticacheClient.DeleteReplicationGroup(deleteInput)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to delete elasticache replicationGroup, db=%s", *replicationGroup.ReplicationGroupId)
+	return nil, nil
+}
+func contains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
 		}
 	}
-	return reportItems, nil
+	return false
 }
 
-func findElasitCacheTag(key, value string, tags []*elasticache.Tag) *elasticache.Tag {
-	for _, tag := range tags {
-		if key == aws.StringValue(tag.Key) && value == aws.StringValue(tag.Value) {
-			return tag
-		}
-	}
-	return nil
-}
+
+
+
+
+
+
+
+
+
