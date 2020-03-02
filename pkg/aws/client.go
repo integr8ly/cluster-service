@@ -1,6 +1,8 @@
 package aws
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
@@ -33,7 +35,7 @@ func (c *Client) DeleteResourcesForCluster(clusterId string, tags map[string]str
 		engineLogger.Debugf("found logger")
 		reportItems, err := engine.DeleteResourcesForCluster(clusterId, tags, dryRun)
 		if err != nil {
-			return nil, errors.WrapLog(err, "failed to run engine", engineLogger)
+			return nil, errors.WrapLog(err, fmt.Sprintf("failed to run engine %s", engine.GetName()), engineLogger)
 		}
 		report.Items = append(report.Items, reportItems...)
 	}
