@@ -21,7 +21,7 @@ func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client
 	rdsEngine := NewDefaultRDSEngine(awsSession, logger)
 	elasticacheEngine := NewDefaultElastiCacheEngine(awsSession, logger)
 	return &Client{
-		actionEngines: []ActionEngine{rdsEngine,elasticacheEngine},
+		actionEngines: []ActionEngine{rdsEngine, elasticacheEngine},
 		logger:        log,
 	}
 }
