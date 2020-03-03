@@ -8,13 +8,12 @@ import (
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
-	"github.com/pkg/errors"
+	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"strings"
 )
 
 var _ ActionEngine = &ElasticacheEngine{}
-var TagFilters []*resourcegroupstaggingapi.TagFilter
 
 type ElasticacheEngine struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI
@@ -54,11 +53,10 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 	}
 	resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to Get resources for clusterID : %s", clusterId)
+		return nil, errors.WrapLog(err, "failed to describe database clusters", logger)
 	}
 
 	for _, resourceTagMapping := range resourceOutput.ResourceTagMappingList {
-
 		arn := aws.StringValue(resourceTagMapping.ResourceARN)
 		arnSplit := strings.Split(arn, ":")
 		cacheClusterId := arnSplit[len(arnSplit)-1]
@@ -67,69 +65,64 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 		}
 		cacheClusterOutput, err := r.elasticacheClient.DescribeCacheClusters(cacheClusterInput)
 		if err != nil {
-			return nil, errors.Wrapf(err, "cannot get cacheclusterOutput for : %s", cacheClusterInput)
+			return nil, errors.WrapLog(err, "cannot get cacheCluster output", logger)
 		}
 		for _, cacheCluster := range cacheClusterOutput.CacheClusters {
-			dbLogger := logger.WithField("replicationGroup", aws.String(*cacheCluster.ReplicationGroupId))
+			rgLogger := logger.WithField("replicationGroup", aws.String(*cacheCluster.ReplicationGroupId))
 			if contains(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId) {
-				dbLogger.Debugf("Replication Group already exists in deletion list (%s=%s)", *cacheCluster.ReplicationGroupId, clusterId)
+				rgLogger.Debugf("replication Group already exists in deletion list (%s=%s)", *cacheCluster.ReplicationGroupId, clusterId)
 				break
 			}
 			replicationGroupsToDelete = append(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId)
 		}
 	}
 
-	logger.Debugf("filtering complete, %d databases matched", len(replicationGroupsToDelete))
-
+	logger.Debugf("filtering complete, %d replicationGroups matched", len(replicationGroupsToDelete))
 	for _, replicationGroupId := range replicationGroupsToDelete {
 		//delete each replication group in the list
-
-		dbLogger := logger.WithField("replicationGroupId", aws.String(replicationGroupId))
-		dbLogger.Debugf("building report for database")
+		rgLogger := logger.WithField("replicationGroupId", aws.String(replicationGroupId))
+		rgLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
 			ID:           replicationGroupId,
-			Name:         "elasticache ReplicationGroup",
+			Name:         "elasticache Replication group",
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusEmpty,
 		}
 		reportItems = append(reportItems, reportItem)
 		if dryRun {
-			dbLogger.Debug("dry run enabled, skipping deletion step")
+			rgLogger.Debug("dry run enabled, skipping deletion step")
 			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
 			continue
 		}
-		dbLogger.Debug("performing deletion of database")
+		rgLogger.Debug("performing deletion of replication group")
 		replicationGroupDescribeInput := &elasticache.DescribeReplicationGroupsInput{
 			ReplicationGroupId: &replicationGroupId,
 		}
 		replicationGroup, err := r.elasticacheClient.DescribeReplicationGroups(replicationGroupDescribeInput)
 		if err != nil {
-			return nil, errors.Wrap(err, "cannot describe replicationGroups")
+			return nil, errors.WrapLog(err, "cannot describe replicationGroups", logger)
 		}
-		//deleting will return an error if the database is already in a deleting state
+		//deleting will return an error if the replication group is already in a deleting state
 		if len(replicationGroup.ReplicationGroups) > 0 &&
 			aws.StringValue(replicationGroup.ReplicationGroups[0].Status) == statusDeleting {
-			dbLogger.Debugf("deletion of database already in progress")
+			rgLogger.Debugf("deletion of replication Groups already in progress")
 			reportItem.ActionStatus = clusterservice.ActionStatusInProgress
 			continue
 		}
-
 		deleteReplicationGroupInput := &elasticache.DeleteReplicationGroupInput{
 			ReplicationGroupId:   aws.String(replicationGroupId),
 			RetainPrimaryCluster: aws.Bool(false),
 		}
-		_, err = r.elasticacheClient.DeleteReplicationGroup(deleteReplicationGroupInput)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to delete elasticache replicationGroupId, db=%s", replicationGroupId)
+		if err, _ := r.elasticacheClient.DeleteReplicationGroup(deleteReplicationGroupInput); err != nil {
 		}
+		return nil, errors.WrapLog(err, "failed to delete elasticache replication group", logger)
 	}
-
 	return reportItems, nil
 }
 
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a != "" && a == e {
+func contains(arr []string, targetValue string) bool {
+	for _, element := range arr {
+		if element != "" && element == targetValue {
 			return true
 		}
 	}

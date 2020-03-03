@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
 	"github.com/aws/aws-sdk-go/service/rds/rdsiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 )
@@ -21,4 +22,10 @@ type ActionEngine interface {
 //rdsClient alias for use with moq
 type rdsClient interface {
 	rdsiface.RDSAPI
+}
+
+//go:generate moq -out moq_elasticacheclient_test.go . elasticacheClient
+//elasticacheClient alias for use with moq
+type elasticacheClient interface {
+	elasticacheiface.ElastiCacheAPI
 }

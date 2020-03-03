@@ -3,9 +3,9 @@ package aws
 import (
 	"fmt"
 
-	"github.com/integr8ly/cluster-service/pkg/clusterservice"
-
+	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 
 	awssdk "github.com/aws/aws-sdk-go/aws"
@@ -17,6 +17,14 @@ const (
 	fakeRDSClientInstanceIdentifier         = "testIdentifier"
 	fakeRDSClientInstanceARN                = "arn:fake:testIdentifier"
 	fakeRDSClientInstanceDeletionProtection = true
+	fakeElasticacheClientRegion             = "eu-west-1"
+	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
+	fakeElasticacheClientDescription        = "TestDescription"
+	fakeElasticacheClientEngine             = "redis"
+	fakeElasticacheClientTagKey             = "integreatly.org/clusterID"
+	fakeElasticacheClientTagValue           = "test"
+	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
+	fakeElasticacheClientStatusAvailable    = "available"
 
 	fakeActionEngineName = "Fake Action Engine"
 )
@@ -81,6 +89,50 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 		DeleteDBInstanceFunc: func(in1 *rds.DeleteDBInstanceInput) (output *rds.DeleteDBInstanceOutput, e error) {
 			return &rds.DeleteDBInstanceOutput{
 				DBInstance: fakeRDSClientDBInstance(),
+			}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+	}
+	return client, nil
+}
+
+//ELASTICACHE
+func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
+	return &elasticache.ReplicationGroup{
+		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
+		Description:        awssdk.String(fakeElasticacheClientDescription),
+		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId),
+		Status:             awssdk.String(fakeElasticacheClientStatusAvailable),
+	}
+}
+
+func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elasticacheClientMock, error) {
+	if modifyFn == nil {
+		return nil, fmt.Errorf("modifyFn must be defined")
+	}
+	client := &elasticacheClientMock{
+		DescribeReplicationGroupsFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, e error) {
+			return &elasticache.DescribeReplicationGroupsOutput{ReplicationGroups: []*elasticache.ReplicationGroup{
+				fakeElasticacheReplicationGroup(),
+			}}, nil
+		},
+		//ListTagsForResourceFunc: func(in1 *rds.ListTagsForResourceInput) (output *rds.ListTagsForResourceOutput, e error) {
+		//	return &rds.ListTagsForResourceOutput{
+		//		TagList: []*rds.Tag{
+		//			fakeRDSClientTag(),
+		//		},
+		//	}, nil
+		//},
+		//ModifyDBInstanceFunc: func(in1 *rds.ModifyDBInstanceInput) (output *rds.ModifyDBInstanceOutput, e error) {
+		//	return &rds.ModifyDBInstanceOutput{
+		//		DBInstance: fakeRDSClientDBInstance(),
+		//	}, nil
+		//},
+		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
+			return &elasticache.DeleteReplicationGroupOutput{
+				ReplicationGroup: fakeElasticacheReplicationGroup(),
 			}, nil
 		},
 	}
