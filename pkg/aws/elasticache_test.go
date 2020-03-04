@@ -2,7 +2,7 @@ package aws
 
 import (
 	"github.com/aws/aws-sdk-go/service/elasticache"
-	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
@@ -36,41 +36,80 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 		want    []*clusterservice.ReportItem
 		wantFn  func(mock *elasticacheClientMock) error
 		wantErr string
-	}{{
-		name: "error when describing replication groups fail",
-		fields: fields{
-			elasticacheClient: func() *elasticacheClientMock {
-				fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
-					c.DescribeReplicationGroupsFunc = func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, e error) {
-						return nil, errors.New("")
+	}{
+		{
+			name: "error when describing clusters fail",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
 					}
-					return nil
-				})
-				if err != nil {
-					t.Fatal(err)
-				}
-				return fakeClient
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
 			},
-			//TODO add tagging client
-			taggingClient: func() *resourcetaggingClientMock {
-				fakeClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
-					c.DescribeGetResourcesfunc= func(in1 *resourcetaggingClient.)
-				})
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
 			},
-			logger: fakeLogger,
+			wantErr: "failed to describe cache clusters: ",
+		}, {
+			name: "error when getting cacheCluster output",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeCacheClustersFunc = func(in1 *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			wantErr: "cannot get cacheCluster output: ",
 		},
-		args: args{
-			clusterId: fakeClusterId,
-			dryRun:    true,
-		},
-		wantErr: "cannot describe replicationGroups",
-	}}
+	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fakeClient := tt.fields.elasticacheClient()
 			r := &ElasticacheEngine{
 				elasticacheClient: fakeClient,
+				taggingClient:     tt.fields.taggingClient(),
 				logger:            tt.fields.logger,
 			}
 			got, err := r.DeleteResourcesForCluster(tt.args.clusterId, nil, tt.args.dryRun)
@@ -90,7 +129,6 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 		})
 	}
 }
-
 
 //func equalReportItems(a, b []*clusterservice.ReportItem) bool {
 //	if len(a) != len(b) {

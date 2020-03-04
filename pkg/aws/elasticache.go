@@ -53,7 +53,7 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 	}
 	resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 	if err != nil {
-		return nil, errors.WrapLog(err, "failed to describe database clusters", logger)
+		return nil, errors.WrapLog(err, "failed to describe cache clusters", logger)
 	}
 
 	for _, resourceTagMapping := range resourceOutput.ResourceTagMappingList {

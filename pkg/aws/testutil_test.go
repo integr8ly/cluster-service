@@ -2,9 +2,9 @@ package aws
 
 import (
 	"fmt"
-
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 
@@ -25,8 +25,10 @@ const (
 	fakeElasticacheClientTagValue           = "test"
 	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
 	fakeElasticacheClientStatusAvailable    = "available"
-
-	fakeActionEngineName = "Fake Action Engine"
+	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
+	fakeResourceTaggingClientTagKey         = "testTag"
+	fakeResourceTaggingClientTagValue       = "testValue"
+	fakeActionEngineName                    = "Fake Action Engine"
 )
 
 func fakeReportItemDeleting() *clusterservice.ReportItem {
@@ -143,14 +145,38 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 	return client, nil
 }
 
-//TODO create functions
-//func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error) (*resourcetaggingClientMock, error) {
-//	if modifyFn == nil {
-//		return nil, fmt.Errorf("modifyFn must be defined")
-//	}
-//	client := &resourcetaggingClientMock{
-//		DescribeReportCreationFunc: func(in1 *resourcetaggingClient.Des),
-//	}
+// Resourcegrouptagging
+
+func fakeResourceTagMappingList() *resourcegroupstaggingapi.ResourceTagMapping {
+	return &resourcegroupstaggingapi.ResourceTagMapping{
+		ResourceARN: awssdk.String(fakeResourceTaggingClientArn),
+		Tags: []*resourcegroupstaggingapi.Tag{
+			{
+				Key:   awssdk.String(fakeResourceTaggingClientTagKey),
+				Value: awssdk.String(fakeResourceTaggingClientTagValue),
+			},
+		},
+	}
+}
+
+func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error) (*resourcetaggingClientMock, error) {
+	if modifyFn == nil {
+		return nil, fmt.Errorf("modifyFn must be defined")
+	}
+	client := &resourcetaggingClientMock{
+		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+			return &resourcegroupstaggingapi.GetResourcesOutput{
+					ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+						fakeResourceTagMappingList(),
+					},
+				},
+				nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+	}
+	return client, nil
 }
 
 func fakeLogger(modifyFn func(l *logrus.Entry) error) (*logrus.Entry, error) {
