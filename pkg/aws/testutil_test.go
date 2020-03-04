@@ -132,14 +132,25 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 		//},
 		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
 			return &elasticache.DeleteReplicationGroupOutput{
-				ReplicationGroup: fakeElasticacheReplicationGroup(),
-			}, nil
+					ReplicationGroup: fakeElasticacheReplicationGroup(),
+				},
+				nil
 		},
 	}
 	if err := modifyFn(client); err != nil {
 		return nil, fmt.Errorf("error occurred in modify function: %w", err)
 	}
 	return client, nil
+}
+
+//TODO create functions
+//func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error) (*resourcetaggingClientMock, error) {
+//	if modifyFn == nil {
+//		return nil, fmt.Errorf("modifyFn must be defined")
+//	}
+//	client := &resourcetaggingClientMock{
+//		DescribeReportCreationFunc: func(in1 *resourcetaggingClient.Des),
+//	}
 }
 
 func fakeLogger(modifyFn func(l *logrus.Entry) error) (*logrus.Entry, error) {

@@ -3,6 +3,7 @@ package aws
 import (
 	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
 	"github.com/aws/aws-sdk-go/service/rds/rdsiface"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 )
 
@@ -28,4 +29,10 @@ type rdsClient interface {
 //elasticacheClient alias for use with moq
 type elasticacheClient interface {
 	elasticacheiface.ElastiCacheAPI
+}
+
+//go:generate moq -out moq_resourcetaggingclient_test.go . resourcetaggingClient
+//resourcetaggingClient alias for use with moq
+type resourcetaggingClient interface {
+	resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
 }

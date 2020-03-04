@@ -76,7 +76,6 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 			replicationGroupsToDelete = append(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId)
 		}
 	}
-
 	logger.Debugf("filtering complete, %d replicationGroups matched", len(replicationGroupsToDelete))
 	for _, replicationGroupId := range replicationGroupsToDelete {
 		//delete each replication group in the list

@@ -21,7 +21,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 
 	type fields struct {
 		elasticacheClient func() *elasticacheClientMock
-		taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
+		taggingClient     func() *resourcetaggingClientMock
 		logger            *logrus.Entry
 	}
 	type args struct {
@@ -51,8 +51,13 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				}
 				return fakeClient
 			},
-			taggingClient: nil,
-			logger:        fakeLogger,
+			//TODO add tagging client
+			taggingClient: func() *resourcetaggingClientMock {
+				fakeClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+					c.DescribeGetResourcesfunc= func(in1 *resourcetaggingClient.)
+				})
+			},
+			logger: fakeLogger,
 		},
 		args: args{
 			clusterId: fakeClusterId,
@@ -85,6 +90,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 		})
 	}
 }
+
 
 //func equalReportItems(a, b []*clusterservice.ReportItem) bool {
 //	if len(a) != len(b) {
