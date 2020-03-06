@@ -13,7 +13,7 @@ const (
 	loggingKeyDatabase = "database-id"
 )
 
-var _ ActionEngine = &RDSEngine{}
+var _ ClusterResourceManager = &RDSEngine{}
 
 type RDSEngine struct {
 	rdsClient rdsClient

@@ -12,7 +12,7 @@ import (
 var _ clusterservice.Client = &Client{}
 
 type Client struct {
-	actionEngines []ActionEngine
+	actionEngines []ClusterResourceManager
 	logger        *logrus.Entry
 }
 
@@ -22,7 +22,7 @@ func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client
 	elasticacheEngine := NewDefaultElastiCacheEngine(awsSession, logger)
 	s3Engine := NewDefaultS3Engine(awsSession, logger)
 	return &Client{
-		actionEngines: []ActionEngine{rdsEngine, s3Engine, elasticacheEngine},
+		actionEngines: []ClusterResourceManager{rdsEngine, s3Engine, elasticacheEngine},
 		logger:        log,
 	}
 }

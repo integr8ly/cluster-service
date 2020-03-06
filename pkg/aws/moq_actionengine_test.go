@@ -4,8 +4,9 @@
 package aws
 
 import (
-	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"sync"
+
+	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 )
 
 var (
@@ -13,15 +14,15 @@ var (
 	lockActionEngineMockGetName                   sync.RWMutex
 )
 
-// Ensure, that ActionEngineMock does implement ActionEngine.
+// Ensure, that ActionEngineMock does implement ClusterResourceManager.
 // If this is not the case, regenerate this file with moq.
-var _ ActionEngine = &ActionEngineMock{}
+var _ ClusterResourceManager = &ActionEngineMock{}
 
-// ActionEngineMock is a mock implementation of ActionEngine.
+// ActionEngineMock is a mock implementation of ClusterResourceManager.
 //
 //     func TestSomethingThatUsesActionEngine(t *testing.T) {
 //
-//         // make and configure a mocked ActionEngine
+//         // make and configure a mocked ClusterResourceManager
 //         mockedActionEngine := &ActionEngineMock{
 //             DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 // 	               panic("mock out the DeleteResourcesForCluster method")
@@ -31,7 +32,7 @@ var _ ActionEngine = &ActionEngineMock{}
 //             },
 //         }
 //
-//         // use mockedActionEngine in code that requires ActionEngine
+//         // use mockedActionEngine in code that requires ClusterResourceManager
 //         // and then make assertions.
 //
 //     }
@@ -62,7 +63,7 @@ type ActionEngineMock struct {
 // DeleteResourcesForCluster calls DeleteResourcesForClusterFunc.
 func (mock *ActionEngineMock) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	if mock.DeleteResourcesForClusterFunc == nil {
-		panic("ActionEngineMock.DeleteResourcesForClusterFunc: method is nil but ActionEngine.DeleteResourcesForCluster was just called")
+		panic("ActionEngineMock.DeleteResourcesForClusterFunc: method is nil but ClusterResourceManager.DeleteResourcesForCluster was just called")
 	}
 	callInfo := struct {
 		ClusterId string
@@ -101,7 +102,7 @@ func (mock *ActionEngineMock) DeleteResourcesForClusterCalls() []struct {
 // GetName calls GetNameFunc.
 func (mock *ActionEngineMock) GetName() string {
 	if mock.GetNameFunc == nil {
-		panic("ActionEngineMock.GetNameFunc: method is nil but ActionEngine.GetName was just called")
+		panic("ActionEngineMock.GetNameFunc: method is nil but ClusterResourceManager.GetName was just called")
 	}
 	callInfo := struct {
 	}{}

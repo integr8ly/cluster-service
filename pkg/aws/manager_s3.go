@@ -20,7 +20,7 @@ const (
 	resourceTypeS3 = "s3"
 )
 
-var _ ActionEngine = &S3Engine{}
+var _ ClusterResourceManager = &S3Engine{}
 
 type S3Engine struct {
 	s3Client            s3Client

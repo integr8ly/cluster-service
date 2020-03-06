@@ -18,7 +18,7 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 	}
 
 	type fields struct {
-		actionEngines func() []ActionEngine
+		actionEngines func() []ClusterResourceManager
 		logger        *logrus.Entry
 	}
 	type args struct {
@@ -36,7 +36,7 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 		{
 			name: "error when an engine fails",
 			fields: fields{
-				actionEngines: func() []ActionEngine {
+				actionEngines: func() []ClusterResourceManager {
 					fakeEngine, err := fakeActionEngine(func(e *ActionEngineMock) error {
 						e.DeleteResourcesForClusterFunc = func(clusterId string, tags map[string]string, dryRun bool) (items []*clusterservice.ReportItem, e error) {
 							return nil, errors.New("")
@@ -46,7 +46,7 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					return []ActionEngine{fakeEngine}
+					return []ClusterResourceManager{fakeEngine}
 				},
 				logger: fakeLogger,
 			},
@@ -60,7 +60,7 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 		{
 			name: "multiple engine report items are appended",
 			fields: fields{
-				actionEngines: func() []ActionEngine {
+				actionEngines: func() []ClusterResourceManager {
 					fakeEngine, err := fakeActionEngine(func(e *ActionEngineMock) error {
 						return nil
 					})
@@ -78,7 +78,7 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					return []ActionEngine{fakeEngine, fakeDryRunEngine}
+					return []ClusterResourceManager{fakeEngine, fakeDryRunEngine}
 				},
 				logger: fakeLogger,
 			},
