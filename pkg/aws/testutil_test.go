@@ -137,10 +137,8 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 					fakeElasticacheCacheCluster(),
 				}}, nil
 		},
-		DescribeReplicationGroupsInputFunc: func(in1 *elasticache.CacheCluster) (output *elasticache.DescribeReplicationGroupsInput, e error) {
-			return &elasticache.DescribeReplicationGroupsInput{
-				ReplicationGroupId: in1.ReplicationGroupId,
-			}, nil
+		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
+			return &elasticache.DeleteReplicationGroupOutput{}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {

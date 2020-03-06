@@ -131,6 +131,37 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			wantErr: "cannot describe replicationGroups: ",
+		}, {
+			name: "error when delete replicationGroups fail",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DeleteReplicationGroupFunc = func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, err error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			wantErr: "failed to delete elasticache replication group: ",
 		},
 	}
 
