@@ -116,7 +116,11 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 			return nil, errors.WrapLog(err, "failed to delete elasticache replication group", logger)
 		}
 	}
-	return reportItems, nil
+	if reportItems != nil {
+
+		return reportItems, nil
+	}
+	return nil, nil
 }
 
 func contains(arr []string, targetValue string) bool {

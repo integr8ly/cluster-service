@@ -17,6 +17,7 @@ const (
 	fakeRDSClientInstanceIdentifier         = "testIdentifier"
 	fakeRDSClientInstanceARN                = "arn:fake:testIdentifier"
 	fakeRDSClientInstanceDeletionProtection = true
+	fakeElasticacheClientName               = "testName"
 	fakeElasticacheClientRegion             = "eu-west-1"
 	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
 	fakeElasticacheClientDescription        = "TestDescription"
@@ -103,6 +104,24 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 }
 
 //ELASTICACHE
+func fakeReportIReplicationGroupItemDeleting() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheClientReplicationGroupId,
+		Name:         fakeElasticacheClientName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusInProgress,
+	}
+}
+
+func fakeReportReplicationGroupItemDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheClientReplicationGroupId,
+		Name:         fakeElasticacheClientName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
+
 func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
 	return &elasticache.ReplicationGroup{
 		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
@@ -138,7 +157,9 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 				}}, nil
 		},
 		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
-			return &elasticache.DeleteReplicationGroupOutput{}, nil
+			return &elasticache.DeleteReplicationGroupOutput{
+				ReplicationGroup: fakeElasticacheReplicationGroup(),
+			}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {

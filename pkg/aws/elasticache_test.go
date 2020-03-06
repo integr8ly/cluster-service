@@ -162,6 +162,38 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			wantErr: "failed to delete elasticache replication group: ",
+		}, {
+			name: "pass when no report is returned  if no replicationgroups deleted ",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, err error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			want:    []*clusterservice.ReportItem{},
+			wantErr: "",
 		},
 	}
 
@@ -190,15 +222,3 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 		})
 	}
 }
-
-//func equalReportItems(a, b []*clusterservice.ReportItem) bool {
-//	if len(a) != len(b) {
-//		return false
-//	}
-//	for i, _ := range a {
-//		if !reflect.DeepEqual(*a[i], *b[i]) {
-//			return false
-//		}
-//	}
-//	return true
-//}
