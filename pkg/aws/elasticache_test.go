@@ -11,7 +11,7 @@ import (
 )
 
 func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
-	fakeClusterId := "testClusterId"
+	fakeClusterId := fakeClusterID
 	fakeLogger, err := fakeLogger(func(l *logrus.Entry) error {
 		return nil
 	})
@@ -91,7 +91,6 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-
 					return fakeTaggingClient
 				},
 				logger: fakeLogger,
@@ -101,6 +100,37 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			wantErr: "cannot get cacheCluster output: ",
+		}, {
+			name: "error when describe replicationGroups fail",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeReplicationGroupsFunc = func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, e error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			wantErr: "cannot describe replicationGroups: ",
 		},
 	}
 

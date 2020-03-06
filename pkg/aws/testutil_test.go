@@ -28,6 +28,8 @@ const (
 	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
 	fakeResourceTaggingClientTagKey         = "testTag"
 	fakeResourceTaggingClientTagValue       = "testValue"
+	fakeClusterID                           = "testClusterID"
+	fakeCacheClusterStatus                  = "available"
 	fakeActionEngineName                    = "Fake Action Engine"
 )
 
@@ -109,6 +111,14 @@ func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
 		Status:             awssdk.String(fakeElasticacheClientStatusAvailable),
 	}
 }
+func fakeElasticacheCacheCluster() *elasticache.CacheCluster {
+	return &elasticache.CacheCluster{
+		CacheClusterId:     awssdk.String(fakeClusterID),
+		CacheClusterStatus: awssdk.String(fakeCacheClusterStatus),
+		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
+		Engine:             awssdk.String(fakeElasticacheClientEngine),
+		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId)}
+}
 
 func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elasticacheClientMock, error) {
 	if modifyFn == nil {
@@ -116,27 +126,21 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 	}
 	client := &elasticacheClientMock{
 		DescribeReplicationGroupsFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, e error) {
-			return &elasticache.DescribeReplicationGroupsOutput{ReplicationGroups: []*elasticache.ReplicationGroup{
-				fakeElasticacheReplicationGroup(),
-			}}, nil
+			return &elasticache.DescribeReplicationGroupsOutput{
+				ReplicationGroups: []*elasticache.ReplicationGroup{
+					fakeElasticacheReplicationGroup(),
+				}}, nil
 		},
-		//ListTagsForResourceFunc: func(in1 *rds.ListTagsForResourceInput) (output *rds.ListTagsForResourceOutput, e error) {
-		//	return &rds.ListTagsForResourceOutput{
-		//		TagList: []*rds.Tag{
-		//			fakeRDSClientTag(),
-		//		},
-		//	}, nil
-		//},
-		//ModifyDBInstanceFunc: func(in1 *rds.ModifyDBInstanceInput) (output *rds.ModifyDBInstanceOutput, e error) {
-		//	return &rds.ModifyDBInstanceOutput{
-		//		DBInstance: fakeRDSClientDBInstance(),
-		//	}, nil
-		//},
-		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
-			return &elasticache.DeleteReplicationGroupOutput{
-					ReplicationGroup: fakeElasticacheReplicationGroup(),
-				},
-				nil
+		DescribeCacheClustersFunc: func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
+			return &elasticache.DescribeCacheClustersOutput{
+				CacheClusters: []*elasticache.CacheCluster{
+					fakeElasticacheCacheCluster(),
+				}}, nil
+		},
+		DescribeReplicationGroupsInputFunc: func(in1 *elasticache.CacheCluster) (output *elasticache.DescribeReplicationGroupsInput, e error) {
+			return &elasticache.DescribeReplicationGroupsInput{
+				ReplicationGroupId: in1.ReplicationGroupId,
+			}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {

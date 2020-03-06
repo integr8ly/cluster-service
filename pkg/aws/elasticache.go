@@ -68,7 +68,7 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 			return nil, errors.WrapLog(err, "cannot get cacheCluster output", logger)
 		}
 		for _, cacheCluster := range cacheClusterOutput.CacheClusters {
-			rgLogger := logger.WithField("replicationGroup", aws.String(*cacheCluster.ReplicationGroupId))
+			rgLogger := logger.WithField("replicationGroup", cacheCluster.ReplicationGroupId)
 			if contains(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId) {
 				rgLogger.Debugf("replication Group already exists in deletion list (%s=%s)", *cacheCluster.ReplicationGroupId, clusterId)
 				break
@@ -112,9 +112,9 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 			ReplicationGroupId:   aws.String(replicationGroupId),
 			RetainPrimaryCluster: aws.Bool(false),
 		}
-		if err, _ := r.elasticacheClient.DeleteReplicationGroup(deleteReplicationGroupInput); err != nil {
+		if _, err := r.elasticacheClient.DeleteReplicationGroup(deleteReplicationGroupInput); err != nil {
+			return nil, errors.WrapLog(err, "failed to delete elasticache replication group", logger)
 		}
-		return nil, errors.WrapLog(err, "failed to delete elasticache replication group", logger)
 	}
 	return reportItems, nil
 }
