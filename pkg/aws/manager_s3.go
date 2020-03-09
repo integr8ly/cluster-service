@@ -78,12 +78,9 @@ func (s *S3Engine) DeleteResourcesForCluster(clusterId string, tags map[string]s
 	var bucketsToDelete []*s3Bucket
 	for _, resourceTagMapping := range getResourcesOutput.ResourceTagMappingList {
 		bucketARN := aws.StringValue(resourceTagMapping.ResourceARN)
-		bucketLogger := s.logger.WithField(loggingKeyBucketARN, bucketARN)
 		//get bucket id from arn, should be the last element
+		//strings#Split will always return at least one element https://golang.org/pkg/strings/#Split
 		bucketARNElements := strings.Split(bucketARN, ":")
-		if len(bucketARNElements) == 0 {
-			return nil, errors.WrapLog(err, "bucket arn did not contain enough elements", bucketLogger)
-		}
 		bucketID := bucketARNElements[len(bucketARNElements)-1]
 		bucketsToDelete = append(bucketsToDelete, &s3Bucket{
 			ID:  bucketID,
