@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
@@ -225,6 +226,51 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				fakeReportItemReplicationGroupDeleting(),
 			},
 			wantErr: "",
+		}, {
+			name: "pass when deleteReplicationGroup method isn't called if a replicationGroup is already deleting ",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						fakeReplicationGroup := fakeElasticacheReplicationGroup()
+						fakeReplicationGroup.Status = aws.String(statusDeleting)
+						c.DescribeReplicationGroupsFunc = func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, err error) {
+							return &elasticache.DescribeReplicationGroupsOutput{
+								ReplicationGroups: []*elasticache.ReplicationGroup{
+									fakeReplicationGroup,
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDeleting(),
+			},
+			wantFn: func(mock *elasticacheClientMock) error {
+				if len(mock.DeleteReplicationGroupCalls()) != 0 {
+					return errors.New("delete replication group call count should be 0")
+				}
+				return nil
+			},
 		},
 	}
 
