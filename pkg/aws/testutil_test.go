@@ -17,7 +17,7 @@ const (
 	fakeRDSClientInstanceIdentifier         = "testIdentifier"
 	fakeRDSClientInstanceARN                = "arn:fake:testIdentifier"
 	fakeRDSClientInstanceDeletionProtection = true
-	fakeElasticacheClientName               = "testName"
+	fakeElasticacheClientName               = "elasticache Replication group"
 	fakeElasticacheClientRegion             = "eu-west-1"
 	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
 	fakeElasticacheClientDescription        = "TestDescription"
@@ -104,7 +104,7 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 }
 
 //ELASTICACHE
-func fakeReportIReplicationGroupItemDeleting() *clusterservice.ReportItem {
+func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
 		Name:         fakeElasticacheClientName,
@@ -113,7 +113,7 @@ func fakeReportIReplicationGroupItemDeleting() *clusterservice.ReportItem {
 	}
 }
 
-func fakeReportReplicationGroupItemDryRun() *clusterservice.ReportItem {
+func fakeReportItemReplicationGroupDryRun() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
 		Name:         fakeElasticacheClientName,

@@ -194,6 +194,37 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			want:    []*clusterservice.ReportItem{},
 			wantErr: "",
+		}, {
+			name: "pass when replicationGroup deleted and reportItem has status set to deleting ",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDeleting(),
+			},
+			wantErr: "",
 		},
 	}
 

@@ -85,7 +85,7 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 			ID:           replicationGroupId,
 			Name:         "elasticache Replication group",
 			Action:       clusterservice.ActionDelete,
-			ActionStatus: clusterservice.ActionStatusEmpty,
+			ActionStatus: clusterservice.ActionStatusInProgress,
 		}
 		reportItems = append(reportItems, reportItem)
 		if dryRun {
