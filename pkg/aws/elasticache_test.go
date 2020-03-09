@@ -271,6 +271,49 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				}
 				return nil
 			},
+		}, {
+			name: "pass when no replicationGroups are deleted if dry run is true",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeReplicationGroupsFunc = func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, err error) {
+							return &elasticache.DescribeReplicationGroupsOutput{
+								ReplicationGroups: []*elasticache.ReplicationGroup{
+									fakeElasticacheReplicationGroup(),
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *resourcetaggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *resourcetaggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDryRun(),
+			},
+			wantFn: func(mock *elasticacheClientMock) error {
+				if len(mock.DeleteReplicationGroupCalls()) != 0 {
+					return errors.New("delete replication group call count should be 0 as dry run is true")
+				}
+				return nil
+			},
 		},
 	}
 
