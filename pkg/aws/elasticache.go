@@ -117,7 +117,6 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 		}
 	}
 	if reportItems != nil {
-
 		return reportItems, nil
 	}
 	return nil, nil
