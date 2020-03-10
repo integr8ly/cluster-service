@@ -2,10 +2,10 @@ package aws
 
 import (
 	"fmt"
-
-	"github.com/integr8ly/cluster-service/pkg/clusterservice"
-
+	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
+	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 
 	awssdk "github.com/aws/aws-sdk-go/aws"
@@ -17,8 +17,21 @@ const (
 	fakeRDSClientInstanceIdentifier         = "testIdentifier"
 	fakeRDSClientInstanceARN                = "arn:fake:testIdentifier"
 	fakeRDSClientInstanceDeletionProtection = true
-
-	fakeActionEngineName = "Fake Action Engine"
+	fakeElasticacheClientName               = "elasticache Replication group"
+	fakeElasticacheClientRegion             = "eu-west-1"
+	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
+	fakeElasticacheClientDescription        = "TestDescription"
+	fakeElasticacheClientEngine             = "redis"
+	fakeElasticacheClientTagKey             = "integreatly.org/clusterID"
+	fakeElasticacheClientTagValue           = "test"
+	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
+	fakeElasticacheClientStatusAvailable    = "available"
+	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
+	fakeResourceTaggingClientTagKey         = "testTag"
+	fakeResourceTaggingClientTagValue       = "testValue"
+	fakeClusterID                           = "testClusterID"
+	fakeCacheClusterStatus                  = "available"
+	fakeActionEngineName                    = "Fake Action Engine"
 )
 
 func fakeReportItemDeleting() *clusterservice.ReportItem {
@@ -82,6 +95,105 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 			return &rds.DeleteDBInstanceOutput{
 				DBInstance: fakeRDSClientDBInstance(),
 			}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+	}
+	return client, nil
+}
+
+//ELASTICACHE
+func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheClientReplicationGroupId,
+		Name:         fakeElasticacheClientName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusInProgress,
+	}
+}
+
+func fakeReportItemReplicationGroupDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheClientReplicationGroupId,
+		Name:         fakeElasticacheClientName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
+
+func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
+	return &elasticache.ReplicationGroup{
+		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
+		Description:        awssdk.String(fakeElasticacheClientDescription),
+		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId),
+		Status:             awssdk.String(fakeElasticacheClientStatusAvailable),
+	}
+}
+func fakeElasticacheCacheCluster() *elasticache.CacheCluster {
+	return &elasticache.CacheCluster{
+		CacheClusterId:     awssdk.String(fakeClusterID),
+		CacheClusterStatus: awssdk.String(fakeCacheClusterStatus),
+		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
+		Engine:             awssdk.String(fakeElasticacheClientEngine),
+		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId)}
+}
+
+func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elasticacheClientMock, error) {
+	if modifyFn == nil {
+		return nil, fmt.Errorf("modifyFn must be defined")
+	}
+	client := &elasticacheClientMock{
+		DescribeReplicationGroupsFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, e error) {
+			return &elasticache.DescribeReplicationGroupsOutput{
+				ReplicationGroups: []*elasticache.ReplicationGroup{
+					fakeElasticacheReplicationGroup(),
+				}}, nil
+		},
+		DescribeCacheClustersFunc: func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
+			return &elasticache.DescribeCacheClustersOutput{
+				CacheClusters: []*elasticache.CacheCluster{
+					fakeElasticacheCacheCluster(),
+				}}, nil
+		},
+		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
+			return &elasticache.DeleteReplicationGroupOutput{
+				ReplicationGroup: fakeElasticacheReplicationGroup(),
+			}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+	}
+	return client, nil
+}
+
+// Resourcegrouptagging
+
+func fakeResourceTagMappingList() *resourcegroupstaggingapi.ResourceTagMapping {
+	return &resourcegroupstaggingapi.ResourceTagMapping{
+		ResourceARN: awssdk.String(fakeResourceTaggingClientArn),
+		Tags: []*resourcegroupstaggingapi.Tag{
+			{
+				Key:   awssdk.String(fakeResourceTaggingClientTagKey),
+				Value: awssdk.String(fakeResourceTaggingClientTagValue),
+			},
+		},
+	}
+}
+
+func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error) (*resourcetaggingClientMock, error) {
+	if modifyFn == nil {
+		return nil, fmt.Errorf("modifyFn must be defined")
+	}
+	client := &resourcetaggingClientMock{
+		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+			return &resourcegroupstaggingapi.GetResourcesOutput{
+					ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+						fakeResourceTagMappingList(),
+					},
+				},
+				nil
 		},
 	}
 	if err := modifyFn(client); err != nil {

@@ -19,8 +19,9 @@ type Client struct {
 func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client {
 	log := logger.WithField("cluster_service_provider", "aws")
 	rdsEngine := NewDefaultRDSEngine(awsSession, logger)
+	elasticacheEngine := NewDefaultElastiCacheEngine(awsSession, logger)
 	return &Client{
-		actionEngines: []ActionEngine{rdsEngine},
+		actionEngines: []ActionEngine{rdsEngine, elasticacheEngine},
 		logger:        log,
 	}
 }
