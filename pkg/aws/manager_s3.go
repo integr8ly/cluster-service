@@ -14,15 +14,14 @@ import (
 )
 
 const (
-	loggingKeyBucket    = "bucket-id"
-	loggingKeyBucketARN = "bucket-arn"
+	loggingKeyBucket = "bucket-id"
 
 	resourceTypeS3 = "s3"
 )
 
-var _ ClusterResourceManager = &S3Engine{}
+var _ ClusterResourceManager = &S3Manager{}
 
-type S3Engine struct {
+type S3Manager struct {
 	s3Client            s3Client
 	s3BatchDeleteClient s3BatchDeleteClient
 	taggingClient       taggingClient
@@ -35,21 +34,21 @@ type s3Bucket struct {
 	ARN string
 }
 
-func NewDefaultS3Engine(session *session.Session, logger *logrus.Entry) *S3Engine {
+func NewDefaultS3Engine(session *session.Session, logger *logrus.Entry) *S3Manager {
 	s3Client := s3.New(session)
-	return &S3Engine{
+	return &S3Manager{
 		s3Client:            s3Client,
 		s3BatchDeleteClient: s3manager.NewBatchDeleteWithClient(s3Client),
 		taggingClient:       resourcegroupstaggingapi.New(session),
-		logger:              logger.WithField("engine", engineS3),
+		logger:              logger.WithField(loggingKeyEngine, managerS3),
 	}
 }
 
-func (r *S3Engine) GetName() string {
+func (r *S3Manager) GetName() string {
 	return "AWS S3 Engine"
 }
 
-func (s *S3Engine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+func (s *S3Manager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	s.logger.Debug("delete s3 resources for cluster")
 	//convert provided tags to aws filter format
 	tagFilters := []*resourcegroupstaggingapi.TagFilter{

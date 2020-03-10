@@ -13,26 +13,26 @@ const (
 	loggingKeyDatabase = "database-id"
 )
 
-var _ ClusterResourceManager = &RDSEngine{}
+var _ ClusterResourceManager = &RDSInstanceManager{}
 
-type RDSEngine struct {
+type RDSInstanceManager struct {
 	rdsClient rdsClient
 	logger    *logrus.Entry
 }
 
-func NewDefaultRDSEngine(session *session.Session, logger *logrus.Entry) *RDSEngine {
-	return &RDSEngine{
+func NewDefaultRDSInstanceManager(session *session.Session, logger *logrus.Entry) *RDSInstanceManager {
+	return &RDSInstanceManager{
 		rdsClient: rds.New(session),
-		logger:    logger.WithField("engine", engineRDS),
+		logger:    logger.WithField("engine", managerRDS),
 	}
 }
 
-func (r *RDSEngine) GetName() string {
-	return "AWS RDS Engine"
+func (r *RDSInstanceManager) GetName() string {
+	return "AWS RDS Manager"
 }
 
 //Delete all RDS resources for a specified cluster
-func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+func (r *RDSInstanceManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	r.logger.Debug("deleting resources for cluster")
 	clusterDescribeInput := &rds.DescribeDBInstancesInput{}
 	clusterDescribeOutput, err := r.rdsClient.DescribeDBInstances(clusterDescribeInput)

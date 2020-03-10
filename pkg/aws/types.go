@@ -9,14 +9,15 @@ import (
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 )
 
-type EngineType string
+type ResourceManagerType string
 
 const (
 	tagKeyClusterId = "integreatly.org/clusterID"
 	statusDeleting  = "deleting"
 
-	engineRDS EngineType = "aws_rds"
-	engineS3  EngineType = "aws_s3"
+	managerRDS         ResourceManagerType = "aws_rds"
+	managerS3          ResourceManagerType = "aws_s3"
+	managerRDSSnapshot ResourceManagerType = "aws_rds_snapshot"
 
 	loggingKeyClusterID = "cluster-id"
 	loggingKeyDryRun    = "dry-run"

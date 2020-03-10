@@ -15,6 +15,8 @@ const (
 	ActionStatusInProgress ActionStatus = "in progress"
 	//ActionStatusComplete Action has completed
 	ActionStatusComplete ActionStatus = "complete"
+	//ActionStatusSkipped Action has been skipped, not due to dry-run
+	ActionStatusSkipped ActionStatus = "skipped"
 	//ActionStatusEmpty Blank status of action
 	ActionStatusEmpty ActionStatus = ""
 )

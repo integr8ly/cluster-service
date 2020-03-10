@@ -98,8 +98,8 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := &Client{
-				actionEngines: tt.fields.actionEngines(),
-				logger:        tt.fields.logger,
+				ResourceManagers: tt.fields.actionEngines(),
+				Logger:           tt.fields.logger,
 			}
 			got, err := c.DeleteResourcesForCluster(tt.args.clusterId, tt.args.tags, tt.args.dryRun)
 			if err != nil && err.Error() != tt.wantErr {

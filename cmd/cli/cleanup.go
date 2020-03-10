@@ -5,6 +5,8 @@ import (
 	"os"
 	"time"
 
+	"github.com/sirupsen/logrus"
+
 	"github.com/olekukonko/tablewriter"
 
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
@@ -40,6 +42,10 @@ var cleanupCmd = &cobra.Command{
 		if err != nil {
 			exitError(fmt.Sprintf("failed to get watch from flag: %+v", err), exitCodeErrUnknown)
 		}
+		types, err := cmd.Flags().GetStringSlice("types")
+		if err != nil {
+			exitError(fmt.Sprintf("failed to get types from flag: %+v", err), exitCodeErrUnknown)
+		}
 		//ensure the output format is supported
 		if outputFormat != "table" {
 			exitError(fmt.Sprintf("output format %s not supported, use table", outputFormat), exitCodeErrKnown)
@@ -57,7 +63,7 @@ var cleanupCmd = &cobra.Command{
 			Region:      aws.String(region),
 			Credentials: credentials.NewStaticCredentials(awsKeyID, awsSecretKey, ""),
 		}))
-		clusterService := awsclusterservice.NewDefaultClient(awsSession, logger)
+		clusterService := buildAWSClientFromTypes(awsSession, types, logger)
 		//this could probably leverage channels
 		var currentReport *clusterservice.Report
 		for {
@@ -79,6 +85,29 @@ var cleanupCmd = &cobra.Command{
 	},
 }
 
+func buildAWSClientFromTypes(awsSession *session.Session, types []string, logger *logrus.Entry) *awsclusterservice.Client {
+	if types == nil || len(types) == 0 {
+		return awsclusterservice.NewDefaultClient(awsSession, logger)
+	}
+	client := &awsclusterservice.Client{
+		Logger:           logger,
+		ResourceManagers: make([]awsclusterservice.ClusterResourceManager, 0),
+	}
+	for _, t := range types {
+		switch t {
+		case "rds:instance":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultRDSInstanceManager(awsSession, logger))
+		case "rds:snapshot":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultRDSSnapshotManager(awsSession, logger))
+		case "s3":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultS3Engine(awsSession, logger))
+		default:
+			logger.Debugf("could not find resource manager for specified type %s", t)
+		}
+	}
+	return client
+}
+
 func printReportTable(report *clusterservice.Report) {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"ID", "Name", "Action", "Status"})
@@ -94,4 +123,5 @@ func init() {
 	cleanupCmd.Flags().StringP("region", "r", "eu-west-1", "region to delete resources in")
 	cleanupCmd.Flags().BoolP("dry-run", "d", true, "skip performing actions")
 	cleanupCmd.Flags().BoolP("watch", "w", false, "poll actions being performed indefinitely")
+	cleanupCmd.Flags().StringSliceP("types", "t", []string{}, "resource types to cleanup")
 }

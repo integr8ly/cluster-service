@@ -318,7 +318,7 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fakeClient := tt.fields.rdsClient()
-			r := &RDSEngine{
+			r := &RDSInstanceManager{
 				rdsClient: fakeClient,
 				logger:    tt.fields.logger,
 			}

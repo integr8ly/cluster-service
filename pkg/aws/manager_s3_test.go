@@ -236,7 +236,7 @@ func TestS3Engine_DeleteResourcesForCluster(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &S3Engine{
+			s := &S3Manager{
 				s3Client:            tt.fields.s3Client(),
 				s3BatchDeleteClient: tt.fields.s3BatchDeleteClient(),
 				taggingClient:       tt.fields.taggingClient(),
