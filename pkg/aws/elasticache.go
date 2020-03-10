@@ -34,7 +34,7 @@ func (r *ElasticacheEngine) GetName() string {
 	return "AWS elasticache Engine"
 }
 
-//Delete all RDS resources for a specified cluster
+//Delete all elasticache resources for a specified cluster
 func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
 	logger.Debug("deleting resources for cluster")
