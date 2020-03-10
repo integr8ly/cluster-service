@@ -59,12 +59,17 @@ var cleanupCmd = &cobra.Command{
 		}))
 		clusterService := awsclusterservice.NewDefaultClient(awsSession, logger)
 		//this could probably leverage channels
+		var currentReport *clusterservice.Report
 		for {
-			report, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
+			newReport, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
 			if err != nil {
 				exitError(fmt.Sprintf("failed to cleanup resources for cluster, clusterId=%s: %+v", clusterId, err), exitCodeErrUnknown)
 			}
-			printReportTable(report)
+			if currentReport == nil {
+				currentReport = newReport
+			}
+			currentReport.MergeForward(newReport)
+			printReportTable(currentReport)
 			if !watch {
 				break
 			}

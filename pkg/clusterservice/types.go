@@ -26,13 +26,25 @@ type Report struct {
 
 //MergeForward Merge provided report into this report, assuming the provided report was created after this one
 func (r *Report) MergeForward(mergeTarget *Report) {
-	mergeTargetItemsLookupMap := make(map[string]*ReportItem)
-	for _, item := range mergeTarget.Items {
-		mergeTargetItemsLookupMap[item.ID] = item
-	}
 	for _, item := range r.Items {
-		item.MergeForward(mergeTargetItemsLookupMap[item.ID])
+		item.MergeForward(findReportItem(item.ID, mergeTarget))
 	}
+	for _, item := range mergeTarget.Items {
+		if findReportItem(item.ID, r) == nil {
+			r.Items = append(r.Items, item)
+		}
+	}
+}
+
+func findReportItem(id string, report *Report) *ReportItem {
+	var foundItem *ReportItem
+	for _, item := range report.Items {
+		if item.ID == id {
+			foundItem = item
+			break
+		}
+	}
+	return foundItem
 }
 
 //ReportItem Information about a specific AWS resource

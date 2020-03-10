@@ -98,7 +98,7 @@ func (s *S3Engine) DeleteResourcesForCluster(clusterId string, tags map[string]s
 			ID:           bucket.ARN,
 			Name:         bucket.ID,
 			Action:       clusterservice.ActionDelete,
-			ActionStatus: clusterservice.ActionStatusEmpty,
+			ActionStatus: clusterservice.ActionStatusInProgress,
 		}
 		reportItems = append(reportItems, reportItem)
 		//don't delete in dry run scenario
@@ -120,11 +120,9 @@ func (s *S3Engine) DeleteResourcesForCluster(clusterId string, tags map[string]s
 		deleteBucketInput := &s3.DeleteBucketInput{
 			Bucket: aws.String(bucket.ID),
 		}
-		_, err := s.s3Client.DeleteBucket(deleteBucketInput)
-		if err != nil {
+		if _, err := s.s3Client.DeleteBucket(deleteBucketInput); err != nil {
 			return nil, errors.WrapLog(err, "failed to delete bucket", bucketLogger)
 		}
-		reportItem.ActionStatus = clusterservice.ActionStatusInProgress
 	}
 	//return final report
 	return reportItems, nil
