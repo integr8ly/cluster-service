@@ -43,14 +43,7 @@ func (r *ElasticacheManager) DeleteResourcesForCluster(clusterId string, tags ma
 	var replicationGroupsToDelete []string
 	resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{"elasticache:cluster"}),
-		TagFilters: []*resourcegroupstaggingapi.TagFilter{
-			{
-				Key: aws.String(tagKeyClusterId),
-				Values: aws.StringSlice([]string{
-					clusterId,
-				}),
-			},
-		},
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 	if err != nil {

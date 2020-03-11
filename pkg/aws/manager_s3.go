@@ -50,24 +50,11 @@ func (r *S3Manager) GetName() string {
 
 func (s *S3Manager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	s.logger.Debug("delete s3 resources for cluster")
-	//convert provided tags to aws filter format
-	tagFilters := []*resourcegroupstaggingapi.TagFilter{
-		{
-			Key:    aws.String(tagKeyClusterId),
-			Values: aws.StringSlice([]string{clusterId}),
-		},
-	}
-	for tagKey, tagVal := range tags {
-		tagFilters = append(tagFilters, &resourcegroupstaggingapi.TagFilter{
-			Key:    aws.String(tagKey),
-			Values: aws.StringSlice([]string{tagVal}),
-		})
-	}
 	//filter s3 buckets with correct tags
 	s.logger.Debug("listing s3 buckets using provided tag filters")
 	getResourcesInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeS3}),
-		TagFilters:          tagFilters,
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	getResourcesOutput, err := s.taggingClient.GetResources(getResourcesInput)
 	if err != nil {

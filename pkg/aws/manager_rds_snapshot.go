@@ -48,24 +48,11 @@ func (r *RDSSnapshotManager) GetName() string {
 
 func (r *RDSSnapshotManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	r.logger.Debug("delete snapshots for cluster")
-	//convert provided tags to aws filter format
-	tagFilters := []*resourcegroupstaggingapi.TagFilter{
-		{
-			Key:    aws.String(tagKeyClusterId),
-			Values: aws.StringSlice([]string{clusterId}),
-		},
-	}
-	for tagKey, tagVal := range tags {
-		tagFilters = append(tagFilters, &resourcegroupstaggingapi.TagFilter{
-			Key:    aws.String(tagKey),
-			Values: aws.StringSlice([]string{tagVal}),
-		})
-	}
 	//filter with tags
 	r.logger.Debug("listing rds snapshots using provided tag filters")
 	getResourcesInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeRDSSnapshot}),
-		TagFilters:          tagFilters,
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	getResourcesOutput, err := r.taggingClient.GetResources(getResourcesInput)
 	if err != nil {

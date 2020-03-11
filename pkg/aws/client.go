@@ -18,13 +18,14 @@ type Client struct {
 
 func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client {
 	log := logger.WithField("cluster_service_provider", "aws")
-	rdsEngine := NewDefaultRDSInstanceManager(awsSession, logger)
+	rdsManager := NewDefaultRDSInstanceManager(awsSession, logger)
 	rdsSnapshotManager := NewDefaultRDSSnapshotManager(awsSession, logger)
-	s3Engine := NewDefaultS3Engine(awsSession, logger)
-	elasticacheEngine := NewDefaultElasticacheManager(awsSession, logger)
-	elasticacheSnapshotEngine := NewDefaultElasticacheSnapshotManager(awsSession, logger)
+	s3Manager := NewDefaultS3Engine(awsSession, logger)
+	elasticacheManager := NewDefaultElasticacheManager(awsSession, logger)
+	elasticacheSnapshotManager := NewDefaultElasticacheSnapshotManager(awsSession, logger)
+	subnetManager := NewDefaultSubnetManager(awsSession, logger)
 	return &Client{
-		ResourceManagers: []ClusterResourceManager{rdsEngine, elasticacheEngine, s3Engine, rdsSnapshotManager, elasticacheSnapshotEngine},
+		ResourceManagers: []ClusterResourceManager{rdsManager, elasticacheManager, s3Manager, rdsSnapshotManager, elasticacheSnapshotManager, subnetManager},
 		Logger:           log,
 	}
 }

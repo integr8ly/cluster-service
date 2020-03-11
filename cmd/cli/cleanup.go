@@ -105,6 +105,8 @@ func buildAWSClientFromTypes(awsSession *session.Session, types []string, logger
 			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElasticacheManager(awsSession, logger))
 		case "elasticache:snapshot":
 			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElasticacheSnapshotManager(awsSession, logger))
+		case "ec2:subnet":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultSubnetManager(awsSession, logger))
 		default:
 			logger.Debugf("could not find resource manager for specified type %s", t)
 		}

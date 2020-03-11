@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
 	"github.com/aws/aws-sdk-go/service/rds/rdsiface"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
@@ -31,6 +32,12 @@ type ClusterResourceManager interface {
 	DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error)
 }
 
+//basicResource Representation of basic AWS resource information
+type basicResource struct {
+	Name string
+	ARN  string
+}
+
 //go:generate moq -out moq_rdsclient_test.go . rdsClient
 //rdsClient alias for use with moq
 type rdsClient interface {
@@ -53,6 +60,12 @@ type s3Client interface {
 //s3BatchDeleteClient alias for use with moq
 type s3BatchDeleteClient interface {
 	s3manageriface.BatchDelete
+}
+
+//go:generate moq -out moq_ec2client_test.go . ec2client
+//ec2Client alias for use with moq
+type ec2Client interface {
+	ec2iface.EC2API
 }
 
 //go:generate moq -out moq_taggingclient_test.go . taggingClient
