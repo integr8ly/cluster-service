@@ -45,7 +45,7 @@ func NewDefaultS3Engine(session *session.Session, logger *logrus.Entry) *S3Manag
 }
 
 func (r *S3Manager) GetName() string {
-	return "AWS S3 Engine"
+	return "AWS S3 Manager"
 }
 
 func (s *S3Manager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {

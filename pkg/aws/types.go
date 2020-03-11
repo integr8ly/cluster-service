@@ -24,7 +24,7 @@ const (
 	loggingKeyEngine    = "engine"
 )
 
-//go:generate moq -out moq_actionengine_test.go . ClusterResourceManager
+//go:generate moq -out moq_crm_test.go . ClusterResourceManager
 //ClusterResourceManager Perform actions for a specific resource
 type ClusterResourceManager interface {
 	GetName() string

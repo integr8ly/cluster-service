@@ -102,7 +102,9 @@ func buildAWSClientFromTypes(awsSession *session.Session, types []string, logger
 		case "s3":
 			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultS3Engine(awsSession, logger))
 		case "elasticache:replicationgroup":
-			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElastiCacheEngine(awsSession, logger))
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElasticacheManager(awsSession, logger))
+		case "elasticache:snapshot":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElasticacheSnapshotManager(awsSession, logger))
 		default:
 			logger.Debugf("could not find resource manager for specified type %s", t)
 		}

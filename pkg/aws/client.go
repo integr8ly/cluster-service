@@ -21,8 +21,8 @@ func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client
 	rdsEngine := NewDefaultRDSInstanceManager(awsSession, logger)
 	rdsSnapshotManager := NewDefaultRDSSnapshotManager(awsSession, logger)
 	s3Engine := NewDefaultS3Engine(awsSession, logger)
-	elasticacheEngine := NewDefaultElastiCacheEngine(awsSession, logger)
-	elasticacheSnapshotEngine := newDefaultElasticacheSnapshotEngine(awsSession, logger)
+	elasticacheEngine := NewDefaultElasticacheManager(awsSession, logger)
+	elasticacheSnapshotEngine := NewDefaultElasticacheSnapshotManager(awsSession, logger)
 	return &Client{
 		ResourceManagers: []ClusterResourceManager{rdsEngine, elasticacheEngine, s3Engine, rdsSnapshotManager, elasticacheSnapshotEngine},
 		Logger:           log,

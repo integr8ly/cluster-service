@@ -1,6 +1,8 @@
 package aws
 
 import (
+	"strings"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
@@ -10,30 +12,29 @@ import (
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"strings"
 )
 
-var _ ClusterResourceManager = &ElasticacheSnapshotEngine{}
+var _ ClusterResourceManager = &ElasticacheSnapshotManager{}
 
-type ElasticacheSnapshotEngine struct {
+type ElasticacheSnapshotManager struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI
 	taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
 	logger            *logrus.Entry
 }
 
-func newDefaultElasticacheSnapshotEngine(session *session.Session, logger *logrus.Entry) *ElasticacheSnapshotEngine {
-	return &ElasticacheSnapshotEngine{
+func NewDefaultElasticacheSnapshotManager(session *session.Session, logger *logrus.Entry) *ElasticacheSnapshotManager {
+	return &ElasticacheSnapshotManager{
 		elasticacheClient: elasticache.New(session),
 		taggingClient:     resourcegroupstaggingapi.New(session),
 		logger:            logger.WithField("engine", "aws_elasticache_snapshot"),
 	}
 }
 
-func (r *ElasticacheSnapshotEngine) GetName() string {
-	return "AWS elasticache Snapshot Engine"
+func (r *ElasticacheSnapshotManager) GetName() string {
+	return "AWS ElastiCache Snapshot Manager"
 }
 
-func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
 	logger.Debug("deleting resources for cluster")
 

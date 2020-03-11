@@ -43,7 +43,7 @@ func NewDefaultRDSSnapshotManager(session *session.Session, logger *logrus.Entry
 }
 
 func (r *RDSSnapshotManager) GetName() string {
-	return "AWS RDS Snapshot Engine"
+	return "AWS RDS Snapshot Manager"
 }
 
 func (r *RDSSnapshotManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
