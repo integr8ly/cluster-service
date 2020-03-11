@@ -4,26 +4,25 @@
 package aws
 
 import (
-	"sync"
-
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
+	"sync"
 )
 
 var (
-	lockActionEngineMockDeleteResourcesForCluster sync.RWMutex
-	lockActionEngineMockGetName                   sync.RWMutex
+	lockClusterResourceManagerMockDeleteResourcesForCluster sync.RWMutex
+	lockClusterResourceManagerMockGetName                   sync.RWMutex
 )
 
-// Ensure, that ActionEngineMock does implement ClusterResourceManager.
+// Ensure, that ClusterResourceManagerMock does implement ClusterResourceManager.
 // If this is not the case, regenerate this file with moq.
-var _ ClusterResourceManager = &ActionEngineMock{}
+var _ ClusterResourceManager = &ClusterResourceManagerMock{}
 
-// ActionEngineMock is a mock implementation of ClusterResourceManager.
+// ClusterResourceManagerMock is a mock implementation of ClusterResourceManager.
 //
-//     func TestSomethingThatUsesActionEngine(t *testing.T) {
+//     func TestSomethingThatUsesClusterResourceManager(t *testing.T) {
 //
 //         // make and configure a mocked ClusterResourceManager
-//         mockedActionEngine := &ActionEngineMock{
+//         mockedClusterResourceManager := &ClusterResourceManagerMock{
 //             DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 // 	               panic("mock out the DeleteResourcesForCluster method")
 //             },
@@ -32,11 +31,11 @@ var _ ClusterResourceManager = &ActionEngineMock{}
 //             },
 //         }
 //
-//         // use mockedActionEngine in code that requires ClusterResourceManager
+//         // use mockedClusterResourceManager in code that requires ClusterResourceManager
 //         // and then make assertions.
 //
 //     }
-type ActionEngineMock struct {
+type ClusterResourceManagerMock struct {
 	// DeleteResourcesForClusterFunc mocks the DeleteResourcesForCluster method.
 	DeleteResourcesForClusterFunc func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error)
 
@@ -61,9 +60,9 @@ type ActionEngineMock struct {
 }
 
 // DeleteResourcesForCluster calls DeleteResourcesForClusterFunc.
-func (mock *ActionEngineMock) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+func (mock *ClusterResourceManagerMock) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	if mock.DeleteResourcesForClusterFunc == nil {
-		panic("ActionEngineMock.DeleteResourcesForClusterFunc: method is nil but ClusterResourceManager.DeleteResourcesForCluster was just called")
+		panic("ClusterResourceManagerMock.DeleteResourcesForClusterFunc: method is nil but ClusterResourceManager.DeleteResourcesForCluster was just called")
 	}
 	callInfo := struct {
 		ClusterId string
@@ -74,16 +73,16 @@ func (mock *ActionEngineMock) DeleteResourcesForCluster(clusterId string, tags m
 		Tags:      tags,
 		DryRun:    dryRun,
 	}
-	lockActionEngineMockDeleteResourcesForCluster.Lock()
+	lockClusterResourceManagerMockDeleteResourcesForCluster.Lock()
 	mock.calls.DeleteResourcesForCluster = append(mock.calls.DeleteResourcesForCluster, callInfo)
-	lockActionEngineMockDeleteResourcesForCluster.Unlock()
+	lockClusterResourceManagerMockDeleteResourcesForCluster.Unlock()
 	return mock.DeleteResourcesForClusterFunc(clusterId, tags, dryRun)
 }
 
 // DeleteResourcesForClusterCalls gets all the calls that were made to DeleteResourcesForCluster.
 // Check the length with:
-//     len(mockedActionEngine.DeleteResourcesForClusterCalls())
-func (mock *ActionEngineMock) DeleteResourcesForClusterCalls() []struct {
+//     len(mockedClusterResourceManager.DeleteResourcesForClusterCalls())
+func (mock *ClusterResourceManagerMock) DeleteResourcesForClusterCalls() []struct {
 	ClusterId string
 	Tags      map[string]string
 	DryRun    bool
@@ -93,34 +92,34 @@ func (mock *ActionEngineMock) DeleteResourcesForClusterCalls() []struct {
 		Tags      map[string]string
 		DryRun    bool
 	}
-	lockActionEngineMockDeleteResourcesForCluster.RLock()
+	lockClusterResourceManagerMockDeleteResourcesForCluster.RLock()
 	calls = mock.calls.DeleteResourcesForCluster
-	lockActionEngineMockDeleteResourcesForCluster.RUnlock()
+	lockClusterResourceManagerMockDeleteResourcesForCluster.RUnlock()
 	return calls
 }
 
 // GetName calls GetNameFunc.
-func (mock *ActionEngineMock) GetName() string {
+func (mock *ClusterResourceManagerMock) GetName() string {
 	if mock.GetNameFunc == nil {
-		panic("ActionEngineMock.GetNameFunc: method is nil but ClusterResourceManager.GetName was just called")
+		panic("ClusterResourceManagerMock.GetNameFunc: method is nil but ClusterResourceManager.GetName was just called")
 	}
 	callInfo := struct {
 	}{}
-	lockActionEngineMockGetName.Lock()
+	lockClusterResourceManagerMockGetName.Lock()
 	mock.calls.GetName = append(mock.calls.GetName, callInfo)
-	lockActionEngineMockGetName.Unlock()
+	lockClusterResourceManagerMockGetName.Unlock()
 	return mock.GetNameFunc()
 }
 
 // GetNameCalls gets all the calls that were made to GetName.
 // Check the length with:
-//     len(mockedActionEngine.GetNameCalls())
-func (mock *ActionEngineMock) GetNameCalls() []struct {
+//     len(mockedClusterResourceManager.GetNameCalls())
+func (mock *ClusterResourceManagerMock) GetNameCalls() []struct {
 } {
 	var calls []struct {
 	}
-	lockActionEngineMockGetName.RLock()
+	lockClusterResourceManagerMockGetName.RLock()
 	calls = mock.calls.GetName
-	lockActionEngineMockGetName.RUnlock()
+	lockClusterResourceManagerMockGetName.RUnlock()
 	return calls
 }
