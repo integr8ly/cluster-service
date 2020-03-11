@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
+
+	"github.com/sirupsen/logrus"
 
 	"github.com/olekukonko/tablewriter"
 
@@ -21,6 +24,7 @@ var cleanupCmd = &cobra.Command{
 	Short: "delete aws resources for an rhmi cluster",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		//pre-req checks
 		clusterId := args[0]
 		region, err := cmd.Flags().GetString("region")
 		if err != nil {
@@ -34,7 +38,19 @@ var cleanupCmd = &cobra.Command{
 		if err != nil {
 			exitError(fmt.Sprintf("failed to get dry run from flag: %+v", err), exitCodeErrUnknown)
 		}
-
+		watch, err := cmd.Flags().GetBool("watch")
+		if err != nil {
+			exitError(fmt.Sprintf("failed to get watch from flag: %+v", err), exitCodeErrUnknown)
+		}
+		types, err := cmd.Flags().GetStringSlice("types")
+		if err != nil {
+			exitError(fmt.Sprintf("failed to get types from flag: %+v", err), exitCodeErrUnknown)
+		}
+		//ensure the output format is supported
+		if outputFormat != "table" {
+			exitError(fmt.Sprintf("output format %s not supported, use table", outputFormat), exitCodeErrKnown)
+		}
+		//setup aws session
 		awsKeyID := os.Getenv("AWS_ACCESS_KEY_ID")
 		if awsKeyID == "" {
 			exitError("AWS_ACCESS_KEY_ID env var must be defined", exitCodeErrKnown)
@@ -47,17 +63,51 @@ var cleanupCmd = &cobra.Command{
 			Region:      aws.String(region),
 			Credentials: credentials.NewStaticCredentials(awsKeyID, awsSecretKey, ""),
 		}))
-		clusterService := awsclusterservice.NewDefaultClient(awsSession, logger)
-		report, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
-		if err != nil {
-			exitError(fmt.Sprintf("failed to cleanup resources for cluster, clusterId=%s: %+v", clusterId, err), exitCodeErrUnknown)
+		clusterService := buildAWSClientFromTypes(awsSession, types, logger)
+		//this could probably leverage channels
+		var currentReport *clusterservice.Report
+		for {
+			newReport, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
+			if err != nil {
+				exitError(fmt.Sprintf("failed to cleanup resources for cluster, clusterId=%s: %+v", clusterId, err), exitCodeErrUnknown)
+			}
+			if currentReport == nil {
+				currentReport = newReport
+			}
+			currentReport.MergeForward(newReport)
+			printReportTable(currentReport)
+			if !watch {
+				break
+			}
+			logger.Debug("watch is enabled, waiting 10 seconds before re-invoking")
+			time.Sleep(time.Second * 10)
 		}
-		// we only support table here...
-		if outputFormat != "table" {
-			exitError(fmt.Sprintf("output format %s not supported, use table", outputFormat), exitCodeErrKnown)
-		}
-		printReportTable(report)
 	},
+}
+
+func buildAWSClientFromTypes(awsSession *session.Session, types []string, logger *logrus.Entry) *awsclusterservice.Client {
+	if types == nil || len(types) == 0 {
+		return awsclusterservice.NewDefaultClient(awsSession, logger)
+	}
+	client := &awsclusterservice.Client{
+		Logger:           logger,
+		ResourceManagers: make([]awsclusterservice.ClusterResourceManager, 0),
+	}
+	for _, t := range types {
+		switch t {
+		case "rds:instance":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultRDSInstanceManager(awsSession, logger))
+		case "rds:snapshot":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultRDSSnapshotManager(awsSession, logger))
+		case "s3":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultS3Engine(awsSession, logger))
+		case "elasticache:replicationgroup":
+			client.ResourceManagers = append(client.ResourceManagers, awsclusterservice.NewDefaultElastiCacheEngine(awsSession, logger))
+		default:
+			logger.Debugf("could not find resource manager for specified type %s", t)
+		}
+	}
+	return client
 }
 
 func printReportTable(report *clusterservice.Report) {
@@ -74,4 +124,6 @@ func init() {
 	cleanupCmd.Flags().StringP("output", "o", "table", "set output format")
 	cleanupCmd.Flags().StringP("region", "r", "eu-west-1", "region to delete resources in")
 	cleanupCmd.Flags().BoolP("dry-run", "d", true, "skip performing actions")
+	cleanupCmd.Flags().BoolP("watch", "w", false, "poll actions being performed indefinitely")
+	cleanupCmd.Flags().StringSliceP("types", "t", []string{}, "resource types to cleanup")
 }

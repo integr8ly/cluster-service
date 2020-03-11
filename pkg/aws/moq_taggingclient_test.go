@@ -11,50 +11,50 @@ import (
 )
 
 var (
-	lockresourcetaggingClientMockDescribeReportCreation               sync.RWMutex
-	lockresourcetaggingClientMockDescribeReportCreationRequest        sync.RWMutex
-	lockresourcetaggingClientMockDescribeReportCreationWithContext    sync.RWMutex
-	lockresourcetaggingClientMockGetComplianceSummary                 sync.RWMutex
-	lockresourcetaggingClientMockGetComplianceSummaryPages            sync.RWMutex
-	lockresourcetaggingClientMockGetComplianceSummaryPagesWithContext sync.RWMutex
-	lockresourcetaggingClientMockGetComplianceSummaryRequest          sync.RWMutex
-	lockresourcetaggingClientMockGetComplianceSummaryWithContext      sync.RWMutex
-	lockresourcetaggingClientMockGetResources                         sync.RWMutex
-	lockresourcetaggingClientMockGetResourcesPages                    sync.RWMutex
-	lockresourcetaggingClientMockGetResourcesPagesWithContext         sync.RWMutex
-	lockresourcetaggingClientMockGetResourcesRequest                  sync.RWMutex
-	lockresourcetaggingClientMockGetResourcesWithContext              sync.RWMutex
-	lockresourcetaggingClientMockGetTagKeys                           sync.RWMutex
-	lockresourcetaggingClientMockGetTagKeysPages                      sync.RWMutex
-	lockresourcetaggingClientMockGetTagKeysPagesWithContext           sync.RWMutex
-	lockresourcetaggingClientMockGetTagKeysRequest                    sync.RWMutex
-	lockresourcetaggingClientMockGetTagKeysWithContext                sync.RWMutex
-	lockresourcetaggingClientMockGetTagValues                         sync.RWMutex
-	lockresourcetaggingClientMockGetTagValuesPages                    sync.RWMutex
-	lockresourcetaggingClientMockGetTagValuesPagesWithContext         sync.RWMutex
-	lockresourcetaggingClientMockGetTagValuesRequest                  sync.RWMutex
-	lockresourcetaggingClientMockGetTagValuesWithContext              sync.RWMutex
-	lockresourcetaggingClientMockStartReportCreation                  sync.RWMutex
-	lockresourcetaggingClientMockStartReportCreationRequest           sync.RWMutex
-	lockresourcetaggingClientMockStartReportCreationWithContext       sync.RWMutex
-	lockresourcetaggingClientMockTagResources                         sync.RWMutex
-	lockresourcetaggingClientMockTagResourcesRequest                  sync.RWMutex
-	lockresourcetaggingClientMockTagResourcesWithContext              sync.RWMutex
-	lockresourcetaggingClientMockUntagResources                       sync.RWMutex
-	lockresourcetaggingClientMockUntagResourcesRequest                sync.RWMutex
-	lockresourcetaggingClientMockUntagResourcesWithContext            sync.RWMutex
+	locktaggingClientMockDescribeReportCreation               sync.RWMutex
+	locktaggingClientMockDescribeReportCreationRequest        sync.RWMutex
+	locktaggingClientMockDescribeReportCreationWithContext    sync.RWMutex
+	locktaggingClientMockGetComplianceSummary                 sync.RWMutex
+	locktaggingClientMockGetComplianceSummaryPages            sync.RWMutex
+	locktaggingClientMockGetComplianceSummaryPagesWithContext sync.RWMutex
+	locktaggingClientMockGetComplianceSummaryRequest          sync.RWMutex
+	locktaggingClientMockGetComplianceSummaryWithContext      sync.RWMutex
+	locktaggingClientMockGetResources                         sync.RWMutex
+	locktaggingClientMockGetResourcesPages                    sync.RWMutex
+	locktaggingClientMockGetResourcesPagesWithContext         sync.RWMutex
+	locktaggingClientMockGetResourcesRequest                  sync.RWMutex
+	locktaggingClientMockGetResourcesWithContext              sync.RWMutex
+	locktaggingClientMockGetTagKeys                           sync.RWMutex
+	locktaggingClientMockGetTagKeysPages                      sync.RWMutex
+	locktaggingClientMockGetTagKeysPagesWithContext           sync.RWMutex
+	locktaggingClientMockGetTagKeysRequest                    sync.RWMutex
+	locktaggingClientMockGetTagKeysWithContext                sync.RWMutex
+	locktaggingClientMockGetTagValues                         sync.RWMutex
+	locktaggingClientMockGetTagValuesPages                    sync.RWMutex
+	locktaggingClientMockGetTagValuesPagesWithContext         sync.RWMutex
+	locktaggingClientMockGetTagValuesRequest                  sync.RWMutex
+	locktaggingClientMockGetTagValuesWithContext              sync.RWMutex
+	locktaggingClientMockStartReportCreation                  sync.RWMutex
+	locktaggingClientMockStartReportCreationRequest           sync.RWMutex
+	locktaggingClientMockStartReportCreationWithContext       sync.RWMutex
+	locktaggingClientMockTagResources                         sync.RWMutex
+	locktaggingClientMockTagResourcesRequest                  sync.RWMutex
+	locktaggingClientMockTagResourcesWithContext              sync.RWMutex
+	locktaggingClientMockUntagResources                       sync.RWMutex
+	locktaggingClientMockUntagResourcesRequest                sync.RWMutex
+	locktaggingClientMockUntagResourcesWithContext            sync.RWMutex
 )
 
-// Ensure, that resourcetaggingClientMock does implement resourcetaggingClient.
+// Ensure, that taggingClientMock does implement taggingClient.
 // If this is not the case, regenerate this file with moq.
-var _ resourcetaggingClient = &resourcetaggingClientMock{}
+var _ taggingClient = &taggingClientMock{}
 
-// resourcetaggingClientMock is a mock implementation of resourcetaggingClient.
+// taggingClientMock is a mock implementation of taggingClient.
 //
-//     func TestSomethingThatUsesresourcetaggingClient(t *testing.T) {
+//     func TestSomethingThatUsestaggingClient(t *testing.T) {
 //
-//         // make and configure a mocked resourcetaggingClient
-//         mockedresourcetaggingClient := &resourcetaggingClientMock{
+//         // make and configure a mocked taggingClient
+//         mockedtaggingClient := &taggingClientMock{
 //             DescribeReportCreationFunc: func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
 // 	               panic("mock out the DescribeReportCreation method")
 //             },
@@ -153,11 +153,11 @@ var _ resourcetaggingClient = &resourcetaggingClientMock{}
 //             },
 //         }
 //
-//         // use mockedresourcetaggingClient in code that requires resourcetaggingClient
+//         // use mockedtaggingClient in code that requires taggingClient
 //         // and then make assertions.
 //
 //     }
-type resourcetaggingClientMock struct {
+type taggingClientMock struct {
 	// DescribeReportCreationFunc mocks the DescribeReportCreation method.
 	DescribeReportCreationFunc func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error)
 
@@ -484,71 +484,71 @@ type resourcetaggingClientMock struct {
 }
 
 // DescribeReportCreation calls DescribeReportCreationFunc.
-func (mock *resourcetaggingClientMock) DescribeReportCreation(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+func (mock *taggingClientMock) DescribeReportCreation(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
 	if mock.DescribeReportCreationFunc == nil {
-		panic("resourcetaggingClientMock.DescribeReportCreationFunc: method is nil but resourcetaggingClient.DescribeReportCreation was just called")
+		panic("taggingClientMock.DescribeReportCreationFunc: method is nil but taggingClient.DescribeReportCreation was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockDescribeReportCreation.Lock()
+	locktaggingClientMockDescribeReportCreation.Lock()
 	mock.calls.DescribeReportCreation = append(mock.calls.DescribeReportCreation, callInfo)
-	lockresourcetaggingClientMockDescribeReportCreation.Unlock()
+	locktaggingClientMockDescribeReportCreation.Unlock()
 	return mock.DescribeReportCreationFunc(in1)
 }
 
 // DescribeReportCreationCalls gets all the calls that were made to DescribeReportCreation.
 // Check the length with:
-//     len(mockedresourcetaggingClient.DescribeReportCreationCalls())
-func (mock *resourcetaggingClientMock) DescribeReportCreationCalls() []struct {
+//     len(mockedtaggingClient.DescribeReportCreationCalls())
+func (mock *taggingClientMock) DescribeReportCreationCalls() []struct {
 	In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 	}
-	lockresourcetaggingClientMockDescribeReportCreation.RLock()
+	locktaggingClientMockDescribeReportCreation.RLock()
 	calls = mock.calls.DescribeReportCreation
-	lockresourcetaggingClientMockDescribeReportCreation.RUnlock()
+	locktaggingClientMockDescribeReportCreation.RUnlock()
 	return calls
 }
 
 // DescribeReportCreationRequest calls DescribeReportCreationRequestFunc.
-func (mock *resourcetaggingClientMock) DescribeReportCreationRequest(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
+func (mock *taggingClientMock) DescribeReportCreationRequest(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
 	if mock.DescribeReportCreationRequestFunc == nil {
-		panic("resourcetaggingClientMock.DescribeReportCreationRequestFunc: method is nil but resourcetaggingClient.DescribeReportCreationRequest was just called")
+		panic("taggingClientMock.DescribeReportCreationRequestFunc: method is nil but taggingClient.DescribeReportCreationRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockDescribeReportCreationRequest.Lock()
+	locktaggingClientMockDescribeReportCreationRequest.Lock()
 	mock.calls.DescribeReportCreationRequest = append(mock.calls.DescribeReportCreationRequest, callInfo)
-	lockresourcetaggingClientMockDescribeReportCreationRequest.Unlock()
+	locktaggingClientMockDescribeReportCreationRequest.Unlock()
 	return mock.DescribeReportCreationRequestFunc(in1)
 }
 
 // DescribeReportCreationRequestCalls gets all the calls that were made to DescribeReportCreationRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.DescribeReportCreationRequestCalls())
-func (mock *resourcetaggingClientMock) DescribeReportCreationRequestCalls() []struct {
+//     len(mockedtaggingClient.DescribeReportCreationRequestCalls())
+func (mock *taggingClientMock) DescribeReportCreationRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
 	}
-	lockresourcetaggingClientMockDescribeReportCreationRequest.RLock()
+	locktaggingClientMockDescribeReportCreationRequest.RLock()
 	calls = mock.calls.DescribeReportCreationRequest
-	lockresourcetaggingClientMockDescribeReportCreationRequest.RUnlock()
+	locktaggingClientMockDescribeReportCreationRequest.RUnlock()
 	return calls
 }
 
 // DescribeReportCreationWithContext calls DescribeReportCreationWithContextFunc.
-func (mock *resourcetaggingClientMock) DescribeReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.DescribeReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+func (mock *taggingClientMock) DescribeReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.DescribeReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
 	if mock.DescribeReportCreationWithContextFunc == nil {
-		panic("resourcetaggingClientMock.DescribeReportCreationWithContextFunc: method is nil but resourcetaggingClient.DescribeReportCreationWithContext was just called")
+		panic("taggingClientMock.DescribeReportCreationWithContextFunc: method is nil but taggingClient.DescribeReportCreationWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -559,16 +559,16 @@ func (mock *resourcetaggingClientMock) DescribeReportCreationWithContext(in1 con
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockDescribeReportCreationWithContext.Lock()
+	locktaggingClientMockDescribeReportCreationWithContext.Lock()
 	mock.calls.DescribeReportCreationWithContext = append(mock.calls.DescribeReportCreationWithContext, callInfo)
-	lockresourcetaggingClientMockDescribeReportCreationWithContext.Unlock()
+	locktaggingClientMockDescribeReportCreationWithContext.Unlock()
 	return mock.DescribeReportCreationWithContextFunc(in1, in2, in3...)
 }
 
 // DescribeReportCreationWithContextCalls gets all the calls that were made to DescribeReportCreationWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.DescribeReportCreationWithContextCalls())
-func (mock *resourcetaggingClientMock) DescribeReportCreationWithContextCalls() []struct {
+//     len(mockedtaggingClient.DescribeReportCreationWithContextCalls())
+func (mock *taggingClientMock) DescribeReportCreationWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.DescribeReportCreationInput
 	In3 []request.Option
@@ -578,47 +578,47 @@ func (mock *resourcetaggingClientMock) DescribeReportCreationWithContextCalls() 
 		In2 *resourcegroupstaggingapi.DescribeReportCreationInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockDescribeReportCreationWithContext.RLock()
+	locktaggingClientMockDescribeReportCreationWithContext.RLock()
 	calls = mock.calls.DescribeReportCreationWithContext
-	lockresourcetaggingClientMockDescribeReportCreationWithContext.RUnlock()
+	locktaggingClientMockDescribeReportCreationWithContext.RUnlock()
 	return calls
 }
 
 // GetComplianceSummary calls GetComplianceSummaryFunc.
-func (mock *resourcetaggingClientMock) GetComplianceSummary(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+func (mock *taggingClientMock) GetComplianceSummary(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
 	if mock.GetComplianceSummaryFunc == nil {
-		panic("resourcetaggingClientMock.GetComplianceSummaryFunc: method is nil but resourcetaggingClient.GetComplianceSummary was just called")
+		panic("taggingClientMock.GetComplianceSummaryFunc: method is nil but taggingClient.GetComplianceSummary was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetComplianceSummary.Lock()
+	locktaggingClientMockGetComplianceSummary.Lock()
 	mock.calls.GetComplianceSummary = append(mock.calls.GetComplianceSummary, callInfo)
-	lockresourcetaggingClientMockGetComplianceSummary.Unlock()
+	locktaggingClientMockGetComplianceSummary.Unlock()
 	return mock.GetComplianceSummaryFunc(in1)
 }
 
 // GetComplianceSummaryCalls gets all the calls that were made to GetComplianceSummary.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetComplianceSummaryCalls())
-func (mock *resourcetaggingClientMock) GetComplianceSummaryCalls() []struct {
+//     len(mockedtaggingClient.GetComplianceSummaryCalls())
+func (mock *taggingClientMock) GetComplianceSummaryCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}
-	lockresourcetaggingClientMockGetComplianceSummary.RLock()
+	locktaggingClientMockGetComplianceSummary.RLock()
 	calls = mock.calls.GetComplianceSummary
-	lockresourcetaggingClientMockGetComplianceSummary.RUnlock()
+	locktaggingClientMockGetComplianceSummary.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryPages calls GetComplianceSummaryPagesFunc.
-func (mock *resourcetaggingClientMock) GetComplianceSummaryPages(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput, in2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
+func (mock *taggingClientMock) GetComplianceSummaryPages(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput, in2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
 	if mock.GetComplianceSummaryPagesFunc == nil {
-		panic("resourcetaggingClientMock.GetComplianceSummaryPagesFunc: method is nil but resourcetaggingClient.GetComplianceSummaryPages was just called")
+		panic("taggingClientMock.GetComplianceSummaryPagesFunc: method is nil but taggingClient.GetComplianceSummaryPages was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
@@ -627,16 +627,16 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryPages(in1 *resourcegr
 		In1: in1,
 		In2: in2,
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryPages.Lock()
+	locktaggingClientMockGetComplianceSummaryPages.Lock()
 	mock.calls.GetComplianceSummaryPages = append(mock.calls.GetComplianceSummaryPages, callInfo)
-	lockresourcetaggingClientMockGetComplianceSummaryPages.Unlock()
+	locktaggingClientMockGetComplianceSummaryPages.Unlock()
 	return mock.GetComplianceSummaryPagesFunc(in1, in2)
 }
 
 // GetComplianceSummaryPagesCalls gets all the calls that were made to GetComplianceSummaryPages.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetComplianceSummaryPagesCalls())
-func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesCalls() []struct {
+//     len(mockedtaggingClient.GetComplianceSummaryPagesCalls())
+func (mock *taggingClientMock) GetComplianceSummaryPagesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 } {
@@ -644,16 +644,16 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesCalls() []struct
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 		In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryPages.RLock()
+	locktaggingClientMockGetComplianceSummaryPages.RLock()
 	calls = mock.calls.GetComplianceSummaryPages
-	lockresourcetaggingClientMockGetComplianceSummaryPages.RUnlock()
+	locktaggingClientMockGetComplianceSummaryPages.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryPagesWithContext calls GetComplianceSummaryPagesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetComplianceSummaryPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, in4 ...request.Option) error {
 	if mock.GetComplianceSummaryPagesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetComplianceSummaryPagesWithContextFunc: method is nil but resourcetaggingClient.GetComplianceSummaryPagesWithContext was just called")
+		panic("taggingClientMock.GetComplianceSummaryPagesWithContextFunc: method is nil but taggingClient.GetComplianceSummaryPagesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -666,16 +666,16 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesWithContext(in1 
 		In3: in3,
 		In4: in4,
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryPagesWithContext.Lock()
+	locktaggingClientMockGetComplianceSummaryPagesWithContext.Lock()
 	mock.calls.GetComplianceSummaryPagesWithContext = append(mock.calls.GetComplianceSummaryPagesWithContext, callInfo)
-	lockresourcetaggingClientMockGetComplianceSummaryPagesWithContext.Unlock()
+	locktaggingClientMockGetComplianceSummaryPagesWithContext.Unlock()
 	return mock.GetComplianceSummaryPagesWithContextFunc(in1, in2, in3, in4...)
 }
 
 // GetComplianceSummaryPagesWithContextCalls gets all the calls that were made to GetComplianceSummaryPagesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetComplianceSummaryPagesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetComplianceSummaryPagesWithContextCalls())
+func (mock *taggingClientMock) GetComplianceSummaryPagesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
@@ -687,47 +687,47 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryPagesWithContextCalls
 		In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 		In4 []request.Option
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryPagesWithContext.RLock()
+	locktaggingClientMockGetComplianceSummaryPagesWithContext.RLock()
 	calls = mock.calls.GetComplianceSummaryPagesWithContext
-	lockresourcetaggingClientMockGetComplianceSummaryPagesWithContext.RUnlock()
+	locktaggingClientMockGetComplianceSummaryPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryRequest calls GetComplianceSummaryRequestFunc.
-func (mock *resourcetaggingClientMock) GetComplianceSummaryRequest(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
+func (mock *taggingClientMock) GetComplianceSummaryRequest(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
 	if mock.GetComplianceSummaryRequestFunc == nil {
-		panic("resourcetaggingClientMock.GetComplianceSummaryRequestFunc: method is nil but resourcetaggingClient.GetComplianceSummaryRequest was just called")
+		panic("taggingClientMock.GetComplianceSummaryRequestFunc: method is nil but taggingClient.GetComplianceSummaryRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryRequest.Lock()
+	locktaggingClientMockGetComplianceSummaryRequest.Lock()
 	mock.calls.GetComplianceSummaryRequest = append(mock.calls.GetComplianceSummaryRequest, callInfo)
-	lockresourcetaggingClientMockGetComplianceSummaryRequest.Unlock()
+	locktaggingClientMockGetComplianceSummaryRequest.Unlock()
 	return mock.GetComplianceSummaryRequestFunc(in1)
 }
 
 // GetComplianceSummaryRequestCalls gets all the calls that were made to GetComplianceSummaryRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetComplianceSummaryRequestCalls())
-func (mock *resourcetaggingClientMock) GetComplianceSummaryRequestCalls() []struct {
+//     len(mockedtaggingClient.GetComplianceSummaryRequestCalls())
+func (mock *taggingClientMock) GetComplianceSummaryRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryRequest.RLock()
+	locktaggingClientMockGetComplianceSummaryRequest.RLock()
 	calls = mock.calls.GetComplianceSummaryRequest
-	lockresourcetaggingClientMockGetComplianceSummaryRequest.RUnlock()
+	locktaggingClientMockGetComplianceSummaryRequest.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryWithContext calls GetComplianceSummaryWithContextFunc.
-func (mock *resourcetaggingClientMock) GetComplianceSummaryWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+func (mock *taggingClientMock) GetComplianceSummaryWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
 	if mock.GetComplianceSummaryWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetComplianceSummaryWithContextFunc: method is nil but resourcetaggingClient.GetComplianceSummaryWithContext was just called")
+		panic("taggingClientMock.GetComplianceSummaryWithContextFunc: method is nil but taggingClient.GetComplianceSummaryWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -738,16 +738,16 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryWithContext(in1 conte
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryWithContext.Lock()
+	locktaggingClientMockGetComplianceSummaryWithContext.Lock()
 	mock.calls.GetComplianceSummaryWithContext = append(mock.calls.GetComplianceSummaryWithContext, callInfo)
-	lockresourcetaggingClientMockGetComplianceSummaryWithContext.Unlock()
+	locktaggingClientMockGetComplianceSummaryWithContext.Unlock()
 	return mock.GetComplianceSummaryWithContextFunc(in1, in2, in3...)
 }
 
 // GetComplianceSummaryWithContextCalls gets all the calls that were made to GetComplianceSummaryWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetComplianceSummaryWithContextCalls())
-func (mock *resourcetaggingClientMock) GetComplianceSummaryWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetComplianceSummaryWithContextCalls())
+func (mock *taggingClientMock) GetComplianceSummaryWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
 	In3 []request.Option
@@ -757,47 +757,47 @@ func (mock *resourcetaggingClientMock) GetComplianceSummaryWithContextCalls() []
 		In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockGetComplianceSummaryWithContext.RLock()
+	locktaggingClientMockGetComplianceSummaryWithContext.RLock()
 	calls = mock.calls.GetComplianceSummaryWithContext
-	lockresourcetaggingClientMockGetComplianceSummaryWithContext.RUnlock()
+	locktaggingClientMockGetComplianceSummaryWithContext.RUnlock()
 	return calls
 }
 
 // GetResources calls GetResourcesFunc.
-func (mock *resourcetaggingClientMock) GetResources(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+func (mock *taggingClientMock) GetResources(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 	if mock.GetResourcesFunc == nil {
-		panic("resourcetaggingClientMock.GetResourcesFunc: method is nil but resourcetaggingClient.GetResources was just called")
+		panic("taggingClientMock.GetResourcesFunc: method is nil but taggingClient.GetResources was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetResources.Lock()
+	locktaggingClientMockGetResources.Lock()
 	mock.calls.GetResources = append(mock.calls.GetResources, callInfo)
-	lockresourcetaggingClientMockGetResources.Unlock()
+	locktaggingClientMockGetResources.Unlock()
 	return mock.GetResourcesFunc(in1)
 }
 
 // GetResourcesCalls gets all the calls that were made to GetResources.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetResourcesCalls())
-func (mock *resourcetaggingClientMock) GetResourcesCalls() []struct {
+//     len(mockedtaggingClient.GetResourcesCalls())
+func (mock *taggingClientMock) GetResourcesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
 	}
-	lockresourcetaggingClientMockGetResources.RLock()
+	locktaggingClientMockGetResources.RLock()
 	calls = mock.calls.GetResources
-	lockresourcetaggingClientMockGetResources.RUnlock()
+	locktaggingClientMockGetResources.RUnlock()
 	return calls
 }
 
 // GetResourcesPages calls GetResourcesPagesFunc.
-func (mock *resourcetaggingClientMock) GetResourcesPages(in1 *resourcegroupstaggingapi.GetResourcesInput, in2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
+func (mock *taggingClientMock) GetResourcesPages(in1 *resourcegroupstaggingapi.GetResourcesInput, in2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
 	if mock.GetResourcesPagesFunc == nil {
-		panic("resourcetaggingClientMock.GetResourcesPagesFunc: method is nil but resourcetaggingClient.GetResourcesPages was just called")
+		panic("taggingClientMock.GetResourcesPagesFunc: method is nil but taggingClient.GetResourcesPages was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
@@ -806,16 +806,16 @@ func (mock *resourcetaggingClientMock) GetResourcesPages(in1 *resourcegroupstagg
 		In1: in1,
 		In2: in2,
 	}
-	lockresourcetaggingClientMockGetResourcesPages.Lock()
+	locktaggingClientMockGetResourcesPages.Lock()
 	mock.calls.GetResourcesPages = append(mock.calls.GetResourcesPages, callInfo)
-	lockresourcetaggingClientMockGetResourcesPages.Unlock()
+	locktaggingClientMockGetResourcesPages.Unlock()
 	return mock.GetResourcesPagesFunc(in1, in2)
 }
 
 // GetResourcesPagesCalls gets all the calls that were made to GetResourcesPages.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetResourcesPagesCalls())
-func (mock *resourcetaggingClientMock) GetResourcesPagesCalls() []struct {
+//     len(mockedtaggingClient.GetResourcesPagesCalls())
+func (mock *taggingClientMock) GetResourcesPagesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetResourcesInput
 	In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 } {
@@ -823,16 +823,16 @@ func (mock *resourcetaggingClientMock) GetResourcesPagesCalls() []struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
 		In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 	}
-	lockresourcetaggingClientMockGetResourcesPages.RLock()
+	locktaggingClientMockGetResourcesPages.RLock()
 	calls = mock.calls.GetResourcesPages
-	lockresourcetaggingClientMockGetResourcesPages.RUnlock()
+	locktaggingClientMockGetResourcesPages.RUnlock()
 	return calls
 }
 
 // GetResourcesPagesWithContext calls GetResourcesPagesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetResourcesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetResourcesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, in4 ...request.Option) error {
 	if mock.GetResourcesPagesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetResourcesPagesWithContextFunc: method is nil but resourcetaggingClient.GetResourcesPagesWithContext was just called")
+		panic("taggingClientMock.GetResourcesPagesWithContextFunc: method is nil but taggingClient.GetResourcesPagesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -845,16 +845,16 @@ func (mock *resourcetaggingClientMock) GetResourcesPagesWithContext(in1 context.
 		In3: in3,
 		In4: in4,
 	}
-	lockresourcetaggingClientMockGetResourcesPagesWithContext.Lock()
+	locktaggingClientMockGetResourcesPagesWithContext.Lock()
 	mock.calls.GetResourcesPagesWithContext = append(mock.calls.GetResourcesPagesWithContext, callInfo)
-	lockresourcetaggingClientMockGetResourcesPagesWithContext.Unlock()
+	locktaggingClientMockGetResourcesPagesWithContext.Unlock()
 	return mock.GetResourcesPagesWithContextFunc(in1, in2, in3, in4...)
 }
 
 // GetResourcesPagesWithContextCalls gets all the calls that were made to GetResourcesPagesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetResourcesPagesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetResourcesPagesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetResourcesPagesWithContextCalls())
+func (mock *taggingClientMock) GetResourcesPagesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetResourcesInput
 	In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
@@ -866,47 +866,47 @@ func (mock *resourcetaggingClientMock) GetResourcesPagesWithContextCalls() []str
 		In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 		In4 []request.Option
 	}
-	lockresourcetaggingClientMockGetResourcesPagesWithContext.RLock()
+	locktaggingClientMockGetResourcesPagesWithContext.RLock()
 	calls = mock.calls.GetResourcesPagesWithContext
-	lockresourcetaggingClientMockGetResourcesPagesWithContext.RUnlock()
+	locktaggingClientMockGetResourcesPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetResourcesRequest calls GetResourcesRequestFunc.
-func (mock *resourcetaggingClientMock) GetResourcesRequest(in1 *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
+func (mock *taggingClientMock) GetResourcesRequest(in1 *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
 	if mock.GetResourcesRequestFunc == nil {
-		panic("resourcetaggingClientMock.GetResourcesRequestFunc: method is nil but resourcetaggingClient.GetResourcesRequest was just called")
+		panic("taggingClientMock.GetResourcesRequestFunc: method is nil but taggingClient.GetResourcesRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetResourcesRequest.Lock()
+	locktaggingClientMockGetResourcesRequest.Lock()
 	mock.calls.GetResourcesRequest = append(mock.calls.GetResourcesRequest, callInfo)
-	lockresourcetaggingClientMockGetResourcesRequest.Unlock()
+	locktaggingClientMockGetResourcesRequest.Unlock()
 	return mock.GetResourcesRequestFunc(in1)
 }
 
 // GetResourcesRequestCalls gets all the calls that were made to GetResourcesRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetResourcesRequestCalls())
-func (mock *resourcetaggingClientMock) GetResourcesRequestCalls() []struct {
+//     len(mockedtaggingClient.GetResourcesRequestCalls())
+func (mock *taggingClientMock) GetResourcesRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetResourcesInput
 	}
-	lockresourcetaggingClientMockGetResourcesRequest.RLock()
+	locktaggingClientMockGetResourcesRequest.RLock()
 	calls = mock.calls.GetResourcesRequest
-	lockresourcetaggingClientMockGetResourcesRequest.RUnlock()
+	locktaggingClientMockGetResourcesRequest.RUnlock()
 	return calls
 }
 
 // GetResourcesWithContext calls GetResourcesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+func (mock *taggingClientMock) GetResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 	if mock.GetResourcesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetResourcesWithContextFunc: method is nil but resourcetaggingClient.GetResourcesWithContext was just called")
+		panic("taggingClientMock.GetResourcesWithContextFunc: method is nil but taggingClient.GetResourcesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -917,16 +917,16 @@ func (mock *resourcetaggingClientMock) GetResourcesWithContext(in1 context.Conte
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockGetResourcesWithContext.Lock()
+	locktaggingClientMockGetResourcesWithContext.Lock()
 	mock.calls.GetResourcesWithContext = append(mock.calls.GetResourcesWithContext, callInfo)
-	lockresourcetaggingClientMockGetResourcesWithContext.Unlock()
+	locktaggingClientMockGetResourcesWithContext.Unlock()
 	return mock.GetResourcesWithContextFunc(in1, in2, in3...)
 }
 
 // GetResourcesWithContextCalls gets all the calls that were made to GetResourcesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetResourcesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetResourcesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetResourcesWithContextCalls())
+func (mock *taggingClientMock) GetResourcesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetResourcesInput
 	In3 []request.Option
@@ -936,47 +936,47 @@ func (mock *resourcetaggingClientMock) GetResourcesWithContextCalls() []struct {
 		In2 *resourcegroupstaggingapi.GetResourcesInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockGetResourcesWithContext.RLock()
+	locktaggingClientMockGetResourcesWithContext.RLock()
 	calls = mock.calls.GetResourcesWithContext
-	lockresourcetaggingClientMockGetResourcesWithContext.RUnlock()
+	locktaggingClientMockGetResourcesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagKeys calls GetTagKeysFunc.
-func (mock *resourcetaggingClientMock) GetTagKeys(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+func (mock *taggingClientMock) GetTagKeys(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	if mock.GetTagKeysFunc == nil {
-		panic("resourcetaggingClientMock.GetTagKeysFunc: method is nil but resourcetaggingClient.GetTagKeys was just called")
+		panic("taggingClientMock.GetTagKeysFunc: method is nil but taggingClient.GetTagKeys was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetTagKeys.Lock()
+	locktaggingClientMockGetTagKeys.Lock()
 	mock.calls.GetTagKeys = append(mock.calls.GetTagKeys, callInfo)
-	lockresourcetaggingClientMockGetTagKeys.Unlock()
+	locktaggingClientMockGetTagKeys.Unlock()
 	return mock.GetTagKeysFunc(in1)
 }
 
 // GetTagKeysCalls gets all the calls that were made to GetTagKeys.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagKeysCalls())
-func (mock *resourcetaggingClientMock) GetTagKeysCalls() []struct {
+//     len(mockedtaggingClient.GetTagKeysCalls())
+func (mock *taggingClientMock) GetTagKeysCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagKeysInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
 	}
-	lockresourcetaggingClientMockGetTagKeys.RLock()
+	locktaggingClientMockGetTagKeys.RLock()
 	calls = mock.calls.GetTagKeys
-	lockresourcetaggingClientMockGetTagKeys.RUnlock()
+	locktaggingClientMockGetTagKeys.RUnlock()
 	return calls
 }
 
 // GetTagKeysPages calls GetTagKeysPagesFunc.
-func (mock *resourcetaggingClientMock) GetTagKeysPages(in1 *resourcegroupstaggingapi.GetTagKeysInput, in2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
+func (mock *taggingClientMock) GetTagKeysPages(in1 *resourcegroupstaggingapi.GetTagKeysInput, in2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
 	if mock.GetTagKeysPagesFunc == nil {
-		panic("resourcetaggingClientMock.GetTagKeysPagesFunc: method is nil but resourcetaggingClient.GetTagKeysPages was just called")
+		panic("taggingClientMock.GetTagKeysPagesFunc: method is nil but taggingClient.GetTagKeysPages was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
@@ -985,16 +985,16 @@ func (mock *resourcetaggingClientMock) GetTagKeysPages(in1 *resourcegroupstaggin
 		In1: in1,
 		In2: in2,
 	}
-	lockresourcetaggingClientMockGetTagKeysPages.Lock()
+	locktaggingClientMockGetTagKeysPages.Lock()
 	mock.calls.GetTagKeysPages = append(mock.calls.GetTagKeysPages, callInfo)
-	lockresourcetaggingClientMockGetTagKeysPages.Unlock()
+	locktaggingClientMockGetTagKeysPages.Unlock()
 	return mock.GetTagKeysPagesFunc(in1, in2)
 }
 
 // GetTagKeysPagesCalls gets all the calls that were made to GetTagKeysPages.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagKeysPagesCalls())
-func (mock *resourcetaggingClientMock) GetTagKeysPagesCalls() []struct {
+//     len(mockedtaggingClient.GetTagKeysPagesCalls())
+func (mock *taggingClientMock) GetTagKeysPagesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagKeysInput
 	In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 } {
@@ -1002,16 +1002,16 @@ func (mock *resourcetaggingClientMock) GetTagKeysPagesCalls() []struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
 		In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 	}
-	lockresourcetaggingClientMockGetTagKeysPages.RLock()
+	locktaggingClientMockGetTagKeysPages.RLock()
 	calls = mock.calls.GetTagKeysPages
-	lockresourcetaggingClientMockGetTagKeysPages.RUnlock()
+	locktaggingClientMockGetTagKeysPages.RUnlock()
 	return calls
 }
 
 // GetTagKeysPagesWithContext calls GetTagKeysPagesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetTagKeysPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetTagKeysPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, in4 ...request.Option) error {
 	if mock.GetTagKeysPagesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetTagKeysPagesWithContextFunc: method is nil but resourcetaggingClient.GetTagKeysPagesWithContext was just called")
+		panic("taggingClientMock.GetTagKeysPagesWithContextFunc: method is nil but taggingClient.GetTagKeysPagesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1024,16 +1024,16 @@ func (mock *resourcetaggingClientMock) GetTagKeysPagesWithContext(in1 context.Co
 		In3: in3,
 		In4: in4,
 	}
-	lockresourcetaggingClientMockGetTagKeysPagesWithContext.Lock()
+	locktaggingClientMockGetTagKeysPagesWithContext.Lock()
 	mock.calls.GetTagKeysPagesWithContext = append(mock.calls.GetTagKeysPagesWithContext, callInfo)
-	lockresourcetaggingClientMockGetTagKeysPagesWithContext.Unlock()
+	locktaggingClientMockGetTagKeysPagesWithContext.Unlock()
 	return mock.GetTagKeysPagesWithContextFunc(in1, in2, in3, in4...)
 }
 
 // GetTagKeysPagesWithContextCalls gets all the calls that were made to GetTagKeysPagesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagKeysPagesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetTagKeysPagesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetTagKeysPagesWithContextCalls())
+func (mock *taggingClientMock) GetTagKeysPagesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetTagKeysInput
 	In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
@@ -1045,47 +1045,47 @@ func (mock *resourcetaggingClientMock) GetTagKeysPagesWithContextCalls() []struc
 		In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 		In4 []request.Option
 	}
-	lockresourcetaggingClientMockGetTagKeysPagesWithContext.RLock()
+	locktaggingClientMockGetTagKeysPagesWithContext.RLock()
 	calls = mock.calls.GetTagKeysPagesWithContext
-	lockresourcetaggingClientMockGetTagKeysPagesWithContext.RUnlock()
+	locktaggingClientMockGetTagKeysPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagKeysRequest calls GetTagKeysRequestFunc.
-func (mock *resourcetaggingClientMock) GetTagKeysRequest(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
+func (mock *taggingClientMock) GetTagKeysRequest(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
 	if mock.GetTagKeysRequestFunc == nil {
-		panic("resourcetaggingClientMock.GetTagKeysRequestFunc: method is nil but resourcetaggingClient.GetTagKeysRequest was just called")
+		panic("taggingClientMock.GetTagKeysRequestFunc: method is nil but taggingClient.GetTagKeysRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetTagKeysRequest.Lock()
+	locktaggingClientMockGetTagKeysRequest.Lock()
 	mock.calls.GetTagKeysRequest = append(mock.calls.GetTagKeysRequest, callInfo)
-	lockresourcetaggingClientMockGetTagKeysRequest.Unlock()
+	locktaggingClientMockGetTagKeysRequest.Unlock()
 	return mock.GetTagKeysRequestFunc(in1)
 }
 
 // GetTagKeysRequestCalls gets all the calls that were made to GetTagKeysRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagKeysRequestCalls())
-func (mock *resourcetaggingClientMock) GetTagKeysRequestCalls() []struct {
+//     len(mockedtaggingClient.GetTagKeysRequestCalls())
+func (mock *taggingClientMock) GetTagKeysRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagKeysInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetTagKeysInput
 	}
-	lockresourcetaggingClientMockGetTagKeysRequest.RLock()
+	locktaggingClientMockGetTagKeysRequest.RLock()
 	calls = mock.calls.GetTagKeysRequest
-	lockresourcetaggingClientMockGetTagKeysRequest.RUnlock()
+	locktaggingClientMockGetTagKeysRequest.RUnlock()
 	return calls
 }
 
 // GetTagKeysWithContext calls GetTagKeysWithContextFunc.
-func (mock *resourcetaggingClientMock) GetTagKeysWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+func (mock *taggingClientMock) GetTagKeysWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	if mock.GetTagKeysWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetTagKeysWithContextFunc: method is nil but resourcetaggingClient.GetTagKeysWithContext was just called")
+		panic("taggingClientMock.GetTagKeysWithContextFunc: method is nil but taggingClient.GetTagKeysWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1096,16 +1096,16 @@ func (mock *resourcetaggingClientMock) GetTagKeysWithContext(in1 context.Context
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockGetTagKeysWithContext.Lock()
+	locktaggingClientMockGetTagKeysWithContext.Lock()
 	mock.calls.GetTagKeysWithContext = append(mock.calls.GetTagKeysWithContext, callInfo)
-	lockresourcetaggingClientMockGetTagKeysWithContext.Unlock()
+	locktaggingClientMockGetTagKeysWithContext.Unlock()
 	return mock.GetTagKeysWithContextFunc(in1, in2, in3...)
 }
 
 // GetTagKeysWithContextCalls gets all the calls that were made to GetTagKeysWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagKeysWithContextCalls())
-func (mock *resourcetaggingClientMock) GetTagKeysWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetTagKeysWithContextCalls())
+func (mock *taggingClientMock) GetTagKeysWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetTagKeysInput
 	In3 []request.Option
@@ -1115,47 +1115,47 @@ func (mock *resourcetaggingClientMock) GetTagKeysWithContextCalls() []struct {
 		In2 *resourcegroupstaggingapi.GetTagKeysInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockGetTagKeysWithContext.RLock()
+	locktaggingClientMockGetTagKeysWithContext.RLock()
 	calls = mock.calls.GetTagKeysWithContext
-	lockresourcetaggingClientMockGetTagKeysWithContext.RUnlock()
+	locktaggingClientMockGetTagKeysWithContext.RUnlock()
 	return calls
 }
 
 // GetTagValues calls GetTagValuesFunc.
-func (mock *resourcetaggingClientMock) GetTagValues(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+func (mock *taggingClientMock) GetTagValues(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	if mock.GetTagValuesFunc == nil {
-		panic("resourcetaggingClientMock.GetTagValuesFunc: method is nil but resourcetaggingClient.GetTagValues was just called")
+		panic("taggingClientMock.GetTagValuesFunc: method is nil but taggingClient.GetTagValues was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetTagValues.Lock()
+	locktaggingClientMockGetTagValues.Lock()
 	mock.calls.GetTagValues = append(mock.calls.GetTagValues, callInfo)
-	lockresourcetaggingClientMockGetTagValues.Unlock()
+	locktaggingClientMockGetTagValues.Unlock()
 	return mock.GetTagValuesFunc(in1)
 }
 
 // GetTagValuesCalls gets all the calls that were made to GetTagValues.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagValuesCalls())
-func (mock *resourcetaggingClientMock) GetTagValuesCalls() []struct {
+//     len(mockedtaggingClient.GetTagValuesCalls())
+func (mock *taggingClientMock) GetTagValuesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagValuesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
 	}
-	lockresourcetaggingClientMockGetTagValues.RLock()
+	locktaggingClientMockGetTagValues.RLock()
 	calls = mock.calls.GetTagValues
-	lockresourcetaggingClientMockGetTagValues.RUnlock()
+	locktaggingClientMockGetTagValues.RUnlock()
 	return calls
 }
 
 // GetTagValuesPages calls GetTagValuesPagesFunc.
-func (mock *resourcetaggingClientMock) GetTagValuesPages(in1 *resourcegroupstaggingapi.GetTagValuesInput, in2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
+func (mock *taggingClientMock) GetTagValuesPages(in1 *resourcegroupstaggingapi.GetTagValuesInput, in2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
 	if mock.GetTagValuesPagesFunc == nil {
-		panic("resourcetaggingClientMock.GetTagValuesPagesFunc: method is nil but resourcetaggingClient.GetTagValuesPages was just called")
+		panic("taggingClientMock.GetTagValuesPagesFunc: method is nil but taggingClient.GetTagValuesPages was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
@@ -1164,16 +1164,16 @@ func (mock *resourcetaggingClientMock) GetTagValuesPages(in1 *resourcegroupstagg
 		In1: in1,
 		In2: in2,
 	}
-	lockresourcetaggingClientMockGetTagValuesPages.Lock()
+	locktaggingClientMockGetTagValuesPages.Lock()
 	mock.calls.GetTagValuesPages = append(mock.calls.GetTagValuesPages, callInfo)
-	lockresourcetaggingClientMockGetTagValuesPages.Unlock()
+	locktaggingClientMockGetTagValuesPages.Unlock()
 	return mock.GetTagValuesPagesFunc(in1, in2)
 }
 
 // GetTagValuesPagesCalls gets all the calls that were made to GetTagValuesPages.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagValuesPagesCalls())
-func (mock *resourcetaggingClientMock) GetTagValuesPagesCalls() []struct {
+//     len(mockedtaggingClient.GetTagValuesPagesCalls())
+func (mock *taggingClientMock) GetTagValuesPagesCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagValuesInput
 	In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 } {
@@ -1181,16 +1181,16 @@ func (mock *resourcetaggingClientMock) GetTagValuesPagesCalls() []struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
 		In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 	}
-	lockresourcetaggingClientMockGetTagValuesPages.RLock()
+	locktaggingClientMockGetTagValuesPages.RLock()
 	calls = mock.calls.GetTagValuesPages
-	lockresourcetaggingClientMockGetTagValuesPages.RUnlock()
+	locktaggingClientMockGetTagValuesPages.RUnlock()
 	return calls
 }
 
 // GetTagValuesPagesWithContext calls GetTagValuesPagesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetTagValuesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetTagValuesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, in4 ...request.Option) error {
 	if mock.GetTagValuesPagesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetTagValuesPagesWithContextFunc: method is nil but resourcetaggingClient.GetTagValuesPagesWithContext was just called")
+		panic("taggingClientMock.GetTagValuesPagesWithContextFunc: method is nil but taggingClient.GetTagValuesPagesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1203,16 +1203,16 @@ func (mock *resourcetaggingClientMock) GetTagValuesPagesWithContext(in1 context.
 		In3: in3,
 		In4: in4,
 	}
-	lockresourcetaggingClientMockGetTagValuesPagesWithContext.Lock()
+	locktaggingClientMockGetTagValuesPagesWithContext.Lock()
 	mock.calls.GetTagValuesPagesWithContext = append(mock.calls.GetTagValuesPagesWithContext, callInfo)
-	lockresourcetaggingClientMockGetTagValuesPagesWithContext.Unlock()
+	locktaggingClientMockGetTagValuesPagesWithContext.Unlock()
 	return mock.GetTagValuesPagesWithContextFunc(in1, in2, in3, in4...)
 }
 
 // GetTagValuesPagesWithContextCalls gets all the calls that were made to GetTagValuesPagesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagValuesPagesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetTagValuesPagesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetTagValuesPagesWithContextCalls())
+func (mock *taggingClientMock) GetTagValuesPagesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetTagValuesInput
 	In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
@@ -1224,47 +1224,47 @@ func (mock *resourcetaggingClientMock) GetTagValuesPagesWithContextCalls() []str
 		In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 		In4 []request.Option
 	}
-	lockresourcetaggingClientMockGetTagValuesPagesWithContext.RLock()
+	locktaggingClientMockGetTagValuesPagesWithContext.RLock()
 	calls = mock.calls.GetTagValuesPagesWithContext
-	lockresourcetaggingClientMockGetTagValuesPagesWithContext.RUnlock()
+	locktaggingClientMockGetTagValuesPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagValuesRequest calls GetTagValuesRequestFunc.
-func (mock *resourcetaggingClientMock) GetTagValuesRequest(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
+func (mock *taggingClientMock) GetTagValuesRequest(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
 	if mock.GetTagValuesRequestFunc == nil {
-		panic("resourcetaggingClientMock.GetTagValuesRequestFunc: method is nil but resourcetaggingClient.GetTagValuesRequest was just called")
+		panic("taggingClientMock.GetTagValuesRequestFunc: method is nil but taggingClient.GetTagValuesRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockGetTagValuesRequest.Lock()
+	locktaggingClientMockGetTagValuesRequest.Lock()
 	mock.calls.GetTagValuesRequest = append(mock.calls.GetTagValuesRequest, callInfo)
-	lockresourcetaggingClientMockGetTagValuesRequest.Unlock()
+	locktaggingClientMockGetTagValuesRequest.Unlock()
 	return mock.GetTagValuesRequestFunc(in1)
 }
 
 // GetTagValuesRequestCalls gets all the calls that were made to GetTagValuesRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagValuesRequestCalls())
-func (mock *resourcetaggingClientMock) GetTagValuesRequestCalls() []struct {
+//     len(mockedtaggingClient.GetTagValuesRequestCalls())
+func (mock *taggingClientMock) GetTagValuesRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.GetTagValuesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.GetTagValuesInput
 	}
-	lockresourcetaggingClientMockGetTagValuesRequest.RLock()
+	locktaggingClientMockGetTagValuesRequest.RLock()
 	calls = mock.calls.GetTagValuesRequest
-	lockresourcetaggingClientMockGetTagValuesRequest.RUnlock()
+	locktaggingClientMockGetTagValuesRequest.RUnlock()
 	return calls
 }
 
 // GetTagValuesWithContext calls GetTagValuesWithContextFunc.
-func (mock *resourcetaggingClientMock) GetTagValuesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+func (mock *taggingClientMock) GetTagValuesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	if mock.GetTagValuesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.GetTagValuesWithContextFunc: method is nil but resourcetaggingClient.GetTagValuesWithContext was just called")
+		panic("taggingClientMock.GetTagValuesWithContextFunc: method is nil but taggingClient.GetTagValuesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1275,16 +1275,16 @@ func (mock *resourcetaggingClientMock) GetTagValuesWithContext(in1 context.Conte
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockGetTagValuesWithContext.Lock()
+	locktaggingClientMockGetTagValuesWithContext.Lock()
 	mock.calls.GetTagValuesWithContext = append(mock.calls.GetTagValuesWithContext, callInfo)
-	lockresourcetaggingClientMockGetTagValuesWithContext.Unlock()
+	locktaggingClientMockGetTagValuesWithContext.Unlock()
 	return mock.GetTagValuesWithContextFunc(in1, in2, in3...)
 }
 
 // GetTagValuesWithContextCalls gets all the calls that were made to GetTagValuesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.GetTagValuesWithContextCalls())
-func (mock *resourcetaggingClientMock) GetTagValuesWithContextCalls() []struct {
+//     len(mockedtaggingClient.GetTagValuesWithContextCalls())
+func (mock *taggingClientMock) GetTagValuesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.GetTagValuesInput
 	In3 []request.Option
@@ -1294,78 +1294,78 @@ func (mock *resourcetaggingClientMock) GetTagValuesWithContextCalls() []struct {
 		In2 *resourcegroupstaggingapi.GetTagValuesInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockGetTagValuesWithContext.RLock()
+	locktaggingClientMockGetTagValuesWithContext.RLock()
 	calls = mock.calls.GetTagValuesWithContext
-	lockresourcetaggingClientMockGetTagValuesWithContext.RUnlock()
+	locktaggingClientMockGetTagValuesWithContext.RUnlock()
 	return calls
 }
 
 // StartReportCreation calls StartReportCreationFunc.
-func (mock *resourcetaggingClientMock) StartReportCreation(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+func (mock *taggingClientMock) StartReportCreation(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
 	if mock.StartReportCreationFunc == nil {
-		panic("resourcetaggingClientMock.StartReportCreationFunc: method is nil but resourcetaggingClient.StartReportCreation was just called")
+		panic("taggingClientMock.StartReportCreationFunc: method is nil but taggingClient.StartReportCreation was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.StartReportCreationInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockStartReportCreation.Lock()
+	locktaggingClientMockStartReportCreation.Lock()
 	mock.calls.StartReportCreation = append(mock.calls.StartReportCreation, callInfo)
-	lockresourcetaggingClientMockStartReportCreation.Unlock()
+	locktaggingClientMockStartReportCreation.Unlock()
 	return mock.StartReportCreationFunc(in1)
 }
 
 // StartReportCreationCalls gets all the calls that were made to StartReportCreation.
 // Check the length with:
-//     len(mockedresourcetaggingClient.StartReportCreationCalls())
-func (mock *resourcetaggingClientMock) StartReportCreationCalls() []struct {
+//     len(mockedtaggingClient.StartReportCreationCalls())
+func (mock *taggingClientMock) StartReportCreationCalls() []struct {
 	In1 *resourcegroupstaggingapi.StartReportCreationInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.StartReportCreationInput
 	}
-	lockresourcetaggingClientMockStartReportCreation.RLock()
+	locktaggingClientMockStartReportCreation.RLock()
 	calls = mock.calls.StartReportCreation
-	lockresourcetaggingClientMockStartReportCreation.RUnlock()
+	locktaggingClientMockStartReportCreation.RUnlock()
 	return calls
 }
 
 // StartReportCreationRequest calls StartReportCreationRequestFunc.
-func (mock *resourcetaggingClientMock) StartReportCreationRequest(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
+func (mock *taggingClientMock) StartReportCreationRequest(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
 	if mock.StartReportCreationRequestFunc == nil {
-		panic("resourcetaggingClientMock.StartReportCreationRequestFunc: method is nil but resourcetaggingClient.StartReportCreationRequest was just called")
+		panic("taggingClientMock.StartReportCreationRequestFunc: method is nil but taggingClient.StartReportCreationRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.StartReportCreationInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockStartReportCreationRequest.Lock()
+	locktaggingClientMockStartReportCreationRequest.Lock()
 	mock.calls.StartReportCreationRequest = append(mock.calls.StartReportCreationRequest, callInfo)
-	lockresourcetaggingClientMockStartReportCreationRequest.Unlock()
+	locktaggingClientMockStartReportCreationRequest.Unlock()
 	return mock.StartReportCreationRequestFunc(in1)
 }
 
 // StartReportCreationRequestCalls gets all the calls that were made to StartReportCreationRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.StartReportCreationRequestCalls())
-func (mock *resourcetaggingClientMock) StartReportCreationRequestCalls() []struct {
+//     len(mockedtaggingClient.StartReportCreationRequestCalls())
+func (mock *taggingClientMock) StartReportCreationRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.StartReportCreationInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.StartReportCreationInput
 	}
-	lockresourcetaggingClientMockStartReportCreationRequest.RLock()
+	locktaggingClientMockStartReportCreationRequest.RLock()
 	calls = mock.calls.StartReportCreationRequest
-	lockresourcetaggingClientMockStartReportCreationRequest.RUnlock()
+	locktaggingClientMockStartReportCreationRequest.RUnlock()
 	return calls
 }
 
 // StartReportCreationWithContext calls StartReportCreationWithContextFunc.
-func (mock *resourcetaggingClientMock) StartReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.StartReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+func (mock *taggingClientMock) StartReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.StartReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
 	if mock.StartReportCreationWithContextFunc == nil {
-		panic("resourcetaggingClientMock.StartReportCreationWithContextFunc: method is nil but resourcetaggingClient.StartReportCreationWithContext was just called")
+		panic("taggingClientMock.StartReportCreationWithContextFunc: method is nil but taggingClient.StartReportCreationWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1376,16 +1376,16 @@ func (mock *resourcetaggingClientMock) StartReportCreationWithContext(in1 contex
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockStartReportCreationWithContext.Lock()
+	locktaggingClientMockStartReportCreationWithContext.Lock()
 	mock.calls.StartReportCreationWithContext = append(mock.calls.StartReportCreationWithContext, callInfo)
-	lockresourcetaggingClientMockStartReportCreationWithContext.Unlock()
+	locktaggingClientMockStartReportCreationWithContext.Unlock()
 	return mock.StartReportCreationWithContextFunc(in1, in2, in3...)
 }
 
 // StartReportCreationWithContextCalls gets all the calls that were made to StartReportCreationWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.StartReportCreationWithContextCalls())
-func (mock *resourcetaggingClientMock) StartReportCreationWithContextCalls() []struct {
+//     len(mockedtaggingClient.StartReportCreationWithContextCalls())
+func (mock *taggingClientMock) StartReportCreationWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.StartReportCreationInput
 	In3 []request.Option
@@ -1395,78 +1395,78 @@ func (mock *resourcetaggingClientMock) StartReportCreationWithContextCalls() []s
 		In2 *resourcegroupstaggingapi.StartReportCreationInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockStartReportCreationWithContext.RLock()
+	locktaggingClientMockStartReportCreationWithContext.RLock()
 	calls = mock.calls.StartReportCreationWithContext
-	lockresourcetaggingClientMockStartReportCreationWithContext.RUnlock()
+	locktaggingClientMockStartReportCreationWithContext.RUnlock()
 	return calls
 }
 
 // TagResources calls TagResourcesFunc.
-func (mock *resourcetaggingClientMock) TagResources(in1 *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+func (mock *taggingClientMock) TagResources(in1 *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
 	if mock.TagResourcesFunc == nil {
-		panic("resourcetaggingClientMock.TagResourcesFunc: method is nil but resourcetaggingClient.TagResources was just called")
+		panic("taggingClientMock.TagResourcesFunc: method is nil but taggingClient.TagResources was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.TagResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockTagResources.Lock()
+	locktaggingClientMockTagResources.Lock()
 	mock.calls.TagResources = append(mock.calls.TagResources, callInfo)
-	lockresourcetaggingClientMockTagResources.Unlock()
+	locktaggingClientMockTagResources.Unlock()
 	return mock.TagResourcesFunc(in1)
 }
 
 // TagResourcesCalls gets all the calls that were made to TagResources.
 // Check the length with:
-//     len(mockedresourcetaggingClient.TagResourcesCalls())
-func (mock *resourcetaggingClientMock) TagResourcesCalls() []struct {
+//     len(mockedtaggingClient.TagResourcesCalls())
+func (mock *taggingClientMock) TagResourcesCalls() []struct {
 	In1 *resourcegroupstaggingapi.TagResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.TagResourcesInput
 	}
-	lockresourcetaggingClientMockTagResources.RLock()
+	locktaggingClientMockTagResources.RLock()
 	calls = mock.calls.TagResources
-	lockresourcetaggingClientMockTagResources.RUnlock()
+	locktaggingClientMockTagResources.RUnlock()
 	return calls
 }
 
 // TagResourcesRequest calls TagResourcesRequestFunc.
-func (mock *resourcetaggingClientMock) TagResourcesRequest(in1 *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
+func (mock *taggingClientMock) TagResourcesRequest(in1 *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
 	if mock.TagResourcesRequestFunc == nil {
-		panic("resourcetaggingClientMock.TagResourcesRequestFunc: method is nil but resourcetaggingClient.TagResourcesRequest was just called")
+		panic("taggingClientMock.TagResourcesRequestFunc: method is nil but taggingClient.TagResourcesRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.TagResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockTagResourcesRequest.Lock()
+	locktaggingClientMockTagResourcesRequest.Lock()
 	mock.calls.TagResourcesRequest = append(mock.calls.TagResourcesRequest, callInfo)
-	lockresourcetaggingClientMockTagResourcesRequest.Unlock()
+	locktaggingClientMockTagResourcesRequest.Unlock()
 	return mock.TagResourcesRequestFunc(in1)
 }
 
 // TagResourcesRequestCalls gets all the calls that were made to TagResourcesRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.TagResourcesRequestCalls())
-func (mock *resourcetaggingClientMock) TagResourcesRequestCalls() []struct {
+//     len(mockedtaggingClient.TagResourcesRequestCalls())
+func (mock *taggingClientMock) TagResourcesRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.TagResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.TagResourcesInput
 	}
-	lockresourcetaggingClientMockTagResourcesRequest.RLock()
+	locktaggingClientMockTagResourcesRequest.RLock()
 	calls = mock.calls.TagResourcesRequest
-	lockresourcetaggingClientMockTagResourcesRequest.RUnlock()
+	locktaggingClientMockTagResourcesRequest.RUnlock()
 	return calls
 }
 
 // TagResourcesWithContext calls TagResourcesWithContextFunc.
-func (mock *resourcetaggingClientMock) TagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.TagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+func (mock *taggingClientMock) TagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.TagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
 	if mock.TagResourcesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.TagResourcesWithContextFunc: method is nil but resourcetaggingClient.TagResourcesWithContext was just called")
+		panic("taggingClientMock.TagResourcesWithContextFunc: method is nil but taggingClient.TagResourcesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1477,16 +1477,16 @@ func (mock *resourcetaggingClientMock) TagResourcesWithContext(in1 context.Conte
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockTagResourcesWithContext.Lock()
+	locktaggingClientMockTagResourcesWithContext.Lock()
 	mock.calls.TagResourcesWithContext = append(mock.calls.TagResourcesWithContext, callInfo)
-	lockresourcetaggingClientMockTagResourcesWithContext.Unlock()
+	locktaggingClientMockTagResourcesWithContext.Unlock()
 	return mock.TagResourcesWithContextFunc(in1, in2, in3...)
 }
 
 // TagResourcesWithContextCalls gets all the calls that were made to TagResourcesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.TagResourcesWithContextCalls())
-func (mock *resourcetaggingClientMock) TagResourcesWithContextCalls() []struct {
+//     len(mockedtaggingClient.TagResourcesWithContextCalls())
+func (mock *taggingClientMock) TagResourcesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.TagResourcesInput
 	In3 []request.Option
@@ -1496,78 +1496,78 @@ func (mock *resourcetaggingClientMock) TagResourcesWithContextCalls() []struct {
 		In2 *resourcegroupstaggingapi.TagResourcesInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockTagResourcesWithContext.RLock()
+	locktaggingClientMockTagResourcesWithContext.RLock()
 	calls = mock.calls.TagResourcesWithContext
-	lockresourcetaggingClientMockTagResourcesWithContext.RUnlock()
+	locktaggingClientMockTagResourcesWithContext.RUnlock()
 	return calls
 }
 
 // UntagResources calls UntagResourcesFunc.
-func (mock *resourcetaggingClientMock) UntagResources(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+func (mock *taggingClientMock) UntagResources(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
 	if mock.UntagResourcesFunc == nil {
-		panic("resourcetaggingClientMock.UntagResourcesFunc: method is nil but resourcetaggingClient.UntagResources was just called")
+		panic("taggingClientMock.UntagResourcesFunc: method is nil but taggingClient.UntagResources was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.UntagResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockUntagResources.Lock()
+	locktaggingClientMockUntagResources.Lock()
 	mock.calls.UntagResources = append(mock.calls.UntagResources, callInfo)
-	lockresourcetaggingClientMockUntagResources.Unlock()
+	locktaggingClientMockUntagResources.Unlock()
 	return mock.UntagResourcesFunc(in1)
 }
 
 // UntagResourcesCalls gets all the calls that were made to UntagResources.
 // Check the length with:
-//     len(mockedresourcetaggingClient.UntagResourcesCalls())
-func (mock *resourcetaggingClientMock) UntagResourcesCalls() []struct {
+//     len(mockedtaggingClient.UntagResourcesCalls())
+func (mock *taggingClientMock) UntagResourcesCalls() []struct {
 	In1 *resourcegroupstaggingapi.UntagResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.UntagResourcesInput
 	}
-	lockresourcetaggingClientMockUntagResources.RLock()
+	locktaggingClientMockUntagResources.RLock()
 	calls = mock.calls.UntagResources
-	lockresourcetaggingClientMockUntagResources.RUnlock()
+	locktaggingClientMockUntagResources.RUnlock()
 	return calls
 }
 
 // UntagResourcesRequest calls UntagResourcesRequestFunc.
-func (mock *resourcetaggingClientMock) UntagResourcesRequest(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
+func (mock *taggingClientMock) UntagResourcesRequest(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
 	if mock.UntagResourcesRequestFunc == nil {
-		panic("resourcetaggingClientMock.UntagResourcesRequestFunc: method is nil but resourcetaggingClient.UntagResourcesRequest was just called")
+		panic("taggingClientMock.UntagResourcesRequestFunc: method is nil but taggingClient.UntagResourcesRequest was just called")
 	}
 	callInfo := struct {
 		In1 *resourcegroupstaggingapi.UntagResourcesInput
 	}{
 		In1: in1,
 	}
-	lockresourcetaggingClientMockUntagResourcesRequest.Lock()
+	locktaggingClientMockUntagResourcesRequest.Lock()
 	mock.calls.UntagResourcesRequest = append(mock.calls.UntagResourcesRequest, callInfo)
-	lockresourcetaggingClientMockUntagResourcesRequest.Unlock()
+	locktaggingClientMockUntagResourcesRequest.Unlock()
 	return mock.UntagResourcesRequestFunc(in1)
 }
 
 // UntagResourcesRequestCalls gets all the calls that were made to UntagResourcesRequest.
 // Check the length with:
-//     len(mockedresourcetaggingClient.UntagResourcesRequestCalls())
-func (mock *resourcetaggingClientMock) UntagResourcesRequestCalls() []struct {
+//     len(mockedtaggingClient.UntagResourcesRequestCalls())
+func (mock *taggingClientMock) UntagResourcesRequestCalls() []struct {
 	In1 *resourcegroupstaggingapi.UntagResourcesInput
 } {
 	var calls []struct {
 		In1 *resourcegroupstaggingapi.UntagResourcesInput
 	}
-	lockresourcetaggingClientMockUntagResourcesRequest.RLock()
+	locktaggingClientMockUntagResourcesRequest.RLock()
 	calls = mock.calls.UntagResourcesRequest
-	lockresourcetaggingClientMockUntagResourcesRequest.RUnlock()
+	locktaggingClientMockUntagResourcesRequest.RUnlock()
 	return calls
 }
 
 // UntagResourcesWithContext calls UntagResourcesWithContextFunc.
-func (mock *resourcetaggingClientMock) UntagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.UntagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+func (mock *taggingClientMock) UntagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.UntagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
 	if mock.UntagResourcesWithContextFunc == nil {
-		panic("resourcetaggingClientMock.UntagResourcesWithContextFunc: method is nil but resourcetaggingClient.UntagResourcesWithContext was just called")
+		panic("taggingClientMock.UntagResourcesWithContextFunc: method is nil but taggingClient.UntagResourcesWithContext was just called")
 	}
 	callInfo := struct {
 		In1 context.Context
@@ -1578,16 +1578,16 @@ func (mock *resourcetaggingClientMock) UntagResourcesWithContext(in1 context.Con
 		In2: in2,
 		In3: in3,
 	}
-	lockresourcetaggingClientMockUntagResourcesWithContext.Lock()
+	locktaggingClientMockUntagResourcesWithContext.Lock()
 	mock.calls.UntagResourcesWithContext = append(mock.calls.UntagResourcesWithContext, callInfo)
-	lockresourcetaggingClientMockUntagResourcesWithContext.Unlock()
+	locktaggingClientMockUntagResourcesWithContext.Unlock()
 	return mock.UntagResourcesWithContextFunc(in1, in2, in3...)
 }
 
 // UntagResourcesWithContextCalls gets all the calls that were made to UntagResourcesWithContext.
 // Check the length with:
-//     len(mockedresourcetaggingClient.UntagResourcesWithContextCalls())
-func (mock *resourcetaggingClientMock) UntagResourcesWithContextCalls() []struct {
+//     len(mockedtaggingClient.UntagResourcesWithContextCalls())
+func (mock *taggingClientMock) UntagResourcesWithContextCalls() []struct {
 	In1 context.Context
 	In2 *resourcegroupstaggingapi.UntagResourcesInput
 	In3 []request.Option
@@ -1597,8 +1597,8 @@ func (mock *resourcetaggingClientMock) UntagResourcesWithContextCalls() []struct
 		In2 *resourcegroupstaggingapi.UntagResourcesInput
 		In3 []request.Option
 	}
-	lockresourcetaggingClientMockUntagResourcesWithContext.RLock()
+	locktaggingClientMockUntagResourcesWithContext.RLock()
 	calls = mock.calls.UntagResourcesWithContext
-	lockresourcetaggingClientMockUntagResourcesWithContext.RUnlock()
+	locktaggingClientMockUntagResourcesWithContext.RUnlock()
 	return calls
 }

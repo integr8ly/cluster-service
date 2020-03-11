@@ -1,6 +1,8 @@
 package aws
 
 import (
+	"strings"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
@@ -10,10 +12,9 @@ import (
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"strings"
 )
 
-var _ ActionEngine = &ElasticacheEngine{}
+var _ ClusterResourceManager = &ElasticacheEngine{}
 
 type ElasticacheEngine struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI

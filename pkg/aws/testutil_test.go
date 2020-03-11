@@ -1,22 +1,36 @@
 package aws
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/service/elasticache"
+
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+
+	"github.com/aws/aws-sdk-go/service/s3"
+
 	"github.com/aws/aws-sdk-go/service/rds"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 
-	awssdk "github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws"
 )
 
 const (
+	//generic variables
+	fakeARN                = "arn:fake:testIdentifier"
+	fakeResourceIdentifier = "testIdentifier"
+	fakeClusterId          = "clusterId"
+
+	//rds-specific
 	fakeRDSClientTagKey                     = tagKeyClusterId
 	fakeRDSClientTagVal                     = "fakeVal"
-	fakeRDSClientInstanceIdentifier         = "testIdentifier"
-	fakeRDSClientInstanceARN                = "arn:fake:testIdentifier"
+	fakeRDSClientInstanceIdentifier         = fakeResourceIdentifier
+	fakeRDSClientInstanceARN                = fakeARN
 	fakeRDSClientInstanceDeletionProtection = true
+
 	fakeElasticacheClientName               = "elasticache Replication group"
 	fakeElasticacheClientRegion             = "eu-west-1"
 	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
@@ -32,6 +46,12 @@ const (
 	fakeClusterID                           = "testClusterID"
 	fakeCacheClusterStatus                  = "available"
 	fakeActionEngineName                    = "Fake Action Engine"
+
+	//resource tagging-specific
+	fakeResourceTagMappingARN = fakeARN
+
+	//resource manager-specific
+	fakeResourceManagerName = "Fake Action Engine"
 )
 
 func fakeReportItemDeleting() *clusterservice.ReportItem {
@@ -54,22 +74,39 @@ func fakeReportItemDryRun() *clusterservice.ReportItem {
 
 func fakeRDSClientTag() *rds.Tag {
 	return &rds.Tag{
-		Key:   awssdk.String(fakeRDSClientTagKey),
-		Value: awssdk.String(fakeRDSClientTagVal),
+		Key:   aws.String(fakeRDSClientTagKey),
+		Value: aws.String(fakeRDSClientTagVal),
 	}
 }
 
 func fakeRDSClientDBInstance() *rds.DBInstance {
 	return &rds.DBInstance{
-		DBInstanceIdentifier: awssdk.String(fakeRDSClientInstanceIdentifier),
-		DBInstanceArn:        awssdk.String(fakeRDSClientInstanceARN),
-		DeletionProtection:   awssdk.Bool(fakeRDSClientInstanceDeletionProtection),
+		DBInstanceIdentifier: aws.String(fakeRDSClientInstanceIdentifier),
+		DBInstanceArn:        aws.String(fakeRDSClientInstanceARN),
+		DeletionProtection:   aws.Bool(fakeRDSClientInstanceDeletionProtection),
+	}
+}
+
+func fakeResourceTagMappingTag() *resourcegroupstaggingapi.Tag {
+	return &resourcegroupstaggingapi.Tag{
+		Key:   aws.String(tagKeyClusterId),
+		Value: aws.String(fakeClusterId),
+	}
+}
+
+func fakeResourceTagMapping() *resourcegroupstaggingapi.ResourceTagMapping {
+	return &resourcegroupstaggingapi.ResourceTagMapping{
+		ComplianceDetails: nil,
+		ResourceARN:       aws.String(fakeResourceTagMappingARN),
+		Tags: []*resourcegroupstaggingapi.Tag{
+			fakeResourceTagMappingTag(),
+		},
 	}
 }
 
 func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error) {
 	if modifyFn == nil {
-		return nil, fmt.Errorf("modifyFn must be defined")
+		return nil, errorMustBeDefined("modifyFn")
 	}
 	client := &rdsClientMock{
 		DescribeDBInstancesFunc: func(in1 *rds.DescribeDBInstancesInput) (output *rds.DescribeDBInstancesOutput, e error) {
@@ -95,6 +132,55 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 			return &rds.DeleteDBInstanceOutput{
 				DBInstance: fakeRDSClientDBInstance(),
 			}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, errorModifyFailed(err)
+	}
+	return client, nil
+}
+
+func fakeS3Client(modifyFn func(c *s3ClientMock) error) (*s3ClientMock, error) {
+	if modifyFn == nil {
+		return nil, errorMustBeDefined("modifyFn")
+	}
+	client := &s3ClientMock{
+		DeleteBucketFunc: func(in1 *s3.DeleteBucketInput) (output *s3.DeleteBucketOutput, e error) {
+			return &s3.DeleteBucketOutput{}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, errorModifyFailed(err)
+	}
+	return client, nil
+}
+
+func fakeTaggingClient(modifyFn func(c *taggingClientMock) error) (*taggingClientMock, error) {
+	if modifyFn == nil {
+		return nil, errorMustBeDefined("modifyFn")
+	}
+	client := &taggingClientMock{
+		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
+			return &resourcegroupstaggingapi.GetResourcesOutput{
+				ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+					fakeResourceTagMapping(),
+				},
+			}, nil
+		},
+	}
+	if err := modifyFn(client); err != nil {
+		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+	}
+	return client, nil
+}
+
+func fakeS3BatchClient(modifyFn func(c *s3BatchDeleteClientMock) error) (*s3BatchDeleteClientMock, error) {
+	if modifyFn == nil {
+		return nil, errorMustBeDefined("modifyFn")
+	}
+	client := &s3BatchDeleteClientMock{
+		DeleteFunc: func(in1 context.Context, in2 s3manager.BatchDeleteIterator) error {
+			return nil
 		},
 	}
 	if err := modifyFn(client); err != nil {
@@ -124,19 +210,19 @@ func fakeReportItemReplicationGroupDryRun() *clusterservice.ReportItem {
 
 func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
 	return &elasticache.ReplicationGroup{
-		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
-		Description:        awssdk.String(fakeElasticacheClientDescription),
-		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId),
-		Status:             awssdk.String(fakeElasticacheClientStatusAvailable),
+		CacheNodeType:      aws.String(fakeElasticacheClientCacheNodeType),
+		Description:        aws.String(fakeElasticacheClientDescription),
+		ReplicationGroupId: aws.String(fakeElasticacheClientReplicationGroupId),
+		Status:             aws.String(fakeElasticacheClientStatusAvailable),
 	}
 }
 func fakeElasticacheCacheCluster() *elasticache.CacheCluster {
 	return &elasticache.CacheCluster{
-		CacheClusterId:     awssdk.String(fakeClusterID),
-		CacheClusterStatus: awssdk.String(fakeCacheClusterStatus),
-		CacheNodeType:      awssdk.String(fakeElasticacheClientCacheNodeType),
-		Engine:             awssdk.String(fakeElasticacheClientEngine),
-		ReplicationGroupId: awssdk.String(fakeElasticacheClientReplicationGroupId)}
+		CacheClusterId:     aws.String(fakeClusterID),
+		CacheClusterStatus: aws.String(fakeCacheClusterStatus),
+		CacheNodeType:      aws.String(fakeElasticacheClientCacheNodeType),
+		Engine:             aws.String(fakeElasticacheClientEngine),
+		ReplicationGroupId: aws.String(fakeElasticacheClientReplicationGroupId)}
 }
 
 func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elasticacheClientMock, error) {
@@ -172,21 +258,21 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 
 func fakeResourceTagMappingList() *resourcegroupstaggingapi.ResourceTagMapping {
 	return &resourcegroupstaggingapi.ResourceTagMapping{
-		ResourceARN: awssdk.String(fakeResourceTaggingClientArn),
+		ResourceARN: aws.String(fakeResourceTaggingClientArn),
 		Tags: []*resourcegroupstaggingapi.Tag{
 			{
-				Key:   awssdk.String(fakeResourceTaggingClientTagKey),
-				Value: awssdk.String(fakeResourceTaggingClientTagValue),
+				Key:   aws.String(fakeResourceTaggingClientTagKey),
+				Value: aws.String(fakeResourceTaggingClientTagValue),
 			},
 		},
 	}
 }
 
-func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error) (*resourcetaggingClientMock, error) {
+func fakeResourcetaggingClient(modifyFn func(c *taggingClientMock) error) (*taggingClientMock, error) {
 	if modifyFn == nil {
 		return nil, fmt.Errorf("modifyFn must be defined")
 	}
-	client := &resourcetaggingClientMock{
+	client := &taggingClientMock{
 		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 			return &resourcegroupstaggingapi.GetResourcesOutput{
 					ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
@@ -204,18 +290,18 @@ func fakeResourcetaggingClient(modifyFn func(c *resourcetaggingClientMock) error
 
 func fakeLogger(modifyFn func(l *logrus.Entry) error) (*logrus.Entry, error) {
 	if modifyFn == nil {
-		return nil, fmt.Errorf("modifyFn must be defined")
+		return nil, errorMustBeDefined("modifyFn")
 	}
 	logger := logrus.NewEntry(logrus.StandardLogger())
 	if err := modifyFn(logger); err != nil {
-		return nil, fmt.Errorf("error occurred in modify function: %w", err)
+		return nil, errorModifyFailed(err)
 	}
 	return logger, nil
 }
 
 func fakeActionEngine(modifyFn func(e *ActionEngineMock) error) (*ActionEngineMock, error) {
 	if modifyFn == nil {
-		return nil, fmt.Errorf("modifyFn must be defined")
+		return nil, errorMustBeDefined("modifyFn")
 	}
 	engine := &ActionEngineMock{
 		DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) (items []*clusterservice.ReportItem, e error) {
@@ -224,11 +310,19 @@ func fakeActionEngine(modifyFn func(e *ActionEngineMock) error) (*ActionEngineMo
 			}, nil
 		},
 		GetNameFunc: func() string {
-			return fakeActionEngineName
+			return fakeResourceManagerName
 		},
 	}
 	if err := modifyFn(engine); err != nil {
-		return nil, fmt.Errorf("error occured in modify function: %w", err)
+		return nil, errorModifyFailed(err)
 	}
 	return engine, nil
+}
+
+func errorMustBeDefined(varName string) error {
+	return fmt.Errorf("%s must be defined", varName)
+}
+
+func errorModifyFailed(err error) error {
+	return fmt.Errorf("error occurred while modifying resource: %w", err)
 }

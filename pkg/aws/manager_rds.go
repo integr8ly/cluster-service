@@ -9,36 +9,39 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var _ ActionEngine = &RDSEngine{}
+const (
+	loggingKeyDatabase = "database-id"
+)
 
-type RDSEngine struct {
+var _ ClusterResourceManager = &RDSInstanceManager{}
+
+type RDSInstanceManager struct {
 	rdsClient rdsClient
 	logger    *logrus.Entry
 }
 
-func NewDefaultRDSEngine(session *session.Session, logger *logrus.Entry) *RDSEngine {
-	return &RDSEngine{
+func NewDefaultRDSInstanceManager(session *session.Session, logger *logrus.Entry) *RDSInstanceManager {
+	return &RDSInstanceManager{
 		rdsClient: rds.New(session),
-		logger:    logger.WithField("engine", "aws_rds"),
+		logger:    logger.WithField("engine", managerRDS),
 	}
 }
 
-func (r *RDSEngine) GetName() string {
-	return "AWS RDS Engine"
+func (r *RDSInstanceManager) GetName() string {
+	return "AWS RDS Manager"
 }
 
 //Delete all RDS resources for a specified cluster
-func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
-	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
-	logger.Debug("deleting resources for cluster")
+func (r *RDSInstanceManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+	r.logger.Debug("deleting resources for cluster")
 	clusterDescribeInput := &rds.DescribeDBInstancesInput{}
 	clusterDescribeOutput, err := r.rdsClient.DescribeDBInstances(clusterDescribeInput)
 	if err != nil {
-		return nil, errors.WrapLog(err, "failed to describe database clusters", logger)
+		return nil, errors.WrapLog(err, "failed to describe database clusters", r.logger)
 	}
 	var databasesToDelete []*rds.DBInstance
 	for _, dbInstance := range clusterDescribeOutput.DBInstances {
-		dbLogger := logger.WithField("db", aws.StringValue(dbInstance.DBInstanceIdentifier))
+		dbLogger := r.logger.WithField(loggingKeyDatabase, aws.StringValue(dbInstance.DBInstanceIdentifier))
 		dbLogger.Debug("checking tags database cluster")
 		tagListInput := &rds.ListTagsForResourceInput{
 			ResourceName: dbInstance.DBInstanceArn,
@@ -66,10 +69,10 @@ func (r *RDSEngine) DeleteResourcesForCluster(clusterId string, tags map[string]
 		}
 		databasesToDelete = append(databasesToDelete, dbInstance)
 	}
-	logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
+	r.logger.Debugf("filtering complete, %d databases matched", len(databasesToDelete))
 	reportItems := make([]*clusterservice.ReportItem, 0)
 	for _, dbInstance := range databasesToDelete {
-		dbLogger := logger.WithField("db", aws.StringValue(dbInstance.DBInstanceIdentifier))
+		dbLogger := r.logger.WithField(loggingKeyDatabase, aws.StringValue(dbInstance.DBInstanceIdentifier))
 		dbLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
 			ID:           aws.StringValue(dbInstance.DBInstanceArn),
