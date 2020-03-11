@@ -18,13 +18,14 @@ type Client struct {
 
 func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client {
 	log := logger.WithField("cluster_service_provider", "aws")
-	rdsEngine := NewDefaultRDSInstanceManager(awsSession, logger)
+	rdsManager := NewDefaultRDSInstanceManager(awsSession, logger)
 	rdsSnapshotManager := NewDefaultRDSSnapshotManager(awsSession, logger)
-	s3Engine := NewDefaultS3Engine(awsSession, logger)
-	elasticacheEngine := NewDefaultElastiCacheEngine(awsSession, logger)
-	elasticacheSnapshotEngine := newDefaultElasticacheSnapshotEngine(awsSession, logger)
+	s3Manager := NewDefaultS3Engine(awsSession, logger)
+	elasticacheManager := NewDefaultElasticacheManager(awsSession, logger)
+	elasticacheSnapshotManager := NewDefaultElasticacheSnapshotManager(awsSession, logger)
+	subnetManager := NewDefaultSubnetManager(awsSession, logger)
 	return &Client{
-		ResourceManagers: []ClusterResourceManager{rdsEngine, elasticacheEngine, s3Engine, rdsSnapshotManager, elasticacheSnapshotEngine},
+		ResourceManagers: []ClusterResourceManager{rdsManager, elasticacheManager, s3Manager, rdsSnapshotManager, elasticacheSnapshotManager, subnetManager},
 		Logger:           log,
 	}
 }
@@ -35,7 +36,7 @@ func (c *Client) DeleteResourcesForCluster(clusterId string, tags map[string]str
 	logger.Debugf("deleting resources for cluster")
 	report := &clusterservice.Report{}
 	for _, engine := range c.ResourceManagers {
-		engineLogger := logger.WithField(loggingKeyEngine, engine.GetName())
+		engineLogger := logger.WithField(loggingKeyManager, engine.GetName())
 		engineLogger.Debugf("found Logger")
 		reportItems, err := engine.DeleteResourcesForCluster(clusterId, tags, dryRun)
 		if err != nil {

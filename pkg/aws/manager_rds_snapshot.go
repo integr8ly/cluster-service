@@ -38,34 +38,21 @@ func NewDefaultRDSSnapshotManager(session *session.Session, logger *logrus.Entry
 	return &RDSSnapshotManager{
 		rdsClient:     rds.New(session),
 		taggingClient: resourcegroupstaggingapi.New(session),
-		logger:        logger.WithField(loggingKeyEngine, managerRDSSnapshot),
+		logger:        logger.WithField(loggingKeyManager, managerRDSSnapshot),
 	}
 }
 
 func (r *RDSSnapshotManager) GetName() string {
-	return "AWS RDS Snapshot Engine"
+	return "AWS RDS Snapshot Manager"
 }
 
 func (r *RDSSnapshotManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	r.logger.Debug("delete snapshots for cluster")
-	//convert provided tags to aws filter format
-	tagFilters := []*resourcegroupstaggingapi.TagFilter{
-		{
-			Key:    aws.String(tagKeyClusterId),
-			Values: aws.StringSlice([]string{clusterId}),
-		},
-	}
-	for tagKey, tagVal := range tags {
-		tagFilters = append(tagFilters, &resourcegroupstaggingapi.TagFilter{
-			Key:    aws.String(tagKey),
-			Values: aws.StringSlice([]string{tagVal}),
-		})
-	}
 	//filter with tags
 	r.logger.Debug("listing rds snapshots using provided tag filters")
 	getResourcesInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeRDSSnapshot}),
-		TagFilters:          tagFilters,
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	getResourcesOutput, err := r.taggingClient.GetResources(getResourcesInput)
 	if err != nil {

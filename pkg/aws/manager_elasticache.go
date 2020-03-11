@@ -14,28 +14,28 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var _ ClusterResourceManager = &ElasticacheEngine{}
+var _ ClusterResourceManager = &ElasticacheManager{}
 
-type ElasticacheEngine struct {
+type ElasticacheManager struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI
 	taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
 	logger            *logrus.Entry
 }
 
-func NewDefaultElastiCacheEngine(session *session.Session, logger *logrus.Entry) *ElasticacheEngine {
-	return &ElasticacheEngine{
+func NewDefaultElasticacheManager(session *session.Session, logger *logrus.Entry) *ElasticacheManager {
+	return &ElasticacheManager{
 		elasticacheClient: elasticache.New(session),
 		taggingClient:     resourcegroupstaggingapi.New(session),
-		logger:            logger.WithField("engine", "aws_elasticache"),
+		logger:            logger.WithField(loggingKeyManager, managerElasticache),
 	}
 }
 
-func (r *ElasticacheEngine) GetName() string {
-	return "AWS elasticache Engine"
+func (r *ElasticacheManager) GetName() string {
+	return "AWS ElastiCache Manager"
 }
 
 //Delete all elasticache resources for a specified cluster
-func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+func (r *ElasticacheManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
 	logger.Debug("deleting resources for cluster")
 
@@ -43,14 +43,7 @@ func (r *ElasticacheEngine) DeleteResourcesForCluster(clusterId string, tags map
 	var replicationGroupsToDelete []string
 	resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{"elasticache:cluster"}),
-		TagFilters: []*resourcegroupstaggingapi.TagFilter{
-			{
-				Key: aws.String(tagKeyClusterId),
-				Values: aws.StringSlice([]string{
-					clusterId,
-				}),
-			},
-		},
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 	if err != nil {

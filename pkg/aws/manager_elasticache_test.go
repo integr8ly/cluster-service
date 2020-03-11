@@ -52,7 +52,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
 							return nil, errors.New("")
 						}
@@ -87,7 +87,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -118,7 +118,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -149,7 +149,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -177,7 +177,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, err error) {
 							return nil, errors.New("")
 						}
@@ -209,7 +209,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -249,7 +249,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -292,7 +292,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -321,7 +321,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fakeClient := tt.fields.elasticacheClient()
-			r := &ElasticacheEngine{
+			r := &ElasticacheManager{
 				elasticacheClient: fakeClient,
 				taggingClient:     tt.fields.taggingClient(),
 				logger:            tt.fields.logger,

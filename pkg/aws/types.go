@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
 	"github.com/aws/aws-sdk-go/service/rds/rdsiface"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
@@ -15,20 +16,29 @@ const (
 	tagKeyClusterId = "integreatly.org/clusterID"
 	statusDeleting  = "deleting"
 
-	managerRDS         ResourceManagerType = "aws_rds"
-	managerS3          ResourceManagerType = "aws_s3"
-	managerRDSSnapshot ResourceManagerType = "aws_rds_snapshot"
+	managerRDS                 ResourceManagerType = "aws_rds"
+	managerS3                  ResourceManagerType = "aws_s3"
+	managerSubnet              ResourceManagerType = "aws_ec2_subnet"
+	managerRDSSnapshot         ResourceManagerType = "aws_rds_snapshot"
+	managerElasticache         ResourceManagerType = "aws_elasticache"
+	managerElasticacheSnapshot ResourceManagerType = "aws_elasticache_snapshot"
 
 	loggingKeyClusterID = "cluster-id"
 	loggingKeyDryRun    = "dry-run"
-	loggingKeyEngine    = "engine"
+	loggingKeyManager   = "manager"
 )
 
-//go:generate moq -out moq_actionengine_test.go . ClusterResourceManager
+//go:generate moq -out moq_crm_test.go . ClusterResourceManager
 //ClusterResourceManager Perform actions for a specific resource
 type ClusterResourceManager interface {
 	GetName() string
 	DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error)
+}
+
+//basicResource Representation of basic AWS resource information
+type basicResource struct {
+	Name string
+	ARN  string
 }
 
 //go:generate moq -out moq_rdsclient_test.go . rdsClient
@@ -53,6 +63,12 @@ type s3Client interface {
 //s3BatchDeleteClient alias for use with moq
 type s3BatchDeleteClient interface {
 	s3manageriface.BatchDelete
+}
+
+//go:generate moq -out moq_ec2client_test.go . ec2Client
+//ec2Client alias for use with moq
+type ec2Client interface {
+	ec2iface.EC2API
 }
 
 //go:generate moq -out moq_taggingclient_test.go . taggingClient

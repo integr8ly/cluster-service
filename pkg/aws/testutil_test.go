@@ -189,7 +189,6 @@ func fakeS3BatchClient(modifyFn func(c *s3BatchDeleteClientMock) error) (*s3Batc
 	return client, nil
 }
 
-//ELASTICACHE
 func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
@@ -246,40 +245,6 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 			return &elasticache.DeleteReplicationGroupOutput{
 				ReplicationGroup: fakeElasticacheReplicationGroup(),
 			}, nil
-		},
-	}
-	if err := modifyFn(client); err != nil {
-		return nil, fmt.Errorf("error occurred in modify function: %w", err)
-	}
-	return client, nil
-}
-
-// Resourcegrouptagging
-
-func fakeResourceTagMappingList() *resourcegroupstaggingapi.ResourceTagMapping {
-	return &resourcegroupstaggingapi.ResourceTagMapping{
-		ResourceARN: aws.String(fakeResourceTaggingClientArn),
-		Tags: []*resourcegroupstaggingapi.Tag{
-			{
-				Key:   aws.String(fakeResourceTaggingClientTagKey),
-				Value: aws.String(fakeResourceTaggingClientTagValue),
-			},
-		},
-	}
-}
-
-func fakeResourcetaggingClient(modifyFn func(c *taggingClientMock) error) (*taggingClientMock, error) {
-	if modifyFn == nil {
-		return nil, fmt.Errorf("modifyFn must be defined")
-	}
-	client := &taggingClientMock{
-		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
-			return &resourcegroupstaggingapi.GetResourcesOutput{
-					ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
-						fakeResourceTagMappingList(),
-					},
-				},
-				nil
 		},
 	}
 	if err := modifyFn(client); err != nil {
