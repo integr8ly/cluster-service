@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/aws/aws-sdk-go/aws/awserr"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
@@ -84,6 +86,11 @@ func (s *SubnetManager) DeleteResourcesForCluster(clusterId string, tags map[str
 			SubnetId: aws.String(subnet.Name),
 		}
 		if _, err := s.ec2Client.DeleteSubnet(deleteSubnetInput); err != nil {
+			if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == "DependencyViolation" {
+				subnetLogger.Debug("subnet has existing dependencies which have not been deleted, skipping")
+				reportItem.ActionStatus = clusterservice.ActionStatusSkipped
+				continue
+			}
 			return nil, errors.WrapLog(err, "failed to delete subnet", s.logger)
 		}
 	}
