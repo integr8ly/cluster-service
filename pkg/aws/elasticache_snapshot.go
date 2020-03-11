@@ -4,7 +4,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
+	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi/resourcegroupstaggingapiiface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
@@ -14,8 +16,8 @@ import (
 var _ ActionEngine = &ElasticacheSnapshotEngine{}
 
 type ElasticacheSnapshotEngine struct {
-	elasticacheClient elasticacheClient
-	taggingClient     resourcetaggingClient
+	elasticacheClient elasticacheiface.ElastiCacheAPI
+	taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
 	logger            *logrus.Entry
 }
 
@@ -28,7 +30,7 @@ func newDefaultElasticacheSnapshotEngine(session *session.Session, logger *logru
 }
 
 func (r *ElasticacheSnapshotEngine) GetName() string {
-	return "AWS elasticache Engine"
+	return "AWS elasticache Snapshot Engine"
 }
 
 func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
@@ -40,7 +42,7 @@ func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, 
 	var snapshotsToDeleteCacheClusterId []string
 
 	resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
-		ResourceTypeFilters: aws.StringSlice([]string{"elasticache:snapshot"}),
+		ResourceTypeFilters: aws.StringSlice([]string{"elasticache:cluster"}),
 		TagFilters: []*resourcegroupstaggingapi.TagFilter{
 			{
 				Key: aws.String(tagKeyClusterId),
@@ -58,6 +60,7 @@ func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, 
 		arn := aws.StringValue(resourceTagMapping.ResourceARN)
 		arnSplit := strings.Split(arn, ":")
 		cacheClusterId := arnSplit[len(arnSplit)-1]
+		print(cacheClusterId)
 		cacheClusterInput := &elasticache.DescribeCacheClustersInput{
 			CacheClusterId: aws.String(cacheClusterId),
 		}
@@ -82,7 +85,7 @@ func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, 
 		ssLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
 			ID:           cacheClusterId,
-			Name:         "elasticache snapshotOutput",
+			Name:         "elasticache snapshot",
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusInProgress,
 		}
