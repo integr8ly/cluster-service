@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-var _ ActionEngine = &ElasticacheSnapshotEngine{}
+var _ ClusterResourceManager = &ElasticacheSnapshotEngine{}
 
 type ElasticacheSnapshotEngine struct {
 	elasticacheClient elasticacheiface.ElastiCacheAPI
