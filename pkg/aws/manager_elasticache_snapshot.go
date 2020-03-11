@@ -26,7 +26,7 @@ func NewDefaultElasticacheSnapshotManager(session *session.Session, logger *logr
 	return &ElasticacheSnapshotManager{
 		elasticacheClient: elasticache.New(session),
 		taggingClient:     resourcegroupstaggingapi.New(session),
-		logger:            logger.WithField("engine", "aws_elasticache_snapshot"),
+		logger:            logger.WithField(loggingKeyManager, managerElasticacheSnapshot),
 	}
 }
 

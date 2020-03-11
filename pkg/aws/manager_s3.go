@@ -40,7 +40,7 @@ func NewDefaultS3Engine(session *session.Session, logger *logrus.Entry) *S3Manag
 		s3Client:            s3Client,
 		s3BatchDeleteClient: s3manager.NewBatchDeleteWithClient(s3Client),
 		taggingClient:       resourcegroupstaggingapi.New(session),
-		logger:              logger.WithField(loggingKeyEngine, managerS3),
+		logger:              logger.WithField(loggingKeyManager, managerS3),
 	}
 }
 

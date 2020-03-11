@@ -31,7 +31,7 @@ func NewDefaultSubnetManager(session *session.Session, logger *logrus.Entry) *Su
 	return &SubnetManager{
 		ec2Client:     ec2.New(session),
 		taggingClient: resourcegroupstaggingapi.New(session),
-		logger:        logger.WithField(loggingKeyEngine, managerS3),
+		logger:        logger.WithField(loggingKeyManager, managerSubnet),
 	}
 }
 
@@ -40,7 +40,7 @@ func (r *SubnetManager) GetName() string {
 }
 
 func (s *SubnetManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
-	s.logger.Debug("delete s3 resources for cluster")
+	s.logger.Debug("delete subnet resources for cluster")
 	resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
 		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeSubnet}),
 		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),

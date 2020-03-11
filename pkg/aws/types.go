@@ -16,13 +16,16 @@ const (
 	tagKeyClusterId = "integreatly.org/clusterID"
 	statusDeleting  = "deleting"
 
-	managerRDS         ResourceManagerType = "aws_rds"
-	managerS3          ResourceManagerType = "aws_s3"
-	managerRDSSnapshot ResourceManagerType = "aws_rds_snapshot"
+	managerRDS                 ResourceManagerType = "aws_rds"
+	managerS3                  ResourceManagerType = "aws_s3"
+	managerSubnet              ResourceManagerType = "aws_ec2_subnet"
+	managerRDSSnapshot         ResourceManagerType = "aws_rds_snapshot"
+	managerElasticache         ResourceManagerType = "aws_elasticache"
+	managerElasticacheSnapshot ResourceManagerType = "aws_elasticache_snapshot"
 
 	loggingKeyClusterID = "cluster-id"
 	loggingKeyDryRun    = "dry-run"
-	loggingKeyEngine    = "engine"
+	loggingKeyManager   = "manager"
 )
 
 //go:generate moq -out moq_crm_test.go . ClusterResourceManager

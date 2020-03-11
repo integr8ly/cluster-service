@@ -36,7 +36,7 @@ func (c *Client) DeleteResourcesForCluster(clusterId string, tags map[string]str
 	logger.Debugf("deleting resources for cluster")
 	report := &clusterservice.Report{}
 	for _, engine := range c.ResourceManagers {
-		engineLogger := logger.WithField(loggingKeyEngine, engine.GetName())
+		engineLogger := logger.WithField(loggingKeyManager, engine.GetName())
 		engineLogger.Debugf("found Logger")
 		reportItems, err := engine.DeleteResourcesForCluster(clusterId, tags, dryRun)
 		if err != nil {

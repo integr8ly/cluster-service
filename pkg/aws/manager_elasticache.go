@@ -26,7 +26,7 @@ func NewDefaultElasticacheManager(session *session.Session, logger *logrus.Entry
 	return &ElasticacheManager{
 		elasticacheClient: elasticache.New(session),
 		taggingClient:     resourcegroupstaggingapi.New(session),
-		logger:            logger.WithField("engine", "aws_elasticache"),
+		logger:            logger.WithField(loggingKeyManager, managerElasticache),
 	}
 }
 

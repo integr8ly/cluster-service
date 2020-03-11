@@ -38,7 +38,7 @@ func NewDefaultRDSSnapshotManager(session *session.Session, logger *logrus.Entry
 	return &RDSSnapshotManager{
 		rdsClient:     rds.New(session),
 		taggingClient: resourcegroupstaggingapi.New(session),
-		logger:        logger.WithField(loggingKeyEngine, managerRDSSnapshot),
+		logger:        logger.WithField(loggingKeyManager, managerRDSSnapshot),
 	}
 }
 
