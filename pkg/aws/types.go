@@ -65,7 +65,7 @@ type s3BatchDeleteClient interface {
 	s3manageriface.BatchDelete
 }
 
-//go:generate moq -out moq_ec2client_test.go . ec2client
+//go:generate moq -out moq_ec2client_test.go . ec2Client
 //ec2Client alias for use with moq
 type ec2Client interface {
 	ec2iface.EC2API
