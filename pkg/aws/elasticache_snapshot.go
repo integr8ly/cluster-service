@@ -60,7 +60,6 @@ func (r *ElasticacheSnapshotEngine) DeleteResourcesForCluster(clusterId string, 
 		arn := aws.StringValue(resourceTagMapping.ResourceARN)
 		arnSplit := strings.Split(arn, ":")
 		cacheClusterId := arnSplit[len(arnSplit)-1]
-		print(cacheClusterId)
 		cacheClusterInput := &elasticache.DescribeCacheClustersInput{
 			CacheClusterId: aws.String(cacheClusterId),
 		}
