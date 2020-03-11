@@ -299,11 +299,11 @@ func fakeLogger(modifyFn func(l *logrus.Entry) error) (*logrus.Entry, error) {
 	return logger, nil
 }
 
-func fakeActionEngine(modifyFn func(e *ActionEngineMock) error) (*ActionEngineMock, error) {
+func fakeClusterManager(modifyFn func(e *ClusterResourceManagerMock) error) (*ClusterResourceManagerMock, error) {
 	if modifyFn == nil {
 		return nil, errorMustBeDefined("modifyFn")
 	}
-	engine := &ActionEngineMock{
+	clusterManager := &ClusterResourceManagerMock{
 		DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) (items []*clusterservice.ReportItem, e error) {
 			return []*clusterservice.ReportItem{
 				fakeReportItemDeleting(),
@@ -313,10 +313,10 @@ func fakeActionEngine(modifyFn func(e *ActionEngineMock) error) (*ActionEngineMo
 			return fakeResourceManagerName
 		},
 	}
-	if err := modifyFn(engine); err != nil {
+	if err := modifyFn(clusterManager); err != nil {
 		return nil, errorModifyFailed(err)
 	}
-	return engine, nil
+	return clusterManager, nil
 }
 
 func errorMustBeDefined(varName string) error {
