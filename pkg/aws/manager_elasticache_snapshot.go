@@ -88,13 +88,13 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
 			continue
 		}
-		ssLogger.Debug("performing deletion of snapshotOutput cachecluster")
+		ssLogger.Debug("performing deletion of snapshot")
 		snapshotInput := &elasticache.DescribeSnapshotsInput{
-			CacheClusterId: aws.String(cacheClusterId),
+			CacheClusterId: &cacheClusterId,
 		}
 		snapshotOutput, err := r.elasticacheClient.DescribeSnapshots(snapshotInput)
 		if err != nil {
-			return nil, errors.WrapLog(err, "cannot Describe snapshotInput", logger)
+			return nil, errors.WrapLog(err, "cannot describe snapshots", logger)
 		}
 		if len(snapshotOutput.Snapshots) > 0 && aws.StringValue(snapshotOutput.Snapshots[0].SnapshotStatus) == statusDeleting {
 			ssLogger.Debugf("deletion of snapshots already in progress")

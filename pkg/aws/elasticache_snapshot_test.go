@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/pkg/errors"
@@ -69,6 +70,68 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			wantErr: "failed to describe cache clusters: ",
+		}, {
+			name: "error when getting cacheCluster output",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeCacheClustersFunc = func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			wantErr: "cannot get cacheCluster output: ",
+		}, {
+			name: "error when describe snapshot fails",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeSnapshotsFunc = func(in1 *elasticache.DescribeSnapshotsInput) (output *elasticache.DescribeSnapshotsOutput, e error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			wantErr: "cannot describe snapshots: ",
 		},
 	}
 
@@ -84,11 +147,13 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 			if tt.wantErr != "" && err.Error() != tt.wantErr {
 				t.Errorf("DeleteResourcesForCluster() error = %v, wantErr %v", err, tt.wantErr)
 				return
+
 			}
 
 			if !equalReportItems(got, tt.want) {
 				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", got, tt.want)
 			}
+
 			if tt.wantFn != nil {
 				if err := tt.wantFn(fakeClient); err != nil {
 					t.Errorf("DeleteResourcesForCluster() err = %v", err)

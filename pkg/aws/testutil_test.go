@@ -31,13 +31,11 @@ const (
 	fakeRDSClientInstanceARN                = fakeARN
 	fakeRDSClientInstanceDeletionProtection = true
 
+	//ELasticache-specific
 	fakeElasticacheClientName               = "elasticache Replication group"
-	fakeElasticacheClientRegion             = "eu-west-1"
 	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
 	fakeElasticacheClientDescription        = "TestDescription"
 	fakeElasticacheClientEngine             = "redis"
-	fakeElasticacheClientTagKey             = "integreatly.org/clusterID"
-	fakeElasticacheClientTagValue           = "test"
 	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
 	fakeElasticacheClientStatusAvailable    = "available"
 	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
@@ -45,7 +43,8 @@ const (
 	fakeResourceTaggingClientTagValue       = "testValue"
 	fakeClusterID                           = "testClusterID"
 	fakeCacheClusterStatus                  = "available"
-	fakeActionEngineName                    = "Fake Action Engine"
+	fakeElasticacheSnapshotName             = "testSnapshotName"
+	fakeElasticacheSnapshotStatus           = "available"
 
 	//resource tagging-specific
 	fakeResourceTagMappingARN = fakeARN
@@ -189,6 +188,16 @@ func fakeS3BatchClient(modifyFn func(c *s3BatchDeleteClientMock) error) (*s3Batc
 	return client, nil
 }
 
+//ELASTICACHE
+func fakeElasticacheSnapshot() *elasticache.Snapshot {
+	return &elasticache.Snapshot{
+		CacheClusterId: aws.String(fakeClusterID),
+		CacheNodeType:  aws.String(fakeElasticacheClientCacheNodeType),
+		Engine:         aws.String(fakeElasticacheClientEngine),
+		SnapshotName:   aws.String(fakeElasticacheSnapshotName),
+		SnapshotStatus: aws.String(fakeElasticacheSnapshotStatus),
+	}
+}
 func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
@@ -233,6 +242,12 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 			return &elasticache.DescribeReplicationGroupsOutput{
 				ReplicationGroups: []*elasticache.ReplicationGroup{
 					fakeElasticacheReplicationGroup(),
+				}}, nil
+		},
+		DescribeSnapshotsFunc: func(in1 *elasticache.DescribeSnapshotsInput) (output *elasticache.DescribeSnapshotsOutput, e error) {
+			return &elasticache.DescribeSnapshotsOutput{
+				Snapshots: []*elasticache.Snapshot{
+					fakeElasticacheSnapshot(),
 				}}, nil
 		},
 		DescribeCacheClustersFunc: func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
