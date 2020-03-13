@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
+func TestElasticacheSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 	fakeClusterId := fakeClusterID
 	fakeLogger, err := fakeLogger(func(l *logrus.Entry) error {
 		return nil
@@ -51,7 +51,7 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
 							return nil, errors.New("")
 						}
@@ -75,7 +75,7 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 			fields: fields{
 				elasticacheClient: func() *elasticacheClientMock {
 					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
-						c.DescribeCacheClustersFunc = func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
+						c.DescribeCacheClustersFunc = func(in1 *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
 							return nil, errors.New("")
 						}
 						return nil
@@ -86,7 +86,7 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 					return fakeClient
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -102,7 +102,7 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			wantErr: "cannot get cacheCluster output: ",
 		}, {
-			name: "error when describe snapshot fails",
+			name: "error when describe replicationGroups fail",
 			fields: fields{
 				elasticacheClient: func() *elasticacheClientMock {
 					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
@@ -115,9 +115,10 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 						t.Fatal(err)
 					}
 					return fakeClient
+
 				},
 				taggingClient: func() *taggingClientMock {
-					fakeTaggingClient, err := fakeResourcetaggingClient(func(c *taggingClientMock) error {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						return nil
 					})
 					if err != nil {
@@ -129,16 +130,16 @@ func TestElasticacheSnapshotEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			args: args{
 				clusterId: fakeClusterId,
-				dryRun:    true,
+				dryRun:    false,
 			},
-			wantErr: "cannot describe snapshots: ",
+			wantErr: "cannot describe replicationGroups: ",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fakeClient := tt.fields.elasticacheClient()
-			r := &ElasticacheEngine{
+			r := &ElasticacheSnapshotManager{
 				elasticacheClient: fakeClient,
 				taggingClient:     tt.fields.taggingClient(),
 				logger:            tt.fields.logger,
