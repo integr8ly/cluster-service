@@ -201,7 +201,7 @@ func fakeElasticacheSnapshot() *elasticache.Snapshot {
 func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeARN,
-		Name:         fakeElasticacheSnapshotName,
+		Name:         fakeResourceIdentifier,
 		Action:       clusterservice.ActionDelete,
 		ActionStatus: clusterservice.ActionStatusInProgress,
 	}
@@ -209,7 +209,7 @@ func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
 func fakeReportItemElasticacheSnapshotDryRun() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeARN,
-		Name:         fakeElasticacheSnapshotName,
+		Name:         fakeResourceIdentifier,
 		Action:       clusterservice.ActionDelete,
 		ActionStatus: clusterservice.ActionStatusDryRun,
 	}
