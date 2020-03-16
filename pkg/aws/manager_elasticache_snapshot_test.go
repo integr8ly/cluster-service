@@ -1,6 +1,7 @@
 package aws
 
 import (
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
@@ -102,7 +103,7 @@ func TestElasticacheSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 			},
 			wantErr: "cannot get cacheCluster output: ",
 		}, {
-			name: "error when describe replicationGroups fail",
+			name: "error when describe snapshots fail",
 			fields: fields{
 				elasticacheClient: func() *elasticacheClientMock {
 					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
@@ -132,7 +133,190 @@ func TestElasticacheSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 				clusterId: fakeClusterId,
 				dryRun:    false,
 			},
-			wantErr: "cannot describe replicationGroups: ",
+			wantErr: "cannot describe snapshots: ",
+		}, {
+			name: "error when delete snapshot fails",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DeleteSnapshotFunc = func(in1 *elasticache.DeleteSnapshotInput) (output *elasticache.DeleteSnapshotOutput, e error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			wantErr: "failed to delete snapshot: ",
+		}, {
+			name: "pass when no report is returned if no snapshots deleted ",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, err error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			want:    []*clusterservice.ReportItem{},
+			wantErr: "",
+		}, {
+			name: "pass when snapshots deleted and reportItem has status set to deleting",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemElasticacheSnapshotDeleting(),
+			},
+			wantErr: "",
+		}, {
+			name: "pass when delete snapshot method isn't called if a snapshot is already deleting ",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						fakeElasticacheSnapshot := fakeElasticacheSnapshot()
+						fakeElasticacheSnapshot.SnapshotStatus = aws.String(statusDeleting)
+						c.DescribeSnapshotsFunc = func(in1 *elasticache.DescribeSnapshotsInput) (output *elasticache.DescribeSnapshotsOutput, err error) {
+							return &elasticache.DescribeSnapshotsOutput{
+								Snapshots: []*elasticache.Snapshot{
+									fakeElasticacheSnapshot,
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemElasticacheSnapshotDeleting(),
+			},
+			wantFn: func(mock *elasticacheClientMock) error {
+				if len(mock.DeleteSnapshotCalls()) != 0 {
+					return errors.New("delete snapshot call count should be 0")
+				}
+				return nil
+			},
+		}, {
+			name: "pass when no snapshots are deleted if dry run is true",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DescribeSnapshotsFunc = func(in1 *elasticache.DescribeSnapshotsInput) (output *elasticache.DescribeSnapshotsOutput, err error) {
+							return &elasticache.DescribeSnapshotsOutput{
+								Snapshots: []*elasticache.Snapshot{
+									fakeElasticacheSnapshot(),
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    true,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemElasticacheSnapshotDryRun(),
+			},
+			wantFn: func(mock *elasticacheClientMock) error {
+				if len(mock.DeleteSnapshotCalls()) != 0 {
+					return errors.New("delete snapshot call count should be 0 as dry run is true")
+				}
+				return nil
+			},
 		},
 	}
 

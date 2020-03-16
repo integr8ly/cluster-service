@@ -69,15 +69,14 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 			}
 			snapshotsToDeleteCacheClusterId = append(snapshotsToDeleteCacheClusterId, *cacheCluster.CacheClusterId)
 		}
-	}
 
-	logger.Debugf("filtering complete, %d cacheclusters matched", len(snapshotsToDeleteCacheClusterId))
-	for _, cacheClusterId := range snapshotsToDeleteCacheClusterId {
+		logger.Debugf("filtering complete, %d cacheClusters matched", len(snapshotsToDeleteCacheClusterId))
+
 		//delete each cacheCluster in the list
-		ssLogger := logger.WithField("cacheClusterID", aws.String(cacheClusterId))
+		ssLogger := logger.WithField("resourceARN", aws.StringValue(resourceTagMapping.ResourceARN))
 		ssLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
-			ID:           cacheClusterId,
+			ID:           aws.StringValue(resourceTagMapping.ResourceARN),
 			Name:         "elasticache snapshot",
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusInProgress,
@@ -101,6 +100,7 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 			reportItem.ActionStatus = clusterservice.ActionStatusInProgress
 			continue
 		}
+
 		var snapshotNamesToDelete []string
 		for _, snapshot := range snapshotOutput.Snapshots {
 			ssLogger := logger.WithField("snapshotName", snapshot.SnapshotName)
@@ -110,6 +110,7 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 			}
 			snapshotNamesToDelete = append(snapshotNamesToDelete, *snapshot.SnapshotName)
 		}
+
 		for _, snapshotName := range snapshotNamesToDelete {
 			deleteSnapshotInput := &elasticache.DeleteSnapshotInput{
 				SnapshotName: aws.String(snapshotName),

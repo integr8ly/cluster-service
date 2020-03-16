@@ -43,7 +43,7 @@ const (
 	fakeResourceTaggingClientTagValue       = "testValue"
 	fakeClusterID                           = "testClusterID"
 	fakeCacheClusterStatus                  = "available"
-	fakeElasticacheSnapshotName             = "testSnapshotName"
+	fakeElasticacheSnapshotName             = "elasticache snapshot"
 	fakeElasticacheSnapshotStatus           = "available"
 
 	//resource tagging-specific
@@ -198,6 +198,22 @@ func fakeElasticacheSnapshot() *elasticache.Snapshot {
 		SnapshotStatus: aws.String(fakeElasticacheSnapshotStatus),
 	}
 }
+func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeElasticacheSnapshotName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusInProgress,
+	}
+}
+func fakeReportItemElasticacheSnapshotDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeElasticacheSnapshotName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
 func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
@@ -259,6 +275,11 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
 			return &elasticache.DeleteReplicationGroupOutput{
 				ReplicationGroup: fakeElasticacheReplicationGroup(),
+			}, nil
+		},
+		DeleteSnapshotFunc: func(in1 *elasticache.DeleteSnapshotInput) (output *elasticache.DeleteSnapshotOutput, e error) {
+			return &elasticache.DeleteSnapshotOutput{
+				Snapshot: fakeElasticacheSnapshot(),
 			}, nil
 		},
 	}
