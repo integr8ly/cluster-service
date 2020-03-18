@@ -3,6 +3,8 @@ package aws
 import (
 	"strings"
 
+	"github.com/aws/aws-sdk-go/aws/awserr"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
@@ -12,6 +14,10 @@ import (
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
+)
+
+const (
+	resourceTypeElasticacheSnapshot = "elasticache:snapshot"
 )
 
 var _ ClusterResourceManager = &ElasticacheSnapshotManager{}
@@ -38,90 +44,53 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 	logger := r.logger.WithFields(logrus.Fields{"clusterId": clusterId, "dryRun": dryRun})
 	logger.Debug("deleting resources for cluster")
 
-	var reportItems []*clusterservice.ReportItem
 	//collection of clusterID's for respective snapshots
-	var snapshotsToDeleteCacheClusterId []string
+	var snapshotsToDelete []*basicResource
 
 	resourceInput := &resourcegroupstaggingapi.GetResourcesInput{
-		ResourceTypeFilters: aws.StringSlice([]string{"elasticache:cluster"}),
+		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeElasticacheSnapshot}),
 		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
 	}
 	resourceOutput, err := r.taggingClient.GetResources(resourceInput)
 	if err != nil {
-		return nil, errors.WrapLog(err, "failed to describe cache clusters", logger)
+		return nil, errors.WrapLog(err, "failed to get tagged snapshots", logger)
 	}
+	//convert response to standardised resource
 	for _, resourceTagMapping := range resourceOutput.ResourceTagMappingList {
-		arn := aws.StringValue(resourceTagMapping.ResourceARN)
-		arnSplit := strings.Split(arn, ":")
-		cacheClusterId := arnSplit[len(arnSplit)-1]
-		cacheClusterInput := &elasticache.DescribeCacheClustersInput{
-			CacheClusterId: aws.String(cacheClusterId),
-		}
-		cacheClusterOutput, err := r.elasticacheClient.DescribeCacheClusters(cacheClusterInput)
-		if err != nil {
-			return nil, errors.WrapLog(err, "cannot get cacheCluster output", logger)
-		}
-		for _, cacheCluster := range cacheClusterOutput.CacheClusters {
-			rgLogger := logger.WithField("snapshotCacheClusterID", cacheCluster.CacheClusterId)
-			if contains(snapshotsToDeleteCacheClusterId, *cacheCluster.CacheClusterId) {
-				rgLogger.Debugf("cacheCluster already exists in deletion list (%s=%s)", *cacheCluster.CacheClusterId, clusterId)
-				break
-			}
-			snapshotsToDeleteCacheClusterId = append(snapshotsToDeleteCacheClusterId, *cacheCluster.CacheClusterId)
-		}
+		snapshotARN := aws.StringValue(resourceTagMapping.ResourceARN)
+		snapshotARNElements := strings.Split(snapshotARN, ":")
+		snapshotsToDelete = append(snapshotsToDelete, &basicResource{
+			Name: snapshotARNElements[len(snapshotARNElements)-1],
+			ARN:  snapshotARN,
+		})
+	}
+	var reportItems []*clusterservice.ReportItem
+	for _, snapshot := range snapshotsToDelete {
+		snapshotLogger := r.logger.WithField(loggingKeySnapshot, snapshot.Name)
+		snapshotLogger.Debug("handling deletion for snapshot")
 
-		logger.Debugf("filtering complete, %d cacheClusters matched", len(snapshotsToDeleteCacheClusterId))
-
-		//delete each cacheCluster in the list
-		ssLogger := logger.WithField("resourceARN", aws.StringValue(resourceTagMapping.ResourceARN))
-		ssLogger.Debugf("building report for database")
 		reportItem := &clusterservice.ReportItem{
-			ID:           aws.StringValue(resourceTagMapping.ResourceARN),
-			Name:         "elasticache snapshot",
+			ID:           snapshot.ARN,
+			Name:         snapshot.Name,
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusInProgress,
 		}
 		reportItems = append(reportItems, reportItem)
 		if dryRun {
-			ssLogger.Debug("dry run enabled, skipping deletion step")
+			snapshotLogger.Debug("dry run is enabled, skipping")
 			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
 			continue
 		}
-		ssLogger.Debug("performing deletion of snapshot")
-		snapshotInput := &elasticache.DescribeSnapshotsInput{
-			CacheClusterId: &cacheClusterId,
+		deleteSnapshotInput := &elasticache.DeleteSnapshotInput{
+			SnapshotName: aws.String(snapshot.Name),
 		}
-		snapshotOutput, err := r.elasticacheClient.DescribeSnapshots(snapshotInput)
-		if err != nil {
-			return nil, errors.WrapLog(err, "cannot describe snapshots", logger)
-		}
-		if len(snapshotOutput.Snapshots) > 0 && aws.StringValue(snapshotOutput.Snapshots[0].SnapshotStatus) == statusDeleting {
-			ssLogger.Debugf("deletion of snapshots already in progress")
-			reportItem.ActionStatus = clusterservice.ActionStatusInProgress
-			continue
-		}
-
-		var snapshotNamesToDelete []string
-		for _, snapshot := range snapshotOutput.Snapshots {
-			ssLogger := logger.WithField("snapshotName", snapshot.SnapshotName)
-			if contains(snapshotNamesToDelete, *snapshot.SnapshotName) {
-				ssLogger.Debugf("snapshot already exists in deletion list (%s=%s)", *snapshot.SnapshotName, clusterId)
-				break
+		if _, err := r.elasticacheClient.DeleteSnapshot(deleteSnapshotInput); err != nil {
+			if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == elasticache.ErrCodeInvalidSnapshotStateFault {
+				snapshotLogger.Debug("snapshot is in a deleting state, ignoring error")
+				continue
 			}
-			snapshotNamesToDelete = append(snapshotNamesToDelete, *snapshot.SnapshotName)
-		}
-
-		for _, snapshotName := range snapshotNamesToDelete {
-			deleteSnapshotInput := &elasticache.DeleteSnapshotInput{
-				SnapshotName: aws.String(snapshotName),
-			}
-			if _, err := r.elasticacheClient.DeleteSnapshot(deleteSnapshotInput); err != nil {
-				return nil, errors.WrapLog(err, "failed to delete snapshot", logger)
-			}
+			return nil, errors.WrapLog(err, "failed to delete snapshot", r.logger)
 		}
 	}
-	if reportItems != nil {
-		return reportItems, nil
-	}
-	return nil, nil
+	return reportItems, nil
 }
