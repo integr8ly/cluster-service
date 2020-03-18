@@ -31,13 +31,11 @@ const (
 	fakeRDSClientInstanceARN                = fakeARN
 	fakeRDSClientInstanceDeletionProtection = true
 
+	//ELasticache-specific
 	fakeElasticacheClientName               = "elasticache Replication group"
-	fakeElasticacheClientRegion             = "eu-west-1"
 	fakeElasticacheClientReplicationGroupId = "testRepGroupID"
 	fakeElasticacheClientDescription        = "TestDescription"
 	fakeElasticacheClientEngine             = "redis"
-	fakeElasticacheClientTagKey             = "integreatly.org/clusterID"
-	fakeElasticacheClientTagValue           = "test"
 	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
 	fakeElasticacheClientStatusAvailable    = "available"
 	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
@@ -45,7 +43,8 @@ const (
 	fakeResourceTaggingClientTagValue       = "testValue"
 	fakeClusterID                           = "testClusterID"
 	fakeCacheClusterStatus                  = "available"
-	fakeActionEngineName                    = "Fake Action Engine"
+	fakeElasticacheSnapshotName             = "elasticache snapshot"
+	fakeElasticacheSnapshotStatus           = "available"
 
 	//resource tagging-specific
 	fakeResourceTagMappingARN = fakeARN
@@ -189,6 +188,32 @@ func fakeS3BatchClient(modifyFn func(c *s3BatchDeleteClientMock) error) (*s3Batc
 	return client, nil
 }
 
+//ELASTICACHE
+func fakeElasticacheSnapshot() *elasticache.Snapshot {
+	return &elasticache.Snapshot{
+		CacheClusterId: aws.String(fakeClusterID),
+		CacheNodeType:  aws.String(fakeElasticacheClientCacheNodeType),
+		Engine:         aws.String(fakeElasticacheClientEngine),
+		SnapshotName:   aws.String(fakeElasticacheSnapshotName),
+		SnapshotStatus: aws.String(fakeElasticacheSnapshotStatus),
+	}
+}
+func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeResourceIdentifier,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusInProgress,
+	}
+}
+func fakeReportItemElasticacheSnapshotDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeResourceIdentifier,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
 func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
@@ -235,6 +260,12 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 					fakeElasticacheReplicationGroup(),
 				}}, nil
 		},
+		DescribeSnapshotsFunc: func(in1 *elasticache.DescribeSnapshotsInput) (output *elasticache.DescribeSnapshotsOutput, e error) {
+			return &elasticache.DescribeSnapshotsOutput{
+				Snapshots: []*elasticache.Snapshot{
+					fakeElasticacheSnapshot(),
+				}}, nil
+		},
 		DescribeCacheClustersFunc: func(in1 *elasticache.DescribeCacheClustersInput) (output *elasticache.DescribeCacheClustersOutput, e error) {
 			return &elasticache.DescribeCacheClustersOutput{
 				CacheClusters: []*elasticache.CacheCluster{
@@ -244,6 +275,11 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 		DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (output *elasticache.DeleteReplicationGroupOutput, e error) {
 			return &elasticache.DeleteReplicationGroupOutput{
 				ReplicationGroup: fakeElasticacheReplicationGroup(),
+			}, nil
+		},
+		DeleteSnapshotFunc: func(in1 *elasticache.DeleteSnapshotInput) (output *elasticache.DeleteSnapshotOutput, e error) {
+			return &elasticache.DeleteSnapshotOutput{
+				Snapshot: fakeElasticacheSnapshot(),
 			}, nil
 		},
 	}

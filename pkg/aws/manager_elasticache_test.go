@@ -330,11 +330,13 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			if tt.wantErr != "" && err.Error() != tt.wantErr {
 				t.Errorf("DeleteResourcesForCluster() error = %v, wantErr %v", err, tt.wantErr)
 				return
+
 			}
 
 			if !equalReportItems(got, tt.want) {
 				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", got, tt.want)
 			}
+
 			if tt.wantFn != nil {
 				if err := tt.wantFn(fakeClient); err != nil {
 					t.Errorf("DeleteResourcesForCluster() err = %v", err)
