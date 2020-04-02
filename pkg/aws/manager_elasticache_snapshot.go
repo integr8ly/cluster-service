@@ -59,8 +59,20 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 	for _, resourceTagMapping := range resourceOutput.ResourceTagMappingList {
 		snapshotARN := aws.StringValue(resourceTagMapping.ResourceARN)
 		snapshotARNElements := strings.Split(snapshotARN, ":")
+		snapshotName := snapshotARNElements[len(snapshotARNElements)-1]
+		snapshotLogger := r.logger.WithField(loggingKeySnapshot, snapshotName)
+		describeSnapshotsOutput, err := r.elasticacheClient.DescribeSnapshots(&elasticache.DescribeSnapshotsInput{
+			SnapshotName: aws.String(snapshotName),
+		})
+		if err != nil {
+			return nil, errors.WrapLog(err, "failed to get elasticache snapshot", r.logger)
+		}
+		if len(describeSnapshotsOutput.Snapshots) == 0 {
+			snapshotLogger.Debug("no snapshot found, assuming caching issue in aws, skipping")
+			continue
+		}
 		snapshotsToDelete = append(snapshotsToDelete, &basicResource{
-			Name: snapshotARNElements[len(snapshotARNElements)-1],
+			Name: snapshotName,
 			ARN:  snapshotARN,
 		})
 	}
@@ -85,9 +97,15 @@ func (r *ElasticacheSnapshotManager) DeleteResourcesForCluster(clusterId string,
 			SnapshotName: aws.String(snapshot.Name),
 		}
 		if _, err := r.elasticacheClient.DeleteSnapshot(deleteSnapshotInput); err != nil {
-			if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == elasticache.ErrCodeInvalidSnapshotStateFault {
-				snapshotLogger.Debug("snapshot is in a deleting state, ignoring error")
-				continue
+			if awsErr, ok := err.(awserr.Error); ok {
+				if awsErr.Code() == elasticache.ErrCodeInvalidSnapshotStateFault {
+					snapshotLogger.Debug("snapshot is in a deleting state, ignoring error")
+					continue
+				}
+				if awsErr.Code() == elasticache.ErrCodeSnapshotNotFoundFault {
+					snapshotLogger.Debug("snapshot is not found, assuming already removed or aws caching, ignoring error")
+					continue
+				}
 			}
 			return nil, errors.WrapLog(err, "failed to delete snapshot", r.logger)
 		}
