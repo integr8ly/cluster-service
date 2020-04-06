@@ -79,8 +79,8 @@ var cleanupCmd = &cobra.Command{
 			if !watch {
 				break
 			}
-			logger.Debug("watch is enabled, waiting 10 seconds before re-invoking")
-			time.Sleep(time.Second * 10)
+			logger.Debug("watch is enabled, waiting 30 seconds before re-invoking")
+			time.Sleep(time.Second * 30)
 		}
 	},
 }
