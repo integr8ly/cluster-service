@@ -64,7 +64,7 @@ func (r *RDSSnapshotManager) DeleteResourcesForCluster(clusterId string, tags ma
 		snapshotARN := aws.StringValue(resourceTagMapping.ResourceARN)
 		//get resource id from arn, should be the last element
 		//strings#Split will always return at least one element https://golang.org/pkg/strings/#Split
-		snapshotARNElements := strings.Split(snapshotARN, ":snapshot:")
+		snapshotARNElements := strings.Split(snapshotARN, ":")
 		snapshotID := snapshotARNElements[len(snapshotARNElements)-1]
 		snapshotsToDelete = append(snapshotsToDelete, &rdsSnapshot{
 			ID:  snapshotID,
