@@ -51,6 +51,11 @@ const (
 
 	//resource manager-specific
 	fakeResourceManagerName = "Fake Action Engine"
+
+	// db snapshot
+	fakeSnapshotType    = "manual"
+	fakeSnapshotStatus  = "available"
+	fakeRDSSnapshotName = "rds-snapshot"
 )
 
 func fakeReportItemDeleting() *clusterservice.ReportItem {
@@ -103,6 +108,22 @@ func fakeResourceTagMapping() *resourcegroupstaggingapi.ResourceTagMapping {
 	}
 }
 
+func fakeRDSClientDBSnapshots() []*rds.DBSnapshot {
+	return []*rds.DBSnapshot{
+		fakeRDSSnapshot(),
+	}
+}
+
+func fakeRDSSnapshot() *rds.DBSnapshot {
+	return &rds.DBSnapshot{
+		Engine:               aws.String(fakeElasticacheClientEngine),
+		DBInstanceIdentifier: aws.String(fakeResourceIdentifier),
+		DBSnapshotIdentifier: aws.String(fakeRDSSnapshotName),
+		Status:               aws.String(fakeSnapshotStatus),
+		SnapshotType:         aws.String(fakeSnapshotType),
+	}
+}
+
 func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error) {
 	if modifyFn == nil {
 		return nil, errorMustBeDefined("modifyFn")
@@ -131,6 +152,14 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 			return &rds.DeleteDBInstanceOutput{
 				DBInstance: fakeRDSClientDBInstance(),
 			}, nil
+		},
+		DescribeDBSnapshotsFunc: func(in1 *rds.DescribeDBSnapshotsInput) (*rds.DescribeDBSnapshotsOutput, error) {
+			return &rds.DescribeDBSnapshotsOutput{
+				DBSnapshots: fakeRDSClientDBSnapshots(),
+			}, nil
+		},
+		DeleteDBSnapshotFunc: func(in1 *rds.DeleteDBSnapshotInput) (*rds.DeleteDBSnapshotOutput, error) {
+			return &rds.DeleteDBSnapshotOutput{}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {
@@ -207,6 +236,22 @@ func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
 	}
 }
 func fakeReportItemElasticacheSnapshotDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeResourceIdentifier,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
+func fakeReportItemRDSSnapshotDeleting() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeARN,
+		Name:         fakeResourceIdentifier,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusInProgress,
+	}
+}
+func fakeReportItemRDSSnapshotDryRun() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeARN,
 		Name:         fakeResourceIdentifier,
