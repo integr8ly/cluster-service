@@ -1,7 +1,10 @@
 package aws
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
@@ -165,6 +168,37 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			wantErr: "failed to delete elasticache replication group: ",
 		}, {
+			name: "error when delete subnet groups fail",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DeleteCacheSubnetGroupFunc = func(in1 *elasticache.DeleteCacheSubnetGroupInput) (output *elasticache.DeleteCacheSubnetGroupOutput, err error) {
+							return nil, errors.New("")
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			wantErr: "failed to delete cache subnet group: ",
+		}, {
 			name: "pass when no report is returned  if no replicationgroups deleted ",
 			fields: fields{
 				elasticacheClient: func() *elasticacheClientMock {
@@ -225,6 +259,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			want: []*clusterservice.ReportItem{
 				fakeReportItemReplicationGroupDeleting(),
+				fakeReportItemCacheSubnetGroupComplete(),
 			},
 			wantErr: "",
 		}, {
@@ -265,6 +300,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			want: []*clusterservice.ReportItem{
 				fakeReportItemReplicationGroupDeleting(),
+				fakeReportItemCacheSubnetGroupComplete(),
 			},
 			wantFn: func(mock *elasticacheClientMock) error {
 				if len(mock.DeleteReplicationGroupCalls()) != 0 {
@@ -308,12 +344,48 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			},
 			want: []*clusterservice.ReportItem{
 				fakeReportItemReplicationGroupDryRun(),
+				fakeReportItemCacheSubnetGroupDryRun(),
 			},
 			wantFn: func(mock *elasticacheClientMock) error {
 				if len(mock.DeleteReplicationGroupCalls()) != 0 {
 					return errors.New("delete replication group call count should be 0 as dry run is true")
 				}
 				return nil
+			},
+		}, {
+			name: "pass when no subnet groups are skipped elasticache client returns CacheSubnetGroupInUse",
+			fields: fields{
+				elasticacheClient: func() *elasticacheClientMock {
+					fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+						c.DeleteCacheSubnetGroupFunc = func(in1 *elasticache.DeleteCacheSubnetGroupInput) (out *elasticache.DeleteCacheSubnetGroupOutput, err error) {
+							errorMsg := "cache subnet group is still in use"
+							return nil, awserr.New("CacheSubnetGroupInUse", errorMsg, errors.New(errorMsg))
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeTaggingClient
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDeleting(),
+				fakeReportItemCacheSubnetGroupSkipped(),
 			},
 		},
 	}
@@ -334,7 +406,7 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 			}
 
 			if !equalReportItems(got, tt.want) {
-				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", got, tt.want)
+				t.Errorf("DeleteResourcesForCluster()\n\ngot:\n\n%v\n\nwant:\n\n%v\n\n", buildReportItemsString(got), buildReportItemsString(tt.want))
 			}
 
 			if tt.wantFn != nil {
@@ -343,5 +415,107 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func buildReportItemsString(reportItems []*clusterservice.ReportItem) string {
+	result := "["
+	for _, reportItem := range reportItems {
+		result += fmt.Sprintf("%+v,", *reportItem)
+	}
+	result += "]"
+	return result
+}
+
+// test for the deletion of cache subnet groups which realistically only happens
+// when DeleteResourcesForCluster() is called several times (watch mode)
+// On the first attempt, a CacheSubnetGroupInUser error will be thrown so the report item status will be ActionStatusSkipped
+// On the second attempt, an error won't be thrown, this time the status will be ActionStatusComplete
+func TestElasticacheEngine_DeleteSubnetGroupsAcrossMultipleAttempts(t *testing.T) {
+	fakeLogger, err := fakeLogger(func(l *logrus.Entry) error {
+		return nil
+	})
+
+	fakeTaggingClient, err := fakeTaggingClient(func(c *taggingClientMock) error {
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	deleteResourcesForClusterCallCount := 0
+
+	fakeClient, err := fakeElasticacheClient(func(c *elasticacheClientMock) error {
+		c.DescribeReplicationGroupsFunc = func(in1 *elasticache.DescribeReplicationGroupsInput) (output *elasticache.DescribeReplicationGroupsOutput, err error) {
+			if deleteResourcesForClusterCallCount > 0 {
+				// it's been called before this time return an empty result
+				return &elasticache.DescribeReplicationGroupsOutput{
+					ReplicationGroups: []*elasticache.ReplicationGroup{},
+				}, nil
+			}
+			return &elasticache.DescribeReplicationGroupsOutput{
+				ReplicationGroups: []*elasticache.ReplicationGroup{
+					fakeElasticacheReplicationGroup(),
+				},
+			}, nil
+		}
+		c.DeleteCacheSubnetGroupFunc = func(in1 *elasticache.DeleteCacheSubnetGroupInput) (out *elasticache.DeleteCacheSubnetGroupOutput, err error) {
+			if deleteResourcesForClusterCallCount > 0 {
+				// DeleteResourcesForCluster has been called more than once,
+				// this time set the replication group status as deleting
+				return &elasticache.DeleteCacheSubnetGroupOutput{}, nil
+			}
+			deleteResourcesForClusterCallCount++
+			errorMsg := "cache subnet group is still in use"
+			return nil, awserr.New("CacheSubnetGroupInUse", errorMsg, errors.New(errorMsg))
+		}
+		return nil
+	})
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	manager := &ElasticacheManager{
+		elasticacheClient: fakeClient,
+		taggingClient:     fakeTaggingClient,
+		logger:            fakeLogger,
+	}
+
+	attempts := []struct {
+		wantReport                     []*clusterservice.ReportItem
+		wantSubnetGroupsToDeleteLength int
+	}{
+		{
+			wantReport: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDeleting(),
+				fakeReportItemCacheSubnetGroupSkipped(),
+			},
+			wantSubnetGroupsToDeleteLength: 1,
+		}, {
+			wantReport: []*clusterservice.ReportItem{
+				fakeReportItemReplicationGroupDeleting(),
+				fakeReportItemCacheSubnetGroupComplete(),
+			},
+			wantSubnetGroupsToDeleteLength: 0,
+		},
+	}
+
+	for i, attempt := range attempts {
+		gotReport, err := manager.DeleteResourcesForCluster(fakeClusterID, nil, false)
+
+		if err != nil {
+			t.Error(err)
+		}
+
+		if !equalReportItems(gotReport, attempt.wantReport) {
+			t.Errorf("DeleteResourcesForCluster() Attempt Number %v\n\ngot:\n\n%v\n\nwant:\n\n%v\n\n", i+1, buildReportItemsString(gotReport), buildReportItemsString(attempt.wantReport))
+		}
+
+		subnetGroupsToDeleteLength := len(manager.subnetGroupsToDelete)
+
+		if subnetGroupsToDeleteLength != attempt.wantSubnetGroupsToDeleteLength {
+			t.Errorf("DeleteResourcesForCluster() Attempt Number %v Wrong length for subnetGroupsToDelete \n\ngot: %v\nwant:%v", i+1, subnetGroupsToDeleteLength, attempt.wantSubnetGroupsToDeleteLength)
+		}
 	}
 }

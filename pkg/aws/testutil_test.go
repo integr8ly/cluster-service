@@ -30,6 +30,7 @@ const (
 	fakeRDSClientInstanceIdentifier         = fakeResourceIdentifier
 	fakeRDSClientInstanceARN                = fakeARN
 	fakeRDSClientInstanceDeletionProtection = true
+	fakeRDSClientDBSubnetGroupARN           = fakeARN
 
 	//ELasticache-specific
 	fakeElasticacheClientName               = "elasticache Replication group"
@@ -45,6 +46,9 @@ const (
 	fakeCacheClusterStatus                  = "available"
 	fakeElasticacheSnapshotName             = "elasticache snapshot"
 	fakeElasticacheSnapshotStatus           = "available"
+	fakeElasticacheSubnetGroupName          = "elasticache subnet group"
+	fakeElasticacheSubnetGroupNameValue     = "testCacheSubnetGroup"
+	fakeElasticacheSubnetGroupID            = "subnetgroup:testCacheSubnetGroup"
 
 	//resource tagging-specific
 	fakeResourceTagMappingARN = fakeARN
@@ -124,6 +128,13 @@ func fakeRDSSnapshot() *rds.DBSnapshot {
 	}
 }
 
+func fakeRDSSubnetGroup() *rds.DBSubnetGroup {
+	return &rds.DBSubnetGroup{
+		DBSubnetGroupArn:  aws.String(fakeRDSClientDBSubnetGroupARN),
+		DBSubnetGroupName: aws.String(fakeResourceIdentifier),
+	}
+}
+
 func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error) {
 	if modifyFn == nil {
 		return nil, errorMustBeDefined("modifyFn")
@@ -160,6 +171,13 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 		},
 		DeleteDBSnapshotFunc: func(in1 *rds.DeleteDBSnapshotInput) (*rds.DeleteDBSnapshotOutput, error) {
 			return &rds.DeleteDBSnapshotOutput{}, nil
+		},
+		DescribeDBSubnetGroupsFunc: func(in1 *rds.DescribeDBSubnetGroupsInput) (*rds.DescribeDBSubnetGroupsOutput, error) {
+			return &rds.DescribeDBSubnetGroupsOutput{
+				DBSubnetGroups: []*rds.DBSubnetGroup{
+					fakeRDSSubnetGroup(),
+				},
+			}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {
@@ -268,6 +286,33 @@ func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
 	}
 }
 
+func fakeReportItemCacheSubnetGroupSkipped() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheSubnetGroupID,
+		Name:         fakeElasticacheSubnetGroupName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusSkipped,
+	}
+}
+
+func fakeReportItemCacheSubnetGroupComplete() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheSubnetGroupID,
+		Name:         fakeElasticacheSubnetGroupName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusComplete,
+	}
+}
+
+func fakeReportItemCacheSubnetGroupDryRun() *clusterservice.ReportItem {
+	return &clusterservice.ReportItem{
+		ID:           fakeElasticacheSubnetGroupID,
+		Name:         fakeElasticacheSubnetGroupName,
+		Action:       clusterservice.ActionDelete,
+		ActionStatus: clusterservice.ActionStatusDryRun,
+	}
+}
+
 func fakeReportItemReplicationGroupDryRun() *clusterservice.ReportItem {
 	return &clusterservice.ReportItem{
 		ID:           fakeElasticacheClientReplicationGroupId,
@@ -287,11 +332,13 @@ func fakeElasticacheReplicationGroup() *elasticache.ReplicationGroup {
 }
 func fakeElasticacheCacheCluster() *elasticache.CacheCluster {
 	return &elasticache.CacheCluster{
-		CacheClusterId:     aws.String(fakeClusterID),
-		CacheClusterStatus: aws.String(fakeCacheClusterStatus),
-		CacheNodeType:      aws.String(fakeElasticacheClientCacheNodeType),
-		Engine:             aws.String(fakeElasticacheClientEngine),
-		ReplicationGroupId: aws.String(fakeElasticacheClientReplicationGroupId)}
+		CacheClusterId:       aws.String(fakeClusterID),
+		CacheClusterStatus:   aws.String(fakeCacheClusterStatus),
+		CacheNodeType:        aws.String(fakeElasticacheClientCacheNodeType),
+		Engine:               aws.String(fakeElasticacheClientEngine),
+		ReplicationGroupId:   aws.String(fakeElasticacheClientReplicationGroupId),
+		CacheSubnetGroupName: aws.String(fakeElasticacheSubnetGroupNameValue),
+	}
 }
 
 func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elasticacheClientMock, error) {
@@ -326,6 +373,9 @@ func fakeElasticacheClient(modifyFn func(c *elasticacheClientMock) error) (*elas
 			return &elasticache.DeleteSnapshotOutput{
 				Snapshot: fakeElasticacheSnapshot(),
 			}, nil
+		},
+		DeleteCacheSubnetGroupFunc: func(in1 *elasticache.DeleteCacheSubnetGroupInput) (out *elasticache.DeleteCacheSubnetGroupOutput, err error) {
+			return &elasticache.DeleteCacheSubnetGroupOutput{}, nil
 		},
 	}
 	if err := modifyFn(client); err != nil {

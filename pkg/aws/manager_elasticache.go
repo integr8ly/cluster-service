@@ -123,6 +123,7 @@ func (r *ElasticacheManager) DeleteResourcesForCluster(clusterId string, tags ma
 	// elasticache subnet groups do not support tagging
 	// which makes the logic a bit more tricky
 	nextSubnetGroupsToDelete := make([]string, 0)
+
 	for _, subnetGroupName := range r.subnetGroupsToDelete {
 		sgLogger := logger.WithField("subnetGroup", aws.String(subnetGroupName))
 		sgLogger.Debugf("building report for cache subnet groups")
