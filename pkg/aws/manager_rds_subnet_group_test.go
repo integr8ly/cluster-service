@@ -4,10 +4,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
-
 	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 )
@@ -22,8 +21,9 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 	}
 
 	type fields struct {
-		rdsClient func() *rdsClientMock
-		logger    *logrus.Entry
+		rdsClient     func() *rdsClientMock
+		taggingClient func() *taggingClientMock
+		logger        *logrus.Entry
 	}
 	type args struct {
 		clusterId string
@@ -40,12 +40,21 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 		wantErr string
 	}{
 		{
-			name: "error when describing subnet groups fails",
+			name: "error when getting listing resources with tagging api fails",
 			fields: fields{
 				logger: fakeLogger,
 				rdsClient: func() *rdsClientMock {
 					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.DescribeDBSubnetGroupsFunc = func(in1 *rds.DescribeDBSubnetGroupsInput) (output *rds.DescribeDBSubnetGroupsOutput, e error) {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
 							return nil, errors.New("")
 						}
 						return nil
@@ -53,7 +62,7 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					return fakeClient
+					return client
 				},
 			},
 			args: args{
@@ -61,88 +70,13 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 				tags:      map[string]string{},
 				dryRun:    true,
 			},
-			wantErr: "failed to describe database subnet groups: ",
-		},
-		{
-			name: "error when listing tags for subnet group fails",
-			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.ListTagsForResourceFunc = func(in1 *rds.ListTagsForResourceInput) (output *rds.ListTagsForResourceOutput, e error) {
-							return nil, errors.New("")
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return fakeClient
-				},
-				logger: fakeLogger,
-			},
-			args: args{
-				clusterId: fakeClusterId,
-				tags:      map[string]string{},
-			},
-			wantErr: "failed to list tags for database subnet group: ",
-		},
-		{
-			name: "error when deleting subnet group fails",
-			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.ListTagsForResourceFunc = func(in1 *rds.ListTagsForResourceInput) (output *rds.ListTagsForResourceOutput, e error) {
-							return &rds.ListTagsForResourceOutput{
-								TagList: []*rds.Tag{
-									{
-										Key:   aws.String(fakeRDSClientTagKey),
-										Value: aws.String(fakeClusterId),
-									},
-								},
-							}, nil
-						}
-						c.DeleteDBSubnetGroupFunc = func(in *rds.DeleteDBSubnetGroupInput) (*rds.DeleteDBSubnetGroupOutput, error) {
-							return nil, errors.New("")
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return fakeClient
-				},
-				logger: fakeLogger,
-			},
-			args: args{
-				clusterId: fakeClusterId,
-				tags:      map[string]string{},
-			},
-			wantErr: "failed to delete rds db subnet group: ",
+			wantErr: "failed to filter rds subnet groups: ",
 		},
 		{
 			name: "report empty when no subnet groups match cluster id tag",
 			fields: fields{
 				rdsClient: func() *rdsClientMock {
 					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.DescribeDBSubnetGroupsFunc = func(in1 *rds.DescribeDBSubnetGroupsInput) (*rds.DescribeDBSubnetGroupsOutput, error) {
-							return &rds.DescribeDBSubnetGroupsOutput{
-								DBSubnetGroups: []*rds.DBSubnetGroup{
-									{
-										DBSubnetGroupArn: aws.String(fakeARN),
-									},
-								},
-							}, nil
-						}
-						c.ListTagsForResourceFunc = func(in1 *rds.ListTagsForResourceInput) (*rds.ListTagsForResourceOutput, error) {
-							return &rds.ListTagsForResourceOutput{
-								TagList: []*rds.Tag{
-									{
-										Key:   aws.String(tagKeyClusterId),
-										Value: aws.String("not a real clusterId"),
-									},
-								},
-							}, nil
-						}
 						return nil
 					})
 					if err != nil {
@@ -150,39 +84,27 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 					}
 					return fakeClient
 				},
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
+							return &resourcegroupstaggingapi.GetResourcesOutput{}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
+				},
 				logger: fakeLogger,
 			},
 			args: args{
 				clusterId: fakeClusterId,
-				// we only care about the cluster id tag for this test, leave additional tags empty
-				tags:   map[string]string{},
-				dryRun: false,
+				tags:      map[string]string{},
+				dryRun:    false,
 			},
 			want: make([]*clusterservice.ReportItem, 0),
 		},
-		// {
-		// 	name: "report empty when cluster id tag matches but additional tags do not",
-		// 	fields: fields{
-		// 		rdsClient: func() *rdsClientMock {
-		// 			fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-		// 				return nil
-		// 			})
-		// 			if err != nil {
-		// 				t.Fatal(err)
-		// 			}
-		// 			return fakeClient
-		// 		},
-		// 		logger: fakeLogger,
-		// 	},
-		// 	args: args{
-		// 		clusterId: fakeRDSClientTagVal,
-		// 		tags: map[string]string{
-		// 			"addTagKey": "addTagVal",
-		// 		},
-		// 		dryRun: true,
-		// 	},
-		// 	want: make([]*clusterservice.ReportItem, 0),
-		// },
 		{
 			name: "no destructive methods are used when dry run is true",
 			fields: fields{
@@ -194,6 +116,15 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 						t.Fatal(err)
 					}
 					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
 				},
 				logger: fakeLogger,
 			},
@@ -228,6 +159,15 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 					}
 					return fakeClient
 				},
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
+				},
 				logger: fakeLogger,
 			},
 			args: args{
@@ -243,14 +183,62 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 					ActionStatus: clusterservice.ActionStatusSkipped,
 				},
 			},
+			wantFn: func(mock *rdsClientMock) error {
+				if len(mock.DeleteDBSubnetGroupCalls()) != 1 {
+					return errors.New("delete db subnet groups call count should be 1")
+				}
+				return nil
+			},
+		},
+		{
+			name: "item is reported as deleted when deletion is successful",
+			fields: fields{
+				rdsClient: func() *rdsClientMock {
+					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
+						c.DeleteDBSubnetGroupFunc = func(in *rds.DeleteDBSubnetGroupInput) (*rds.DeleteDBSubnetGroupOutput, error) {
+							return &rds.DeleteDBSubnetGroupOutput{}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return fakeClient
+				},
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeRDSClientTagVal,
+				tags:      map[string]string{},
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				{
+					ID:           fakeARN,
+					Name:         fakeResourceIdentifier,
+					Action:       clusterservice.ActionDelete,
+					ActionStatus: clusterservice.ActionStatusComplete,
+				},
+			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			fakeTaggingClient := tt.fields.taggingClient()
 			fakeClient := tt.fields.rdsClient()
 			r := &RDSSubnetGroupManager{
-				rdsClient: fakeClient,
-				logger:    tt.fields.logger,
+				rdsClient:     fakeClient,
+				taggingClient: fakeTaggingClient,
+				logger:        tt.fields.logger,
 			}
 			got, err := r.DeleteResourcesForCluster(tt.args.clusterId, tt.args.tags, tt.args.dryRun)
 			if tt.wantErr != "" && err.Error() != tt.wantErr {

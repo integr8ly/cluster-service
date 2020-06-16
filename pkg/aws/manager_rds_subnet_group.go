@@ -1,33 +1,41 @@
 package aws
 
 import (
-	"fmt"
+	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/integr8ly/cluster-service/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
 const (
-	loggingKeySubnetGroup = "subnet-group-name"
+	loggingKeySubnetGroup     = "subnet-group-name"
+	resourceTypeDBSubnetGroup = "rds:subgrp"
 )
 
 var _ ClusterResourceManager = &RDSSubnetGroupManager{}
 
+type RDSSubnetGroup struct {
+	Name string
+	ARN  string
+}
+
 type RDSSubnetGroupManager struct {
-	rdsClient rdsClient
-	logger    *logrus.Entry
+	rdsClient     rdsClient
+	taggingClient taggingClient
+	logger        *logrus.Entry
 }
 
 func NewDefaultRDSSubnetGroupManager(session *session.Session, logger *logrus.Entry) *RDSSubnetGroupManager {
-	fmt.Println("creating new RDS Subnet Group Manager")
 	return &RDSSubnetGroupManager{
-		rdsClient: rds.New(session),
-		logger:    logger.WithField("engine", managerRDS),
+		rdsClient:     rds.New(session),
+		taggingClient: resourcegroupstaggingapi.New(session),
+		logger:        logger.WithField("engine", managerRDS),
 	}
 }
 
@@ -38,44 +46,37 @@ func (r *RDSSubnetGroupManager) GetName() string {
 // Delete all RDS Subnet Groups for a specified cluster
 func (r *RDSSubnetGroupManager) DeleteResourcesForCluster(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
 	r.logger.Debug("deleting resources for cluster")
-	subnetGroupsDescribeInput := &rds.DescribeDBSubnetGroupsInput{}
-	subnetGroupsDescribeOutput, err := r.rdsClient.DescribeDBSubnetGroups(subnetGroupsDescribeInput)
-
+	r.logger.Debug("listing rds subnet groups using provided tag filters")
+	getResourcesInput := &resourcegroupstaggingapi.GetResourcesInput{
+		ResourceTypeFilters: aws.StringSlice([]string{resourceTypeDBSubnetGroup}),
+		TagFilters:          convertClusterTagsToAWSTagFilter(clusterId, tags),
+	}
+	getResourcesOutput, err := r.taggingClient.GetResources(getResourcesInput)
 	if err != nil {
-		return nil, errors.WrapLog(err, "failed to describe database subnet groups", r.logger)
+		return nil, errors.WrapLog(err, "failed to filter rds subnet groups", r.logger)
 	}
 
-	var subnetGroupsToDelete []*rds.DBSubnetGroup
+	var subnetGroupsToDelete []*RDSSubnetGroup
 
-	for _, subnetGroup := range subnetGroupsDescribeOutput.DBSubnetGroups {
-		subnetGroupLogger := r.logger.WithField(loggingKeySubnetGroup, aws.StringValue(subnetGroup.DBSubnetGroupName))
-		subnetGroupLogger.Debug("checking tags for database subnet group")
-		tagListInput := &rds.ListTagsForResourceInput{
-			ResourceName: subnetGroup.DBSubnetGroupArn,
-		}
-		tagListOutput, err := r.rdsClient.ListTagsForResource((tagListInput))
+	for _, resourceTagMapping := range getResourcesOutput.ResourceTagMappingList {
+		subnetGroupARNElements := strings.Split(*resourceTagMapping.ResourceARN, ":")
+		subnetGroupName := subnetGroupARNElements[len(subnetGroupARNElements)-1]
 
-		if err != nil {
-			return nil, errors.WrapLog(err, "failed to list tags for database subnet group", r.logger)
-		}
-
-		subnetGroupLogger.Debugf("checking for cluster tag match (%s=%s) on subnet group", tagKeyClusterId, clusterId)
-
-		if findTag(tagKeyClusterId, clusterId, tagListOutput.TagList) == nil {
-			subnetGroupLogger.Debugf("subnet group did not contain cluster tag match (%s=%s)", tagKeyClusterId, clusterId)
-			continue
-		}
-		subnetGroupsToDelete = append(subnetGroupsToDelete, subnetGroup)
-		r.logger.Debugf("filtering complete, %d subnet groups matched", len(subnetGroupsToDelete))
+		subnetGroupsToDelete = append(subnetGroupsToDelete, &RDSSubnetGroup{
+			Name: subnetGroupName,
+			ARN:  *resourceTagMapping.ResourceARN,
+		})
 	}
+
 	reportItems := make([]*clusterservice.ReportItem, 0)
+
 	for _, dbSubnetGroup := range subnetGroupsToDelete {
-		subnetGroupLogger := r.logger.WithField(loggingKeySubnetGroup, aws.StringValue(dbSubnetGroup.DBSubnetGroupName))
+		subnetGroupLogger := r.logger.WithField(loggingKeySubnetGroup, dbSubnetGroup.Name)
 		subnetGroupLogger.Debug("creating report for rds subnet group")
 
 		reportItem := &clusterservice.ReportItem{
-			ID:           aws.StringValue(dbSubnetGroup.DBSubnetGroupArn),
-			Name:         aws.StringValue(dbSubnetGroup.DBSubnetGroupName),
+			ID:           dbSubnetGroup.ARN,
+			Name:         dbSubnetGroup.Name,
 			Action:       clusterservice.ActionDelete,
 			ActionStatus: clusterservice.ActionStatusEmpty,
 		}
@@ -87,7 +88,7 @@ func (r *RDSSubnetGroupManager) DeleteResourcesForCluster(clusterId string, tags
 			continue
 		}
 		deleteInput := &rds.DeleteDBSubnetGroupInput{
-			DBSubnetGroupName: dbSubnetGroup.DBSubnetGroupName,
+			DBSubnetGroupName: aws.String(dbSubnetGroup.Name),
 		}
 
 		_, err := r.rdsClient.DeleteDBSubnetGroup(deleteInput)
