@@ -1,9 +1,11 @@
 package aws
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/aws/aws-sdk-go/service/elasticache/elasticacheiface"
@@ -17,16 +19,18 @@ import (
 var _ ClusterResourceManager = &ElasticacheManager{}
 
 type ElasticacheManager struct {
-	elasticacheClient elasticacheiface.ElastiCacheAPI
-	taggingClient     resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
-	logger            *logrus.Entry
+	elasticacheClient    elasticacheiface.ElastiCacheAPI
+	taggingClient        resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI
+	logger               *logrus.Entry
+	subnetGroupsToDelete []string
 }
 
 func NewDefaultElasticacheManager(session *session.Session, logger *logrus.Entry) *ElasticacheManager {
 	return &ElasticacheManager{
-		elasticacheClient: elasticache.New(session),
-		taggingClient:     resourcegroupstaggingapi.New(session),
-		logger:            logger.WithField(loggingKeyManager, managerElasticache),
+		elasticacheClient:    elasticache.New(session),
+		taggingClient:        resourcegroupstaggingapi.New(session),
+		logger:               logger.WithField(loggingKeyManager, managerElasticache),
+		subnetGroupsToDelete: make([]string, 0),
 	}
 }
 
@@ -68,6 +72,11 @@ func (r *ElasticacheManager) DeleteResourcesForCluster(clusterId string, tags ma
 				break
 			}
 			replicationGroupsToDelete = append(replicationGroupsToDelete, *cacheCluster.ReplicationGroupId)
+			// elasticache subnet groups don't support tags
+			// add the cache subnet group to the subnetGroupsToDelete list
+			// This way we can actually delete the subnet groups later on
+			// when the caches are torn down
+			r.subnetGroupsToDelete = appendIfUnique(r.subnetGroupsToDelete, *cacheCluster.CacheSubnetGroupName)
 		}
 	}
 	logger.Debugf("filtering complete, %d replicationGroups matched", len(replicationGroupsToDelete))
@@ -110,6 +119,42 @@ func (r *ElasticacheManager) DeleteResourcesForCluster(clusterId string, tags ma
 			return nil, errors.WrapLog(err, "failed to delete elasticache replication group", logger)
 		}
 	}
+	// handle deletion of orphaned cache subnet groups
+	// elasticache subnet groups do not support tagging
+	// which makes the logic a bit more tricky
+	nextSubnetGroupsToDelete := make([]string, 0)
+
+	for _, subnetGroupName := range r.subnetGroupsToDelete {
+		sgLogger := logger.WithField("subnetGroup", aws.String(subnetGroupName))
+		sgLogger.Debugf("building report for cache subnet groups")
+		reportItem := &clusterservice.ReportItem{
+			ID:           fmt.Sprintf("subnetgroup:%s", subnetGroupName),
+			Name:         "elasticache subnet group",
+			Action:       clusterservice.ActionDelete,
+			ActionStatus: clusterservice.ActionStatusInProgress,
+		}
+		reportItems = append(reportItems, reportItem)
+		if dryRun {
+			sgLogger.Debug("dry run enabled, skipping deletion step")
+			reportItem.ActionStatus = clusterservice.ActionStatusDryRun
+			continue
+		}
+		deleteSubnetGroupInput := &elasticache.DeleteCacheSubnetGroupInput{
+			CacheSubnetGroupName: &subnetGroupName,
+		}
+		if _, err := r.elasticacheClient.DeleteCacheSubnetGroup(deleteSubnetGroupInput); err != nil {
+			if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == "CacheSubnetGroupInUse" {
+				sgLogger.Debug("cache subnet group is still in use, skipping")
+				reportItem.ActionStatus = clusterservice.ActionStatusSkipped
+				// push the subnetGroup into the list of groups to be deleted next time
+				nextSubnetGroupsToDelete = append(nextSubnetGroupsToDelete, subnetGroupName)
+				continue
+			}
+			return nil, errors.WrapLog(err, "failed to delete cache subnet group", sgLogger)
+		}
+		reportItem.ActionStatus = clusterservice.ActionStatusComplete
+	}
+	r.subnetGroupsToDelete = nextSubnetGroupsToDelete
 	if reportItems != nil {
 		return reportItems, nil
 	}
@@ -123,4 +168,11 @@ func contains(arr []string, targetValue string) bool {
 		}
 	}
 	return false
+}
+
+func appendIfUnique(arr []string, targetValue string) []string {
+	if !contains(arr, targetValue) {
+		return append(arr, targetValue)
+	}
+	return arr
 }
