@@ -19,9 +19,13 @@ const (
 	managerRDS                 ResourceManagerType = "aws_rds"
 	managerS3                  ResourceManagerType = "aws_s3"
 	managerSubnet              ResourceManagerType = "aws_ec2_subnet"
+	managerVpc                 ResourceManagerType = "aws_ec2_vpc"
+	managerVpcPeering          ResourceManagerType = "aws_ec2_vpc_peering"
 	managerRDSSnapshot         ResourceManagerType = "aws_rds_snapshot"
 	managerElasticache         ResourceManagerType = "aws_elasticache"
 	managerElasticacheSnapshot ResourceManagerType = "aws_elasticache_snapshot"
+	managerSecurityGroup       ResourceManagerType = "aws_ec2_security_group"
+	managerRouteTable          ResourceManagerType = "aws_ec2_route_table"
 
 	loggingKeyClusterID = "cluster-id"
 	loggingKeyDryRun    = "dry-run"

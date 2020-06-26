@@ -189,7 +189,12 @@ func TestS3Engine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeResourceTagMappingARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
 			},
 		},
 		{
@@ -230,7 +235,12 @@ func TestS3Engine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDryRun(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeResourceTagMappingARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
 			},
 		},
 	}
@@ -248,7 +258,7 @@ func TestS3Engine_DeleteResourcesForCluster(t *testing.T) {
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", got, tt.want)
+				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", buildReportItemsString(got), buildReportItemsString(tt.want))
 			}
 		})
 	}

@@ -3,7 +3,8 @@ package aws
 import (
 	"context"
 	"fmt"
-
+	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
@@ -21,8 +22,12 @@ import (
 const (
 	//generic variables
 	fakeARN                = "arn:fake:testIdentifier"
+	fakeArnWithSlash       = "arn:fake:resourceType/testIdentifier"
 	fakeResourceIdentifier = "testIdentifier"
 	fakeClusterId          = "clusterId"
+
+	//ec2-specific
+	fakeEc2ClientInstanceArn = fakeArnWithSlash
 
 	//rds-specific
 	fakeRDSClientTagKey                     = tagKeyClusterId
@@ -39,9 +44,6 @@ const (
 	fakeElasticacheClientEngine             = "redis"
 	fakeElasticacheClientCacheNodeType      = "cache.t2.micro"
 	fakeElasticacheClientStatusAvailable    = "available"
-	fakeResourceTaggingClientArn            = "arn:fake:testIdentifier"
-	fakeResourceTaggingClientTagKey         = "testTag"
-	fakeResourceTaggingClientTagValue       = "testValue"
 	fakeClusterID                           = "testClusterID"
 	fakeCacheClusterStatus                  = "available"
 	fakeElasticacheSnapshotName             = "elasticache snapshot"
@@ -62,22 +64,12 @@ const (
 	fakeRDSSnapshotName = "rds-snapshot"
 )
 
-func fakeReportItemDeleting() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeRDSClientInstanceARN,
-		Name:         fakeRDSClientInstanceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusInProgress,
+func mockReportItem(modifyFn func(*clusterservice.ReportItem)) *clusterservice.ReportItem {
+	mock := &clusterservice.ReportItem{}
+	if modifyFn != nil {
+		modifyFn(mock)
 	}
-}
-
-func fakeReportItemDryRun() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeRDSClientInstanceARN,
-		Name:         fakeRDSClientInstanceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusDryRun,
-	}
+	return mock
 }
 
 func fakeRDSClientTag() *rds.Tag {
@@ -102,14 +94,18 @@ func fakeResourceTagMappingTag() *resourcegroupstaggingapi.Tag {
 	}
 }
 
-func fakeResourceTagMapping() *resourcegroupstaggingapi.ResourceTagMapping {
-	return &resourcegroupstaggingapi.ResourceTagMapping{
+func fakeResourceTagMapping(modifyFn func(*resourcegroupstaggingapi.ResourceTagMapping)) *resourcegroupstaggingapi.ResourceTagMapping {
+	mock := &resourcegroupstaggingapi.ResourceTagMapping{
 		ComplianceDetails: nil,
 		ResourceARN:       aws.String(fakeResourceTagMappingARN),
 		Tags: []*resourcegroupstaggingapi.Tag{
 			fakeResourceTagMappingTag(),
 		},
 	}
+	if modifyFn != nil {
+		modifyFn(mock)
+	}
+	return mock
 }
 
 func fakeRDSClientDBSnapshots() []*rds.DBSnapshot {
@@ -186,6 +182,43 @@ func fakeRDSClient(modifyFn func(c *rdsClientMock) error) (*rdsClientMock, error
 	return client, nil
 }
 
+type mockEc2Client struct {
+	ec2iface.EC2API
+	deleteVpcFn                  func(*ec2.DeleteVpcInput) (*ec2.DeleteVpcOutput, error)
+	deleteVpcPeeringConnectionFn func(*ec2.DeleteVpcPeeringConnectionInput) (*ec2.DeleteVpcPeeringConnectionOutput, error)
+	deleteSubnetFn               func(*ec2.DeleteSubnetInput) (*ec2.DeleteSubnetOutput, error)
+	deleteSecurityGroupFn        func(*ec2.DeleteSecurityGroupInput) (*ec2.DeleteSecurityGroupOutput, error)
+	deleteRouteTableFn           func(*ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error)
+}
+
+func buildMockEc2Client(modifyFn func(*mockEc2Client)) *mockEc2Client {
+	mock := &mockEc2Client{}
+	if modifyFn != nil {
+		modifyFn(mock)
+	}
+	return mock
+}
+
+func (m *mockEc2Client) DeleteVpc(input *ec2.DeleteVpcInput) (*ec2.DeleteVpcOutput, error) {
+	return m.deleteVpcFn(input)
+}
+
+func (m *mockEc2Client) DeleteVpcPeeringConnection(input *ec2.DeleteVpcPeeringConnectionInput) (*ec2.DeleteVpcPeeringConnectionOutput, error) {
+	return m.deleteVpcPeeringConnectionFn(input)
+}
+
+func (m *mockEc2Client) DeleteSubnet(input *ec2.DeleteSubnetInput) (*ec2.DeleteSubnetOutput, error) {
+	return m.deleteSubnetFn(input)
+}
+
+func (m *mockEc2Client) DeleteSecurityGroup(input *ec2.DeleteSecurityGroupInput) (*ec2.DeleteSecurityGroupOutput, error) {
+	return m.deleteSecurityGroupFn(input)
+}
+
+func (m *mockEc2Client) DeleteRouteTable(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+	return m.deleteRouteTableFn(input)
+}
+
 func fakeS3Client(modifyFn func(c *s3ClientMock) error) (*s3ClientMock, error) {
 	if modifyFn == nil {
 		return nil, errorMustBeDefined("modifyFn")
@@ -209,7 +242,7 @@ func fakeTaggingClient(modifyFn func(c *taggingClientMock) error) (*taggingClien
 		GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
 			return &resourcegroupstaggingapi.GetResourcesOutput{
 				ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
-					fakeResourceTagMapping(),
+					fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {}),
 				},
 			}, nil
 		},
@@ -243,82 +276,6 @@ func fakeElasticacheSnapshot() *elasticache.Snapshot {
 		Engine:         aws.String(fakeElasticacheClientEngine),
 		SnapshotName:   aws.String(fakeElasticacheSnapshotName),
 		SnapshotStatus: aws.String(fakeElasticacheSnapshotStatus),
-	}
-}
-func fakeReportItemElasticacheSnapshotDeleting() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeARN,
-		Name:         fakeResourceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusInProgress,
-	}
-}
-func fakeReportItemElasticacheSnapshotDryRun() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeARN,
-		Name:         fakeResourceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusDryRun,
-	}
-}
-func fakeReportItemRDSSnapshotDeleting() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeARN,
-		Name:         fakeResourceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusInProgress,
-	}
-}
-func fakeReportItemRDSSnapshotDryRun() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeARN,
-		Name:         fakeResourceIdentifier,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusDryRun,
-	}
-}
-func fakeReportItemReplicationGroupDeleting() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeElasticacheClientReplicationGroupId,
-		Name:         fakeElasticacheClientName,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusInProgress,
-	}
-}
-
-func fakeReportItemCacheSubnetGroupSkipped() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeElasticacheSubnetGroupID,
-		Name:         fakeElasticacheSubnetGroupName,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusSkipped,
-	}
-}
-
-func fakeReportItemCacheSubnetGroupComplete() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeElasticacheSubnetGroupID,
-		Name:         fakeElasticacheSubnetGroupName,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusComplete,
-	}
-}
-
-func fakeReportItemCacheSubnetGroupDryRun() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeElasticacheSubnetGroupID,
-		Name:         fakeElasticacheSubnetGroupName,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusDryRun,
-	}
-}
-
-func fakeReportItemReplicationGroupDryRun() *clusterservice.ReportItem {
-	return &clusterservice.ReportItem{
-		ID:           fakeElasticacheClientReplicationGroupId,
-		Name:         fakeElasticacheClientName,
-		Action:       clusterservice.ActionDelete,
-		ActionStatus: clusterservice.ActionStatusDryRun,
 	}
 }
 
@@ -402,7 +359,12 @@ func fakeClusterManager(modifyFn func(e *ClusterResourceManagerMock) error) (*Cl
 	clusterManager := &ClusterResourceManagerMock{
 		DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) (items []*clusterservice.ReportItem, e error) {
 			return []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
 			}, nil
 		},
 		GetNameFunc: func() string {

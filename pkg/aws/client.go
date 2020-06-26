@@ -24,9 +24,13 @@ func NewDefaultClient(awsSession *session.Session, logger *logrus.Entry) *Client
 	s3Manager := NewDefaultS3Engine(awsSession, logger)
 	elasticacheManager := NewDefaultElasticacheManager(awsSession, logger)
 	elasticacheSnapshotManager := NewDefaultElasticacheSnapshotManager(awsSession, logger)
+	vpcPeeringManager := NewDefaultVpcPeeringManager(awsSession, logger)
 	subnetManager := NewDefaultSubnetManager(awsSession, logger)
+	securityGroupManager := NewDefaultSecurityGroupManager(awsSession, logger)
+	routeTableManager := NewDefaultRouteTableManager(awsSession, logger)
+	vpcManager := NewDefaultVpcManager(awsSession, logger)
 	return &Client{
-		ResourceManagers: []ClusterResourceManager{rdsManager, rdsSubnetGroupManager, elasticacheManager, s3Manager, rdsSnapshotManager, elasticacheSnapshotManager, subnetManager},
+		ResourceManagers: []ClusterResourceManager{rdsManager, rdsSubnetGroupManager, elasticacheManager, s3Manager, rdsSnapshotManager, elasticacheSnapshotManager, vpcPeeringManager, subnetManager, securityGroupManager, routeTableManager, vpcManager},
 		Logger:           log,
 	}
 }

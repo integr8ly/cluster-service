@@ -2,6 +2,7 @@ BUILD_TARGET=./
 
 .PHONY: build/cli
 build/cli: build/cli/local
+	mv ./cli ./cluster-service
 
 .PHONY: build/cli/local
 build/cli/local:
@@ -21,7 +22,7 @@ code/gen:
 
 .PHONY: test/unit
 test/unit:
-	go test -v ./...
+	go test -v -covermode=count ./...
 
 .PHONY: vendor/check
 vendor/check: vendor/fix

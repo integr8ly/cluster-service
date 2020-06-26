@@ -130,7 +130,12 @@ func TestElasticacheSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemElasticacheSnapshotDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
 			},
 			wantErr: "",
 		},
@@ -169,7 +174,12 @@ func TestElasticacheSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemElasticacheSnapshotDryRun(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
 			},
 			wantFn: func(mock *elasticacheClientMock) error {
 				if len(mock.DeleteSnapshotCalls()) != 0 {
