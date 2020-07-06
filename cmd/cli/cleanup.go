@@ -44,6 +44,10 @@ var cleanupCmd = &cobra.Command{
 		if err != nil {
 			exitError(fmt.Sprintf("failed to get watch from flag: %+v", err), exitCodeErrUnknown)
 		}
+		watchTimeout, err := cmd.Flags().GetDuration("timeout")
+		if err != nil {
+			exitError(fmt.Sprintf("failed to get timeout from flag: %+v", err), exitCodeErrUnknown)
+		}
 		types, err := cmd.Flags().GetStringSlice("types")
 		if err != nil {
 			exitError(fmt.Sprintf("failed to get types from flag: %+v", err), exitCodeErrUnknown)
@@ -67,7 +71,7 @@ var cleanupCmd = &cobra.Command{
 		}))
 		clusterService := buildAWSClientFromTypes(awsSession, types, logger)
 		if watch {
-			err := wait.PollImmediate(30*time.Second, 20*time.Minute, func() (bool, error) {
+			err := wait.PollImmediate(30*time.Second, watchTimeout, func() (bool, error) {
 				var currentReport *clusterservice.Report
 				newReport := runCleanupCommand(clusterService, clusterId, dryRun)
 				if currentReport == nil {
@@ -141,5 +145,6 @@ func init() {
 	cleanupCmd.Flags().StringP("region", "r", "eu-west-1", "region to delete resources in")
 	cleanupCmd.Flags().BoolP("dry-run", "d", true, "skip performing actions")
 	cleanupCmd.Flags().BoolP("watch", "w", false, "poll actions being performed indefinitely")
+	cleanupCmd.Flags().Duration("timeout", 30*time.Minute, "duration before timing out in watch mode")
 	cleanupCmd.Flags().StringSliceP("types", "t", []string{}, "resource types to cleanup")
 }
