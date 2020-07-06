@@ -5,7 +5,9 @@ import (
 	"os"
 	"time"
 
+	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	"k8s.io/apimachinery/pkg/util/wait"
 
 	"github.com/olekukonko/tablewriter"
 
@@ -64,25 +66,35 @@ var cleanupCmd = &cobra.Command{
 			Credentials: credentials.NewStaticCredentials(awsKeyID, awsSecretKey, ""),
 		}))
 		clusterService := buildAWSClientFromTypes(awsSession, types, logger)
-		//this could probably leverage channels
-		var currentReport *clusterservice.Report
-		for {
-			newReport, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
+		if watch {
+			err := wait.PollImmediate(30*time.Second, 20*time.Minute, func() (bool, error) {
+				var currentReport *clusterservice.Report
+				newReport := runCleanupCommand(clusterService, clusterId, dryRun)
+				if currentReport == nil {
+					currentReport = newReport
+				}
+				currentReport.MergeForward(newReport)
+				printReportTable(currentReport)
+				logger.Info("watch is enabled, will attempt to delete resources every 30 seconds")
+				return currentReport.AllItemsComplete(), nil
+			})
 			if err != nil {
-				exitError(fmt.Sprintf("failed to cleanup resources for cluster, clusterId=%s: %+v", clusterId, err), exitCodeErrUnknown)
+				logger.Error(errors.Wrap(err, "failed to clean up all resources"))
 			}
-			if currentReport == nil {
-				currentReport = newReport
-			}
-			currentReport.MergeForward(newReport)
-			printReportTable(currentReport)
-			if !watch {
-				break
-			}
-			logger.Debug("watch is enabled, waiting 30 seconds before re-invoking")
-			time.Sleep(time.Second * 30)
+			logger.Info("finished cleaning up AWS resources")
+		} else {
+			report := runCleanupCommand(clusterService, clusterId, dryRun)
+			printReportTable(report)
 		}
 	},
+}
+
+func runCleanupCommand(clusterService *awsclusterservice.Client, clusterId string, dryRun bool) *clusterservice.Report {
+	report, err := clusterService.DeleteResourcesForCluster(clusterId, map[string]string{}, dryRun)
+	if err != nil {
+		exitError(fmt.Sprintf("failed to cleanup resources for cluster, clusterId=%s: %+v", clusterId, err), exitCodeErrUnknown)
+	}
+	return report
 }
 
 func buildAWSClientFromTypes(awsSession *session.Session, types []string, logger *logrus.Entry) *awsclusterservice.Client {
