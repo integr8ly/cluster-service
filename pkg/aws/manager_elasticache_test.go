@@ -258,8 +258,18 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDeleting(),
-				fakeReportItemCacheSubnetGroupComplete(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusComplete
+				}),
 			},
 			wantErr: "",
 		}, {
@@ -299,8 +309,18 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDeleting(),
-				fakeReportItemCacheSubnetGroupComplete(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusComplete
+				}),
 			},
 			wantFn: func(mock *elasticacheClientMock) error {
 				if len(mock.DeleteReplicationGroupCalls()) != 0 {
@@ -343,8 +363,18 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDryRun(),
-				fakeReportItemCacheSubnetGroupDryRun(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
 			},
 			wantFn: func(mock *elasticacheClientMock) error {
 				if len(mock.DeleteReplicationGroupCalls()) != 0 {
@@ -384,8 +414,18 @@ func TestElasticacheEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDeleting(),
-				fakeReportItemCacheSubnetGroupSkipped(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusSkipped
+				}),
 			},
 		},
 	}
@@ -488,14 +528,36 @@ func TestElasticacheEngine_DeleteSubnetGroupsAcrossMultipleAttempts(t *testing.T
 	}{
 		{
 			wantReport: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDeleting(),
-				fakeReportItemCacheSubnetGroupSkipped(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusSkipped
+				}),
 			},
 			wantSubnetGroupsToDeleteLength: 1,
 		}, {
 			wantReport: []*clusterservice.ReportItem{
-				fakeReportItemReplicationGroupDeleting(),
-				fakeReportItemCacheSubnetGroupComplete(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeElasticacheClientReplicationGroupId
+					item.Name = fakeElasticacheClientName
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusComplete
+					item.ID = fakeElasticacheSubnetGroupID
+					item.Name = fakeElasticacheSubnetGroupName
+				}),
 			},
 			wantSubnetGroupsToDeleteLength: 0,
 		},

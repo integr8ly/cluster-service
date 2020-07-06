@@ -64,7 +64,13 @@ func TestRDSSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemRDSSnapshotDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
 			},
 			wantErr: false,
 		}, {
@@ -167,7 +173,12 @@ func TestRDSSnapshotManager_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemRDSSnapshotDryRun(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.DeleteDBSnapshotCalls()) != 0 {

@@ -19,13 +19,24 @@ make build/cli
 A binary will be created in the root directory of the repo, which can be run:
 
 ```
-./cli
+./cluster-service
 ```
 
 
 ### How to use
+```bash
+# set env vars for clusters aws key and secret 
+export AWS_ACCESS_KEY_ID=<key value>
+export AWS_SECRET_ACCESS_KEY=<secret value>
+```
 
-TODO
+
+```bash
+# run the cleanup command in watch mode to delete persistence resources
+./cluster-service cleanup <cluster_id> --dry-run=false --watch
+# help 
+./cluster-service cleanup --help
+```
 
 ## Testing
 
@@ -39,4 +50,4 @@ make test/unit
 
 New binaries for a release tag will be created by [GoReleaser](https://goreleaser.com/) automatically.
 
-To try out GoReleaser locally, it can be installed using `make setup/goreleaser`. 
+To try out GoReleaser locally, it can be installed using `make setup/goreleaser`.

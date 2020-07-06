@@ -154,7 +154,13 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeRDSClientInstanceARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.ModifyDBInstanceCalls()) != 1 {
@@ -195,7 +201,13 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeRDSClientInstanceARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.ModifyDBInstanceCalls()) != 0 {
@@ -227,7 +239,12 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    true,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDryRun(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeRDSClientInstanceARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.ModifyDBInstanceCalls()) != 0 {
@@ -268,7 +285,13 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 				tags:      map[string]string{},
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeRDSClientInstanceARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.DeleteDBInstanceCalls()) != 0 {
@@ -297,7 +320,12 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
-				fakeReportItemDeleting(),
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeRDSClientInstanceARN
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusInProgress
+				}),
 			},
 			wantFn: func(mock *rdsClientMock) error {
 				if len(mock.DeleteDBInstanceCalls()) != 1 {

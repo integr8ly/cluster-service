@@ -93,6 +93,8 @@ func (s *SubnetManager) DeleteResourcesForCluster(clusterId string, tags map[str
 			}
 			return nil, errors.WrapLog(err, "failed to delete subnet", s.logger)
 		}
+		reportItem.ActionStatus = clusterservice.ActionStatusComplete
 	}
+
 	return reportItems, nil
 }

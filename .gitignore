@@ -32,3 +32,5 @@ _testmain.go
 ## Goreleaser
 dist/
 bin/
+
+cluster-service

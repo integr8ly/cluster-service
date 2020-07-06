@@ -2,17 +2,20 @@ package aws
 
 import (
 	"errors"
+	"github.com/aws/aws-sdk-go/aws"
+	"reflect"
 	"testing"
 
 	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
+
+	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 	"github.com/integr8ly/cluster-service/pkg/clusterservice"
 	"github.com/sirupsen/logrus"
 )
 
-func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
-	fakeClusterId := "testClusterId"
+func TestRouteTableManager_DeleteResourcesForCluster(t *testing.T) {
 	fakeLogger, err := fakeLogger(func(l *logrus.Entry) error {
 		return nil
 	})
@@ -21,37 +24,72 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 	}
 
 	type fields struct {
-		rdsClient     func() *rdsClientMock
 		taggingClient func() *taggingClientMock
 		logger        *logrus.Entry
+		Ec2Api        ec2iface.EC2API
 	}
 	type args struct {
 		clusterId string
 		tags      map[string]string
 		dryRun    bool
 	}
-
 	tests := []struct {
 		name    string
 		fields  fields
 		args    args
 		want    []*clusterservice.ReportItem
-		wantFn  func(mock *rdsClientMock) error
 		wantErr string
 	}{
 		{
-			name: "error when getting listing resources with tagging api fails",
+			name: "do not fail when getting route does not exists",
 			fields: fields{
-				logger: fakeLogger,
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
+				Ec2Api: buildMockEc2Client(func(ec2Client *mockEc2Client) {
+					ec2Client.deleteRouteTableFn = func(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+						return nil, awserr.New("InvalidRouteTableID.NotFound", "", errors.New("InvalidRouteTableID.NotFound"))
+					}
+				}),
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+							return &resourcegroupstaggingapi.GetResourcesOutput{
+								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {
+										mapping.ResourceARN = aws.String(fakeEc2ClientInstanceArn)
+									}),
+								},
+							}, nil
+						}
 						return nil
 					})
 					if err != nil {
 						t.Fatal(err)
 					}
-					return fakeClient
+					return client
 				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				tags:      map[string]string{},
+				dryRun:    false,
+			},
+			want: []*clusterservice.ReportItem{
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeEc2ClientInstanceArn
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusComplete
+				}),
+			},
+		},
+		{
+			name: "fail when getting resources via tags returns an error",
+			fields: fields{
+				Ec2Api: buildMockEc2Client(func(ec2Client *mockEc2Client) {
+					ec2Client.deleteRouteTableFn = func(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+						return &ec2.DeleteRouteTableOutput{}, nil
+					}
+				}),
 				taggingClient: func() *taggingClientMock {
 					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
@@ -64,38 +102,6 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 					}
 					return client
 				},
-			},
-			args: args{
-				clusterId: fakeClusterId,
-				tags:      map[string]string{},
-				dryRun:    true,
-			},
-			wantErr: "failed to filter rds subnet groups: ",
-		},
-		{
-			name: "report empty when no subnet groups match cluster id tag",
-			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return fakeClient
-				},
-				taggingClient: func() *taggingClientMock {
-					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
-						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (output *resourcegroupstaggingapi.GetResourcesOutput, e error) {
-							return &resourcegroupstaggingapi.GetResourcesOutput{}, nil
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return client
-				},
 				logger: fakeLogger,
 			},
 			args: args{
@@ -103,80 +109,24 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 				tags:      map[string]string{},
 				dryRun:    false,
 			},
-			want: make([]*clusterservice.ReportItem, 0),
+			wantErr: "failed to filter route tables: ",
 		},
 		{
-			name: "no destructive methods are used when dry run is true",
+			name: "fail when vpc deletion returns an error",
 			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
+				Ec2Api: buildMockEc2Client(func(ec2Client *mockEc2Client) {
+					ec2Client.deleteRouteTableFn = func(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+						return nil, errors.New("some error deleting route")
 					}
-					return fakeClient
-				},
-				taggingClient: func() *taggingClientMock {
-					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
-						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
-							return &resourcegroupstaggingapi.GetResourcesOutput{
-								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
-									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {}),
-								},
-							}, nil
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return client
-				},
-				logger: fakeLogger,
-			},
-			args: args{
-				clusterId: fakeRDSClientTagVal,
-				tags:      map[string]string{},
-				dryRun:    true,
-			},
-			want: []*clusterservice.ReportItem{
-				mockReportItem(func(item *clusterservice.ReportItem) {
-					item.ID = fakeRDSClientInstanceARN
-					item.Name = fakeResourceIdentifier
-					item.Action = clusterservice.ActionDelete
-					item.ActionStatus = clusterservice.ActionStatusDryRun
 				}),
-			},
-			wantFn: func(mock *rdsClientMock) error {
-				if len(mock.DeleteDBSubnetGroupCalls()) != 0 {
-					return errors.New("delete db subnet groups call count should be 0")
-				}
-				return nil
-			},
-		},
-		{
-			name: "deleting subnet group is skipped when InvalidDBSubnetGroupStateFault error is returned",
-			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.DeleteDBSubnetGroupFunc = func(in *rds.DeleteDBSubnetGroupInput) (*rds.DeleteDBSubnetGroupOutput, error) {
-							errorMsg := ""
-							return nil, awserr.New("InvalidDBSubnetGroupStateFault", errorMsg, errors.New(errorMsg))
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return fakeClient
-				},
 				taggingClient: func() *taggingClientMock {
 					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
 						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 							return &resourcegroupstaggingapi.GetResourcesOutput{
 								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
-									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {}),
+									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {
+										mapping.ResourceARN = aws.String(fakeEc2ClientInstanceArn)
+									}),
 								},
 							}, nil
 						}
@@ -190,80 +140,102 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 				logger: fakeLogger,
 			},
 			args: args{
-				clusterId: fakeRDSClientTagVal,
+				clusterId: fakeClusterId,
+				tags:      map[string]string{},
+				dryRun:    false,
+			},
+			wantErr: "failed to delete route table: some error deleting route",
+		},
+		{
+			name: "succeeds with status completed if dry run is false and no errors on delete aka successful deletion",
+			fields: fields{
+				Ec2Api: buildMockEc2Client(func(ec2Client *mockEc2Client) {
+					ec2Client.deleteRouteTableFn = func(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+						return &ec2.DeleteRouteTableOutput{}, nil
+					}
+				}),
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+							return &resourcegroupstaggingapi.GetResourcesOutput{
+								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {
+										mapping.ResourceARN = aws.String(fakeEc2ClientInstanceArn)
+									}),
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
 				tags:      map[string]string{},
 				dryRun:    false,
 			},
 			want: []*clusterservice.ReportItem{
 				mockReportItem(func(item *clusterservice.ReportItem) {
-					item.ID = fakeRDSClientInstanceARN
-					item.Name = fakeResourceIdentifier
-					item.Action = clusterservice.ActionDelete
-					item.ActionStatus = clusterservice.ActionStatusSkipped
-				}),
-			},
-			wantFn: func(mock *rdsClientMock) error {
-				if len(mock.DeleteDBSubnetGroupCalls()) != 1 {
-					return errors.New("delete db subnet groups call count should be 1")
-				}
-				return nil
-			},
-		},
-		{
-			name: "item is reported as deleted when deletion is successful",
-			fields: fields{
-				rdsClient: func() *rdsClientMock {
-					fakeClient, err := fakeRDSClient(func(c *rdsClientMock) error {
-						c.DeleteDBSubnetGroupFunc = func(in *rds.DeleteDBSubnetGroupInput) (*rds.DeleteDBSubnetGroupOutput, error) {
-							return &rds.DeleteDBSubnetGroupOutput{}, nil
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return fakeClient
-				},
-				taggingClient: func() *taggingClientMock {
-					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
-						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
-							return &resourcegroupstaggingapi.GetResourcesOutput{
-								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
-									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {}),
-								},
-							}, nil
-						}
-						return nil
-					})
-					if err != nil {
-						t.Fatal(err)
-					}
-					return client
-				},
-				logger: fakeLogger,
-			},
-			args: args{
-				clusterId: fakeRDSClientTagVal,
-				tags:      map[string]string{},
-				dryRun:    false,
-			},
-			want: []*clusterservice.ReportItem{
-				mockReportItem(func(item *clusterservice.ReportItem) {
-					item.ID = fakeRDSClientInstanceARN
+					item.ID = fakeEc2ClientInstanceArn
 					item.Name = fakeResourceIdentifier
 					item.Action = clusterservice.ActionDelete
 					item.ActionStatus = clusterservice.ActionStatusComplete
 				}),
 			},
 		},
+		{
+			name: "succeeds with status dry run if dry run is true",
+			fields: fields{
+				Ec2Api: buildMockEc2Client(func(ec2Client *mockEc2Client) {
+					ec2Client.deleteRouteTableFn = func(input *ec2.DeleteRouteTableInput) (*ec2.DeleteRouteTableOutput, error) {
+						return &ec2.DeleteRouteTableOutput{}, nil
+					}
+				}),
+				taggingClient: func() *taggingClientMock {
+					client, err := fakeTaggingClient(func(c *taggingClientMock) error {
+						c.GetResourcesFunc = func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+							return &resourcegroupstaggingapi.GetResourcesOutput{
+								ResourceTagMappingList: []*resourcegroupstaggingapi.ResourceTagMapping{
+									fakeResourceTagMapping(func(mapping *resourcegroupstaggingapi.ResourceTagMapping) {
+										mapping.ResourceARN = aws.String(fakeEc2ClientInstanceArn)
+									}),
+								},
+							}, nil
+						}
+						return nil
+					})
+					if err != nil {
+						t.Fatal(err)
+					}
+					return client
+				},
+				logger: fakeLogger,
+			},
+			args: args{
+				clusterId: fakeClusterId,
+				tags:      map[string]string{},
+				dryRun:    true,
+			},
+			want: []*clusterservice.ReportItem{
+				mockReportItem(func(item *clusterservice.ReportItem) {
+					item.ID = fakeEc2ClientInstanceArn
+					item.Name = fakeResourceIdentifier
+					item.Action = clusterservice.ActionDelete
+					item.ActionStatus = clusterservice.ActionStatusDryRun
+				}),
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fakeTaggingClient := tt.fields.taggingClient()
-			fakeClient := tt.fields.rdsClient()
-			r := &RDSSubnetGroupManager{
-				rdsClient:     fakeClient,
-				taggingClient: fakeTaggingClient,
+			r := &RouteTableManager{
+				ec2Client:     tt.fields.Ec2Api,
+				taggingClient: tt.fields.taggingClient(),
 				logger:        tt.fields.logger,
 			}
 			got, err := r.DeleteResourcesForCluster(tt.args.clusterId, tt.args.tags, tt.args.dryRun)
@@ -271,14 +243,8 @@ func TestRDSSubnetGroupManager_DeleteResourcesForCluster(t *testing.T) {
 				t.Errorf("DeleteResourcesForCluster() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-
-			if !equalReportItems(got, tt.want) {
-				t.Errorf("DeleteResourcesForCluster()\n\ngot:\n\n%v\n\nwant:\n\n%v\n\n", buildReportItemsString(got), buildReportItemsString(tt.want))
-			}
-			if tt.wantFn != nil {
-				if err := tt.wantFn(fakeClient); err != nil {
-					t.Errorf("DeleteResourcesForCluster() err = %v", err)
-				}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("DeleteResourcesForCluster() got = %v, want %v", buildReportItemsString(got), buildReportItemsString(tt.want))
 			}
 		})
 	}

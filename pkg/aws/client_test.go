@@ -70,7 +70,12 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 					fakeDryRunEngine, err := fakeClusterManager(func(e *ClusterResourceManagerMock) error {
 						e.DeleteResourcesForClusterFunc = func(clusterId string, tags map[string]string, dryRun bool) (items []*clusterservice.ReportItem, e error) {
 							return []*clusterservice.ReportItem{
-								fakeReportItemDryRun(),
+								mockReportItem(func(item *clusterservice.ReportItem) {
+									item.ID = fakeRDSClientInstanceARN
+									item.Name = fakeResourceIdentifier
+									item.Action = clusterservice.ActionDelete
+									item.ActionStatus = clusterservice.ActionStatusDryRun
+								}),
 							}, nil
 						}
 						return nil
@@ -89,8 +94,18 @@ func TestClient_DeleteResourcesForCluster(t *testing.T) {
 			},
 			want: &clusterservice.Report{
 				Items: []*clusterservice.ReportItem{
-					fakeReportItemDeleting(),
-					fakeReportItemDryRun(),
+					mockReportItem(func(item *clusterservice.ReportItem) {
+						item.ID = fakeRDSClientInstanceARN
+						item.Name = fakeResourceIdentifier
+						item.Action = clusterservice.ActionDelete
+						item.ActionStatus = clusterservice.ActionStatusInProgress
+					}),
+					mockReportItem(func(item *clusterservice.ReportItem) {
+						item.ID = fakeRDSClientInstanceARN
+						item.Name = fakeResourceIdentifier
+						item.Action = clusterservice.ActionDelete
+						item.ActionStatus = clusterservice.ActionStatusDryRun
+					}),
 				},
 			},
 		},
