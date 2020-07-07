@@ -38,6 +38,15 @@ func (r *Report) MergeForward(mergeTarget *Report) {
 	}
 }
 
+func (r *Report) AllItemsComplete() bool {
+	for _, item := range r.Items {
+		if item.ActionStatus != ActionStatusComplete {
+			return false
+		}
+	}
+	return true
+}
+
 func findReportItem(id string, report *Report) *ReportItem {
 	var foundItem *ReportItem
 	for _, item := range report.Items {
