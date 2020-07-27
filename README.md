@@ -51,3 +51,17 @@ make test/unit
 New binaries for a release tag will be created by [GoReleaser](https://goreleaser.com/) automatically.
 
 To try out GoReleaser locally, it can be installed using `make setup/goreleaser`.
+
+## Create image
+
+To create an image and push to you own Quay.io repo 
+
+```
+make image/build/push ORG=<quay.io repo name>
+```
+
+To create an image and push to Quay.io, run:
+
+```
+make image/build/push
+```

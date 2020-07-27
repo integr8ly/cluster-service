@@ -1,4 +1,20 @@
 BUILD_TARGET=./
+ORG=integreatly
+REG=quay.io
+PROJECT=cluster-service
+TAG=0.4.0
+CLUSTER_SERVICE_IMAGE ?= $(REG)/$(ORG)/$(PROJECT):v$(TAG)
+
+.PHONY: image/build/
+image/build: build/cli	
+	@docker build -t $(CLUSTER_SERVICE_IMAGE) .
+
+.PHONY: image/push
+image/push:
+	docker push $(CLUSTER_SERVICE_IMAGE)
+
+.PHONY: image/build/push
+image/build/push: image/build image/push
 
 .PHONY: build/cli
 build/cli: build/cli/local
