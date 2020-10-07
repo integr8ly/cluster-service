@@ -24,16 +24,18 @@ A binary will be created in the root directory of the repo, which can be run:
 
 
 ### How to use
+
+ocm login to the terminal
+
 ```bash
 # set env vars for clusters aws key and secret 
 export AWS_ACCESS_KEY_ID=<key value>
 export AWS_SECRET_ACCESS_KEY=<secret value>
 ```
 
-
 ```bash
 # run the cleanup command in watch mode to delete persistence resources
-./cluster-service cleanup <cluster_id> --dry-run=false --watch
+./cluster-service cleanup $(ocm get /api/clusters_mgmt/v1/clusters/<your cluster id> | jq -r '.infra_id | values') --region=<region> --dry-run=true --watch
 # help 
 ./cluster-service cleanup --help
 ```
