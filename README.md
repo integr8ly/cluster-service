@@ -35,7 +35,7 @@ export AWS_SECRET_ACCESS_KEY=<secret value>
 
 ```bash
 # run the cleanup command in watch mode to delete persistence resources
-./cluster-service cleanup $(ocm get /api/clusters_mgmt/v1/clusters/<your cluster id> | jq -r '.infra_id | values') --region=<region> --dry-run=true --watch
+./cluster-service cleanup $(ocm get /api/clusters_mgmt/v1/clusters/<your cluster id> | jq -r '.infra_id | values') --region=<region> --dry-run=false --watch
 # help 
 ./cluster-service cleanup --help
 ```
