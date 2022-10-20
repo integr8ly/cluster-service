@@ -10,8727 +10,11451 @@ import (
 	"sync"
 )
 
-var (
-	lockelasticacheClientMockAddTagsToResource                                   sync.RWMutex
-	lockelasticacheClientMockAddTagsToResourceRequest                            sync.RWMutex
-	lockelasticacheClientMockAddTagsToResourceWithContext                        sync.RWMutex
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngress                  sync.RWMutex
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressRequest           sync.RWMutex
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressWithContext       sync.RWMutex
-	lockelasticacheClientMockBatchApplyUpdateAction                              sync.RWMutex
-	lockelasticacheClientMockBatchApplyUpdateActionRequest                       sync.RWMutex
-	lockelasticacheClientMockBatchApplyUpdateActionWithContext                   sync.RWMutex
-	lockelasticacheClientMockBatchStopUpdateAction                               sync.RWMutex
-	lockelasticacheClientMockBatchStopUpdateActionRequest                        sync.RWMutex
-	lockelasticacheClientMockBatchStopUpdateActionWithContext                    sync.RWMutex
-	lockelasticacheClientMockCompleteMigration                                   sync.RWMutex
-	lockelasticacheClientMockCompleteMigrationRequest                            sync.RWMutex
-	lockelasticacheClientMockCompleteMigrationWithContext                        sync.RWMutex
-	lockelasticacheClientMockCopySnapshot                                        sync.RWMutex
-	lockelasticacheClientMockCopySnapshotRequest                                 sync.RWMutex
-	lockelasticacheClientMockCopySnapshotWithContext                             sync.RWMutex
-	lockelasticacheClientMockCreateCacheCluster                                  sync.RWMutex
-	lockelasticacheClientMockCreateCacheClusterRequest                           sync.RWMutex
-	lockelasticacheClientMockCreateCacheClusterWithContext                       sync.RWMutex
-	lockelasticacheClientMockCreateCacheParameterGroup                           sync.RWMutex
-	lockelasticacheClientMockCreateCacheParameterGroupRequest                    sync.RWMutex
-	lockelasticacheClientMockCreateCacheParameterGroupWithContext                sync.RWMutex
-	lockelasticacheClientMockCreateCacheSecurityGroup                            sync.RWMutex
-	lockelasticacheClientMockCreateCacheSecurityGroupRequest                     sync.RWMutex
-	lockelasticacheClientMockCreateCacheSecurityGroupWithContext                 sync.RWMutex
-	lockelasticacheClientMockCreateCacheSubnetGroup                              sync.RWMutex
-	lockelasticacheClientMockCreateCacheSubnetGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockCreateCacheSubnetGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockCreateReplicationGroup                              sync.RWMutex
-	lockelasticacheClientMockCreateReplicationGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockCreateReplicationGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockCreateSnapshot                                      sync.RWMutex
-	lockelasticacheClientMockCreateSnapshotRequest                               sync.RWMutex
-	lockelasticacheClientMockCreateSnapshotWithContext                           sync.RWMutex
-	lockelasticacheClientMockDecreaseReplicaCount                                sync.RWMutex
-	lockelasticacheClientMockDecreaseReplicaCountRequest                         sync.RWMutex
-	lockelasticacheClientMockDecreaseReplicaCountWithContext                     sync.RWMutex
-	lockelasticacheClientMockDeleteCacheCluster                                  sync.RWMutex
-	lockelasticacheClientMockDeleteCacheClusterRequest                           sync.RWMutex
-	lockelasticacheClientMockDeleteCacheClusterWithContext                       sync.RWMutex
-	lockelasticacheClientMockDeleteCacheParameterGroup                           sync.RWMutex
-	lockelasticacheClientMockDeleteCacheParameterGroupRequest                    sync.RWMutex
-	lockelasticacheClientMockDeleteCacheParameterGroupWithContext                sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSecurityGroup                            sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSecurityGroupRequest                     sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSecurityGroupWithContext                 sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSubnetGroup                              sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSubnetGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockDeleteCacheSubnetGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockDeleteReplicationGroup                              sync.RWMutex
-	lockelasticacheClientMockDeleteReplicationGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockDeleteReplicationGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockDeleteSnapshot                                      sync.RWMutex
-	lockelasticacheClientMockDeleteSnapshotRequest                               sync.RWMutex
-	lockelasticacheClientMockDeleteSnapshotWithContext                           sync.RWMutex
-	lockelasticacheClientMockDescribeCacheClusters                               sync.RWMutex
-	lockelasticacheClientMockDescribeCacheClustersPages                          sync.RWMutex
-	lockelasticacheClientMockDescribeCacheClustersPagesWithContext               sync.RWMutex
-	lockelasticacheClientMockDescribeCacheClustersRequest                        sync.RWMutex
-	lockelasticacheClientMockDescribeCacheClustersWithContext                    sync.RWMutex
-	lockelasticacheClientMockDescribeCacheEngineVersions                         sync.RWMutex
-	lockelasticacheClientMockDescribeCacheEngineVersionsPages                    sync.RWMutex
-	lockelasticacheClientMockDescribeCacheEngineVersionsPagesWithContext         sync.RWMutex
-	lockelasticacheClientMockDescribeCacheEngineVersionsRequest                  sync.RWMutex
-	lockelasticacheClientMockDescribeCacheEngineVersionsWithContext              sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameterGroups                        sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameterGroupsPages                   sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameterGroupsPagesWithContext        sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameterGroupsRequest                 sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameterGroupsWithContext             sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParameters                             sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParametersPages                        sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParametersPagesWithContext             sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParametersRequest                      sync.RWMutex
-	lockelasticacheClientMockDescribeCacheParametersWithContext                  sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSecurityGroups                         sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPages                    sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPagesWithContext         sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSecurityGroupsRequest                  sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSecurityGroupsWithContext              sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSubnetGroups                           sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPages                      sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPagesWithContext           sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSubnetGroupsRequest                    sync.RWMutex
-	lockelasticacheClientMockDescribeCacheSubnetGroupsWithContext                sync.RWMutex
-	lockelasticacheClientMockDescribeEngineDefaultParameters                     sync.RWMutex
-	lockelasticacheClientMockDescribeEngineDefaultParametersPages                sync.RWMutex
-	lockelasticacheClientMockDescribeEngineDefaultParametersPagesWithContext     sync.RWMutex
-	lockelasticacheClientMockDescribeEngineDefaultParametersRequest              sync.RWMutex
-	lockelasticacheClientMockDescribeEngineDefaultParametersWithContext          sync.RWMutex
-	lockelasticacheClientMockDescribeEvents                                      sync.RWMutex
-	lockelasticacheClientMockDescribeEventsPages                                 sync.RWMutex
-	lockelasticacheClientMockDescribeEventsPagesWithContext                      sync.RWMutex
-	lockelasticacheClientMockDescribeEventsRequest                               sync.RWMutex
-	lockelasticacheClientMockDescribeEventsWithContext                           sync.RWMutex
-	lockelasticacheClientMockDescribeReplicationGroups                           sync.RWMutex
-	lockelasticacheClientMockDescribeReplicationGroupsPages                      sync.RWMutex
-	lockelasticacheClientMockDescribeReplicationGroupsPagesWithContext           sync.RWMutex
-	lockelasticacheClientMockDescribeReplicationGroupsRequest                    sync.RWMutex
-	lockelasticacheClientMockDescribeReplicationGroupsWithContext                sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodes                          sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferings                 sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPages            sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPagesWithContext sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsRequest          sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsWithContext      sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesPages                     sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesPagesWithContext          sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesRequest                   sync.RWMutex
-	lockelasticacheClientMockDescribeReservedCacheNodesWithContext               sync.RWMutex
-	lockelasticacheClientMockDescribeServiceUpdates                              sync.RWMutex
-	lockelasticacheClientMockDescribeServiceUpdatesPages                         sync.RWMutex
-	lockelasticacheClientMockDescribeServiceUpdatesPagesWithContext              sync.RWMutex
-	lockelasticacheClientMockDescribeServiceUpdatesRequest                       sync.RWMutex
-	lockelasticacheClientMockDescribeServiceUpdatesWithContext                   sync.RWMutex
-	lockelasticacheClientMockDescribeSnapshots                                   sync.RWMutex
-	lockelasticacheClientMockDescribeSnapshotsPages                              sync.RWMutex
-	lockelasticacheClientMockDescribeSnapshotsPagesWithContext                   sync.RWMutex
-	lockelasticacheClientMockDescribeSnapshotsRequest                            sync.RWMutex
-	lockelasticacheClientMockDescribeSnapshotsWithContext                        sync.RWMutex
-	lockelasticacheClientMockDescribeUpdateActions                               sync.RWMutex
-	lockelasticacheClientMockDescribeUpdateActionsPages                          sync.RWMutex
-	lockelasticacheClientMockDescribeUpdateActionsPagesWithContext               sync.RWMutex
-	lockelasticacheClientMockDescribeUpdateActionsRequest                        sync.RWMutex
-	lockelasticacheClientMockDescribeUpdateActionsWithContext                    sync.RWMutex
-	lockelasticacheClientMockIncreaseReplicaCount                                sync.RWMutex
-	lockelasticacheClientMockIncreaseReplicaCountRequest                         sync.RWMutex
-	lockelasticacheClientMockIncreaseReplicaCountWithContext                     sync.RWMutex
-	lockelasticacheClientMockListAllowedNodeTypeModifications                    sync.RWMutex
-	lockelasticacheClientMockListAllowedNodeTypeModificationsRequest             sync.RWMutex
-	lockelasticacheClientMockListAllowedNodeTypeModificationsWithContext         sync.RWMutex
-	lockelasticacheClientMockListTagsForResource                                 sync.RWMutex
-	lockelasticacheClientMockListTagsForResourceRequest                          sync.RWMutex
-	lockelasticacheClientMockListTagsForResourceWithContext                      sync.RWMutex
-	lockelasticacheClientMockModifyCacheCluster                                  sync.RWMutex
-	lockelasticacheClientMockModifyCacheClusterRequest                           sync.RWMutex
-	lockelasticacheClientMockModifyCacheClusterWithContext                       sync.RWMutex
-	lockelasticacheClientMockModifyCacheParameterGroup                           sync.RWMutex
-	lockelasticacheClientMockModifyCacheParameterGroupRequest                    sync.RWMutex
-	lockelasticacheClientMockModifyCacheParameterGroupWithContext                sync.RWMutex
-	lockelasticacheClientMockModifyCacheSubnetGroup                              sync.RWMutex
-	lockelasticacheClientMockModifyCacheSubnetGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockModifyCacheSubnetGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroup                              sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroupRequest                       sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroupShardConfiguration            sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationRequest     sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationWithContext sync.RWMutex
-	lockelasticacheClientMockModifyReplicationGroupWithContext                   sync.RWMutex
-	lockelasticacheClientMockPurchaseReservedCacheNodesOffering                  sync.RWMutex
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingRequest           sync.RWMutex
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingWithContext       sync.RWMutex
-	lockelasticacheClientMockRebootCacheCluster                                  sync.RWMutex
-	lockelasticacheClientMockRebootCacheClusterRequest                           sync.RWMutex
-	lockelasticacheClientMockRebootCacheClusterWithContext                       sync.RWMutex
-	lockelasticacheClientMockRemoveTagsFromResource                              sync.RWMutex
-	lockelasticacheClientMockRemoveTagsFromResourceRequest                       sync.RWMutex
-	lockelasticacheClientMockRemoveTagsFromResourceWithContext                   sync.RWMutex
-	lockelasticacheClientMockResetCacheParameterGroup                            sync.RWMutex
-	lockelasticacheClientMockResetCacheParameterGroupRequest                     sync.RWMutex
-	lockelasticacheClientMockResetCacheParameterGroupWithContext                 sync.RWMutex
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngress                     sync.RWMutex
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressRequest              sync.RWMutex
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressWithContext          sync.RWMutex
-	lockelasticacheClientMockStartMigration                                      sync.RWMutex
-	lockelasticacheClientMockStartMigrationRequest                               sync.RWMutex
-	lockelasticacheClientMockStartMigrationWithContext                           sync.RWMutex
-	lockelasticacheClientMockTestFailover                                        sync.RWMutex
-	lockelasticacheClientMockTestFailoverRequest                                 sync.RWMutex
-	lockelasticacheClientMockTestFailoverWithContext                             sync.RWMutex
-	lockelasticacheClientMockWaitUntilCacheClusterAvailable                      sync.RWMutex
-	lockelasticacheClientMockWaitUntilCacheClusterAvailableWithContext           sync.RWMutex
-	lockelasticacheClientMockWaitUntilCacheClusterDeleted                        sync.RWMutex
-	lockelasticacheClientMockWaitUntilCacheClusterDeletedWithContext             sync.RWMutex
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailable                  sync.RWMutex
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailableWithContext       sync.RWMutex
-	lockelasticacheClientMockWaitUntilReplicationGroupDeleted                    sync.RWMutex
-	lockelasticacheClientMockWaitUntilReplicationGroupDeletedWithContext         sync.RWMutex
-)
-
 // Ensure, that elasticacheClientMock does implement elasticacheClient.
 // If this is not the case, regenerate this file with moq.
 var _ elasticacheClient = &elasticacheClientMock{}
 
 // elasticacheClientMock is a mock implementation of elasticacheClient.
 //
-//     func TestSomethingThatUseselasticacheClient(t *testing.T) {
+// 	func TestSomethingThatUseselasticacheClient(t *testing.T) {
 //
-//         // make and configure a mocked elasticacheClient
-//         mockedelasticacheClient := &elasticacheClientMock{
-//             AddTagsToResourceFunc: func(in1 *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the AddTagsToResource method")
-//             },
-//             AddTagsToResourceRequestFunc: func(in1 *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage) {
-// 	               panic("mock out the AddTagsToResourceRequest method")
-//             },
-//             AddTagsToResourceWithContextFunc: func(in1 context.Context, in2 *elasticache.AddTagsToResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the AddTagsToResourceWithContext method")
-//             },
-//             AuthorizeCacheSecurityGroupIngressFunc: func(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
-// 	               panic("mock out the AuthorizeCacheSecurityGroupIngress method")
-//             },
-//             AuthorizeCacheSecurityGroupIngressRequestFunc: func(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput) {
-// 	               panic("mock out the AuthorizeCacheSecurityGroupIngressRequest method")
-//             },
-//             AuthorizeCacheSecurityGroupIngressWithContextFunc: func(in1 context.Context, in2 *elasticache.AuthorizeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
-// 	               panic("mock out the AuthorizeCacheSecurityGroupIngressWithContext method")
-//             },
-//             BatchApplyUpdateActionFunc: func(in1 *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error) {
-// 	               panic("mock out the BatchApplyUpdateAction method")
-//             },
-//             BatchApplyUpdateActionRequestFunc: func(in1 *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput) {
-// 	               panic("mock out the BatchApplyUpdateActionRequest method")
-//             },
-//             BatchApplyUpdateActionWithContextFunc: func(in1 context.Context, in2 *elasticache.BatchApplyUpdateActionInput, in3 ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error) {
-// 	               panic("mock out the BatchApplyUpdateActionWithContext method")
-//             },
-//             BatchStopUpdateActionFunc: func(in1 *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error) {
-// 	               panic("mock out the BatchStopUpdateAction method")
-//             },
-//             BatchStopUpdateActionRequestFunc: func(in1 *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput) {
-// 	               panic("mock out the BatchStopUpdateActionRequest method")
-//             },
-//             BatchStopUpdateActionWithContextFunc: func(in1 context.Context, in2 *elasticache.BatchStopUpdateActionInput, in3 ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error) {
-// 	               panic("mock out the BatchStopUpdateActionWithContext method")
-//             },
-//             CompleteMigrationFunc: func(in1 *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error) {
-// 	               panic("mock out the CompleteMigration method")
-//             },
-//             CompleteMigrationRequestFunc: func(in1 *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput) {
-// 	               panic("mock out the CompleteMigrationRequest method")
-//             },
-//             CompleteMigrationWithContextFunc: func(in1 context.Context, in2 *elasticache.CompleteMigrationInput, in3 ...request.Option) (*elasticache.CompleteMigrationOutput, error) {
-// 	               panic("mock out the CompleteMigrationWithContext method")
-//             },
-//             CopySnapshotFunc: func(in1 *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error) {
-// 	               panic("mock out the CopySnapshot method")
-//             },
-//             CopySnapshotRequestFunc: func(in1 *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput) {
-// 	               panic("mock out the CopySnapshotRequest method")
-//             },
-//             CopySnapshotWithContextFunc: func(in1 context.Context, in2 *elasticache.CopySnapshotInput, in3 ...request.Option) (*elasticache.CopySnapshotOutput, error) {
-// 	               panic("mock out the CopySnapshotWithContext method")
-//             },
-//             CreateCacheClusterFunc: func(in1 *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error) {
-// 	               panic("mock out the CreateCacheCluster method")
-//             },
-//             CreateCacheClusterRequestFunc: func(in1 *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput) {
-// 	               panic("mock out the CreateCacheClusterRequest method")
-//             },
-//             CreateCacheClusterWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateCacheClusterInput, in3 ...request.Option) (*elasticache.CreateCacheClusterOutput, error) {
-// 	               panic("mock out the CreateCacheClusterWithContext method")
-//             },
-//             CreateCacheParameterGroupFunc: func(in1 *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error) {
-// 	               panic("mock out the CreateCacheParameterGroup method")
-//             },
-//             CreateCacheParameterGroupRequestFunc: func(in1 *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput) {
-// 	               panic("mock out the CreateCacheParameterGroupRequest method")
-//             },
-//             CreateCacheParameterGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error) {
-// 	               panic("mock out the CreateCacheParameterGroupWithContext method")
-//             },
-//             CreateCacheSecurityGroupFunc: func(in1 *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error) {
-// 	               panic("mock out the CreateCacheSecurityGroup method")
-//             },
-//             CreateCacheSecurityGroupRequestFunc: func(in1 *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput) {
-// 	               panic("mock out the CreateCacheSecurityGroupRequest method")
-//             },
-//             CreateCacheSecurityGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error) {
-// 	               panic("mock out the CreateCacheSecurityGroupWithContext method")
-//             },
-//             CreateCacheSubnetGroupFunc: func(in1 *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the CreateCacheSubnetGroup method")
-//             },
-//             CreateCacheSubnetGroupRequestFunc: func(in1 *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput) {
-// 	               panic("mock out the CreateCacheSubnetGroupRequest method")
-//             },
-//             CreateCacheSubnetGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the CreateCacheSubnetGroupWithContext method")
-//             },
-//             CreateReplicationGroupFunc: func(in1 *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error) {
-// 	               panic("mock out the CreateReplicationGroup method")
-//             },
-//             CreateReplicationGroupRequestFunc: func(in1 *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput) {
-// 	               panic("mock out the CreateReplicationGroupRequest method")
-//             },
-//             CreateReplicationGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateReplicationGroupInput, in3 ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
-// 	               panic("mock out the CreateReplicationGroupWithContext method")
-//             },
-//             CreateSnapshotFunc: func(in1 *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error) {
-// 	               panic("mock out the CreateSnapshot method")
-//             },
-//             CreateSnapshotRequestFunc: func(in1 *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput) {
-// 	               panic("mock out the CreateSnapshotRequest method")
-//             },
-//             CreateSnapshotWithContextFunc: func(in1 context.Context, in2 *elasticache.CreateSnapshotInput, in3 ...request.Option) (*elasticache.CreateSnapshotOutput, error) {
-// 	               panic("mock out the CreateSnapshotWithContext method")
-//             },
-//             DecreaseReplicaCountFunc: func(in1 *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error) {
-// 	               panic("mock out the DecreaseReplicaCount method")
-//             },
-//             DecreaseReplicaCountRequestFunc: func(in1 *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput) {
-// 	               panic("mock out the DecreaseReplicaCountRequest method")
-//             },
-//             DecreaseReplicaCountWithContextFunc: func(in1 context.Context, in2 *elasticache.DecreaseReplicaCountInput, in3 ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
-// 	               panic("mock out the DecreaseReplicaCountWithContext method")
-//             },
-//             DeleteCacheClusterFunc: func(in1 *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error) {
-// 	               panic("mock out the DeleteCacheCluster method")
-//             },
-//             DeleteCacheClusterRequestFunc: func(in1 *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput) {
-// 	               panic("mock out the DeleteCacheClusterRequest method")
-//             },
-//             DeleteCacheClusterWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteCacheClusterInput, in3 ...request.Option) (*elasticache.DeleteCacheClusterOutput, error) {
-// 	               panic("mock out the DeleteCacheClusterWithContext method")
-//             },
-//             DeleteCacheParameterGroupFunc: func(in1 *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheParameterGroup method")
-//             },
-//             DeleteCacheParameterGroupRequestFunc: func(in1 *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput) {
-// 	               panic("mock out the DeleteCacheParameterGroupRequest method")
-//             },
-//             DeleteCacheParameterGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteCacheParameterGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheParameterGroupWithContext method")
-//             },
-//             DeleteCacheSecurityGroupFunc: func(in1 *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheSecurityGroup method")
-//             },
-//             DeleteCacheSecurityGroupRequestFunc: func(in1 *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput) {
-// 	               panic("mock out the DeleteCacheSecurityGroupRequest method")
-//             },
-//             DeleteCacheSecurityGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheSecurityGroupWithContext method")
-//             },
-//             DeleteCacheSubnetGroupFunc: func(in1 *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheSubnetGroup method")
-//             },
-//             DeleteCacheSubnetGroupRequestFunc: func(in1 *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput) {
-// 	               panic("mock out the DeleteCacheSubnetGroupRequest method")
-//             },
-//             DeleteCacheSubnetGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the DeleteCacheSubnetGroupWithContext method")
-//             },
-//             DeleteReplicationGroupFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error) {
-// 	               panic("mock out the DeleteReplicationGroup method")
-//             },
-//             DeleteReplicationGroupRequestFunc: func(in1 *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput) {
-// 	               panic("mock out the DeleteReplicationGroupRequest method")
-//             },
-//             DeleteReplicationGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteReplicationGroupInput, in3 ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
-// 	               panic("mock out the DeleteReplicationGroupWithContext method")
-//             },
-//             DeleteSnapshotFunc: func(in1 *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error) {
-// 	               panic("mock out the DeleteSnapshot method")
-//             },
-//             DeleteSnapshotRequestFunc: func(in1 *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput) {
-// 	               panic("mock out the DeleteSnapshotRequest method")
-//             },
-//             DeleteSnapshotWithContextFunc: func(in1 context.Context, in2 *elasticache.DeleteSnapshotInput, in3 ...request.Option) (*elasticache.DeleteSnapshotOutput, error) {
-// 	               panic("mock out the DeleteSnapshotWithContext method")
-//             },
-//             DescribeCacheClustersFunc: func(in1 *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
-// 	               panic("mock out the DescribeCacheClusters method")
-//             },
-//             DescribeCacheClustersPagesFunc: func(in1 *elasticache.DescribeCacheClustersInput, in2 func(*elasticache.DescribeCacheClustersOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheClustersPages method")
-//             },
-//             DescribeCacheClustersPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 func(*elasticache.DescribeCacheClustersOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheClustersPagesWithContext method")
-//             },
-//             DescribeCacheClustersRequestFunc: func(in1 *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput) {
-// 	               panic("mock out the DescribeCacheClustersRequest method")
-//             },
-//             DescribeCacheClustersWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.Option) (*elasticache.DescribeCacheClustersOutput, error) {
-// 	               panic("mock out the DescribeCacheClustersWithContext method")
-//             },
-//             DescribeCacheEngineVersionsFunc: func(in1 *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
-// 	               panic("mock out the DescribeCacheEngineVersions method")
-//             },
-//             DescribeCacheEngineVersionsPagesFunc: func(in1 *elasticache.DescribeCacheEngineVersionsInput, in2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheEngineVersionsPages method")
-//             },
-//             DescribeCacheEngineVersionsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheEngineVersionsPagesWithContext method")
-//             },
-//             DescribeCacheEngineVersionsRequestFunc: func(in1 *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput) {
-// 	               panic("mock out the DescribeCacheEngineVersionsRequest method")
-//             },
-//             DescribeCacheEngineVersionsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
-// 	               panic("mock out the DescribeCacheEngineVersionsWithContext method")
-//             },
-//             DescribeCacheParameterGroupsFunc: func(in1 *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheParameterGroups method")
-//             },
-//             DescribeCacheParameterGroupsPagesFunc: func(in1 *elasticache.DescribeCacheParameterGroupsInput, in2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheParameterGroupsPages method")
-//             },
-//             DescribeCacheParameterGroupsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheParameterGroupsPagesWithContext method")
-//             },
-//             DescribeCacheParameterGroupsRequestFunc: func(in1 *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput) {
-// 	               panic("mock out the DescribeCacheParameterGroupsRequest method")
-//             },
-//             DescribeCacheParameterGroupsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheParameterGroupsWithContext method")
-//             },
-//             DescribeCacheParametersFunc: func(in1 *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error) {
-// 	               panic("mock out the DescribeCacheParameters method")
-//             },
-//             DescribeCacheParametersPagesFunc: func(in1 *elasticache.DescribeCacheParametersInput, in2 func(*elasticache.DescribeCacheParametersOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheParametersPages method")
-//             },
-//             DescribeCacheParametersPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 func(*elasticache.DescribeCacheParametersOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheParametersPagesWithContext method")
-//             },
-//             DescribeCacheParametersRequestFunc: func(in1 *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput) {
-// 	               panic("mock out the DescribeCacheParametersRequest method")
-//             },
-//             DescribeCacheParametersWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
-// 	               panic("mock out the DescribeCacheParametersWithContext method")
-//             },
-//             DescribeCacheSecurityGroupsFunc: func(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheSecurityGroups method")
-//             },
-//             DescribeCacheSecurityGroupsPagesFunc: func(in1 *elasticache.DescribeCacheSecurityGroupsInput, in2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheSecurityGroupsPages method")
-//             },
-//             DescribeCacheSecurityGroupsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheSecurityGroupsPagesWithContext method")
-//             },
-//             DescribeCacheSecurityGroupsRequestFunc: func(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput) {
-// 	               panic("mock out the DescribeCacheSecurityGroupsRequest method")
-//             },
-//             DescribeCacheSecurityGroupsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheSecurityGroupsWithContext method")
-//             },
-//             DescribeCacheSubnetGroupsFunc: func(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheSubnetGroups method")
-//             },
-//             DescribeCacheSubnetGroupsPagesFunc: func(in1 *elasticache.DescribeCacheSubnetGroupsInput, in2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeCacheSubnetGroupsPages method")
-//             },
-//             DescribeCacheSubnetGroupsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeCacheSubnetGroupsPagesWithContext method")
-//             },
-//             DescribeCacheSubnetGroupsRequestFunc: func(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput) {
-// 	               panic("mock out the DescribeCacheSubnetGroupsRequest method")
-//             },
-//             DescribeCacheSubnetGroupsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
-// 	               panic("mock out the DescribeCacheSubnetGroupsWithContext method")
-//             },
-//             DescribeEngineDefaultParametersFunc: func(in1 *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
-// 	               panic("mock out the DescribeEngineDefaultParameters method")
-//             },
-//             DescribeEngineDefaultParametersPagesFunc: func(in1 *elasticache.DescribeEngineDefaultParametersInput, in2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error {
-// 	               panic("mock out the DescribeEngineDefaultParametersPages method")
-//             },
-//             DescribeEngineDefaultParametersPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeEngineDefaultParametersPagesWithContext method")
-//             },
-//             DescribeEngineDefaultParametersRequestFunc: func(in1 *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput) {
-// 	               panic("mock out the DescribeEngineDefaultParametersRequest method")
-//             },
-//             DescribeEngineDefaultParametersWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
-// 	               panic("mock out the DescribeEngineDefaultParametersWithContext method")
-//             },
-//             DescribeEventsFunc: func(in1 *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error) {
-// 	               panic("mock out the DescribeEvents method")
-//             },
-//             DescribeEventsPagesFunc: func(in1 *elasticache.DescribeEventsInput, in2 func(*elasticache.DescribeEventsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeEventsPages method")
-//             },
-//             DescribeEventsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 func(*elasticache.DescribeEventsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeEventsPagesWithContext method")
-//             },
-//             DescribeEventsRequestFunc: func(in1 *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput) {
-// 	               panic("mock out the DescribeEventsRequest method")
-//             },
-//             DescribeEventsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 ...request.Option) (*elasticache.DescribeEventsOutput, error) {
-// 	               panic("mock out the DescribeEventsWithContext method")
-//             },
-//             DescribeReplicationGroupsFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error) {
-// 	               panic("mock out the DescribeReplicationGroups method")
-//             },
-//             DescribeReplicationGroupsPagesFunc: func(in1 *elasticache.DescribeReplicationGroupsInput, in2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeReplicationGroupsPages method")
-//             },
-//             DescribeReplicationGroupsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeReplicationGroupsPagesWithContext method")
-//             },
-//             DescribeReplicationGroupsRequestFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput) {
-// 	               panic("mock out the DescribeReplicationGroupsRequest method")
-//             },
-//             DescribeReplicationGroupsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
-// 	               panic("mock out the DescribeReplicationGroupsWithContext method")
-//             },
-//             DescribeReservedCacheNodesFunc: func(in1 *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error) {
-// 	               panic("mock out the DescribeReservedCacheNodes method")
-//             },
-//             DescribeReservedCacheNodesOfferingsFunc: func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
-// 	               panic("mock out the DescribeReservedCacheNodesOfferings method")
-//             },
-//             DescribeReservedCacheNodesOfferingsPagesFunc: func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput, in2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeReservedCacheNodesOfferingsPages method")
-//             },
-//             DescribeReservedCacheNodesOfferingsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeReservedCacheNodesOfferingsPagesWithContext method")
-//             },
-//             DescribeReservedCacheNodesOfferingsRequestFunc: func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput) {
-// 	               panic("mock out the DescribeReservedCacheNodesOfferingsRequest method")
-//             },
-//             DescribeReservedCacheNodesOfferingsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
-// 	               panic("mock out the DescribeReservedCacheNodesOfferingsWithContext method")
-//             },
-//             DescribeReservedCacheNodesPagesFunc: func(in1 *elasticache.DescribeReservedCacheNodesInput, in2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error {
-// 	               panic("mock out the DescribeReservedCacheNodesPages method")
-//             },
-//             DescribeReservedCacheNodesPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeReservedCacheNodesPagesWithContext method")
-//             },
-//             DescribeReservedCacheNodesRequestFunc: func(in1 *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput) {
-// 	               panic("mock out the DescribeReservedCacheNodesRequest method")
-//             },
-//             DescribeReservedCacheNodesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
-// 	               panic("mock out the DescribeReservedCacheNodesWithContext method")
-//             },
-//             DescribeServiceUpdatesFunc: func(in1 *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error) {
-// 	               panic("mock out the DescribeServiceUpdates method")
-//             },
-//             DescribeServiceUpdatesPagesFunc: func(in1 *elasticache.DescribeServiceUpdatesInput, in2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error {
-// 	               panic("mock out the DescribeServiceUpdatesPages method")
-//             },
-//             DescribeServiceUpdatesPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeServiceUpdatesPagesWithContext method")
-//             },
-//             DescribeServiceUpdatesRequestFunc: func(in1 *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput) {
-// 	               panic("mock out the DescribeServiceUpdatesRequest method")
-//             },
-//             DescribeServiceUpdatesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
-// 	               panic("mock out the DescribeServiceUpdatesWithContext method")
-//             },
-//             DescribeSnapshotsFunc: func(in1 *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error) {
-// 	               panic("mock out the DescribeSnapshots method")
-//             },
-//             DescribeSnapshotsPagesFunc: func(in1 *elasticache.DescribeSnapshotsInput, in2 func(*elasticache.DescribeSnapshotsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeSnapshotsPages method")
-//             },
-//             DescribeSnapshotsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 func(*elasticache.DescribeSnapshotsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeSnapshotsPagesWithContext method")
-//             },
-//             DescribeSnapshotsRequestFunc: func(in1 *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput) {
-// 	               panic("mock out the DescribeSnapshotsRequest method")
-//             },
-//             DescribeSnapshotsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
-// 	               panic("mock out the DescribeSnapshotsWithContext method")
-//             },
-//             DescribeUpdateActionsFunc: func(in1 *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error) {
-// 	               panic("mock out the DescribeUpdateActions method")
-//             },
-//             DescribeUpdateActionsPagesFunc: func(in1 *elasticache.DescribeUpdateActionsInput, in2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error {
-// 	               panic("mock out the DescribeUpdateActionsPages method")
-//             },
-//             DescribeUpdateActionsPagesWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the DescribeUpdateActionsPagesWithContext method")
-//             },
-//             DescribeUpdateActionsRequestFunc: func(in1 *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput) {
-// 	               panic("mock out the DescribeUpdateActionsRequest method")
-//             },
-//             DescribeUpdateActionsWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
-// 	               panic("mock out the DescribeUpdateActionsWithContext method")
-//             },
-//             IncreaseReplicaCountFunc: func(in1 *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error) {
-// 	               panic("mock out the IncreaseReplicaCount method")
-//             },
-//             IncreaseReplicaCountRequestFunc: func(in1 *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput) {
-// 	               panic("mock out the IncreaseReplicaCountRequest method")
-//             },
-//             IncreaseReplicaCountWithContextFunc: func(in1 context.Context, in2 *elasticache.IncreaseReplicaCountInput, in3 ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
-// 	               panic("mock out the IncreaseReplicaCountWithContext method")
-//             },
-//             ListAllowedNodeTypeModificationsFunc: func(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
-// 	               panic("mock out the ListAllowedNodeTypeModifications method")
-//             },
-//             ListAllowedNodeTypeModificationsRequestFunc: func(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput) {
-// 	               panic("mock out the ListAllowedNodeTypeModificationsRequest method")
-//             },
-//             ListAllowedNodeTypeModificationsWithContextFunc: func(in1 context.Context, in2 *elasticache.ListAllowedNodeTypeModificationsInput, in3 ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
-// 	               panic("mock out the ListAllowedNodeTypeModificationsWithContext method")
-//             },
-//             ListTagsForResourceFunc: func(in1 *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the ListTagsForResource method")
-//             },
-//             ListTagsForResourceRequestFunc: func(in1 *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage) {
-// 	               panic("mock out the ListTagsForResourceRequest method")
-//             },
-//             ListTagsForResourceWithContextFunc: func(in1 context.Context, in2 *elasticache.ListTagsForResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the ListTagsForResourceWithContext method")
-//             },
-//             ModifyCacheClusterFunc: func(in1 *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error) {
-// 	               panic("mock out the ModifyCacheCluster method")
-//             },
-//             ModifyCacheClusterRequestFunc: func(in1 *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput) {
-// 	               panic("mock out the ModifyCacheClusterRequest method")
-//             },
-//             ModifyCacheClusterWithContextFunc: func(in1 context.Context, in2 *elasticache.ModifyCacheClusterInput, in3 ...request.Option) (*elasticache.ModifyCacheClusterOutput, error) {
-// 	               panic("mock out the ModifyCacheClusterWithContext method")
-//             },
-//             ModifyCacheParameterGroupFunc: func(in1 *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
-// 	               panic("mock out the ModifyCacheParameterGroup method")
-//             },
-//             ModifyCacheParameterGroupRequestFunc: func(in1 *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
-// 	               panic("mock out the ModifyCacheParameterGroupRequest method")
-//             },
-//             ModifyCacheParameterGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.ModifyCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
-// 	               panic("mock out the ModifyCacheParameterGroupWithContext method")
-//             },
-//             ModifyCacheSubnetGroupFunc: func(in1 *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the ModifyCacheSubnetGroup method")
-//             },
-//             ModifyCacheSubnetGroupRequestFunc: func(in1 *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput) {
-// 	               panic("mock out the ModifyCacheSubnetGroupRequest method")
-//             },
-//             ModifyCacheSubnetGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.ModifyCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
-// 	               panic("mock out the ModifyCacheSubnetGroupWithContext method")
-//             },
-//             ModifyReplicationGroupFunc: func(in1 *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error) {
-// 	               panic("mock out the ModifyReplicationGroup method")
-//             },
-//             ModifyReplicationGroupRequestFunc: func(in1 *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput) {
-// 	               panic("mock out the ModifyReplicationGroupRequest method")
-//             },
-//             ModifyReplicationGroupShardConfigurationFunc: func(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
-// 	               panic("mock out the ModifyReplicationGroupShardConfiguration method")
-//             },
-//             ModifyReplicationGroupShardConfigurationRequestFunc: func(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput) {
-// 	               panic("mock out the ModifyReplicationGroupShardConfigurationRequest method")
-//             },
-//             ModifyReplicationGroupShardConfigurationWithContextFunc: func(in1 context.Context, in2 *elasticache.ModifyReplicationGroupShardConfigurationInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
-// 	               panic("mock out the ModifyReplicationGroupShardConfigurationWithContext method")
-//             },
-//             ModifyReplicationGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.ModifyReplicationGroupInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
-// 	               panic("mock out the ModifyReplicationGroupWithContext method")
-//             },
-//             PurchaseReservedCacheNodesOfferingFunc: func(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
-// 	               panic("mock out the PurchaseReservedCacheNodesOffering method")
-//             },
-//             PurchaseReservedCacheNodesOfferingRequestFunc: func(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput) {
-// 	               panic("mock out the PurchaseReservedCacheNodesOfferingRequest method")
-//             },
-//             PurchaseReservedCacheNodesOfferingWithContextFunc: func(in1 context.Context, in2 *elasticache.PurchaseReservedCacheNodesOfferingInput, in3 ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
-// 	               panic("mock out the PurchaseReservedCacheNodesOfferingWithContext method")
-//             },
-//             RebootCacheClusterFunc: func(in1 *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error) {
-// 	               panic("mock out the RebootCacheCluster method")
-//             },
-//             RebootCacheClusterRequestFunc: func(in1 *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput) {
-// 	               panic("mock out the RebootCacheClusterRequest method")
-//             },
-//             RebootCacheClusterWithContextFunc: func(in1 context.Context, in2 *elasticache.RebootCacheClusterInput, in3 ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {
-// 	               panic("mock out the RebootCacheClusterWithContext method")
-//             },
-//             RemoveTagsFromResourceFunc: func(in1 *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the RemoveTagsFromResource method")
-//             },
-//             RemoveTagsFromResourceRequestFunc: func(in1 *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage) {
-// 	               panic("mock out the RemoveTagsFromResourceRequest method")
-//             },
-//             RemoveTagsFromResourceWithContextFunc: func(in1 context.Context, in2 *elasticache.RemoveTagsFromResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
-// 	               panic("mock out the RemoveTagsFromResourceWithContext method")
-//             },
-//             ResetCacheParameterGroupFunc: func(in1 *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
-// 	               panic("mock out the ResetCacheParameterGroup method")
-//             },
-//             ResetCacheParameterGroupRequestFunc: func(in1 *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
-// 	               panic("mock out the ResetCacheParameterGroupRequest method")
-//             },
-//             ResetCacheParameterGroupWithContextFunc: func(in1 context.Context, in2 *elasticache.ResetCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
-// 	               panic("mock out the ResetCacheParameterGroupWithContext method")
-//             },
-//             RevokeCacheSecurityGroupIngressFunc: func(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
-// 	               panic("mock out the RevokeCacheSecurityGroupIngress method")
-//             },
-//             RevokeCacheSecurityGroupIngressRequestFunc: func(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput) {
-// 	               panic("mock out the RevokeCacheSecurityGroupIngressRequest method")
-//             },
-//             RevokeCacheSecurityGroupIngressWithContextFunc: func(in1 context.Context, in2 *elasticache.RevokeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
-// 	               panic("mock out the RevokeCacheSecurityGroupIngressWithContext method")
-//             },
-//             StartMigrationFunc: func(in1 *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error) {
-// 	               panic("mock out the StartMigration method")
-//             },
-//             StartMigrationRequestFunc: func(in1 *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput) {
-// 	               panic("mock out the StartMigrationRequest method")
-//             },
-//             StartMigrationWithContextFunc: func(in1 context.Context, in2 *elasticache.StartMigrationInput, in3 ...request.Option) (*elasticache.StartMigrationOutput, error) {
-// 	               panic("mock out the StartMigrationWithContext method")
-//             },
-//             TestFailoverFunc: func(in1 *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error) {
-// 	               panic("mock out the TestFailover method")
-//             },
-//             TestFailoverRequestFunc: func(in1 *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput) {
-// 	               panic("mock out the TestFailoverRequest method")
-//             },
-//             TestFailoverWithContextFunc: func(in1 context.Context, in2 *elasticache.TestFailoverInput, in3 ...request.Option) (*elasticache.TestFailoverOutput, error) {
-// 	               panic("mock out the TestFailoverWithContext method")
-//             },
-//             WaitUntilCacheClusterAvailableFunc: func(in1 *elasticache.DescribeCacheClustersInput) error {
-// 	               panic("mock out the WaitUntilCacheClusterAvailable method")
-//             },
-//             WaitUntilCacheClusterAvailableWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error {
-// 	               panic("mock out the WaitUntilCacheClusterAvailableWithContext method")
-//             },
-//             WaitUntilCacheClusterDeletedFunc: func(in1 *elasticache.DescribeCacheClustersInput) error {
-// 	               panic("mock out the WaitUntilCacheClusterDeleted method")
-//             },
-//             WaitUntilCacheClusterDeletedWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error {
-// 	               panic("mock out the WaitUntilCacheClusterDeletedWithContext method")
-//             },
-//             WaitUntilReplicationGroupAvailableFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) error {
-// 	               panic("mock out the WaitUntilReplicationGroupAvailable method")
-//             },
-//             WaitUntilReplicationGroupAvailableWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error {
-// 	               panic("mock out the WaitUntilReplicationGroupAvailableWithContext method")
-//             },
-//             WaitUntilReplicationGroupDeletedFunc: func(in1 *elasticache.DescribeReplicationGroupsInput) error {
-// 	               panic("mock out the WaitUntilReplicationGroupDeleted method")
-//             },
-//             WaitUntilReplicationGroupDeletedWithContextFunc: func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error {
-// 	               panic("mock out the WaitUntilReplicationGroupDeletedWithContext method")
-//             },
-//         }
+// 		// make and configure a mocked elasticacheClient
+// 		mockedelasticacheClient := &elasticacheClientMock{
+// 			AddTagsToResourceFunc: func(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the AddTagsToResource method")
+// 			},
+// 			AddTagsToResourceRequestFunc: func(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage) {
+// 				panic("mock out the AddTagsToResourceRequest method")
+// 			},
+// 			AddTagsToResourceWithContextFunc: func(contextMoqParam context.Context, addTagsToResourceInput *elasticache.AddTagsToResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the AddTagsToResourceWithContext method")
+// 			},
+// 			AuthorizeCacheSecurityGroupIngressFunc: func(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
+// 				panic("mock out the AuthorizeCacheSecurityGroupIngress method")
+// 			},
+// 			AuthorizeCacheSecurityGroupIngressRequestFunc: func(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput) {
+// 				panic("mock out the AuthorizeCacheSecurityGroupIngressRequest method")
+// 			},
+// 			AuthorizeCacheSecurityGroupIngressWithContextFunc: func(contextMoqParam context.Context, authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
+// 				panic("mock out the AuthorizeCacheSecurityGroupIngressWithContext method")
+// 			},
+// 			BatchApplyUpdateActionFunc: func(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error) {
+// 				panic("mock out the BatchApplyUpdateAction method")
+// 			},
+// 			BatchApplyUpdateActionRequestFunc: func(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput) {
+// 				panic("mock out the BatchApplyUpdateActionRequest method")
+// 			},
+// 			BatchApplyUpdateActionWithContextFunc: func(contextMoqParam context.Context, batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput, options ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error) {
+// 				panic("mock out the BatchApplyUpdateActionWithContext method")
+// 			},
+// 			BatchStopUpdateActionFunc: func(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error) {
+// 				panic("mock out the BatchStopUpdateAction method")
+// 			},
+// 			BatchStopUpdateActionRequestFunc: func(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput) {
+// 				panic("mock out the BatchStopUpdateActionRequest method")
+// 			},
+// 			BatchStopUpdateActionWithContextFunc: func(contextMoqParam context.Context, batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput, options ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error) {
+// 				panic("mock out the BatchStopUpdateActionWithContext method")
+// 			},
+// 			CompleteMigrationFunc: func(completeMigrationInput *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error) {
+// 				panic("mock out the CompleteMigration method")
+// 			},
+// 			CompleteMigrationRequestFunc: func(completeMigrationInput *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput) {
+// 				panic("mock out the CompleteMigrationRequest method")
+// 			},
+// 			CompleteMigrationWithContextFunc: func(contextMoqParam context.Context, completeMigrationInput *elasticache.CompleteMigrationInput, options ...request.Option) (*elasticache.CompleteMigrationOutput, error) {
+// 				panic("mock out the CompleteMigrationWithContext method")
+// 			},
+// 			CopySnapshotFunc: func(copySnapshotInput *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error) {
+// 				panic("mock out the CopySnapshot method")
+// 			},
+// 			CopySnapshotRequestFunc: func(copySnapshotInput *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput) {
+// 				panic("mock out the CopySnapshotRequest method")
+// 			},
+// 			CopySnapshotWithContextFunc: func(contextMoqParam context.Context, copySnapshotInput *elasticache.CopySnapshotInput, options ...request.Option) (*elasticache.CopySnapshotOutput, error) {
+// 				panic("mock out the CopySnapshotWithContext method")
+// 			},
+// 			CreateCacheClusterFunc: func(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error) {
+// 				panic("mock out the CreateCacheCluster method")
+// 			},
+// 			CreateCacheClusterRequestFunc: func(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput) {
+// 				panic("mock out the CreateCacheClusterRequest method")
+// 			},
+// 			CreateCacheClusterWithContextFunc: func(contextMoqParam context.Context, createCacheClusterInput *elasticache.CreateCacheClusterInput, options ...request.Option) (*elasticache.CreateCacheClusterOutput, error) {
+// 				panic("mock out the CreateCacheClusterWithContext method")
+// 			},
+// 			CreateCacheParameterGroupFunc: func(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error) {
+// 				panic("mock out the CreateCacheParameterGroup method")
+// 			},
+// 			CreateCacheParameterGroupRequestFunc: func(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput) {
+// 				panic("mock out the CreateCacheParameterGroupRequest method")
+// 			},
+// 			CreateCacheParameterGroupWithContextFunc: func(contextMoqParam context.Context, createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput, options ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error) {
+// 				panic("mock out the CreateCacheParameterGroupWithContext method")
+// 			},
+// 			CreateCacheSecurityGroupFunc: func(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error) {
+// 				panic("mock out the CreateCacheSecurityGroup method")
+// 			},
+// 			CreateCacheSecurityGroupRequestFunc: func(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput) {
+// 				panic("mock out the CreateCacheSecurityGroupRequest method")
+// 			},
+// 			CreateCacheSecurityGroupWithContextFunc: func(contextMoqParam context.Context, createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput, options ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error) {
+// 				panic("mock out the CreateCacheSecurityGroupWithContext method")
+// 			},
+// 			CreateCacheSubnetGroupFunc: func(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error) {
+// 				panic("mock out the CreateCacheSubnetGroup method")
+// 			},
+// 			CreateCacheSubnetGroupRequestFunc: func(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput) {
+// 				panic("mock out the CreateCacheSubnetGroupRequest method")
+// 			},
+// 			CreateCacheSubnetGroupWithContextFunc: func(contextMoqParam context.Context, createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput, options ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error) {
+// 				panic("mock out the CreateCacheSubnetGroupWithContext method")
+// 			},
+// 			CreateGlobalReplicationGroupFunc: func(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*elasticache.CreateGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the CreateGlobalReplicationGroup method")
+// 			},
+// 			CreateGlobalReplicationGroupRequestFunc: func(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*request.Request, *elasticache.CreateGlobalReplicationGroupOutput) {
+// 				panic("mock out the CreateGlobalReplicationGroupRequest method")
+// 			},
+// 			CreateGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.CreateGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the CreateGlobalReplicationGroupWithContext method")
+// 			},
+// 			CreateReplicationGroupFunc: func(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error) {
+// 				panic("mock out the CreateReplicationGroup method")
+// 			},
+// 			CreateReplicationGroupRequestFunc: func(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput) {
+// 				panic("mock out the CreateReplicationGroupRequest method")
+// 			},
+// 			CreateReplicationGroupWithContextFunc: func(contextMoqParam context.Context, createReplicationGroupInput *elasticache.CreateReplicationGroupInput, options ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
+// 				panic("mock out the CreateReplicationGroupWithContext method")
+// 			},
+// 			CreateSnapshotFunc: func(createSnapshotInput *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error) {
+// 				panic("mock out the CreateSnapshot method")
+// 			},
+// 			CreateSnapshotRequestFunc: func(createSnapshotInput *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput) {
+// 				panic("mock out the CreateSnapshotRequest method")
+// 			},
+// 			CreateSnapshotWithContextFunc: func(contextMoqParam context.Context, createSnapshotInput *elasticache.CreateSnapshotInput, options ...request.Option) (*elasticache.CreateSnapshotOutput, error) {
+// 				panic("mock out the CreateSnapshotWithContext method")
+// 			},
+// 			CreateUserFunc: func(createUserInput *elasticache.CreateUserInput) (*elasticache.CreateUserOutput, error) {
+// 				panic("mock out the CreateUser method")
+// 			},
+// 			CreateUserGroupFunc: func(createUserGroupInput *elasticache.CreateUserGroupInput) (*elasticache.CreateUserGroupOutput, error) {
+// 				panic("mock out the CreateUserGroup method")
+// 			},
+// 			CreateUserGroupRequestFunc: func(createUserGroupInput *elasticache.CreateUserGroupInput) (*request.Request, *elasticache.CreateUserGroupOutput) {
+// 				panic("mock out the CreateUserGroupRequest method")
+// 			},
+// 			CreateUserGroupWithContextFunc: func(contextMoqParam context.Context, createUserGroupInput *elasticache.CreateUserGroupInput, options ...request.Option) (*elasticache.CreateUserGroupOutput, error) {
+// 				panic("mock out the CreateUserGroupWithContext method")
+// 			},
+// 			CreateUserRequestFunc: func(createUserInput *elasticache.CreateUserInput) (*request.Request, *elasticache.CreateUserOutput) {
+// 				panic("mock out the CreateUserRequest method")
+// 			},
+// 			CreateUserWithContextFunc: func(contextMoqParam context.Context, createUserInput *elasticache.CreateUserInput, options ...request.Option) (*elasticache.CreateUserOutput, error) {
+// 				panic("mock out the CreateUserWithContext method")
+// 			},
+// 			DecreaseNodeGroupsInGlobalReplicationGroupFunc: func(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DecreaseNodeGroupsInGlobalReplicationGroup method")
+// 			},
+// 			DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc: func(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput) {
+// 				panic("mock out the DecreaseNodeGroupsInGlobalReplicationGroupRequest method")
+// 			},
+// 			DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DecreaseNodeGroupsInGlobalReplicationGroupWithContext method")
+// 			},
+// 			DecreaseReplicaCountFunc: func(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error) {
+// 				panic("mock out the DecreaseReplicaCount method")
+// 			},
+// 			DecreaseReplicaCountRequestFunc: func(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput) {
+// 				panic("mock out the DecreaseReplicaCountRequest method")
+// 			},
+// 			DecreaseReplicaCountWithContextFunc: func(contextMoqParam context.Context, decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput, options ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
+// 				panic("mock out the DecreaseReplicaCountWithContext method")
+// 			},
+// 			DeleteCacheClusterFunc: func(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error) {
+// 				panic("mock out the DeleteCacheCluster method")
+// 			},
+// 			DeleteCacheClusterRequestFunc: func(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput) {
+// 				panic("mock out the DeleteCacheClusterRequest method")
+// 			},
+// 			DeleteCacheClusterWithContextFunc: func(contextMoqParam context.Context, deleteCacheClusterInput *elasticache.DeleteCacheClusterInput, options ...request.Option) (*elasticache.DeleteCacheClusterOutput, error) {
+// 				panic("mock out the DeleteCacheClusterWithContext method")
+// 			},
+// 			DeleteCacheParameterGroupFunc: func(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error) {
+// 				panic("mock out the DeleteCacheParameterGroup method")
+// 			},
+// 			DeleteCacheParameterGroupRequestFunc: func(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput) {
+// 				panic("mock out the DeleteCacheParameterGroupRequest method")
+// 			},
+// 			DeleteCacheParameterGroupWithContextFunc: func(contextMoqParam context.Context, deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput, options ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error) {
+// 				panic("mock out the DeleteCacheParameterGroupWithContext method")
+// 			},
+// 			DeleteCacheSecurityGroupFunc: func(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
+// 				panic("mock out the DeleteCacheSecurityGroup method")
+// 			},
+// 			DeleteCacheSecurityGroupRequestFunc: func(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput) {
+// 				panic("mock out the DeleteCacheSecurityGroupRequest method")
+// 			},
+// 			DeleteCacheSecurityGroupWithContextFunc: func(contextMoqParam context.Context, deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput, options ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
+// 				panic("mock out the DeleteCacheSecurityGroupWithContext method")
+// 			},
+// 			DeleteCacheSubnetGroupFunc: func(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
+// 				panic("mock out the DeleteCacheSubnetGroup method")
+// 			},
+// 			DeleteCacheSubnetGroupRequestFunc: func(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput) {
+// 				panic("mock out the DeleteCacheSubnetGroupRequest method")
+// 			},
+// 			DeleteCacheSubnetGroupWithContextFunc: func(contextMoqParam context.Context, deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput, options ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
+// 				panic("mock out the DeleteCacheSubnetGroupWithContext method")
+// 			},
+// 			DeleteGlobalReplicationGroupFunc: func(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*elasticache.DeleteGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DeleteGlobalReplicationGroup method")
+// 			},
+// 			DeleteGlobalReplicationGroupRequestFunc: func(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*request.Request, *elasticache.DeleteGlobalReplicationGroupOutput) {
+// 				panic("mock out the DeleteGlobalReplicationGroupRequest method")
+// 			},
+// 			DeleteGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DeleteGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DeleteGlobalReplicationGroupWithContext method")
+// 			},
+// 			DeleteReplicationGroupFunc: func(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error) {
+// 				panic("mock out the DeleteReplicationGroup method")
+// 			},
+// 			DeleteReplicationGroupRequestFunc: func(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput) {
+// 				panic("mock out the DeleteReplicationGroupRequest method")
+// 			},
+// 			DeleteReplicationGroupWithContextFunc: func(contextMoqParam context.Context, deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput, options ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
+// 				panic("mock out the DeleteReplicationGroupWithContext method")
+// 			},
+// 			DeleteSnapshotFunc: func(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error) {
+// 				panic("mock out the DeleteSnapshot method")
+// 			},
+// 			DeleteSnapshotRequestFunc: func(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput) {
+// 				panic("mock out the DeleteSnapshotRequest method")
+// 			},
+// 			DeleteSnapshotWithContextFunc: func(contextMoqParam context.Context, deleteSnapshotInput *elasticache.DeleteSnapshotInput, options ...request.Option) (*elasticache.DeleteSnapshotOutput, error) {
+// 				panic("mock out the DeleteSnapshotWithContext method")
+// 			},
+// 			DeleteUserFunc: func(deleteUserInput *elasticache.DeleteUserInput) (*elasticache.DeleteUserOutput, error) {
+// 				panic("mock out the DeleteUser method")
+// 			},
+// 			DeleteUserGroupFunc: func(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*elasticache.DeleteUserGroupOutput, error) {
+// 				panic("mock out the DeleteUserGroup method")
+// 			},
+// 			DeleteUserGroupRequestFunc: func(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*request.Request, *elasticache.DeleteUserGroupOutput) {
+// 				panic("mock out the DeleteUserGroupRequest method")
+// 			},
+// 			DeleteUserGroupWithContextFunc: func(contextMoqParam context.Context, deleteUserGroupInput *elasticache.DeleteUserGroupInput, options ...request.Option) (*elasticache.DeleteUserGroupOutput, error) {
+// 				panic("mock out the DeleteUserGroupWithContext method")
+// 			},
+// 			DeleteUserRequestFunc: func(deleteUserInput *elasticache.DeleteUserInput) (*request.Request, *elasticache.DeleteUserOutput) {
+// 				panic("mock out the DeleteUserRequest method")
+// 			},
+// 			DeleteUserWithContextFunc: func(contextMoqParam context.Context, deleteUserInput *elasticache.DeleteUserInput, options ...request.Option) (*elasticache.DeleteUserOutput, error) {
+// 				panic("mock out the DeleteUserWithContext method")
+// 			},
+// 			DescribeCacheClustersFunc: func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
+// 				panic("mock out the DescribeCacheClusters method")
+// 			},
+// 			DescribeCacheClustersPagesFunc: func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheClustersPages method")
+// 			},
+// 			DescribeCacheClustersPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheClustersPagesWithContext method")
+// 			},
+// 			DescribeCacheClustersRequestFunc: func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput) {
+// 				panic("mock out the DescribeCacheClustersRequest method")
+// 			},
+// 			DescribeCacheClustersWithContextFunc: func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, options ...request.Option) (*elasticache.DescribeCacheClustersOutput, error) {
+// 				panic("mock out the DescribeCacheClustersWithContext method")
+// 			},
+// 			DescribeCacheEngineVersionsFunc: func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
+// 				panic("mock out the DescribeCacheEngineVersions method")
+// 			},
+// 			DescribeCacheEngineVersionsPagesFunc: func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheEngineVersionsPages method")
+// 			},
+// 			DescribeCacheEngineVersionsPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheEngineVersionsPagesWithContext method")
+// 			},
+// 			DescribeCacheEngineVersionsRequestFunc: func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput) {
+// 				panic("mock out the DescribeCacheEngineVersionsRequest method")
+// 			},
+// 			DescribeCacheEngineVersionsWithContextFunc: func(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, options ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
+// 				panic("mock out the DescribeCacheEngineVersionsWithContext method")
+// 			},
+// 			DescribeCacheParameterGroupsFunc: func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheParameterGroups method")
+// 			},
+// 			DescribeCacheParameterGroupsPagesFunc: func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheParameterGroupsPages method")
+// 			},
+// 			DescribeCacheParameterGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheParameterGroupsPagesWithContext method")
+// 			},
+// 			DescribeCacheParameterGroupsRequestFunc: func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput) {
+// 				panic("mock out the DescribeCacheParameterGroupsRequest method")
+// 			},
+// 			DescribeCacheParameterGroupsWithContextFunc: func(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, options ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheParameterGroupsWithContext method")
+// 			},
+// 			DescribeCacheParametersFunc: func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error) {
+// 				panic("mock out the DescribeCacheParameters method")
+// 			},
+// 			DescribeCacheParametersPagesFunc: func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheParametersPages method")
+// 			},
+// 			DescribeCacheParametersPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheParametersPagesWithContext method")
+// 			},
+// 			DescribeCacheParametersRequestFunc: func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput) {
+// 				panic("mock out the DescribeCacheParametersRequest method")
+// 			},
+// 			DescribeCacheParametersWithContextFunc: func(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, options ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
+// 				panic("mock out the DescribeCacheParametersWithContext method")
+// 			},
+// 			DescribeCacheSecurityGroupsFunc: func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheSecurityGroups method")
+// 			},
+// 			DescribeCacheSecurityGroupsPagesFunc: func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheSecurityGroupsPages method")
+// 			},
+// 			DescribeCacheSecurityGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheSecurityGroupsPagesWithContext method")
+// 			},
+// 			DescribeCacheSecurityGroupsRequestFunc: func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput) {
+// 				panic("mock out the DescribeCacheSecurityGroupsRequest method")
+// 			},
+// 			DescribeCacheSecurityGroupsWithContextFunc: func(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheSecurityGroupsWithContext method")
+// 			},
+// 			DescribeCacheSubnetGroupsFunc: func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheSubnetGroups method")
+// 			},
+// 			DescribeCacheSubnetGroupsPagesFunc: func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeCacheSubnetGroupsPages method")
+// 			},
+// 			DescribeCacheSubnetGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeCacheSubnetGroupsPagesWithContext method")
+// 			},
+// 			DescribeCacheSubnetGroupsRequestFunc: func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput) {
+// 				panic("mock out the DescribeCacheSubnetGroupsRequest method")
+// 			},
+// 			DescribeCacheSubnetGroupsWithContextFunc: func(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
+// 				panic("mock out the DescribeCacheSubnetGroupsWithContext method")
+// 			},
+// 			DescribeEngineDefaultParametersFunc: func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
+// 				panic("mock out the DescribeEngineDefaultParameters method")
+// 			},
+// 			DescribeEngineDefaultParametersPagesFunc: func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error {
+// 				panic("mock out the DescribeEngineDefaultParametersPages method")
+// 			},
+// 			DescribeEngineDefaultParametersPagesWithContextFunc: func(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeEngineDefaultParametersPagesWithContext method")
+// 			},
+// 			DescribeEngineDefaultParametersRequestFunc: func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput) {
+// 				panic("mock out the DescribeEngineDefaultParametersRequest method")
+// 			},
+// 			DescribeEngineDefaultParametersWithContextFunc: func(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, options ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
+// 				panic("mock out the DescribeEngineDefaultParametersWithContext method")
+// 			},
+// 			DescribeEventsFunc: func(describeEventsInput *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error) {
+// 				panic("mock out the DescribeEvents method")
+// 			},
+// 			DescribeEventsPagesFunc: func(describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool) error {
+// 				panic("mock out the DescribeEventsPages method")
+// 			},
+// 			DescribeEventsPagesWithContextFunc: func(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeEventsPagesWithContext method")
+// 			},
+// 			DescribeEventsRequestFunc: func(describeEventsInput *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput) {
+// 				panic("mock out the DescribeEventsRequest method")
+// 			},
+// 			DescribeEventsWithContextFunc: func(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, options ...request.Option) (*elasticache.DescribeEventsOutput, error) {
+// 				panic("mock out the DescribeEventsWithContext method")
+// 			},
+// 			DescribeGlobalReplicationGroupsFunc: func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*elasticache.DescribeGlobalReplicationGroupsOutput, error) {
+// 				panic("mock out the DescribeGlobalReplicationGroups method")
+// 			},
+// 			DescribeGlobalReplicationGroupsPagesFunc: func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeGlobalReplicationGroupsPages method")
+// 			},
+// 			DescribeGlobalReplicationGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeGlobalReplicationGroupsPagesWithContext method")
+// 			},
+// 			DescribeGlobalReplicationGroupsRequestFunc: func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*request.Request, *elasticache.DescribeGlobalReplicationGroupsOutput) {
+// 				panic("mock out the DescribeGlobalReplicationGroupsRequest method")
+// 			},
+// 			DescribeGlobalReplicationGroupsWithContextFunc: func(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeGlobalReplicationGroupsOutput, error) {
+// 				panic("mock out the DescribeGlobalReplicationGroupsWithContext method")
+// 			},
+// 			DescribeReplicationGroupsFunc: func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error) {
+// 				panic("mock out the DescribeReplicationGroups method")
+// 			},
+// 			DescribeReplicationGroupsPagesFunc: func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeReplicationGroupsPages method")
+// 			},
+// 			DescribeReplicationGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeReplicationGroupsPagesWithContext method")
+// 			},
+// 			DescribeReplicationGroupsRequestFunc: func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput) {
+// 				panic("mock out the DescribeReplicationGroupsRequest method")
+// 			},
+// 			DescribeReplicationGroupsWithContextFunc: func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
+// 				panic("mock out the DescribeReplicationGroupsWithContext method")
+// 			},
+// 			DescribeReservedCacheNodesFunc: func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error) {
+// 				panic("mock out the DescribeReservedCacheNodes method")
+// 			},
+// 			DescribeReservedCacheNodesOfferingsFunc: func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
+// 				panic("mock out the DescribeReservedCacheNodesOfferings method")
+// 			},
+// 			DescribeReservedCacheNodesOfferingsPagesFunc: func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error {
+// 				panic("mock out the DescribeReservedCacheNodesOfferingsPages method")
+// 			},
+// 			DescribeReservedCacheNodesOfferingsPagesWithContextFunc: func(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeReservedCacheNodesOfferingsPagesWithContext method")
+// 			},
+// 			DescribeReservedCacheNodesOfferingsRequestFunc: func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput) {
+// 				panic("mock out the DescribeReservedCacheNodesOfferingsRequest method")
+// 			},
+// 			DescribeReservedCacheNodesOfferingsWithContextFunc: func(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
+// 				panic("mock out the DescribeReservedCacheNodesOfferingsWithContext method")
+// 			},
+// 			DescribeReservedCacheNodesPagesFunc: func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error {
+// 				panic("mock out the DescribeReservedCacheNodesPages method")
+// 			},
+// 			DescribeReservedCacheNodesPagesWithContextFunc: func(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeReservedCacheNodesPagesWithContext method")
+// 			},
+// 			DescribeReservedCacheNodesRequestFunc: func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput) {
+// 				panic("mock out the DescribeReservedCacheNodesRequest method")
+// 			},
+// 			DescribeReservedCacheNodesWithContextFunc: func(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
+// 				panic("mock out the DescribeReservedCacheNodesWithContext method")
+// 			},
+// 			DescribeServiceUpdatesFunc: func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error) {
+// 				panic("mock out the DescribeServiceUpdates method")
+// 			},
+// 			DescribeServiceUpdatesPagesFunc: func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error {
+// 				panic("mock out the DescribeServiceUpdatesPages method")
+// 			},
+// 			DescribeServiceUpdatesPagesWithContextFunc: func(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeServiceUpdatesPagesWithContext method")
+// 			},
+// 			DescribeServiceUpdatesRequestFunc: func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput) {
+// 				panic("mock out the DescribeServiceUpdatesRequest method")
+// 			},
+// 			DescribeServiceUpdatesWithContextFunc: func(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, options ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
+// 				panic("mock out the DescribeServiceUpdatesWithContext method")
+// 			},
+// 			DescribeSnapshotsFunc: func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error) {
+// 				panic("mock out the DescribeSnapshots method")
+// 			},
+// 			DescribeSnapshotsPagesFunc: func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool) error {
+// 				panic("mock out the DescribeSnapshotsPages method")
+// 			},
+// 			DescribeSnapshotsPagesWithContextFunc: func(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeSnapshotsPagesWithContext method")
+// 			},
+// 			DescribeSnapshotsRequestFunc: func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput) {
+// 				panic("mock out the DescribeSnapshotsRequest method")
+// 			},
+// 			DescribeSnapshotsWithContextFunc: func(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, options ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
+// 				panic("mock out the DescribeSnapshotsWithContext method")
+// 			},
+// 			DescribeUpdateActionsFunc: func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error) {
+// 				panic("mock out the DescribeUpdateActions method")
+// 			},
+// 			DescribeUpdateActionsPagesFunc: func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error {
+// 				panic("mock out the DescribeUpdateActionsPages method")
+// 			},
+// 			DescribeUpdateActionsPagesWithContextFunc: func(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeUpdateActionsPagesWithContext method")
+// 			},
+// 			DescribeUpdateActionsRequestFunc: func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput) {
+// 				panic("mock out the DescribeUpdateActionsRequest method")
+// 			},
+// 			DescribeUpdateActionsWithContextFunc: func(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, options ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
+// 				panic("mock out the DescribeUpdateActionsWithContext method")
+// 			},
+// 			DescribeUserGroupsFunc: func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*elasticache.DescribeUserGroupsOutput, error) {
+// 				panic("mock out the DescribeUserGroups method")
+// 			},
+// 			DescribeUserGroupsPagesFunc: func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool) error {
+// 				panic("mock out the DescribeUserGroupsPages method")
+// 			},
+// 			DescribeUserGroupsPagesWithContextFunc: func(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeUserGroupsPagesWithContext method")
+// 			},
+// 			DescribeUserGroupsRequestFunc: func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*request.Request, *elasticache.DescribeUserGroupsOutput) {
+// 				panic("mock out the DescribeUserGroupsRequest method")
+// 			},
+// 			DescribeUserGroupsWithContextFunc: func(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, options ...request.Option) (*elasticache.DescribeUserGroupsOutput, error) {
+// 				panic("mock out the DescribeUserGroupsWithContext method")
+// 			},
+// 			DescribeUsersFunc: func(describeUsersInput *elasticache.DescribeUsersInput) (*elasticache.DescribeUsersOutput, error) {
+// 				panic("mock out the DescribeUsers method")
+// 			},
+// 			DescribeUsersPagesFunc: func(describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool) error {
+// 				panic("mock out the DescribeUsersPages method")
+// 			},
+// 			DescribeUsersPagesWithContextFunc: func(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the DescribeUsersPagesWithContext method")
+// 			},
+// 			DescribeUsersRequestFunc: func(describeUsersInput *elasticache.DescribeUsersInput) (*request.Request, *elasticache.DescribeUsersOutput) {
+// 				panic("mock out the DescribeUsersRequest method")
+// 			},
+// 			DescribeUsersWithContextFunc: func(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, options ...request.Option) (*elasticache.DescribeUsersOutput, error) {
+// 				panic("mock out the DescribeUsersWithContext method")
+// 			},
+// 			DisassociateGlobalReplicationGroupFunc: func(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*elasticache.DisassociateGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DisassociateGlobalReplicationGroup method")
+// 			},
+// 			DisassociateGlobalReplicationGroupRequestFunc: func(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*request.Request, *elasticache.DisassociateGlobalReplicationGroupOutput) {
+// 				panic("mock out the DisassociateGlobalReplicationGroupRequest method")
+// 			},
+// 			DisassociateGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DisassociateGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the DisassociateGlobalReplicationGroupWithContext method")
+// 			},
+// 			FailoverGlobalReplicationGroupFunc: func(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*elasticache.FailoverGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the FailoverGlobalReplicationGroup method")
+// 			},
+// 			FailoverGlobalReplicationGroupRequestFunc: func(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*request.Request, *elasticache.FailoverGlobalReplicationGroupOutput) {
+// 				panic("mock out the FailoverGlobalReplicationGroupRequest method")
+// 			},
+// 			FailoverGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput, options ...request.Option) (*elasticache.FailoverGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the FailoverGlobalReplicationGroupWithContext method")
+// 			},
+// 			IncreaseNodeGroupsInGlobalReplicationGroupFunc: func(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the IncreaseNodeGroupsInGlobalReplicationGroup method")
+// 			},
+// 			IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc: func(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput) {
+// 				panic("mock out the IncreaseNodeGroupsInGlobalReplicationGroupRequest method")
+// 			},
+// 			IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the IncreaseNodeGroupsInGlobalReplicationGroupWithContext method")
+// 			},
+// 			IncreaseReplicaCountFunc: func(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error) {
+// 				panic("mock out the IncreaseReplicaCount method")
+// 			},
+// 			IncreaseReplicaCountRequestFunc: func(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput) {
+// 				panic("mock out the IncreaseReplicaCountRequest method")
+// 			},
+// 			IncreaseReplicaCountWithContextFunc: func(contextMoqParam context.Context, increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput, options ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
+// 				panic("mock out the IncreaseReplicaCountWithContext method")
+// 			},
+// 			ListAllowedNodeTypeModificationsFunc: func(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
+// 				panic("mock out the ListAllowedNodeTypeModifications method")
+// 			},
+// 			ListAllowedNodeTypeModificationsRequestFunc: func(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput) {
+// 				panic("mock out the ListAllowedNodeTypeModificationsRequest method")
+// 			},
+// 			ListAllowedNodeTypeModificationsWithContextFunc: func(contextMoqParam context.Context, listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput, options ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
+// 				panic("mock out the ListAllowedNodeTypeModificationsWithContext method")
+// 			},
+// 			ListTagsForResourceFunc: func(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the ListTagsForResource method")
+// 			},
+// 			ListTagsForResourceRequestFunc: func(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage) {
+// 				panic("mock out the ListTagsForResourceRequest method")
+// 			},
+// 			ListTagsForResourceWithContextFunc: func(contextMoqParam context.Context, listTagsForResourceInput *elasticache.ListTagsForResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the ListTagsForResourceWithContext method")
+// 			},
+// 			ModifyCacheClusterFunc: func(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error) {
+// 				panic("mock out the ModifyCacheCluster method")
+// 			},
+// 			ModifyCacheClusterRequestFunc: func(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput) {
+// 				panic("mock out the ModifyCacheClusterRequest method")
+// 			},
+// 			ModifyCacheClusterWithContextFunc: func(contextMoqParam context.Context, modifyCacheClusterInput *elasticache.ModifyCacheClusterInput, options ...request.Option) (*elasticache.ModifyCacheClusterOutput, error) {
+// 				panic("mock out the ModifyCacheClusterWithContext method")
+// 			},
+// 			ModifyCacheParameterGroupFunc: func(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
+// 				panic("mock out the ModifyCacheParameterGroup method")
+// 			},
+// 			ModifyCacheParameterGroupRequestFunc: func(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
+// 				panic("mock out the ModifyCacheParameterGroupRequest method")
+// 			},
+// 			ModifyCacheParameterGroupWithContextFunc: func(contextMoqParam context.Context, modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
+// 				panic("mock out the ModifyCacheParameterGroupWithContext method")
+// 			},
+// 			ModifyCacheSubnetGroupFunc: func(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
+// 				panic("mock out the ModifyCacheSubnetGroup method")
+// 			},
+// 			ModifyCacheSubnetGroupRequestFunc: func(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput) {
+// 				panic("mock out the ModifyCacheSubnetGroupRequest method")
+// 			},
+// 			ModifyCacheSubnetGroupWithContextFunc: func(contextMoqParam context.Context, modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput, options ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
+// 				panic("mock out the ModifyCacheSubnetGroupWithContext method")
+// 			},
+// 			ModifyGlobalReplicationGroupFunc: func(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*elasticache.ModifyGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the ModifyGlobalReplicationGroup method")
+// 			},
+// 			ModifyGlobalReplicationGroupRequestFunc: func(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*request.Request, *elasticache.ModifyGlobalReplicationGroupOutput) {
+// 				panic("mock out the ModifyGlobalReplicationGroupRequest method")
+// 			},
+// 			ModifyGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput, options ...request.Option) (*elasticache.ModifyGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the ModifyGlobalReplicationGroupWithContext method")
+// 			},
+// 			ModifyReplicationGroupFunc: func(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error) {
+// 				panic("mock out the ModifyReplicationGroup method")
+// 			},
+// 			ModifyReplicationGroupRequestFunc: func(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput) {
+// 				panic("mock out the ModifyReplicationGroupRequest method")
+// 			},
+// 			ModifyReplicationGroupShardConfigurationFunc: func(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
+// 				panic("mock out the ModifyReplicationGroupShardConfiguration method")
+// 			},
+// 			ModifyReplicationGroupShardConfigurationRequestFunc: func(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput) {
+// 				panic("mock out the ModifyReplicationGroupShardConfigurationRequest method")
+// 			},
+// 			ModifyReplicationGroupShardConfigurationWithContextFunc: func(contextMoqParam context.Context, modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput, options ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
+// 				panic("mock out the ModifyReplicationGroupShardConfigurationWithContext method")
+// 			},
+// 			ModifyReplicationGroupWithContextFunc: func(contextMoqParam context.Context, modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput, options ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
+// 				panic("mock out the ModifyReplicationGroupWithContext method")
+// 			},
+// 			ModifyUserFunc: func(modifyUserInput *elasticache.ModifyUserInput) (*elasticache.ModifyUserOutput, error) {
+// 				panic("mock out the ModifyUser method")
+// 			},
+// 			ModifyUserGroupFunc: func(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*elasticache.ModifyUserGroupOutput, error) {
+// 				panic("mock out the ModifyUserGroup method")
+// 			},
+// 			ModifyUserGroupRequestFunc: func(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*request.Request, *elasticache.ModifyUserGroupOutput) {
+// 				panic("mock out the ModifyUserGroupRequest method")
+// 			},
+// 			ModifyUserGroupWithContextFunc: func(contextMoqParam context.Context, modifyUserGroupInput *elasticache.ModifyUserGroupInput, options ...request.Option) (*elasticache.ModifyUserGroupOutput, error) {
+// 				panic("mock out the ModifyUserGroupWithContext method")
+// 			},
+// 			ModifyUserRequestFunc: func(modifyUserInput *elasticache.ModifyUserInput) (*request.Request, *elasticache.ModifyUserOutput) {
+// 				panic("mock out the ModifyUserRequest method")
+// 			},
+// 			ModifyUserWithContextFunc: func(contextMoqParam context.Context, modifyUserInput *elasticache.ModifyUserInput, options ...request.Option) (*elasticache.ModifyUserOutput, error) {
+// 				panic("mock out the ModifyUserWithContext method")
+// 			},
+// 			PurchaseReservedCacheNodesOfferingFunc: func(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
+// 				panic("mock out the PurchaseReservedCacheNodesOffering method")
+// 			},
+// 			PurchaseReservedCacheNodesOfferingRequestFunc: func(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput) {
+// 				panic("mock out the PurchaseReservedCacheNodesOfferingRequest method")
+// 			},
+// 			PurchaseReservedCacheNodesOfferingWithContextFunc: func(contextMoqParam context.Context, purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput, options ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
+// 				panic("mock out the PurchaseReservedCacheNodesOfferingWithContext method")
+// 			},
+// 			RebalanceSlotsInGlobalReplicationGroupFunc: func(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the RebalanceSlotsInGlobalReplicationGroup method")
+// 			},
+// 			RebalanceSlotsInGlobalReplicationGroupRequestFunc: func(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*request.Request, *elasticache.RebalanceSlotsInGlobalReplicationGroupOutput) {
+// 				panic("mock out the RebalanceSlotsInGlobalReplicationGroupRequest method")
+// 			},
+// 			RebalanceSlotsInGlobalReplicationGroupWithContextFunc: func(contextMoqParam context.Context, rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+// 				panic("mock out the RebalanceSlotsInGlobalReplicationGroupWithContext method")
+// 			},
+// 			RebootCacheClusterFunc: func(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error) {
+// 				panic("mock out the RebootCacheCluster method")
+// 			},
+// 			RebootCacheClusterRequestFunc: func(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput) {
+// 				panic("mock out the RebootCacheClusterRequest method")
+// 			},
+// 			RebootCacheClusterWithContextFunc: func(contextMoqParam context.Context, rebootCacheClusterInput *elasticache.RebootCacheClusterInput, options ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {
+// 				panic("mock out the RebootCacheClusterWithContext method")
+// 			},
+// 			RemoveTagsFromResourceFunc: func(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the RemoveTagsFromResource method")
+// 			},
+// 			RemoveTagsFromResourceRequestFunc: func(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage) {
+// 				panic("mock out the RemoveTagsFromResourceRequest method")
+// 			},
+// 			RemoveTagsFromResourceWithContextFunc: func(contextMoqParam context.Context, removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
+// 				panic("mock out the RemoveTagsFromResourceWithContext method")
+// 			},
+// 			ResetCacheParameterGroupFunc: func(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
+// 				panic("mock out the ResetCacheParameterGroup method")
+// 			},
+// 			ResetCacheParameterGroupRequestFunc: func(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
+// 				panic("mock out the ResetCacheParameterGroupRequest method")
+// 			},
+// 			ResetCacheParameterGroupWithContextFunc: func(contextMoqParam context.Context, resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
+// 				panic("mock out the ResetCacheParameterGroupWithContext method")
+// 			},
+// 			RevokeCacheSecurityGroupIngressFunc: func(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
+// 				panic("mock out the RevokeCacheSecurityGroupIngress method")
+// 			},
+// 			RevokeCacheSecurityGroupIngressRequestFunc: func(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput) {
+// 				panic("mock out the RevokeCacheSecurityGroupIngressRequest method")
+// 			},
+// 			RevokeCacheSecurityGroupIngressWithContextFunc: func(contextMoqParam context.Context, revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
+// 				panic("mock out the RevokeCacheSecurityGroupIngressWithContext method")
+// 			},
+// 			StartMigrationFunc: func(startMigrationInput *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error) {
+// 				panic("mock out the StartMigration method")
+// 			},
+// 			StartMigrationRequestFunc: func(startMigrationInput *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput) {
+// 				panic("mock out the StartMigrationRequest method")
+// 			},
+// 			StartMigrationWithContextFunc: func(contextMoqParam context.Context, startMigrationInput *elasticache.StartMigrationInput, options ...request.Option) (*elasticache.StartMigrationOutput, error) {
+// 				panic("mock out the StartMigrationWithContext method")
+// 			},
+// 			TestFailoverFunc: func(testFailoverInput *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error) {
+// 				panic("mock out the TestFailover method")
+// 			},
+// 			TestFailoverRequestFunc: func(testFailoverInput *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput) {
+// 				panic("mock out the TestFailoverRequest method")
+// 			},
+// 			TestFailoverWithContextFunc: func(contextMoqParam context.Context, testFailoverInput *elasticache.TestFailoverInput, options ...request.Option) (*elasticache.TestFailoverOutput, error) {
+// 				panic("mock out the TestFailoverWithContext method")
+// 			},
+// 			WaitUntilCacheClusterAvailableFunc: func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error {
+// 				panic("mock out the WaitUntilCacheClusterAvailable method")
+// 			},
+// 			WaitUntilCacheClusterAvailableWithContextFunc: func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error {
+// 				panic("mock out the WaitUntilCacheClusterAvailableWithContext method")
+// 			},
+// 			WaitUntilCacheClusterDeletedFunc: func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error {
+// 				panic("mock out the WaitUntilCacheClusterDeleted method")
+// 			},
+// 			WaitUntilCacheClusterDeletedWithContextFunc: func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error {
+// 				panic("mock out the WaitUntilCacheClusterDeletedWithContext method")
+// 			},
+// 			WaitUntilReplicationGroupAvailableFunc: func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error {
+// 				panic("mock out the WaitUntilReplicationGroupAvailable method")
+// 			},
+// 			WaitUntilReplicationGroupAvailableWithContextFunc: func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error {
+// 				panic("mock out the WaitUntilReplicationGroupAvailableWithContext method")
+// 			},
+// 			WaitUntilReplicationGroupDeletedFunc: func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error {
+// 				panic("mock out the WaitUntilReplicationGroupDeleted method")
+// 			},
+// 			WaitUntilReplicationGroupDeletedWithContextFunc: func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error {
+// 				panic("mock out the WaitUntilReplicationGroupDeletedWithContext method")
+// 			},
+// 		}
 //
-//         // use mockedelasticacheClient in code that requires elasticacheClient
-//         // and then make assertions.
+// 		// use mockedelasticacheClient in code that requires elasticacheClient
+// 		// and then make assertions.
 //
-//     }
+// 	}
 type elasticacheClientMock struct {
 	// AddTagsToResourceFunc mocks the AddTagsToResource method.
-	AddTagsToResourceFunc func(in1 *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error)
+	AddTagsToResourceFunc func(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error)
 
 	// AddTagsToResourceRequestFunc mocks the AddTagsToResourceRequest method.
-	AddTagsToResourceRequestFunc func(in1 *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage)
+	AddTagsToResourceRequestFunc func(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage)
 
 	// AddTagsToResourceWithContextFunc mocks the AddTagsToResourceWithContext method.
-	AddTagsToResourceWithContextFunc func(in1 context.Context, in2 *elasticache.AddTagsToResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error)
+	AddTagsToResourceWithContextFunc func(contextMoqParam context.Context, addTagsToResourceInput *elasticache.AddTagsToResourceInput, options ...request.Option) (*elasticache.TagListMessage, error)
 
 	// AuthorizeCacheSecurityGroupIngressFunc mocks the AuthorizeCacheSecurityGroupIngress method.
-	AuthorizeCacheSecurityGroupIngressFunc func(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error)
+	AuthorizeCacheSecurityGroupIngressFunc func(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error)
 
 	// AuthorizeCacheSecurityGroupIngressRequestFunc mocks the AuthorizeCacheSecurityGroupIngressRequest method.
-	AuthorizeCacheSecurityGroupIngressRequestFunc func(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput)
+	AuthorizeCacheSecurityGroupIngressRequestFunc func(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput)
 
 	// AuthorizeCacheSecurityGroupIngressWithContextFunc mocks the AuthorizeCacheSecurityGroupIngressWithContext method.
-	AuthorizeCacheSecurityGroupIngressWithContextFunc func(in1 context.Context, in2 *elasticache.AuthorizeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error)
+	AuthorizeCacheSecurityGroupIngressWithContextFunc func(contextMoqParam context.Context, authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error)
 
 	// BatchApplyUpdateActionFunc mocks the BatchApplyUpdateAction method.
-	BatchApplyUpdateActionFunc func(in1 *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error)
+	BatchApplyUpdateActionFunc func(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error)
 
 	// BatchApplyUpdateActionRequestFunc mocks the BatchApplyUpdateActionRequest method.
-	BatchApplyUpdateActionRequestFunc func(in1 *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput)
+	BatchApplyUpdateActionRequestFunc func(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput)
 
 	// BatchApplyUpdateActionWithContextFunc mocks the BatchApplyUpdateActionWithContext method.
-	BatchApplyUpdateActionWithContextFunc func(in1 context.Context, in2 *elasticache.BatchApplyUpdateActionInput, in3 ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error)
+	BatchApplyUpdateActionWithContextFunc func(contextMoqParam context.Context, batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput, options ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error)
 
 	// BatchStopUpdateActionFunc mocks the BatchStopUpdateAction method.
-	BatchStopUpdateActionFunc func(in1 *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error)
+	BatchStopUpdateActionFunc func(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error)
 
 	// BatchStopUpdateActionRequestFunc mocks the BatchStopUpdateActionRequest method.
-	BatchStopUpdateActionRequestFunc func(in1 *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput)
+	BatchStopUpdateActionRequestFunc func(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput)
 
 	// BatchStopUpdateActionWithContextFunc mocks the BatchStopUpdateActionWithContext method.
-	BatchStopUpdateActionWithContextFunc func(in1 context.Context, in2 *elasticache.BatchStopUpdateActionInput, in3 ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error)
+	BatchStopUpdateActionWithContextFunc func(contextMoqParam context.Context, batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput, options ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error)
 
 	// CompleteMigrationFunc mocks the CompleteMigration method.
-	CompleteMigrationFunc func(in1 *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error)
+	CompleteMigrationFunc func(completeMigrationInput *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error)
 
 	// CompleteMigrationRequestFunc mocks the CompleteMigrationRequest method.
-	CompleteMigrationRequestFunc func(in1 *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput)
+	CompleteMigrationRequestFunc func(completeMigrationInput *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput)
 
 	// CompleteMigrationWithContextFunc mocks the CompleteMigrationWithContext method.
-	CompleteMigrationWithContextFunc func(in1 context.Context, in2 *elasticache.CompleteMigrationInput, in3 ...request.Option) (*elasticache.CompleteMigrationOutput, error)
+	CompleteMigrationWithContextFunc func(contextMoqParam context.Context, completeMigrationInput *elasticache.CompleteMigrationInput, options ...request.Option) (*elasticache.CompleteMigrationOutput, error)
 
 	// CopySnapshotFunc mocks the CopySnapshot method.
-	CopySnapshotFunc func(in1 *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error)
+	CopySnapshotFunc func(copySnapshotInput *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error)
 
 	// CopySnapshotRequestFunc mocks the CopySnapshotRequest method.
-	CopySnapshotRequestFunc func(in1 *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput)
+	CopySnapshotRequestFunc func(copySnapshotInput *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput)
 
 	// CopySnapshotWithContextFunc mocks the CopySnapshotWithContext method.
-	CopySnapshotWithContextFunc func(in1 context.Context, in2 *elasticache.CopySnapshotInput, in3 ...request.Option) (*elasticache.CopySnapshotOutput, error)
+	CopySnapshotWithContextFunc func(contextMoqParam context.Context, copySnapshotInput *elasticache.CopySnapshotInput, options ...request.Option) (*elasticache.CopySnapshotOutput, error)
 
 	// CreateCacheClusterFunc mocks the CreateCacheCluster method.
-	CreateCacheClusterFunc func(in1 *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error)
+	CreateCacheClusterFunc func(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error)
 
 	// CreateCacheClusterRequestFunc mocks the CreateCacheClusterRequest method.
-	CreateCacheClusterRequestFunc func(in1 *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput)
+	CreateCacheClusterRequestFunc func(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput)
 
 	// CreateCacheClusterWithContextFunc mocks the CreateCacheClusterWithContext method.
-	CreateCacheClusterWithContextFunc func(in1 context.Context, in2 *elasticache.CreateCacheClusterInput, in3 ...request.Option) (*elasticache.CreateCacheClusterOutput, error)
+	CreateCacheClusterWithContextFunc func(contextMoqParam context.Context, createCacheClusterInput *elasticache.CreateCacheClusterInput, options ...request.Option) (*elasticache.CreateCacheClusterOutput, error)
 
 	// CreateCacheParameterGroupFunc mocks the CreateCacheParameterGroup method.
-	CreateCacheParameterGroupFunc func(in1 *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error)
+	CreateCacheParameterGroupFunc func(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error)
 
 	// CreateCacheParameterGroupRequestFunc mocks the CreateCacheParameterGroupRequest method.
-	CreateCacheParameterGroupRequestFunc func(in1 *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput)
+	CreateCacheParameterGroupRequestFunc func(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput)
 
 	// CreateCacheParameterGroupWithContextFunc mocks the CreateCacheParameterGroupWithContext method.
-	CreateCacheParameterGroupWithContextFunc func(in1 context.Context, in2 *elasticache.CreateCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error)
+	CreateCacheParameterGroupWithContextFunc func(contextMoqParam context.Context, createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput, options ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error)
 
 	// CreateCacheSecurityGroupFunc mocks the CreateCacheSecurityGroup method.
-	CreateCacheSecurityGroupFunc func(in1 *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error)
+	CreateCacheSecurityGroupFunc func(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error)
 
 	// CreateCacheSecurityGroupRequestFunc mocks the CreateCacheSecurityGroupRequest method.
-	CreateCacheSecurityGroupRequestFunc func(in1 *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput)
+	CreateCacheSecurityGroupRequestFunc func(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput)
 
 	// CreateCacheSecurityGroupWithContextFunc mocks the CreateCacheSecurityGroupWithContext method.
-	CreateCacheSecurityGroupWithContextFunc func(in1 context.Context, in2 *elasticache.CreateCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error)
+	CreateCacheSecurityGroupWithContextFunc func(contextMoqParam context.Context, createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput, options ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error)
 
 	// CreateCacheSubnetGroupFunc mocks the CreateCacheSubnetGroup method.
-	CreateCacheSubnetGroupFunc func(in1 *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error)
+	CreateCacheSubnetGroupFunc func(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error)
 
 	// CreateCacheSubnetGroupRequestFunc mocks the CreateCacheSubnetGroupRequest method.
-	CreateCacheSubnetGroupRequestFunc func(in1 *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput)
+	CreateCacheSubnetGroupRequestFunc func(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput)
 
 	// CreateCacheSubnetGroupWithContextFunc mocks the CreateCacheSubnetGroupWithContext method.
-	CreateCacheSubnetGroupWithContextFunc func(in1 context.Context, in2 *elasticache.CreateCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error)
+	CreateCacheSubnetGroupWithContextFunc func(contextMoqParam context.Context, createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput, options ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error)
+
+	// CreateGlobalReplicationGroupFunc mocks the CreateGlobalReplicationGroup method.
+	CreateGlobalReplicationGroupFunc func(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*elasticache.CreateGlobalReplicationGroupOutput, error)
+
+	// CreateGlobalReplicationGroupRequestFunc mocks the CreateGlobalReplicationGroupRequest method.
+	CreateGlobalReplicationGroupRequestFunc func(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*request.Request, *elasticache.CreateGlobalReplicationGroupOutput)
+
+	// CreateGlobalReplicationGroupWithContextFunc mocks the CreateGlobalReplicationGroupWithContext method.
+	CreateGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.CreateGlobalReplicationGroupOutput, error)
 
 	// CreateReplicationGroupFunc mocks the CreateReplicationGroup method.
-	CreateReplicationGroupFunc func(in1 *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error)
+	CreateReplicationGroupFunc func(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error)
 
 	// CreateReplicationGroupRequestFunc mocks the CreateReplicationGroupRequest method.
-	CreateReplicationGroupRequestFunc func(in1 *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput)
+	CreateReplicationGroupRequestFunc func(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput)
 
 	// CreateReplicationGroupWithContextFunc mocks the CreateReplicationGroupWithContext method.
-	CreateReplicationGroupWithContextFunc func(in1 context.Context, in2 *elasticache.CreateReplicationGroupInput, in3 ...request.Option) (*elasticache.CreateReplicationGroupOutput, error)
+	CreateReplicationGroupWithContextFunc func(contextMoqParam context.Context, createReplicationGroupInput *elasticache.CreateReplicationGroupInput, options ...request.Option) (*elasticache.CreateReplicationGroupOutput, error)
 
 	// CreateSnapshotFunc mocks the CreateSnapshot method.
-	CreateSnapshotFunc func(in1 *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error)
+	CreateSnapshotFunc func(createSnapshotInput *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error)
 
 	// CreateSnapshotRequestFunc mocks the CreateSnapshotRequest method.
-	CreateSnapshotRequestFunc func(in1 *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput)
+	CreateSnapshotRequestFunc func(createSnapshotInput *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput)
 
 	// CreateSnapshotWithContextFunc mocks the CreateSnapshotWithContext method.
-	CreateSnapshotWithContextFunc func(in1 context.Context, in2 *elasticache.CreateSnapshotInput, in3 ...request.Option) (*elasticache.CreateSnapshotOutput, error)
+	CreateSnapshotWithContextFunc func(contextMoqParam context.Context, createSnapshotInput *elasticache.CreateSnapshotInput, options ...request.Option) (*elasticache.CreateSnapshotOutput, error)
+
+	// CreateUserFunc mocks the CreateUser method.
+	CreateUserFunc func(createUserInput *elasticache.CreateUserInput) (*elasticache.CreateUserOutput, error)
+
+	// CreateUserGroupFunc mocks the CreateUserGroup method.
+	CreateUserGroupFunc func(createUserGroupInput *elasticache.CreateUserGroupInput) (*elasticache.CreateUserGroupOutput, error)
+
+	// CreateUserGroupRequestFunc mocks the CreateUserGroupRequest method.
+	CreateUserGroupRequestFunc func(createUserGroupInput *elasticache.CreateUserGroupInput) (*request.Request, *elasticache.CreateUserGroupOutput)
+
+	// CreateUserGroupWithContextFunc mocks the CreateUserGroupWithContext method.
+	CreateUserGroupWithContextFunc func(contextMoqParam context.Context, createUserGroupInput *elasticache.CreateUserGroupInput, options ...request.Option) (*elasticache.CreateUserGroupOutput, error)
+
+	// CreateUserRequestFunc mocks the CreateUserRequest method.
+	CreateUserRequestFunc func(createUserInput *elasticache.CreateUserInput) (*request.Request, *elasticache.CreateUserOutput)
+
+	// CreateUserWithContextFunc mocks the CreateUserWithContext method.
+	CreateUserWithContextFunc func(contextMoqParam context.Context, createUserInput *elasticache.CreateUserInput, options ...request.Option) (*elasticache.CreateUserOutput, error)
+
+	// DecreaseNodeGroupsInGlobalReplicationGroupFunc mocks the DecreaseNodeGroupsInGlobalReplicationGroup method.
+	DecreaseNodeGroupsInGlobalReplicationGroupFunc func(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error)
+
+	// DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc mocks the DecreaseNodeGroupsInGlobalReplicationGroupRequest method.
+	DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc func(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput)
+
+	// DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc mocks the DecreaseNodeGroupsInGlobalReplicationGroupWithContext method.
+	DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error)
 
 	// DecreaseReplicaCountFunc mocks the DecreaseReplicaCount method.
-	DecreaseReplicaCountFunc func(in1 *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error)
+	DecreaseReplicaCountFunc func(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error)
 
 	// DecreaseReplicaCountRequestFunc mocks the DecreaseReplicaCountRequest method.
-	DecreaseReplicaCountRequestFunc func(in1 *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput)
+	DecreaseReplicaCountRequestFunc func(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput)
 
 	// DecreaseReplicaCountWithContextFunc mocks the DecreaseReplicaCountWithContext method.
-	DecreaseReplicaCountWithContextFunc func(in1 context.Context, in2 *elasticache.DecreaseReplicaCountInput, in3 ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error)
+	DecreaseReplicaCountWithContextFunc func(contextMoqParam context.Context, decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput, options ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error)
 
 	// DeleteCacheClusterFunc mocks the DeleteCacheCluster method.
-	DeleteCacheClusterFunc func(in1 *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error)
+	DeleteCacheClusterFunc func(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error)
 
 	// DeleteCacheClusterRequestFunc mocks the DeleteCacheClusterRequest method.
-	DeleteCacheClusterRequestFunc func(in1 *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput)
+	DeleteCacheClusterRequestFunc func(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput)
 
 	// DeleteCacheClusterWithContextFunc mocks the DeleteCacheClusterWithContext method.
-	DeleteCacheClusterWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteCacheClusterInput, in3 ...request.Option) (*elasticache.DeleteCacheClusterOutput, error)
+	DeleteCacheClusterWithContextFunc func(contextMoqParam context.Context, deleteCacheClusterInput *elasticache.DeleteCacheClusterInput, options ...request.Option) (*elasticache.DeleteCacheClusterOutput, error)
 
 	// DeleteCacheParameterGroupFunc mocks the DeleteCacheParameterGroup method.
-	DeleteCacheParameterGroupFunc func(in1 *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error)
+	DeleteCacheParameterGroupFunc func(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error)
 
 	// DeleteCacheParameterGroupRequestFunc mocks the DeleteCacheParameterGroupRequest method.
-	DeleteCacheParameterGroupRequestFunc func(in1 *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput)
+	DeleteCacheParameterGroupRequestFunc func(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput)
 
 	// DeleteCacheParameterGroupWithContextFunc mocks the DeleteCacheParameterGroupWithContext method.
-	DeleteCacheParameterGroupWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteCacheParameterGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error)
+	DeleteCacheParameterGroupWithContextFunc func(contextMoqParam context.Context, deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput, options ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error)
 
 	// DeleteCacheSecurityGroupFunc mocks the DeleteCacheSecurityGroup method.
-	DeleteCacheSecurityGroupFunc func(in1 *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error)
+	DeleteCacheSecurityGroupFunc func(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error)
 
 	// DeleteCacheSecurityGroupRequestFunc mocks the DeleteCacheSecurityGroupRequest method.
-	DeleteCacheSecurityGroupRequestFunc func(in1 *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput)
+	DeleteCacheSecurityGroupRequestFunc func(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput)
 
 	// DeleteCacheSecurityGroupWithContextFunc mocks the DeleteCacheSecurityGroupWithContext method.
-	DeleteCacheSecurityGroupWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error)
+	DeleteCacheSecurityGroupWithContextFunc func(contextMoqParam context.Context, deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput, options ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error)
 
 	// DeleteCacheSubnetGroupFunc mocks the DeleteCacheSubnetGroup method.
-	DeleteCacheSubnetGroupFunc func(in1 *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error)
+	DeleteCacheSubnetGroupFunc func(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error)
 
 	// DeleteCacheSubnetGroupRequestFunc mocks the DeleteCacheSubnetGroupRequest method.
-	DeleteCacheSubnetGroupRequestFunc func(in1 *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput)
+	DeleteCacheSubnetGroupRequestFunc func(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput)
 
 	// DeleteCacheSubnetGroupWithContextFunc mocks the DeleteCacheSubnetGroupWithContext method.
-	DeleteCacheSubnetGroupWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error)
+	DeleteCacheSubnetGroupWithContextFunc func(contextMoqParam context.Context, deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput, options ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error)
+
+	// DeleteGlobalReplicationGroupFunc mocks the DeleteGlobalReplicationGroup method.
+	DeleteGlobalReplicationGroupFunc func(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*elasticache.DeleteGlobalReplicationGroupOutput, error)
+
+	// DeleteGlobalReplicationGroupRequestFunc mocks the DeleteGlobalReplicationGroupRequest method.
+	DeleteGlobalReplicationGroupRequestFunc func(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*request.Request, *elasticache.DeleteGlobalReplicationGroupOutput)
+
+	// DeleteGlobalReplicationGroupWithContextFunc mocks the DeleteGlobalReplicationGroupWithContext method.
+	DeleteGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DeleteGlobalReplicationGroupOutput, error)
 
 	// DeleteReplicationGroupFunc mocks the DeleteReplicationGroup method.
-	DeleteReplicationGroupFunc func(in1 *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error)
+	DeleteReplicationGroupFunc func(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error)
 
 	// DeleteReplicationGroupRequestFunc mocks the DeleteReplicationGroupRequest method.
-	DeleteReplicationGroupRequestFunc func(in1 *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput)
+	DeleteReplicationGroupRequestFunc func(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput)
 
 	// DeleteReplicationGroupWithContextFunc mocks the DeleteReplicationGroupWithContext method.
-	DeleteReplicationGroupWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteReplicationGroupInput, in3 ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error)
+	DeleteReplicationGroupWithContextFunc func(contextMoqParam context.Context, deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput, options ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error)
 
 	// DeleteSnapshotFunc mocks the DeleteSnapshot method.
-	DeleteSnapshotFunc func(in1 *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error)
+	DeleteSnapshotFunc func(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error)
 
 	// DeleteSnapshotRequestFunc mocks the DeleteSnapshotRequest method.
-	DeleteSnapshotRequestFunc func(in1 *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput)
+	DeleteSnapshotRequestFunc func(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput)
 
 	// DeleteSnapshotWithContextFunc mocks the DeleteSnapshotWithContext method.
-	DeleteSnapshotWithContextFunc func(in1 context.Context, in2 *elasticache.DeleteSnapshotInput, in3 ...request.Option) (*elasticache.DeleteSnapshotOutput, error)
+	DeleteSnapshotWithContextFunc func(contextMoqParam context.Context, deleteSnapshotInput *elasticache.DeleteSnapshotInput, options ...request.Option) (*elasticache.DeleteSnapshotOutput, error)
+
+	// DeleteUserFunc mocks the DeleteUser method.
+	DeleteUserFunc func(deleteUserInput *elasticache.DeleteUserInput) (*elasticache.DeleteUserOutput, error)
+
+	// DeleteUserGroupFunc mocks the DeleteUserGroup method.
+	DeleteUserGroupFunc func(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*elasticache.DeleteUserGroupOutput, error)
+
+	// DeleteUserGroupRequestFunc mocks the DeleteUserGroupRequest method.
+	DeleteUserGroupRequestFunc func(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*request.Request, *elasticache.DeleteUserGroupOutput)
+
+	// DeleteUserGroupWithContextFunc mocks the DeleteUserGroupWithContext method.
+	DeleteUserGroupWithContextFunc func(contextMoqParam context.Context, deleteUserGroupInput *elasticache.DeleteUserGroupInput, options ...request.Option) (*elasticache.DeleteUserGroupOutput, error)
+
+	// DeleteUserRequestFunc mocks the DeleteUserRequest method.
+	DeleteUserRequestFunc func(deleteUserInput *elasticache.DeleteUserInput) (*request.Request, *elasticache.DeleteUserOutput)
+
+	// DeleteUserWithContextFunc mocks the DeleteUserWithContext method.
+	DeleteUserWithContextFunc func(contextMoqParam context.Context, deleteUserInput *elasticache.DeleteUserInput, options ...request.Option) (*elasticache.DeleteUserOutput, error)
 
 	// DescribeCacheClustersFunc mocks the DescribeCacheClusters method.
-	DescribeCacheClustersFunc func(in1 *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error)
+	DescribeCacheClustersFunc func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error)
 
 	// DescribeCacheClustersPagesFunc mocks the DescribeCacheClustersPages method.
-	DescribeCacheClustersPagesFunc func(in1 *elasticache.DescribeCacheClustersInput, in2 func(*elasticache.DescribeCacheClustersOutput, bool) bool) error
+	DescribeCacheClustersPagesFunc func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool) error
 
 	// DescribeCacheClustersPagesWithContextFunc mocks the DescribeCacheClustersPagesWithContext method.
-	DescribeCacheClustersPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 func(*elasticache.DescribeCacheClustersOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheClustersPagesWithContextFunc func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheClustersRequestFunc mocks the DescribeCacheClustersRequest method.
-	DescribeCacheClustersRequestFunc func(in1 *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput)
+	DescribeCacheClustersRequestFunc func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput)
 
 	// DescribeCacheClustersWithContextFunc mocks the DescribeCacheClustersWithContext method.
-	DescribeCacheClustersWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.Option) (*elasticache.DescribeCacheClustersOutput, error)
+	DescribeCacheClustersWithContextFunc func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, options ...request.Option) (*elasticache.DescribeCacheClustersOutput, error)
 
 	// DescribeCacheEngineVersionsFunc mocks the DescribeCacheEngineVersions method.
-	DescribeCacheEngineVersionsFunc func(in1 *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error)
+	DescribeCacheEngineVersionsFunc func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error)
 
 	// DescribeCacheEngineVersionsPagesFunc mocks the DescribeCacheEngineVersionsPages method.
-	DescribeCacheEngineVersionsPagesFunc func(in1 *elasticache.DescribeCacheEngineVersionsInput, in2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error
+	DescribeCacheEngineVersionsPagesFunc func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error
 
 	// DescribeCacheEngineVersionsPagesWithContextFunc mocks the DescribeCacheEngineVersionsPagesWithContext method.
-	DescribeCacheEngineVersionsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheEngineVersionsPagesWithContextFunc func(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheEngineVersionsRequestFunc mocks the DescribeCacheEngineVersionsRequest method.
-	DescribeCacheEngineVersionsRequestFunc func(in1 *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput)
+	DescribeCacheEngineVersionsRequestFunc func(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput)
 
 	// DescribeCacheEngineVersionsWithContextFunc mocks the DescribeCacheEngineVersionsWithContext method.
-	DescribeCacheEngineVersionsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error)
+	DescribeCacheEngineVersionsWithContextFunc func(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, options ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error)
 
 	// DescribeCacheParameterGroupsFunc mocks the DescribeCacheParameterGroups method.
-	DescribeCacheParameterGroupsFunc func(in1 *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error)
+	DescribeCacheParameterGroupsFunc func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error)
 
 	// DescribeCacheParameterGroupsPagesFunc mocks the DescribeCacheParameterGroupsPages method.
-	DescribeCacheParameterGroupsPagesFunc func(in1 *elasticache.DescribeCacheParameterGroupsInput, in2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error
+	DescribeCacheParameterGroupsPagesFunc func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error
 
 	// DescribeCacheParameterGroupsPagesWithContextFunc mocks the DescribeCacheParameterGroupsPagesWithContext method.
-	DescribeCacheParameterGroupsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheParameterGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheParameterGroupsRequestFunc mocks the DescribeCacheParameterGroupsRequest method.
-	DescribeCacheParameterGroupsRequestFunc func(in1 *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput)
+	DescribeCacheParameterGroupsRequestFunc func(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput)
 
 	// DescribeCacheParameterGroupsWithContextFunc mocks the DescribeCacheParameterGroupsWithContext method.
-	DescribeCacheParameterGroupsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error)
+	DescribeCacheParameterGroupsWithContextFunc func(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, options ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error)
 
 	// DescribeCacheParametersFunc mocks the DescribeCacheParameters method.
-	DescribeCacheParametersFunc func(in1 *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error)
+	DescribeCacheParametersFunc func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error)
 
 	// DescribeCacheParametersPagesFunc mocks the DescribeCacheParametersPages method.
-	DescribeCacheParametersPagesFunc func(in1 *elasticache.DescribeCacheParametersInput, in2 func(*elasticache.DescribeCacheParametersOutput, bool) bool) error
+	DescribeCacheParametersPagesFunc func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool) error
 
 	// DescribeCacheParametersPagesWithContextFunc mocks the DescribeCacheParametersPagesWithContext method.
-	DescribeCacheParametersPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 func(*elasticache.DescribeCacheParametersOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheParametersPagesWithContextFunc func(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheParametersRequestFunc mocks the DescribeCacheParametersRequest method.
-	DescribeCacheParametersRequestFunc func(in1 *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput)
+	DescribeCacheParametersRequestFunc func(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput)
 
 	// DescribeCacheParametersWithContextFunc mocks the DescribeCacheParametersWithContext method.
-	DescribeCacheParametersWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 ...request.Option) (*elasticache.DescribeCacheParametersOutput, error)
+	DescribeCacheParametersWithContextFunc func(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, options ...request.Option) (*elasticache.DescribeCacheParametersOutput, error)
 
 	// DescribeCacheSecurityGroupsFunc mocks the DescribeCacheSecurityGroups method.
-	DescribeCacheSecurityGroupsFunc func(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error)
+	DescribeCacheSecurityGroupsFunc func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error)
 
 	// DescribeCacheSecurityGroupsPagesFunc mocks the DescribeCacheSecurityGroupsPages method.
-	DescribeCacheSecurityGroupsPagesFunc func(in1 *elasticache.DescribeCacheSecurityGroupsInput, in2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error
+	DescribeCacheSecurityGroupsPagesFunc func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error
 
 	// DescribeCacheSecurityGroupsPagesWithContextFunc mocks the DescribeCacheSecurityGroupsPagesWithContext method.
-	DescribeCacheSecurityGroupsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheSecurityGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheSecurityGroupsRequestFunc mocks the DescribeCacheSecurityGroupsRequest method.
-	DescribeCacheSecurityGroupsRequestFunc func(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput)
+	DescribeCacheSecurityGroupsRequestFunc func(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput)
 
 	// DescribeCacheSecurityGroupsWithContextFunc mocks the DescribeCacheSecurityGroupsWithContext method.
-	DescribeCacheSecurityGroupsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error)
+	DescribeCacheSecurityGroupsWithContextFunc func(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error)
 
 	// DescribeCacheSubnetGroupsFunc mocks the DescribeCacheSubnetGroups method.
-	DescribeCacheSubnetGroupsFunc func(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error)
+	DescribeCacheSubnetGroupsFunc func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error)
 
 	// DescribeCacheSubnetGroupsPagesFunc mocks the DescribeCacheSubnetGroupsPages method.
-	DescribeCacheSubnetGroupsPagesFunc func(in1 *elasticache.DescribeCacheSubnetGroupsInput, in2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error
+	DescribeCacheSubnetGroupsPagesFunc func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error
 
 	// DescribeCacheSubnetGroupsPagesWithContextFunc mocks the DescribeCacheSubnetGroupsPagesWithContext method.
-	DescribeCacheSubnetGroupsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, in4 ...request.Option) error
+	DescribeCacheSubnetGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeCacheSubnetGroupsRequestFunc mocks the DescribeCacheSubnetGroupsRequest method.
-	DescribeCacheSubnetGroupsRequestFunc func(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput)
+	DescribeCacheSubnetGroupsRequestFunc func(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput)
 
 	// DescribeCacheSubnetGroupsWithContextFunc mocks the DescribeCacheSubnetGroupsWithContext method.
-	DescribeCacheSubnetGroupsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error)
+	DescribeCacheSubnetGroupsWithContextFunc func(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error)
 
 	// DescribeEngineDefaultParametersFunc mocks the DescribeEngineDefaultParameters method.
-	DescribeEngineDefaultParametersFunc func(in1 *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error)
+	DescribeEngineDefaultParametersFunc func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error)
 
 	// DescribeEngineDefaultParametersPagesFunc mocks the DescribeEngineDefaultParametersPages method.
-	DescribeEngineDefaultParametersPagesFunc func(in1 *elasticache.DescribeEngineDefaultParametersInput, in2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error
+	DescribeEngineDefaultParametersPagesFunc func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error
 
 	// DescribeEngineDefaultParametersPagesWithContextFunc mocks the DescribeEngineDefaultParametersPagesWithContext method.
-	DescribeEngineDefaultParametersPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, in4 ...request.Option) error
+	DescribeEngineDefaultParametersPagesWithContextFunc func(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, options ...request.Option) error
 
 	// DescribeEngineDefaultParametersRequestFunc mocks the DescribeEngineDefaultParametersRequest method.
-	DescribeEngineDefaultParametersRequestFunc func(in1 *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput)
+	DescribeEngineDefaultParametersRequestFunc func(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput)
 
 	// DescribeEngineDefaultParametersWithContextFunc mocks the DescribeEngineDefaultParametersWithContext method.
-	DescribeEngineDefaultParametersWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error)
+	DescribeEngineDefaultParametersWithContextFunc func(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, options ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error)
 
 	// DescribeEventsFunc mocks the DescribeEvents method.
-	DescribeEventsFunc func(in1 *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error)
+	DescribeEventsFunc func(describeEventsInput *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error)
 
 	// DescribeEventsPagesFunc mocks the DescribeEventsPages method.
-	DescribeEventsPagesFunc func(in1 *elasticache.DescribeEventsInput, in2 func(*elasticache.DescribeEventsOutput, bool) bool) error
+	DescribeEventsPagesFunc func(describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool) error
 
 	// DescribeEventsPagesWithContextFunc mocks the DescribeEventsPagesWithContext method.
-	DescribeEventsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 func(*elasticache.DescribeEventsOutput, bool) bool, in4 ...request.Option) error
+	DescribeEventsPagesWithContextFunc func(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeEventsRequestFunc mocks the DescribeEventsRequest method.
-	DescribeEventsRequestFunc func(in1 *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput)
+	DescribeEventsRequestFunc func(describeEventsInput *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput)
 
 	// DescribeEventsWithContextFunc mocks the DescribeEventsWithContext method.
-	DescribeEventsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 ...request.Option) (*elasticache.DescribeEventsOutput, error)
+	DescribeEventsWithContextFunc func(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, options ...request.Option) (*elasticache.DescribeEventsOutput, error)
+
+	// DescribeGlobalReplicationGroupsFunc mocks the DescribeGlobalReplicationGroups method.
+	DescribeGlobalReplicationGroupsFunc func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*elasticache.DescribeGlobalReplicationGroupsOutput, error)
+
+	// DescribeGlobalReplicationGroupsPagesFunc mocks the DescribeGlobalReplicationGroupsPages method.
+	DescribeGlobalReplicationGroupsPagesFunc func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool) error
+
+	// DescribeGlobalReplicationGroupsPagesWithContextFunc mocks the DescribeGlobalReplicationGroupsPagesWithContext method.
+	DescribeGlobalReplicationGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool, options ...request.Option) error
+
+	// DescribeGlobalReplicationGroupsRequestFunc mocks the DescribeGlobalReplicationGroupsRequest method.
+	DescribeGlobalReplicationGroupsRequestFunc func(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*request.Request, *elasticache.DescribeGlobalReplicationGroupsOutput)
+
+	// DescribeGlobalReplicationGroupsWithContextFunc mocks the DescribeGlobalReplicationGroupsWithContext method.
+	DescribeGlobalReplicationGroupsWithContextFunc func(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeGlobalReplicationGroupsOutput, error)
 
 	// DescribeReplicationGroupsFunc mocks the DescribeReplicationGroups method.
-	DescribeReplicationGroupsFunc func(in1 *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error)
+	DescribeReplicationGroupsFunc func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error)
 
 	// DescribeReplicationGroupsPagesFunc mocks the DescribeReplicationGroupsPages method.
-	DescribeReplicationGroupsPagesFunc func(in1 *elasticache.DescribeReplicationGroupsInput, in2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error
+	DescribeReplicationGroupsPagesFunc func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error
 
 	// DescribeReplicationGroupsPagesWithContextFunc mocks the DescribeReplicationGroupsPagesWithContext method.
-	DescribeReplicationGroupsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, in4 ...request.Option) error
+	DescribeReplicationGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeReplicationGroupsRequestFunc mocks the DescribeReplicationGroupsRequest method.
-	DescribeReplicationGroupsRequestFunc func(in1 *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput)
+	DescribeReplicationGroupsRequestFunc func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput)
 
 	// DescribeReplicationGroupsWithContextFunc mocks the DescribeReplicationGroupsWithContext method.
-	DescribeReplicationGroupsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error)
+	DescribeReplicationGroupsWithContextFunc func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error)
 
 	// DescribeReservedCacheNodesFunc mocks the DescribeReservedCacheNodes method.
-	DescribeReservedCacheNodesFunc func(in1 *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error)
+	DescribeReservedCacheNodesFunc func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error)
 
 	// DescribeReservedCacheNodesOfferingsFunc mocks the DescribeReservedCacheNodesOfferings method.
-	DescribeReservedCacheNodesOfferingsFunc func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error)
+	DescribeReservedCacheNodesOfferingsFunc func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error)
 
 	// DescribeReservedCacheNodesOfferingsPagesFunc mocks the DescribeReservedCacheNodesOfferingsPages method.
-	DescribeReservedCacheNodesOfferingsPagesFunc func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput, in2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error
+	DescribeReservedCacheNodesOfferingsPagesFunc func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error
 
 	// DescribeReservedCacheNodesOfferingsPagesWithContextFunc mocks the DescribeReservedCacheNodesOfferingsPagesWithContext method.
-	DescribeReservedCacheNodesOfferingsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, in4 ...request.Option) error
+	DescribeReservedCacheNodesOfferingsPagesWithContextFunc func(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeReservedCacheNodesOfferingsRequestFunc mocks the DescribeReservedCacheNodesOfferingsRequest method.
-	DescribeReservedCacheNodesOfferingsRequestFunc func(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput)
+	DescribeReservedCacheNodesOfferingsRequestFunc func(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput)
 
 	// DescribeReservedCacheNodesOfferingsWithContextFunc mocks the DescribeReservedCacheNodesOfferingsWithContext method.
-	DescribeReservedCacheNodesOfferingsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error)
+	DescribeReservedCacheNodesOfferingsWithContextFunc func(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error)
 
 	// DescribeReservedCacheNodesPagesFunc mocks the DescribeReservedCacheNodesPages method.
-	DescribeReservedCacheNodesPagesFunc func(in1 *elasticache.DescribeReservedCacheNodesInput, in2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error
+	DescribeReservedCacheNodesPagesFunc func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error
 
 	// DescribeReservedCacheNodesPagesWithContextFunc mocks the DescribeReservedCacheNodesPagesWithContext method.
-	DescribeReservedCacheNodesPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, in4 ...request.Option) error
+	DescribeReservedCacheNodesPagesWithContextFunc func(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, options ...request.Option) error
 
 	// DescribeReservedCacheNodesRequestFunc mocks the DescribeReservedCacheNodesRequest method.
-	DescribeReservedCacheNodesRequestFunc func(in1 *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput)
+	DescribeReservedCacheNodesRequestFunc func(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput)
 
 	// DescribeReservedCacheNodesWithContextFunc mocks the DescribeReservedCacheNodesWithContext method.
-	DescribeReservedCacheNodesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error)
+	DescribeReservedCacheNodesWithContextFunc func(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error)
 
 	// DescribeServiceUpdatesFunc mocks the DescribeServiceUpdates method.
-	DescribeServiceUpdatesFunc func(in1 *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error)
+	DescribeServiceUpdatesFunc func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error)
 
 	// DescribeServiceUpdatesPagesFunc mocks the DescribeServiceUpdatesPages method.
-	DescribeServiceUpdatesPagesFunc func(in1 *elasticache.DescribeServiceUpdatesInput, in2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error
+	DescribeServiceUpdatesPagesFunc func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error
 
 	// DescribeServiceUpdatesPagesWithContextFunc mocks the DescribeServiceUpdatesPagesWithContext method.
-	DescribeServiceUpdatesPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, in4 ...request.Option) error
+	DescribeServiceUpdatesPagesWithContextFunc func(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, options ...request.Option) error
 
 	// DescribeServiceUpdatesRequestFunc mocks the DescribeServiceUpdatesRequest method.
-	DescribeServiceUpdatesRequestFunc func(in1 *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput)
+	DescribeServiceUpdatesRequestFunc func(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput)
 
 	// DescribeServiceUpdatesWithContextFunc mocks the DescribeServiceUpdatesWithContext method.
-	DescribeServiceUpdatesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error)
+	DescribeServiceUpdatesWithContextFunc func(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, options ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error)
 
 	// DescribeSnapshotsFunc mocks the DescribeSnapshots method.
-	DescribeSnapshotsFunc func(in1 *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error)
+	DescribeSnapshotsFunc func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error)
 
 	// DescribeSnapshotsPagesFunc mocks the DescribeSnapshotsPages method.
-	DescribeSnapshotsPagesFunc func(in1 *elasticache.DescribeSnapshotsInput, in2 func(*elasticache.DescribeSnapshotsOutput, bool) bool) error
+	DescribeSnapshotsPagesFunc func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool) error
 
 	// DescribeSnapshotsPagesWithContextFunc mocks the DescribeSnapshotsPagesWithContext method.
-	DescribeSnapshotsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 func(*elasticache.DescribeSnapshotsOutput, bool) bool, in4 ...request.Option) error
+	DescribeSnapshotsPagesWithContextFunc func(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeSnapshotsRequestFunc mocks the DescribeSnapshotsRequest method.
-	DescribeSnapshotsRequestFunc func(in1 *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput)
+	DescribeSnapshotsRequestFunc func(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput)
 
 	// DescribeSnapshotsWithContextFunc mocks the DescribeSnapshotsWithContext method.
-	DescribeSnapshotsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 ...request.Option) (*elasticache.DescribeSnapshotsOutput, error)
+	DescribeSnapshotsWithContextFunc func(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, options ...request.Option) (*elasticache.DescribeSnapshotsOutput, error)
 
 	// DescribeUpdateActionsFunc mocks the DescribeUpdateActions method.
-	DescribeUpdateActionsFunc func(in1 *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error)
+	DescribeUpdateActionsFunc func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error)
 
 	// DescribeUpdateActionsPagesFunc mocks the DescribeUpdateActionsPages method.
-	DescribeUpdateActionsPagesFunc func(in1 *elasticache.DescribeUpdateActionsInput, in2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error
+	DescribeUpdateActionsPagesFunc func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error
 
 	// DescribeUpdateActionsPagesWithContextFunc mocks the DescribeUpdateActionsPagesWithContext method.
-	DescribeUpdateActionsPagesWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool, in4 ...request.Option) error
+	DescribeUpdateActionsPagesWithContextFunc func(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool, options ...request.Option) error
 
 	// DescribeUpdateActionsRequestFunc mocks the DescribeUpdateActionsRequest method.
-	DescribeUpdateActionsRequestFunc func(in1 *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput)
+	DescribeUpdateActionsRequestFunc func(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput)
 
 	// DescribeUpdateActionsWithContextFunc mocks the DescribeUpdateActionsWithContext method.
-	DescribeUpdateActionsWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error)
+	DescribeUpdateActionsWithContextFunc func(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, options ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error)
+
+	// DescribeUserGroupsFunc mocks the DescribeUserGroups method.
+	DescribeUserGroupsFunc func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*elasticache.DescribeUserGroupsOutput, error)
+
+	// DescribeUserGroupsPagesFunc mocks the DescribeUserGroupsPages method.
+	DescribeUserGroupsPagesFunc func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool) error
+
+	// DescribeUserGroupsPagesWithContextFunc mocks the DescribeUserGroupsPagesWithContext method.
+	DescribeUserGroupsPagesWithContextFunc func(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool, options ...request.Option) error
+
+	// DescribeUserGroupsRequestFunc mocks the DescribeUserGroupsRequest method.
+	DescribeUserGroupsRequestFunc func(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*request.Request, *elasticache.DescribeUserGroupsOutput)
+
+	// DescribeUserGroupsWithContextFunc mocks the DescribeUserGroupsWithContext method.
+	DescribeUserGroupsWithContextFunc func(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, options ...request.Option) (*elasticache.DescribeUserGroupsOutput, error)
+
+	// DescribeUsersFunc mocks the DescribeUsers method.
+	DescribeUsersFunc func(describeUsersInput *elasticache.DescribeUsersInput) (*elasticache.DescribeUsersOutput, error)
+
+	// DescribeUsersPagesFunc mocks the DescribeUsersPages method.
+	DescribeUsersPagesFunc func(describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool) error
+
+	// DescribeUsersPagesWithContextFunc mocks the DescribeUsersPagesWithContext method.
+	DescribeUsersPagesWithContextFunc func(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool, options ...request.Option) error
+
+	// DescribeUsersRequestFunc mocks the DescribeUsersRequest method.
+	DescribeUsersRequestFunc func(describeUsersInput *elasticache.DescribeUsersInput) (*request.Request, *elasticache.DescribeUsersOutput)
+
+	// DescribeUsersWithContextFunc mocks the DescribeUsersWithContext method.
+	DescribeUsersWithContextFunc func(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, options ...request.Option) (*elasticache.DescribeUsersOutput, error)
+
+	// DisassociateGlobalReplicationGroupFunc mocks the DisassociateGlobalReplicationGroup method.
+	DisassociateGlobalReplicationGroupFunc func(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*elasticache.DisassociateGlobalReplicationGroupOutput, error)
+
+	// DisassociateGlobalReplicationGroupRequestFunc mocks the DisassociateGlobalReplicationGroupRequest method.
+	DisassociateGlobalReplicationGroupRequestFunc func(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*request.Request, *elasticache.DisassociateGlobalReplicationGroupOutput)
+
+	// DisassociateGlobalReplicationGroupWithContextFunc mocks the DisassociateGlobalReplicationGroupWithContext method.
+	DisassociateGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DisassociateGlobalReplicationGroupOutput, error)
+
+	// FailoverGlobalReplicationGroupFunc mocks the FailoverGlobalReplicationGroup method.
+	FailoverGlobalReplicationGroupFunc func(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*elasticache.FailoverGlobalReplicationGroupOutput, error)
+
+	// FailoverGlobalReplicationGroupRequestFunc mocks the FailoverGlobalReplicationGroupRequest method.
+	FailoverGlobalReplicationGroupRequestFunc func(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*request.Request, *elasticache.FailoverGlobalReplicationGroupOutput)
+
+	// FailoverGlobalReplicationGroupWithContextFunc mocks the FailoverGlobalReplicationGroupWithContext method.
+	FailoverGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput, options ...request.Option) (*elasticache.FailoverGlobalReplicationGroupOutput, error)
+
+	// IncreaseNodeGroupsInGlobalReplicationGroupFunc mocks the IncreaseNodeGroupsInGlobalReplicationGroup method.
+	IncreaseNodeGroupsInGlobalReplicationGroupFunc func(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error)
+
+	// IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc mocks the IncreaseNodeGroupsInGlobalReplicationGroupRequest method.
+	IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc func(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput)
+
+	// IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc mocks the IncreaseNodeGroupsInGlobalReplicationGroupWithContext method.
+	IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error)
 
 	// IncreaseReplicaCountFunc mocks the IncreaseReplicaCount method.
-	IncreaseReplicaCountFunc func(in1 *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error)
+	IncreaseReplicaCountFunc func(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error)
 
 	// IncreaseReplicaCountRequestFunc mocks the IncreaseReplicaCountRequest method.
-	IncreaseReplicaCountRequestFunc func(in1 *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput)
+	IncreaseReplicaCountRequestFunc func(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput)
 
 	// IncreaseReplicaCountWithContextFunc mocks the IncreaseReplicaCountWithContext method.
-	IncreaseReplicaCountWithContextFunc func(in1 context.Context, in2 *elasticache.IncreaseReplicaCountInput, in3 ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error)
+	IncreaseReplicaCountWithContextFunc func(contextMoqParam context.Context, increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput, options ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error)
 
 	// ListAllowedNodeTypeModificationsFunc mocks the ListAllowedNodeTypeModifications method.
-	ListAllowedNodeTypeModificationsFunc func(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
+	ListAllowedNodeTypeModificationsFunc func(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
 
 	// ListAllowedNodeTypeModificationsRequestFunc mocks the ListAllowedNodeTypeModificationsRequest method.
-	ListAllowedNodeTypeModificationsRequestFunc func(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput)
+	ListAllowedNodeTypeModificationsRequestFunc func(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput)
 
 	// ListAllowedNodeTypeModificationsWithContextFunc mocks the ListAllowedNodeTypeModificationsWithContext method.
-	ListAllowedNodeTypeModificationsWithContextFunc func(in1 context.Context, in2 *elasticache.ListAllowedNodeTypeModificationsInput, in3 ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
+	ListAllowedNodeTypeModificationsWithContextFunc func(contextMoqParam context.Context, listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput, options ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
 
 	// ListTagsForResourceFunc mocks the ListTagsForResource method.
-	ListTagsForResourceFunc func(in1 *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error)
+	ListTagsForResourceFunc func(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error)
 
 	// ListTagsForResourceRequestFunc mocks the ListTagsForResourceRequest method.
-	ListTagsForResourceRequestFunc func(in1 *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage)
+	ListTagsForResourceRequestFunc func(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage)
 
 	// ListTagsForResourceWithContextFunc mocks the ListTagsForResourceWithContext method.
-	ListTagsForResourceWithContextFunc func(in1 context.Context, in2 *elasticache.ListTagsForResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error)
+	ListTagsForResourceWithContextFunc func(contextMoqParam context.Context, listTagsForResourceInput *elasticache.ListTagsForResourceInput, options ...request.Option) (*elasticache.TagListMessage, error)
 
 	// ModifyCacheClusterFunc mocks the ModifyCacheCluster method.
-	ModifyCacheClusterFunc func(in1 *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error)
+	ModifyCacheClusterFunc func(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error)
 
 	// ModifyCacheClusterRequestFunc mocks the ModifyCacheClusterRequest method.
-	ModifyCacheClusterRequestFunc func(in1 *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput)
+	ModifyCacheClusterRequestFunc func(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput)
 
 	// ModifyCacheClusterWithContextFunc mocks the ModifyCacheClusterWithContext method.
-	ModifyCacheClusterWithContextFunc func(in1 context.Context, in2 *elasticache.ModifyCacheClusterInput, in3 ...request.Option) (*elasticache.ModifyCacheClusterOutput, error)
+	ModifyCacheClusterWithContextFunc func(contextMoqParam context.Context, modifyCacheClusterInput *elasticache.ModifyCacheClusterInput, options ...request.Option) (*elasticache.ModifyCacheClusterOutput, error)
 
 	// ModifyCacheParameterGroupFunc mocks the ModifyCacheParameterGroup method.
-	ModifyCacheParameterGroupFunc func(in1 *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error)
+	ModifyCacheParameterGroupFunc func(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error)
 
 	// ModifyCacheParameterGroupRequestFunc mocks the ModifyCacheParameterGroupRequest method.
-	ModifyCacheParameterGroupRequestFunc func(in1 *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage)
+	ModifyCacheParameterGroupRequestFunc func(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage)
 
 	// ModifyCacheParameterGroupWithContextFunc mocks the ModifyCacheParameterGroupWithContext method.
-	ModifyCacheParameterGroupWithContextFunc func(in1 context.Context, in2 *elasticache.ModifyCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
+	ModifyCacheParameterGroupWithContextFunc func(contextMoqParam context.Context, modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
 
 	// ModifyCacheSubnetGroupFunc mocks the ModifyCacheSubnetGroup method.
-	ModifyCacheSubnetGroupFunc func(in1 *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error)
+	ModifyCacheSubnetGroupFunc func(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error)
 
 	// ModifyCacheSubnetGroupRequestFunc mocks the ModifyCacheSubnetGroupRequest method.
-	ModifyCacheSubnetGroupRequestFunc func(in1 *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput)
+	ModifyCacheSubnetGroupRequestFunc func(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput)
 
 	// ModifyCacheSubnetGroupWithContextFunc mocks the ModifyCacheSubnetGroupWithContext method.
-	ModifyCacheSubnetGroupWithContextFunc func(in1 context.Context, in2 *elasticache.ModifyCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error)
+	ModifyCacheSubnetGroupWithContextFunc func(contextMoqParam context.Context, modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput, options ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error)
+
+	// ModifyGlobalReplicationGroupFunc mocks the ModifyGlobalReplicationGroup method.
+	ModifyGlobalReplicationGroupFunc func(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*elasticache.ModifyGlobalReplicationGroupOutput, error)
+
+	// ModifyGlobalReplicationGroupRequestFunc mocks the ModifyGlobalReplicationGroupRequest method.
+	ModifyGlobalReplicationGroupRequestFunc func(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*request.Request, *elasticache.ModifyGlobalReplicationGroupOutput)
+
+	// ModifyGlobalReplicationGroupWithContextFunc mocks the ModifyGlobalReplicationGroupWithContext method.
+	ModifyGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput, options ...request.Option) (*elasticache.ModifyGlobalReplicationGroupOutput, error)
 
 	// ModifyReplicationGroupFunc mocks the ModifyReplicationGroup method.
-	ModifyReplicationGroupFunc func(in1 *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error)
+	ModifyReplicationGroupFunc func(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error)
 
 	// ModifyReplicationGroupRequestFunc mocks the ModifyReplicationGroupRequest method.
-	ModifyReplicationGroupRequestFunc func(in1 *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput)
+	ModifyReplicationGroupRequestFunc func(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput)
 
 	// ModifyReplicationGroupShardConfigurationFunc mocks the ModifyReplicationGroupShardConfiguration method.
-	ModifyReplicationGroupShardConfigurationFunc func(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error)
+	ModifyReplicationGroupShardConfigurationFunc func(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error)
 
 	// ModifyReplicationGroupShardConfigurationRequestFunc mocks the ModifyReplicationGroupShardConfigurationRequest method.
-	ModifyReplicationGroupShardConfigurationRequestFunc func(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput)
+	ModifyReplicationGroupShardConfigurationRequestFunc func(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput)
 
 	// ModifyReplicationGroupShardConfigurationWithContextFunc mocks the ModifyReplicationGroupShardConfigurationWithContext method.
-	ModifyReplicationGroupShardConfigurationWithContextFunc func(in1 context.Context, in2 *elasticache.ModifyReplicationGroupShardConfigurationInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error)
+	ModifyReplicationGroupShardConfigurationWithContextFunc func(contextMoqParam context.Context, modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput, options ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error)
 
 	// ModifyReplicationGroupWithContextFunc mocks the ModifyReplicationGroupWithContext method.
-	ModifyReplicationGroupWithContextFunc func(in1 context.Context, in2 *elasticache.ModifyReplicationGroupInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error)
+	ModifyReplicationGroupWithContextFunc func(contextMoqParam context.Context, modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput, options ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error)
+
+	// ModifyUserFunc mocks the ModifyUser method.
+	ModifyUserFunc func(modifyUserInput *elasticache.ModifyUserInput) (*elasticache.ModifyUserOutput, error)
+
+	// ModifyUserGroupFunc mocks the ModifyUserGroup method.
+	ModifyUserGroupFunc func(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*elasticache.ModifyUserGroupOutput, error)
+
+	// ModifyUserGroupRequestFunc mocks the ModifyUserGroupRequest method.
+	ModifyUserGroupRequestFunc func(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*request.Request, *elasticache.ModifyUserGroupOutput)
+
+	// ModifyUserGroupWithContextFunc mocks the ModifyUserGroupWithContext method.
+	ModifyUserGroupWithContextFunc func(contextMoqParam context.Context, modifyUserGroupInput *elasticache.ModifyUserGroupInput, options ...request.Option) (*elasticache.ModifyUserGroupOutput, error)
+
+	// ModifyUserRequestFunc mocks the ModifyUserRequest method.
+	ModifyUserRequestFunc func(modifyUserInput *elasticache.ModifyUserInput) (*request.Request, *elasticache.ModifyUserOutput)
+
+	// ModifyUserWithContextFunc mocks the ModifyUserWithContext method.
+	ModifyUserWithContextFunc func(contextMoqParam context.Context, modifyUserInput *elasticache.ModifyUserInput, options ...request.Option) (*elasticache.ModifyUserOutput, error)
 
 	// PurchaseReservedCacheNodesOfferingFunc mocks the PurchaseReservedCacheNodesOffering method.
-	PurchaseReservedCacheNodesOfferingFunc func(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error)
+	PurchaseReservedCacheNodesOfferingFunc func(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error)
 
 	// PurchaseReservedCacheNodesOfferingRequestFunc mocks the PurchaseReservedCacheNodesOfferingRequest method.
-	PurchaseReservedCacheNodesOfferingRequestFunc func(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput)
+	PurchaseReservedCacheNodesOfferingRequestFunc func(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput)
 
 	// PurchaseReservedCacheNodesOfferingWithContextFunc mocks the PurchaseReservedCacheNodesOfferingWithContext method.
-	PurchaseReservedCacheNodesOfferingWithContextFunc func(in1 context.Context, in2 *elasticache.PurchaseReservedCacheNodesOfferingInput, in3 ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error)
+	PurchaseReservedCacheNodesOfferingWithContextFunc func(contextMoqParam context.Context, purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput, options ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error)
+
+	// RebalanceSlotsInGlobalReplicationGroupFunc mocks the RebalanceSlotsInGlobalReplicationGroup method.
+	RebalanceSlotsInGlobalReplicationGroupFunc func(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error)
+
+	// RebalanceSlotsInGlobalReplicationGroupRequestFunc mocks the RebalanceSlotsInGlobalReplicationGroupRequest method.
+	RebalanceSlotsInGlobalReplicationGroupRequestFunc func(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*request.Request, *elasticache.RebalanceSlotsInGlobalReplicationGroupOutput)
+
+	// RebalanceSlotsInGlobalReplicationGroupWithContextFunc mocks the RebalanceSlotsInGlobalReplicationGroupWithContext method.
+	RebalanceSlotsInGlobalReplicationGroupWithContextFunc func(contextMoqParam context.Context, rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error)
 
 	// RebootCacheClusterFunc mocks the RebootCacheCluster method.
-	RebootCacheClusterFunc func(in1 *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error)
+	RebootCacheClusterFunc func(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error)
 
 	// RebootCacheClusterRequestFunc mocks the RebootCacheClusterRequest method.
-	RebootCacheClusterRequestFunc func(in1 *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput)
+	RebootCacheClusterRequestFunc func(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput)
 
 	// RebootCacheClusterWithContextFunc mocks the RebootCacheClusterWithContext method.
-	RebootCacheClusterWithContextFunc func(in1 context.Context, in2 *elasticache.RebootCacheClusterInput, in3 ...request.Option) (*elasticache.RebootCacheClusterOutput, error)
+	RebootCacheClusterWithContextFunc func(contextMoqParam context.Context, rebootCacheClusterInput *elasticache.RebootCacheClusterInput, options ...request.Option) (*elasticache.RebootCacheClusterOutput, error)
 
 	// RemoveTagsFromResourceFunc mocks the RemoveTagsFromResource method.
-	RemoveTagsFromResourceFunc func(in1 *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error)
+	RemoveTagsFromResourceFunc func(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error)
 
 	// RemoveTagsFromResourceRequestFunc mocks the RemoveTagsFromResourceRequest method.
-	RemoveTagsFromResourceRequestFunc func(in1 *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage)
+	RemoveTagsFromResourceRequestFunc func(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage)
 
 	// RemoveTagsFromResourceWithContextFunc mocks the RemoveTagsFromResourceWithContext method.
-	RemoveTagsFromResourceWithContextFunc func(in1 context.Context, in2 *elasticache.RemoveTagsFromResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error)
+	RemoveTagsFromResourceWithContextFunc func(contextMoqParam context.Context, removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput, options ...request.Option) (*elasticache.TagListMessage, error)
 
 	// ResetCacheParameterGroupFunc mocks the ResetCacheParameterGroup method.
-	ResetCacheParameterGroupFunc func(in1 *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error)
+	ResetCacheParameterGroupFunc func(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error)
 
 	// ResetCacheParameterGroupRequestFunc mocks the ResetCacheParameterGroupRequest method.
-	ResetCacheParameterGroupRequestFunc func(in1 *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage)
+	ResetCacheParameterGroupRequestFunc func(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage)
 
 	// ResetCacheParameterGroupWithContextFunc mocks the ResetCacheParameterGroupWithContext method.
-	ResetCacheParameterGroupWithContextFunc func(in1 context.Context, in2 *elasticache.ResetCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
+	ResetCacheParameterGroupWithContextFunc func(contextMoqParam context.Context, resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
 
 	// RevokeCacheSecurityGroupIngressFunc mocks the RevokeCacheSecurityGroupIngress method.
-	RevokeCacheSecurityGroupIngressFunc func(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
+	RevokeCacheSecurityGroupIngressFunc func(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
 
 	// RevokeCacheSecurityGroupIngressRequestFunc mocks the RevokeCacheSecurityGroupIngressRequest method.
-	RevokeCacheSecurityGroupIngressRequestFunc func(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput)
+	RevokeCacheSecurityGroupIngressRequestFunc func(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput)
 
 	// RevokeCacheSecurityGroupIngressWithContextFunc mocks the RevokeCacheSecurityGroupIngressWithContext method.
-	RevokeCacheSecurityGroupIngressWithContextFunc func(in1 context.Context, in2 *elasticache.RevokeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
+	RevokeCacheSecurityGroupIngressWithContextFunc func(contextMoqParam context.Context, revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
 
 	// StartMigrationFunc mocks the StartMigration method.
-	StartMigrationFunc func(in1 *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error)
+	StartMigrationFunc func(startMigrationInput *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error)
 
 	// StartMigrationRequestFunc mocks the StartMigrationRequest method.
-	StartMigrationRequestFunc func(in1 *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput)
+	StartMigrationRequestFunc func(startMigrationInput *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput)
 
 	// StartMigrationWithContextFunc mocks the StartMigrationWithContext method.
-	StartMigrationWithContextFunc func(in1 context.Context, in2 *elasticache.StartMigrationInput, in3 ...request.Option) (*elasticache.StartMigrationOutput, error)
+	StartMigrationWithContextFunc func(contextMoqParam context.Context, startMigrationInput *elasticache.StartMigrationInput, options ...request.Option) (*elasticache.StartMigrationOutput, error)
 
 	// TestFailoverFunc mocks the TestFailover method.
-	TestFailoverFunc func(in1 *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error)
+	TestFailoverFunc func(testFailoverInput *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error)
 
 	// TestFailoverRequestFunc mocks the TestFailoverRequest method.
-	TestFailoverRequestFunc func(in1 *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput)
+	TestFailoverRequestFunc func(testFailoverInput *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput)
 
 	// TestFailoverWithContextFunc mocks the TestFailoverWithContext method.
-	TestFailoverWithContextFunc func(in1 context.Context, in2 *elasticache.TestFailoverInput, in3 ...request.Option) (*elasticache.TestFailoverOutput, error)
+	TestFailoverWithContextFunc func(contextMoqParam context.Context, testFailoverInput *elasticache.TestFailoverInput, options ...request.Option) (*elasticache.TestFailoverOutput, error)
 
 	// WaitUntilCacheClusterAvailableFunc mocks the WaitUntilCacheClusterAvailable method.
-	WaitUntilCacheClusterAvailableFunc func(in1 *elasticache.DescribeCacheClustersInput) error
+	WaitUntilCacheClusterAvailableFunc func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error
 
 	// WaitUntilCacheClusterAvailableWithContextFunc mocks the WaitUntilCacheClusterAvailableWithContext method.
-	WaitUntilCacheClusterAvailableWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error
+	WaitUntilCacheClusterAvailableWithContextFunc func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error
 
 	// WaitUntilCacheClusterDeletedFunc mocks the WaitUntilCacheClusterDeleted method.
-	WaitUntilCacheClusterDeletedFunc func(in1 *elasticache.DescribeCacheClustersInput) error
+	WaitUntilCacheClusterDeletedFunc func(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error
 
 	// WaitUntilCacheClusterDeletedWithContextFunc mocks the WaitUntilCacheClusterDeletedWithContext method.
-	WaitUntilCacheClusterDeletedWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error
+	WaitUntilCacheClusterDeletedWithContextFunc func(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error
 
 	// WaitUntilReplicationGroupAvailableFunc mocks the WaitUntilReplicationGroupAvailable method.
-	WaitUntilReplicationGroupAvailableFunc func(in1 *elasticache.DescribeReplicationGroupsInput) error
+	WaitUntilReplicationGroupAvailableFunc func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error
 
 	// WaitUntilReplicationGroupAvailableWithContextFunc mocks the WaitUntilReplicationGroupAvailableWithContext method.
-	WaitUntilReplicationGroupAvailableWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error
+	WaitUntilReplicationGroupAvailableWithContextFunc func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error
 
 	// WaitUntilReplicationGroupDeletedFunc mocks the WaitUntilReplicationGroupDeleted method.
-	WaitUntilReplicationGroupDeletedFunc func(in1 *elasticache.DescribeReplicationGroupsInput) error
+	WaitUntilReplicationGroupDeletedFunc func(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error
 
 	// WaitUntilReplicationGroupDeletedWithContextFunc mocks the WaitUntilReplicationGroupDeletedWithContext method.
-	WaitUntilReplicationGroupDeletedWithContextFunc func(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error
+	WaitUntilReplicationGroupDeletedWithContextFunc func(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error
 
 	// calls tracks calls to the methods.
 	calls struct {
 		// AddTagsToResource holds details about calls to the AddTagsToResource method.
 		AddTagsToResource []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.AddTagsToResourceInput
+			// AddTagsToResourceInput is the addTagsToResourceInput argument value.
+			AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 		}
 		// AddTagsToResourceRequest holds details about calls to the AddTagsToResourceRequest method.
 		AddTagsToResourceRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.AddTagsToResourceInput
+			// AddTagsToResourceInput is the addTagsToResourceInput argument value.
+			AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 		}
 		// AddTagsToResourceWithContext holds details about calls to the AddTagsToResourceWithContext method.
 		AddTagsToResourceWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.AddTagsToResourceInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// AddTagsToResourceInput is the addTagsToResourceInput argument value.
+			AddTagsToResourceInput *elasticache.AddTagsToResourceInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// AuthorizeCacheSecurityGroupIngress holds details about calls to the AuthorizeCacheSecurityGroupIngress method.
 		AuthorizeCacheSecurityGroupIngress []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+			// AuthorizeCacheSecurityGroupIngressInput is the authorizeCacheSecurityGroupIngressInput argument value.
+			AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 		}
 		// AuthorizeCacheSecurityGroupIngressRequest holds details about calls to the AuthorizeCacheSecurityGroupIngressRequest method.
 		AuthorizeCacheSecurityGroupIngressRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+			// AuthorizeCacheSecurityGroupIngressInput is the authorizeCacheSecurityGroupIngressInput argument value.
+			AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 		}
 		// AuthorizeCacheSecurityGroupIngressWithContext holds details about calls to the AuthorizeCacheSecurityGroupIngressWithContext method.
 		AuthorizeCacheSecurityGroupIngressWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.AuthorizeCacheSecurityGroupIngressInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// AuthorizeCacheSecurityGroupIngressInput is the authorizeCacheSecurityGroupIngressInput argument value.
+			AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// BatchApplyUpdateAction holds details about calls to the BatchApplyUpdateAction method.
 		BatchApplyUpdateAction []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.BatchApplyUpdateActionInput
+			// BatchApplyUpdateActionInput is the batchApplyUpdateActionInput argument value.
+			BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 		}
 		// BatchApplyUpdateActionRequest holds details about calls to the BatchApplyUpdateActionRequest method.
 		BatchApplyUpdateActionRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.BatchApplyUpdateActionInput
+			// BatchApplyUpdateActionInput is the batchApplyUpdateActionInput argument value.
+			BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 		}
 		// BatchApplyUpdateActionWithContext holds details about calls to the BatchApplyUpdateActionWithContext method.
 		BatchApplyUpdateActionWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.BatchApplyUpdateActionInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// BatchApplyUpdateActionInput is the batchApplyUpdateActionInput argument value.
+			BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// BatchStopUpdateAction holds details about calls to the BatchStopUpdateAction method.
 		BatchStopUpdateAction []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.BatchStopUpdateActionInput
+			// BatchStopUpdateActionInput is the batchStopUpdateActionInput argument value.
+			BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 		}
 		// BatchStopUpdateActionRequest holds details about calls to the BatchStopUpdateActionRequest method.
 		BatchStopUpdateActionRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.BatchStopUpdateActionInput
+			// BatchStopUpdateActionInput is the batchStopUpdateActionInput argument value.
+			BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 		}
 		// BatchStopUpdateActionWithContext holds details about calls to the BatchStopUpdateActionWithContext method.
 		BatchStopUpdateActionWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.BatchStopUpdateActionInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// BatchStopUpdateActionInput is the batchStopUpdateActionInput argument value.
+			BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CompleteMigration holds details about calls to the CompleteMigration method.
 		CompleteMigration []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CompleteMigrationInput
+			// CompleteMigrationInput is the completeMigrationInput argument value.
+			CompleteMigrationInput *elasticache.CompleteMigrationInput
 		}
 		// CompleteMigrationRequest holds details about calls to the CompleteMigrationRequest method.
 		CompleteMigrationRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CompleteMigrationInput
+			// CompleteMigrationInput is the completeMigrationInput argument value.
+			CompleteMigrationInput *elasticache.CompleteMigrationInput
 		}
 		// CompleteMigrationWithContext holds details about calls to the CompleteMigrationWithContext method.
 		CompleteMigrationWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CompleteMigrationInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CompleteMigrationInput is the completeMigrationInput argument value.
+			CompleteMigrationInput *elasticache.CompleteMigrationInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CopySnapshot holds details about calls to the CopySnapshot method.
 		CopySnapshot []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CopySnapshotInput
+			// CopySnapshotInput is the copySnapshotInput argument value.
+			CopySnapshotInput *elasticache.CopySnapshotInput
 		}
 		// CopySnapshotRequest holds details about calls to the CopySnapshotRequest method.
 		CopySnapshotRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CopySnapshotInput
+			// CopySnapshotInput is the copySnapshotInput argument value.
+			CopySnapshotInput *elasticache.CopySnapshotInput
 		}
 		// CopySnapshotWithContext holds details about calls to the CopySnapshotWithContext method.
 		CopySnapshotWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CopySnapshotInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CopySnapshotInput is the copySnapshotInput argument value.
+			CopySnapshotInput *elasticache.CopySnapshotInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateCacheCluster holds details about calls to the CreateCacheCluster method.
 		CreateCacheCluster []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheClusterInput
+			// CreateCacheClusterInput is the createCacheClusterInput argument value.
+			CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 		}
 		// CreateCacheClusterRequest holds details about calls to the CreateCacheClusterRequest method.
 		CreateCacheClusterRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheClusterInput
+			// CreateCacheClusterInput is the createCacheClusterInput argument value.
+			CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 		}
 		// CreateCacheClusterWithContext holds details about calls to the CreateCacheClusterWithContext method.
 		CreateCacheClusterWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateCacheClusterInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateCacheClusterInput is the createCacheClusterInput argument value.
+			CreateCacheClusterInput *elasticache.CreateCacheClusterInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateCacheParameterGroup holds details about calls to the CreateCacheParameterGroup method.
 		CreateCacheParameterGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheParameterGroupInput
+			// CreateCacheParameterGroupInput is the createCacheParameterGroupInput argument value.
+			CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 		}
 		// CreateCacheParameterGroupRequest holds details about calls to the CreateCacheParameterGroupRequest method.
 		CreateCacheParameterGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheParameterGroupInput
+			// CreateCacheParameterGroupInput is the createCacheParameterGroupInput argument value.
+			CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 		}
 		// CreateCacheParameterGroupWithContext holds details about calls to the CreateCacheParameterGroupWithContext method.
 		CreateCacheParameterGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateCacheParameterGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateCacheParameterGroupInput is the createCacheParameterGroupInput argument value.
+			CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateCacheSecurityGroup holds details about calls to the CreateCacheSecurityGroup method.
 		CreateCacheSecurityGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheSecurityGroupInput
+			// CreateCacheSecurityGroupInput is the createCacheSecurityGroupInput argument value.
+			CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 		}
 		// CreateCacheSecurityGroupRequest holds details about calls to the CreateCacheSecurityGroupRequest method.
 		CreateCacheSecurityGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheSecurityGroupInput
+			// CreateCacheSecurityGroupInput is the createCacheSecurityGroupInput argument value.
+			CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 		}
 		// CreateCacheSecurityGroupWithContext holds details about calls to the CreateCacheSecurityGroupWithContext method.
 		CreateCacheSecurityGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateCacheSecurityGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateCacheSecurityGroupInput is the createCacheSecurityGroupInput argument value.
+			CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateCacheSubnetGroup holds details about calls to the CreateCacheSubnetGroup method.
 		CreateCacheSubnetGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheSubnetGroupInput
+			// CreateCacheSubnetGroupInput is the createCacheSubnetGroupInput argument value.
+			CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 		}
 		// CreateCacheSubnetGroupRequest holds details about calls to the CreateCacheSubnetGroupRequest method.
 		CreateCacheSubnetGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateCacheSubnetGroupInput
+			// CreateCacheSubnetGroupInput is the createCacheSubnetGroupInput argument value.
+			CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 		}
 		// CreateCacheSubnetGroupWithContext holds details about calls to the CreateCacheSubnetGroupWithContext method.
 		CreateCacheSubnetGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateCacheSubnetGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateCacheSubnetGroupInput is the createCacheSubnetGroupInput argument value.
+			CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// CreateGlobalReplicationGroup holds details about calls to the CreateGlobalReplicationGroup method.
+		CreateGlobalReplicationGroup []struct {
+			// CreateGlobalReplicationGroupInput is the createGlobalReplicationGroupInput argument value.
+			CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+		}
+		// CreateGlobalReplicationGroupRequest holds details about calls to the CreateGlobalReplicationGroupRequest method.
+		CreateGlobalReplicationGroupRequest []struct {
+			// CreateGlobalReplicationGroupInput is the createGlobalReplicationGroupInput argument value.
+			CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+		}
+		// CreateGlobalReplicationGroupWithContext holds details about calls to the CreateGlobalReplicationGroupWithContext method.
+		CreateGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateGlobalReplicationGroupInput is the createGlobalReplicationGroupInput argument value.
+			CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateReplicationGroup holds details about calls to the CreateReplicationGroup method.
 		CreateReplicationGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateReplicationGroupInput
+			// CreateReplicationGroupInput is the createReplicationGroupInput argument value.
+			CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 		}
 		// CreateReplicationGroupRequest holds details about calls to the CreateReplicationGroupRequest method.
 		CreateReplicationGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateReplicationGroupInput
+			// CreateReplicationGroupInput is the createReplicationGroupInput argument value.
+			CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 		}
 		// CreateReplicationGroupWithContext holds details about calls to the CreateReplicationGroupWithContext method.
 		CreateReplicationGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateReplicationGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateReplicationGroupInput is the createReplicationGroupInput argument value.
+			CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// CreateSnapshot holds details about calls to the CreateSnapshot method.
 		CreateSnapshot []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateSnapshotInput
+			// CreateSnapshotInput is the createSnapshotInput argument value.
+			CreateSnapshotInput *elasticache.CreateSnapshotInput
 		}
 		// CreateSnapshotRequest holds details about calls to the CreateSnapshotRequest method.
 		CreateSnapshotRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.CreateSnapshotInput
+			// CreateSnapshotInput is the createSnapshotInput argument value.
+			CreateSnapshotInput *elasticache.CreateSnapshotInput
 		}
 		// CreateSnapshotWithContext holds details about calls to the CreateSnapshotWithContext method.
 		CreateSnapshotWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.CreateSnapshotInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateSnapshotInput is the createSnapshotInput argument value.
+			CreateSnapshotInput *elasticache.CreateSnapshotInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// CreateUser holds details about calls to the CreateUser method.
+		CreateUser []struct {
+			// CreateUserInput is the createUserInput argument value.
+			CreateUserInput *elasticache.CreateUserInput
+		}
+		// CreateUserGroup holds details about calls to the CreateUserGroup method.
+		CreateUserGroup []struct {
+			// CreateUserGroupInput is the createUserGroupInput argument value.
+			CreateUserGroupInput *elasticache.CreateUserGroupInput
+		}
+		// CreateUserGroupRequest holds details about calls to the CreateUserGroupRequest method.
+		CreateUserGroupRequest []struct {
+			// CreateUserGroupInput is the createUserGroupInput argument value.
+			CreateUserGroupInput *elasticache.CreateUserGroupInput
+		}
+		// CreateUserGroupWithContext holds details about calls to the CreateUserGroupWithContext method.
+		CreateUserGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateUserGroupInput is the createUserGroupInput argument value.
+			CreateUserGroupInput *elasticache.CreateUserGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// CreateUserRequest holds details about calls to the CreateUserRequest method.
+		CreateUserRequest []struct {
+			// CreateUserInput is the createUserInput argument value.
+			CreateUserInput *elasticache.CreateUserInput
+		}
+		// CreateUserWithContext holds details about calls to the CreateUserWithContext method.
+		CreateUserWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// CreateUserInput is the createUserInput argument value.
+			CreateUserInput *elasticache.CreateUserInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DecreaseNodeGroupsInGlobalReplicationGroup holds details about calls to the DecreaseNodeGroupsInGlobalReplicationGroup method.
+		DecreaseNodeGroupsInGlobalReplicationGroup []struct {
+			// DecreaseNodeGroupsInGlobalReplicationGroupInput is the decreaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+		}
+		// DecreaseNodeGroupsInGlobalReplicationGroupRequest holds details about calls to the DecreaseNodeGroupsInGlobalReplicationGroupRequest method.
+		DecreaseNodeGroupsInGlobalReplicationGroupRequest []struct {
+			// DecreaseNodeGroupsInGlobalReplicationGroupInput is the decreaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+		}
+		// DecreaseNodeGroupsInGlobalReplicationGroupWithContext holds details about calls to the DecreaseNodeGroupsInGlobalReplicationGroupWithContext method.
+		DecreaseNodeGroupsInGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DecreaseNodeGroupsInGlobalReplicationGroupInput is the decreaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DecreaseReplicaCount holds details about calls to the DecreaseReplicaCount method.
 		DecreaseReplicaCount []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DecreaseReplicaCountInput
+			// DecreaseReplicaCountInput is the decreaseReplicaCountInput argument value.
+			DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 		}
 		// DecreaseReplicaCountRequest holds details about calls to the DecreaseReplicaCountRequest method.
 		DecreaseReplicaCountRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DecreaseReplicaCountInput
+			// DecreaseReplicaCountInput is the decreaseReplicaCountInput argument value.
+			DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 		}
 		// DecreaseReplicaCountWithContext holds details about calls to the DecreaseReplicaCountWithContext method.
 		DecreaseReplicaCountWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DecreaseReplicaCountInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DecreaseReplicaCountInput is the decreaseReplicaCountInput argument value.
+			DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteCacheCluster holds details about calls to the DeleteCacheCluster method.
 		DeleteCacheCluster []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheClusterInput
+			// DeleteCacheClusterInput is the deleteCacheClusterInput argument value.
+			DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 		}
 		// DeleteCacheClusterRequest holds details about calls to the DeleteCacheClusterRequest method.
 		DeleteCacheClusterRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheClusterInput
+			// DeleteCacheClusterInput is the deleteCacheClusterInput argument value.
+			DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 		}
 		// DeleteCacheClusterWithContext holds details about calls to the DeleteCacheClusterWithContext method.
 		DeleteCacheClusterWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteCacheClusterInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteCacheClusterInput is the deleteCacheClusterInput argument value.
+			DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteCacheParameterGroup holds details about calls to the DeleteCacheParameterGroup method.
 		DeleteCacheParameterGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheParameterGroupInput
+			// DeleteCacheParameterGroupInput is the deleteCacheParameterGroupInput argument value.
+			DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 		}
 		// DeleteCacheParameterGroupRequest holds details about calls to the DeleteCacheParameterGroupRequest method.
 		DeleteCacheParameterGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheParameterGroupInput
+			// DeleteCacheParameterGroupInput is the deleteCacheParameterGroupInput argument value.
+			DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 		}
 		// DeleteCacheParameterGroupWithContext holds details about calls to the DeleteCacheParameterGroupWithContext method.
 		DeleteCacheParameterGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteCacheParameterGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteCacheParameterGroupInput is the deleteCacheParameterGroupInput argument value.
+			DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteCacheSecurityGroup holds details about calls to the DeleteCacheSecurityGroup method.
 		DeleteCacheSecurityGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheSecurityGroupInput
+			// DeleteCacheSecurityGroupInput is the deleteCacheSecurityGroupInput argument value.
+			DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 		}
 		// DeleteCacheSecurityGroupRequest holds details about calls to the DeleteCacheSecurityGroupRequest method.
 		DeleteCacheSecurityGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheSecurityGroupInput
+			// DeleteCacheSecurityGroupInput is the deleteCacheSecurityGroupInput argument value.
+			DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 		}
 		// DeleteCacheSecurityGroupWithContext holds details about calls to the DeleteCacheSecurityGroupWithContext method.
 		DeleteCacheSecurityGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteCacheSecurityGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteCacheSecurityGroupInput is the deleteCacheSecurityGroupInput argument value.
+			DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteCacheSubnetGroup holds details about calls to the DeleteCacheSubnetGroup method.
 		DeleteCacheSubnetGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheSubnetGroupInput
+			// DeleteCacheSubnetGroupInput is the deleteCacheSubnetGroupInput argument value.
+			DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 		}
 		// DeleteCacheSubnetGroupRequest holds details about calls to the DeleteCacheSubnetGroupRequest method.
 		DeleteCacheSubnetGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteCacheSubnetGroupInput
+			// DeleteCacheSubnetGroupInput is the deleteCacheSubnetGroupInput argument value.
+			DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 		}
 		// DeleteCacheSubnetGroupWithContext holds details about calls to the DeleteCacheSubnetGroupWithContext method.
 		DeleteCacheSubnetGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteCacheSubnetGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteCacheSubnetGroupInput is the deleteCacheSubnetGroupInput argument value.
+			DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DeleteGlobalReplicationGroup holds details about calls to the DeleteGlobalReplicationGroup method.
+		DeleteGlobalReplicationGroup []struct {
+			// DeleteGlobalReplicationGroupInput is the deleteGlobalReplicationGroupInput argument value.
+			DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+		}
+		// DeleteGlobalReplicationGroupRequest holds details about calls to the DeleteGlobalReplicationGroupRequest method.
+		DeleteGlobalReplicationGroupRequest []struct {
+			// DeleteGlobalReplicationGroupInput is the deleteGlobalReplicationGroupInput argument value.
+			DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+		}
+		// DeleteGlobalReplicationGroupWithContext holds details about calls to the DeleteGlobalReplicationGroupWithContext method.
+		DeleteGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteGlobalReplicationGroupInput is the deleteGlobalReplicationGroupInput argument value.
+			DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteReplicationGroup holds details about calls to the DeleteReplicationGroup method.
 		DeleteReplicationGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteReplicationGroupInput
+			// DeleteReplicationGroupInput is the deleteReplicationGroupInput argument value.
+			DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 		}
 		// DeleteReplicationGroupRequest holds details about calls to the DeleteReplicationGroupRequest method.
 		DeleteReplicationGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteReplicationGroupInput
+			// DeleteReplicationGroupInput is the deleteReplicationGroupInput argument value.
+			DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 		}
 		// DeleteReplicationGroupWithContext holds details about calls to the DeleteReplicationGroupWithContext method.
 		DeleteReplicationGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteReplicationGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteReplicationGroupInput is the deleteReplicationGroupInput argument value.
+			DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DeleteSnapshot holds details about calls to the DeleteSnapshot method.
 		DeleteSnapshot []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteSnapshotInput
+			// DeleteSnapshotInput is the deleteSnapshotInput argument value.
+			DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 		}
 		// DeleteSnapshotRequest holds details about calls to the DeleteSnapshotRequest method.
 		DeleteSnapshotRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DeleteSnapshotInput
+			// DeleteSnapshotInput is the deleteSnapshotInput argument value.
+			DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 		}
 		// DeleteSnapshotWithContext holds details about calls to the DeleteSnapshotWithContext method.
 		DeleteSnapshotWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DeleteSnapshotInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteSnapshotInput is the deleteSnapshotInput argument value.
+			DeleteSnapshotInput *elasticache.DeleteSnapshotInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DeleteUser holds details about calls to the DeleteUser method.
+		DeleteUser []struct {
+			// DeleteUserInput is the deleteUserInput argument value.
+			DeleteUserInput *elasticache.DeleteUserInput
+		}
+		// DeleteUserGroup holds details about calls to the DeleteUserGroup method.
+		DeleteUserGroup []struct {
+			// DeleteUserGroupInput is the deleteUserGroupInput argument value.
+			DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+		}
+		// DeleteUserGroupRequest holds details about calls to the DeleteUserGroupRequest method.
+		DeleteUserGroupRequest []struct {
+			// DeleteUserGroupInput is the deleteUserGroupInput argument value.
+			DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+		}
+		// DeleteUserGroupWithContext holds details about calls to the DeleteUserGroupWithContext method.
+		DeleteUserGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteUserGroupInput is the deleteUserGroupInput argument value.
+			DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DeleteUserRequest holds details about calls to the DeleteUserRequest method.
+		DeleteUserRequest []struct {
+			// DeleteUserInput is the deleteUserInput argument value.
+			DeleteUserInput *elasticache.DeleteUserInput
+		}
+		// DeleteUserWithContext holds details about calls to the DeleteUserWithContext method.
+		DeleteUserWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DeleteUserInput is the deleteUserInput argument value.
+			DeleteUserInput *elasticache.DeleteUserInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheClusters holds details about calls to the DescribeCacheClusters method.
 		DescribeCacheClusters []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheClustersInput
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 		}
 		// DescribeCacheClustersPages holds details about calls to the DescribeCacheClustersPages method.
 		DescribeCacheClustersPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheClustersInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheClustersOutput, bool) bool
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheClustersOutput, bool) bool
 		}
 		// DescribeCacheClustersPagesWithContext holds details about calls to the DescribeCacheClustersPagesWithContext method.
 		DescribeCacheClustersPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheClustersInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheClustersOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheClustersOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheClustersRequest holds details about calls to the DescribeCacheClustersRequest method.
 		DescribeCacheClustersRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheClustersInput
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 		}
 		// DescribeCacheClustersWithContext holds details about calls to the DescribeCacheClustersWithContext method.
 		DescribeCacheClustersWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheClustersInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheEngineVersions holds details about calls to the DescribeCacheEngineVersions method.
 		DescribeCacheEngineVersions []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheEngineVersionsInput
+			// DescribeCacheEngineVersionsInput is the describeCacheEngineVersionsInput argument value.
+			DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 		}
 		// DescribeCacheEngineVersionsPages holds details about calls to the DescribeCacheEngineVersionsPages method.
 		DescribeCacheEngineVersionsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheEngineVersionsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+			// DescribeCacheEngineVersionsInput is the describeCacheEngineVersionsInput argument value.
+			DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
 		}
 		// DescribeCacheEngineVersionsPagesWithContext holds details about calls to the DescribeCacheEngineVersionsPagesWithContext method.
 		DescribeCacheEngineVersionsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheEngineVersionsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheEngineVersionsInput is the describeCacheEngineVersionsInput argument value.
+			DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheEngineVersionsRequest holds details about calls to the DescribeCacheEngineVersionsRequest method.
 		DescribeCacheEngineVersionsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheEngineVersionsInput
+			// DescribeCacheEngineVersionsInput is the describeCacheEngineVersionsInput argument value.
+			DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 		}
 		// DescribeCacheEngineVersionsWithContext holds details about calls to the DescribeCacheEngineVersionsWithContext method.
 		DescribeCacheEngineVersionsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheEngineVersionsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheEngineVersionsInput is the describeCacheEngineVersionsInput argument value.
+			DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheParameterGroups holds details about calls to the DescribeCacheParameterGroups method.
 		DescribeCacheParameterGroups []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParameterGroupsInput
+			// DescribeCacheParameterGroupsInput is the describeCacheParameterGroupsInput argument value.
+			DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 		}
 		// DescribeCacheParameterGroupsPages holds details about calls to the DescribeCacheParameterGroupsPages method.
 		DescribeCacheParameterGroupsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParameterGroupsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+			// DescribeCacheParameterGroupsInput is the describeCacheParameterGroupsInput argument value.
+			DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
 		}
 		// DescribeCacheParameterGroupsPagesWithContext holds details about calls to the DescribeCacheParameterGroupsPagesWithContext method.
 		DescribeCacheParameterGroupsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheParameterGroupsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheParameterGroupsInput is the describeCacheParameterGroupsInput argument value.
+			DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheParameterGroupsRequest holds details about calls to the DescribeCacheParameterGroupsRequest method.
 		DescribeCacheParameterGroupsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParameterGroupsInput
+			// DescribeCacheParameterGroupsInput is the describeCacheParameterGroupsInput argument value.
+			DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 		}
 		// DescribeCacheParameterGroupsWithContext holds details about calls to the DescribeCacheParameterGroupsWithContext method.
 		DescribeCacheParameterGroupsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheParameterGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheParameterGroupsInput is the describeCacheParameterGroupsInput argument value.
+			DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheParameters holds details about calls to the DescribeCacheParameters method.
 		DescribeCacheParameters []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParametersInput
+			// DescribeCacheParametersInput is the describeCacheParametersInput argument value.
+			DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 		}
 		// DescribeCacheParametersPages holds details about calls to the DescribeCacheParametersPages method.
 		DescribeCacheParametersPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParametersInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheParametersOutput, bool) bool
+			// DescribeCacheParametersInput is the describeCacheParametersInput argument value.
+			DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheParametersOutput, bool) bool
 		}
 		// DescribeCacheParametersPagesWithContext holds details about calls to the DescribeCacheParametersPagesWithContext method.
 		DescribeCacheParametersPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheParametersInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheParametersOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheParametersInput is the describeCacheParametersInput argument value.
+			DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheParametersOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheParametersRequest holds details about calls to the DescribeCacheParametersRequest method.
 		DescribeCacheParametersRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheParametersInput
+			// DescribeCacheParametersInput is the describeCacheParametersInput argument value.
+			DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 		}
 		// DescribeCacheParametersWithContext holds details about calls to the DescribeCacheParametersWithContext method.
 		DescribeCacheParametersWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheParametersInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheParametersInput is the describeCacheParametersInput argument value.
+			DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheSecurityGroups holds details about calls to the DescribeCacheSecurityGroups method.
 		DescribeCacheSecurityGroups []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSecurityGroupsInput
+			// DescribeCacheSecurityGroupsInput is the describeCacheSecurityGroupsInput argument value.
+			DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 		}
 		// DescribeCacheSecurityGroupsPages holds details about calls to the DescribeCacheSecurityGroupsPages method.
 		DescribeCacheSecurityGroupsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSecurityGroupsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+			// DescribeCacheSecurityGroupsInput is the describeCacheSecurityGroupsInput argument value.
+			DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
 		}
 		// DescribeCacheSecurityGroupsPagesWithContext holds details about calls to the DescribeCacheSecurityGroupsPagesWithContext method.
 		DescribeCacheSecurityGroupsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheSecurityGroupsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheSecurityGroupsInput is the describeCacheSecurityGroupsInput argument value.
+			DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheSecurityGroupsRequest holds details about calls to the DescribeCacheSecurityGroupsRequest method.
 		DescribeCacheSecurityGroupsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSecurityGroupsInput
+			// DescribeCacheSecurityGroupsInput is the describeCacheSecurityGroupsInput argument value.
+			DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 		}
 		// DescribeCacheSecurityGroupsWithContext holds details about calls to the DescribeCacheSecurityGroupsWithContext method.
 		DescribeCacheSecurityGroupsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheSecurityGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheSecurityGroupsInput is the describeCacheSecurityGroupsInput argument value.
+			DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheSubnetGroups holds details about calls to the DescribeCacheSubnetGroups method.
 		DescribeCacheSubnetGroups []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSubnetGroupsInput
+			// DescribeCacheSubnetGroupsInput is the describeCacheSubnetGroupsInput argument value.
+			DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 		}
 		// DescribeCacheSubnetGroupsPages holds details about calls to the DescribeCacheSubnetGroupsPages method.
 		DescribeCacheSubnetGroupsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSubnetGroupsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+			// DescribeCacheSubnetGroupsInput is the describeCacheSubnetGroupsInput argument value.
+			DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
 		}
 		// DescribeCacheSubnetGroupsPagesWithContext holds details about calls to the DescribeCacheSubnetGroupsPagesWithContext method.
 		DescribeCacheSubnetGroupsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheSubnetGroupsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheSubnetGroupsInput is the describeCacheSubnetGroupsInput argument value.
+			DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeCacheSubnetGroupsRequest holds details about calls to the DescribeCacheSubnetGroupsRequest method.
 		DescribeCacheSubnetGroupsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheSubnetGroupsInput
+			// DescribeCacheSubnetGroupsInput is the describeCacheSubnetGroupsInput argument value.
+			DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 		}
 		// DescribeCacheSubnetGroupsWithContext holds details about calls to the DescribeCacheSubnetGroupsWithContext method.
 		DescribeCacheSubnetGroupsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheSubnetGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheSubnetGroupsInput is the describeCacheSubnetGroupsInput argument value.
+			DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeEngineDefaultParameters holds details about calls to the DescribeEngineDefaultParameters method.
 		DescribeEngineDefaultParameters []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEngineDefaultParametersInput
+			// DescribeEngineDefaultParametersInput is the describeEngineDefaultParametersInput argument value.
+			DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 		}
 		// DescribeEngineDefaultParametersPages holds details about calls to the DescribeEngineDefaultParametersPages method.
 		DescribeEngineDefaultParametersPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEngineDefaultParametersInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+			// DescribeEngineDefaultParametersInput is the describeEngineDefaultParametersInput argument value.
+			DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
 		}
 		// DescribeEngineDefaultParametersPagesWithContext holds details about calls to the DescribeEngineDefaultParametersPagesWithContext method.
 		DescribeEngineDefaultParametersPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeEngineDefaultParametersInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeEngineDefaultParametersInput is the describeEngineDefaultParametersInput argument value.
+			DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeEngineDefaultParametersRequest holds details about calls to the DescribeEngineDefaultParametersRequest method.
 		DescribeEngineDefaultParametersRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEngineDefaultParametersInput
+			// DescribeEngineDefaultParametersInput is the describeEngineDefaultParametersInput argument value.
+			DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 		}
 		// DescribeEngineDefaultParametersWithContext holds details about calls to the DescribeEngineDefaultParametersWithContext method.
 		DescribeEngineDefaultParametersWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeEngineDefaultParametersInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeEngineDefaultParametersInput is the describeEngineDefaultParametersInput argument value.
+			DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeEvents holds details about calls to the DescribeEvents method.
 		DescribeEvents []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEventsInput
+			// DescribeEventsInput is the describeEventsInput argument value.
+			DescribeEventsInput *elasticache.DescribeEventsInput
 		}
 		// DescribeEventsPages holds details about calls to the DescribeEventsPages method.
 		DescribeEventsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEventsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeEventsOutput, bool) bool
+			// DescribeEventsInput is the describeEventsInput argument value.
+			DescribeEventsInput *elasticache.DescribeEventsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeEventsOutput, bool) bool
 		}
 		// DescribeEventsPagesWithContext holds details about calls to the DescribeEventsPagesWithContext method.
 		DescribeEventsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeEventsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeEventsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeEventsInput is the describeEventsInput argument value.
+			DescribeEventsInput *elasticache.DescribeEventsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeEventsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeEventsRequest holds details about calls to the DescribeEventsRequest method.
 		DescribeEventsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeEventsInput
+			// DescribeEventsInput is the describeEventsInput argument value.
+			DescribeEventsInput *elasticache.DescribeEventsInput
 		}
 		// DescribeEventsWithContext holds details about calls to the DescribeEventsWithContext method.
 		DescribeEventsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeEventsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeEventsInput is the describeEventsInput argument value.
+			DescribeEventsInput *elasticache.DescribeEventsInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeGlobalReplicationGroups holds details about calls to the DescribeGlobalReplicationGroups method.
+		DescribeGlobalReplicationGroups []struct {
+			// DescribeGlobalReplicationGroupsInput is the describeGlobalReplicationGroupsInput argument value.
+			DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		}
+		// DescribeGlobalReplicationGroupsPages holds details about calls to the DescribeGlobalReplicationGroupsPages method.
+		DescribeGlobalReplicationGroupsPages []struct {
+			// DescribeGlobalReplicationGroupsInput is the describeGlobalReplicationGroupsInput argument value.
+			DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+		}
+		// DescribeGlobalReplicationGroupsPagesWithContext holds details about calls to the DescribeGlobalReplicationGroupsPagesWithContext method.
+		DescribeGlobalReplicationGroupsPagesWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeGlobalReplicationGroupsInput is the describeGlobalReplicationGroupsInput argument value.
+			DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeGlobalReplicationGroupsRequest holds details about calls to the DescribeGlobalReplicationGroupsRequest method.
+		DescribeGlobalReplicationGroupsRequest []struct {
+			// DescribeGlobalReplicationGroupsInput is the describeGlobalReplicationGroupsInput argument value.
+			DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		}
+		// DescribeGlobalReplicationGroupsWithContext holds details about calls to the DescribeGlobalReplicationGroupsWithContext method.
+		DescribeGlobalReplicationGroupsWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeGlobalReplicationGroupsInput is the describeGlobalReplicationGroupsInput argument value.
+			DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReplicationGroups holds details about calls to the DescribeReplicationGroups method.
 		DescribeReplicationGroups []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReplicationGroupsInput
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 		}
 		// DescribeReplicationGroupsPages holds details about calls to the DescribeReplicationGroupsPages method.
 		DescribeReplicationGroupsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReplicationGroupsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
 		}
 		// DescribeReplicationGroupsPagesWithContext holds details about calls to the DescribeReplicationGroupsPagesWithContext method.
 		DescribeReplicationGroupsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReplicationGroupsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReplicationGroupsRequest holds details about calls to the DescribeReplicationGroupsRequest method.
 		DescribeReplicationGroupsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReplicationGroupsInput
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 		}
 		// DescribeReplicationGroupsWithContext holds details about calls to the DescribeReplicationGroupsWithContext method.
 		DescribeReplicationGroupsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReplicationGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReservedCacheNodes holds details about calls to the DescribeReservedCacheNodes method.
 		DescribeReservedCacheNodes []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesInput
+			// DescribeReservedCacheNodesInput is the describeReservedCacheNodesInput argument value.
+			DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 		}
 		// DescribeReservedCacheNodesOfferings holds details about calls to the DescribeReservedCacheNodesOfferings method.
 		DescribeReservedCacheNodesOfferings []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+			// DescribeReservedCacheNodesOfferingsInput is the describeReservedCacheNodesOfferingsInput argument value.
+			DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 		}
 		// DescribeReservedCacheNodesOfferingsPages holds details about calls to the DescribeReservedCacheNodesOfferingsPages method.
 		DescribeReservedCacheNodesOfferingsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+			// DescribeReservedCacheNodesOfferingsInput is the describeReservedCacheNodesOfferingsInput argument value.
+			DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
 		}
 		// DescribeReservedCacheNodesOfferingsPagesWithContext holds details about calls to the DescribeReservedCacheNodesOfferingsPagesWithContext method.
 		DescribeReservedCacheNodesOfferingsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReservedCacheNodesOfferingsInput is the describeReservedCacheNodesOfferingsInput argument value.
+			DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReservedCacheNodesOfferingsRequest holds details about calls to the DescribeReservedCacheNodesOfferingsRequest method.
 		DescribeReservedCacheNodesOfferingsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+			// DescribeReservedCacheNodesOfferingsInput is the describeReservedCacheNodesOfferingsInput argument value.
+			DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 		}
 		// DescribeReservedCacheNodesOfferingsWithContext holds details about calls to the DescribeReservedCacheNodesOfferingsWithContext method.
 		DescribeReservedCacheNodesOfferingsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReservedCacheNodesOfferingsInput is the describeReservedCacheNodesOfferingsInput argument value.
+			DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReservedCacheNodesPages holds details about calls to the DescribeReservedCacheNodesPages method.
 		DescribeReservedCacheNodesPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+			// DescribeReservedCacheNodesInput is the describeReservedCacheNodesInput argument value.
+			DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
 		}
 		// DescribeReservedCacheNodesPagesWithContext holds details about calls to the DescribeReservedCacheNodesPagesWithContext method.
 		DescribeReservedCacheNodesPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReservedCacheNodesInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReservedCacheNodesInput is the describeReservedCacheNodesInput argument value.
+			DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeReservedCacheNodesRequest holds details about calls to the DescribeReservedCacheNodesRequest method.
 		DescribeReservedCacheNodesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReservedCacheNodesInput
+			// DescribeReservedCacheNodesInput is the describeReservedCacheNodesInput argument value.
+			DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 		}
 		// DescribeReservedCacheNodesWithContext holds details about calls to the DescribeReservedCacheNodesWithContext method.
 		DescribeReservedCacheNodesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReservedCacheNodesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReservedCacheNodesInput is the describeReservedCacheNodesInput argument value.
+			DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeServiceUpdates holds details about calls to the DescribeServiceUpdates method.
 		DescribeServiceUpdates []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeServiceUpdatesInput
+			// DescribeServiceUpdatesInput is the describeServiceUpdatesInput argument value.
+			DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 		}
 		// DescribeServiceUpdatesPages holds details about calls to the DescribeServiceUpdatesPages method.
 		DescribeServiceUpdatesPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeServiceUpdatesInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+			// DescribeServiceUpdatesInput is the describeServiceUpdatesInput argument value.
+			DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
 		}
 		// DescribeServiceUpdatesPagesWithContext holds details about calls to the DescribeServiceUpdatesPagesWithContext method.
 		DescribeServiceUpdatesPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeServiceUpdatesInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeServiceUpdatesInput is the describeServiceUpdatesInput argument value.
+			DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeServiceUpdatesRequest holds details about calls to the DescribeServiceUpdatesRequest method.
 		DescribeServiceUpdatesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeServiceUpdatesInput
+			// DescribeServiceUpdatesInput is the describeServiceUpdatesInput argument value.
+			DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 		}
 		// DescribeServiceUpdatesWithContext holds details about calls to the DescribeServiceUpdatesWithContext method.
 		DescribeServiceUpdatesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeServiceUpdatesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeServiceUpdatesInput is the describeServiceUpdatesInput argument value.
+			DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeSnapshots holds details about calls to the DescribeSnapshots method.
 		DescribeSnapshots []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeSnapshotsInput
+			// DescribeSnapshotsInput is the describeSnapshotsInput argument value.
+			DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 		}
 		// DescribeSnapshotsPages holds details about calls to the DescribeSnapshotsPages method.
 		DescribeSnapshotsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeSnapshotsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeSnapshotsOutput, bool) bool
+			// DescribeSnapshotsInput is the describeSnapshotsInput argument value.
+			DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeSnapshotsOutput, bool) bool
 		}
 		// DescribeSnapshotsPagesWithContext holds details about calls to the DescribeSnapshotsPagesWithContext method.
 		DescribeSnapshotsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeSnapshotsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeSnapshotsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeSnapshotsInput is the describeSnapshotsInput argument value.
+			DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeSnapshotsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeSnapshotsRequest holds details about calls to the DescribeSnapshotsRequest method.
 		DescribeSnapshotsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeSnapshotsInput
+			// DescribeSnapshotsInput is the describeSnapshotsInput argument value.
+			DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 		}
 		// DescribeSnapshotsWithContext holds details about calls to the DescribeSnapshotsWithContext method.
 		DescribeSnapshotsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeSnapshotsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeSnapshotsInput is the describeSnapshotsInput argument value.
+			DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeUpdateActions holds details about calls to the DescribeUpdateActions method.
 		DescribeUpdateActions []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeUpdateActionsInput
+			// DescribeUpdateActionsInput is the describeUpdateActionsInput argument value.
+			DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 		}
 		// DescribeUpdateActionsPages holds details about calls to the DescribeUpdateActionsPages method.
 		DescribeUpdateActionsPages []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeUpdateActionsInput
-			// In2 is the in2 argument value.
-			In2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+			// DescribeUpdateActionsInput is the describeUpdateActionsInput argument value.
+			DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool
 		}
 		// DescribeUpdateActionsPagesWithContext holds details about calls to the DescribeUpdateActionsPagesWithContext method.
 		DescribeUpdateActionsPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeUpdateActionsInput
-			// In3 is the in3 argument value.
-			In3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUpdateActionsInput is the describeUpdateActionsInput argument value.
+			DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// DescribeUpdateActionsRequest holds details about calls to the DescribeUpdateActionsRequest method.
 		DescribeUpdateActionsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeUpdateActionsInput
+			// DescribeUpdateActionsInput is the describeUpdateActionsInput argument value.
+			DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 		}
 		// DescribeUpdateActionsWithContext holds details about calls to the DescribeUpdateActionsWithContext method.
 		DescribeUpdateActionsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeUpdateActionsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUpdateActionsInput is the describeUpdateActionsInput argument value.
+			DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeUserGroups holds details about calls to the DescribeUserGroups method.
+		DescribeUserGroups []struct {
+			// DescribeUserGroupsInput is the describeUserGroupsInput argument value.
+			DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		}
+		// DescribeUserGroupsPages holds details about calls to the DescribeUserGroupsPages method.
+		DescribeUserGroupsPages []struct {
+			// DescribeUserGroupsInput is the describeUserGroupsInput argument value.
+			DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUserGroupsOutput, bool) bool
+		}
+		// DescribeUserGroupsPagesWithContext holds details about calls to the DescribeUserGroupsPagesWithContext method.
+		DescribeUserGroupsPagesWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUserGroupsInput is the describeUserGroupsInput argument value.
+			DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUserGroupsOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeUserGroupsRequest holds details about calls to the DescribeUserGroupsRequest method.
+		DescribeUserGroupsRequest []struct {
+			// DescribeUserGroupsInput is the describeUserGroupsInput argument value.
+			DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		}
+		// DescribeUserGroupsWithContext holds details about calls to the DescribeUserGroupsWithContext method.
+		DescribeUserGroupsWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUserGroupsInput is the describeUserGroupsInput argument value.
+			DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeUsers holds details about calls to the DescribeUsers method.
+		DescribeUsers []struct {
+			// DescribeUsersInput is the describeUsersInput argument value.
+			DescribeUsersInput *elasticache.DescribeUsersInput
+		}
+		// DescribeUsersPages holds details about calls to the DescribeUsersPages method.
+		DescribeUsersPages []struct {
+			// DescribeUsersInput is the describeUsersInput argument value.
+			DescribeUsersInput *elasticache.DescribeUsersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUsersOutput, bool) bool
+		}
+		// DescribeUsersPagesWithContext holds details about calls to the DescribeUsersPagesWithContext method.
+		DescribeUsersPagesWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUsersInput is the describeUsersInput argument value.
+			DescribeUsersInput *elasticache.DescribeUsersInput
+			// Fn is the fn argument value.
+			Fn func(*elasticache.DescribeUsersOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DescribeUsersRequest holds details about calls to the DescribeUsersRequest method.
+		DescribeUsersRequest []struct {
+			// DescribeUsersInput is the describeUsersInput argument value.
+			DescribeUsersInput *elasticache.DescribeUsersInput
+		}
+		// DescribeUsersWithContext holds details about calls to the DescribeUsersWithContext method.
+		DescribeUsersWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeUsersInput is the describeUsersInput argument value.
+			DescribeUsersInput *elasticache.DescribeUsersInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// DisassociateGlobalReplicationGroup holds details about calls to the DisassociateGlobalReplicationGroup method.
+		DisassociateGlobalReplicationGroup []struct {
+			// DisassociateGlobalReplicationGroupInput is the disassociateGlobalReplicationGroupInput argument value.
+			DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+		}
+		// DisassociateGlobalReplicationGroupRequest holds details about calls to the DisassociateGlobalReplicationGroupRequest method.
+		DisassociateGlobalReplicationGroupRequest []struct {
+			// DisassociateGlobalReplicationGroupInput is the disassociateGlobalReplicationGroupInput argument value.
+			DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+		}
+		// DisassociateGlobalReplicationGroupWithContext holds details about calls to the DisassociateGlobalReplicationGroupWithContext method.
+		DisassociateGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DisassociateGlobalReplicationGroupInput is the disassociateGlobalReplicationGroupInput argument value.
+			DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// FailoverGlobalReplicationGroup holds details about calls to the FailoverGlobalReplicationGroup method.
+		FailoverGlobalReplicationGroup []struct {
+			// FailoverGlobalReplicationGroupInput is the failoverGlobalReplicationGroupInput argument value.
+			FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+		}
+		// FailoverGlobalReplicationGroupRequest holds details about calls to the FailoverGlobalReplicationGroupRequest method.
+		FailoverGlobalReplicationGroupRequest []struct {
+			// FailoverGlobalReplicationGroupInput is the failoverGlobalReplicationGroupInput argument value.
+			FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+		}
+		// FailoverGlobalReplicationGroupWithContext holds details about calls to the FailoverGlobalReplicationGroupWithContext method.
+		FailoverGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// FailoverGlobalReplicationGroupInput is the failoverGlobalReplicationGroupInput argument value.
+			FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// IncreaseNodeGroupsInGlobalReplicationGroup holds details about calls to the IncreaseNodeGroupsInGlobalReplicationGroup method.
+		IncreaseNodeGroupsInGlobalReplicationGroup []struct {
+			// IncreaseNodeGroupsInGlobalReplicationGroupInput is the increaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+		}
+		// IncreaseNodeGroupsInGlobalReplicationGroupRequest holds details about calls to the IncreaseNodeGroupsInGlobalReplicationGroupRequest method.
+		IncreaseNodeGroupsInGlobalReplicationGroupRequest []struct {
+			// IncreaseNodeGroupsInGlobalReplicationGroupInput is the increaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+		}
+		// IncreaseNodeGroupsInGlobalReplicationGroupWithContext holds details about calls to the IncreaseNodeGroupsInGlobalReplicationGroupWithContext method.
+		IncreaseNodeGroupsInGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// IncreaseNodeGroupsInGlobalReplicationGroupInput is the increaseNodeGroupsInGlobalReplicationGroupInput argument value.
+			IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// IncreaseReplicaCount holds details about calls to the IncreaseReplicaCount method.
 		IncreaseReplicaCount []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.IncreaseReplicaCountInput
+			// IncreaseReplicaCountInput is the increaseReplicaCountInput argument value.
+			IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 		}
 		// IncreaseReplicaCountRequest holds details about calls to the IncreaseReplicaCountRequest method.
 		IncreaseReplicaCountRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.IncreaseReplicaCountInput
+			// IncreaseReplicaCountInput is the increaseReplicaCountInput argument value.
+			IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 		}
 		// IncreaseReplicaCountWithContext holds details about calls to the IncreaseReplicaCountWithContext method.
 		IncreaseReplicaCountWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.IncreaseReplicaCountInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// IncreaseReplicaCountInput is the increaseReplicaCountInput argument value.
+			IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ListAllowedNodeTypeModifications holds details about calls to the ListAllowedNodeTypeModifications method.
 		ListAllowedNodeTypeModifications []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ListAllowedNodeTypeModificationsInput
+			// ListAllowedNodeTypeModificationsInput is the listAllowedNodeTypeModificationsInput argument value.
+			ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 		}
 		// ListAllowedNodeTypeModificationsRequest holds details about calls to the ListAllowedNodeTypeModificationsRequest method.
 		ListAllowedNodeTypeModificationsRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ListAllowedNodeTypeModificationsInput
+			// ListAllowedNodeTypeModificationsInput is the listAllowedNodeTypeModificationsInput argument value.
+			ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 		}
 		// ListAllowedNodeTypeModificationsWithContext holds details about calls to the ListAllowedNodeTypeModificationsWithContext method.
 		ListAllowedNodeTypeModificationsWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ListAllowedNodeTypeModificationsInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ListAllowedNodeTypeModificationsInput is the listAllowedNodeTypeModificationsInput argument value.
+			ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ListTagsForResource holds details about calls to the ListTagsForResource method.
 		ListTagsForResource []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ListTagsForResourceInput
+			// ListTagsForResourceInput is the listTagsForResourceInput argument value.
+			ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 		}
 		// ListTagsForResourceRequest holds details about calls to the ListTagsForResourceRequest method.
 		ListTagsForResourceRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ListTagsForResourceInput
+			// ListTagsForResourceInput is the listTagsForResourceInput argument value.
+			ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 		}
 		// ListTagsForResourceWithContext holds details about calls to the ListTagsForResourceWithContext method.
 		ListTagsForResourceWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ListTagsForResourceInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ListTagsForResourceInput is the listTagsForResourceInput argument value.
+			ListTagsForResourceInput *elasticache.ListTagsForResourceInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ModifyCacheCluster holds details about calls to the ModifyCacheCluster method.
 		ModifyCacheCluster []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheClusterInput
+			// ModifyCacheClusterInput is the modifyCacheClusterInput argument value.
+			ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 		}
 		// ModifyCacheClusterRequest holds details about calls to the ModifyCacheClusterRequest method.
 		ModifyCacheClusterRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheClusterInput
+			// ModifyCacheClusterInput is the modifyCacheClusterInput argument value.
+			ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 		}
 		// ModifyCacheClusterWithContext holds details about calls to the ModifyCacheClusterWithContext method.
 		ModifyCacheClusterWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ModifyCacheClusterInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyCacheClusterInput is the modifyCacheClusterInput argument value.
+			ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ModifyCacheParameterGroup holds details about calls to the ModifyCacheParameterGroup method.
 		ModifyCacheParameterGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheParameterGroupInput
+			// ModifyCacheParameterGroupInput is the modifyCacheParameterGroupInput argument value.
+			ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 		}
 		// ModifyCacheParameterGroupRequest holds details about calls to the ModifyCacheParameterGroupRequest method.
 		ModifyCacheParameterGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheParameterGroupInput
+			// ModifyCacheParameterGroupInput is the modifyCacheParameterGroupInput argument value.
+			ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 		}
 		// ModifyCacheParameterGroupWithContext holds details about calls to the ModifyCacheParameterGroupWithContext method.
 		ModifyCacheParameterGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ModifyCacheParameterGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyCacheParameterGroupInput is the modifyCacheParameterGroupInput argument value.
+			ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ModifyCacheSubnetGroup holds details about calls to the ModifyCacheSubnetGroup method.
 		ModifyCacheSubnetGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheSubnetGroupInput
+			// ModifyCacheSubnetGroupInput is the modifyCacheSubnetGroupInput argument value.
+			ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 		}
 		// ModifyCacheSubnetGroupRequest holds details about calls to the ModifyCacheSubnetGroupRequest method.
 		ModifyCacheSubnetGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyCacheSubnetGroupInput
+			// ModifyCacheSubnetGroupInput is the modifyCacheSubnetGroupInput argument value.
+			ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 		}
 		// ModifyCacheSubnetGroupWithContext holds details about calls to the ModifyCacheSubnetGroupWithContext method.
 		ModifyCacheSubnetGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ModifyCacheSubnetGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyCacheSubnetGroupInput is the modifyCacheSubnetGroupInput argument value.
+			ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// ModifyGlobalReplicationGroup holds details about calls to the ModifyGlobalReplicationGroup method.
+		ModifyGlobalReplicationGroup []struct {
+			// ModifyGlobalReplicationGroupInput is the modifyGlobalReplicationGroupInput argument value.
+			ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+		}
+		// ModifyGlobalReplicationGroupRequest holds details about calls to the ModifyGlobalReplicationGroupRequest method.
+		ModifyGlobalReplicationGroupRequest []struct {
+			// ModifyGlobalReplicationGroupInput is the modifyGlobalReplicationGroupInput argument value.
+			ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+		}
+		// ModifyGlobalReplicationGroupWithContext holds details about calls to the ModifyGlobalReplicationGroupWithContext method.
+		ModifyGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyGlobalReplicationGroupInput is the modifyGlobalReplicationGroupInput argument value.
+			ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ModifyReplicationGroup holds details about calls to the ModifyReplicationGroup method.
 		ModifyReplicationGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyReplicationGroupInput
+			// ModifyReplicationGroupInput is the modifyReplicationGroupInput argument value.
+			ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 		}
 		// ModifyReplicationGroupRequest holds details about calls to the ModifyReplicationGroupRequest method.
 		ModifyReplicationGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyReplicationGroupInput
+			// ModifyReplicationGroupInput is the modifyReplicationGroupInput argument value.
+			ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 		}
 		// ModifyReplicationGroupShardConfiguration holds details about calls to the ModifyReplicationGroupShardConfiguration method.
 		ModifyReplicationGroupShardConfiguration []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+			// ModifyReplicationGroupShardConfigurationInput is the modifyReplicationGroupShardConfigurationInput argument value.
+			ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 		}
 		// ModifyReplicationGroupShardConfigurationRequest holds details about calls to the ModifyReplicationGroupShardConfigurationRequest method.
 		ModifyReplicationGroupShardConfigurationRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+			// ModifyReplicationGroupShardConfigurationInput is the modifyReplicationGroupShardConfigurationInput argument value.
+			ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 		}
 		// ModifyReplicationGroupShardConfigurationWithContext holds details about calls to the ModifyReplicationGroupShardConfigurationWithContext method.
 		ModifyReplicationGroupShardConfigurationWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ModifyReplicationGroupShardConfigurationInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyReplicationGroupShardConfigurationInput is the modifyReplicationGroupShardConfigurationInput argument value.
+			ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ModifyReplicationGroupWithContext holds details about calls to the ModifyReplicationGroupWithContext method.
 		ModifyReplicationGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ModifyReplicationGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyReplicationGroupInput is the modifyReplicationGroupInput argument value.
+			ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// ModifyUser holds details about calls to the ModifyUser method.
+		ModifyUser []struct {
+			// ModifyUserInput is the modifyUserInput argument value.
+			ModifyUserInput *elasticache.ModifyUserInput
+		}
+		// ModifyUserGroup holds details about calls to the ModifyUserGroup method.
+		ModifyUserGroup []struct {
+			// ModifyUserGroupInput is the modifyUserGroupInput argument value.
+			ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+		}
+		// ModifyUserGroupRequest holds details about calls to the ModifyUserGroupRequest method.
+		ModifyUserGroupRequest []struct {
+			// ModifyUserGroupInput is the modifyUserGroupInput argument value.
+			ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+		}
+		// ModifyUserGroupWithContext holds details about calls to the ModifyUserGroupWithContext method.
+		ModifyUserGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyUserGroupInput is the modifyUserGroupInput argument value.
+			ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// ModifyUserRequest holds details about calls to the ModifyUserRequest method.
+		ModifyUserRequest []struct {
+			// ModifyUserInput is the modifyUserInput argument value.
+			ModifyUserInput *elasticache.ModifyUserInput
+		}
+		// ModifyUserWithContext holds details about calls to the ModifyUserWithContext method.
+		ModifyUserWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ModifyUserInput is the modifyUserInput argument value.
+			ModifyUserInput *elasticache.ModifyUserInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// PurchaseReservedCacheNodesOffering holds details about calls to the PurchaseReservedCacheNodesOffering method.
 		PurchaseReservedCacheNodesOffering []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+			// PurchaseReservedCacheNodesOfferingInput is the purchaseReservedCacheNodesOfferingInput argument value.
+			PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 		}
 		// PurchaseReservedCacheNodesOfferingRequest holds details about calls to the PurchaseReservedCacheNodesOfferingRequest method.
 		PurchaseReservedCacheNodesOfferingRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+			// PurchaseReservedCacheNodesOfferingInput is the purchaseReservedCacheNodesOfferingInput argument value.
+			PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 		}
 		// PurchaseReservedCacheNodesOfferingWithContext holds details about calls to the PurchaseReservedCacheNodesOfferingWithContext method.
 		PurchaseReservedCacheNodesOfferingWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.PurchaseReservedCacheNodesOfferingInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// PurchaseReservedCacheNodesOfferingInput is the purchaseReservedCacheNodesOfferingInput argument value.
+			PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
+			// Options is the options argument value.
+			Options []request.Option
+		}
+		// RebalanceSlotsInGlobalReplicationGroup holds details about calls to the RebalanceSlotsInGlobalReplicationGroup method.
+		RebalanceSlotsInGlobalReplicationGroup []struct {
+			// RebalanceSlotsInGlobalReplicationGroupInput is the rebalanceSlotsInGlobalReplicationGroupInput argument value.
+			RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+		}
+		// RebalanceSlotsInGlobalReplicationGroupRequest holds details about calls to the RebalanceSlotsInGlobalReplicationGroupRequest method.
+		RebalanceSlotsInGlobalReplicationGroupRequest []struct {
+			// RebalanceSlotsInGlobalReplicationGroupInput is the rebalanceSlotsInGlobalReplicationGroupInput argument value.
+			RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+		}
+		// RebalanceSlotsInGlobalReplicationGroupWithContext holds details about calls to the RebalanceSlotsInGlobalReplicationGroupWithContext method.
+		RebalanceSlotsInGlobalReplicationGroupWithContext []struct {
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// RebalanceSlotsInGlobalReplicationGroupInput is the rebalanceSlotsInGlobalReplicationGroupInput argument value.
+			RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// RebootCacheCluster holds details about calls to the RebootCacheCluster method.
 		RebootCacheCluster []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RebootCacheClusterInput
+			// RebootCacheClusterInput is the rebootCacheClusterInput argument value.
+			RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 		}
 		// RebootCacheClusterRequest holds details about calls to the RebootCacheClusterRequest method.
 		RebootCacheClusterRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RebootCacheClusterInput
+			// RebootCacheClusterInput is the rebootCacheClusterInput argument value.
+			RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 		}
 		// RebootCacheClusterWithContext holds details about calls to the RebootCacheClusterWithContext method.
 		RebootCacheClusterWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.RebootCacheClusterInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// RebootCacheClusterInput is the rebootCacheClusterInput argument value.
+			RebootCacheClusterInput *elasticache.RebootCacheClusterInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// RemoveTagsFromResource holds details about calls to the RemoveTagsFromResource method.
 		RemoveTagsFromResource []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RemoveTagsFromResourceInput
+			// RemoveTagsFromResourceInput is the removeTagsFromResourceInput argument value.
+			RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 		}
 		// RemoveTagsFromResourceRequest holds details about calls to the RemoveTagsFromResourceRequest method.
 		RemoveTagsFromResourceRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RemoveTagsFromResourceInput
+			// RemoveTagsFromResourceInput is the removeTagsFromResourceInput argument value.
+			RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 		}
 		// RemoveTagsFromResourceWithContext holds details about calls to the RemoveTagsFromResourceWithContext method.
 		RemoveTagsFromResourceWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.RemoveTagsFromResourceInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// RemoveTagsFromResourceInput is the removeTagsFromResourceInput argument value.
+			RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// ResetCacheParameterGroup holds details about calls to the ResetCacheParameterGroup method.
 		ResetCacheParameterGroup []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ResetCacheParameterGroupInput
+			// ResetCacheParameterGroupInput is the resetCacheParameterGroupInput argument value.
+			ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 		}
 		// ResetCacheParameterGroupRequest holds details about calls to the ResetCacheParameterGroupRequest method.
 		ResetCacheParameterGroupRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.ResetCacheParameterGroupInput
+			// ResetCacheParameterGroupInput is the resetCacheParameterGroupInput argument value.
+			ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 		}
 		// ResetCacheParameterGroupWithContext holds details about calls to the ResetCacheParameterGroupWithContext method.
 		ResetCacheParameterGroupWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.ResetCacheParameterGroupInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// ResetCacheParameterGroupInput is the resetCacheParameterGroupInput argument value.
+			ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// RevokeCacheSecurityGroupIngress holds details about calls to the RevokeCacheSecurityGroupIngress method.
 		RevokeCacheSecurityGroupIngress []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+			// RevokeCacheSecurityGroupIngressInput is the revokeCacheSecurityGroupIngressInput argument value.
+			RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 		}
 		// RevokeCacheSecurityGroupIngressRequest holds details about calls to the RevokeCacheSecurityGroupIngressRequest method.
 		RevokeCacheSecurityGroupIngressRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+			// RevokeCacheSecurityGroupIngressInput is the revokeCacheSecurityGroupIngressInput argument value.
+			RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 		}
 		// RevokeCacheSecurityGroupIngressWithContext holds details about calls to the RevokeCacheSecurityGroupIngressWithContext method.
 		RevokeCacheSecurityGroupIngressWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.RevokeCacheSecurityGroupIngressInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// RevokeCacheSecurityGroupIngressInput is the revokeCacheSecurityGroupIngressInput argument value.
+			RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// StartMigration holds details about calls to the StartMigration method.
 		StartMigration []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.StartMigrationInput
+			// StartMigrationInput is the startMigrationInput argument value.
+			StartMigrationInput *elasticache.StartMigrationInput
 		}
 		// StartMigrationRequest holds details about calls to the StartMigrationRequest method.
 		StartMigrationRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.StartMigrationInput
+			// StartMigrationInput is the startMigrationInput argument value.
+			StartMigrationInput *elasticache.StartMigrationInput
 		}
 		// StartMigrationWithContext holds details about calls to the StartMigrationWithContext method.
 		StartMigrationWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.StartMigrationInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// StartMigrationInput is the startMigrationInput argument value.
+			StartMigrationInput *elasticache.StartMigrationInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// TestFailover holds details about calls to the TestFailover method.
 		TestFailover []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.TestFailoverInput
+			// TestFailoverInput is the testFailoverInput argument value.
+			TestFailoverInput *elasticache.TestFailoverInput
 		}
 		// TestFailoverRequest holds details about calls to the TestFailoverRequest method.
 		TestFailoverRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.TestFailoverInput
+			// TestFailoverInput is the testFailoverInput argument value.
+			TestFailoverInput *elasticache.TestFailoverInput
 		}
 		// TestFailoverWithContext holds details about calls to the TestFailoverWithContext method.
 		TestFailoverWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.TestFailoverInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// TestFailoverInput is the testFailoverInput argument value.
+			TestFailoverInput *elasticache.TestFailoverInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// WaitUntilCacheClusterAvailable holds details about calls to the WaitUntilCacheClusterAvailable method.
 		WaitUntilCacheClusterAvailable []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheClustersInput
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 		}
 		// WaitUntilCacheClusterAvailableWithContext holds details about calls to the WaitUntilCacheClusterAvailableWithContext method.
 		WaitUntilCacheClusterAvailableWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheClustersInput
-			// In3 is the in3 argument value.
-			In3 []request.WaiterOption
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+			// WaiterOptions is the waiterOptions argument value.
+			WaiterOptions []request.WaiterOption
 		}
 		// WaitUntilCacheClusterDeleted holds details about calls to the WaitUntilCacheClusterDeleted method.
 		WaitUntilCacheClusterDeleted []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeCacheClustersInput
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 		}
 		// WaitUntilCacheClusterDeletedWithContext holds details about calls to the WaitUntilCacheClusterDeletedWithContext method.
 		WaitUntilCacheClusterDeletedWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeCacheClustersInput
-			// In3 is the in3 argument value.
-			In3 []request.WaiterOption
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeCacheClustersInput is the describeCacheClustersInput argument value.
+			DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+			// WaiterOptions is the waiterOptions argument value.
+			WaiterOptions []request.WaiterOption
 		}
 		// WaitUntilReplicationGroupAvailable holds details about calls to the WaitUntilReplicationGroupAvailable method.
 		WaitUntilReplicationGroupAvailable []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReplicationGroupsInput
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 		}
 		// WaitUntilReplicationGroupAvailableWithContext holds details about calls to the WaitUntilReplicationGroupAvailableWithContext method.
 		WaitUntilReplicationGroupAvailableWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReplicationGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.WaiterOption
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+			// WaiterOptions is the waiterOptions argument value.
+			WaiterOptions []request.WaiterOption
 		}
 		// WaitUntilReplicationGroupDeleted holds details about calls to the WaitUntilReplicationGroupDeleted method.
 		WaitUntilReplicationGroupDeleted []struct {
-			// In1 is the in1 argument value.
-			In1 *elasticache.DescribeReplicationGroupsInput
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 		}
 		// WaitUntilReplicationGroupDeletedWithContext holds details about calls to the WaitUntilReplicationGroupDeletedWithContext method.
 		WaitUntilReplicationGroupDeletedWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *elasticache.DescribeReplicationGroupsInput
-			// In3 is the in3 argument value.
-			In3 []request.WaiterOption
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReplicationGroupsInput is the describeReplicationGroupsInput argument value.
+			DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+			// WaiterOptions is the waiterOptions argument value.
+			WaiterOptions []request.WaiterOption
 		}
 	}
+	lockAddTagsToResource                                     sync.RWMutex
+	lockAddTagsToResourceRequest                              sync.RWMutex
+	lockAddTagsToResourceWithContext                          sync.RWMutex
+	lockAuthorizeCacheSecurityGroupIngress                    sync.RWMutex
+	lockAuthorizeCacheSecurityGroupIngressRequest             sync.RWMutex
+	lockAuthorizeCacheSecurityGroupIngressWithContext         sync.RWMutex
+	lockBatchApplyUpdateAction                                sync.RWMutex
+	lockBatchApplyUpdateActionRequest                         sync.RWMutex
+	lockBatchApplyUpdateActionWithContext                     sync.RWMutex
+	lockBatchStopUpdateAction                                 sync.RWMutex
+	lockBatchStopUpdateActionRequest                          sync.RWMutex
+	lockBatchStopUpdateActionWithContext                      sync.RWMutex
+	lockCompleteMigration                                     sync.RWMutex
+	lockCompleteMigrationRequest                              sync.RWMutex
+	lockCompleteMigrationWithContext                          sync.RWMutex
+	lockCopySnapshot                                          sync.RWMutex
+	lockCopySnapshotRequest                                   sync.RWMutex
+	lockCopySnapshotWithContext                               sync.RWMutex
+	lockCreateCacheCluster                                    sync.RWMutex
+	lockCreateCacheClusterRequest                             sync.RWMutex
+	lockCreateCacheClusterWithContext                         sync.RWMutex
+	lockCreateCacheParameterGroup                             sync.RWMutex
+	lockCreateCacheParameterGroupRequest                      sync.RWMutex
+	lockCreateCacheParameterGroupWithContext                  sync.RWMutex
+	lockCreateCacheSecurityGroup                              sync.RWMutex
+	lockCreateCacheSecurityGroupRequest                       sync.RWMutex
+	lockCreateCacheSecurityGroupWithContext                   sync.RWMutex
+	lockCreateCacheSubnetGroup                                sync.RWMutex
+	lockCreateCacheSubnetGroupRequest                         sync.RWMutex
+	lockCreateCacheSubnetGroupWithContext                     sync.RWMutex
+	lockCreateGlobalReplicationGroup                          sync.RWMutex
+	lockCreateGlobalReplicationGroupRequest                   sync.RWMutex
+	lockCreateGlobalReplicationGroupWithContext               sync.RWMutex
+	lockCreateReplicationGroup                                sync.RWMutex
+	lockCreateReplicationGroupRequest                         sync.RWMutex
+	lockCreateReplicationGroupWithContext                     sync.RWMutex
+	lockCreateSnapshot                                        sync.RWMutex
+	lockCreateSnapshotRequest                                 sync.RWMutex
+	lockCreateSnapshotWithContext                             sync.RWMutex
+	lockCreateUser                                            sync.RWMutex
+	lockCreateUserGroup                                       sync.RWMutex
+	lockCreateUserGroupRequest                                sync.RWMutex
+	lockCreateUserGroupWithContext                            sync.RWMutex
+	lockCreateUserRequest                                     sync.RWMutex
+	lockCreateUserWithContext                                 sync.RWMutex
+	lockDecreaseNodeGroupsInGlobalReplicationGroup            sync.RWMutex
+	lockDecreaseNodeGroupsInGlobalReplicationGroupRequest     sync.RWMutex
+	lockDecreaseNodeGroupsInGlobalReplicationGroupWithContext sync.RWMutex
+	lockDecreaseReplicaCount                                  sync.RWMutex
+	lockDecreaseReplicaCountRequest                           sync.RWMutex
+	lockDecreaseReplicaCountWithContext                       sync.RWMutex
+	lockDeleteCacheCluster                                    sync.RWMutex
+	lockDeleteCacheClusterRequest                             sync.RWMutex
+	lockDeleteCacheClusterWithContext                         sync.RWMutex
+	lockDeleteCacheParameterGroup                             sync.RWMutex
+	lockDeleteCacheParameterGroupRequest                      sync.RWMutex
+	lockDeleteCacheParameterGroupWithContext                  sync.RWMutex
+	lockDeleteCacheSecurityGroup                              sync.RWMutex
+	lockDeleteCacheSecurityGroupRequest                       sync.RWMutex
+	lockDeleteCacheSecurityGroupWithContext                   sync.RWMutex
+	lockDeleteCacheSubnetGroup                                sync.RWMutex
+	lockDeleteCacheSubnetGroupRequest                         sync.RWMutex
+	lockDeleteCacheSubnetGroupWithContext                     sync.RWMutex
+	lockDeleteGlobalReplicationGroup                          sync.RWMutex
+	lockDeleteGlobalReplicationGroupRequest                   sync.RWMutex
+	lockDeleteGlobalReplicationGroupWithContext               sync.RWMutex
+	lockDeleteReplicationGroup                                sync.RWMutex
+	lockDeleteReplicationGroupRequest                         sync.RWMutex
+	lockDeleteReplicationGroupWithContext                     sync.RWMutex
+	lockDeleteSnapshot                                        sync.RWMutex
+	lockDeleteSnapshotRequest                                 sync.RWMutex
+	lockDeleteSnapshotWithContext                             sync.RWMutex
+	lockDeleteUser                                            sync.RWMutex
+	lockDeleteUserGroup                                       sync.RWMutex
+	lockDeleteUserGroupRequest                                sync.RWMutex
+	lockDeleteUserGroupWithContext                            sync.RWMutex
+	lockDeleteUserRequest                                     sync.RWMutex
+	lockDeleteUserWithContext                                 sync.RWMutex
+	lockDescribeCacheClusters                                 sync.RWMutex
+	lockDescribeCacheClustersPages                            sync.RWMutex
+	lockDescribeCacheClustersPagesWithContext                 sync.RWMutex
+	lockDescribeCacheClustersRequest                          sync.RWMutex
+	lockDescribeCacheClustersWithContext                      sync.RWMutex
+	lockDescribeCacheEngineVersions                           sync.RWMutex
+	lockDescribeCacheEngineVersionsPages                      sync.RWMutex
+	lockDescribeCacheEngineVersionsPagesWithContext           sync.RWMutex
+	lockDescribeCacheEngineVersionsRequest                    sync.RWMutex
+	lockDescribeCacheEngineVersionsWithContext                sync.RWMutex
+	lockDescribeCacheParameterGroups                          sync.RWMutex
+	lockDescribeCacheParameterGroupsPages                     sync.RWMutex
+	lockDescribeCacheParameterGroupsPagesWithContext          sync.RWMutex
+	lockDescribeCacheParameterGroupsRequest                   sync.RWMutex
+	lockDescribeCacheParameterGroupsWithContext               sync.RWMutex
+	lockDescribeCacheParameters                               sync.RWMutex
+	lockDescribeCacheParametersPages                          sync.RWMutex
+	lockDescribeCacheParametersPagesWithContext               sync.RWMutex
+	lockDescribeCacheParametersRequest                        sync.RWMutex
+	lockDescribeCacheParametersWithContext                    sync.RWMutex
+	lockDescribeCacheSecurityGroups                           sync.RWMutex
+	lockDescribeCacheSecurityGroupsPages                      sync.RWMutex
+	lockDescribeCacheSecurityGroupsPagesWithContext           sync.RWMutex
+	lockDescribeCacheSecurityGroupsRequest                    sync.RWMutex
+	lockDescribeCacheSecurityGroupsWithContext                sync.RWMutex
+	lockDescribeCacheSubnetGroups                             sync.RWMutex
+	lockDescribeCacheSubnetGroupsPages                        sync.RWMutex
+	lockDescribeCacheSubnetGroupsPagesWithContext             sync.RWMutex
+	lockDescribeCacheSubnetGroupsRequest                      sync.RWMutex
+	lockDescribeCacheSubnetGroupsWithContext                  sync.RWMutex
+	lockDescribeEngineDefaultParameters                       sync.RWMutex
+	lockDescribeEngineDefaultParametersPages                  sync.RWMutex
+	lockDescribeEngineDefaultParametersPagesWithContext       sync.RWMutex
+	lockDescribeEngineDefaultParametersRequest                sync.RWMutex
+	lockDescribeEngineDefaultParametersWithContext            sync.RWMutex
+	lockDescribeEvents                                        sync.RWMutex
+	lockDescribeEventsPages                                   sync.RWMutex
+	lockDescribeEventsPagesWithContext                        sync.RWMutex
+	lockDescribeEventsRequest                                 sync.RWMutex
+	lockDescribeEventsWithContext                             sync.RWMutex
+	lockDescribeGlobalReplicationGroups                       sync.RWMutex
+	lockDescribeGlobalReplicationGroupsPages                  sync.RWMutex
+	lockDescribeGlobalReplicationGroupsPagesWithContext       sync.RWMutex
+	lockDescribeGlobalReplicationGroupsRequest                sync.RWMutex
+	lockDescribeGlobalReplicationGroupsWithContext            sync.RWMutex
+	lockDescribeReplicationGroups                             sync.RWMutex
+	lockDescribeReplicationGroupsPages                        sync.RWMutex
+	lockDescribeReplicationGroupsPagesWithContext             sync.RWMutex
+	lockDescribeReplicationGroupsRequest                      sync.RWMutex
+	lockDescribeReplicationGroupsWithContext                  sync.RWMutex
+	lockDescribeReservedCacheNodes                            sync.RWMutex
+	lockDescribeReservedCacheNodesOfferings                   sync.RWMutex
+	lockDescribeReservedCacheNodesOfferingsPages              sync.RWMutex
+	lockDescribeReservedCacheNodesOfferingsPagesWithContext   sync.RWMutex
+	lockDescribeReservedCacheNodesOfferingsRequest            sync.RWMutex
+	lockDescribeReservedCacheNodesOfferingsWithContext        sync.RWMutex
+	lockDescribeReservedCacheNodesPages                       sync.RWMutex
+	lockDescribeReservedCacheNodesPagesWithContext            sync.RWMutex
+	lockDescribeReservedCacheNodesRequest                     sync.RWMutex
+	lockDescribeReservedCacheNodesWithContext                 sync.RWMutex
+	lockDescribeServiceUpdates                                sync.RWMutex
+	lockDescribeServiceUpdatesPages                           sync.RWMutex
+	lockDescribeServiceUpdatesPagesWithContext                sync.RWMutex
+	lockDescribeServiceUpdatesRequest                         sync.RWMutex
+	lockDescribeServiceUpdatesWithContext                     sync.RWMutex
+	lockDescribeSnapshots                                     sync.RWMutex
+	lockDescribeSnapshotsPages                                sync.RWMutex
+	lockDescribeSnapshotsPagesWithContext                     sync.RWMutex
+	lockDescribeSnapshotsRequest                              sync.RWMutex
+	lockDescribeSnapshotsWithContext                          sync.RWMutex
+	lockDescribeUpdateActions                                 sync.RWMutex
+	lockDescribeUpdateActionsPages                            sync.RWMutex
+	lockDescribeUpdateActionsPagesWithContext                 sync.RWMutex
+	lockDescribeUpdateActionsRequest                          sync.RWMutex
+	lockDescribeUpdateActionsWithContext                      sync.RWMutex
+	lockDescribeUserGroups                                    sync.RWMutex
+	lockDescribeUserGroupsPages                               sync.RWMutex
+	lockDescribeUserGroupsPagesWithContext                    sync.RWMutex
+	lockDescribeUserGroupsRequest                             sync.RWMutex
+	lockDescribeUserGroupsWithContext                         sync.RWMutex
+	lockDescribeUsers                                         sync.RWMutex
+	lockDescribeUsersPages                                    sync.RWMutex
+	lockDescribeUsersPagesWithContext                         sync.RWMutex
+	lockDescribeUsersRequest                                  sync.RWMutex
+	lockDescribeUsersWithContext                              sync.RWMutex
+	lockDisassociateGlobalReplicationGroup                    sync.RWMutex
+	lockDisassociateGlobalReplicationGroupRequest             sync.RWMutex
+	lockDisassociateGlobalReplicationGroupWithContext         sync.RWMutex
+	lockFailoverGlobalReplicationGroup                        sync.RWMutex
+	lockFailoverGlobalReplicationGroupRequest                 sync.RWMutex
+	lockFailoverGlobalReplicationGroupWithContext             sync.RWMutex
+	lockIncreaseNodeGroupsInGlobalReplicationGroup            sync.RWMutex
+	lockIncreaseNodeGroupsInGlobalReplicationGroupRequest     sync.RWMutex
+	lockIncreaseNodeGroupsInGlobalReplicationGroupWithContext sync.RWMutex
+	lockIncreaseReplicaCount                                  sync.RWMutex
+	lockIncreaseReplicaCountRequest                           sync.RWMutex
+	lockIncreaseReplicaCountWithContext                       sync.RWMutex
+	lockListAllowedNodeTypeModifications                      sync.RWMutex
+	lockListAllowedNodeTypeModificationsRequest               sync.RWMutex
+	lockListAllowedNodeTypeModificationsWithContext           sync.RWMutex
+	lockListTagsForResource                                   sync.RWMutex
+	lockListTagsForResourceRequest                            sync.RWMutex
+	lockListTagsForResourceWithContext                        sync.RWMutex
+	lockModifyCacheCluster                                    sync.RWMutex
+	lockModifyCacheClusterRequest                             sync.RWMutex
+	lockModifyCacheClusterWithContext                         sync.RWMutex
+	lockModifyCacheParameterGroup                             sync.RWMutex
+	lockModifyCacheParameterGroupRequest                      sync.RWMutex
+	lockModifyCacheParameterGroupWithContext                  sync.RWMutex
+	lockModifyCacheSubnetGroup                                sync.RWMutex
+	lockModifyCacheSubnetGroupRequest                         sync.RWMutex
+	lockModifyCacheSubnetGroupWithContext                     sync.RWMutex
+	lockModifyGlobalReplicationGroup                          sync.RWMutex
+	lockModifyGlobalReplicationGroupRequest                   sync.RWMutex
+	lockModifyGlobalReplicationGroupWithContext               sync.RWMutex
+	lockModifyReplicationGroup                                sync.RWMutex
+	lockModifyReplicationGroupRequest                         sync.RWMutex
+	lockModifyReplicationGroupShardConfiguration              sync.RWMutex
+	lockModifyReplicationGroupShardConfigurationRequest       sync.RWMutex
+	lockModifyReplicationGroupShardConfigurationWithContext   sync.RWMutex
+	lockModifyReplicationGroupWithContext                     sync.RWMutex
+	lockModifyUser                                            sync.RWMutex
+	lockModifyUserGroup                                       sync.RWMutex
+	lockModifyUserGroupRequest                                sync.RWMutex
+	lockModifyUserGroupWithContext                            sync.RWMutex
+	lockModifyUserRequest                                     sync.RWMutex
+	lockModifyUserWithContext                                 sync.RWMutex
+	lockPurchaseReservedCacheNodesOffering                    sync.RWMutex
+	lockPurchaseReservedCacheNodesOfferingRequest             sync.RWMutex
+	lockPurchaseReservedCacheNodesOfferingWithContext         sync.RWMutex
+	lockRebalanceSlotsInGlobalReplicationGroup                sync.RWMutex
+	lockRebalanceSlotsInGlobalReplicationGroupRequest         sync.RWMutex
+	lockRebalanceSlotsInGlobalReplicationGroupWithContext     sync.RWMutex
+	lockRebootCacheCluster                                    sync.RWMutex
+	lockRebootCacheClusterRequest                             sync.RWMutex
+	lockRebootCacheClusterWithContext                         sync.RWMutex
+	lockRemoveTagsFromResource                                sync.RWMutex
+	lockRemoveTagsFromResourceRequest                         sync.RWMutex
+	lockRemoveTagsFromResourceWithContext                     sync.RWMutex
+	lockResetCacheParameterGroup                              sync.RWMutex
+	lockResetCacheParameterGroupRequest                       sync.RWMutex
+	lockResetCacheParameterGroupWithContext                   sync.RWMutex
+	lockRevokeCacheSecurityGroupIngress                       sync.RWMutex
+	lockRevokeCacheSecurityGroupIngressRequest                sync.RWMutex
+	lockRevokeCacheSecurityGroupIngressWithContext            sync.RWMutex
+	lockStartMigration                                        sync.RWMutex
+	lockStartMigrationRequest                                 sync.RWMutex
+	lockStartMigrationWithContext                             sync.RWMutex
+	lockTestFailover                                          sync.RWMutex
+	lockTestFailoverRequest                                   sync.RWMutex
+	lockTestFailoverWithContext                               sync.RWMutex
+	lockWaitUntilCacheClusterAvailable                        sync.RWMutex
+	lockWaitUntilCacheClusterAvailableWithContext             sync.RWMutex
+	lockWaitUntilCacheClusterDeleted                          sync.RWMutex
+	lockWaitUntilCacheClusterDeletedWithContext               sync.RWMutex
+	lockWaitUntilReplicationGroupAvailable                    sync.RWMutex
+	lockWaitUntilReplicationGroupAvailableWithContext         sync.RWMutex
+	lockWaitUntilReplicationGroupDeleted                      sync.RWMutex
+	lockWaitUntilReplicationGroupDeletedWithContext           sync.RWMutex
 }
 
 // AddTagsToResource calls AddTagsToResourceFunc.
-func (mock *elasticacheClientMock) AddTagsToResource(in1 *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) AddTagsToResource(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*elasticache.TagListMessage, error) {
 	if mock.AddTagsToResourceFunc == nil {
 		panic("elasticacheClientMock.AddTagsToResourceFunc: method is nil but elasticacheClient.AddTagsToResource was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.AddTagsToResourceInput
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 	}{
-		In1: in1,
+		AddTagsToResourceInput: addTagsToResourceInput,
 	}
-	lockelasticacheClientMockAddTagsToResource.Lock()
+	mock.lockAddTagsToResource.Lock()
 	mock.calls.AddTagsToResource = append(mock.calls.AddTagsToResource, callInfo)
-	lockelasticacheClientMockAddTagsToResource.Unlock()
-	return mock.AddTagsToResourceFunc(in1)
+	mock.lockAddTagsToResource.Unlock()
+	return mock.AddTagsToResourceFunc(addTagsToResourceInput)
 }
 
 // AddTagsToResourceCalls gets all the calls that were made to AddTagsToResource.
 // Check the length with:
 //     len(mockedelasticacheClient.AddTagsToResourceCalls())
 func (mock *elasticacheClientMock) AddTagsToResourceCalls() []struct {
-	In1 *elasticache.AddTagsToResourceInput
+	AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.AddTagsToResourceInput
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 	}
-	lockelasticacheClientMockAddTagsToResource.RLock()
+	mock.lockAddTagsToResource.RLock()
 	calls = mock.calls.AddTagsToResource
-	lockelasticacheClientMockAddTagsToResource.RUnlock()
+	mock.lockAddTagsToResource.RUnlock()
 	return calls
 }
 
 // AddTagsToResourceRequest calls AddTagsToResourceRequestFunc.
-func (mock *elasticacheClientMock) AddTagsToResourceRequest(in1 *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage) {
+func (mock *elasticacheClientMock) AddTagsToResourceRequest(addTagsToResourceInput *elasticache.AddTagsToResourceInput) (*request.Request, *elasticache.TagListMessage) {
 	if mock.AddTagsToResourceRequestFunc == nil {
 		panic("elasticacheClientMock.AddTagsToResourceRequestFunc: method is nil but elasticacheClient.AddTagsToResourceRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.AddTagsToResourceInput
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 	}{
-		In1: in1,
+		AddTagsToResourceInput: addTagsToResourceInput,
 	}
-	lockelasticacheClientMockAddTagsToResourceRequest.Lock()
+	mock.lockAddTagsToResourceRequest.Lock()
 	mock.calls.AddTagsToResourceRequest = append(mock.calls.AddTagsToResourceRequest, callInfo)
-	lockelasticacheClientMockAddTagsToResourceRequest.Unlock()
-	return mock.AddTagsToResourceRequestFunc(in1)
+	mock.lockAddTagsToResourceRequest.Unlock()
+	return mock.AddTagsToResourceRequestFunc(addTagsToResourceInput)
 }
 
 // AddTagsToResourceRequestCalls gets all the calls that were made to AddTagsToResourceRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.AddTagsToResourceRequestCalls())
 func (mock *elasticacheClientMock) AddTagsToResourceRequestCalls() []struct {
-	In1 *elasticache.AddTagsToResourceInput
+	AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.AddTagsToResourceInput
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
 	}
-	lockelasticacheClientMockAddTagsToResourceRequest.RLock()
+	mock.lockAddTagsToResourceRequest.RLock()
 	calls = mock.calls.AddTagsToResourceRequest
-	lockelasticacheClientMockAddTagsToResourceRequest.RUnlock()
+	mock.lockAddTagsToResourceRequest.RUnlock()
 	return calls
 }
 
 // AddTagsToResourceWithContext calls AddTagsToResourceWithContextFunc.
-func (mock *elasticacheClientMock) AddTagsToResourceWithContext(in1 context.Context, in2 *elasticache.AddTagsToResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) AddTagsToResourceWithContext(contextMoqParam context.Context, addTagsToResourceInput *elasticache.AddTagsToResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
 	if mock.AddTagsToResourceWithContextFunc == nil {
 		panic("elasticacheClientMock.AddTagsToResourceWithContextFunc: method is nil but elasticacheClient.AddTagsToResourceWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.AddTagsToResourceInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
+		Options                []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:        contextMoqParam,
+		AddTagsToResourceInput: addTagsToResourceInput,
+		Options:                options,
 	}
-	lockelasticacheClientMockAddTagsToResourceWithContext.Lock()
+	mock.lockAddTagsToResourceWithContext.Lock()
 	mock.calls.AddTagsToResourceWithContext = append(mock.calls.AddTagsToResourceWithContext, callInfo)
-	lockelasticacheClientMockAddTagsToResourceWithContext.Unlock()
-	return mock.AddTagsToResourceWithContextFunc(in1, in2, in3...)
+	mock.lockAddTagsToResourceWithContext.Unlock()
+	return mock.AddTagsToResourceWithContextFunc(contextMoqParam, addTagsToResourceInput, options...)
 }
 
 // AddTagsToResourceWithContextCalls gets all the calls that were made to AddTagsToResourceWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.AddTagsToResourceWithContextCalls())
 func (mock *elasticacheClientMock) AddTagsToResourceWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.AddTagsToResourceInput
-	In3 []request.Option
+	ContextMoqParam        context.Context
+	AddTagsToResourceInput *elasticache.AddTagsToResourceInput
+	Options                []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.AddTagsToResourceInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		AddTagsToResourceInput *elasticache.AddTagsToResourceInput
+		Options                []request.Option
 	}
-	lockelasticacheClientMockAddTagsToResourceWithContext.RLock()
+	mock.lockAddTagsToResourceWithContext.RLock()
 	calls = mock.calls.AddTagsToResourceWithContext
-	lockelasticacheClientMockAddTagsToResourceWithContext.RUnlock()
+	mock.lockAddTagsToResourceWithContext.RUnlock()
 	return calls
 }
 
 // AuthorizeCacheSecurityGroupIngress calls AuthorizeCacheSecurityGroupIngressFunc.
-func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngress(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
+func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngress(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
 	if mock.AuthorizeCacheSecurityGroupIngressFunc == nil {
 		panic("elasticacheClientMock.AuthorizeCacheSecurityGroupIngressFunc: method is nil but elasticacheClient.AuthorizeCacheSecurityGroupIngress was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 	}{
-		In1: in1,
+		AuthorizeCacheSecurityGroupIngressInput: authorizeCacheSecurityGroupIngressInput,
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngress.Lock()
+	mock.lockAuthorizeCacheSecurityGroupIngress.Lock()
 	mock.calls.AuthorizeCacheSecurityGroupIngress = append(mock.calls.AuthorizeCacheSecurityGroupIngress, callInfo)
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngress.Unlock()
-	return mock.AuthorizeCacheSecurityGroupIngressFunc(in1)
+	mock.lockAuthorizeCacheSecurityGroupIngress.Unlock()
+	return mock.AuthorizeCacheSecurityGroupIngressFunc(authorizeCacheSecurityGroupIngressInput)
 }
 
 // AuthorizeCacheSecurityGroupIngressCalls gets all the calls that were made to AuthorizeCacheSecurityGroupIngress.
 // Check the length with:
 //     len(mockedelasticacheClient.AuthorizeCacheSecurityGroupIngressCalls())
 func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressCalls() []struct {
-	In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+	AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 } {
 	var calls []struct {
-		In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngress.RLock()
+	mock.lockAuthorizeCacheSecurityGroupIngress.RLock()
 	calls = mock.calls.AuthorizeCacheSecurityGroupIngress
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngress.RUnlock()
+	mock.lockAuthorizeCacheSecurityGroupIngress.RUnlock()
 	return calls
 }
 
 // AuthorizeCacheSecurityGroupIngressRequest calls AuthorizeCacheSecurityGroupIngressRequestFunc.
-func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressRequest(in1 *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput) {
+func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressRequest(authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.AuthorizeCacheSecurityGroupIngressOutput) {
 	if mock.AuthorizeCacheSecurityGroupIngressRequestFunc == nil {
 		panic("elasticacheClientMock.AuthorizeCacheSecurityGroupIngressRequestFunc: method is nil but elasticacheClient.AuthorizeCacheSecurityGroupIngressRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 	}{
-		In1: in1,
+		AuthorizeCacheSecurityGroupIngressInput: authorizeCacheSecurityGroupIngressInput,
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressRequest.Lock()
+	mock.lockAuthorizeCacheSecurityGroupIngressRequest.Lock()
 	mock.calls.AuthorizeCacheSecurityGroupIngressRequest = append(mock.calls.AuthorizeCacheSecurityGroupIngressRequest, callInfo)
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressRequest.Unlock()
-	return mock.AuthorizeCacheSecurityGroupIngressRequestFunc(in1)
+	mock.lockAuthorizeCacheSecurityGroupIngressRequest.Unlock()
+	return mock.AuthorizeCacheSecurityGroupIngressRequestFunc(authorizeCacheSecurityGroupIngressInput)
 }
 
 // AuthorizeCacheSecurityGroupIngressRequestCalls gets all the calls that were made to AuthorizeCacheSecurityGroupIngressRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.AuthorizeCacheSecurityGroupIngressRequestCalls())
 func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressRequestCalls() []struct {
-	In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+	AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 } {
 	var calls []struct {
-		In1 *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressRequest.RLock()
+	mock.lockAuthorizeCacheSecurityGroupIngressRequest.RLock()
 	calls = mock.calls.AuthorizeCacheSecurityGroupIngressRequest
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressRequest.RUnlock()
+	mock.lockAuthorizeCacheSecurityGroupIngressRequest.RUnlock()
 	return calls
 }
 
 // AuthorizeCacheSecurityGroupIngressWithContext calls AuthorizeCacheSecurityGroupIngressWithContextFunc.
-func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressWithContext(in1 context.Context, in2 *elasticache.AuthorizeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
+func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressWithContext(contextMoqParam context.Context, authorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
 	if mock.AuthorizeCacheSecurityGroupIngressWithContextFunc == nil {
 		panic("elasticacheClientMock.AuthorizeCacheSecurityGroupIngressWithContextFunc: method is nil but elasticacheClient.AuthorizeCacheSecurityGroupIngressWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.AuthorizeCacheSecurityGroupIngressInput
-		In3 []request.Option
+		ContextMoqParam                         context.Context
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		Options                                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                         contextMoqParam,
+		AuthorizeCacheSecurityGroupIngressInput: authorizeCacheSecurityGroupIngressInput,
+		Options:                                 options,
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressWithContext.Lock()
+	mock.lockAuthorizeCacheSecurityGroupIngressWithContext.Lock()
 	mock.calls.AuthorizeCacheSecurityGroupIngressWithContext = append(mock.calls.AuthorizeCacheSecurityGroupIngressWithContext, callInfo)
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressWithContext.Unlock()
-	return mock.AuthorizeCacheSecurityGroupIngressWithContextFunc(in1, in2, in3...)
+	mock.lockAuthorizeCacheSecurityGroupIngressWithContext.Unlock()
+	return mock.AuthorizeCacheSecurityGroupIngressWithContextFunc(contextMoqParam, authorizeCacheSecurityGroupIngressInput, options...)
 }
 
 // AuthorizeCacheSecurityGroupIngressWithContextCalls gets all the calls that were made to AuthorizeCacheSecurityGroupIngressWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.AuthorizeCacheSecurityGroupIngressWithContextCalls())
 func (mock *elasticacheClientMock) AuthorizeCacheSecurityGroupIngressWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.AuthorizeCacheSecurityGroupIngressInput
-	In3 []request.Option
+	ContextMoqParam                         context.Context
+	AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
+	Options                                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.AuthorizeCacheSecurityGroupIngressInput
-		In3 []request.Option
+		ContextMoqParam                         context.Context
+		AuthorizeCacheSecurityGroupIngressInput *elasticache.AuthorizeCacheSecurityGroupIngressInput
+		Options                                 []request.Option
 	}
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressWithContext.RLock()
+	mock.lockAuthorizeCacheSecurityGroupIngressWithContext.RLock()
 	calls = mock.calls.AuthorizeCacheSecurityGroupIngressWithContext
-	lockelasticacheClientMockAuthorizeCacheSecurityGroupIngressWithContext.RUnlock()
+	mock.lockAuthorizeCacheSecurityGroupIngressWithContext.RUnlock()
 	return calls
 }
 
 // BatchApplyUpdateAction calls BatchApplyUpdateActionFunc.
-func (mock *elasticacheClientMock) BatchApplyUpdateAction(in1 *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error) {
+func (mock *elasticacheClientMock) BatchApplyUpdateAction(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*elasticache.BatchApplyUpdateActionOutput, error) {
 	if mock.BatchApplyUpdateActionFunc == nil {
 		panic("elasticacheClientMock.BatchApplyUpdateActionFunc: method is nil but elasticacheClient.BatchApplyUpdateAction was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.BatchApplyUpdateActionInput
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 	}{
-		In1: in1,
+		BatchApplyUpdateActionInput: batchApplyUpdateActionInput,
 	}
-	lockelasticacheClientMockBatchApplyUpdateAction.Lock()
+	mock.lockBatchApplyUpdateAction.Lock()
 	mock.calls.BatchApplyUpdateAction = append(mock.calls.BatchApplyUpdateAction, callInfo)
-	lockelasticacheClientMockBatchApplyUpdateAction.Unlock()
-	return mock.BatchApplyUpdateActionFunc(in1)
+	mock.lockBatchApplyUpdateAction.Unlock()
+	return mock.BatchApplyUpdateActionFunc(batchApplyUpdateActionInput)
 }
 
 // BatchApplyUpdateActionCalls gets all the calls that were made to BatchApplyUpdateAction.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchApplyUpdateActionCalls())
 func (mock *elasticacheClientMock) BatchApplyUpdateActionCalls() []struct {
-	In1 *elasticache.BatchApplyUpdateActionInput
+	BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 } {
 	var calls []struct {
-		In1 *elasticache.BatchApplyUpdateActionInput
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 	}
-	lockelasticacheClientMockBatchApplyUpdateAction.RLock()
+	mock.lockBatchApplyUpdateAction.RLock()
 	calls = mock.calls.BatchApplyUpdateAction
-	lockelasticacheClientMockBatchApplyUpdateAction.RUnlock()
+	mock.lockBatchApplyUpdateAction.RUnlock()
 	return calls
 }
 
 // BatchApplyUpdateActionRequest calls BatchApplyUpdateActionRequestFunc.
-func (mock *elasticacheClientMock) BatchApplyUpdateActionRequest(in1 *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput) {
+func (mock *elasticacheClientMock) BatchApplyUpdateActionRequest(batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput) (*request.Request, *elasticache.BatchApplyUpdateActionOutput) {
 	if mock.BatchApplyUpdateActionRequestFunc == nil {
 		panic("elasticacheClientMock.BatchApplyUpdateActionRequestFunc: method is nil but elasticacheClient.BatchApplyUpdateActionRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.BatchApplyUpdateActionInput
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 	}{
-		In1: in1,
+		BatchApplyUpdateActionInput: batchApplyUpdateActionInput,
 	}
-	lockelasticacheClientMockBatchApplyUpdateActionRequest.Lock()
+	mock.lockBatchApplyUpdateActionRequest.Lock()
 	mock.calls.BatchApplyUpdateActionRequest = append(mock.calls.BatchApplyUpdateActionRequest, callInfo)
-	lockelasticacheClientMockBatchApplyUpdateActionRequest.Unlock()
-	return mock.BatchApplyUpdateActionRequestFunc(in1)
+	mock.lockBatchApplyUpdateActionRequest.Unlock()
+	return mock.BatchApplyUpdateActionRequestFunc(batchApplyUpdateActionInput)
 }
 
 // BatchApplyUpdateActionRequestCalls gets all the calls that were made to BatchApplyUpdateActionRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchApplyUpdateActionRequestCalls())
 func (mock *elasticacheClientMock) BatchApplyUpdateActionRequestCalls() []struct {
-	In1 *elasticache.BatchApplyUpdateActionInput
+	BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 } {
 	var calls []struct {
-		In1 *elasticache.BatchApplyUpdateActionInput
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
 	}
-	lockelasticacheClientMockBatchApplyUpdateActionRequest.RLock()
+	mock.lockBatchApplyUpdateActionRequest.RLock()
 	calls = mock.calls.BatchApplyUpdateActionRequest
-	lockelasticacheClientMockBatchApplyUpdateActionRequest.RUnlock()
+	mock.lockBatchApplyUpdateActionRequest.RUnlock()
 	return calls
 }
 
 // BatchApplyUpdateActionWithContext calls BatchApplyUpdateActionWithContextFunc.
-func (mock *elasticacheClientMock) BatchApplyUpdateActionWithContext(in1 context.Context, in2 *elasticache.BatchApplyUpdateActionInput, in3 ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error) {
+func (mock *elasticacheClientMock) BatchApplyUpdateActionWithContext(contextMoqParam context.Context, batchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput, options ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error) {
 	if mock.BatchApplyUpdateActionWithContextFunc == nil {
 		panic("elasticacheClientMock.BatchApplyUpdateActionWithContextFunc: method is nil but elasticacheClient.BatchApplyUpdateActionWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.BatchApplyUpdateActionInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		BatchApplyUpdateActionInput: batchApplyUpdateActionInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockBatchApplyUpdateActionWithContext.Lock()
+	mock.lockBatchApplyUpdateActionWithContext.Lock()
 	mock.calls.BatchApplyUpdateActionWithContext = append(mock.calls.BatchApplyUpdateActionWithContext, callInfo)
-	lockelasticacheClientMockBatchApplyUpdateActionWithContext.Unlock()
-	return mock.BatchApplyUpdateActionWithContextFunc(in1, in2, in3...)
+	mock.lockBatchApplyUpdateActionWithContext.Unlock()
+	return mock.BatchApplyUpdateActionWithContextFunc(contextMoqParam, batchApplyUpdateActionInput, options...)
 }
 
 // BatchApplyUpdateActionWithContextCalls gets all the calls that were made to BatchApplyUpdateActionWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchApplyUpdateActionWithContextCalls())
 func (mock *elasticacheClientMock) BatchApplyUpdateActionWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.BatchApplyUpdateActionInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.BatchApplyUpdateActionInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		BatchApplyUpdateActionInput *elasticache.BatchApplyUpdateActionInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockBatchApplyUpdateActionWithContext.RLock()
+	mock.lockBatchApplyUpdateActionWithContext.RLock()
 	calls = mock.calls.BatchApplyUpdateActionWithContext
-	lockelasticacheClientMockBatchApplyUpdateActionWithContext.RUnlock()
+	mock.lockBatchApplyUpdateActionWithContext.RUnlock()
 	return calls
 }
 
 // BatchStopUpdateAction calls BatchStopUpdateActionFunc.
-func (mock *elasticacheClientMock) BatchStopUpdateAction(in1 *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error) {
+func (mock *elasticacheClientMock) BatchStopUpdateAction(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*elasticache.BatchStopUpdateActionOutput, error) {
 	if mock.BatchStopUpdateActionFunc == nil {
 		panic("elasticacheClientMock.BatchStopUpdateActionFunc: method is nil but elasticacheClient.BatchStopUpdateAction was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.BatchStopUpdateActionInput
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 	}{
-		In1: in1,
+		BatchStopUpdateActionInput: batchStopUpdateActionInput,
 	}
-	lockelasticacheClientMockBatchStopUpdateAction.Lock()
+	mock.lockBatchStopUpdateAction.Lock()
 	mock.calls.BatchStopUpdateAction = append(mock.calls.BatchStopUpdateAction, callInfo)
-	lockelasticacheClientMockBatchStopUpdateAction.Unlock()
-	return mock.BatchStopUpdateActionFunc(in1)
+	mock.lockBatchStopUpdateAction.Unlock()
+	return mock.BatchStopUpdateActionFunc(batchStopUpdateActionInput)
 }
 
 // BatchStopUpdateActionCalls gets all the calls that were made to BatchStopUpdateAction.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchStopUpdateActionCalls())
 func (mock *elasticacheClientMock) BatchStopUpdateActionCalls() []struct {
-	In1 *elasticache.BatchStopUpdateActionInput
+	BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 } {
 	var calls []struct {
-		In1 *elasticache.BatchStopUpdateActionInput
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 	}
-	lockelasticacheClientMockBatchStopUpdateAction.RLock()
+	mock.lockBatchStopUpdateAction.RLock()
 	calls = mock.calls.BatchStopUpdateAction
-	lockelasticacheClientMockBatchStopUpdateAction.RUnlock()
+	mock.lockBatchStopUpdateAction.RUnlock()
 	return calls
 }
 
 // BatchStopUpdateActionRequest calls BatchStopUpdateActionRequestFunc.
-func (mock *elasticacheClientMock) BatchStopUpdateActionRequest(in1 *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput) {
+func (mock *elasticacheClientMock) BatchStopUpdateActionRequest(batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput) (*request.Request, *elasticache.BatchStopUpdateActionOutput) {
 	if mock.BatchStopUpdateActionRequestFunc == nil {
 		panic("elasticacheClientMock.BatchStopUpdateActionRequestFunc: method is nil but elasticacheClient.BatchStopUpdateActionRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.BatchStopUpdateActionInput
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 	}{
-		In1: in1,
+		BatchStopUpdateActionInput: batchStopUpdateActionInput,
 	}
-	lockelasticacheClientMockBatchStopUpdateActionRequest.Lock()
+	mock.lockBatchStopUpdateActionRequest.Lock()
 	mock.calls.BatchStopUpdateActionRequest = append(mock.calls.BatchStopUpdateActionRequest, callInfo)
-	lockelasticacheClientMockBatchStopUpdateActionRequest.Unlock()
-	return mock.BatchStopUpdateActionRequestFunc(in1)
+	mock.lockBatchStopUpdateActionRequest.Unlock()
+	return mock.BatchStopUpdateActionRequestFunc(batchStopUpdateActionInput)
 }
 
 // BatchStopUpdateActionRequestCalls gets all the calls that were made to BatchStopUpdateActionRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchStopUpdateActionRequestCalls())
 func (mock *elasticacheClientMock) BatchStopUpdateActionRequestCalls() []struct {
-	In1 *elasticache.BatchStopUpdateActionInput
+	BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 } {
 	var calls []struct {
-		In1 *elasticache.BatchStopUpdateActionInput
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
 	}
-	lockelasticacheClientMockBatchStopUpdateActionRequest.RLock()
+	mock.lockBatchStopUpdateActionRequest.RLock()
 	calls = mock.calls.BatchStopUpdateActionRequest
-	lockelasticacheClientMockBatchStopUpdateActionRequest.RUnlock()
+	mock.lockBatchStopUpdateActionRequest.RUnlock()
 	return calls
 }
 
 // BatchStopUpdateActionWithContext calls BatchStopUpdateActionWithContextFunc.
-func (mock *elasticacheClientMock) BatchStopUpdateActionWithContext(in1 context.Context, in2 *elasticache.BatchStopUpdateActionInput, in3 ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error) {
+func (mock *elasticacheClientMock) BatchStopUpdateActionWithContext(contextMoqParam context.Context, batchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput, options ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error) {
 	if mock.BatchStopUpdateActionWithContextFunc == nil {
 		panic("elasticacheClientMock.BatchStopUpdateActionWithContextFunc: method is nil but elasticacheClient.BatchStopUpdateActionWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.BatchStopUpdateActionInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
+		Options                    []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:            contextMoqParam,
+		BatchStopUpdateActionInput: batchStopUpdateActionInput,
+		Options:                    options,
 	}
-	lockelasticacheClientMockBatchStopUpdateActionWithContext.Lock()
+	mock.lockBatchStopUpdateActionWithContext.Lock()
 	mock.calls.BatchStopUpdateActionWithContext = append(mock.calls.BatchStopUpdateActionWithContext, callInfo)
-	lockelasticacheClientMockBatchStopUpdateActionWithContext.Unlock()
-	return mock.BatchStopUpdateActionWithContextFunc(in1, in2, in3...)
+	mock.lockBatchStopUpdateActionWithContext.Unlock()
+	return mock.BatchStopUpdateActionWithContextFunc(contextMoqParam, batchStopUpdateActionInput, options...)
 }
 
 // BatchStopUpdateActionWithContextCalls gets all the calls that were made to BatchStopUpdateActionWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.BatchStopUpdateActionWithContextCalls())
 func (mock *elasticacheClientMock) BatchStopUpdateActionWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.BatchStopUpdateActionInput
-	In3 []request.Option
+	ContextMoqParam            context.Context
+	BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
+	Options                    []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.BatchStopUpdateActionInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		BatchStopUpdateActionInput *elasticache.BatchStopUpdateActionInput
+		Options                    []request.Option
 	}
-	lockelasticacheClientMockBatchStopUpdateActionWithContext.RLock()
+	mock.lockBatchStopUpdateActionWithContext.RLock()
 	calls = mock.calls.BatchStopUpdateActionWithContext
-	lockelasticacheClientMockBatchStopUpdateActionWithContext.RUnlock()
+	mock.lockBatchStopUpdateActionWithContext.RUnlock()
 	return calls
 }
 
 // CompleteMigration calls CompleteMigrationFunc.
-func (mock *elasticacheClientMock) CompleteMigration(in1 *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error) {
+func (mock *elasticacheClientMock) CompleteMigration(completeMigrationInput *elasticache.CompleteMigrationInput) (*elasticache.CompleteMigrationOutput, error) {
 	if mock.CompleteMigrationFunc == nil {
 		panic("elasticacheClientMock.CompleteMigrationFunc: method is nil but elasticacheClient.CompleteMigration was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CompleteMigrationInput
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
 	}{
-		In1: in1,
+		CompleteMigrationInput: completeMigrationInput,
 	}
-	lockelasticacheClientMockCompleteMigration.Lock()
+	mock.lockCompleteMigration.Lock()
 	mock.calls.CompleteMigration = append(mock.calls.CompleteMigration, callInfo)
-	lockelasticacheClientMockCompleteMigration.Unlock()
-	return mock.CompleteMigrationFunc(in1)
+	mock.lockCompleteMigration.Unlock()
+	return mock.CompleteMigrationFunc(completeMigrationInput)
 }
 
 // CompleteMigrationCalls gets all the calls that were made to CompleteMigration.
 // Check the length with:
 //     len(mockedelasticacheClient.CompleteMigrationCalls())
 func (mock *elasticacheClientMock) CompleteMigrationCalls() []struct {
-	In1 *elasticache.CompleteMigrationInput
+	CompleteMigrationInput *elasticache.CompleteMigrationInput
 } {
 	var calls []struct {
-		In1 *elasticache.CompleteMigrationInput
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
 	}
-	lockelasticacheClientMockCompleteMigration.RLock()
+	mock.lockCompleteMigration.RLock()
 	calls = mock.calls.CompleteMigration
-	lockelasticacheClientMockCompleteMigration.RUnlock()
+	mock.lockCompleteMigration.RUnlock()
 	return calls
 }
 
 // CompleteMigrationRequest calls CompleteMigrationRequestFunc.
-func (mock *elasticacheClientMock) CompleteMigrationRequest(in1 *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput) {
+func (mock *elasticacheClientMock) CompleteMigrationRequest(completeMigrationInput *elasticache.CompleteMigrationInput) (*request.Request, *elasticache.CompleteMigrationOutput) {
 	if mock.CompleteMigrationRequestFunc == nil {
 		panic("elasticacheClientMock.CompleteMigrationRequestFunc: method is nil but elasticacheClient.CompleteMigrationRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CompleteMigrationInput
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
 	}{
-		In1: in1,
+		CompleteMigrationInput: completeMigrationInput,
 	}
-	lockelasticacheClientMockCompleteMigrationRequest.Lock()
+	mock.lockCompleteMigrationRequest.Lock()
 	mock.calls.CompleteMigrationRequest = append(mock.calls.CompleteMigrationRequest, callInfo)
-	lockelasticacheClientMockCompleteMigrationRequest.Unlock()
-	return mock.CompleteMigrationRequestFunc(in1)
+	mock.lockCompleteMigrationRequest.Unlock()
+	return mock.CompleteMigrationRequestFunc(completeMigrationInput)
 }
 
 // CompleteMigrationRequestCalls gets all the calls that were made to CompleteMigrationRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CompleteMigrationRequestCalls())
 func (mock *elasticacheClientMock) CompleteMigrationRequestCalls() []struct {
-	In1 *elasticache.CompleteMigrationInput
+	CompleteMigrationInput *elasticache.CompleteMigrationInput
 } {
 	var calls []struct {
-		In1 *elasticache.CompleteMigrationInput
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
 	}
-	lockelasticacheClientMockCompleteMigrationRequest.RLock()
+	mock.lockCompleteMigrationRequest.RLock()
 	calls = mock.calls.CompleteMigrationRequest
-	lockelasticacheClientMockCompleteMigrationRequest.RUnlock()
+	mock.lockCompleteMigrationRequest.RUnlock()
 	return calls
 }
 
 // CompleteMigrationWithContext calls CompleteMigrationWithContextFunc.
-func (mock *elasticacheClientMock) CompleteMigrationWithContext(in1 context.Context, in2 *elasticache.CompleteMigrationInput, in3 ...request.Option) (*elasticache.CompleteMigrationOutput, error) {
+func (mock *elasticacheClientMock) CompleteMigrationWithContext(contextMoqParam context.Context, completeMigrationInput *elasticache.CompleteMigrationInput, options ...request.Option) (*elasticache.CompleteMigrationOutput, error) {
 	if mock.CompleteMigrationWithContextFunc == nil {
 		panic("elasticacheClientMock.CompleteMigrationWithContextFunc: method is nil but elasticacheClient.CompleteMigrationWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CompleteMigrationInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
+		Options                []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:        contextMoqParam,
+		CompleteMigrationInput: completeMigrationInput,
+		Options:                options,
 	}
-	lockelasticacheClientMockCompleteMigrationWithContext.Lock()
+	mock.lockCompleteMigrationWithContext.Lock()
 	mock.calls.CompleteMigrationWithContext = append(mock.calls.CompleteMigrationWithContext, callInfo)
-	lockelasticacheClientMockCompleteMigrationWithContext.Unlock()
-	return mock.CompleteMigrationWithContextFunc(in1, in2, in3...)
+	mock.lockCompleteMigrationWithContext.Unlock()
+	return mock.CompleteMigrationWithContextFunc(contextMoqParam, completeMigrationInput, options...)
 }
 
 // CompleteMigrationWithContextCalls gets all the calls that were made to CompleteMigrationWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CompleteMigrationWithContextCalls())
 func (mock *elasticacheClientMock) CompleteMigrationWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CompleteMigrationInput
-	In3 []request.Option
+	ContextMoqParam        context.Context
+	CompleteMigrationInput *elasticache.CompleteMigrationInput
+	Options                []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CompleteMigrationInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		CompleteMigrationInput *elasticache.CompleteMigrationInput
+		Options                []request.Option
 	}
-	lockelasticacheClientMockCompleteMigrationWithContext.RLock()
+	mock.lockCompleteMigrationWithContext.RLock()
 	calls = mock.calls.CompleteMigrationWithContext
-	lockelasticacheClientMockCompleteMigrationWithContext.RUnlock()
+	mock.lockCompleteMigrationWithContext.RUnlock()
 	return calls
 }
 
 // CopySnapshot calls CopySnapshotFunc.
-func (mock *elasticacheClientMock) CopySnapshot(in1 *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error) {
+func (mock *elasticacheClientMock) CopySnapshot(copySnapshotInput *elasticache.CopySnapshotInput) (*elasticache.CopySnapshotOutput, error) {
 	if mock.CopySnapshotFunc == nil {
 		panic("elasticacheClientMock.CopySnapshotFunc: method is nil but elasticacheClient.CopySnapshot was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CopySnapshotInput
+		CopySnapshotInput *elasticache.CopySnapshotInput
 	}{
-		In1: in1,
+		CopySnapshotInput: copySnapshotInput,
 	}
-	lockelasticacheClientMockCopySnapshot.Lock()
+	mock.lockCopySnapshot.Lock()
 	mock.calls.CopySnapshot = append(mock.calls.CopySnapshot, callInfo)
-	lockelasticacheClientMockCopySnapshot.Unlock()
-	return mock.CopySnapshotFunc(in1)
+	mock.lockCopySnapshot.Unlock()
+	return mock.CopySnapshotFunc(copySnapshotInput)
 }
 
 // CopySnapshotCalls gets all the calls that were made to CopySnapshot.
 // Check the length with:
 //     len(mockedelasticacheClient.CopySnapshotCalls())
 func (mock *elasticacheClientMock) CopySnapshotCalls() []struct {
-	In1 *elasticache.CopySnapshotInput
+	CopySnapshotInput *elasticache.CopySnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.CopySnapshotInput
+		CopySnapshotInput *elasticache.CopySnapshotInput
 	}
-	lockelasticacheClientMockCopySnapshot.RLock()
+	mock.lockCopySnapshot.RLock()
 	calls = mock.calls.CopySnapshot
-	lockelasticacheClientMockCopySnapshot.RUnlock()
+	mock.lockCopySnapshot.RUnlock()
 	return calls
 }
 
 // CopySnapshotRequest calls CopySnapshotRequestFunc.
-func (mock *elasticacheClientMock) CopySnapshotRequest(in1 *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput) {
+func (mock *elasticacheClientMock) CopySnapshotRequest(copySnapshotInput *elasticache.CopySnapshotInput) (*request.Request, *elasticache.CopySnapshotOutput) {
 	if mock.CopySnapshotRequestFunc == nil {
 		panic("elasticacheClientMock.CopySnapshotRequestFunc: method is nil but elasticacheClient.CopySnapshotRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CopySnapshotInput
+		CopySnapshotInput *elasticache.CopySnapshotInput
 	}{
-		In1: in1,
+		CopySnapshotInput: copySnapshotInput,
 	}
-	lockelasticacheClientMockCopySnapshotRequest.Lock()
+	mock.lockCopySnapshotRequest.Lock()
 	mock.calls.CopySnapshotRequest = append(mock.calls.CopySnapshotRequest, callInfo)
-	lockelasticacheClientMockCopySnapshotRequest.Unlock()
-	return mock.CopySnapshotRequestFunc(in1)
+	mock.lockCopySnapshotRequest.Unlock()
+	return mock.CopySnapshotRequestFunc(copySnapshotInput)
 }
 
 // CopySnapshotRequestCalls gets all the calls that were made to CopySnapshotRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CopySnapshotRequestCalls())
 func (mock *elasticacheClientMock) CopySnapshotRequestCalls() []struct {
-	In1 *elasticache.CopySnapshotInput
+	CopySnapshotInput *elasticache.CopySnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.CopySnapshotInput
+		CopySnapshotInput *elasticache.CopySnapshotInput
 	}
-	lockelasticacheClientMockCopySnapshotRequest.RLock()
+	mock.lockCopySnapshotRequest.RLock()
 	calls = mock.calls.CopySnapshotRequest
-	lockelasticacheClientMockCopySnapshotRequest.RUnlock()
+	mock.lockCopySnapshotRequest.RUnlock()
 	return calls
 }
 
 // CopySnapshotWithContext calls CopySnapshotWithContextFunc.
-func (mock *elasticacheClientMock) CopySnapshotWithContext(in1 context.Context, in2 *elasticache.CopySnapshotInput, in3 ...request.Option) (*elasticache.CopySnapshotOutput, error) {
+func (mock *elasticacheClientMock) CopySnapshotWithContext(contextMoqParam context.Context, copySnapshotInput *elasticache.CopySnapshotInput, options ...request.Option) (*elasticache.CopySnapshotOutput, error) {
 	if mock.CopySnapshotWithContextFunc == nil {
 		panic("elasticacheClientMock.CopySnapshotWithContextFunc: method is nil but elasticacheClient.CopySnapshotWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CopySnapshotInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		CopySnapshotInput *elasticache.CopySnapshotInput
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:   contextMoqParam,
+		CopySnapshotInput: copySnapshotInput,
+		Options:           options,
 	}
-	lockelasticacheClientMockCopySnapshotWithContext.Lock()
+	mock.lockCopySnapshotWithContext.Lock()
 	mock.calls.CopySnapshotWithContext = append(mock.calls.CopySnapshotWithContext, callInfo)
-	lockelasticacheClientMockCopySnapshotWithContext.Unlock()
-	return mock.CopySnapshotWithContextFunc(in1, in2, in3...)
+	mock.lockCopySnapshotWithContext.Unlock()
+	return mock.CopySnapshotWithContextFunc(contextMoqParam, copySnapshotInput, options...)
 }
 
 // CopySnapshotWithContextCalls gets all the calls that were made to CopySnapshotWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CopySnapshotWithContextCalls())
 func (mock *elasticacheClientMock) CopySnapshotWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CopySnapshotInput
-	In3 []request.Option
+	ContextMoqParam   context.Context
+	CopySnapshotInput *elasticache.CopySnapshotInput
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CopySnapshotInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		CopySnapshotInput *elasticache.CopySnapshotInput
+		Options           []request.Option
 	}
-	lockelasticacheClientMockCopySnapshotWithContext.RLock()
+	mock.lockCopySnapshotWithContext.RLock()
 	calls = mock.calls.CopySnapshotWithContext
-	lockelasticacheClientMockCopySnapshotWithContext.RUnlock()
+	mock.lockCopySnapshotWithContext.RUnlock()
 	return calls
 }
 
 // CreateCacheCluster calls CreateCacheClusterFunc.
-func (mock *elasticacheClientMock) CreateCacheCluster(in1 *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheCluster(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*elasticache.CreateCacheClusterOutput, error) {
 	if mock.CreateCacheClusterFunc == nil {
 		panic("elasticacheClientMock.CreateCacheClusterFunc: method is nil but elasticacheClient.CreateCacheCluster was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheClusterInput
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 	}{
-		In1: in1,
+		CreateCacheClusterInput: createCacheClusterInput,
 	}
-	lockelasticacheClientMockCreateCacheCluster.Lock()
+	mock.lockCreateCacheCluster.Lock()
 	mock.calls.CreateCacheCluster = append(mock.calls.CreateCacheCluster, callInfo)
-	lockelasticacheClientMockCreateCacheCluster.Unlock()
-	return mock.CreateCacheClusterFunc(in1)
+	mock.lockCreateCacheCluster.Unlock()
+	return mock.CreateCacheClusterFunc(createCacheClusterInput)
 }
 
 // CreateCacheClusterCalls gets all the calls that were made to CreateCacheCluster.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheClusterCalls())
 func (mock *elasticacheClientMock) CreateCacheClusterCalls() []struct {
-	In1 *elasticache.CreateCacheClusterInput
+	CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheClusterInput
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 	}
-	lockelasticacheClientMockCreateCacheCluster.RLock()
+	mock.lockCreateCacheCluster.RLock()
 	calls = mock.calls.CreateCacheCluster
-	lockelasticacheClientMockCreateCacheCluster.RUnlock()
+	mock.lockCreateCacheCluster.RUnlock()
 	return calls
 }
 
 // CreateCacheClusterRequest calls CreateCacheClusterRequestFunc.
-func (mock *elasticacheClientMock) CreateCacheClusterRequest(in1 *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput) {
+func (mock *elasticacheClientMock) CreateCacheClusterRequest(createCacheClusterInput *elasticache.CreateCacheClusterInput) (*request.Request, *elasticache.CreateCacheClusterOutput) {
 	if mock.CreateCacheClusterRequestFunc == nil {
 		panic("elasticacheClientMock.CreateCacheClusterRequestFunc: method is nil but elasticacheClient.CreateCacheClusterRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheClusterInput
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 	}{
-		In1: in1,
+		CreateCacheClusterInput: createCacheClusterInput,
 	}
-	lockelasticacheClientMockCreateCacheClusterRequest.Lock()
+	mock.lockCreateCacheClusterRequest.Lock()
 	mock.calls.CreateCacheClusterRequest = append(mock.calls.CreateCacheClusterRequest, callInfo)
-	lockelasticacheClientMockCreateCacheClusterRequest.Unlock()
-	return mock.CreateCacheClusterRequestFunc(in1)
+	mock.lockCreateCacheClusterRequest.Unlock()
+	return mock.CreateCacheClusterRequestFunc(createCacheClusterInput)
 }
 
 // CreateCacheClusterRequestCalls gets all the calls that were made to CreateCacheClusterRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheClusterRequestCalls())
 func (mock *elasticacheClientMock) CreateCacheClusterRequestCalls() []struct {
-	In1 *elasticache.CreateCacheClusterInput
+	CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheClusterInput
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
 	}
-	lockelasticacheClientMockCreateCacheClusterRequest.RLock()
+	mock.lockCreateCacheClusterRequest.RLock()
 	calls = mock.calls.CreateCacheClusterRequest
-	lockelasticacheClientMockCreateCacheClusterRequest.RUnlock()
+	mock.lockCreateCacheClusterRequest.RUnlock()
 	return calls
 }
 
 // CreateCacheClusterWithContext calls CreateCacheClusterWithContextFunc.
-func (mock *elasticacheClientMock) CreateCacheClusterWithContext(in1 context.Context, in2 *elasticache.CreateCacheClusterInput, in3 ...request.Option) (*elasticache.CreateCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheClusterWithContext(contextMoqParam context.Context, createCacheClusterInput *elasticache.CreateCacheClusterInput, options ...request.Option) (*elasticache.CreateCacheClusterOutput, error) {
 	if mock.CreateCacheClusterWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateCacheClusterWithContextFunc: method is nil but elasticacheClient.CreateCacheClusterWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
+		Options                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:         contextMoqParam,
+		CreateCacheClusterInput: createCacheClusterInput,
+		Options:                 options,
 	}
-	lockelasticacheClientMockCreateCacheClusterWithContext.Lock()
+	mock.lockCreateCacheClusterWithContext.Lock()
 	mock.calls.CreateCacheClusterWithContext = append(mock.calls.CreateCacheClusterWithContext, callInfo)
-	lockelasticacheClientMockCreateCacheClusterWithContext.Unlock()
-	return mock.CreateCacheClusterWithContextFunc(in1, in2, in3...)
+	mock.lockCreateCacheClusterWithContext.Unlock()
+	return mock.CreateCacheClusterWithContextFunc(contextMoqParam, createCacheClusterInput, options...)
 }
 
 // CreateCacheClusterWithContextCalls gets all the calls that were made to CreateCacheClusterWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheClusterWithContextCalls())
 func (mock *elasticacheClientMock) CreateCacheClusterWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateCacheClusterInput
-	In3 []request.Option
+	ContextMoqParam         context.Context
+	CreateCacheClusterInput *elasticache.CreateCacheClusterInput
+	Options                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		CreateCacheClusterInput *elasticache.CreateCacheClusterInput
+		Options                 []request.Option
 	}
-	lockelasticacheClientMockCreateCacheClusterWithContext.RLock()
+	mock.lockCreateCacheClusterWithContext.RLock()
 	calls = mock.calls.CreateCacheClusterWithContext
-	lockelasticacheClientMockCreateCacheClusterWithContext.RUnlock()
+	mock.lockCreateCacheClusterWithContext.RUnlock()
 	return calls
 }
 
 // CreateCacheParameterGroup calls CreateCacheParameterGroupFunc.
-func (mock *elasticacheClientMock) CreateCacheParameterGroup(in1 *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheParameterGroup(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*elasticache.CreateCacheParameterGroupOutput, error) {
 	if mock.CreateCacheParameterGroupFunc == nil {
 		panic("elasticacheClientMock.CreateCacheParameterGroupFunc: method is nil but elasticacheClient.CreateCacheParameterGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheParameterGroupInput
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 	}{
-		In1: in1,
+		CreateCacheParameterGroupInput: createCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheParameterGroup.Lock()
+	mock.lockCreateCacheParameterGroup.Lock()
 	mock.calls.CreateCacheParameterGroup = append(mock.calls.CreateCacheParameterGroup, callInfo)
-	lockelasticacheClientMockCreateCacheParameterGroup.Unlock()
-	return mock.CreateCacheParameterGroupFunc(in1)
+	mock.lockCreateCacheParameterGroup.Unlock()
+	return mock.CreateCacheParameterGroupFunc(createCacheParameterGroupInput)
 }
 
 // CreateCacheParameterGroupCalls gets all the calls that were made to CreateCacheParameterGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheParameterGroupCalls())
 func (mock *elasticacheClientMock) CreateCacheParameterGroupCalls() []struct {
-	In1 *elasticache.CreateCacheParameterGroupInput
+	CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheParameterGroupInput
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 	}
-	lockelasticacheClientMockCreateCacheParameterGroup.RLock()
+	mock.lockCreateCacheParameterGroup.RLock()
 	calls = mock.calls.CreateCacheParameterGroup
-	lockelasticacheClientMockCreateCacheParameterGroup.RUnlock()
+	mock.lockCreateCacheParameterGroup.RUnlock()
 	return calls
 }
 
 // CreateCacheParameterGroupRequest calls CreateCacheParameterGroupRequestFunc.
-func (mock *elasticacheClientMock) CreateCacheParameterGroupRequest(in1 *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput) {
+func (mock *elasticacheClientMock) CreateCacheParameterGroupRequest(createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput) (*request.Request, *elasticache.CreateCacheParameterGroupOutput) {
 	if mock.CreateCacheParameterGroupRequestFunc == nil {
 		panic("elasticacheClientMock.CreateCacheParameterGroupRequestFunc: method is nil but elasticacheClient.CreateCacheParameterGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheParameterGroupInput
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 	}{
-		In1: in1,
+		CreateCacheParameterGroupInput: createCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheParameterGroupRequest.Lock()
+	mock.lockCreateCacheParameterGroupRequest.Lock()
 	mock.calls.CreateCacheParameterGroupRequest = append(mock.calls.CreateCacheParameterGroupRequest, callInfo)
-	lockelasticacheClientMockCreateCacheParameterGroupRequest.Unlock()
-	return mock.CreateCacheParameterGroupRequestFunc(in1)
+	mock.lockCreateCacheParameterGroupRequest.Unlock()
+	return mock.CreateCacheParameterGroupRequestFunc(createCacheParameterGroupInput)
 }
 
 // CreateCacheParameterGroupRequestCalls gets all the calls that were made to CreateCacheParameterGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheParameterGroupRequestCalls())
 func (mock *elasticacheClientMock) CreateCacheParameterGroupRequestCalls() []struct {
-	In1 *elasticache.CreateCacheParameterGroupInput
+	CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheParameterGroupInput
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
 	}
-	lockelasticacheClientMockCreateCacheParameterGroupRequest.RLock()
+	mock.lockCreateCacheParameterGroupRequest.RLock()
 	calls = mock.calls.CreateCacheParameterGroupRequest
-	lockelasticacheClientMockCreateCacheParameterGroupRequest.RUnlock()
+	mock.lockCreateCacheParameterGroupRequest.RUnlock()
 	return calls
 }
 
 // CreateCacheParameterGroupWithContext calls CreateCacheParameterGroupWithContextFunc.
-func (mock *elasticacheClientMock) CreateCacheParameterGroupWithContext(in1 context.Context, in2 *elasticache.CreateCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheParameterGroupWithContext(contextMoqParam context.Context, createCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput, options ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error) {
 	if mock.CreateCacheParameterGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateCacheParameterGroupWithContextFunc: method is nil but elasticacheClient.CreateCacheParameterGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		CreateCacheParameterGroupInput: createCacheParameterGroupInput,
+		Options:                        options,
 	}
-	lockelasticacheClientMockCreateCacheParameterGroupWithContext.Lock()
+	mock.lockCreateCacheParameterGroupWithContext.Lock()
 	mock.calls.CreateCacheParameterGroupWithContext = append(mock.calls.CreateCacheParameterGroupWithContext, callInfo)
-	lockelasticacheClientMockCreateCacheParameterGroupWithContext.Unlock()
-	return mock.CreateCacheParameterGroupWithContextFunc(in1, in2, in3...)
+	mock.lockCreateCacheParameterGroupWithContext.Unlock()
+	return mock.CreateCacheParameterGroupWithContextFunc(contextMoqParam, createCacheParameterGroupInput, options...)
 }
 
 // CreateCacheParameterGroupWithContextCalls gets all the calls that were made to CreateCacheParameterGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheParameterGroupWithContextCalls())
 func (mock *elasticacheClientMock) CreateCacheParameterGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateCacheParameterGroupInput
-	In3 []request.Option
+	ContextMoqParam                context.Context
+	CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		CreateCacheParameterGroupInput *elasticache.CreateCacheParameterGroupInput
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockCreateCacheParameterGroupWithContext.RLock()
+	mock.lockCreateCacheParameterGroupWithContext.RLock()
 	calls = mock.calls.CreateCacheParameterGroupWithContext
-	lockelasticacheClientMockCreateCacheParameterGroupWithContext.RUnlock()
+	mock.lockCreateCacheParameterGroupWithContext.RUnlock()
 	return calls
 }
 
 // CreateCacheSecurityGroup calls CreateCacheSecurityGroupFunc.
-func (mock *elasticacheClientMock) CreateCacheSecurityGroup(in1 *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheSecurityGroup(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*elasticache.CreateCacheSecurityGroupOutput, error) {
 	if mock.CreateCacheSecurityGroupFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSecurityGroupFunc: method is nil but elasticacheClient.CreateCacheSecurityGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheSecurityGroupInput
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 	}{
-		In1: in1,
+		CreateCacheSecurityGroupInput: createCacheSecurityGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroup.Lock()
+	mock.lockCreateCacheSecurityGroup.Lock()
 	mock.calls.CreateCacheSecurityGroup = append(mock.calls.CreateCacheSecurityGroup, callInfo)
-	lockelasticacheClientMockCreateCacheSecurityGroup.Unlock()
-	return mock.CreateCacheSecurityGroupFunc(in1)
+	mock.lockCreateCacheSecurityGroup.Unlock()
+	return mock.CreateCacheSecurityGroupFunc(createCacheSecurityGroupInput)
 }
 
 // CreateCacheSecurityGroupCalls gets all the calls that were made to CreateCacheSecurityGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSecurityGroupCalls())
 func (mock *elasticacheClientMock) CreateCacheSecurityGroupCalls() []struct {
-	In1 *elasticache.CreateCacheSecurityGroupInput
+	CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheSecurityGroupInput
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroup.RLock()
+	mock.lockCreateCacheSecurityGroup.RLock()
 	calls = mock.calls.CreateCacheSecurityGroup
-	lockelasticacheClientMockCreateCacheSecurityGroup.RUnlock()
+	mock.lockCreateCacheSecurityGroup.RUnlock()
 	return calls
 }
 
 // CreateCacheSecurityGroupRequest calls CreateCacheSecurityGroupRequestFunc.
-func (mock *elasticacheClientMock) CreateCacheSecurityGroupRequest(in1 *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput) {
+func (mock *elasticacheClientMock) CreateCacheSecurityGroupRequest(createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput) (*request.Request, *elasticache.CreateCacheSecurityGroupOutput) {
 	if mock.CreateCacheSecurityGroupRequestFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSecurityGroupRequestFunc: method is nil but elasticacheClient.CreateCacheSecurityGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheSecurityGroupInput
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 	}{
-		In1: in1,
+		CreateCacheSecurityGroupInput: createCacheSecurityGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroupRequest.Lock()
+	mock.lockCreateCacheSecurityGroupRequest.Lock()
 	mock.calls.CreateCacheSecurityGroupRequest = append(mock.calls.CreateCacheSecurityGroupRequest, callInfo)
-	lockelasticacheClientMockCreateCacheSecurityGroupRequest.Unlock()
-	return mock.CreateCacheSecurityGroupRequestFunc(in1)
+	mock.lockCreateCacheSecurityGroupRequest.Unlock()
+	return mock.CreateCacheSecurityGroupRequestFunc(createCacheSecurityGroupInput)
 }
 
 // CreateCacheSecurityGroupRequestCalls gets all the calls that were made to CreateCacheSecurityGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSecurityGroupRequestCalls())
 func (mock *elasticacheClientMock) CreateCacheSecurityGroupRequestCalls() []struct {
-	In1 *elasticache.CreateCacheSecurityGroupInput
+	CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheSecurityGroupInput
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroupRequest.RLock()
+	mock.lockCreateCacheSecurityGroupRequest.RLock()
 	calls = mock.calls.CreateCacheSecurityGroupRequest
-	lockelasticacheClientMockCreateCacheSecurityGroupRequest.RUnlock()
+	mock.lockCreateCacheSecurityGroupRequest.RUnlock()
 	return calls
 }
 
 // CreateCacheSecurityGroupWithContext calls CreateCacheSecurityGroupWithContextFunc.
-func (mock *elasticacheClientMock) CreateCacheSecurityGroupWithContext(in1 context.Context, in2 *elasticache.CreateCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheSecurityGroupWithContext(contextMoqParam context.Context, createCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput, options ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error) {
 	if mock.CreateCacheSecurityGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSecurityGroupWithContextFunc: method is nil but elasticacheClient.CreateCacheSecurityGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheSecurityGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
+		Options                       []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:               contextMoqParam,
+		CreateCacheSecurityGroupInput: createCacheSecurityGroupInput,
+		Options:                       options,
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroupWithContext.Lock()
+	mock.lockCreateCacheSecurityGroupWithContext.Lock()
 	mock.calls.CreateCacheSecurityGroupWithContext = append(mock.calls.CreateCacheSecurityGroupWithContext, callInfo)
-	lockelasticacheClientMockCreateCacheSecurityGroupWithContext.Unlock()
-	return mock.CreateCacheSecurityGroupWithContextFunc(in1, in2, in3...)
+	mock.lockCreateCacheSecurityGroupWithContext.Unlock()
+	return mock.CreateCacheSecurityGroupWithContextFunc(contextMoqParam, createCacheSecurityGroupInput, options...)
 }
 
 // CreateCacheSecurityGroupWithContextCalls gets all the calls that were made to CreateCacheSecurityGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSecurityGroupWithContextCalls())
 func (mock *elasticacheClientMock) CreateCacheSecurityGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateCacheSecurityGroupInput
-	In3 []request.Option
+	ContextMoqParam               context.Context
+	CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
+	Options                       []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheSecurityGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		CreateCacheSecurityGroupInput *elasticache.CreateCacheSecurityGroupInput
+		Options                       []request.Option
 	}
-	lockelasticacheClientMockCreateCacheSecurityGroupWithContext.RLock()
+	mock.lockCreateCacheSecurityGroupWithContext.RLock()
 	calls = mock.calls.CreateCacheSecurityGroupWithContext
-	lockelasticacheClientMockCreateCacheSecurityGroupWithContext.RUnlock()
+	mock.lockCreateCacheSecurityGroupWithContext.RUnlock()
 	return calls
 }
 
 // CreateCacheSubnetGroup calls CreateCacheSubnetGroupFunc.
-func (mock *elasticacheClientMock) CreateCacheSubnetGroup(in1 *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheSubnetGroup(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*elasticache.CreateCacheSubnetGroupOutput, error) {
 	if mock.CreateCacheSubnetGroupFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSubnetGroupFunc: method is nil but elasticacheClient.CreateCacheSubnetGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheSubnetGroupInput
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 	}{
-		In1: in1,
+		CreateCacheSubnetGroupInput: createCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroup.Lock()
+	mock.lockCreateCacheSubnetGroup.Lock()
 	mock.calls.CreateCacheSubnetGroup = append(mock.calls.CreateCacheSubnetGroup, callInfo)
-	lockelasticacheClientMockCreateCacheSubnetGroup.Unlock()
-	return mock.CreateCacheSubnetGroupFunc(in1)
+	mock.lockCreateCacheSubnetGroup.Unlock()
+	return mock.CreateCacheSubnetGroupFunc(createCacheSubnetGroupInput)
 }
 
 // CreateCacheSubnetGroupCalls gets all the calls that were made to CreateCacheSubnetGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSubnetGroupCalls())
 func (mock *elasticacheClientMock) CreateCacheSubnetGroupCalls() []struct {
-	In1 *elasticache.CreateCacheSubnetGroupInput
+	CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheSubnetGroupInput
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroup.RLock()
+	mock.lockCreateCacheSubnetGroup.RLock()
 	calls = mock.calls.CreateCacheSubnetGroup
-	lockelasticacheClientMockCreateCacheSubnetGroup.RUnlock()
+	mock.lockCreateCacheSubnetGroup.RUnlock()
 	return calls
 }
 
 // CreateCacheSubnetGroupRequest calls CreateCacheSubnetGroupRequestFunc.
-func (mock *elasticacheClientMock) CreateCacheSubnetGroupRequest(in1 *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput) {
+func (mock *elasticacheClientMock) CreateCacheSubnetGroupRequest(createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput) (*request.Request, *elasticache.CreateCacheSubnetGroupOutput) {
 	if mock.CreateCacheSubnetGroupRequestFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSubnetGroupRequestFunc: method is nil but elasticacheClient.CreateCacheSubnetGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateCacheSubnetGroupInput
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 	}{
-		In1: in1,
+		CreateCacheSubnetGroupInput: createCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroupRequest.Lock()
+	mock.lockCreateCacheSubnetGroupRequest.Lock()
 	mock.calls.CreateCacheSubnetGroupRequest = append(mock.calls.CreateCacheSubnetGroupRequest, callInfo)
-	lockelasticacheClientMockCreateCacheSubnetGroupRequest.Unlock()
-	return mock.CreateCacheSubnetGroupRequestFunc(in1)
+	mock.lockCreateCacheSubnetGroupRequest.Unlock()
+	return mock.CreateCacheSubnetGroupRequestFunc(createCacheSubnetGroupInput)
 }
 
 // CreateCacheSubnetGroupRequestCalls gets all the calls that were made to CreateCacheSubnetGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSubnetGroupRequestCalls())
 func (mock *elasticacheClientMock) CreateCacheSubnetGroupRequestCalls() []struct {
-	In1 *elasticache.CreateCacheSubnetGroupInput
+	CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateCacheSubnetGroupInput
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroupRequest.RLock()
+	mock.lockCreateCacheSubnetGroupRequest.RLock()
 	calls = mock.calls.CreateCacheSubnetGroupRequest
-	lockelasticacheClientMockCreateCacheSubnetGroupRequest.RUnlock()
+	mock.lockCreateCacheSubnetGroupRequest.RUnlock()
 	return calls
 }
 
 // CreateCacheSubnetGroupWithContext calls CreateCacheSubnetGroupWithContextFunc.
-func (mock *elasticacheClientMock) CreateCacheSubnetGroupWithContext(in1 context.Context, in2 *elasticache.CreateCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateCacheSubnetGroupWithContext(contextMoqParam context.Context, createCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput, options ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error) {
 	if mock.CreateCacheSubnetGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateCacheSubnetGroupWithContextFunc: method is nil but elasticacheClient.CreateCacheSubnetGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		CreateCacheSubnetGroupInput: createCacheSubnetGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroupWithContext.Lock()
+	mock.lockCreateCacheSubnetGroupWithContext.Lock()
 	mock.calls.CreateCacheSubnetGroupWithContext = append(mock.calls.CreateCacheSubnetGroupWithContext, callInfo)
-	lockelasticacheClientMockCreateCacheSubnetGroupWithContext.Unlock()
-	return mock.CreateCacheSubnetGroupWithContextFunc(in1, in2, in3...)
+	mock.lockCreateCacheSubnetGroupWithContext.Unlock()
+	return mock.CreateCacheSubnetGroupWithContextFunc(contextMoqParam, createCacheSubnetGroupInput, options...)
 }
 
 // CreateCacheSubnetGroupWithContextCalls gets all the calls that were made to CreateCacheSubnetGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateCacheSubnetGroupWithContextCalls())
 func (mock *elasticacheClientMock) CreateCacheSubnetGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateCacheSubnetGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		CreateCacheSubnetGroupInput *elasticache.CreateCacheSubnetGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockCreateCacheSubnetGroupWithContext.RLock()
+	mock.lockCreateCacheSubnetGroupWithContext.RLock()
 	calls = mock.calls.CreateCacheSubnetGroupWithContext
-	lockelasticacheClientMockCreateCacheSubnetGroupWithContext.RUnlock()
+	mock.lockCreateCacheSubnetGroupWithContext.RUnlock()
+	return calls
+}
+
+// CreateGlobalReplicationGroup calls CreateGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroup(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*elasticache.CreateGlobalReplicationGroupOutput, error) {
+	if mock.CreateGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.CreateGlobalReplicationGroupFunc: method is nil but elasticacheClient.CreateGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+	}{
+		CreateGlobalReplicationGroupInput: createGlobalReplicationGroupInput,
+	}
+	mock.lockCreateGlobalReplicationGroup.Lock()
+	mock.calls.CreateGlobalReplicationGroup = append(mock.calls.CreateGlobalReplicationGroup, callInfo)
+	mock.lockCreateGlobalReplicationGroup.Unlock()
+	return mock.CreateGlobalReplicationGroupFunc(createGlobalReplicationGroupInput)
+}
+
+// CreateGlobalReplicationGroupCalls gets all the calls that were made to CreateGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroupCalls() []struct {
+	CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+	}
+	mock.lockCreateGlobalReplicationGroup.RLock()
+	calls = mock.calls.CreateGlobalReplicationGroup
+	mock.lockCreateGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// CreateGlobalReplicationGroupRequest calls CreateGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroupRequest(createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput) (*request.Request, *elasticache.CreateGlobalReplicationGroupOutput) {
+	if mock.CreateGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.CreateGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.CreateGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+	}{
+		CreateGlobalReplicationGroupInput: createGlobalReplicationGroupInput,
+	}
+	mock.lockCreateGlobalReplicationGroupRequest.Lock()
+	mock.calls.CreateGlobalReplicationGroupRequest = append(mock.calls.CreateGlobalReplicationGroupRequest, callInfo)
+	mock.lockCreateGlobalReplicationGroupRequest.Unlock()
+	return mock.CreateGlobalReplicationGroupRequestFunc(createGlobalReplicationGroupInput)
+}
+
+// CreateGlobalReplicationGroupRequestCalls gets all the calls that were made to CreateGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroupRequestCalls() []struct {
+	CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+	}
+	mock.lockCreateGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.CreateGlobalReplicationGroupRequest
+	mock.lockCreateGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// CreateGlobalReplicationGroupWithContext calls CreateGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroupWithContext(contextMoqParam context.Context, createGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.CreateGlobalReplicationGroupOutput, error) {
+	if mock.CreateGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.CreateGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.CreateGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                   context.Context
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+		Options                           []request.Option
+	}{
+		ContextMoqParam:                   contextMoqParam,
+		CreateGlobalReplicationGroupInput: createGlobalReplicationGroupInput,
+		Options:                           options,
+	}
+	mock.lockCreateGlobalReplicationGroupWithContext.Lock()
+	mock.calls.CreateGlobalReplicationGroupWithContext = append(mock.calls.CreateGlobalReplicationGroupWithContext, callInfo)
+	mock.lockCreateGlobalReplicationGroupWithContext.Unlock()
+	return mock.CreateGlobalReplicationGroupWithContextFunc(contextMoqParam, createGlobalReplicationGroupInput, options...)
+}
+
+// CreateGlobalReplicationGroupWithContextCalls gets all the calls that were made to CreateGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) CreateGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                   context.Context
+	CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+	Options                           []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                   context.Context
+		CreateGlobalReplicationGroupInput *elasticache.CreateGlobalReplicationGroupInput
+		Options                           []request.Option
+	}
+	mock.lockCreateGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.CreateGlobalReplicationGroupWithContext
+	mock.lockCreateGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // CreateReplicationGroup calls CreateReplicationGroupFunc.
-func (mock *elasticacheClientMock) CreateReplicationGroup(in1 *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateReplicationGroup(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*elasticache.CreateReplicationGroupOutput, error) {
 	if mock.CreateReplicationGroupFunc == nil {
 		panic("elasticacheClientMock.CreateReplicationGroupFunc: method is nil but elasticacheClient.CreateReplicationGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateReplicationGroupInput
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 	}{
-		In1: in1,
+		CreateReplicationGroupInput: createReplicationGroupInput,
 	}
-	lockelasticacheClientMockCreateReplicationGroup.Lock()
+	mock.lockCreateReplicationGroup.Lock()
 	mock.calls.CreateReplicationGroup = append(mock.calls.CreateReplicationGroup, callInfo)
-	lockelasticacheClientMockCreateReplicationGroup.Unlock()
-	return mock.CreateReplicationGroupFunc(in1)
+	mock.lockCreateReplicationGroup.Unlock()
+	return mock.CreateReplicationGroupFunc(createReplicationGroupInput)
 }
 
 // CreateReplicationGroupCalls gets all the calls that were made to CreateReplicationGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateReplicationGroupCalls())
 func (mock *elasticacheClientMock) CreateReplicationGroupCalls() []struct {
-	In1 *elasticache.CreateReplicationGroupInput
+	CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateReplicationGroupInput
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 	}
-	lockelasticacheClientMockCreateReplicationGroup.RLock()
+	mock.lockCreateReplicationGroup.RLock()
 	calls = mock.calls.CreateReplicationGroup
-	lockelasticacheClientMockCreateReplicationGroup.RUnlock()
+	mock.lockCreateReplicationGroup.RUnlock()
 	return calls
 }
 
 // CreateReplicationGroupRequest calls CreateReplicationGroupRequestFunc.
-func (mock *elasticacheClientMock) CreateReplicationGroupRequest(in1 *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput) {
+func (mock *elasticacheClientMock) CreateReplicationGroupRequest(createReplicationGroupInput *elasticache.CreateReplicationGroupInput) (*request.Request, *elasticache.CreateReplicationGroupOutput) {
 	if mock.CreateReplicationGroupRequestFunc == nil {
 		panic("elasticacheClientMock.CreateReplicationGroupRequestFunc: method is nil but elasticacheClient.CreateReplicationGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateReplicationGroupInput
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 	}{
-		In1: in1,
+		CreateReplicationGroupInput: createReplicationGroupInput,
 	}
-	lockelasticacheClientMockCreateReplicationGroupRequest.Lock()
+	mock.lockCreateReplicationGroupRequest.Lock()
 	mock.calls.CreateReplicationGroupRequest = append(mock.calls.CreateReplicationGroupRequest, callInfo)
-	lockelasticacheClientMockCreateReplicationGroupRequest.Unlock()
-	return mock.CreateReplicationGroupRequestFunc(in1)
+	mock.lockCreateReplicationGroupRequest.Unlock()
+	return mock.CreateReplicationGroupRequestFunc(createReplicationGroupInput)
 }
 
 // CreateReplicationGroupRequestCalls gets all the calls that were made to CreateReplicationGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateReplicationGroupRequestCalls())
 func (mock *elasticacheClientMock) CreateReplicationGroupRequestCalls() []struct {
-	In1 *elasticache.CreateReplicationGroupInput
+	CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateReplicationGroupInput
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
 	}
-	lockelasticacheClientMockCreateReplicationGroupRequest.RLock()
+	mock.lockCreateReplicationGroupRequest.RLock()
 	calls = mock.calls.CreateReplicationGroupRequest
-	lockelasticacheClientMockCreateReplicationGroupRequest.RUnlock()
+	mock.lockCreateReplicationGroupRequest.RUnlock()
 	return calls
 }
 
 // CreateReplicationGroupWithContext calls CreateReplicationGroupWithContextFunc.
-func (mock *elasticacheClientMock) CreateReplicationGroupWithContext(in1 context.Context, in2 *elasticache.CreateReplicationGroupInput, in3 ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) CreateReplicationGroupWithContext(contextMoqParam context.Context, createReplicationGroupInput *elasticache.CreateReplicationGroupInput, options ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
 	if mock.CreateReplicationGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateReplicationGroupWithContextFunc: method is nil but elasticacheClient.CreateReplicationGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		CreateReplicationGroupInput: createReplicationGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockCreateReplicationGroupWithContext.Lock()
+	mock.lockCreateReplicationGroupWithContext.Lock()
 	mock.calls.CreateReplicationGroupWithContext = append(mock.calls.CreateReplicationGroupWithContext, callInfo)
-	lockelasticacheClientMockCreateReplicationGroupWithContext.Unlock()
-	return mock.CreateReplicationGroupWithContextFunc(in1, in2, in3...)
+	mock.lockCreateReplicationGroupWithContext.Unlock()
+	return mock.CreateReplicationGroupWithContextFunc(contextMoqParam, createReplicationGroupInput, options...)
 }
 
 // CreateReplicationGroupWithContextCalls gets all the calls that were made to CreateReplicationGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateReplicationGroupWithContextCalls())
 func (mock *elasticacheClientMock) CreateReplicationGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateReplicationGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		CreateReplicationGroupInput *elasticache.CreateReplicationGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockCreateReplicationGroupWithContext.RLock()
+	mock.lockCreateReplicationGroupWithContext.RLock()
 	calls = mock.calls.CreateReplicationGroupWithContext
-	lockelasticacheClientMockCreateReplicationGroupWithContext.RUnlock()
+	mock.lockCreateReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // CreateSnapshot calls CreateSnapshotFunc.
-func (mock *elasticacheClientMock) CreateSnapshot(in1 *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error) {
+func (mock *elasticacheClientMock) CreateSnapshot(createSnapshotInput *elasticache.CreateSnapshotInput) (*elasticache.CreateSnapshotOutput, error) {
 	if mock.CreateSnapshotFunc == nil {
 		panic("elasticacheClientMock.CreateSnapshotFunc: method is nil but elasticacheClient.CreateSnapshot was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateSnapshotInput
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
 	}{
-		In1: in1,
+		CreateSnapshotInput: createSnapshotInput,
 	}
-	lockelasticacheClientMockCreateSnapshot.Lock()
+	mock.lockCreateSnapshot.Lock()
 	mock.calls.CreateSnapshot = append(mock.calls.CreateSnapshot, callInfo)
-	lockelasticacheClientMockCreateSnapshot.Unlock()
-	return mock.CreateSnapshotFunc(in1)
+	mock.lockCreateSnapshot.Unlock()
+	return mock.CreateSnapshotFunc(createSnapshotInput)
 }
 
 // CreateSnapshotCalls gets all the calls that were made to CreateSnapshot.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateSnapshotCalls())
 func (mock *elasticacheClientMock) CreateSnapshotCalls() []struct {
-	In1 *elasticache.CreateSnapshotInput
+	CreateSnapshotInput *elasticache.CreateSnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateSnapshotInput
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
 	}
-	lockelasticacheClientMockCreateSnapshot.RLock()
+	mock.lockCreateSnapshot.RLock()
 	calls = mock.calls.CreateSnapshot
-	lockelasticacheClientMockCreateSnapshot.RUnlock()
+	mock.lockCreateSnapshot.RUnlock()
 	return calls
 }
 
 // CreateSnapshotRequest calls CreateSnapshotRequestFunc.
-func (mock *elasticacheClientMock) CreateSnapshotRequest(in1 *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput) {
+func (mock *elasticacheClientMock) CreateSnapshotRequest(createSnapshotInput *elasticache.CreateSnapshotInput) (*request.Request, *elasticache.CreateSnapshotOutput) {
 	if mock.CreateSnapshotRequestFunc == nil {
 		panic("elasticacheClientMock.CreateSnapshotRequestFunc: method is nil but elasticacheClient.CreateSnapshotRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.CreateSnapshotInput
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
 	}{
-		In1: in1,
+		CreateSnapshotInput: createSnapshotInput,
 	}
-	lockelasticacheClientMockCreateSnapshotRequest.Lock()
+	mock.lockCreateSnapshotRequest.Lock()
 	mock.calls.CreateSnapshotRequest = append(mock.calls.CreateSnapshotRequest, callInfo)
-	lockelasticacheClientMockCreateSnapshotRequest.Unlock()
-	return mock.CreateSnapshotRequestFunc(in1)
+	mock.lockCreateSnapshotRequest.Unlock()
+	return mock.CreateSnapshotRequestFunc(createSnapshotInput)
 }
 
 // CreateSnapshotRequestCalls gets all the calls that were made to CreateSnapshotRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateSnapshotRequestCalls())
 func (mock *elasticacheClientMock) CreateSnapshotRequestCalls() []struct {
-	In1 *elasticache.CreateSnapshotInput
+	CreateSnapshotInput *elasticache.CreateSnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.CreateSnapshotInput
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
 	}
-	lockelasticacheClientMockCreateSnapshotRequest.RLock()
+	mock.lockCreateSnapshotRequest.RLock()
 	calls = mock.calls.CreateSnapshotRequest
-	lockelasticacheClientMockCreateSnapshotRequest.RUnlock()
+	mock.lockCreateSnapshotRequest.RUnlock()
 	return calls
 }
 
 // CreateSnapshotWithContext calls CreateSnapshotWithContextFunc.
-func (mock *elasticacheClientMock) CreateSnapshotWithContext(in1 context.Context, in2 *elasticache.CreateSnapshotInput, in3 ...request.Option) (*elasticache.CreateSnapshotOutput, error) {
+func (mock *elasticacheClientMock) CreateSnapshotWithContext(contextMoqParam context.Context, createSnapshotInput *elasticache.CreateSnapshotInput, options ...request.Option) (*elasticache.CreateSnapshotOutput, error) {
 	if mock.CreateSnapshotWithContextFunc == nil {
 		panic("elasticacheClientMock.CreateSnapshotWithContextFunc: method is nil but elasticacheClient.CreateSnapshotWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.CreateSnapshotInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:     contextMoqParam,
+		CreateSnapshotInput: createSnapshotInput,
+		Options:             options,
 	}
-	lockelasticacheClientMockCreateSnapshotWithContext.Lock()
+	mock.lockCreateSnapshotWithContext.Lock()
 	mock.calls.CreateSnapshotWithContext = append(mock.calls.CreateSnapshotWithContext, callInfo)
-	lockelasticacheClientMockCreateSnapshotWithContext.Unlock()
-	return mock.CreateSnapshotWithContextFunc(in1, in2, in3...)
+	mock.lockCreateSnapshotWithContext.Unlock()
+	return mock.CreateSnapshotWithContextFunc(contextMoqParam, createSnapshotInput, options...)
 }
 
 // CreateSnapshotWithContextCalls gets all the calls that were made to CreateSnapshotWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.CreateSnapshotWithContextCalls())
 func (mock *elasticacheClientMock) CreateSnapshotWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.CreateSnapshotInput
-	In3 []request.Option
+	ContextMoqParam     context.Context
+	CreateSnapshotInput *elasticache.CreateSnapshotInput
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.CreateSnapshotInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		CreateSnapshotInput *elasticache.CreateSnapshotInput
+		Options             []request.Option
 	}
-	lockelasticacheClientMockCreateSnapshotWithContext.RLock()
+	mock.lockCreateSnapshotWithContext.RLock()
 	calls = mock.calls.CreateSnapshotWithContext
-	lockelasticacheClientMockCreateSnapshotWithContext.RUnlock()
+	mock.lockCreateSnapshotWithContext.RUnlock()
+	return calls
+}
+
+// CreateUser calls CreateUserFunc.
+func (mock *elasticacheClientMock) CreateUser(createUserInput *elasticache.CreateUserInput) (*elasticache.CreateUserOutput, error) {
+	if mock.CreateUserFunc == nil {
+		panic("elasticacheClientMock.CreateUserFunc: method is nil but elasticacheClient.CreateUser was just called")
+	}
+	callInfo := struct {
+		CreateUserInput *elasticache.CreateUserInput
+	}{
+		CreateUserInput: createUserInput,
+	}
+	mock.lockCreateUser.Lock()
+	mock.calls.CreateUser = append(mock.calls.CreateUser, callInfo)
+	mock.lockCreateUser.Unlock()
+	return mock.CreateUserFunc(createUserInput)
+}
+
+// CreateUserCalls gets all the calls that were made to CreateUser.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserCalls())
+func (mock *elasticacheClientMock) CreateUserCalls() []struct {
+	CreateUserInput *elasticache.CreateUserInput
+} {
+	var calls []struct {
+		CreateUserInput *elasticache.CreateUserInput
+	}
+	mock.lockCreateUser.RLock()
+	calls = mock.calls.CreateUser
+	mock.lockCreateUser.RUnlock()
+	return calls
+}
+
+// CreateUserGroup calls CreateUserGroupFunc.
+func (mock *elasticacheClientMock) CreateUserGroup(createUserGroupInput *elasticache.CreateUserGroupInput) (*elasticache.CreateUserGroupOutput, error) {
+	if mock.CreateUserGroupFunc == nil {
+		panic("elasticacheClientMock.CreateUserGroupFunc: method is nil but elasticacheClient.CreateUserGroup was just called")
+	}
+	callInfo := struct {
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+	}{
+		CreateUserGroupInput: createUserGroupInput,
+	}
+	mock.lockCreateUserGroup.Lock()
+	mock.calls.CreateUserGroup = append(mock.calls.CreateUserGroup, callInfo)
+	mock.lockCreateUserGroup.Unlock()
+	return mock.CreateUserGroupFunc(createUserGroupInput)
+}
+
+// CreateUserGroupCalls gets all the calls that were made to CreateUserGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserGroupCalls())
+func (mock *elasticacheClientMock) CreateUserGroupCalls() []struct {
+	CreateUserGroupInput *elasticache.CreateUserGroupInput
+} {
+	var calls []struct {
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+	}
+	mock.lockCreateUserGroup.RLock()
+	calls = mock.calls.CreateUserGroup
+	mock.lockCreateUserGroup.RUnlock()
+	return calls
+}
+
+// CreateUserGroupRequest calls CreateUserGroupRequestFunc.
+func (mock *elasticacheClientMock) CreateUserGroupRequest(createUserGroupInput *elasticache.CreateUserGroupInput) (*request.Request, *elasticache.CreateUserGroupOutput) {
+	if mock.CreateUserGroupRequestFunc == nil {
+		panic("elasticacheClientMock.CreateUserGroupRequestFunc: method is nil but elasticacheClient.CreateUserGroupRequest was just called")
+	}
+	callInfo := struct {
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+	}{
+		CreateUserGroupInput: createUserGroupInput,
+	}
+	mock.lockCreateUserGroupRequest.Lock()
+	mock.calls.CreateUserGroupRequest = append(mock.calls.CreateUserGroupRequest, callInfo)
+	mock.lockCreateUserGroupRequest.Unlock()
+	return mock.CreateUserGroupRequestFunc(createUserGroupInput)
+}
+
+// CreateUserGroupRequestCalls gets all the calls that were made to CreateUserGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserGroupRequestCalls())
+func (mock *elasticacheClientMock) CreateUserGroupRequestCalls() []struct {
+	CreateUserGroupInput *elasticache.CreateUserGroupInput
+} {
+	var calls []struct {
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+	}
+	mock.lockCreateUserGroupRequest.RLock()
+	calls = mock.calls.CreateUserGroupRequest
+	mock.lockCreateUserGroupRequest.RUnlock()
+	return calls
+}
+
+// CreateUserGroupWithContext calls CreateUserGroupWithContextFunc.
+func (mock *elasticacheClientMock) CreateUserGroupWithContext(contextMoqParam context.Context, createUserGroupInput *elasticache.CreateUserGroupInput, options ...request.Option) (*elasticache.CreateUserGroupOutput, error) {
+	if mock.CreateUserGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.CreateUserGroupWithContextFunc: method is nil but elasticacheClient.CreateUserGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam      context.Context
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+		Options              []request.Option
+	}{
+		ContextMoqParam:      contextMoqParam,
+		CreateUserGroupInput: createUserGroupInput,
+		Options:              options,
+	}
+	mock.lockCreateUserGroupWithContext.Lock()
+	mock.calls.CreateUserGroupWithContext = append(mock.calls.CreateUserGroupWithContext, callInfo)
+	mock.lockCreateUserGroupWithContext.Unlock()
+	return mock.CreateUserGroupWithContextFunc(contextMoqParam, createUserGroupInput, options...)
+}
+
+// CreateUserGroupWithContextCalls gets all the calls that were made to CreateUserGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserGroupWithContextCalls())
+func (mock *elasticacheClientMock) CreateUserGroupWithContextCalls() []struct {
+	ContextMoqParam      context.Context
+	CreateUserGroupInput *elasticache.CreateUserGroupInput
+	Options              []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam      context.Context
+		CreateUserGroupInput *elasticache.CreateUserGroupInput
+		Options              []request.Option
+	}
+	mock.lockCreateUserGroupWithContext.RLock()
+	calls = mock.calls.CreateUserGroupWithContext
+	mock.lockCreateUserGroupWithContext.RUnlock()
+	return calls
+}
+
+// CreateUserRequest calls CreateUserRequestFunc.
+func (mock *elasticacheClientMock) CreateUserRequest(createUserInput *elasticache.CreateUserInput) (*request.Request, *elasticache.CreateUserOutput) {
+	if mock.CreateUserRequestFunc == nil {
+		panic("elasticacheClientMock.CreateUserRequestFunc: method is nil but elasticacheClient.CreateUserRequest was just called")
+	}
+	callInfo := struct {
+		CreateUserInput *elasticache.CreateUserInput
+	}{
+		CreateUserInput: createUserInput,
+	}
+	mock.lockCreateUserRequest.Lock()
+	mock.calls.CreateUserRequest = append(mock.calls.CreateUserRequest, callInfo)
+	mock.lockCreateUserRequest.Unlock()
+	return mock.CreateUserRequestFunc(createUserInput)
+}
+
+// CreateUserRequestCalls gets all the calls that were made to CreateUserRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserRequestCalls())
+func (mock *elasticacheClientMock) CreateUserRequestCalls() []struct {
+	CreateUserInput *elasticache.CreateUserInput
+} {
+	var calls []struct {
+		CreateUserInput *elasticache.CreateUserInput
+	}
+	mock.lockCreateUserRequest.RLock()
+	calls = mock.calls.CreateUserRequest
+	mock.lockCreateUserRequest.RUnlock()
+	return calls
+}
+
+// CreateUserWithContext calls CreateUserWithContextFunc.
+func (mock *elasticacheClientMock) CreateUserWithContext(contextMoqParam context.Context, createUserInput *elasticache.CreateUserInput, options ...request.Option) (*elasticache.CreateUserOutput, error) {
+	if mock.CreateUserWithContextFunc == nil {
+		panic("elasticacheClientMock.CreateUserWithContextFunc: method is nil but elasticacheClient.CreateUserWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam context.Context
+		CreateUserInput *elasticache.CreateUserInput
+		Options         []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		CreateUserInput: createUserInput,
+		Options:         options,
+	}
+	mock.lockCreateUserWithContext.Lock()
+	mock.calls.CreateUserWithContext = append(mock.calls.CreateUserWithContext, callInfo)
+	mock.lockCreateUserWithContext.Unlock()
+	return mock.CreateUserWithContextFunc(contextMoqParam, createUserInput, options...)
+}
+
+// CreateUserWithContextCalls gets all the calls that were made to CreateUserWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.CreateUserWithContextCalls())
+func (mock *elasticacheClientMock) CreateUserWithContextCalls() []struct {
+	ContextMoqParam context.Context
+	CreateUserInput *elasticache.CreateUserInput
+	Options         []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam context.Context
+		CreateUserInput *elasticache.CreateUserInput
+		Options         []request.Option
+	}
+	mock.lockCreateUserWithContext.RLock()
+	calls = mock.calls.CreateUserWithContext
+	mock.lockCreateUserWithContext.RUnlock()
+	return calls
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroup calls DecreaseNodeGroupsInGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroup(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	if mock.DecreaseNodeGroupsInGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.DecreaseNodeGroupsInGlobalReplicationGroupFunc: method is nil but elasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+	}{
+		DecreaseNodeGroupsInGlobalReplicationGroupInput: decreaseNodeGroupsInGlobalReplicationGroupInput,
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroup.Lock()
+	mock.calls.DecreaseNodeGroupsInGlobalReplicationGroup = append(mock.calls.DecreaseNodeGroupsInGlobalReplicationGroup, callInfo)
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroup.Unlock()
+	return mock.DecreaseNodeGroupsInGlobalReplicationGroupFunc(decreaseNodeGroupsInGlobalReplicationGroupInput)
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupCalls gets all the calls that were made to DecreaseNodeGroupsInGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroupCalls() []struct {
+	DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroup.RLock()
+	calls = mock.calls.DecreaseNodeGroupsInGlobalReplicationGroup
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupRequest calls DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroupRequest(decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput) {
+	if mock.DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+	}{
+		DecreaseNodeGroupsInGlobalReplicationGroupInput: decreaseNodeGroupsInGlobalReplicationGroupInput,
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupRequest.Lock()
+	mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupRequest = append(mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupRequest, callInfo)
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupRequest.Unlock()
+	return mock.DecreaseNodeGroupsInGlobalReplicationGroupRequestFunc(decreaseNodeGroupsInGlobalReplicationGroupInput)
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupRequestCalls gets all the calls that were made to DecreaseNodeGroupsInGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroupRequestCalls() []struct {
+	DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupRequest
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupWithContext calls DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroupWithContext(contextMoqParam context.Context, decreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	if mock.DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                                 context.Context
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+		Options                                         []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		DecreaseNodeGroupsInGlobalReplicationGroupInput: decreaseNodeGroupsInGlobalReplicationGroupInput,
+		Options: options,
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupWithContext.Lock()
+	mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupWithContext = append(mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupWithContext, callInfo)
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupWithContext.Unlock()
+	return mock.DecreaseNodeGroupsInGlobalReplicationGroupWithContextFunc(contextMoqParam, decreaseNodeGroupsInGlobalReplicationGroupInput, options...)
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupWithContextCalls gets all the calls that were made to DecreaseNodeGroupsInGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DecreaseNodeGroupsInGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) DecreaseNodeGroupsInGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                                 context.Context
+	DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+	Options                                         []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                                 context.Context
+		DecreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput
+		Options                                         []request.Option
+	}
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.DecreaseNodeGroupsInGlobalReplicationGroupWithContext
+	mock.lockDecreaseNodeGroupsInGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // DecreaseReplicaCount calls DecreaseReplicaCountFunc.
-func (mock *elasticacheClientMock) DecreaseReplicaCount(in1 *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error) {
+func (mock *elasticacheClientMock) DecreaseReplicaCount(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*elasticache.DecreaseReplicaCountOutput, error) {
 	if mock.DecreaseReplicaCountFunc == nil {
 		panic("elasticacheClientMock.DecreaseReplicaCountFunc: method is nil but elasticacheClient.DecreaseReplicaCount was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DecreaseReplicaCountInput
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 	}{
-		In1: in1,
+		DecreaseReplicaCountInput: decreaseReplicaCountInput,
 	}
-	lockelasticacheClientMockDecreaseReplicaCount.Lock()
+	mock.lockDecreaseReplicaCount.Lock()
 	mock.calls.DecreaseReplicaCount = append(mock.calls.DecreaseReplicaCount, callInfo)
-	lockelasticacheClientMockDecreaseReplicaCount.Unlock()
-	return mock.DecreaseReplicaCountFunc(in1)
+	mock.lockDecreaseReplicaCount.Unlock()
+	return mock.DecreaseReplicaCountFunc(decreaseReplicaCountInput)
 }
 
 // DecreaseReplicaCountCalls gets all the calls that were made to DecreaseReplicaCount.
 // Check the length with:
 //     len(mockedelasticacheClient.DecreaseReplicaCountCalls())
 func (mock *elasticacheClientMock) DecreaseReplicaCountCalls() []struct {
-	In1 *elasticache.DecreaseReplicaCountInput
+	DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 } {
 	var calls []struct {
-		In1 *elasticache.DecreaseReplicaCountInput
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 	}
-	lockelasticacheClientMockDecreaseReplicaCount.RLock()
+	mock.lockDecreaseReplicaCount.RLock()
 	calls = mock.calls.DecreaseReplicaCount
-	lockelasticacheClientMockDecreaseReplicaCount.RUnlock()
+	mock.lockDecreaseReplicaCount.RUnlock()
 	return calls
 }
 
 // DecreaseReplicaCountRequest calls DecreaseReplicaCountRequestFunc.
-func (mock *elasticacheClientMock) DecreaseReplicaCountRequest(in1 *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput) {
+func (mock *elasticacheClientMock) DecreaseReplicaCountRequest(decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput) (*request.Request, *elasticache.DecreaseReplicaCountOutput) {
 	if mock.DecreaseReplicaCountRequestFunc == nil {
 		panic("elasticacheClientMock.DecreaseReplicaCountRequestFunc: method is nil but elasticacheClient.DecreaseReplicaCountRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DecreaseReplicaCountInput
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 	}{
-		In1: in1,
+		DecreaseReplicaCountInput: decreaseReplicaCountInput,
 	}
-	lockelasticacheClientMockDecreaseReplicaCountRequest.Lock()
+	mock.lockDecreaseReplicaCountRequest.Lock()
 	mock.calls.DecreaseReplicaCountRequest = append(mock.calls.DecreaseReplicaCountRequest, callInfo)
-	lockelasticacheClientMockDecreaseReplicaCountRequest.Unlock()
-	return mock.DecreaseReplicaCountRequestFunc(in1)
+	mock.lockDecreaseReplicaCountRequest.Unlock()
+	return mock.DecreaseReplicaCountRequestFunc(decreaseReplicaCountInput)
 }
 
 // DecreaseReplicaCountRequestCalls gets all the calls that were made to DecreaseReplicaCountRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DecreaseReplicaCountRequestCalls())
 func (mock *elasticacheClientMock) DecreaseReplicaCountRequestCalls() []struct {
-	In1 *elasticache.DecreaseReplicaCountInput
+	DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 } {
 	var calls []struct {
-		In1 *elasticache.DecreaseReplicaCountInput
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
 	}
-	lockelasticacheClientMockDecreaseReplicaCountRequest.RLock()
+	mock.lockDecreaseReplicaCountRequest.RLock()
 	calls = mock.calls.DecreaseReplicaCountRequest
-	lockelasticacheClientMockDecreaseReplicaCountRequest.RUnlock()
+	mock.lockDecreaseReplicaCountRequest.RUnlock()
 	return calls
 }
 
 // DecreaseReplicaCountWithContext calls DecreaseReplicaCountWithContextFunc.
-func (mock *elasticacheClientMock) DecreaseReplicaCountWithContext(in1 context.Context, in2 *elasticache.DecreaseReplicaCountInput, in3 ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
+func (mock *elasticacheClientMock) DecreaseReplicaCountWithContext(contextMoqParam context.Context, decreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput, options ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
 	if mock.DecreaseReplicaCountWithContextFunc == nil {
 		panic("elasticacheClientMock.DecreaseReplicaCountWithContextFunc: method is nil but elasticacheClient.DecreaseReplicaCountWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DecreaseReplicaCountInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
+		Options                   []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:           contextMoqParam,
+		DecreaseReplicaCountInput: decreaseReplicaCountInput,
+		Options:                   options,
 	}
-	lockelasticacheClientMockDecreaseReplicaCountWithContext.Lock()
+	mock.lockDecreaseReplicaCountWithContext.Lock()
 	mock.calls.DecreaseReplicaCountWithContext = append(mock.calls.DecreaseReplicaCountWithContext, callInfo)
-	lockelasticacheClientMockDecreaseReplicaCountWithContext.Unlock()
-	return mock.DecreaseReplicaCountWithContextFunc(in1, in2, in3...)
+	mock.lockDecreaseReplicaCountWithContext.Unlock()
+	return mock.DecreaseReplicaCountWithContextFunc(contextMoqParam, decreaseReplicaCountInput, options...)
 }
 
 // DecreaseReplicaCountWithContextCalls gets all the calls that were made to DecreaseReplicaCountWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DecreaseReplicaCountWithContextCalls())
 func (mock *elasticacheClientMock) DecreaseReplicaCountWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DecreaseReplicaCountInput
-	In3 []request.Option
+	ContextMoqParam           context.Context
+	DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
+	Options                   []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DecreaseReplicaCountInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		DecreaseReplicaCountInput *elasticache.DecreaseReplicaCountInput
+		Options                   []request.Option
 	}
-	lockelasticacheClientMockDecreaseReplicaCountWithContext.RLock()
+	mock.lockDecreaseReplicaCountWithContext.RLock()
 	calls = mock.calls.DecreaseReplicaCountWithContext
-	lockelasticacheClientMockDecreaseReplicaCountWithContext.RUnlock()
+	mock.lockDecreaseReplicaCountWithContext.RUnlock()
 	return calls
 }
 
 // DeleteCacheCluster calls DeleteCacheClusterFunc.
-func (mock *elasticacheClientMock) DeleteCacheCluster(in1 *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheCluster(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*elasticache.DeleteCacheClusterOutput, error) {
 	if mock.DeleteCacheClusterFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheClusterFunc: method is nil but elasticacheClient.DeleteCacheCluster was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheClusterInput
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 	}{
-		In1: in1,
+		DeleteCacheClusterInput: deleteCacheClusterInput,
 	}
-	lockelasticacheClientMockDeleteCacheCluster.Lock()
+	mock.lockDeleteCacheCluster.Lock()
 	mock.calls.DeleteCacheCluster = append(mock.calls.DeleteCacheCluster, callInfo)
-	lockelasticacheClientMockDeleteCacheCluster.Unlock()
-	return mock.DeleteCacheClusterFunc(in1)
+	mock.lockDeleteCacheCluster.Unlock()
+	return mock.DeleteCacheClusterFunc(deleteCacheClusterInput)
 }
 
 // DeleteCacheClusterCalls gets all the calls that were made to DeleteCacheCluster.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheClusterCalls())
 func (mock *elasticacheClientMock) DeleteCacheClusterCalls() []struct {
-	In1 *elasticache.DeleteCacheClusterInput
+	DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheClusterInput
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 	}
-	lockelasticacheClientMockDeleteCacheCluster.RLock()
+	mock.lockDeleteCacheCluster.RLock()
 	calls = mock.calls.DeleteCacheCluster
-	lockelasticacheClientMockDeleteCacheCluster.RUnlock()
+	mock.lockDeleteCacheCluster.RUnlock()
 	return calls
 }
 
 // DeleteCacheClusterRequest calls DeleteCacheClusterRequestFunc.
-func (mock *elasticacheClientMock) DeleteCacheClusterRequest(in1 *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput) {
+func (mock *elasticacheClientMock) DeleteCacheClusterRequest(deleteCacheClusterInput *elasticache.DeleteCacheClusterInput) (*request.Request, *elasticache.DeleteCacheClusterOutput) {
 	if mock.DeleteCacheClusterRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheClusterRequestFunc: method is nil but elasticacheClient.DeleteCacheClusterRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheClusterInput
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 	}{
-		In1: in1,
+		DeleteCacheClusterInput: deleteCacheClusterInput,
 	}
-	lockelasticacheClientMockDeleteCacheClusterRequest.Lock()
+	mock.lockDeleteCacheClusterRequest.Lock()
 	mock.calls.DeleteCacheClusterRequest = append(mock.calls.DeleteCacheClusterRequest, callInfo)
-	lockelasticacheClientMockDeleteCacheClusterRequest.Unlock()
-	return mock.DeleteCacheClusterRequestFunc(in1)
+	mock.lockDeleteCacheClusterRequest.Unlock()
+	return mock.DeleteCacheClusterRequestFunc(deleteCacheClusterInput)
 }
 
 // DeleteCacheClusterRequestCalls gets all the calls that were made to DeleteCacheClusterRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheClusterRequestCalls())
 func (mock *elasticacheClientMock) DeleteCacheClusterRequestCalls() []struct {
-	In1 *elasticache.DeleteCacheClusterInput
+	DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheClusterInput
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
 	}
-	lockelasticacheClientMockDeleteCacheClusterRequest.RLock()
+	mock.lockDeleteCacheClusterRequest.RLock()
 	calls = mock.calls.DeleteCacheClusterRequest
-	lockelasticacheClientMockDeleteCacheClusterRequest.RUnlock()
+	mock.lockDeleteCacheClusterRequest.RUnlock()
 	return calls
 }
 
 // DeleteCacheClusterWithContext calls DeleteCacheClusterWithContextFunc.
-func (mock *elasticacheClientMock) DeleteCacheClusterWithContext(in1 context.Context, in2 *elasticache.DeleteCacheClusterInput, in3 ...request.Option) (*elasticache.DeleteCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheClusterWithContext(contextMoqParam context.Context, deleteCacheClusterInput *elasticache.DeleteCacheClusterInput, options ...request.Option) (*elasticache.DeleteCacheClusterOutput, error) {
 	if mock.DeleteCacheClusterWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheClusterWithContextFunc: method is nil but elasticacheClient.DeleteCacheClusterWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
+		Options                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:         contextMoqParam,
+		DeleteCacheClusterInput: deleteCacheClusterInput,
+		Options:                 options,
 	}
-	lockelasticacheClientMockDeleteCacheClusterWithContext.Lock()
+	mock.lockDeleteCacheClusterWithContext.Lock()
 	mock.calls.DeleteCacheClusterWithContext = append(mock.calls.DeleteCacheClusterWithContext, callInfo)
-	lockelasticacheClientMockDeleteCacheClusterWithContext.Unlock()
-	return mock.DeleteCacheClusterWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteCacheClusterWithContext.Unlock()
+	return mock.DeleteCacheClusterWithContextFunc(contextMoqParam, deleteCacheClusterInput, options...)
 }
 
 // DeleteCacheClusterWithContextCalls gets all the calls that were made to DeleteCacheClusterWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheClusterWithContextCalls())
 func (mock *elasticacheClientMock) DeleteCacheClusterWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteCacheClusterInput
-	In3 []request.Option
+	ContextMoqParam         context.Context
+	DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
+	Options                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		DeleteCacheClusterInput *elasticache.DeleteCacheClusterInput
+		Options                 []request.Option
 	}
-	lockelasticacheClientMockDeleteCacheClusterWithContext.RLock()
+	mock.lockDeleteCacheClusterWithContext.RLock()
 	calls = mock.calls.DeleteCacheClusterWithContext
-	lockelasticacheClientMockDeleteCacheClusterWithContext.RUnlock()
+	mock.lockDeleteCacheClusterWithContext.RUnlock()
 	return calls
 }
 
 // DeleteCacheParameterGroup calls DeleteCacheParameterGroupFunc.
-func (mock *elasticacheClientMock) DeleteCacheParameterGroup(in1 *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheParameterGroup(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*elasticache.DeleteCacheParameterGroupOutput, error) {
 	if mock.DeleteCacheParameterGroupFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheParameterGroupFunc: method is nil but elasticacheClient.DeleteCacheParameterGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheParameterGroupInput
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 	}{
-		In1: in1,
+		DeleteCacheParameterGroupInput: deleteCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroup.Lock()
+	mock.lockDeleteCacheParameterGroup.Lock()
 	mock.calls.DeleteCacheParameterGroup = append(mock.calls.DeleteCacheParameterGroup, callInfo)
-	lockelasticacheClientMockDeleteCacheParameterGroup.Unlock()
-	return mock.DeleteCacheParameterGroupFunc(in1)
+	mock.lockDeleteCacheParameterGroup.Unlock()
+	return mock.DeleteCacheParameterGroupFunc(deleteCacheParameterGroupInput)
 }
 
 // DeleteCacheParameterGroupCalls gets all the calls that were made to DeleteCacheParameterGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheParameterGroupCalls())
 func (mock *elasticacheClientMock) DeleteCacheParameterGroupCalls() []struct {
-	In1 *elasticache.DeleteCacheParameterGroupInput
+	DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheParameterGroupInput
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroup.RLock()
+	mock.lockDeleteCacheParameterGroup.RLock()
 	calls = mock.calls.DeleteCacheParameterGroup
-	lockelasticacheClientMockDeleteCacheParameterGroup.RUnlock()
+	mock.lockDeleteCacheParameterGroup.RUnlock()
 	return calls
 }
 
 // DeleteCacheParameterGroupRequest calls DeleteCacheParameterGroupRequestFunc.
-func (mock *elasticacheClientMock) DeleteCacheParameterGroupRequest(in1 *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput) {
+func (mock *elasticacheClientMock) DeleteCacheParameterGroupRequest(deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput) (*request.Request, *elasticache.DeleteCacheParameterGroupOutput) {
 	if mock.DeleteCacheParameterGroupRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheParameterGroupRequestFunc: method is nil but elasticacheClient.DeleteCacheParameterGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheParameterGroupInput
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 	}{
-		In1: in1,
+		DeleteCacheParameterGroupInput: deleteCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroupRequest.Lock()
+	mock.lockDeleteCacheParameterGroupRequest.Lock()
 	mock.calls.DeleteCacheParameterGroupRequest = append(mock.calls.DeleteCacheParameterGroupRequest, callInfo)
-	lockelasticacheClientMockDeleteCacheParameterGroupRequest.Unlock()
-	return mock.DeleteCacheParameterGroupRequestFunc(in1)
+	mock.lockDeleteCacheParameterGroupRequest.Unlock()
+	return mock.DeleteCacheParameterGroupRequestFunc(deleteCacheParameterGroupInput)
 }
 
 // DeleteCacheParameterGroupRequestCalls gets all the calls that were made to DeleteCacheParameterGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheParameterGroupRequestCalls())
 func (mock *elasticacheClientMock) DeleteCacheParameterGroupRequestCalls() []struct {
-	In1 *elasticache.DeleteCacheParameterGroupInput
+	DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheParameterGroupInput
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroupRequest.RLock()
+	mock.lockDeleteCacheParameterGroupRequest.RLock()
 	calls = mock.calls.DeleteCacheParameterGroupRequest
-	lockelasticacheClientMockDeleteCacheParameterGroupRequest.RUnlock()
+	mock.lockDeleteCacheParameterGroupRequest.RUnlock()
 	return calls
 }
 
 // DeleteCacheParameterGroupWithContext calls DeleteCacheParameterGroupWithContextFunc.
-func (mock *elasticacheClientMock) DeleteCacheParameterGroupWithContext(in1 context.Context, in2 *elasticache.DeleteCacheParameterGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheParameterGroupWithContext(contextMoqParam context.Context, deleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput, options ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error) {
 	if mock.DeleteCacheParameterGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheParameterGroupWithContextFunc: method is nil but elasticacheClient.DeleteCacheParameterGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		DeleteCacheParameterGroupInput: deleteCacheParameterGroupInput,
+		Options:                        options,
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroupWithContext.Lock()
+	mock.lockDeleteCacheParameterGroupWithContext.Lock()
 	mock.calls.DeleteCacheParameterGroupWithContext = append(mock.calls.DeleteCacheParameterGroupWithContext, callInfo)
-	lockelasticacheClientMockDeleteCacheParameterGroupWithContext.Unlock()
-	return mock.DeleteCacheParameterGroupWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteCacheParameterGroupWithContext.Unlock()
+	return mock.DeleteCacheParameterGroupWithContextFunc(contextMoqParam, deleteCacheParameterGroupInput, options...)
 }
 
 // DeleteCacheParameterGroupWithContextCalls gets all the calls that were made to DeleteCacheParameterGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheParameterGroupWithContextCalls())
 func (mock *elasticacheClientMock) DeleteCacheParameterGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteCacheParameterGroupInput
-	In3 []request.Option
+	ContextMoqParam                context.Context
+	DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DeleteCacheParameterGroupInput *elasticache.DeleteCacheParameterGroupInput
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockDeleteCacheParameterGroupWithContext.RLock()
+	mock.lockDeleteCacheParameterGroupWithContext.RLock()
 	calls = mock.calls.DeleteCacheParameterGroupWithContext
-	lockelasticacheClientMockDeleteCacheParameterGroupWithContext.RUnlock()
+	mock.lockDeleteCacheParameterGroupWithContext.RUnlock()
 	return calls
 }
 
 // DeleteCacheSecurityGroup calls DeleteCacheSecurityGroupFunc.
-func (mock *elasticacheClientMock) DeleteCacheSecurityGroup(in1 *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheSecurityGroup(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
 	if mock.DeleteCacheSecurityGroupFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSecurityGroupFunc: method is nil but elasticacheClient.DeleteCacheSecurityGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheSecurityGroupInput
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 	}{
-		In1: in1,
+		DeleteCacheSecurityGroupInput: deleteCacheSecurityGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroup.Lock()
+	mock.lockDeleteCacheSecurityGroup.Lock()
 	mock.calls.DeleteCacheSecurityGroup = append(mock.calls.DeleteCacheSecurityGroup, callInfo)
-	lockelasticacheClientMockDeleteCacheSecurityGroup.Unlock()
-	return mock.DeleteCacheSecurityGroupFunc(in1)
+	mock.lockDeleteCacheSecurityGroup.Unlock()
+	return mock.DeleteCacheSecurityGroupFunc(deleteCacheSecurityGroupInput)
 }
 
 // DeleteCacheSecurityGroupCalls gets all the calls that were made to DeleteCacheSecurityGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSecurityGroupCalls())
 func (mock *elasticacheClientMock) DeleteCacheSecurityGroupCalls() []struct {
-	In1 *elasticache.DeleteCacheSecurityGroupInput
+	DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheSecurityGroupInput
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroup.RLock()
+	mock.lockDeleteCacheSecurityGroup.RLock()
 	calls = mock.calls.DeleteCacheSecurityGroup
-	lockelasticacheClientMockDeleteCacheSecurityGroup.RUnlock()
+	mock.lockDeleteCacheSecurityGroup.RUnlock()
 	return calls
 }
 
 // DeleteCacheSecurityGroupRequest calls DeleteCacheSecurityGroupRequestFunc.
-func (mock *elasticacheClientMock) DeleteCacheSecurityGroupRequest(in1 *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput) {
+func (mock *elasticacheClientMock) DeleteCacheSecurityGroupRequest(deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput) (*request.Request, *elasticache.DeleteCacheSecurityGroupOutput) {
 	if mock.DeleteCacheSecurityGroupRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSecurityGroupRequestFunc: method is nil but elasticacheClient.DeleteCacheSecurityGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheSecurityGroupInput
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 	}{
-		In1: in1,
+		DeleteCacheSecurityGroupInput: deleteCacheSecurityGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroupRequest.Lock()
+	mock.lockDeleteCacheSecurityGroupRequest.Lock()
 	mock.calls.DeleteCacheSecurityGroupRequest = append(mock.calls.DeleteCacheSecurityGroupRequest, callInfo)
-	lockelasticacheClientMockDeleteCacheSecurityGroupRequest.Unlock()
-	return mock.DeleteCacheSecurityGroupRequestFunc(in1)
+	mock.lockDeleteCacheSecurityGroupRequest.Unlock()
+	return mock.DeleteCacheSecurityGroupRequestFunc(deleteCacheSecurityGroupInput)
 }
 
 // DeleteCacheSecurityGroupRequestCalls gets all the calls that were made to DeleteCacheSecurityGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSecurityGroupRequestCalls())
 func (mock *elasticacheClientMock) DeleteCacheSecurityGroupRequestCalls() []struct {
-	In1 *elasticache.DeleteCacheSecurityGroupInput
+	DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheSecurityGroupInput
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroupRequest.RLock()
+	mock.lockDeleteCacheSecurityGroupRequest.RLock()
 	calls = mock.calls.DeleteCacheSecurityGroupRequest
-	lockelasticacheClientMockDeleteCacheSecurityGroupRequest.RUnlock()
+	mock.lockDeleteCacheSecurityGroupRequest.RUnlock()
 	return calls
 }
 
 // DeleteCacheSecurityGroupWithContext calls DeleteCacheSecurityGroupWithContextFunc.
-func (mock *elasticacheClientMock) DeleteCacheSecurityGroupWithContext(in1 context.Context, in2 *elasticache.DeleteCacheSecurityGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheSecurityGroupWithContext(contextMoqParam context.Context, deleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput, options ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
 	if mock.DeleteCacheSecurityGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSecurityGroupWithContextFunc: method is nil but elasticacheClient.DeleteCacheSecurityGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheSecurityGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
+		Options                       []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:               contextMoqParam,
+		DeleteCacheSecurityGroupInput: deleteCacheSecurityGroupInput,
+		Options:                       options,
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroupWithContext.Lock()
+	mock.lockDeleteCacheSecurityGroupWithContext.Lock()
 	mock.calls.DeleteCacheSecurityGroupWithContext = append(mock.calls.DeleteCacheSecurityGroupWithContext, callInfo)
-	lockelasticacheClientMockDeleteCacheSecurityGroupWithContext.Unlock()
-	return mock.DeleteCacheSecurityGroupWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteCacheSecurityGroupWithContext.Unlock()
+	return mock.DeleteCacheSecurityGroupWithContextFunc(contextMoqParam, deleteCacheSecurityGroupInput, options...)
 }
 
 // DeleteCacheSecurityGroupWithContextCalls gets all the calls that were made to DeleteCacheSecurityGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSecurityGroupWithContextCalls())
 func (mock *elasticacheClientMock) DeleteCacheSecurityGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteCacheSecurityGroupInput
-	In3 []request.Option
+	ContextMoqParam               context.Context
+	DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
+	Options                       []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheSecurityGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		DeleteCacheSecurityGroupInput *elasticache.DeleteCacheSecurityGroupInput
+		Options                       []request.Option
 	}
-	lockelasticacheClientMockDeleteCacheSecurityGroupWithContext.RLock()
+	mock.lockDeleteCacheSecurityGroupWithContext.RLock()
 	calls = mock.calls.DeleteCacheSecurityGroupWithContext
-	lockelasticacheClientMockDeleteCacheSecurityGroupWithContext.RUnlock()
+	mock.lockDeleteCacheSecurityGroupWithContext.RUnlock()
 	return calls
 }
 
 // DeleteCacheSubnetGroup calls DeleteCacheSubnetGroupFunc.
-func (mock *elasticacheClientMock) DeleteCacheSubnetGroup(in1 *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheSubnetGroup(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
 	if mock.DeleteCacheSubnetGroupFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSubnetGroupFunc: method is nil but elasticacheClient.DeleteCacheSubnetGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheSubnetGroupInput
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 	}{
-		In1: in1,
+		DeleteCacheSubnetGroupInput: deleteCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroup.Lock()
+	mock.lockDeleteCacheSubnetGroup.Lock()
 	mock.calls.DeleteCacheSubnetGroup = append(mock.calls.DeleteCacheSubnetGroup, callInfo)
-	lockelasticacheClientMockDeleteCacheSubnetGroup.Unlock()
-	return mock.DeleteCacheSubnetGroupFunc(in1)
+	mock.lockDeleteCacheSubnetGroup.Unlock()
+	return mock.DeleteCacheSubnetGroupFunc(deleteCacheSubnetGroupInput)
 }
 
 // DeleteCacheSubnetGroupCalls gets all the calls that were made to DeleteCacheSubnetGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSubnetGroupCalls())
 func (mock *elasticacheClientMock) DeleteCacheSubnetGroupCalls() []struct {
-	In1 *elasticache.DeleteCacheSubnetGroupInput
+	DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheSubnetGroupInput
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroup.RLock()
+	mock.lockDeleteCacheSubnetGroup.RLock()
 	calls = mock.calls.DeleteCacheSubnetGroup
-	lockelasticacheClientMockDeleteCacheSubnetGroup.RUnlock()
+	mock.lockDeleteCacheSubnetGroup.RUnlock()
 	return calls
 }
 
 // DeleteCacheSubnetGroupRequest calls DeleteCacheSubnetGroupRequestFunc.
-func (mock *elasticacheClientMock) DeleteCacheSubnetGroupRequest(in1 *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput) {
+func (mock *elasticacheClientMock) DeleteCacheSubnetGroupRequest(deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput) (*request.Request, *elasticache.DeleteCacheSubnetGroupOutput) {
 	if mock.DeleteCacheSubnetGroupRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSubnetGroupRequestFunc: method is nil but elasticacheClient.DeleteCacheSubnetGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteCacheSubnetGroupInput
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 	}{
-		In1: in1,
+		DeleteCacheSubnetGroupInput: deleteCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroupRequest.Lock()
+	mock.lockDeleteCacheSubnetGroupRequest.Lock()
 	mock.calls.DeleteCacheSubnetGroupRequest = append(mock.calls.DeleteCacheSubnetGroupRequest, callInfo)
-	lockelasticacheClientMockDeleteCacheSubnetGroupRequest.Unlock()
-	return mock.DeleteCacheSubnetGroupRequestFunc(in1)
+	mock.lockDeleteCacheSubnetGroupRequest.Unlock()
+	return mock.DeleteCacheSubnetGroupRequestFunc(deleteCacheSubnetGroupInput)
 }
 
 // DeleteCacheSubnetGroupRequestCalls gets all the calls that were made to DeleteCacheSubnetGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSubnetGroupRequestCalls())
 func (mock *elasticacheClientMock) DeleteCacheSubnetGroupRequestCalls() []struct {
-	In1 *elasticache.DeleteCacheSubnetGroupInput
+	DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteCacheSubnetGroupInput
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroupRequest.RLock()
+	mock.lockDeleteCacheSubnetGroupRequest.RLock()
 	calls = mock.calls.DeleteCacheSubnetGroupRequest
-	lockelasticacheClientMockDeleteCacheSubnetGroupRequest.RUnlock()
+	mock.lockDeleteCacheSubnetGroupRequest.RUnlock()
 	return calls
 }
 
 // DeleteCacheSubnetGroupWithContext calls DeleteCacheSubnetGroupWithContextFunc.
-func (mock *elasticacheClientMock) DeleteCacheSubnetGroupWithContext(in1 context.Context, in2 *elasticache.DeleteCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteCacheSubnetGroupWithContext(contextMoqParam context.Context, deleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput, options ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
 	if mock.DeleteCacheSubnetGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteCacheSubnetGroupWithContextFunc: method is nil but elasticacheClient.DeleteCacheSubnetGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		DeleteCacheSubnetGroupInput: deleteCacheSubnetGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroupWithContext.Lock()
+	mock.lockDeleteCacheSubnetGroupWithContext.Lock()
 	mock.calls.DeleteCacheSubnetGroupWithContext = append(mock.calls.DeleteCacheSubnetGroupWithContext, callInfo)
-	lockelasticacheClientMockDeleteCacheSubnetGroupWithContext.Unlock()
-	return mock.DeleteCacheSubnetGroupWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteCacheSubnetGroupWithContext.Unlock()
+	return mock.DeleteCacheSubnetGroupWithContextFunc(contextMoqParam, deleteCacheSubnetGroupInput, options...)
 }
 
 // DeleteCacheSubnetGroupWithContextCalls gets all the calls that were made to DeleteCacheSubnetGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteCacheSubnetGroupWithContextCalls())
 func (mock *elasticacheClientMock) DeleteCacheSubnetGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteCacheSubnetGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DeleteCacheSubnetGroupInput *elasticache.DeleteCacheSubnetGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockDeleteCacheSubnetGroupWithContext.RLock()
+	mock.lockDeleteCacheSubnetGroupWithContext.RLock()
 	calls = mock.calls.DeleteCacheSubnetGroupWithContext
-	lockelasticacheClientMockDeleteCacheSubnetGroupWithContext.RUnlock()
+	mock.lockDeleteCacheSubnetGroupWithContext.RUnlock()
+	return calls
+}
+
+// DeleteGlobalReplicationGroup calls DeleteGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroup(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*elasticache.DeleteGlobalReplicationGroupOutput, error) {
+	if mock.DeleteGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.DeleteGlobalReplicationGroupFunc: method is nil but elasticacheClient.DeleteGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+	}{
+		DeleteGlobalReplicationGroupInput: deleteGlobalReplicationGroupInput,
+	}
+	mock.lockDeleteGlobalReplicationGroup.Lock()
+	mock.calls.DeleteGlobalReplicationGroup = append(mock.calls.DeleteGlobalReplicationGroup, callInfo)
+	mock.lockDeleteGlobalReplicationGroup.Unlock()
+	return mock.DeleteGlobalReplicationGroupFunc(deleteGlobalReplicationGroupInput)
+}
+
+// DeleteGlobalReplicationGroupCalls gets all the calls that were made to DeleteGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroupCalls() []struct {
+	DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+	}
+	mock.lockDeleteGlobalReplicationGroup.RLock()
+	calls = mock.calls.DeleteGlobalReplicationGroup
+	mock.lockDeleteGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// DeleteGlobalReplicationGroupRequest calls DeleteGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroupRequest(deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput) (*request.Request, *elasticache.DeleteGlobalReplicationGroupOutput) {
+	if mock.DeleteGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.DeleteGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.DeleteGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+	}{
+		DeleteGlobalReplicationGroupInput: deleteGlobalReplicationGroupInput,
+	}
+	mock.lockDeleteGlobalReplicationGroupRequest.Lock()
+	mock.calls.DeleteGlobalReplicationGroupRequest = append(mock.calls.DeleteGlobalReplicationGroupRequest, callInfo)
+	mock.lockDeleteGlobalReplicationGroupRequest.Unlock()
+	return mock.DeleteGlobalReplicationGroupRequestFunc(deleteGlobalReplicationGroupInput)
+}
+
+// DeleteGlobalReplicationGroupRequestCalls gets all the calls that were made to DeleteGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroupRequestCalls() []struct {
+	DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+	}
+	mock.lockDeleteGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.DeleteGlobalReplicationGroupRequest
+	mock.lockDeleteGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// DeleteGlobalReplicationGroupWithContext calls DeleteGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroupWithContext(contextMoqParam context.Context, deleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DeleteGlobalReplicationGroupOutput, error) {
+	if mock.DeleteGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.DeleteGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.DeleteGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                   context.Context
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+		Options                           []request.Option
+	}{
+		ContextMoqParam:                   contextMoqParam,
+		DeleteGlobalReplicationGroupInput: deleteGlobalReplicationGroupInput,
+		Options:                           options,
+	}
+	mock.lockDeleteGlobalReplicationGroupWithContext.Lock()
+	mock.calls.DeleteGlobalReplicationGroupWithContext = append(mock.calls.DeleteGlobalReplicationGroupWithContext, callInfo)
+	mock.lockDeleteGlobalReplicationGroupWithContext.Unlock()
+	return mock.DeleteGlobalReplicationGroupWithContextFunc(contextMoqParam, deleteGlobalReplicationGroupInput, options...)
+}
+
+// DeleteGlobalReplicationGroupWithContextCalls gets all the calls that were made to DeleteGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) DeleteGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                   context.Context
+	DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+	Options                           []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                   context.Context
+		DeleteGlobalReplicationGroupInput *elasticache.DeleteGlobalReplicationGroupInput
+		Options                           []request.Option
+	}
+	mock.lockDeleteGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.DeleteGlobalReplicationGroupWithContext
+	mock.lockDeleteGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // DeleteReplicationGroup calls DeleteReplicationGroupFunc.
-func (mock *elasticacheClientMock) DeleteReplicationGroup(in1 *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteReplicationGroup(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*elasticache.DeleteReplicationGroupOutput, error) {
 	if mock.DeleteReplicationGroupFunc == nil {
 		panic("elasticacheClientMock.DeleteReplicationGroupFunc: method is nil but elasticacheClient.DeleteReplicationGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteReplicationGroupInput
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 	}{
-		In1: in1,
+		DeleteReplicationGroupInput: deleteReplicationGroupInput,
 	}
-	lockelasticacheClientMockDeleteReplicationGroup.Lock()
+	mock.lockDeleteReplicationGroup.Lock()
 	mock.calls.DeleteReplicationGroup = append(mock.calls.DeleteReplicationGroup, callInfo)
-	lockelasticacheClientMockDeleteReplicationGroup.Unlock()
-	return mock.DeleteReplicationGroupFunc(in1)
+	mock.lockDeleteReplicationGroup.Unlock()
+	return mock.DeleteReplicationGroupFunc(deleteReplicationGroupInput)
 }
 
 // DeleteReplicationGroupCalls gets all the calls that were made to DeleteReplicationGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteReplicationGroupCalls())
 func (mock *elasticacheClientMock) DeleteReplicationGroupCalls() []struct {
-	In1 *elasticache.DeleteReplicationGroupInput
+	DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteReplicationGroupInput
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 	}
-	lockelasticacheClientMockDeleteReplicationGroup.RLock()
+	mock.lockDeleteReplicationGroup.RLock()
 	calls = mock.calls.DeleteReplicationGroup
-	lockelasticacheClientMockDeleteReplicationGroup.RUnlock()
+	mock.lockDeleteReplicationGroup.RUnlock()
 	return calls
 }
 
 // DeleteReplicationGroupRequest calls DeleteReplicationGroupRequestFunc.
-func (mock *elasticacheClientMock) DeleteReplicationGroupRequest(in1 *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput) {
+func (mock *elasticacheClientMock) DeleteReplicationGroupRequest(deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput) (*request.Request, *elasticache.DeleteReplicationGroupOutput) {
 	if mock.DeleteReplicationGroupRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteReplicationGroupRequestFunc: method is nil but elasticacheClient.DeleteReplicationGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteReplicationGroupInput
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 	}{
-		In1: in1,
+		DeleteReplicationGroupInput: deleteReplicationGroupInput,
 	}
-	lockelasticacheClientMockDeleteReplicationGroupRequest.Lock()
+	mock.lockDeleteReplicationGroupRequest.Lock()
 	mock.calls.DeleteReplicationGroupRequest = append(mock.calls.DeleteReplicationGroupRequest, callInfo)
-	lockelasticacheClientMockDeleteReplicationGroupRequest.Unlock()
-	return mock.DeleteReplicationGroupRequestFunc(in1)
+	mock.lockDeleteReplicationGroupRequest.Unlock()
+	return mock.DeleteReplicationGroupRequestFunc(deleteReplicationGroupInput)
 }
 
 // DeleteReplicationGroupRequestCalls gets all the calls that were made to DeleteReplicationGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteReplicationGroupRequestCalls())
 func (mock *elasticacheClientMock) DeleteReplicationGroupRequestCalls() []struct {
-	In1 *elasticache.DeleteReplicationGroupInput
+	DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteReplicationGroupInput
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
 	}
-	lockelasticacheClientMockDeleteReplicationGroupRequest.RLock()
+	mock.lockDeleteReplicationGroupRequest.RLock()
 	calls = mock.calls.DeleteReplicationGroupRequest
-	lockelasticacheClientMockDeleteReplicationGroupRequest.RUnlock()
+	mock.lockDeleteReplicationGroupRequest.RUnlock()
 	return calls
 }
 
 // DeleteReplicationGroupWithContext calls DeleteReplicationGroupWithContextFunc.
-func (mock *elasticacheClientMock) DeleteReplicationGroupWithContext(in1 context.Context, in2 *elasticache.DeleteReplicationGroupInput, in3 ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) DeleteReplicationGroupWithContext(contextMoqParam context.Context, deleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput, options ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
 	if mock.DeleteReplicationGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteReplicationGroupWithContextFunc: method is nil but elasticacheClient.DeleteReplicationGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		DeleteReplicationGroupInput: deleteReplicationGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockDeleteReplicationGroupWithContext.Lock()
+	mock.lockDeleteReplicationGroupWithContext.Lock()
 	mock.calls.DeleteReplicationGroupWithContext = append(mock.calls.DeleteReplicationGroupWithContext, callInfo)
-	lockelasticacheClientMockDeleteReplicationGroupWithContext.Unlock()
-	return mock.DeleteReplicationGroupWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteReplicationGroupWithContext.Unlock()
+	return mock.DeleteReplicationGroupWithContextFunc(contextMoqParam, deleteReplicationGroupInput, options...)
 }
 
 // DeleteReplicationGroupWithContextCalls gets all the calls that were made to DeleteReplicationGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteReplicationGroupWithContextCalls())
 func (mock *elasticacheClientMock) DeleteReplicationGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteReplicationGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DeleteReplicationGroupInput *elasticache.DeleteReplicationGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockDeleteReplicationGroupWithContext.RLock()
+	mock.lockDeleteReplicationGroupWithContext.RLock()
 	calls = mock.calls.DeleteReplicationGroupWithContext
-	lockelasticacheClientMockDeleteReplicationGroupWithContext.RUnlock()
+	mock.lockDeleteReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // DeleteSnapshot calls DeleteSnapshotFunc.
-func (mock *elasticacheClientMock) DeleteSnapshot(in1 *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error) {
+func (mock *elasticacheClientMock) DeleteSnapshot(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*elasticache.DeleteSnapshotOutput, error) {
 	if mock.DeleteSnapshotFunc == nil {
 		panic("elasticacheClientMock.DeleteSnapshotFunc: method is nil but elasticacheClient.DeleteSnapshot was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteSnapshotInput
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 	}{
-		In1: in1,
+		DeleteSnapshotInput: deleteSnapshotInput,
 	}
-	lockelasticacheClientMockDeleteSnapshot.Lock()
+	mock.lockDeleteSnapshot.Lock()
 	mock.calls.DeleteSnapshot = append(mock.calls.DeleteSnapshot, callInfo)
-	lockelasticacheClientMockDeleteSnapshot.Unlock()
-	return mock.DeleteSnapshotFunc(in1)
+	mock.lockDeleteSnapshot.Unlock()
+	return mock.DeleteSnapshotFunc(deleteSnapshotInput)
 }
 
 // DeleteSnapshotCalls gets all the calls that were made to DeleteSnapshot.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteSnapshotCalls())
 func (mock *elasticacheClientMock) DeleteSnapshotCalls() []struct {
-	In1 *elasticache.DeleteSnapshotInput
+	DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteSnapshotInput
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 	}
-	lockelasticacheClientMockDeleteSnapshot.RLock()
+	mock.lockDeleteSnapshot.RLock()
 	calls = mock.calls.DeleteSnapshot
-	lockelasticacheClientMockDeleteSnapshot.RUnlock()
+	mock.lockDeleteSnapshot.RUnlock()
 	return calls
 }
 
 // DeleteSnapshotRequest calls DeleteSnapshotRequestFunc.
-func (mock *elasticacheClientMock) DeleteSnapshotRequest(in1 *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput) {
+func (mock *elasticacheClientMock) DeleteSnapshotRequest(deleteSnapshotInput *elasticache.DeleteSnapshotInput) (*request.Request, *elasticache.DeleteSnapshotOutput) {
 	if mock.DeleteSnapshotRequestFunc == nil {
 		panic("elasticacheClientMock.DeleteSnapshotRequestFunc: method is nil but elasticacheClient.DeleteSnapshotRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DeleteSnapshotInput
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 	}{
-		In1: in1,
+		DeleteSnapshotInput: deleteSnapshotInput,
 	}
-	lockelasticacheClientMockDeleteSnapshotRequest.Lock()
+	mock.lockDeleteSnapshotRequest.Lock()
 	mock.calls.DeleteSnapshotRequest = append(mock.calls.DeleteSnapshotRequest, callInfo)
-	lockelasticacheClientMockDeleteSnapshotRequest.Unlock()
-	return mock.DeleteSnapshotRequestFunc(in1)
+	mock.lockDeleteSnapshotRequest.Unlock()
+	return mock.DeleteSnapshotRequestFunc(deleteSnapshotInput)
 }
 
 // DeleteSnapshotRequestCalls gets all the calls that were made to DeleteSnapshotRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteSnapshotRequestCalls())
 func (mock *elasticacheClientMock) DeleteSnapshotRequestCalls() []struct {
-	In1 *elasticache.DeleteSnapshotInput
+	DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 } {
 	var calls []struct {
-		In1 *elasticache.DeleteSnapshotInput
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
 	}
-	lockelasticacheClientMockDeleteSnapshotRequest.RLock()
+	mock.lockDeleteSnapshotRequest.RLock()
 	calls = mock.calls.DeleteSnapshotRequest
-	lockelasticacheClientMockDeleteSnapshotRequest.RUnlock()
+	mock.lockDeleteSnapshotRequest.RUnlock()
 	return calls
 }
 
 // DeleteSnapshotWithContext calls DeleteSnapshotWithContextFunc.
-func (mock *elasticacheClientMock) DeleteSnapshotWithContext(in1 context.Context, in2 *elasticache.DeleteSnapshotInput, in3 ...request.Option) (*elasticache.DeleteSnapshotOutput, error) {
+func (mock *elasticacheClientMock) DeleteSnapshotWithContext(contextMoqParam context.Context, deleteSnapshotInput *elasticache.DeleteSnapshotInput, options ...request.Option) (*elasticache.DeleteSnapshotOutput, error) {
 	if mock.DeleteSnapshotWithContextFunc == nil {
 		panic("elasticacheClientMock.DeleteSnapshotWithContextFunc: method is nil but elasticacheClient.DeleteSnapshotWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DeleteSnapshotInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:     contextMoqParam,
+		DeleteSnapshotInput: deleteSnapshotInput,
+		Options:             options,
 	}
-	lockelasticacheClientMockDeleteSnapshotWithContext.Lock()
+	mock.lockDeleteSnapshotWithContext.Lock()
 	mock.calls.DeleteSnapshotWithContext = append(mock.calls.DeleteSnapshotWithContext, callInfo)
-	lockelasticacheClientMockDeleteSnapshotWithContext.Unlock()
-	return mock.DeleteSnapshotWithContextFunc(in1, in2, in3...)
+	mock.lockDeleteSnapshotWithContext.Unlock()
+	return mock.DeleteSnapshotWithContextFunc(contextMoqParam, deleteSnapshotInput, options...)
 }
 
 // DeleteSnapshotWithContextCalls gets all the calls that were made to DeleteSnapshotWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DeleteSnapshotWithContextCalls())
 func (mock *elasticacheClientMock) DeleteSnapshotWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DeleteSnapshotInput
-	In3 []request.Option
+	ContextMoqParam     context.Context
+	DeleteSnapshotInput *elasticache.DeleteSnapshotInput
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DeleteSnapshotInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		DeleteSnapshotInput *elasticache.DeleteSnapshotInput
+		Options             []request.Option
 	}
-	lockelasticacheClientMockDeleteSnapshotWithContext.RLock()
+	mock.lockDeleteSnapshotWithContext.RLock()
 	calls = mock.calls.DeleteSnapshotWithContext
-	lockelasticacheClientMockDeleteSnapshotWithContext.RUnlock()
+	mock.lockDeleteSnapshotWithContext.RUnlock()
+	return calls
+}
+
+// DeleteUser calls DeleteUserFunc.
+func (mock *elasticacheClientMock) DeleteUser(deleteUserInput *elasticache.DeleteUserInput) (*elasticache.DeleteUserOutput, error) {
+	if mock.DeleteUserFunc == nil {
+		panic("elasticacheClientMock.DeleteUserFunc: method is nil but elasticacheClient.DeleteUser was just called")
+	}
+	callInfo := struct {
+		DeleteUserInput *elasticache.DeleteUserInput
+	}{
+		DeleteUserInput: deleteUserInput,
+	}
+	mock.lockDeleteUser.Lock()
+	mock.calls.DeleteUser = append(mock.calls.DeleteUser, callInfo)
+	mock.lockDeleteUser.Unlock()
+	return mock.DeleteUserFunc(deleteUserInput)
+}
+
+// DeleteUserCalls gets all the calls that were made to DeleteUser.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserCalls())
+func (mock *elasticacheClientMock) DeleteUserCalls() []struct {
+	DeleteUserInput *elasticache.DeleteUserInput
+} {
+	var calls []struct {
+		DeleteUserInput *elasticache.DeleteUserInput
+	}
+	mock.lockDeleteUser.RLock()
+	calls = mock.calls.DeleteUser
+	mock.lockDeleteUser.RUnlock()
+	return calls
+}
+
+// DeleteUserGroup calls DeleteUserGroupFunc.
+func (mock *elasticacheClientMock) DeleteUserGroup(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*elasticache.DeleteUserGroupOutput, error) {
+	if mock.DeleteUserGroupFunc == nil {
+		panic("elasticacheClientMock.DeleteUserGroupFunc: method is nil but elasticacheClient.DeleteUserGroup was just called")
+	}
+	callInfo := struct {
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+	}{
+		DeleteUserGroupInput: deleteUserGroupInput,
+	}
+	mock.lockDeleteUserGroup.Lock()
+	mock.calls.DeleteUserGroup = append(mock.calls.DeleteUserGroup, callInfo)
+	mock.lockDeleteUserGroup.Unlock()
+	return mock.DeleteUserGroupFunc(deleteUserGroupInput)
+}
+
+// DeleteUserGroupCalls gets all the calls that were made to DeleteUserGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserGroupCalls())
+func (mock *elasticacheClientMock) DeleteUserGroupCalls() []struct {
+	DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+} {
+	var calls []struct {
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+	}
+	mock.lockDeleteUserGroup.RLock()
+	calls = mock.calls.DeleteUserGroup
+	mock.lockDeleteUserGroup.RUnlock()
+	return calls
+}
+
+// DeleteUserGroupRequest calls DeleteUserGroupRequestFunc.
+func (mock *elasticacheClientMock) DeleteUserGroupRequest(deleteUserGroupInput *elasticache.DeleteUserGroupInput) (*request.Request, *elasticache.DeleteUserGroupOutput) {
+	if mock.DeleteUserGroupRequestFunc == nil {
+		panic("elasticacheClientMock.DeleteUserGroupRequestFunc: method is nil but elasticacheClient.DeleteUserGroupRequest was just called")
+	}
+	callInfo := struct {
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+	}{
+		DeleteUserGroupInput: deleteUserGroupInput,
+	}
+	mock.lockDeleteUserGroupRequest.Lock()
+	mock.calls.DeleteUserGroupRequest = append(mock.calls.DeleteUserGroupRequest, callInfo)
+	mock.lockDeleteUserGroupRequest.Unlock()
+	return mock.DeleteUserGroupRequestFunc(deleteUserGroupInput)
+}
+
+// DeleteUserGroupRequestCalls gets all the calls that were made to DeleteUserGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserGroupRequestCalls())
+func (mock *elasticacheClientMock) DeleteUserGroupRequestCalls() []struct {
+	DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+} {
+	var calls []struct {
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+	}
+	mock.lockDeleteUserGroupRequest.RLock()
+	calls = mock.calls.DeleteUserGroupRequest
+	mock.lockDeleteUserGroupRequest.RUnlock()
+	return calls
+}
+
+// DeleteUserGroupWithContext calls DeleteUserGroupWithContextFunc.
+func (mock *elasticacheClientMock) DeleteUserGroupWithContext(contextMoqParam context.Context, deleteUserGroupInput *elasticache.DeleteUserGroupInput, options ...request.Option) (*elasticache.DeleteUserGroupOutput, error) {
+	if mock.DeleteUserGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.DeleteUserGroupWithContextFunc: method is nil but elasticacheClient.DeleteUserGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam      context.Context
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+		Options              []request.Option
+	}{
+		ContextMoqParam:      contextMoqParam,
+		DeleteUserGroupInput: deleteUserGroupInput,
+		Options:              options,
+	}
+	mock.lockDeleteUserGroupWithContext.Lock()
+	mock.calls.DeleteUserGroupWithContext = append(mock.calls.DeleteUserGroupWithContext, callInfo)
+	mock.lockDeleteUserGroupWithContext.Unlock()
+	return mock.DeleteUserGroupWithContextFunc(contextMoqParam, deleteUserGroupInput, options...)
+}
+
+// DeleteUserGroupWithContextCalls gets all the calls that were made to DeleteUserGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserGroupWithContextCalls())
+func (mock *elasticacheClientMock) DeleteUserGroupWithContextCalls() []struct {
+	ContextMoqParam      context.Context
+	DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+	Options              []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam      context.Context
+		DeleteUserGroupInput *elasticache.DeleteUserGroupInput
+		Options              []request.Option
+	}
+	mock.lockDeleteUserGroupWithContext.RLock()
+	calls = mock.calls.DeleteUserGroupWithContext
+	mock.lockDeleteUserGroupWithContext.RUnlock()
+	return calls
+}
+
+// DeleteUserRequest calls DeleteUserRequestFunc.
+func (mock *elasticacheClientMock) DeleteUserRequest(deleteUserInput *elasticache.DeleteUserInput) (*request.Request, *elasticache.DeleteUserOutput) {
+	if mock.DeleteUserRequestFunc == nil {
+		panic("elasticacheClientMock.DeleteUserRequestFunc: method is nil but elasticacheClient.DeleteUserRequest was just called")
+	}
+	callInfo := struct {
+		DeleteUserInput *elasticache.DeleteUserInput
+	}{
+		DeleteUserInput: deleteUserInput,
+	}
+	mock.lockDeleteUserRequest.Lock()
+	mock.calls.DeleteUserRequest = append(mock.calls.DeleteUserRequest, callInfo)
+	mock.lockDeleteUserRequest.Unlock()
+	return mock.DeleteUserRequestFunc(deleteUserInput)
+}
+
+// DeleteUserRequestCalls gets all the calls that were made to DeleteUserRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserRequestCalls())
+func (mock *elasticacheClientMock) DeleteUserRequestCalls() []struct {
+	DeleteUserInput *elasticache.DeleteUserInput
+} {
+	var calls []struct {
+		DeleteUserInput *elasticache.DeleteUserInput
+	}
+	mock.lockDeleteUserRequest.RLock()
+	calls = mock.calls.DeleteUserRequest
+	mock.lockDeleteUserRequest.RUnlock()
+	return calls
+}
+
+// DeleteUserWithContext calls DeleteUserWithContextFunc.
+func (mock *elasticacheClientMock) DeleteUserWithContext(contextMoqParam context.Context, deleteUserInput *elasticache.DeleteUserInput, options ...request.Option) (*elasticache.DeleteUserOutput, error) {
+	if mock.DeleteUserWithContextFunc == nil {
+		panic("elasticacheClientMock.DeleteUserWithContextFunc: method is nil but elasticacheClient.DeleteUserWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam context.Context
+		DeleteUserInput *elasticache.DeleteUserInput
+		Options         []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		DeleteUserInput: deleteUserInput,
+		Options:         options,
+	}
+	mock.lockDeleteUserWithContext.Lock()
+	mock.calls.DeleteUserWithContext = append(mock.calls.DeleteUserWithContext, callInfo)
+	mock.lockDeleteUserWithContext.Unlock()
+	return mock.DeleteUserWithContextFunc(contextMoqParam, deleteUserInput, options...)
+}
+
+// DeleteUserWithContextCalls gets all the calls that were made to DeleteUserWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DeleteUserWithContextCalls())
+func (mock *elasticacheClientMock) DeleteUserWithContextCalls() []struct {
+	ContextMoqParam context.Context
+	DeleteUserInput *elasticache.DeleteUserInput
+	Options         []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam context.Context
+		DeleteUserInput *elasticache.DeleteUserInput
+		Options         []request.Option
+	}
+	mock.lockDeleteUserWithContext.RLock()
+	calls = mock.calls.DeleteUserWithContext
+	mock.lockDeleteUserWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheClusters calls DescribeCacheClustersFunc.
-func (mock *elasticacheClientMock) DescribeCacheClusters(in1 *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheClusters(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*elasticache.DescribeCacheClustersOutput, error) {
 	if mock.DescribeCacheClustersFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheClustersFunc: method is nil but elasticacheClient.DescribeCacheClusters was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}{
-		In1: in1,
+		DescribeCacheClustersInput: describeCacheClustersInput,
 	}
-	lockelasticacheClientMockDescribeCacheClusters.Lock()
+	mock.lockDescribeCacheClusters.Lock()
 	mock.calls.DescribeCacheClusters = append(mock.calls.DescribeCacheClusters, callInfo)
-	lockelasticacheClientMockDescribeCacheClusters.Unlock()
-	return mock.DescribeCacheClustersFunc(in1)
+	mock.lockDescribeCacheClusters.Unlock()
+	return mock.DescribeCacheClustersFunc(describeCacheClustersInput)
 }
 
 // DescribeCacheClustersCalls gets all the calls that were made to DescribeCacheClusters.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheClustersCalls())
 func (mock *elasticacheClientMock) DescribeCacheClustersCalls() []struct {
-	In1 *elasticache.DescribeCacheClustersInput
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}
-	lockelasticacheClientMockDescribeCacheClusters.RLock()
+	mock.lockDescribeCacheClusters.RLock()
 	calls = mock.calls.DescribeCacheClusters
-	lockelasticacheClientMockDescribeCacheClusters.RUnlock()
+	mock.lockDescribeCacheClusters.RUnlock()
 	return calls
 }
 
 // DescribeCacheClustersPages calls DescribeCacheClustersPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheClustersPages(in1 *elasticache.DescribeCacheClustersInput, in2 func(*elasticache.DescribeCacheClustersOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheClustersPages(describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool) error {
 	if mock.DescribeCacheClustersPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheClustersPagesFunc: method is nil but elasticacheClient.DescribeCacheClustersPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheClustersInput
-		In2 func(*elasticache.DescribeCacheClustersOutput, bool) bool
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheClustersInput: describeCacheClustersInput,
+		Fn:                         fn,
 	}
-	lockelasticacheClientMockDescribeCacheClustersPages.Lock()
+	mock.lockDescribeCacheClustersPages.Lock()
 	mock.calls.DescribeCacheClustersPages = append(mock.calls.DescribeCacheClustersPages, callInfo)
-	lockelasticacheClientMockDescribeCacheClustersPages.Unlock()
-	return mock.DescribeCacheClustersPagesFunc(in1, in2)
+	mock.lockDescribeCacheClustersPages.Unlock()
+	return mock.DescribeCacheClustersPagesFunc(describeCacheClustersInput, fn)
 }
 
 // DescribeCacheClustersPagesCalls gets all the calls that were made to DescribeCacheClustersPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheClustersPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheClustersPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheClustersInput
-	In2 func(*elasticache.DescribeCacheClustersOutput, bool) bool
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+	Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheClustersInput
-		In2 func(*elasticache.DescribeCacheClustersOutput, bool) bool
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheClustersPages.RLock()
+	mock.lockDescribeCacheClustersPages.RLock()
 	calls = mock.calls.DescribeCacheClustersPages
-	lockelasticacheClientMockDescribeCacheClustersPages.RUnlock()
+	mock.lockDescribeCacheClustersPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheClustersPagesWithContext calls DescribeCacheClustersPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheClustersPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 func(*elasticache.DescribeCacheClustersOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheClustersPagesWithContext(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, fn func(*elasticache.DescribeCacheClustersOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheClustersPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheClustersPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheClustersPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 func(*elasticache.DescribeCacheClustersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
+		Options                    []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:            contextMoqParam,
+		DescribeCacheClustersInput: describeCacheClustersInput,
+		Fn:                         fn,
+		Options:                    options,
 	}
-	lockelasticacheClientMockDescribeCacheClustersPagesWithContext.Lock()
+	mock.lockDescribeCacheClustersPagesWithContext.Lock()
 	mock.calls.DescribeCacheClustersPagesWithContext = append(mock.calls.DescribeCacheClustersPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheClustersPagesWithContext.Unlock()
-	return mock.DescribeCacheClustersPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheClustersPagesWithContext.Unlock()
+	return mock.DescribeCacheClustersPagesWithContextFunc(contextMoqParam, describeCacheClustersInput, fn, options...)
 }
 
 // DescribeCacheClustersPagesWithContextCalls gets all the calls that were made to DescribeCacheClustersPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheClustersPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheClustersPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheClustersInput
-	In3 func(*elasticache.DescribeCacheClustersOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam            context.Context
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+	Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
+	Options                    []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 func(*elasticache.DescribeCacheClustersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Fn                         func(*elasticache.DescribeCacheClustersOutput, bool) bool
+		Options                    []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheClustersPagesWithContext.RLock()
+	mock.lockDescribeCacheClustersPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheClustersPagesWithContext
-	lockelasticacheClientMockDescribeCacheClustersPagesWithContext.RUnlock()
+	mock.lockDescribeCacheClustersPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheClustersRequest calls DescribeCacheClustersRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheClustersRequest(in1 *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput) {
+func (mock *elasticacheClientMock) DescribeCacheClustersRequest(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) (*request.Request, *elasticache.DescribeCacheClustersOutput) {
 	if mock.DescribeCacheClustersRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheClustersRequestFunc: method is nil but elasticacheClient.DescribeCacheClustersRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}{
-		In1: in1,
+		DescribeCacheClustersInput: describeCacheClustersInput,
 	}
-	lockelasticacheClientMockDescribeCacheClustersRequest.Lock()
+	mock.lockDescribeCacheClustersRequest.Lock()
 	mock.calls.DescribeCacheClustersRequest = append(mock.calls.DescribeCacheClustersRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheClustersRequest.Unlock()
-	return mock.DescribeCacheClustersRequestFunc(in1)
+	mock.lockDescribeCacheClustersRequest.Unlock()
+	return mock.DescribeCacheClustersRequestFunc(describeCacheClustersInput)
 }
 
 // DescribeCacheClustersRequestCalls gets all the calls that were made to DescribeCacheClustersRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheClustersRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheClustersRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheClustersInput
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}
-	lockelasticacheClientMockDescribeCacheClustersRequest.RLock()
+	mock.lockDescribeCacheClustersRequest.RLock()
 	calls = mock.calls.DescribeCacheClustersRequest
-	lockelasticacheClientMockDescribeCacheClustersRequest.RUnlock()
+	mock.lockDescribeCacheClustersRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheClustersWithContext calls DescribeCacheClustersWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheClustersWithContext(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.Option) (*elasticache.DescribeCacheClustersOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheClustersWithContext(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, options ...request.Option) (*elasticache.DescribeCacheClustersOutput, error) {
 	if mock.DescribeCacheClustersWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheClustersWithContextFunc: method is nil but elasticacheClient.DescribeCacheClustersWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Options                    []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:            contextMoqParam,
+		DescribeCacheClustersInput: describeCacheClustersInput,
+		Options:                    options,
 	}
-	lockelasticacheClientMockDescribeCacheClustersWithContext.Lock()
+	mock.lockDescribeCacheClustersWithContext.Lock()
 	mock.calls.DescribeCacheClustersWithContext = append(mock.calls.DescribeCacheClustersWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheClustersWithContext.Unlock()
-	return mock.DescribeCacheClustersWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheClustersWithContext.Unlock()
+	return mock.DescribeCacheClustersWithContextFunc(contextMoqParam, describeCacheClustersInput, options...)
 }
 
 // DescribeCacheClustersWithContextCalls gets all the calls that were made to DescribeCacheClustersWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheClustersWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheClustersWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheClustersInput
-	In3 []request.Option
+	ContextMoqParam            context.Context
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+	Options                    []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		Options                    []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheClustersWithContext.RLock()
+	mock.lockDescribeCacheClustersWithContext.RLock()
 	calls = mock.calls.DescribeCacheClustersWithContext
-	lockelasticacheClientMockDescribeCacheClustersWithContext.RUnlock()
+	mock.lockDescribeCacheClustersWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheEngineVersions calls DescribeCacheEngineVersionsFunc.
-func (mock *elasticacheClientMock) DescribeCacheEngineVersions(in1 *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheEngineVersions(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
 	if mock.DescribeCacheEngineVersionsFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheEngineVersionsFunc: method is nil but elasticacheClient.DescribeCacheEngineVersions was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 	}{
-		In1: in1,
+		DescribeCacheEngineVersionsInput: describeCacheEngineVersionsInput,
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersions.Lock()
+	mock.lockDescribeCacheEngineVersions.Lock()
 	mock.calls.DescribeCacheEngineVersions = append(mock.calls.DescribeCacheEngineVersions, callInfo)
-	lockelasticacheClientMockDescribeCacheEngineVersions.Unlock()
-	return mock.DescribeCacheEngineVersionsFunc(in1)
+	mock.lockDescribeCacheEngineVersions.Unlock()
+	return mock.DescribeCacheEngineVersionsFunc(describeCacheEngineVersionsInput)
 }
 
 // DescribeCacheEngineVersionsCalls gets all the calls that were made to DescribeCacheEngineVersions.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheEngineVersionsCalls())
 func (mock *elasticacheClientMock) DescribeCacheEngineVersionsCalls() []struct {
-	In1 *elasticache.DescribeCacheEngineVersionsInput
+	DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersions.RLock()
+	mock.lockDescribeCacheEngineVersions.RLock()
 	calls = mock.calls.DescribeCacheEngineVersions
-	lockelasticacheClientMockDescribeCacheEngineVersions.RUnlock()
+	mock.lockDescribeCacheEngineVersions.RUnlock()
 	return calls
 }
 
 // DescribeCacheEngineVersionsPages calls DescribeCacheEngineVersionsPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPages(in1 *elasticache.DescribeCacheEngineVersionsInput, in2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPages(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool) error {
 	if mock.DescribeCacheEngineVersionsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheEngineVersionsPagesFunc: method is nil but elasticacheClient.DescribeCacheEngineVersionsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
-		In2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheEngineVersionsInput: describeCacheEngineVersionsInput,
+		Fn:                               fn,
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsPages.Lock()
+	mock.lockDescribeCacheEngineVersionsPages.Lock()
 	mock.calls.DescribeCacheEngineVersionsPages = append(mock.calls.DescribeCacheEngineVersionsPages, callInfo)
-	lockelasticacheClientMockDescribeCacheEngineVersionsPages.Unlock()
-	return mock.DescribeCacheEngineVersionsPagesFunc(in1, in2)
+	mock.lockDescribeCacheEngineVersionsPages.Unlock()
+	return mock.DescribeCacheEngineVersionsPagesFunc(describeCacheEngineVersionsInput, fn)
 }
 
 // DescribeCacheEngineVersionsPagesCalls gets all the calls that were made to DescribeCacheEngineVersionsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheEngineVersionsPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheEngineVersionsInput
-	In2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+	DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+	Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
-		In2 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsPages.RLock()
+	mock.lockDescribeCacheEngineVersionsPages.RLock()
 	calls = mock.calls.DescribeCacheEngineVersionsPages
-	lockelasticacheClientMockDescribeCacheEngineVersionsPages.RUnlock()
+	mock.lockDescribeCacheEngineVersionsPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheEngineVersionsPagesWithContext calls DescribeCacheEngineVersionsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPagesWithContext(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, fn func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheEngineVersionsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheEngineVersionsPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheEngineVersionsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheEngineVersionsInput
-		In3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+		Options                          []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                  contextMoqParam,
+		DescribeCacheEngineVersionsInput: describeCacheEngineVersionsInput,
+		Fn:                               fn,
+		Options:                          options,
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsPagesWithContext.Lock()
+	mock.lockDescribeCacheEngineVersionsPagesWithContext.Lock()
 	mock.calls.DescribeCacheEngineVersionsPagesWithContext = append(mock.calls.DescribeCacheEngineVersionsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheEngineVersionsPagesWithContext.Unlock()
-	return mock.DescribeCacheEngineVersionsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheEngineVersionsPagesWithContext.Unlock()
+	return mock.DescribeCacheEngineVersionsPagesWithContextFunc(contextMoqParam, describeCacheEngineVersionsInput, fn, options...)
 }
 
 // DescribeCacheEngineVersionsPagesWithContextCalls gets all the calls that were made to DescribeCacheEngineVersionsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheEngineVersionsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheEngineVersionsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheEngineVersionsInput
-	In3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                  context.Context
+	DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+	Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+	Options                          []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheEngineVersionsInput
-		In3 func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Fn                               func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool
+		Options                          []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsPagesWithContext.RLock()
+	mock.lockDescribeCacheEngineVersionsPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheEngineVersionsPagesWithContext
-	lockelasticacheClientMockDescribeCacheEngineVersionsPagesWithContext.RUnlock()
+	mock.lockDescribeCacheEngineVersionsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheEngineVersionsRequest calls DescribeCacheEngineVersionsRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheEngineVersionsRequest(in1 *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput) {
+func (mock *elasticacheClientMock) DescribeCacheEngineVersionsRequest(describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput) (*request.Request, *elasticache.DescribeCacheEngineVersionsOutput) {
 	if mock.DescribeCacheEngineVersionsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheEngineVersionsRequestFunc: method is nil but elasticacheClient.DescribeCacheEngineVersionsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 	}{
-		In1: in1,
+		DescribeCacheEngineVersionsInput: describeCacheEngineVersionsInput,
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsRequest.Lock()
+	mock.lockDescribeCacheEngineVersionsRequest.Lock()
 	mock.calls.DescribeCacheEngineVersionsRequest = append(mock.calls.DescribeCacheEngineVersionsRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheEngineVersionsRequest.Unlock()
-	return mock.DescribeCacheEngineVersionsRequestFunc(in1)
+	mock.lockDescribeCacheEngineVersionsRequest.Unlock()
+	return mock.DescribeCacheEngineVersionsRequestFunc(describeCacheEngineVersionsInput)
 }
 
 // DescribeCacheEngineVersionsRequestCalls gets all the calls that were made to DescribeCacheEngineVersionsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheEngineVersionsRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheEngineVersionsRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheEngineVersionsInput
+	DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheEngineVersionsInput
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsRequest.RLock()
+	mock.lockDescribeCacheEngineVersionsRequest.RLock()
 	calls = mock.calls.DescribeCacheEngineVersionsRequest
-	lockelasticacheClientMockDescribeCacheEngineVersionsRequest.RUnlock()
+	mock.lockDescribeCacheEngineVersionsRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheEngineVersionsWithContext calls DescribeCacheEngineVersionsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheEngineVersionsWithContext(in1 context.Context, in2 *elasticache.DescribeCacheEngineVersionsInput, in3 ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheEngineVersionsWithContext(contextMoqParam context.Context, describeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput, options ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
 	if mock.DescribeCacheEngineVersionsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheEngineVersionsWithContextFunc: method is nil but elasticacheClient.DescribeCacheEngineVersionsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheEngineVersionsInput
-		In3 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Options                          []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                  contextMoqParam,
+		DescribeCacheEngineVersionsInput: describeCacheEngineVersionsInput,
+		Options:                          options,
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsWithContext.Lock()
+	mock.lockDescribeCacheEngineVersionsWithContext.Lock()
 	mock.calls.DescribeCacheEngineVersionsWithContext = append(mock.calls.DescribeCacheEngineVersionsWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheEngineVersionsWithContext.Unlock()
-	return mock.DescribeCacheEngineVersionsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheEngineVersionsWithContext.Unlock()
+	return mock.DescribeCacheEngineVersionsWithContextFunc(contextMoqParam, describeCacheEngineVersionsInput, options...)
 }
 
 // DescribeCacheEngineVersionsWithContextCalls gets all the calls that were made to DescribeCacheEngineVersionsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheEngineVersionsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheEngineVersionsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheEngineVersionsInput
-	In3 []request.Option
+	ContextMoqParam                  context.Context
+	DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+	Options                          []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheEngineVersionsInput
-		In3 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheEngineVersionsInput *elasticache.DescribeCacheEngineVersionsInput
+		Options                          []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheEngineVersionsWithContext.RLock()
+	mock.lockDescribeCacheEngineVersionsWithContext.RLock()
 	calls = mock.calls.DescribeCacheEngineVersionsWithContext
-	lockelasticacheClientMockDescribeCacheEngineVersionsWithContext.RUnlock()
+	mock.lockDescribeCacheEngineVersionsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameterGroups calls DescribeCacheParameterGroupsFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameterGroups(in1 *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheParameterGroups(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
 	if mock.DescribeCacheParameterGroupsFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParameterGroupsFunc: method is nil but elasticacheClient.DescribeCacheParameterGroups was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheParameterGroupsInput: describeCacheParameterGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroups.Lock()
+	mock.lockDescribeCacheParameterGroups.Lock()
 	mock.calls.DescribeCacheParameterGroups = append(mock.calls.DescribeCacheParameterGroups, callInfo)
-	lockelasticacheClientMockDescribeCacheParameterGroups.Unlock()
-	return mock.DescribeCacheParameterGroupsFunc(in1)
+	mock.lockDescribeCacheParameterGroups.Unlock()
+	return mock.DescribeCacheParameterGroupsFunc(describeCacheParameterGroupsInput)
 }
 
 // DescribeCacheParameterGroupsCalls gets all the calls that were made to DescribeCacheParameterGroups.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParameterGroupsCalls())
 func (mock *elasticacheClientMock) DescribeCacheParameterGroupsCalls() []struct {
-	In1 *elasticache.DescribeCacheParameterGroupsInput
+	DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroups.RLock()
+	mock.lockDescribeCacheParameterGroups.RLock()
 	calls = mock.calls.DescribeCacheParameterGroups
-	lockelasticacheClientMockDescribeCacheParameterGroups.RUnlock()
+	mock.lockDescribeCacheParameterGroups.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameterGroupsPages calls DescribeCacheParameterGroupsPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPages(in1 *elasticache.DescribeCacheParameterGroupsInput, in2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPages(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool) error {
 	if mock.DescribeCacheParameterGroupsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParameterGroupsPagesFunc: method is nil but elasticacheClient.DescribeCacheParameterGroupsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
-		In2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheParameterGroupsInput: describeCacheParameterGroupsInput,
+		Fn:                                fn,
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsPages.Lock()
+	mock.lockDescribeCacheParameterGroupsPages.Lock()
 	mock.calls.DescribeCacheParameterGroupsPages = append(mock.calls.DescribeCacheParameterGroupsPages, callInfo)
-	lockelasticacheClientMockDescribeCacheParameterGroupsPages.Unlock()
-	return mock.DescribeCacheParameterGroupsPagesFunc(in1, in2)
+	mock.lockDescribeCacheParameterGroupsPages.Unlock()
+	return mock.DescribeCacheParameterGroupsPagesFunc(describeCacheParameterGroupsInput, fn)
 }
 
 // DescribeCacheParameterGroupsPagesCalls gets all the calls that were made to DescribeCacheParameterGroupsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParameterGroupsPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheParameterGroupsInput
-	In2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+	DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+	Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
-		In2 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsPages.RLock()
+	mock.lockDescribeCacheParameterGroupsPages.RLock()
 	calls = mock.calls.DescribeCacheParameterGroupsPages
-	lockelasticacheClientMockDescribeCacheParameterGroupsPages.RUnlock()
+	mock.lockDescribeCacheParameterGroupsPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameterGroupsPagesWithContext calls DescribeCacheParameterGroupsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPagesWithContext(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, fn func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheParameterGroupsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParameterGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheParameterGroupsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParameterGroupsInput
-		In3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                   context.Context
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+		Options                           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                   contextMoqParam,
+		DescribeCacheParameterGroupsInput: describeCacheParameterGroupsInput,
+		Fn:                                fn,
+		Options:                           options,
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsPagesWithContext.Lock()
+	mock.lockDescribeCacheParameterGroupsPagesWithContext.Lock()
 	mock.calls.DescribeCacheParameterGroupsPagesWithContext = append(mock.calls.DescribeCacheParameterGroupsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheParameterGroupsPagesWithContext.Unlock()
-	return mock.DescribeCacheParameterGroupsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheParameterGroupsPagesWithContext.Unlock()
+	return mock.DescribeCacheParameterGroupsPagesWithContextFunc(contextMoqParam, describeCacheParameterGroupsInput, fn, options...)
 }
 
 // DescribeCacheParameterGroupsPagesWithContextCalls gets all the calls that were made to DescribeCacheParameterGroupsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParameterGroupsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheParameterGroupsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheParameterGroupsInput
-	In3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                   context.Context
+	DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+	Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+	Options                           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParameterGroupsInput
-		In3 func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                   context.Context
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Fn                                func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool
+		Options                           []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsPagesWithContext.RLock()
+	mock.lockDescribeCacheParameterGroupsPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheParameterGroupsPagesWithContext
-	lockelasticacheClientMockDescribeCacheParameterGroupsPagesWithContext.RUnlock()
+	mock.lockDescribeCacheParameterGroupsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameterGroupsRequest calls DescribeCacheParameterGroupsRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameterGroupsRequest(in1 *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput) {
+func (mock *elasticacheClientMock) DescribeCacheParameterGroupsRequest(describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput) (*request.Request, *elasticache.DescribeCacheParameterGroupsOutput) {
 	if mock.DescribeCacheParameterGroupsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParameterGroupsRequestFunc: method is nil but elasticacheClient.DescribeCacheParameterGroupsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheParameterGroupsInput: describeCacheParameterGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsRequest.Lock()
+	mock.lockDescribeCacheParameterGroupsRequest.Lock()
 	mock.calls.DescribeCacheParameterGroupsRequest = append(mock.calls.DescribeCacheParameterGroupsRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheParameterGroupsRequest.Unlock()
-	return mock.DescribeCacheParameterGroupsRequestFunc(in1)
+	mock.lockDescribeCacheParameterGroupsRequest.Unlock()
+	return mock.DescribeCacheParameterGroupsRequestFunc(describeCacheParameterGroupsInput)
 }
 
 // DescribeCacheParameterGroupsRequestCalls gets all the calls that were made to DescribeCacheParameterGroupsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParameterGroupsRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheParameterGroupsRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheParameterGroupsInput
+	DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParameterGroupsInput
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsRequest.RLock()
+	mock.lockDescribeCacheParameterGroupsRequest.RLock()
 	calls = mock.calls.DescribeCacheParameterGroupsRequest
-	lockelasticacheClientMockDescribeCacheParameterGroupsRequest.RUnlock()
+	mock.lockDescribeCacheParameterGroupsRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameterGroupsWithContext calls DescribeCacheParameterGroupsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameterGroupsWithContext(in1 context.Context, in2 *elasticache.DescribeCacheParameterGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheParameterGroupsWithContext(contextMoqParam context.Context, describeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput, options ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
 	if mock.DescribeCacheParameterGroupsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParameterGroupsWithContextFunc: method is nil but elasticacheClient.DescribeCacheParameterGroupsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParameterGroupsInput
-		In3 []request.Option
+		ContextMoqParam                   context.Context
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Options                           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                   contextMoqParam,
+		DescribeCacheParameterGroupsInput: describeCacheParameterGroupsInput,
+		Options:                           options,
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsWithContext.Lock()
+	mock.lockDescribeCacheParameterGroupsWithContext.Lock()
 	mock.calls.DescribeCacheParameterGroupsWithContext = append(mock.calls.DescribeCacheParameterGroupsWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheParameterGroupsWithContext.Unlock()
-	return mock.DescribeCacheParameterGroupsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheParameterGroupsWithContext.Unlock()
+	return mock.DescribeCacheParameterGroupsWithContextFunc(contextMoqParam, describeCacheParameterGroupsInput, options...)
 }
 
 // DescribeCacheParameterGroupsWithContextCalls gets all the calls that were made to DescribeCacheParameterGroupsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParameterGroupsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheParameterGroupsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheParameterGroupsInput
-	In3 []request.Option
+	ContextMoqParam                   context.Context
+	DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+	Options                           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParameterGroupsInput
-		In3 []request.Option
+		ContextMoqParam                   context.Context
+		DescribeCacheParameterGroupsInput *elasticache.DescribeCacheParameterGroupsInput
+		Options                           []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheParameterGroupsWithContext.RLock()
+	mock.lockDescribeCacheParameterGroupsWithContext.RLock()
 	calls = mock.calls.DescribeCacheParameterGroupsWithContext
-	lockelasticacheClientMockDescribeCacheParameterGroupsWithContext.RUnlock()
+	mock.lockDescribeCacheParameterGroupsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheParameters calls DescribeCacheParametersFunc.
-func (mock *elasticacheClientMock) DescribeCacheParameters(in1 *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheParameters(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*elasticache.DescribeCacheParametersOutput, error) {
 	if mock.DescribeCacheParametersFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParametersFunc: method is nil but elasticacheClient.DescribeCacheParameters was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParametersInput
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 	}{
-		In1: in1,
+		DescribeCacheParametersInput: describeCacheParametersInput,
 	}
-	lockelasticacheClientMockDescribeCacheParameters.Lock()
+	mock.lockDescribeCacheParameters.Lock()
 	mock.calls.DescribeCacheParameters = append(mock.calls.DescribeCacheParameters, callInfo)
-	lockelasticacheClientMockDescribeCacheParameters.Unlock()
-	return mock.DescribeCacheParametersFunc(in1)
+	mock.lockDescribeCacheParameters.Unlock()
+	return mock.DescribeCacheParametersFunc(describeCacheParametersInput)
 }
 
 // DescribeCacheParametersCalls gets all the calls that were made to DescribeCacheParameters.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParametersCalls())
 func (mock *elasticacheClientMock) DescribeCacheParametersCalls() []struct {
-	In1 *elasticache.DescribeCacheParametersInput
+	DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParametersInput
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 	}
-	lockelasticacheClientMockDescribeCacheParameters.RLock()
+	mock.lockDescribeCacheParameters.RLock()
 	calls = mock.calls.DescribeCacheParameters
-	lockelasticacheClientMockDescribeCacheParameters.RUnlock()
+	mock.lockDescribeCacheParameters.RUnlock()
 	return calls
 }
 
 // DescribeCacheParametersPages calls DescribeCacheParametersPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheParametersPages(in1 *elasticache.DescribeCacheParametersInput, in2 func(*elasticache.DescribeCacheParametersOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheParametersPages(describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool) error {
 	if mock.DescribeCacheParametersPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParametersPagesFunc: method is nil but elasticacheClient.DescribeCacheParametersPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParametersInput
-		In2 func(*elasticache.DescribeCacheParametersOutput, bool) bool
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheParametersInput: describeCacheParametersInput,
+		Fn:                           fn,
 	}
-	lockelasticacheClientMockDescribeCacheParametersPages.Lock()
+	mock.lockDescribeCacheParametersPages.Lock()
 	mock.calls.DescribeCacheParametersPages = append(mock.calls.DescribeCacheParametersPages, callInfo)
-	lockelasticacheClientMockDescribeCacheParametersPages.Unlock()
-	return mock.DescribeCacheParametersPagesFunc(in1, in2)
+	mock.lockDescribeCacheParametersPages.Unlock()
+	return mock.DescribeCacheParametersPagesFunc(describeCacheParametersInput, fn)
 }
 
 // DescribeCacheParametersPagesCalls gets all the calls that were made to DescribeCacheParametersPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParametersPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheParametersPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheParametersInput
-	In2 func(*elasticache.DescribeCacheParametersOutput, bool) bool
+	DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+	Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParametersInput
-		In2 func(*elasticache.DescribeCacheParametersOutput, bool) bool
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheParametersPages.RLock()
+	mock.lockDescribeCacheParametersPages.RLock()
 	calls = mock.calls.DescribeCacheParametersPages
-	lockelasticacheClientMockDescribeCacheParametersPages.RUnlock()
+	mock.lockDescribeCacheParametersPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheParametersPagesWithContext calls DescribeCacheParametersPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheParametersPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 func(*elasticache.DescribeCacheParametersOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheParametersPagesWithContext(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, fn func(*elasticache.DescribeCacheParametersOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheParametersPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParametersPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheParametersPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParametersInput
-		In3 func(*elasticache.DescribeCacheParametersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam              context.Context
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
+		Options                      []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:              contextMoqParam,
+		DescribeCacheParametersInput: describeCacheParametersInput,
+		Fn:                           fn,
+		Options:                      options,
 	}
-	lockelasticacheClientMockDescribeCacheParametersPagesWithContext.Lock()
+	mock.lockDescribeCacheParametersPagesWithContext.Lock()
 	mock.calls.DescribeCacheParametersPagesWithContext = append(mock.calls.DescribeCacheParametersPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheParametersPagesWithContext.Unlock()
-	return mock.DescribeCacheParametersPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheParametersPagesWithContext.Unlock()
+	return mock.DescribeCacheParametersPagesWithContextFunc(contextMoqParam, describeCacheParametersInput, fn, options...)
 }
 
 // DescribeCacheParametersPagesWithContextCalls gets all the calls that were made to DescribeCacheParametersPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParametersPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheParametersPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheParametersInput
-	In3 func(*elasticache.DescribeCacheParametersOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam              context.Context
+	DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+	Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
+	Options                      []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParametersInput
-		In3 func(*elasticache.DescribeCacheParametersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam              context.Context
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Fn                           func(*elasticache.DescribeCacheParametersOutput, bool) bool
+		Options                      []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheParametersPagesWithContext.RLock()
+	mock.lockDescribeCacheParametersPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheParametersPagesWithContext
-	lockelasticacheClientMockDescribeCacheParametersPagesWithContext.RUnlock()
+	mock.lockDescribeCacheParametersPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheParametersRequest calls DescribeCacheParametersRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheParametersRequest(in1 *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput) {
+func (mock *elasticacheClientMock) DescribeCacheParametersRequest(describeCacheParametersInput *elasticache.DescribeCacheParametersInput) (*request.Request, *elasticache.DescribeCacheParametersOutput) {
 	if mock.DescribeCacheParametersRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParametersRequestFunc: method is nil but elasticacheClient.DescribeCacheParametersRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheParametersInput
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 	}{
-		In1: in1,
+		DescribeCacheParametersInput: describeCacheParametersInput,
 	}
-	lockelasticacheClientMockDescribeCacheParametersRequest.Lock()
+	mock.lockDescribeCacheParametersRequest.Lock()
 	mock.calls.DescribeCacheParametersRequest = append(mock.calls.DescribeCacheParametersRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheParametersRequest.Unlock()
-	return mock.DescribeCacheParametersRequestFunc(in1)
+	mock.lockDescribeCacheParametersRequest.Unlock()
+	return mock.DescribeCacheParametersRequestFunc(describeCacheParametersInput)
 }
 
 // DescribeCacheParametersRequestCalls gets all the calls that were made to DescribeCacheParametersRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParametersRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheParametersRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheParametersInput
+	DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheParametersInput
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
 	}
-	lockelasticacheClientMockDescribeCacheParametersRequest.RLock()
+	mock.lockDescribeCacheParametersRequest.RLock()
 	calls = mock.calls.DescribeCacheParametersRequest
-	lockelasticacheClientMockDescribeCacheParametersRequest.RUnlock()
+	mock.lockDescribeCacheParametersRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheParametersWithContext calls DescribeCacheParametersWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheParametersWithContext(in1 context.Context, in2 *elasticache.DescribeCacheParametersInput, in3 ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheParametersWithContext(contextMoqParam context.Context, describeCacheParametersInput *elasticache.DescribeCacheParametersInput, options ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
 	if mock.DescribeCacheParametersWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheParametersWithContextFunc: method is nil but elasticacheClient.DescribeCacheParametersWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParametersInput
-		In3 []request.Option
+		ContextMoqParam              context.Context
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Options                      []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:              contextMoqParam,
+		DescribeCacheParametersInput: describeCacheParametersInput,
+		Options:                      options,
 	}
-	lockelasticacheClientMockDescribeCacheParametersWithContext.Lock()
+	mock.lockDescribeCacheParametersWithContext.Lock()
 	mock.calls.DescribeCacheParametersWithContext = append(mock.calls.DescribeCacheParametersWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheParametersWithContext.Unlock()
-	return mock.DescribeCacheParametersWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheParametersWithContext.Unlock()
+	return mock.DescribeCacheParametersWithContextFunc(contextMoqParam, describeCacheParametersInput, options...)
 }
 
 // DescribeCacheParametersWithContextCalls gets all the calls that were made to DescribeCacheParametersWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheParametersWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheParametersWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheParametersInput
-	In3 []request.Option
+	ContextMoqParam              context.Context
+	DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+	Options                      []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheParametersInput
-		In3 []request.Option
+		ContextMoqParam              context.Context
+		DescribeCacheParametersInput *elasticache.DescribeCacheParametersInput
+		Options                      []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheParametersWithContext.RLock()
+	mock.lockDescribeCacheParametersWithContext.RLock()
 	calls = mock.calls.DescribeCacheParametersWithContext
-	lockelasticacheClientMockDescribeCacheParametersWithContext.RUnlock()
+	mock.lockDescribeCacheParametersWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheSecurityGroups calls DescribeCacheSecurityGroupsFunc.
-func (mock *elasticacheClientMock) DescribeCacheSecurityGroups(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheSecurityGroups(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
 	if mock.DescribeCacheSecurityGroupsFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSecurityGroupsFunc: method is nil but elasticacheClient.DescribeCacheSecurityGroups was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheSecurityGroupsInput: describeCacheSecurityGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroups.Lock()
+	mock.lockDescribeCacheSecurityGroups.Lock()
 	mock.calls.DescribeCacheSecurityGroups = append(mock.calls.DescribeCacheSecurityGroups, callInfo)
-	lockelasticacheClientMockDescribeCacheSecurityGroups.Unlock()
-	return mock.DescribeCacheSecurityGroupsFunc(in1)
+	mock.lockDescribeCacheSecurityGroups.Unlock()
+	return mock.DescribeCacheSecurityGroupsFunc(describeCacheSecurityGroupsInput)
 }
 
 // DescribeCacheSecurityGroupsCalls gets all the calls that were made to DescribeCacheSecurityGroups.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSecurityGroupsCalls())
 func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsCalls() []struct {
-	In1 *elasticache.DescribeCacheSecurityGroupsInput
+	DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroups.RLock()
+	mock.lockDescribeCacheSecurityGroups.RLock()
 	calls = mock.calls.DescribeCacheSecurityGroups
-	lockelasticacheClientMockDescribeCacheSecurityGroups.RUnlock()
+	mock.lockDescribeCacheSecurityGroups.RUnlock()
 	return calls
 }
 
 // DescribeCacheSecurityGroupsPages calls DescribeCacheSecurityGroupsPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPages(in1 *elasticache.DescribeCacheSecurityGroupsInput, in2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPages(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool) error {
 	if mock.DescribeCacheSecurityGroupsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSecurityGroupsPagesFunc: method is nil but elasticacheClient.DescribeCacheSecurityGroupsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
-		In2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheSecurityGroupsInput: describeCacheSecurityGroupsInput,
+		Fn:                               fn,
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPages.Lock()
+	mock.lockDescribeCacheSecurityGroupsPages.Lock()
 	mock.calls.DescribeCacheSecurityGroupsPages = append(mock.calls.DescribeCacheSecurityGroupsPages, callInfo)
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPages.Unlock()
-	return mock.DescribeCacheSecurityGroupsPagesFunc(in1, in2)
+	mock.lockDescribeCacheSecurityGroupsPages.Unlock()
+	return mock.DescribeCacheSecurityGroupsPagesFunc(describeCacheSecurityGroupsInput, fn)
 }
 
 // DescribeCacheSecurityGroupsPagesCalls gets all the calls that were made to DescribeCacheSecurityGroupsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSecurityGroupsPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheSecurityGroupsInput
-	In2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+	DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+	Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
-		In2 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPages.RLock()
+	mock.lockDescribeCacheSecurityGroupsPages.RLock()
 	calls = mock.calls.DescribeCacheSecurityGroupsPages
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPages.RUnlock()
+	mock.lockDescribeCacheSecurityGroupsPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheSecurityGroupsPagesWithContext calls DescribeCacheSecurityGroupsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPagesWithContext(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, fn func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheSecurityGroupsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSecurityGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheSecurityGroupsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSecurityGroupsInput
-		In3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+		Options                          []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                  contextMoqParam,
+		DescribeCacheSecurityGroupsInput: describeCacheSecurityGroupsInput,
+		Fn:                               fn,
+		Options:                          options,
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPagesWithContext.Lock()
+	mock.lockDescribeCacheSecurityGroupsPagesWithContext.Lock()
 	mock.calls.DescribeCacheSecurityGroupsPagesWithContext = append(mock.calls.DescribeCacheSecurityGroupsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPagesWithContext.Unlock()
-	return mock.DescribeCacheSecurityGroupsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheSecurityGroupsPagesWithContext.Unlock()
+	return mock.DescribeCacheSecurityGroupsPagesWithContextFunc(contextMoqParam, describeCacheSecurityGroupsInput, fn, options...)
 }
 
 // DescribeCacheSecurityGroupsPagesWithContextCalls gets all the calls that were made to DescribeCacheSecurityGroupsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSecurityGroupsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheSecurityGroupsInput
-	In3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                  context.Context
+	DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+	Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+	Options                          []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSecurityGroupsInput
-		In3 func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Fn                               func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool
+		Options                          []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPagesWithContext.RLock()
+	mock.lockDescribeCacheSecurityGroupsPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheSecurityGroupsPagesWithContext
-	lockelasticacheClientMockDescribeCacheSecurityGroupsPagesWithContext.RUnlock()
+	mock.lockDescribeCacheSecurityGroupsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheSecurityGroupsRequest calls DescribeCacheSecurityGroupsRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsRequest(in1 *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput) {
+func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsRequest(describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput) (*request.Request, *elasticache.DescribeCacheSecurityGroupsOutput) {
 	if mock.DescribeCacheSecurityGroupsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSecurityGroupsRequestFunc: method is nil but elasticacheClient.DescribeCacheSecurityGroupsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheSecurityGroupsInput: describeCacheSecurityGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsRequest.Lock()
+	mock.lockDescribeCacheSecurityGroupsRequest.Lock()
 	mock.calls.DescribeCacheSecurityGroupsRequest = append(mock.calls.DescribeCacheSecurityGroupsRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheSecurityGroupsRequest.Unlock()
-	return mock.DescribeCacheSecurityGroupsRequestFunc(in1)
+	mock.lockDescribeCacheSecurityGroupsRequest.Unlock()
+	return mock.DescribeCacheSecurityGroupsRequestFunc(describeCacheSecurityGroupsInput)
 }
 
 // DescribeCacheSecurityGroupsRequestCalls gets all the calls that were made to DescribeCacheSecurityGroupsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSecurityGroupsRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheSecurityGroupsInput
+	DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSecurityGroupsInput
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsRequest.RLock()
+	mock.lockDescribeCacheSecurityGroupsRequest.RLock()
 	calls = mock.calls.DescribeCacheSecurityGroupsRequest
-	lockelasticacheClientMockDescribeCacheSecurityGroupsRequest.RUnlock()
+	mock.lockDescribeCacheSecurityGroupsRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheSecurityGroupsWithContext calls DescribeCacheSecurityGroupsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsWithContext(in1 context.Context, in2 *elasticache.DescribeCacheSecurityGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsWithContext(contextMoqParam context.Context, describeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
 	if mock.DescribeCacheSecurityGroupsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSecurityGroupsWithContextFunc: method is nil but elasticacheClient.DescribeCacheSecurityGroupsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSecurityGroupsInput
-		In3 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Options                          []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                  contextMoqParam,
+		DescribeCacheSecurityGroupsInput: describeCacheSecurityGroupsInput,
+		Options:                          options,
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsWithContext.Lock()
+	mock.lockDescribeCacheSecurityGroupsWithContext.Lock()
 	mock.calls.DescribeCacheSecurityGroupsWithContext = append(mock.calls.DescribeCacheSecurityGroupsWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheSecurityGroupsWithContext.Unlock()
-	return mock.DescribeCacheSecurityGroupsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheSecurityGroupsWithContext.Unlock()
+	return mock.DescribeCacheSecurityGroupsWithContextFunc(contextMoqParam, describeCacheSecurityGroupsInput, options...)
 }
 
 // DescribeCacheSecurityGroupsWithContextCalls gets all the calls that were made to DescribeCacheSecurityGroupsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSecurityGroupsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheSecurityGroupsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheSecurityGroupsInput
-	In3 []request.Option
+	ContextMoqParam                  context.Context
+	DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+	Options                          []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSecurityGroupsInput
-		In3 []request.Option
+		ContextMoqParam                  context.Context
+		DescribeCacheSecurityGroupsInput *elasticache.DescribeCacheSecurityGroupsInput
+		Options                          []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheSecurityGroupsWithContext.RLock()
+	mock.lockDescribeCacheSecurityGroupsWithContext.RLock()
 	calls = mock.calls.DescribeCacheSecurityGroupsWithContext
-	lockelasticacheClientMockDescribeCacheSecurityGroupsWithContext.RUnlock()
+	mock.lockDescribeCacheSecurityGroupsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheSubnetGroups calls DescribeCacheSubnetGroupsFunc.
-func (mock *elasticacheClientMock) DescribeCacheSubnetGroups(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheSubnetGroups(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
 	if mock.DescribeCacheSubnetGroupsFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSubnetGroupsFunc: method is nil but elasticacheClient.DescribeCacheSubnetGroups was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheSubnetGroupsInput: describeCacheSubnetGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroups.Lock()
+	mock.lockDescribeCacheSubnetGroups.Lock()
 	mock.calls.DescribeCacheSubnetGroups = append(mock.calls.DescribeCacheSubnetGroups, callInfo)
-	lockelasticacheClientMockDescribeCacheSubnetGroups.Unlock()
-	return mock.DescribeCacheSubnetGroupsFunc(in1)
+	mock.lockDescribeCacheSubnetGroups.Unlock()
+	return mock.DescribeCacheSubnetGroupsFunc(describeCacheSubnetGroupsInput)
 }
 
 // DescribeCacheSubnetGroupsCalls gets all the calls that were made to DescribeCacheSubnetGroups.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSubnetGroupsCalls())
 func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsCalls() []struct {
-	In1 *elasticache.DescribeCacheSubnetGroupsInput
+	DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroups.RLock()
+	mock.lockDescribeCacheSubnetGroups.RLock()
 	calls = mock.calls.DescribeCacheSubnetGroups
-	lockelasticacheClientMockDescribeCacheSubnetGroups.RUnlock()
+	mock.lockDescribeCacheSubnetGroups.RUnlock()
 	return calls
 }
 
 // DescribeCacheSubnetGroupsPages calls DescribeCacheSubnetGroupsPagesFunc.
-func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPages(in1 *elasticache.DescribeCacheSubnetGroupsInput, in2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPages(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool) error {
 	if mock.DescribeCacheSubnetGroupsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSubnetGroupsPagesFunc: method is nil but elasticacheClient.DescribeCacheSubnetGroupsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
-		In2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeCacheSubnetGroupsInput: describeCacheSubnetGroupsInput,
+		Fn:                             fn,
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPages.Lock()
+	mock.lockDescribeCacheSubnetGroupsPages.Lock()
 	mock.calls.DescribeCacheSubnetGroupsPages = append(mock.calls.DescribeCacheSubnetGroupsPages, callInfo)
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPages.Unlock()
-	return mock.DescribeCacheSubnetGroupsPagesFunc(in1, in2)
+	mock.lockDescribeCacheSubnetGroupsPages.Unlock()
+	return mock.DescribeCacheSubnetGroupsPagesFunc(describeCacheSubnetGroupsInput, fn)
 }
 
 // DescribeCacheSubnetGroupsPagesCalls gets all the calls that were made to DescribeCacheSubnetGroupsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSubnetGroupsPagesCalls())
 func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPagesCalls() []struct {
-	In1 *elasticache.DescribeCacheSubnetGroupsInput
-	In2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+	DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+	Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
-		In2 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPages.RLock()
+	mock.lockDescribeCacheSubnetGroupsPages.RLock()
 	calls = mock.calls.DescribeCacheSubnetGroupsPages
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPages.RUnlock()
+	mock.lockDescribeCacheSubnetGroupsPages.RUnlock()
 	return calls
 }
 
 // DescribeCacheSubnetGroupsPagesWithContext calls DescribeCacheSubnetGroupsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPagesWithContext(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, fn func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeCacheSubnetGroupsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSubnetGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeCacheSubnetGroupsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSubnetGroupsInput
-		In3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                context.Context
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                contextMoqParam,
+		DescribeCacheSubnetGroupsInput: describeCacheSubnetGroupsInput,
+		Fn:                             fn,
+		Options:                        options,
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPagesWithContext.Lock()
+	mock.lockDescribeCacheSubnetGroupsPagesWithContext.Lock()
 	mock.calls.DescribeCacheSubnetGroupsPagesWithContext = append(mock.calls.DescribeCacheSubnetGroupsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPagesWithContext.Unlock()
-	return mock.DescribeCacheSubnetGroupsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeCacheSubnetGroupsPagesWithContext.Unlock()
+	return mock.DescribeCacheSubnetGroupsPagesWithContextFunc(contextMoqParam, describeCacheSubnetGroupsInput, fn, options...)
 }
 
 // DescribeCacheSubnetGroupsPagesWithContextCalls gets all the calls that were made to DescribeCacheSubnetGroupsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSubnetGroupsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheSubnetGroupsInput
-	In3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                context.Context
+	DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+	Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSubnetGroupsInput
-		In3 func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                context.Context
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Fn                             func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPagesWithContext.RLock()
+	mock.lockDescribeCacheSubnetGroupsPagesWithContext.RLock()
 	calls = mock.calls.DescribeCacheSubnetGroupsPagesWithContext
-	lockelasticacheClientMockDescribeCacheSubnetGroupsPagesWithContext.RUnlock()
+	mock.lockDescribeCacheSubnetGroupsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeCacheSubnetGroupsRequest calls DescribeCacheSubnetGroupsRequestFunc.
-func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsRequest(in1 *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput) {
+func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsRequest(describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput) (*request.Request, *elasticache.DescribeCacheSubnetGroupsOutput) {
 	if mock.DescribeCacheSubnetGroupsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSubnetGroupsRequestFunc: method is nil but elasticacheClient.DescribeCacheSubnetGroupsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 	}{
-		In1: in1,
+		DescribeCacheSubnetGroupsInput: describeCacheSubnetGroupsInput,
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsRequest.Lock()
+	mock.lockDescribeCacheSubnetGroupsRequest.Lock()
 	mock.calls.DescribeCacheSubnetGroupsRequest = append(mock.calls.DescribeCacheSubnetGroupsRequest, callInfo)
-	lockelasticacheClientMockDescribeCacheSubnetGroupsRequest.Unlock()
-	return mock.DescribeCacheSubnetGroupsRequestFunc(in1)
+	mock.lockDescribeCacheSubnetGroupsRequest.Unlock()
+	return mock.DescribeCacheSubnetGroupsRequestFunc(describeCacheSubnetGroupsInput)
 }
 
 // DescribeCacheSubnetGroupsRequestCalls gets all the calls that were made to DescribeCacheSubnetGroupsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSubnetGroupsRequestCalls())
 func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsRequestCalls() []struct {
-	In1 *elasticache.DescribeCacheSubnetGroupsInput
+	DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheSubnetGroupsInput
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsRequest.RLock()
+	mock.lockDescribeCacheSubnetGroupsRequest.RLock()
 	calls = mock.calls.DescribeCacheSubnetGroupsRequest
-	lockelasticacheClientMockDescribeCacheSubnetGroupsRequest.RUnlock()
+	mock.lockDescribeCacheSubnetGroupsRequest.RUnlock()
 	return calls
 }
 
 // DescribeCacheSubnetGroupsWithContext calls DescribeCacheSubnetGroupsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsWithContext(in1 context.Context, in2 *elasticache.DescribeCacheSubnetGroupsInput, in3 ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsWithContext(contextMoqParam context.Context, describeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput, options ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
 	if mock.DescribeCacheSubnetGroupsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeCacheSubnetGroupsWithContextFunc: method is nil but elasticacheClient.DescribeCacheSubnetGroupsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSubnetGroupsInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		DescribeCacheSubnetGroupsInput: describeCacheSubnetGroupsInput,
+		Options:                        options,
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsWithContext.Lock()
+	mock.lockDescribeCacheSubnetGroupsWithContext.Lock()
 	mock.calls.DescribeCacheSubnetGroupsWithContext = append(mock.calls.DescribeCacheSubnetGroupsWithContext, callInfo)
-	lockelasticacheClientMockDescribeCacheSubnetGroupsWithContext.Unlock()
-	return mock.DescribeCacheSubnetGroupsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeCacheSubnetGroupsWithContext.Unlock()
+	return mock.DescribeCacheSubnetGroupsWithContextFunc(contextMoqParam, describeCacheSubnetGroupsInput, options...)
 }
 
 // DescribeCacheSubnetGroupsWithContextCalls gets all the calls that were made to DescribeCacheSubnetGroupsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeCacheSubnetGroupsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeCacheSubnetGroupsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheSubnetGroupsInput
-	In3 []request.Option
+	ContextMoqParam                context.Context
+	DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheSubnetGroupsInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DescribeCacheSubnetGroupsInput *elasticache.DescribeCacheSubnetGroupsInput
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockDescribeCacheSubnetGroupsWithContext.RLock()
+	mock.lockDescribeCacheSubnetGroupsWithContext.RLock()
 	calls = mock.calls.DescribeCacheSubnetGroupsWithContext
-	lockelasticacheClientMockDescribeCacheSubnetGroupsWithContext.RUnlock()
+	mock.lockDescribeCacheSubnetGroupsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeEngineDefaultParameters calls DescribeEngineDefaultParametersFunc.
-func (mock *elasticacheClientMock) DescribeEngineDefaultParameters(in1 *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
+func (mock *elasticacheClientMock) DescribeEngineDefaultParameters(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
 	if mock.DescribeEngineDefaultParametersFunc == nil {
 		panic("elasticacheClientMock.DescribeEngineDefaultParametersFunc: method is nil but elasticacheClient.DescribeEngineDefaultParameters was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 	}{
-		In1: in1,
+		DescribeEngineDefaultParametersInput: describeEngineDefaultParametersInput,
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParameters.Lock()
+	mock.lockDescribeEngineDefaultParameters.Lock()
 	mock.calls.DescribeEngineDefaultParameters = append(mock.calls.DescribeEngineDefaultParameters, callInfo)
-	lockelasticacheClientMockDescribeEngineDefaultParameters.Unlock()
-	return mock.DescribeEngineDefaultParametersFunc(in1)
+	mock.lockDescribeEngineDefaultParameters.Unlock()
+	return mock.DescribeEngineDefaultParametersFunc(describeEngineDefaultParametersInput)
 }
 
 // DescribeEngineDefaultParametersCalls gets all the calls that were made to DescribeEngineDefaultParameters.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEngineDefaultParametersCalls())
 func (mock *elasticacheClientMock) DescribeEngineDefaultParametersCalls() []struct {
-	In1 *elasticache.DescribeEngineDefaultParametersInput
+	DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParameters.RLock()
+	mock.lockDescribeEngineDefaultParameters.RLock()
 	calls = mock.calls.DescribeEngineDefaultParameters
-	lockelasticacheClientMockDescribeEngineDefaultParameters.RUnlock()
+	mock.lockDescribeEngineDefaultParameters.RUnlock()
 	return calls
 }
 
 // DescribeEngineDefaultParametersPages calls DescribeEngineDefaultParametersPagesFunc.
-func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPages(in1 *elasticache.DescribeEngineDefaultParametersInput, in2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPages(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool) error {
 	if mock.DescribeEngineDefaultParametersPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeEngineDefaultParametersPagesFunc: method is nil but elasticacheClient.DescribeEngineDefaultParametersPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
-		In2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeEngineDefaultParametersInput: describeEngineDefaultParametersInput,
+		Fn:                                   fn,
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersPages.Lock()
+	mock.lockDescribeEngineDefaultParametersPages.Lock()
 	mock.calls.DescribeEngineDefaultParametersPages = append(mock.calls.DescribeEngineDefaultParametersPages, callInfo)
-	lockelasticacheClientMockDescribeEngineDefaultParametersPages.Unlock()
-	return mock.DescribeEngineDefaultParametersPagesFunc(in1, in2)
+	mock.lockDescribeEngineDefaultParametersPages.Unlock()
+	return mock.DescribeEngineDefaultParametersPagesFunc(describeEngineDefaultParametersInput, fn)
 }
 
 // DescribeEngineDefaultParametersPagesCalls gets all the calls that were made to DescribeEngineDefaultParametersPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEngineDefaultParametersPagesCalls())
 func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPagesCalls() []struct {
-	In1 *elasticache.DescribeEngineDefaultParametersInput
-	In2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+	DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+	Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
-		In2 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersPages.RLock()
+	mock.lockDescribeEngineDefaultParametersPages.RLock()
 	calls = mock.calls.DescribeEngineDefaultParametersPages
-	lockelasticacheClientMockDescribeEngineDefaultParametersPages.RUnlock()
+	mock.lockDescribeEngineDefaultParametersPages.RUnlock()
 	return calls
 }
 
 // DescribeEngineDefaultParametersPagesWithContext calls DescribeEngineDefaultParametersPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPagesWithContext(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPagesWithContext(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, fn func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeEngineDefaultParametersPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeEngineDefaultParametersPagesWithContextFunc: method is nil but elasticacheClient.DescribeEngineDefaultParametersPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEngineDefaultParametersInput
-		In3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                      context.Context
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+		Options                              []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                      contextMoqParam,
+		DescribeEngineDefaultParametersInput: describeEngineDefaultParametersInput,
+		Fn:                                   fn,
+		Options:                              options,
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersPagesWithContext.Lock()
+	mock.lockDescribeEngineDefaultParametersPagesWithContext.Lock()
 	mock.calls.DescribeEngineDefaultParametersPagesWithContext = append(mock.calls.DescribeEngineDefaultParametersPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeEngineDefaultParametersPagesWithContext.Unlock()
-	return mock.DescribeEngineDefaultParametersPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeEngineDefaultParametersPagesWithContext.Unlock()
+	return mock.DescribeEngineDefaultParametersPagesWithContextFunc(contextMoqParam, describeEngineDefaultParametersInput, fn, options...)
 }
 
 // DescribeEngineDefaultParametersPagesWithContextCalls gets all the calls that were made to DescribeEngineDefaultParametersPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEngineDefaultParametersPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeEngineDefaultParametersPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeEngineDefaultParametersInput
-	In3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                      context.Context
+	DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+	Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+	Options                              []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEngineDefaultParametersInput
-		In3 func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                      context.Context
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Fn                                   func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool
+		Options                              []request.Option
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersPagesWithContext.RLock()
+	mock.lockDescribeEngineDefaultParametersPagesWithContext.RLock()
 	calls = mock.calls.DescribeEngineDefaultParametersPagesWithContext
-	lockelasticacheClientMockDescribeEngineDefaultParametersPagesWithContext.RUnlock()
+	mock.lockDescribeEngineDefaultParametersPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeEngineDefaultParametersRequest calls DescribeEngineDefaultParametersRequestFunc.
-func (mock *elasticacheClientMock) DescribeEngineDefaultParametersRequest(in1 *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput) {
+func (mock *elasticacheClientMock) DescribeEngineDefaultParametersRequest(describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput) (*request.Request, *elasticache.DescribeEngineDefaultParametersOutput) {
 	if mock.DescribeEngineDefaultParametersRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeEngineDefaultParametersRequestFunc: method is nil but elasticacheClient.DescribeEngineDefaultParametersRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 	}{
-		In1: in1,
+		DescribeEngineDefaultParametersInput: describeEngineDefaultParametersInput,
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersRequest.Lock()
+	mock.lockDescribeEngineDefaultParametersRequest.Lock()
 	mock.calls.DescribeEngineDefaultParametersRequest = append(mock.calls.DescribeEngineDefaultParametersRequest, callInfo)
-	lockelasticacheClientMockDescribeEngineDefaultParametersRequest.Unlock()
-	return mock.DescribeEngineDefaultParametersRequestFunc(in1)
+	mock.lockDescribeEngineDefaultParametersRequest.Unlock()
+	return mock.DescribeEngineDefaultParametersRequestFunc(describeEngineDefaultParametersInput)
 }
 
 // DescribeEngineDefaultParametersRequestCalls gets all the calls that were made to DescribeEngineDefaultParametersRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEngineDefaultParametersRequestCalls())
 func (mock *elasticacheClientMock) DescribeEngineDefaultParametersRequestCalls() []struct {
-	In1 *elasticache.DescribeEngineDefaultParametersInput
+	DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEngineDefaultParametersInput
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersRequest.RLock()
+	mock.lockDescribeEngineDefaultParametersRequest.RLock()
 	calls = mock.calls.DescribeEngineDefaultParametersRequest
-	lockelasticacheClientMockDescribeEngineDefaultParametersRequest.RUnlock()
+	mock.lockDescribeEngineDefaultParametersRequest.RUnlock()
 	return calls
 }
 
 // DescribeEngineDefaultParametersWithContext calls DescribeEngineDefaultParametersWithContextFunc.
-func (mock *elasticacheClientMock) DescribeEngineDefaultParametersWithContext(in1 context.Context, in2 *elasticache.DescribeEngineDefaultParametersInput, in3 ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
+func (mock *elasticacheClientMock) DescribeEngineDefaultParametersWithContext(contextMoqParam context.Context, describeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput, options ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
 	if mock.DescribeEngineDefaultParametersWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeEngineDefaultParametersWithContextFunc: method is nil but elasticacheClient.DescribeEngineDefaultParametersWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEngineDefaultParametersInput
-		In3 []request.Option
+		ContextMoqParam                      context.Context
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Options                              []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                      contextMoqParam,
+		DescribeEngineDefaultParametersInput: describeEngineDefaultParametersInput,
+		Options:                              options,
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersWithContext.Lock()
+	mock.lockDescribeEngineDefaultParametersWithContext.Lock()
 	mock.calls.DescribeEngineDefaultParametersWithContext = append(mock.calls.DescribeEngineDefaultParametersWithContext, callInfo)
-	lockelasticacheClientMockDescribeEngineDefaultParametersWithContext.Unlock()
-	return mock.DescribeEngineDefaultParametersWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeEngineDefaultParametersWithContext.Unlock()
+	return mock.DescribeEngineDefaultParametersWithContextFunc(contextMoqParam, describeEngineDefaultParametersInput, options...)
 }
 
 // DescribeEngineDefaultParametersWithContextCalls gets all the calls that were made to DescribeEngineDefaultParametersWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEngineDefaultParametersWithContextCalls())
 func (mock *elasticacheClientMock) DescribeEngineDefaultParametersWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeEngineDefaultParametersInput
-	In3 []request.Option
+	ContextMoqParam                      context.Context
+	DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+	Options                              []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEngineDefaultParametersInput
-		In3 []request.Option
+		ContextMoqParam                      context.Context
+		DescribeEngineDefaultParametersInput *elasticache.DescribeEngineDefaultParametersInput
+		Options                              []request.Option
 	}
-	lockelasticacheClientMockDescribeEngineDefaultParametersWithContext.RLock()
+	mock.lockDescribeEngineDefaultParametersWithContext.RLock()
 	calls = mock.calls.DescribeEngineDefaultParametersWithContext
-	lockelasticacheClientMockDescribeEngineDefaultParametersWithContext.RUnlock()
+	mock.lockDescribeEngineDefaultParametersWithContext.RUnlock()
 	return calls
 }
 
 // DescribeEvents calls DescribeEventsFunc.
-func (mock *elasticacheClientMock) DescribeEvents(in1 *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error) {
+func (mock *elasticacheClientMock) DescribeEvents(describeEventsInput *elasticache.DescribeEventsInput) (*elasticache.DescribeEventsOutput, error) {
 	if mock.DescribeEventsFunc == nil {
 		panic("elasticacheClientMock.DescribeEventsFunc: method is nil but elasticacheClient.DescribeEvents was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEventsInput
+		DescribeEventsInput *elasticache.DescribeEventsInput
 	}{
-		In1: in1,
+		DescribeEventsInput: describeEventsInput,
 	}
-	lockelasticacheClientMockDescribeEvents.Lock()
+	mock.lockDescribeEvents.Lock()
 	mock.calls.DescribeEvents = append(mock.calls.DescribeEvents, callInfo)
-	lockelasticacheClientMockDescribeEvents.Unlock()
-	return mock.DescribeEventsFunc(in1)
+	mock.lockDescribeEvents.Unlock()
+	return mock.DescribeEventsFunc(describeEventsInput)
 }
 
 // DescribeEventsCalls gets all the calls that were made to DescribeEvents.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEventsCalls())
 func (mock *elasticacheClientMock) DescribeEventsCalls() []struct {
-	In1 *elasticache.DescribeEventsInput
+	DescribeEventsInput *elasticache.DescribeEventsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEventsInput
+		DescribeEventsInput *elasticache.DescribeEventsInput
 	}
-	lockelasticacheClientMockDescribeEvents.RLock()
+	mock.lockDescribeEvents.RLock()
 	calls = mock.calls.DescribeEvents
-	lockelasticacheClientMockDescribeEvents.RUnlock()
+	mock.lockDescribeEvents.RUnlock()
 	return calls
 }
 
 // DescribeEventsPages calls DescribeEventsPagesFunc.
-func (mock *elasticacheClientMock) DescribeEventsPages(in1 *elasticache.DescribeEventsInput, in2 func(*elasticache.DescribeEventsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeEventsPages(describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool) error {
 	if mock.DescribeEventsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeEventsPagesFunc: method is nil but elasticacheClient.DescribeEventsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEventsInput
-		In2 func(*elasticache.DescribeEventsOutput, bool) bool
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeEventsInput: describeEventsInput,
+		Fn:                  fn,
 	}
-	lockelasticacheClientMockDescribeEventsPages.Lock()
+	mock.lockDescribeEventsPages.Lock()
 	mock.calls.DescribeEventsPages = append(mock.calls.DescribeEventsPages, callInfo)
-	lockelasticacheClientMockDescribeEventsPages.Unlock()
-	return mock.DescribeEventsPagesFunc(in1, in2)
+	mock.lockDescribeEventsPages.Unlock()
+	return mock.DescribeEventsPagesFunc(describeEventsInput, fn)
 }
 
 // DescribeEventsPagesCalls gets all the calls that were made to DescribeEventsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEventsPagesCalls())
 func (mock *elasticacheClientMock) DescribeEventsPagesCalls() []struct {
-	In1 *elasticache.DescribeEventsInput
-	In2 func(*elasticache.DescribeEventsOutput, bool) bool
+	DescribeEventsInput *elasticache.DescribeEventsInput
+	Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEventsInput
-		In2 func(*elasticache.DescribeEventsOutput, bool) bool
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeEventsPages.RLock()
+	mock.lockDescribeEventsPages.RLock()
 	calls = mock.calls.DescribeEventsPages
-	lockelasticacheClientMockDescribeEventsPages.RUnlock()
+	mock.lockDescribeEventsPages.RUnlock()
 	return calls
 }
 
 // DescribeEventsPagesWithContext calls DescribeEventsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeEventsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 func(*elasticache.DescribeEventsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeEventsPagesWithContext(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, fn func(*elasticache.DescribeEventsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeEventsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeEventsPagesWithContextFunc: method is nil but elasticacheClient.DescribeEventsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEventsInput
-		In3 func(*elasticache.DescribeEventsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam     context.Context
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:     contextMoqParam,
+		DescribeEventsInput: describeEventsInput,
+		Fn:                  fn,
+		Options:             options,
 	}
-	lockelasticacheClientMockDescribeEventsPagesWithContext.Lock()
+	mock.lockDescribeEventsPagesWithContext.Lock()
 	mock.calls.DescribeEventsPagesWithContext = append(mock.calls.DescribeEventsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeEventsPagesWithContext.Unlock()
-	return mock.DescribeEventsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeEventsPagesWithContext.Unlock()
+	return mock.DescribeEventsPagesWithContextFunc(contextMoqParam, describeEventsInput, fn, options...)
 }
 
 // DescribeEventsPagesWithContextCalls gets all the calls that were made to DescribeEventsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEventsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeEventsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeEventsInput
-	In3 func(*elasticache.DescribeEventsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam     context.Context
+	DescribeEventsInput *elasticache.DescribeEventsInput
+	Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEventsInput
-		In3 func(*elasticache.DescribeEventsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam     context.Context
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Fn                  func(*elasticache.DescribeEventsOutput, bool) bool
+		Options             []request.Option
 	}
-	lockelasticacheClientMockDescribeEventsPagesWithContext.RLock()
+	mock.lockDescribeEventsPagesWithContext.RLock()
 	calls = mock.calls.DescribeEventsPagesWithContext
-	lockelasticacheClientMockDescribeEventsPagesWithContext.RUnlock()
+	mock.lockDescribeEventsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeEventsRequest calls DescribeEventsRequestFunc.
-func (mock *elasticacheClientMock) DescribeEventsRequest(in1 *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput) {
+func (mock *elasticacheClientMock) DescribeEventsRequest(describeEventsInput *elasticache.DescribeEventsInput) (*request.Request, *elasticache.DescribeEventsOutput) {
 	if mock.DescribeEventsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeEventsRequestFunc: method is nil but elasticacheClient.DescribeEventsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeEventsInput
+		DescribeEventsInput *elasticache.DescribeEventsInput
 	}{
-		In1: in1,
+		DescribeEventsInput: describeEventsInput,
 	}
-	lockelasticacheClientMockDescribeEventsRequest.Lock()
+	mock.lockDescribeEventsRequest.Lock()
 	mock.calls.DescribeEventsRequest = append(mock.calls.DescribeEventsRequest, callInfo)
-	lockelasticacheClientMockDescribeEventsRequest.Unlock()
-	return mock.DescribeEventsRequestFunc(in1)
+	mock.lockDescribeEventsRequest.Unlock()
+	return mock.DescribeEventsRequestFunc(describeEventsInput)
 }
 
 // DescribeEventsRequestCalls gets all the calls that were made to DescribeEventsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEventsRequestCalls())
 func (mock *elasticacheClientMock) DescribeEventsRequestCalls() []struct {
-	In1 *elasticache.DescribeEventsInput
+	DescribeEventsInput *elasticache.DescribeEventsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeEventsInput
+		DescribeEventsInput *elasticache.DescribeEventsInput
 	}
-	lockelasticacheClientMockDescribeEventsRequest.RLock()
+	mock.lockDescribeEventsRequest.RLock()
 	calls = mock.calls.DescribeEventsRequest
-	lockelasticacheClientMockDescribeEventsRequest.RUnlock()
+	mock.lockDescribeEventsRequest.RUnlock()
 	return calls
 }
 
 // DescribeEventsWithContext calls DescribeEventsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeEventsWithContext(in1 context.Context, in2 *elasticache.DescribeEventsInput, in3 ...request.Option) (*elasticache.DescribeEventsOutput, error) {
+func (mock *elasticacheClientMock) DescribeEventsWithContext(contextMoqParam context.Context, describeEventsInput *elasticache.DescribeEventsInput, options ...request.Option) (*elasticache.DescribeEventsOutput, error) {
 	if mock.DescribeEventsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeEventsWithContextFunc: method is nil but elasticacheClient.DescribeEventsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEventsInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:     contextMoqParam,
+		DescribeEventsInput: describeEventsInput,
+		Options:             options,
 	}
-	lockelasticacheClientMockDescribeEventsWithContext.Lock()
+	mock.lockDescribeEventsWithContext.Lock()
 	mock.calls.DescribeEventsWithContext = append(mock.calls.DescribeEventsWithContext, callInfo)
-	lockelasticacheClientMockDescribeEventsWithContext.Unlock()
-	return mock.DescribeEventsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeEventsWithContext.Unlock()
+	return mock.DescribeEventsWithContextFunc(contextMoqParam, describeEventsInput, options...)
 }
 
 // DescribeEventsWithContextCalls gets all the calls that were made to DescribeEventsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeEventsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeEventsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeEventsInput
-	In3 []request.Option
+	ContextMoqParam     context.Context
+	DescribeEventsInput *elasticache.DescribeEventsInput
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeEventsInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		DescribeEventsInput *elasticache.DescribeEventsInput
+		Options             []request.Option
 	}
-	lockelasticacheClientMockDescribeEventsWithContext.RLock()
+	mock.lockDescribeEventsWithContext.RLock()
 	calls = mock.calls.DescribeEventsWithContext
-	lockelasticacheClientMockDescribeEventsWithContext.RUnlock()
+	mock.lockDescribeEventsWithContext.RUnlock()
+	return calls
+}
+
+// DescribeGlobalReplicationGroups calls DescribeGlobalReplicationGroupsFunc.
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroups(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*elasticache.DescribeGlobalReplicationGroupsOutput, error) {
+	if mock.DescribeGlobalReplicationGroupsFunc == nil {
+		panic("elasticacheClientMock.DescribeGlobalReplicationGroupsFunc: method is nil but elasticacheClient.DescribeGlobalReplicationGroups was just called")
+	}
+	callInfo := struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	}{
+		DescribeGlobalReplicationGroupsInput: describeGlobalReplicationGroupsInput,
+	}
+	mock.lockDescribeGlobalReplicationGroups.Lock()
+	mock.calls.DescribeGlobalReplicationGroups = append(mock.calls.DescribeGlobalReplicationGroups, callInfo)
+	mock.lockDescribeGlobalReplicationGroups.Unlock()
+	return mock.DescribeGlobalReplicationGroupsFunc(describeGlobalReplicationGroupsInput)
+}
+
+// DescribeGlobalReplicationGroupsCalls gets all the calls that were made to DescribeGlobalReplicationGroups.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeGlobalReplicationGroupsCalls())
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsCalls() []struct {
+	DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+} {
+	var calls []struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	}
+	mock.lockDescribeGlobalReplicationGroups.RLock()
+	calls = mock.calls.DescribeGlobalReplicationGroups
+	mock.lockDescribeGlobalReplicationGroups.RUnlock()
+	return calls
+}
+
+// DescribeGlobalReplicationGroupsPages calls DescribeGlobalReplicationGroupsPagesFunc.
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsPages(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool) error {
+	if mock.DescribeGlobalReplicationGroupsPagesFunc == nil {
+		panic("elasticacheClientMock.DescribeGlobalReplicationGroupsPagesFunc: method is nil but elasticacheClient.DescribeGlobalReplicationGroupsPages was just called")
+	}
+	callInfo := struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+	}{
+		DescribeGlobalReplicationGroupsInput: describeGlobalReplicationGroupsInput,
+		Fn:                                   fn,
+	}
+	mock.lockDescribeGlobalReplicationGroupsPages.Lock()
+	mock.calls.DescribeGlobalReplicationGroupsPages = append(mock.calls.DescribeGlobalReplicationGroupsPages, callInfo)
+	mock.lockDescribeGlobalReplicationGroupsPages.Unlock()
+	return mock.DescribeGlobalReplicationGroupsPagesFunc(describeGlobalReplicationGroupsInput, fn)
+}
+
+// DescribeGlobalReplicationGroupsPagesCalls gets all the calls that were made to DescribeGlobalReplicationGroupsPages.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeGlobalReplicationGroupsPagesCalls())
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsPagesCalls() []struct {
+	DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+} {
+	var calls []struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+	}
+	mock.lockDescribeGlobalReplicationGroupsPages.RLock()
+	calls = mock.calls.DescribeGlobalReplicationGroupsPages
+	mock.lockDescribeGlobalReplicationGroupsPages.RUnlock()
+	return calls
+}
+
+// DescribeGlobalReplicationGroupsPagesWithContext calls DescribeGlobalReplicationGroupsPagesWithContextFunc.
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsPagesWithContext(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, fn func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool, options ...request.Option) error {
+	if mock.DescribeGlobalReplicationGroupsPagesWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeGlobalReplicationGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeGlobalReplicationGroupsPagesWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                      context.Context
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+		Options                              []request.Option
+	}{
+		ContextMoqParam:                      contextMoqParam,
+		DescribeGlobalReplicationGroupsInput: describeGlobalReplicationGroupsInput,
+		Fn:                                   fn,
+		Options:                              options,
+	}
+	mock.lockDescribeGlobalReplicationGroupsPagesWithContext.Lock()
+	mock.calls.DescribeGlobalReplicationGroupsPagesWithContext = append(mock.calls.DescribeGlobalReplicationGroupsPagesWithContext, callInfo)
+	mock.lockDescribeGlobalReplicationGroupsPagesWithContext.Unlock()
+	return mock.DescribeGlobalReplicationGroupsPagesWithContextFunc(contextMoqParam, describeGlobalReplicationGroupsInput, fn, options...)
+}
+
+// DescribeGlobalReplicationGroupsPagesWithContextCalls gets all the calls that were made to DescribeGlobalReplicationGroupsPagesWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeGlobalReplicationGroupsPagesWithContextCalls())
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsPagesWithContextCalls() []struct {
+	ContextMoqParam                      context.Context
+	DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+	Options                              []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                      context.Context
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Fn                                   func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool
+		Options                              []request.Option
+	}
+	mock.lockDescribeGlobalReplicationGroupsPagesWithContext.RLock()
+	calls = mock.calls.DescribeGlobalReplicationGroupsPagesWithContext
+	mock.lockDescribeGlobalReplicationGroupsPagesWithContext.RUnlock()
+	return calls
+}
+
+// DescribeGlobalReplicationGroupsRequest calls DescribeGlobalReplicationGroupsRequestFunc.
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsRequest(describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput) (*request.Request, *elasticache.DescribeGlobalReplicationGroupsOutput) {
+	if mock.DescribeGlobalReplicationGroupsRequestFunc == nil {
+		panic("elasticacheClientMock.DescribeGlobalReplicationGroupsRequestFunc: method is nil but elasticacheClient.DescribeGlobalReplicationGroupsRequest was just called")
+	}
+	callInfo := struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	}{
+		DescribeGlobalReplicationGroupsInput: describeGlobalReplicationGroupsInput,
+	}
+	mock.lockDescribeGlobalReplicationGroupsRequest.Lock()
+	mock.calls.DescribeGlobalReplicationGroupsRequest = append(mock.calls.DescribeGlobalReplicationGroupsRequest, callInfo)
+	mock.lockDescribeGlobalReplicationGroupsRequest.Unlock()
+	return mock.DescribeGlobalReplicationGroupsRequestFunc(describeGlobalReplicationGroupsInput)
+}
+
+// DescribeGlobalReplicationGroupsRequestCalls gets all the calls that were made to DescribeGlobalReplicationGroupsRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeGlobalReplicationGroupsRequestCalls())
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsRequestCalls() []struct {
+	DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+} {
+	var calls []struct {
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	}
+	mock.lockDescribeGlobalReplicationGroupsRequest.RLock()
+	calls = mock.calls.DescribeGlobalReplicationGroupsRequest
+	mock.lockDescribeGlobalReplicationGroupsRequest.RUnlock()
+	return calls
+}
+
+// DescribeGlobalReplicationGroupsWithContext calls DescribeGlobalReplicationGroupsWithContextFunc.
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsWithContext(contextMoqParam context.Context, describeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeGlobalReplicationGroupsOutput, error) {
+	if mock.DescribeGlobalReplicationGroupsWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeGlobalReplicationGroupsWithContextFunc: method is nil but elasticacheClient.DescribeGlobalReplicationGroupsWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                      context.Context
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Options                              []request.Option
+	}{
+		ContextMoqParam:                      contextMoqParam,
+		DescribeGlobalReplicationGroupsInput: describeGlobalReplicationGroupsInput,
+		Options:                              options,
+	}
+	mock.lockDescribeGlobalReplicationGroupsWithContext.Lock()
+	mock.calls.DescribeGlobalReplicationGroupsWithContext = append(mock.calls.DescribeGlobalReplicationGroupsWithContext, callInfo)
+	mock.lockDescribeGlobalReplicationGroupsWithContext.Unlock()
+	return mock.DescribeGlobalReplicationGroupsWithContextFunc(contextMoqParam, describeGlobalReplicationGroupsInput, options...)
+}
+
+// DescribeGlobalReplicationGroupsWithContextCalls gets all the calls that were made to DescribeGlobalReplicationGroupsWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeGlobalReplicationGroupsWithContextCalls())
+func (mock *elasticacheClientMock) DescribeGlobalReplicationGroupsWithContextCalls() []struct {
+	ContextMoqParam                      context.Context
+	DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+	Options                              []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                      context.Context
+		DescribeGlobalReplicationGroupsInput *elasticache.DescribeGlobalReplicationGroupsInput
+		Options                              []request.Option
+	}
+	mock.lockDescribeGlobalReplicationGroupsWithContext.RLock()
+	calls = mock.calls.DescribeGlobalReplicationGroupsWithContext
+	mock.lockDescribeGlobalReplicationGroupsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReplicationGroups calls DescribeReplicationGroupsFunc.
-func (mock *elasticacheClientMock) DescribeReplicationGroups(in1 *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeReplicationGroups(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*elasticache.DescribeReplicationGroupsOutput, error) {
 	if mock.DescribeReplicationGroupsFunc == nil {
 		panic("elasticacheClientMock.DescribeReplicationGroupsFunc: method is nil but elasticacheClient.DescribeReplicationGroups was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}{
-		In1: in1,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
 	}
-	lockelasticacheClientMockDescribeReplicationGroups.Lock()
+	mock.lockDescribeReplicationGroups.Lock()
 	mock.calls.DescribeReplicationGroups = append(mock.calls.DescribeReplicationGroups, callInfo)
-	lockelasticacheClientMockDescribeReplicationGroups.Unlock()
-	return mock.DescribeReplicationGroupsFunc(in1)
+	mock.lockDescribeReplicationGroups.Unlock()
+	return mock.DescribeReplicationGroupsFunc(describeReplicationGroupsInput)
 }
 
 // DescribeReplicationGroupsCalls gets all the calls that were made to DescribeReplicationGroups.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReplicationGroupsCalls())
 func (mock *elasticacheClientMock) DescribeReplicationGroupsCalls() []struct {
-	In1 *elasticache.DescribeReplicationGroupsInput
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}
-	lockelasticacheClientMockDescribeReplicationGroups.RLock()
+	mock.lockDescribeReplicationGroups.RLock()
 	calls = mock.calls.DescribeReplicationGroups
-	lockelasticacheClientMockDescribeReplicationGroups.RUnlock()
+	mock.lockDescribeReplicationGroups.RUnlock()
 	return calls
 }
 
 // DescribeReplicationGroupsPages calls DescribeReplicationGroupsPagesFunc.
-func (mock *elasticacheClientMock) DescribeReplicationGroupsPages(in1 *elasticache.DescribeReplicationGroupsInput, in2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeReplicationGroupsPages(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool) error {
 	if mock.DescribeReplicationGroupsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeReplicationGroupsPagesFunc: method is nil but elasticacheClient.DescribeReplicationGroupsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
-		In2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
+		Fn:                             fn,
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsPages.Lock()
+	mock.lockDescribeReplicationGroupsPages.Lock()
 	mock.calls.DescribeReplicationGroupsPages = append(mock.calls.DescribeReplicationGroupsPages, callInfo)
-	lockelasticacheClientMockDescribeReplicationGroupsPages.Unlock()
-	return mock.DescribeReplicationGroupsPagesFunc(in1, in2)
+	mock.lockDescribeReplicationGroupsPages.Unlock()
+	return mock.DescribeReplicationGroupsPagesFunc(describeReplicationGroupsInput, fn)
 }
 
 // DescribeReplicationGroupsPagesCalls gets all the calls that were made to DescribeReplicationGroupsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReplicationGroupsPagesCalls())
 func (mock *elasticacheClientMock) DescribeReplicationGroupsPagesCalls() []struct {
-	In1 *elasticache.DescribeReplicationGroupsInput
-	In2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+	Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
-		In2 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsPages.RLock()
+	mock.lockDescribeReplicationGroupsPages.RLock()
 	calls = mock.calls.DescribeReplicationGroupsPages
-	lockelasticacheClientMockDescribeReplicationGroupsPages.RUnlock()
+	mock.lockDescribeReplicationGroupsPages.RUnlock()
 	return calls
 }
 
 // DescribeReplicationGroupsPagesWithContext calls DescribeReplicationGroupsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReplicationGroupsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeReplicationGroupsPagesWithContext(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, fn func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeReplicationGroupsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReplicationGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeReplicationGroupsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                contextMoqParam,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
+		Fn:                             fn,
+		Options:                        options,
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsPagesWithContext.Lock()
+	mock.lockDescribeReplicationGroupsPagesWithContext.Lock()
 	mock.calls.DescribeReplicationGroupsPagesWithContext = append(mock.calls.DescribeReplicationGroupsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeReplicationGroupsPagesWithContext.Unlock()
-	return mock.DescribeReplicationGroupsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeReplicationGroupsPagesWithContext.Unlock()
+	return mock.DescribeReplicationGroupsPagesWithContextFunc(contextMoqParam, describeReplicationGroupsInput, fn, options...)
 }
 
 // DescribeReplicationGroupsPagesWithContextCalls gets all the calls that were made to DescribeReplicationGroupsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReplicationGroupsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReplicationGroupsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReplicationGroupsInput
-	In3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                context.Context
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+	Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Fn                             func(*elasticache.DescribeReplicationGroupsOutput, bool) bool
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsPagesWithContext.RLock()
+	mock.lockDescribeReplicationGroupsPagesWithContext.RLock()
 	calls = mock.calls.DescribeReplicationGroupsPagesWithContext
-	lockelasticacheClientMockDescribeReplicationGroupsPagesWithContext.RUnlock()
+	mock.lockDescribeReplicationGroupsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReplicationGroupsRequest calls DescribeReplicationGroupsRequestFunc.
-func (mock *elasticacheClientMock) DescribeReplicationGroupsRequest(in1 *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput) {
+func (mock *elasticacheClientMock) DescribeReplicationGroupsRequest(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) (*request.Request, *elasticache.DescribeReplicationGroupsOutput) {
 	if mock.DescribeReplicationGroupsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeReplicationGroupsRequestFunc: method is nil but elasticacheClient.DescribeReplicationGroupsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}{
-		In1: in1,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsRequest.Lock()
+	mock.lockDescribeReplicationGroupsRequest.Lock()
 	mock.calls.DescribeReplicationGroupsRequest = append(mock.calls.DescribeReplicationGroupsRequest, callInfo)
-	lockelasticacheClientMockDescribeReplicationGroupsRequest.Unlock()
-	return mock.DescribeReplicationGroupsRequestFunc(in1)
+	mock.lockDescribeReplicationGroupsRequest.Unlock()
+	return mock.DescribeReplicationGroupsRequestFunc(describeReplicationGroupsInput)
 }
 
 // DescribeReplicationGroupsRequestCalls gets all the calls that were made to DescribeReplicationGroupsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReplicationGroupsRequestCalls())
 func (mock *elasticacheClientMock) DescribeReplicationGroupsRequestCalls() []struct {
-	In1 *elasticache.DescribeReplicationGroupsInput
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsRequest.RLock()
+	mock.lockDescribeReplicationGroupsRequest.RLock()
 	calls = mock.calls.DescribeReplicationGroupsRequest
-	lockelasticacheClientMockDescribeReplicationGroupsRequest.RUnlock()
+	mock.lockDescribeReplicationGroupsRequest.RUnlock()
 	return calls
 }
 
 // DescribeReplicationGroupsWithContext calls DescribeReplicationGroupsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReplicationGroupsWithContext(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
+func (mock *elasticacheClientMock) DescribeReplicationGroupsWithContext(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, options ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
 	if mock.DescribeReplicationGroupsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReplicationGroupsWithContextFunc: method is nil but elasticacheClient.DescribeReplicationGroupsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
+		Options:                        options,
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsWithContext.Lock()
+	mock.lockDescribeReplicationGroupsWithContext.Lock()
 	mock.calls.DescribeReplicationGroupsWithContext = append(mock.calls.DescribeReplicationGroupsWithContext, callInfo)
-	lockelasticacheClientMockDescribeReplicationGroupsWithContext.Unlock()
-	return mock.DescribeReplicationGroupsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeReplicationGroupsWithContext.Unlock()
+	return mock.DescribeReplicationGroupsWithContextFunc(contextMoqParam, describeReplicationGroupsInput, options...)
 }
 
 // DescribeReplicationGroupsWithContextCalls gets all the calls that were made to DescribeReplicationGroupsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReplicationGroupsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReplicationGroupsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReplicationGroupsInput
-	In3 []request.Option
+	ContextMoqParam                context.Context
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockDescribeReplicationGroupsWithContext.RLock()
+	mock.lockDescribeReplicationGroupsWithContext.RLock()
 	calls = mock.calls.DescribeReplicationGroupsWithContext
-	lockelasticacheClientMockDescribeReplicationGroupsWithContext.RUnlock()
+	mock.lockDescribeReplicationGroupsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodes calls DescribeReservedCacheNodesFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodes(in1 *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodes(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*elasticache.DescribeReservedCacheNodesOutput, error) {
 	if mock.DescribeReservedCacheNodesFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesFunc: method is nil but elasticacheClient.DescribeReservedCacheNodes was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 	}{
-		In1: in1,
+		DescribeReservedCacheNodesInput: describeReservedCacheNodesInput,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodes.Lock()
+	mock.lockDescribeReservedCacheNodes.Lock()
 	mock.calls.DescribeReservedCacheNodes = append(mock.calls.DescribeReservedCacheNodes, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodes.Unlock()
-	return mock.DescribeReservedCacheNodesFunc(in1)
+	mock.lockDescribeReservedCacheNodes.Unlock()
+	return mock.DescribeReservedCacheNodesFunc(describeReservedCacheNodesInput)
 }
 
 // DescribeReservedCacheNodesCalls gets all the calls that were made to DescribeReservedCacheNodes.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesInput
+	DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodes.RLock()
+	mock.lockDescribeReservedCacheNodes.RLock()
 	calls = mock.calls.DescribeReservedCacheNodes
-	lockelasticacheClientMockDescribeReservedCacheNodes.RUnlock()
+	mock.lockDescribeReservedCacheNodes.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesOfferings calls DescribeReservedCacheNodesOfferingsFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferings(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferings(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
 	if mock.DescribeReservedCacheNodesOfferingsFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesOfferingsFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesOfferings was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 	}{
-		In1: in1,
+		DescribeReservedCacheNodesOfferingsInput: describeReservedCacheNodesOfferingsInput,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferings.Lock()
+	mock.lockDescribeReservedCacheNodesOfferings.Lock()
 	mock.calls.DescribeReservedCacheNodesOfferings = append(mock.calls.DescribeReservedCacheNodesOfferings, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferings.Unlock()
-	return mock.DescribeReservedCacheNodesOfferingsFunc(in1)
+	mock.lockDescribeReservedCacheNodesOfferings.Unlock()
+	return mock.DescribeReservedCacheNodesOfferingsFunc(describeReservedCacheNodesOfferingsInput)
 }
 
 // DescribeReservedCacheNodesOfferingsCalls gets all the calls that were made to DescribeReservedCacheNodesOfferings.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesOfferingsCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+	DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferings.RLock()
+	mock.lockDescribeReservedCacheNodesOfferings.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesOfferings
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferings.RUnlock()
+	mock.lockDescribeReservedCacheNodesOfferings.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesOfferingsPages calls DescribeReservedCacheNodesOfferingsPagesFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPages(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput, in2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPages(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool) error {
 	if mock.DescribeReservedCacheNodesOfferingsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesOfferingsPagesFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesOfferingsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeReservedCacheNodesOfferingsInput: describeReservedCacheNodesOfferingsInput,
+		Fn:                                       fn,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPages.Lock()
+	mock.lockDescribeReservedCacheNodesOfferingsPages.Lock()
 	mock.calls.DescribeReservedCacheNodesOfferingsPages = append(mock.calls.DescribeReservedCacheNodesOfferingsPages, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPages.Unlock()
-	return mock.DescribeReservedCacheNodesOfferingsPagesFunc(in1, in2)
+	mock.lockDescribeReservedCacheNodesOfferingsPages.Unlock()
+	return mock.DescribeReservedCacheNodesOfferingsPagesFunc(describeReservedCacheNodesOfferingsInput, fn)
 }
 
 // DescribeReservedCacheNodesOfferingsPagesCalls gets all the calls that were made to DescribeReservedCacheNodesOfferingsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesOfferingsPagesCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPagesCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
-	In2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+	DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+	Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In2 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPages.RLock()
+	mock.lockDescribeReservedCacheNodesOfferingsPages.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesOfferingsPages
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPages.RUnlock()
+	mock.lockDescribeReservedCacheNodesOfferingsPages.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesOfferingsPagesWithContext calls DescribeReservedCacheNodesOfferingsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPagesWithContext(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, fn func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeReservedCacheNodesOfferingsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesOfferingsPagesWithContextFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesOfferingsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                          context.Context
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+		Options                                  []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                          contextMoqParam,
+		DescribeReservedCacheNodesOfferingsInput: describeReservedCacheNodesOfferingsInput,
+		Fn:                                       fn,
+		Options:                                  options,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPagesWithContext.Lock()
+	mock.lockDescribeReservedCacheNodesOfferingsPagesWithContext.Lock()
 	mock.calls.DescribeReservedCacheNodesOfferingsPagesWithContext = append(mock.calls.DescribeReservedCacheNodesOfferingsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPagesWithContext.Unlock()
-	return mock.DescribeReservedCacheNodesOfferingsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeReservedCacheNodesOfferingsPagesWithContext.Unlock()
+	return mock.DescribeReservedCacheNodesOfferingsPagesWithContextFunc(contextMoqParam, describeReservedCacheNodesOfferingsInput, fn, options...)
 }
 
 // DescribeReservedCacheNodesOfferingsPagesWithContextCalls gets all the calls that were made to DescribeReservedCacheNodesOfferingsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesOfferingsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-	In3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                          context.Context
+	DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+	Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+	Options                                  []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In3 func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                          context.Context
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Fn                                       func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool
+		Options                                  []request.Option
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPagesWithContext.RLock()
+	mock.lockDescribeReservedCacheNodesOfferingsPagesWithContext.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesOfferingsPagesWithContext
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsPagesWithContext.RUnlock()
+	mock.lockDescribeReservedCacheNodesOfferingsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesOfferingsRequest calls DescribeReservedCacheNodesOfferingsRequestFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsRequest(in1 *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsRequest(describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOfferingsOutput) {
 	if mock.DescribeReservedCacheNodesOfferingsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesOfferingsRequestFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesOfferingsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 	}{
-		In1: in1,
+		DescribeReservedCacheNodesOfferingsInput: describeReservedCacheNodesOfferingsInput,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsRequest.Lock()
+	mock.lockDescribeReservedCacheNodesOfferingsRequest.Lock()
 	mock.calls.DescribeReservedCacheNodesOfferingsRequest = append(mock.calls.DescribeReservedCacheNodesOfferingsRequest, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsRequest.Unlock()
-	return mock.DescribeReservedCacheNodesOfferingsRequestFunc(in1)
+	mock.lockDescribeReservedCacheNodesOfferingsRequest.Unlock()
+	return mock.DescribeReservedCacheNodesOfferingsRequestFunc(describeReservedCacheNodesOfferingsInput)
 }
 
 // DescribeReservedCacheNodesOfferingsRequestCalls gets all the calls that were made to DescribeReservedCacheNodesOfferingsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesOfferingsRequestCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsRequestCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+	DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesOfferingsInput
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsRequest.RLock()
+	mock.lockDescribeReservedCacheNodesOfferingsRequest.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesOfferingsRequest
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsRequest.RUnlock()
+	mock.lockDescribeReservedCacheNodesOfferingsRequest.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesOfferingsWithContext calls DescribeReservedCacheNodesOfferingsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsWithContext(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesOfferingsInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsWithContext(contextMoqParam context.Context, describeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
 	if mock.DescribeReservedCacheNodesOfferingsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesOfferingsWithContextFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesOfferingsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In3 []request.Option
+		ContextMoqParam                          context.Context
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Options                                  []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                          contextMoqParam,
+		DescribeReservedCacheNodesOfferingsInput: describeReservedCacheNodesOfferingsInput,
+		Options:                                  options,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsWithContext.Lock()
+	mock.lockDescribeReservedCacheNodesOfferingsWithContext.Lock()
 	mock.calls.DescribeReservedCacheNodesOfferingsWithContext = append(mock.calls.DescribeReservedCacheNodesOfferingsWithContext, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsWithContext.Unlock()
-	return mock.DescribeReservedCacheNodesOfferingsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeReservedCacheNodesOfferingsWithContext.Unlock()
+	return mock.DescribeReservedCacheNodesOfferingsWithContextFunc(contextMoqParam, describeReservedCacheNodesOfferingsInput, options...)
 }
 
 // DescribeReservedCacheNodesOfferingsWithContextCalls gets all the calls that were made to DescribeReservedCacheNodesOfferingsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesOfferingsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesOfferingsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-	In3 []request.Option
+	ContextMoqParam                          context.Context
+	DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+	Options                                  []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesOfferingsInput
-		In3 []request.Option
+		ContextMoqParam                          context.Context
+		DescribeReservedCacheNodesOfferingsInput *elasticache.DescribeReservedCacheNodesOfferingsInput
+		Options                                  []request.Option
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsWithContext.RLock()
+	mock.lockDescribeReservedCacheNodesOfferingsWithContext.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesOfferingsWithContext
-	lockelasticacheClientMockDescribeReservedCacheNodesOfferingsWithContext.RUnlock()
+	mock.lockDescribeReservedCacheNodesOfferingsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesPages calls DescribeReservedCacheNodesPagesFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesPages(in1 *elasticache.DescribeReservedCacheNodesInput, in2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesPages(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool) error {
 	if mock.DescribeReservedCacheNodesPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesPagesFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
-		In2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeReservedCacheNodesInput: describeReservedCacheNodesInput,
+		Fn:                              fn,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesPages.Lock()
+	mock.lockDescribeReservedCacheNodesPages.Lock()
 	mock.calls.DescribeReservedCacheNodesPages = append(mock.calls.DescribeReservedCacheNodesPages, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesPages.Unlock()
-	return mock.DescribeReservedCacheNodesPagesFunc(in1, in2)
+	mock.lockDescribeReservedCacheNodesPages.Unlock()
+	return mock.DescribeReservedCacheNodesPagesFunc(describeReservedCacheNodesInput, fn)
 }
 
 // DescribeReservedCacheNodesPagesCalls gets all the calls that were made to DescribeReservedCacheNodesPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesPagesCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesPagesCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesInput
-	In2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+	DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+	Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
-		In2 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesPages.RLock()
+	mock.lockDescribeReservedCacheNodesPages.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesPages
-	lockelasticacheClientMockDescribeReservedCacheNodesPages.RUnlock()
+	mock.lockDescribeReservedCacheNodesPages.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesPagesWithContext calls DescribeReservedCacheNodesPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesPagesWithContext(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesPagesWithContext(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, fn func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeReservedCacheNodesPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesPagesWithContextFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesInput
-		In3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                 context.Context
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+		Options                         []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:                 contextMoqParam,
+		DescribeReservedCacheNodesInput: describeReservedCacheNodesInput,
+		Fn:                              fn,
+		Options:                         options,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesPagesWithContext.Lock()
+	mock.lockDescribeReservedCacheNodesPagesWithContext.Lock()
 	mock.calls.DescribeReservedCacheNodesPagesWithContext = append(mock.calls.DescribeReservedCacheNodesPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesPagesWithContext.Unlock()
-	return mock.DescribeReservedCacheNodesPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeReservedCacheNodesPagesWithContext.Unlock()
+	return mock.DescribeReservedCacheNodesPagesWithContextFunc(contextMoqParam, describeReservedCacheNodesInput, fn, options...)
 }
 
 // DescribeReservedCacheNodesPagesWithContextCalls gets all the calls that were made to DescribeReservedCacheNodesPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReservedCacheNodesInput
-	In3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam                 context.Context
+	DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+	Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+	Options                         []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesInput
-		In3 func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam                 context.Context
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Fn                              func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool
+		Options                         []request.Option
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesPagesWithContext.RLock()
+	mock.lockDescribeReservedCacheNodesPagesWithContext.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesPagesWithContext
-	lockelasticacheClientMockDescribeReservedCacheNodesPagesWithContext.RUnlock()
+	mock.lockDescribeReservedCacheNodesPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesRequest calls DescribeReservedCacheNodesRequestFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesRequest(in1 *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesRequest(describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput) (*request.Request, *elasticache.DescribeReservedCacheNodesOutput) {
 	if mock.DescribeReservedCacheNodesRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesRequestFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 	}{
-		In1: in1,
+		DescribeReservedCacheNodesInput: describeReservedCacheNodesInput,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesRequest.Lock()
+	mock.lockDescribeReservedCacheNodesRequest.Lock()
 	mock.calls.DescribeReservedCacheNodesRequest = append(mock.calls.DescribeReservedCacheNodesRequest, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesRequest.Unlock()
-	return mock.DescribeReservedCacheNodesRequestFunc(in1)
+	mock.lockDescribeReservedCacheNodesRequest.Unlock()
+	return mock.DescribeReservedCacheNodesRequestFunc(describeReservedCacheNodesInput)
 }
 
 // DescribeReservedCacheNodesRequestCalls gets all the calls that were made to DescribeReservedCacheNodesRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesRequestCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesRequestCalls() []struct {
-	In1 *elasticache.DescribeReservedCacheNodesInput
+	DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReservedCacheNodesInput
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesRequest.RLock()
+	mock.lockDescribeReservedCacheNodesRequest.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesRequest
-	lockelasticacheClientMockDescribeReservedCacheNodesRequest.RUnlock()
+	mock.lockDescribeReservedCacheNodesRequest.RUnlock()
 	return calls
 }
 
 // DescribeReservedCacheNodesWithContext calls DescribeReservedCacheNodesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeReservedCacheNodesWithContext(in1 context.Context, in2 *elasticache.DescribeReservedCacheNodesInput, in3 ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
+func (mock *elasticacheClientMock) DescribeReservedCacheNodesWithContext(contextMoqParam context.Context, describeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput, options ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
 	if mock.DescribeReservedCacheNodesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeReservedCacheNodesWithContextFunc: method is nil but elasticacheClient.DescribeReservedCacheNodesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesInput
-		In3 []request.Option
+		ContextMoqParam                 context.Context
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Options                         []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                 contextMoqParam,
+		DescribeReservedCacheNodesInput: describeReservedCacheNodesInput,
+		Options:                         options,
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesWithContext.Lock()
+	mock.lockDescribeReservedCacheNodesWithContext.Lock()
 	mock.calls.DescribeReservedCacheNodesWithContext = append(mock.calls.DescribeReservedCacheNodesWithContext, callInfo)
-	lockelasticacheClientMockDescribeReservedCacheNodesWithContext.Unlock()
-	return mock.DescribeReservedCacheNodesWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeReservedCacheNodesWithContext.Unlock()
+	return mock.DescribeReservedCacheNodesWithContextFunc(contextMoqParam, describeReservedCacheNodesInput, options...)
 }
 
 // DescribeReservedCacheNodesWithContextCalls gets all the calls that were made to DescribeReservedCacheNodesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeReservedCacheNodesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeReservedCacheNodesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReservedCacheNodesInput
-	In3 []request.Option
+	ContextMoqParam                 context.Context
+	DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+	Options                         []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReservedCacheNodesInput
-		In3 []request.Option
+		ContextMoqParam                 context.Context
+		DescribeReservedCacheNodesInput *elasticache.DescribeReservedCacheNodesInput
+		Options                         []request.Option
 	}
-	lockelasticacheClientMockDescribeReservedCacheNodesWithContext.RLock()
+	mock.lockDescribeReservedCacheNodesWithContext.RLock()
 	calls = mock.calls.DescribeReservedCacheNodesWithContext
-	lockelasticacheClientMockDescribeReservedCacheNodesWithContext.RUnlock()
+	mock.lockDescribeReservedCacheNodesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeServiceUpdates calls DescribeServiceUpdatesFunc.
-func (mock *elasticacheClientMock) DescribeServiceUpdates(in1 *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error) {
+func (mock *elasticacheClientMock) DescribeServiceUpdates(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*elasticache.DescribeServiceUpdatesOutput, error) {
 	if mock.DescribeServiceUpdatesFunc == nil {
 		panic("elasticacheClientMock.DescribeServiceUpdatesFunc: method is nil but elasticacheClient.DescribeServiceUpdates was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 	}{
-		In1: in1,
+		DescribeServiceUpdatesInput: describeServiceUpdatesInput,
 	}
-	lockelasticacheClientMockDescribeServiceUpdates.Lock()
+	mock.lockDescribeServiceUpdates.Lock()
 	mock.calls.DescribeServiceUpdates = append(mock.calls.DescribeServiceUpdates, callInfo)
-	lockelasticacheClientMockDescribeServiceUpdates.Unlock()
-	return mock.DescribeServiceUpdatesFunc(in1)
+	mock.lockDescribeServiceUpdates.Unlock()
+	return mock.DescribeServiceUpdatesFunc(describeServiceUpdatesInput)
 }
 
 // DescribeServiceUpdatesCalls gets all the calls that were made to DescribeServiceUpdates.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeServiceUpdatesCalls())
 func (mock *elasticacheClientMock) DescribeServiceUpdatesCalls() []struct {
-	In1 *elasticache.DescribeServiceUpdatesInput
+	DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 	}
-	lockelasticacheClientMockDescribeServiceUpdates.RLock()
+	mock.lockDescribeServiceUpdates.RLock()
 	calls = mock.calls.DescribeServiceUpdates
-	lockelasticacheClientMockDescribeServiceUpdates.RUnlock()
+	mock.lockDescribeServiceUpdates.RUnlock()
 	return calls
 }
 
 // DescribeServiceUpdatesPages calls DescribeServiceUpdatesPagesFunc.
-func (mock *elasticacheClientMock) DescribeServiceUpdatesPages(in1 *elasticache.DescribeServiceUpdatesInput, in2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeServiceUpdatesPages(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool) error {
 	if mock.DescribeServiceUpdatesPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeServiceUpdatesPagesFunc: method is nil but elasticacheClient.DescribeServiceUpdatesPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
-		In2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeServiceUpdatesInput: describeServiceUpdatesInput,
+		Fn:                          fn,
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesPages.Lock()
+	mock.lockDescribeServiceUpdatesPages.Lock()
 	mock.calls.DescribeServiceUpdatesPages = append(mock.calls.DescribeServiceUpdatesPages, callInfo)
-	lockelasticacheClientMockDescribeServiceUpdatesPages.Unlock()
-	return mock.DescribeServiceUpdatesPagesFunc(in1, in2)
+	mock.lockDescribeServiceUpdatesPages.Unlock()
+	return mock.DescribeServiceUpdatesPagesFunc(describeServiceUpdatesInput, fn)
 }
 
 // DescribeServiceUpdatesPagesCalls gets all the calls that were made to DescribeServiceUpdatesPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeServiceUpdatesPagesCalls())
 func (mock *elasticacheClientMock) DescribeServiceUpdatesPagesCalls() []struct {
-	In1 *elasticache.DescribeServiceUpdatesInput
-	In2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+	DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+	Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
-		In2 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesPages.RLock()
+	mock.lockDescribeServiceUpdatesPages.RLock()
 	calls = mock.calls.DescribeServiceUpdatesPages
-	lockelasticacheClientMockDescribeServiceUpdatesPages.RUnlock()
+	mock.lockDescribeServiceUpdatesPages.RUnlock()
 	return calls
 }
 
 // DescribeServiceUpdatesPagesWithContext calls DescribeServiceUpdatesPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeServiceUpdatesPagesWithContext(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeServiceUpdatesPagesWithContext(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, fn func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeServiceUpdatesPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeServiceUpdatesPagesWithContextFunc: method is nil but elasticacheClient.DescribeServiceUpdatesPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeServiceUpdatesInput
-		In3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam             context.Context
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:             contextMoqParam,
+		DescribeServiceUpdatesInput: describeServiceUpdatesInput,
+		Fn:                          fn,
+		Options:                     options,
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesPagesWithContext.Lock()
+	mock.lockDescribeServiceUpdatesPagesWithContext.Lock()
 	mock.calls.DescribeServiceUpdatesPagesWithContext = append(mock.calls.DescribeServiceUpdatesPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeServiceUpdatesPagesWithContext.Unlock()
-	return mock.DescribeServiceUpdatesPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeServiceUpdatesPagesWithContext.Unlock()
+	return mock.DescribeServiceUpdatesPagesWithContextFunc(contextMoqParam, describeServiceUpdatesInput, fn, options...)
 }
 
 // DescribeServiceUpdatesPagesWithContextCalls gets all the calls that were made to DescribeServiceUpdatesPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeServiceUpdatesPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeServiceUpdatesPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeServiceUpdatesInput
-	In3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam             context.Context
+	DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+	Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeServiceUpdatesInput
-		In3 func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam             context.Context
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Fn                          func(*elasticache.DescribeServiceUpdatesOutput, bool) bool
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesPagesWithContext.RLock()
+	mock.lockDescribeServiceUpdatesPagesWithContext.RLock()
 	calls = mock.calls.DescribeServiceUpdatesPagesWithContext
-	lockelasticacheClientMockDescribeServiceUpdatesPagesWithContext.RUnlock()
+	mock.lockDescribeServiceUpdatesPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeServiceUpdatesRequest calls DescribeServiceUpdatesRequestFunc.
-func (mock *elasticacheClientMock) DescribeServiceUpdatesRequest(in1 *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput) {
+func (mock *elasticacheClientMock) DescribeServiceUpdatesRequest(describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput) (*request.Request, *elasticache.DescribeServiceUpdatesOutput) {
 	if mock.DescribeServiceUpdatesRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeServiceUpdatesRequestFunc: method is nil but elasticacheClient.DescribeServiceUpdatesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 	}{
-		In1: in1,
+		DescribeServiceUpdatesInput: describeServiceUpdatesInput,
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesRequest.Lock()
+	mock.lockDescribeServiceUpdatesRequest.Lock()
 	mock.calls.DescribeServiceUpdatesRequest = append(mock.calls.DescribeServiceUpdatesRequest, callInfo)
-	lockelasticacheClientMockDescribeServiceUpdatesRequest.Unlock()
-	return mock.DescribeServiceUpdatesRequestFunc(in1)
+	mock.lockDescribeServiceUpdatesRequest.Unlock()
+	return mock.DescribeServiceUpdatesRequestFunc(describeServiceUpdatesInput)
 }
 
 // DescribeServiceUpdatesRequestCalls gets all the calls that were made to DescribeServiceUpdatesRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeServiceUpdatesRequestCalls())
 func (mock *elasticacheClientMock) DescribeServiceUpdatesRequestCalls() []struct {
-	In1 *elasticache.DescribeServiceUpdatesInput
+	DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeServiceUpdatesInput
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesRequest.RLock()
+	mock.lockDescribeServiceUpdatesRequest.RLock()
 	calls = mock.calls.DescribeServiceUpdatesRequest
-	lockelasticacheClientMockDescribeServiceUpdatesRequest.RUnlock()
+	mock.lockDescribeServiceUpdatesRequest.RUnlock()
 	return calls
 }
 
 // DescribeServiceUpdatesWithContext calls DescribeServiceUpdatesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeServiceUpdatesWithContext(in1 context.Context, in2 *elasticache.DescribeServiceUpdatesInput, in3 ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
+func (mock *elasticacheClientMock) DescribeServiceUpdatesWithContext(contextMoqParam context.Context, describeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput, options ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
 	if mock.DescribeServiceUpdatesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeServiceUpdatesWithContextFunc: method is nil but elasticacheClient.DescribeServiceUpdatesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeServiceUpdatesInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		DescribeServiceUpdatesInput: describeServiceUpdatesInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesWithContext.Lock()
+	mock.lockDescribeServiceUpdatesWithContext.Lock()
 	mock.calls.DescribeServiceUpdatesWithContext = append(mock.calls.DescribeServiceUpdatesWithContext, callInfo)
-	lockelasticacheClientMockDescribeServiceUpdatesWithContext.Unlock()
-	return mock.DescribeServiceUpdatesWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeServiceUpdatesWithContext.Unlock()
+	return mock.DescribeServiceUpdatesWithContextFunc(contextMoqParam, describeServiceUpdatesInput, options...)
 }
 
 // DescribeServiceUpdatesWithContextCalls gets all the calls that were made to DescribeServiceUpdatesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeServiceUpdatesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeServiceUpdatesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeServiceUpdatesInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeServiceUpdatesInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DescribeServiceUpdatesInput *elasticache.DescribeServiceUpdatesInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockDescribeServiceUpdatesWithContext.RLock()
+	mock.lockDescribeServiceUpdatesWithContext.RLock()
 	calls = mock.calls.DescribeServiceUpdatesWithContext
-	lockelasticacheClientMockDescribeServiceUpdatesWithContext.RUnlock()
+	mock.lockDescribeServiceUpdatesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeSnapshots calls DescribeSnapshotsFunc.
-func (mock *elasticacheClientMock) DescribeSnapshots(in1 *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error) {
+func (mock *elasticacheClientMock) DescribeSnapshots(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*elasticache.DescribeSnapshotsOutput, error) {
 	if mock.DescribeSnapshotsFunc == nil {
 		panic("elasticacheClientMock.DescribeSnapshotsFunc: method is nil but elasticacheClient.DescribeSnapshots was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeSnapshotsInput
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 	}{
-		In1: in1,
+		DescribeSnapshotsInput: describeSnapshotsInput,
 	}
-	lockelasticacheClientMockDescribeSnapshots.Lock()
+	mock.lockDescribeSnapshots.Lock()
 	mock.calls.DescribeSnapshots = append(mock.calls.DescribeSnapshots, callInfo)
-	lockelasticacheClientMockDescribeSnapshots.Unlock()
-	return mock.DescribeSnapshotsFunc(in1)
+	mock.lockDescribeSnapshots.Unlock()
+	return mock.DescribeSnapshotsFunc(describeSnapshotsInput)
 }
 
 // DescribeSnapshotsCalls gets all the calls that were made to DescribeSnapshots.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeSnapshotsCalls())
 func (mock *elasticacheClientMock) DescribeSnapshotsCalls() []struct {
-	In1 *elasticache.DescribeSnapshotsInput
+	DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeSnapshotsInput
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 	}
-	lockelasticacheClientMockDescribeSnapshots.RLock()
+	mock.lockDescribeSnapshots.RLock()
 	calls = mock.calls.DescribeSnapshots
-	lockelasticacheClientMockDescribeSnapshots.RUnlock()
+	mock.lockDescribeSnapshots.RUnlock()
 	return calls
 }
 
 // DescribeSnapshotsPages calls DescribeSnapshotsPagesFunc.
-func (mock *elasticacheClientMock) DescribeSnapshotsPages(in1 *elasticache.DescribeSnapshotsInput, in2 func(*elasticache.DescribeSnapshotsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeSnapshotsPages(describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool) error {
 	if mock.DescribeSnapshotsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeSnapshotsPagesFunc: method is nil but elasticacheClient.DescribeSnapshotsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeSnapshotsInput
-		In2 func(*elasticache.DescribeSnapshotsOutput, bool) bool
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeSnapshotsInput: describeSnapshotsInput,
+		Fn:                     fn,
 	}
-	lockelasticacheClientMockDescribeSnapshotsPages.Lock()
+	mock.lockDescribeSnapshotsPages.Lock()
 	mock.calls.DescribeSnapshotsPages = append(mock.calls.DescribeSnapshotsPages, callInfo)
-	lockelasticacheClientMockDescribeSnapshotsPages.Unlock()
-	return mock.DescribeSnapshotsPagesFunc(in1, in2)
+	mock.lockDescribeSnapshotsPages.Unlock()
+	return mock.DescribeSnapshotsPagesFunc(describeSnapshotsInput, fn)
 }
 
 // DescribeSnapshotsPagesCalls gets all the calls that were made to DescribeSnapshotsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeSnapshotsPagesCalls())
 func (mock *elasticacheClientMock) DescribeSnapshotsPagesCalls() []struct {
-	In1 *elasticache.DescribeSnapshotsInput
-	In2 func(*elasticache.DescribeSnapshotsOutput, bool) bool
+	DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+	Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeSnapshotsInput
-		In2 func(*elasticache.DescribeSnapshotsOutput, bool) bool
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeSnapshotsPages.RLock()
+	mock.lockDescribeSnapshotsPages.RLock()
 	calls = mock.calls.DescribeSnapshotsPages
-	lockelasticacheClientMockDescribeSnapshotsPages.RUnlock()
+	mock.lockDescribeSnapshotsPages.RUnlock()
 	return calls
 }
 
 // DescribeSnapshotsPagesWithContext calls DescribeSnapshotsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeSnapshotsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 func(*elasticache.DescribeSnapshotsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeSnapshotsPagesWithContext(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, fn func(*elasticache.DescribeSnapshotsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeSnapshotsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeSnapshotsPagesWithContextFunc: method is nil but elasticacheClient.DescribeSnapshotsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeSnapshotsInput
-		In3 func(*elasticache.DescribeSnapshotsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam        context.Context
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
+		Options                []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:        contextMoqParam,
+		DescribeSnapshotsInput: describeSnapshotsInput,
+		Fn:                     fn,
+		Options:                options,
 	}
-	lockelasticacheClientMockDescribeSnapshotsPagesWithContext.Lock()
+	mock.lockDescribeSnapshotsPagesWithContext.Lock()
 	mock.calls.DescribeSnapshotsPagesWithContext = append(mock.calls.DescribeSnapshotsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeSnapshotsPagesWithContext.Unlock()
-	return mock.DescribeSnapshotsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeSnapshotsPagesWithContext.Unlock()
+	return mock.DescribeSnapshotsPagesWithContextFunc(contextMoqParam, describeSnapshotsInput, fn, options...)
 }
 
 // DescribeSnapshotsPagesWithContextCalls gets all the calls that were made to DescribeSnapshotsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeSnapshotsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeSnapshotsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeSnapshotsInput
-	In3 func(*elasticache.DescribeSnapshotsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam        context.Context
+	DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+	Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
+	Options                []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeSnapshotsInput
-		In3 func(*elasticache.DescribeSnapshotsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam        context.Context
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Fn                     func(*elasticache.DescribeSnapshotsOutput, bool) bool
+		Options                []request.Option
 	}
-	lockelasticacheClientMockDescribeSnapshotsPagesWithContext.RLock()
+	mock.lockDescribeSnapshotsPagesWithContext.RLock()
 	calls = mock.calls.DescribeSnapshotsPagesWithContext
-	lockelasticacheClientMockDescribeSnapshotsPagesWithContext.RUnlock()
+	mock.lockDescribeSnapshotsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeSnapshotsRequest calls DescribeSnapshotsRequestFunc.
-func (mock *elasticacheClientMock) DescribeSnapshotsRequest(in1 *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput) {
+func (mock *elasticacheClientMock) DescribeSnapshotsRequest(describeSnapshotsInput *elasticache.DescribeSnapshotsInput) (*request.Request, *elasticache.DescribeSnapshotsOutput) {
 	if mock.DescribeSnapshotsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeSnapshotsRequestFunc: method is nil but elasticacheClient.DescribeSnapshotsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeSnapshotsInput
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 	}{
-		In1: in1,
+		DescribeSnapshotsInput: describeSnapshotsInput,
 	}
-	lockelasticacheClientMockDescribeSnapshotsRequest.Lock()
+	mock.lockDescribeSnapshotsRequest.Lock()
 	mock.calls.DescribeSnapshotsRequest = append(mock.calls.DescribeSnapshotsRequest, callInfo)
-	lockelasticacheClientMockDescribeSnapshotsRequest.Unlock()
-	return mock.DescribeSnapshotsRequestFunc(in1)
+	mock.lockDescribeSnapshotsRequest.Unlock()
+	return mock.DescribeSnapshotsRequestFunc(describeSnapshotsInput)
 }
 
 // DescribeSnapshotsRequestCalls gets all the calls that were made to DescribeSnapshotsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeSnapshotsRequestCalls())
 func (mock *elasticacheClientMock) DescribeSnapshotsRequestCalls() []struct {
-	In1 *elasticache.DescribeSnapshotsInput
+	DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeSnapshotsInput
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
 	}
-	lockelasticacheClientMockDescribeSnapshotsRequest.RLock()
+	mock.lockDescribeSnapshotsRequest.RLock()
 	calls = mock.calls.DescribeSnapshotsRequest
-	lockelasticacheClientMockDescribeSnapshotsRequest.RUnlock()
+	mock.lockDescribeSnapshotsRequest.RUnlock()
 	return calls
 }
 
 // DescribeSnapshotsWithContext calls DescribeSnapshotsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeSnapshotsWithContext(in1 context.Context, in2 *elasticache.DescribeSnapshotsInput, in3 ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
+func (mock *elasticacheClientMock) DescribeSnapshotsWithContext(contextMoqParam context.Context, describeSnapshotsInput *elasticache.DescribeSnapshotsInput, options ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
 	if mock.DescribeSnapshotsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeSnapshotsWithContextFunc: method is nil but elasticacheClient.DescribeSnapshotsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeSnapshotsInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Options                []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:        contextMoqParam,
+		DescribeSnapshotsInput: describeSnapshotsInput,
+		Options:                options,
 	}
-	lockelasticacheClientMockDescribeSnapshotsWithContext.Lock()
+	mock.lockDescribeSnapshotsWithContext.Lock()
 	mock.calls.DescribeSnapshotsWithContext = append(mock.calls.DescribeSnapshotsWithContext, callInfo)
-	lockelasticacheClientMockDescribeSnapshotsWithContext.Unlock()
-	return mock.DescribeSnapshotsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeSnapshotsWithContext.Unlock()
+	return mock.DescribeSnapshotsWithContextFunc(contextMoqParam, describeSnapshotsInput, options...)
 }
 
 // DescribeSnapshotsWithContextCalls gets all the calls that were made to DescribeSnapshotsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeSnapshotsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeSnapshotsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeSnapshotsInput
-	In3 []request.Option
+	ContextMoqParam        context.Context
+	DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+	Options                []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeSnapshotsInput
-		In3 []request.Option
+		ContextMoqParam        context.Context
+		DescribeSnapshotsInput *elasticache.DescribeSnapshotsInput
+		Options                []request.Option
 	}
-	lockelasticacheClientMockDescribeSnapshotsWithContext.RLock()
+	mock.lockDescribeSnapshotsWithContext.RLock()
 	calls = mock.calls.DescribeSnapshotsWithContext
-	lockelasticacheClientMockDescribeSnapshotsWithContext.RUnlock()
+	mock.lockDescribeSnapshotsWithContext.RUnlock()
 	return calls
 }
 
 // DescribeUpdateActions calls DescribeUpdateActionsFunc.
-func (mock *elasticacheClientMock) DescribeUpdateActions(in1 *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error) {
+func (mock *elasticacheClientMock) DescribeUpdateActions(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*elasticache.DescribeUpdateActionsOutput, error) {
 	if mock.DescribeUpdateActionsFunc == nil {
 		panic("elasticacheClientMock.DescribeUpdateActionsFunc: method is nil but elasticacheClient.DescribeUpdateActions was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeUpdateActionsInput
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 	}{
-		In1: in1,
+		DescribeUpdateActionsInput: describeUpdateActionsInput,
 	}
-	lockelasticacheClientMockDescribeUpdateActions.Lock()
+	mock.lockDescribeUpdateActions.Lock()
 	mock.calls.DescribeUpdateActions = append(mock.calls.DescribeUpdateActions, callInfo)
-	lockelasticacheClientMockDescribeUpdateActions.Unlock()
-	return mock.DescribeUpdateActionsFunc(in1)
+	mock.lockDescribeUpdateActions.Unlock()
+	return mock.DescribeUpdateActionsFunc(describeUpdateActionsInput)
 }
 
 // DescribeUpdateActionsCalls gets all the calls that were made to DescribeUpdateActions.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeUpdateActionsCalls())
 func (mock *elasticacheClientMock) DescribeUpdateActionsCalls() []struct {
-	In1 *elasticache.DescribeUpdateActionsInput
+	DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeUpdateActionsInput
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 	}
-	lockelasticacheClientMockDescribeUpdateActions.RLock()
+	mock.lockDescribeUpdateActions.RLock()
 	calls = mock.calls.DescribeUpdateActions
-	lockelasticacheClientMockDescribeUpdateActions.RUnlock()
+	mock.lockDescribeUpdateActions.RUnlock()
 	return calls
 }
 
 // DescribeUpdateActionsPages calls DescribeUpdateActionsPagesFunc.
-func (mock *elasticacheClientMock) DescribeUpdateActionsPages(in1 *elasticache.DescribeUpdateActionsInput, in2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error {
+func (mock *elasticacheClientMock) DescribeUpdateActionsPages(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool) error {
 	if mock.DescribeUpdateActionsPagesFunc == nil {
 		panic("elasticacheClientMock.DescribeUpdateActionsPagesFunc: method is nil but elasticacheClient.DescribeUpdateActionsPages was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeUpdateActionsInput
-		In2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		DescribeUpdateActionsInput: describeUpdateActionsInput,
+		Fn:                         fn,
 	}
-	lockelasticacheClientMockDescribeUpdateActionsPages.Lock()
+	mock.lockDescribeUpdateActionsPages.Lock()
 	mock.calls.DescribeUpdateActionsPages = append(mock.calls.DescribeUpdateActionsPages, callInfo)
-	lockelasticacheClientMockDescribeUpdateActionsPages.Unlock()
-	return mock.DescribeUpdateActionsPagesFunc(in1, in2)
+	mock.lockDescribeUpdateActionsPages.Unlock()
+	return mock.DescribeUpdateActionsPagesFunc(describeUpdateActionsInput, fn)
 }
 
 // DescribeUpdateActionsPagesCalls gets all the calls that were made to DescribeUpdateActionsPages.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeUpdateActionsPagesCalls())
 func (mock *elasticacheClientMock) DescribeUpdateActionsPagesCalls() []struct {
-	In1 *elasticache.DescribeUpdateActionsInput
-	In2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+	DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+	Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeUpdateActionsInput
-		In2 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
 	}
-	lockelasticacheClientMockDescribeUpdateActionsPages.RLock()
+	mock.lockDescribeUpdateActionsPages.RLock()
 	calls = mock.calls.DescribeUpdateActionsPages
-	lockelasticacheClientMockDescribeUpdateActionsPages.RUnlock()
+	mock.lockDescribeUpdateActionsPages.RUnlock()
 	return calls
 }
 
 // DescribeUpdateActionsPagesWithContext calls DescribeUpdateActionsPagesWithContextFunc.
-func (mock *elasticacheClientMock) DescribeUpdateActionsPagesWithContext(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool, in4 ...request.Option) error {
+func (mock *elasticacheClientMock) DescribeUpdateActionsPagesWithContext(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, fn func(*elasticache.DescribeUpdateActionsOutput, bool) bool, options ...request.Option) error {
 	if mock.DescribeUpdateActionsPagesWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeUpdateActionsPagesWithContextFunc: method is nil but elasticacheClient.DescribeUpdateActionsPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeUpdateActionsInput
-		In3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam            context.Context
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+		Options                    []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:            contextMoqParam,
+		DescribeUpdateActionsInput: describeUpdateActionsInput,
+		Fn:                         fn,
+		Options:                    options,
 	}
-	lockelasticacheClientMockDescribeUpdateActionsPagesWithContext.Lock()
+	mock.lockDescribeUpdateActionsPagesWithContext.Lock()
 	mock.calls.DescribeUpdateActionsPagesWithContext = append(mock.calls.DescribeUpdateActionsPagesWithContext, callInfo)
-	lockelasticacheClientMockDescribeUpdateActionsPagesWithContext.Unlock()
-	return mock.DescribeUpdateActionsPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockDescribeUpdateActionsPagesWithContext.Unlock()
+	return mock.DescribeUpdateActionsPagesWithContextFunc(contextMoqParam, describeUpdateActionsInput, fn, options...)
 }
 
 // DescribeUpdateActionsPagesWithContextCalls gets all the calls that were made to DescribeUpdateActionsPagesWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeUpdateActionsPagesWithContextCalls())
 func (mock *elasticacheClientMock) DescribeUpdateActionsPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeUpdateActionsInput
-	In3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam            context.Context
+	DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+	Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+	Options                    []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeUpdateActionsInput
-		In3 func(*elasticache.DescribeUpdateActionsOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam            context.Context
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Fn                         func(*elasticache.DescribeUpdateActionsOutput, bool) bool
+		Options                    []request.Option
 	}
-	lockelasticacheClientMockDescribeUpdateActionsPagesWithContext.RLock()
+	mock.lockDescribeUpdateActionsPagesWithContext.RLock()
 	calls = mock.calls.DescribeUpdateActionsPagesWithContext
-	lockelasticacheClientMockDescribeUpdateActionsPagesWithContext.RUnlock()
+	mock.lockDescribeUpdateActionsPagesWithContext.RUnlock()
 	return calls
 }
 
 // DescribeUpdateActionsRequest calls DescribeUpdateActionsRequestFunc.
-func (mock *elasticacheClientMock) DescribeUpdateActionsRequest(in1 *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput) {
+func (mock *elasticacheClientMock) DescribeUpdateActionsRequest(describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput) (*request.Request, *elasticache.DescribeUpdateActionsOutput) {
 	if mock.DescribeUpdateActionsRequestFunc == nil {
 		panic("elasticacheClientMock.DescribeUpdateActionsRequestFunc: method is nil but elasticacheClient.DescribeUpdateActionsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeUpdateActionsInput
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 	}{
-		In1: in1,
+		DescribeUpdateActionsInput: describeUpdateActionsInput,
 	}
-	lockelasticacheClientMockDescribeUpdateActionsRequest.Lock()
+	mock.lockDescribeUpdateActionsRequest.Lock()
 	mock.calls.DescribeUpdateActionsRequest = append(mock.calls.DescribeUpdateActionsRequest, callInfo)
-	lockelasticacheClientMockDescribeUpdateActionsRequest.Unlock()
-	return mock.DescribeUpdateActionsRequestFunc(in1)
+	mock.lockDescribeUpdateActionsRequest.Unlock()
+	return mock.DescribeUpdateActionsRequestFunc(describeUpdateActionsInput)
 }
 
 // DescribeUpdateActionsRequestCalls gets all the calls that were made to DescribeUpdateActionsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeUpdateActionsRequestCalls())
 func (mock *elasticacheClientMock) DescribeUpdateActionsRequestCalls() []struct {
-	In1 *elasticache.DescribeUpdateActionsInput
+	DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeUpdateActionsInput
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
 	}
-	lockelasticacheClientMockDescribeUpdateActionsRequest.RLock()
+	mock.lockDescribeUpdateActionsRequest.RLock()
 	calls = mock.calls.DescribeUpdateActionsRequest
-	lockelasticacheClientMockDescribeUpdateActionsRequest.RUnlock()
+	mock.lockDescribeUpdateActionsRequest.RUnlock()
 	return calls
 }
 
 // DescribeUpdateActionsWithContext calls DescribeUpdateActionsWithContextFunc.
-func (mock *elasticacheClientMock) DescribeUpdateActionsWithContext(in1 context.Context, in2 *elasticache.DescribeUpdateActionsInput, in3 ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
+func (mock *elasticacheClientMock) DescribeUpdateActionsWithContext(contextMoqParam context.Context, describeUpdateActionsInput *elasticache.DescribeUpdateActionsInput, options ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
 	if mock.DescribeUpdateActionsWithContextFunc == nil {
 		panic("elasticacheClientMock.DescribeUpdateActionsWithContextFunc: method is nil but elasticacheClient.DescribeUpdateActionsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeUpdateActionsInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Options                    []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:            contextMoqParam,
+		DescribeUpdateActionsInput: describeUpdateActionsInput,
+		Options:                    options,
 	}
-	lockelasticacheClientMockDescribeUpdateActionsWithContext.Lock()
+	mock.lockDescribeUpdateActionsWithContext.Lock()
 	mock.calls.DescribeUpdateActionsWithContext = append(mock.calls.DescribeUpdateActionsWithContext, callInfo)
-	lockelasticacheClientMockDescribeUpdateActionsWithContext.Unlock()
-	return mock.DescribeUpdateActionsWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeUpdateActionsWithContext.Unlock()
+	return mock.DescribeUpdateActionsWithContextFunc(contextMoqParam, describeUpdateActionsInput, options...)
 }
 
 // DescribeUpdateActionsWithContextCalls gets all the calls that were made to DescribeUpdateActionsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.DescribeUpdateActionsWithContextCalls())
 func (mock *elasticacheClientMock) DescribeUpdateActionsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeUpdateActionsInput
-	In3 []request.Option
+	ContextMoqParam            context.Context
+	DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+	Options                    []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeUpdateActionsInput
-		In3 []request.Option
+		ContextMoqParam            context.Context
+		DescribeUpdateActionsInput *elasticache.DescribeUpdateActionsInput
+		Options                    []request.Option
 	}
-	lockelasticacheClientMockDescribeUpdateActionsWithContext.RLock()
+	mock.lockDescribeUpdateActionsWithContext.RLock()
 	calls = mock.calls.DescribeUpdateActionsWithContext
-	lockelasticacheClientMockDescribeUpdateActionsWithContext.RUnlock()
+	mock.lockDescribeUpdateActionsWithContext.RUnlock()
+	return calls
+}
+
+// DescribeUserGroups calls DescribeUserGroupsFunc.
+func (mock *elasticacheClientMock) DescribeUserGroups(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*elasticache.DescribeUserGroupsOutput, error) {
+	if mock.DescribeUserGroupsFunc == nil {
+		panic("elasticacheClientMock.DescribeUserGroupsFunc: method is nil but elasticacheClient.DescribeUserGroups was just called")
+	}
+	callInfo := struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	}{
+		DescribeUserGroupsInput: describeUserGroupsInput,
+	}
+	mock.lockDescribeUserGroups.Lock()
+	mock.calls.DescribeUserGroups = append(mock.calls.DescribeUserGroups, callInfo)
+	mock.lockDescribeUserGroups.Unlock()
+	return mock.DescribeUserGroupsFunc(describeUserGroupsInput)
+}
+
+// DescribeUserGroupsCalls gets all the calls that were made to DescribeUserGroups.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUserGroupsCalls())
+func (mock *elasticacheClientMock) DescribeUserGroupsCalls() []struct {
+	DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+} {
+	var calls []struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	}
+	mock.lockDescribeUserGroups.RLock()
+	calls = mock.calls.DescribeUserGroups
+	mock.lockDescribeUserGroups.RUnlock()
+	return calls
+}
+
+// DescribeUserGroupsPages calls DescribeUserGroupsPagesFunc.
+func (mock *elasticacheClientMock) DescribeUserGroupsPages(describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool) error {
+	if mock.DescribeUserGroupsPagesFunc == nil {
+		panic("elasticacheClientMock.DescribeUserGroupsPagesFunc: method is nil but elasticacheClient.DescribeUserGroupsPages was just called")
+	}
+	callInfo := struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+	}{
+		DescribeUserGroupsInput: describeUserGroupsInput,
+		Fn:                      fn,
+	}
+	mock.lockDescribeUserGroupsPages.Lock()
+	mock.calls.DescribeUserGroupsPages = append(mock.calls.DescribeUserGroupsPages, callInfo)
+	mock.lockDescribeUserGroupsPages.Unlock()
+	return mock.DescribeUserGroupsPagesFunc(describeUserGroupsInput, fn)
+}
+
+// DescribeUserGroupsPagesCalls gets all the calls that were made to DescribeUserGroupsPages.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUserGroupsPagesCalls())
+func (mock *elasticacheClientMock) DescribeUserGroupsPagesCalls() []struct {
+	DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+} {
+	var calls []struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+	}
+	mock.lockDescribeUserGroupsPages.RLock()
+	calls = mock.calls.DescribeUserGroupsPages
+	mock.lockDescribeUserGroupsPages.RUnlock()
+	return calls
+}
+
+// DescribeUserGroupsPagesWithContext calls DescribeUserGroupsPagesWithContextFunc.
+func (mock *elasticacheClientMock) DescribeUserGroupsPagesWithContext(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, fn func(*elasticache.DescribeUserGroupsOutput, bool) bool, options ...request.Option) error {
+	if mock.DescribeUserGroupsPagesWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeUserGroupsPagesWithContextFunc: method is nil but elasticacheClient.DescribeUserGroupsPagesWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam         context.Context
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+		Options                 []request.Option
+	}{
+		ContextMoqParam:         contextMoqParam,
+		DescribeUserGroupsInput: describeUserGroupsInput,
+		Fn:                      fn,
+		Options:                 options,
+	}
+	mock.lockDescribeUserGroupsPagesWithContext.Lock()
+	mock.calls.DescribeUserGroupsPagesWithContext = append(mock.calls.DescribeUserGroupsPagesWithContext, callInfo)
+	mock.lockDescribeUserGroupsPagesWithContext.Unlock()
+	return mock.DescribeUserGroupsPagesWithContextFunc(contextMoqParam, describeUserGroupsInput, fn, options...)
+}
+
+// DescribeUserGroupsPagesWithContextCalls gets all the calls that were made to DescribeUserGroupsPagesWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUserGroupsPagesWithContextCalls())
+func (mock *elasticacheClientMock) DescribeUserGroupsPagesWithContextCalls() []struct {
+	ContextMoqParam         context.Context
+	DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+	Options                 []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam         context.Context
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Fn                      func(*elasticache.DescribeUserGroupsOutput, bool) bool
+		Options                 []request.Option
+	}
+	mock.lockDescribeUserGroupsPagesWithContext.RLock()
+	calls = mock.calls.DescribeUserGroupsPagesWithContext
+	mock.lockDescribeUserGroupsPagesWithContext.RUnlock()
+	return calls
+}
+
+// DescribeUserGroupsRequest calls DescribeUserGroupsRequestFunc.
+func (mock *elasticacheClientMock) DescribeUserGroupsRequest(describeUserGroupsInput *elasticache.DescribeUserGroupsInput) (*request.Request, *elasticache.DescribeUserGroupsOutput) {
+	if mock.DescribeUserGroupsRequestFunc == nil {
+		panic("elasticacheClientMock.DescribeUserGroupsRequestFunc: method is nil but elasticacheClient.DescribeUserGroupsRequest was just called")
+	}
+	callInfo := struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	}{
+		DescribeUserGroupsInput: describeUserGroupsInput,
+	}
+	mock.lockDescribeUserGroupsRequest.Lock()
+	mock.calls.DescribeUserGroupsRequest = append(mock.calls.DescribeUserGroupsRequest, callInfo)
+	mock.lockDescribeUserGroupsRequest.Unlock()
+	return mock.DescribeUserGroupsRequestFunc(describeUserGroupsInput)
+}
+
+// DescribeUserGroupsRequestCalls gets all the calls that were made to DescribeUserGroupsRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUserGroupsRequestCalls())
+func (mock *elasticacheClientMock) DescribeUserGroupsRequestCalls() []struct {
+	DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+} {
+	var calls []struct {
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	}
+	mock.lockDescribeUserGroupsRequest.RLock()
+	calls = mock.calls.DescribeUserGroupsRequest
+	mock.lockDescribeUserGroupsRequest.RUnlock()
+	return calls
+}
+
+// DescribeUserGroupsWithContext calls DescribeUserGroupsWithContextFunc.
+func (mock *elasticacheClientMock) DescribeUserGroupsWithContext(contextMoqParam context.Context, describeUserGroupsInput *elasticache.DescribeUserGroupsInput, options ...request.Option) (*elasticache.DescribeUserGroupsOutput, error) {
+	if mock.DescribeUserGroupsWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeUserGroupsWithContextFunc: method is nil but elasticacheClient.DescribeUserGroupsWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam         context.Context
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Options                 []request.Option
+	}{
+		ContextMoqParam:         contextMoqParam,
+		DescribeUserGroupsInput: describeUserGroupsInput,
+		Options:                 options,
+	}
+	mock.lockDescribeUserGroupsWithContext.Lock()
+	mock.calls.DescribeUserGroupsWithContext = append(mock.calls.DescribeUserGroupsWithContext, callInfo)
+	mock.lockDescribeUserGroupsWithContext.Unlock()
+	return mock.DescribeUserGroupsWithContextFunc(contextMoqParam, describeUserGroupsInput, options...)
+}
+
+// DescribeUserGroupsWithContextCalls gets all the calls that were made to DescribeUserGroupsWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUserGroupsWithContextCalls())
+func (mock *elasticacheClientMock) DescribeUserGroupsWithContextCalls() []struct {
+	ContextMoqParam         context.Context
+	DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+	Options                 []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam         context.Context
+		DescribeUserGroupsInput *elasticache.DescribeUserGroupsInput
+		Options                 []request.Option
+	}
+	mock.lockDescribeUserGroupsWithContext.RLock()
+	calls = mock.calls.DescribeUserGroupsWithContext
+	mock.lockDescribeUserGroupsWithContext.RUnlock()
+	return calls
+}
+
+// DescribeUsers calls DescribeUsersFunc.
+func (mock *elasticacheClientMock) DescribeUsers(describeUsersInput *elasticache.DescribeUsersInput) (*elasticache.DescribeUsersOutput, error) {
+	if mock.DescribeUsersFunc == nil {
+		panic("elasticacheClientMock.DescribeUsersFunc: method is nil but elasticacheClient.DescribeUsers was just called")
+	}
+	callInfo := struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+	}{
+		DescribeUsersInput: describeUsersInput,
+	}
+	mock.lockDescribeUsers.Lock()
+	mock.calls.DescribeUsers = append(mock.calls.DescribeUsers, callInfo)
+	mock.lockDescribeUsers.Unlock()
+	return mock.DescribeUsersFunc(describeUsersInput)
+}
+
+// DescribeUsersCalls gets all the calls that were made to DescribeUsers.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUsersCalls())
+func (mock *elasticacheClientMock) DescribeUsersCalls() []struct {
+	DescribeUsersInput *elasticache.DescribeUsersInput
+} {
+	var calls []struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+	}
+	mock.lockDescribeUsers.RLock()
+	calls = mock.calls.DescribeUsers
+	mock.lockDescribeUsers.RUnlock()
+	return calls
+}
+
+// DescribeUsersPages calls DescribeUsersPagesFunc.
+func (mock *elasticacheClientMock) DescribeUsersPages(describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool) error {
+	if mock.DescribeUsersPagesFunc == nil {
+		panic("elasticacheClientMock.DescribeUsersPagesFunc: method is nil but elasticacheClient.DescribeUsersPages was just called")
+	}
+	callInfo := struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+	}{
+		DescribeUsersInput: describeUsersInput,
+		Fn:                 fn,
+	}
+	mock.lockDescribeUsersPages.Lock()
+	mock.calls.DescribeUsersPages = append(mock.calls.DescribeUsersPages, callInfo)
+	mock.lockDescribeUsersPages.Unlock()
+	return mock.DescribeUsersPagesFunc(describeUsersInput, fn)
+}
+
+// DescribeUsersPagesCalls gets all the calls that were made to DescribeUsersPages.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUsersPagesCalls())
+func (mock *elasticacheClientMock) DescribeUsersPagesCalls() []struct {
+	DescribeUsersInput *elasticache.DescribeUsersInput
+	Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+} {
+	var calls []struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+	}
+	mock.lockDescribeUsersPages.RLock()
+	calls = mock.calls.DescribeUsersPages
+	mock.lockDescribeUsersPages.RUnlock()
+	return calls
+}
+
+// DescribeUsersPagesWithContext calls DescribeUsersPagesWithContextFunc.
+func (mock *elasticacheClientMock) DescribeUsersPagesWithContext(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, fn func(*elasticache.DescribeUsersOutput, bool) bool, options ...request.Option) error {
+	if mock.DescribeUsersPagesWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeUsersPagesWithContextFunc: method is nil but elasticacheClient.DescribeUsersPagesWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam    context.Context
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+		Options            []request.Option
+	}{
+		ContextMoqParam:    contextMoqParam,
+		DescribeUsersInput: describeUsersInput,
+		Fn:                 fn,
+		Options:            options,
+	}
+	mock.lockDescribeUsersPagesWithContext.Lock()
+	mock.calls.DescribeUsersPagesWithContext = append(mock.calls.DescribeUsersPagesWithContext, callInfo)
+	mock.lockDescribeUsersPagesWithContext.Unlock()
+	return mock.DescribeUsersPagesWithContextFunc(contextMoqParam, describeUsersInput, fn, options...)
+}
+
+// DescribeUsersPagesWithContextCalls gets all the calls that were made to DescribeUsersPagesWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUsersPagesWithContextCalls())
+func (mock *elasticacheClientMock) DescribeUsersPagesWithContextCalls() []struct {
+	ContextMoqParam    context.Context
+	DescribeUsersInput *elasticache.DescribeUsersInput
+	Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+	Options            []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam    context.Context
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Fn                 func(*elasticache.DescribeUsersOutput, bool) bool
+		Options            []request.Option
+	}
+	mock.lockDescribeUsersPagesWithContext.RLock()
+	calls = mock.calls.DescribeUsersPagesWithContext
+	mock.lockDescribeUsersPagesWithContext.RUnlock()
+	return calls
+}
+
+// DescribeUsersRequest calls DescribeUsersRequestFunc.
+func (mock *elasticacheClientMock) DescribeUsersRequest(describeUsersInput *elasticache.DescribeUsersInput) (*request.Request, *elasticache.DescribeUsersOutput) {
+	if mock.DescribeUsersRequestFunc == nil {
+		panic("elasticacheClientMock.DescribeUsersRequestFunc: method is nil but elasticacheClient.DescribeUsersRequest was just called")
+	}
+	callInfo := struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+	}{
+		DescribeUsersInput: describeUsersInput,
+	}
+	mock.lockDescribeUsersRequest.Lock()
+	mock.calls.DescribeUsersRequest = append(mock.calls.DescribeUsersRequest, callInfo)
+	mock.lockDescribeUsersRequest.Unlock()
+	return mock.DescribeUsersRequestFunc(describeUsersInput)
+}
+
+// DescribeUsersRequestCalls gets all the calls that were made to DescribeUsersRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUsersRequestCalls())
+func (mock *elasticacheClientMock) DescribeUsersRequestCalls() []struct {
+	DescribeUsersInput *elasticache.DescribeUsersInput
+} {
+	var calls []struct {
+		DescribeUsersInput *elasticache.DescribeUsersInput
+	}
+	mock.lockDescribeUsersRequest.RLock()
+	calls = mock.calls.DescribeUsersRequest
+	mock.lockDescribeUsersRequest.RUnlock()
+	return calls
+}
+
+// DescribeUsersWithContext calls DescribeUsersWithContextFunc.
+func (mock *elasticacheClientMock) DescribeUsersWithContext(contextMoqParam context.Context, describeUsersInput *elasticache.DescribeUsersInput, options ...request.Option) (*elasticache.DescribeUsersOutput, error) {
+	if mock.DescribeUsersWithContextFunc == nil {
+		panic("elasticacheClientMock.DescribeUsersWithContextFunc: method is nil but elasticacheClient.DescribeUsersWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam    context.Context
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Options            []request.Option
+	}{
+		ContextMoqParam:    contextMoqParam,
+		DescribeUsersInput: describeUsersInput,
+		Options:            options,
+	}
+	mock.lockDescribeUsersWithContext.Lock()
+	mock.calls.DescribeUsersWithContext = append(mock.calls.DescribeUsersWithContext, callInfo)
+	mock.lockDescribeUsersWithContext.Unlock()
+	return mock.DescribeUsersWithContextFunc(contextMoqParam, describeUsersInput, options...)
+}
+
+// DescribeUsersWithContextCalls gets all the calls that were made to DescribeUsersWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DescribeUsersWithContextCalls())
+func (mock *elasticacheClientMock) DescribeUsersWithContextCalls() []struct {
+	ContextMoqParam    context.Context
+	DescribeUsersInput *elasticache.DescribeUsersInput
+	Options            []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam    context.Context
+		DescribeUsersInput *elasticache.DescribeUsersInput
+		Options            []request.Option
+	}
+	mock.lockDescribeUsersWithContext.RLock()
+	calls = mock.calls.DescribeUsersWithContext
+	mock.lockDescribeUsersWithContext.RUnlock()
+	return calls
+}
+
+// DisassociateGlobalReplicationGroup calls DisassociateGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroup(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*elasticache.DisassociateGlobalReplicationGroupOutput, error) {
+	if mock.DisassociateGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.DisassociateGlobalReplicationGroupFunc: method is nil but elasticacheClient.DisassociateGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+	}{
+		DisassociateGlobalReplicationGroupInput: disassociateGlobalReplicationGroupInput,
+	}
+	mock.lockDisassociateGlobalReplicationGroup.Lock()
+	mock.calls.DisassociateGlobalReplicationGroup = append(mock.calls.DisassociateGlobalReplicationGroup, callInfo)
+	mock.lockDisassociateGlobalReplicationGroup.Unlock()
+	return mock.DisassociateGlobalReplicationGroupFunc(disassociateGlobalReplicationGroupInput)
+}
+
+// DisassociateGlobalReplicationGroupCalls gets all the calls that were made to DisassociateGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.DisassociateGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroupCalls() []struct {
+	DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+	}
+	mock.lockDisassociateGlobalReplicationGroup.RLock()
+	calls = mock.calls.DisassociateGlobalReplicationGroup
+	mock.lockDisassociateGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// DisassociateGlobalReplicationGroupRequest calls DisassociateGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroupRequest(disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput) (*request.Request, *elasticache.DisassociateGlobalReplicationGroupOutput) {
+	if mock.DisassociateGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.DisassociateGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.DisassociateGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+	}{
+		DisassociateGlobalReplicationGroupInput: disassociateGlobalReplicationGroupInput,
+	}
+	mock.lockDisassociateGlobalReplicationGroupRequest.Lock()
+	mock.calls.DisassociateGlobalReplicationGroupRequest = append(mock.calls.DisassociateGlobalReplicationGroupRequest, callInfo)
+	mock.lockDisassociateGlobalReplicationGroupRequest.Unlock()
+	return mock.DisassociateGlobalReplicationGroupRequestFunc(disassociateGlobalReplicationGroupInput)
+}
+
+// DisassociateGlobalReplicationGroupRequestCalls gets all the calls that were made to DisassociateGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.DisassociateGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroupRequestCalls() []struct {
+	DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+	}
+	mock.lockDisassociateGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.DisassociateGlobalReplicationGroupRequest
+	mock.lockDisassociateGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// DisassociateGlobalReplicationGroupWithContext calls DisassociateGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroupWithContext(contextMoqParam context.Context, disassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput, options ...request.Option) (*elasticache.DisassociateGlobalReplicationGroupOutput, error) {
+	if mock.DisassociateGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.DisassociateGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.DisassociateGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                         context.Context
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+		Options                                 []request.Option
+	}{
+		ContextMoqParam:                         contextMoqParam,
+		DisassociateGlobalReplicationGroupInput: disassociateGlobalReplicationGroupInput,
+		Options:                                 options,
+	}
+	mock.lockDisassociateGlobalReplicationGroupWithContext.Lock()
+	mock.calls.DisassociateGlobalReplicationGroupWithContext = append(mock.calls.DisassociateGlobalReplicationGroupWithContext, callInfo)
+	mock.lockDisassociateGlobalReplicationGroupWithContext.Unlock()
+	return mock.DisassociateGlobalReplicationGroupWithContextFunc(contextMoqParam, disassociateGlobalReplicationGroupInput, options...)
+}
+
+// DisassociateGlobalReplicationGroupWithContextCalls gets all the calls that were made to DisassociateGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.DisassociateGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) DisassociateGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                         context.Context
+	DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+	Options                                 []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                         context.Context
+		DisassociateGlobalReplicationGroupInput *elasticache.DisassociateGlobalReplicationGroupInput
+		Options                                 []request.Option
+	}
+	mock.lockDisassociateGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.DisassociateGlobalReplicationGroupWithContext
+	mock.lockDisassociateGlobalReplicationGroupWithContext.RUnlock()
+	return calls
+}
+
+// FailoverGlobalReplicationGroup calls FailoverGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroup(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*elasticache.FailoverGlobalReplicationGroupOutput, error) {
+	if mock.FailoverGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.FailoverGlobalReplicationGroupFunc: method is nil but elasticacheClient.FailoverGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+	}{
+		FailoverGlobalReplicationGroupInput: failoverGlobalReplicationGroupInput,
+	}
+	mock.lockFailoverGlobalReplicationGroup.Lock()
+	mock.calls.FailoverGlobalReplicationGroup = append(mock.calls.FailoverGlobalReplicationGroup, callInfo)
+	mock.lockFailoverGlobalReplicationGroup.Unlock()
+	return mock.FailoverGlobalReplicationGroupFunc(failoverGlobalReplicationGroupInput)
+}
+
+// FailoverGlobalReplicationGroupCalls gets all the calls that were made to FailoverGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.FailoverGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroupCalls() []struct {
+	FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+	}
+	mock.lockFailoverGlobalReplicationGroup.RLock()
+	calls = mock.calls.FailoverGlobalReplicationGroup
+	mock.lockFailoverGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// FailoverGlobalReplicationGroupRequest calls FailoverGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroupRequest(failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput) (*request.Request, *elasticache.FailoverGlobalReplicationGroupOutput) {
+	if mock.FailoverGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.FailoverGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.FailoverGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+	}{
+		FailoverGlobalReplicationGroupInput: failoverGlobalReplicationGroupInput,
+	}
+	mock.lockFailoverGlobalReplicationGroupRequest.Lock()
+	mock.calls.FailoverGlobalReplicationGroupRequest = append(mock.calls.FailoverGlobalReplicationGroupRequest, callInfo)
+	mock.lockFailoverGlobalReplicationGroupRequest.Unlock()
+	return mock.FailoverGlobalReplicationGroupRequestFunc(failoverGlobalReplicationGroupInput)
+}
+
+// FailoverGlobalReplicationGroupRequestCalls gets all the calls that were made to FailoverGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.FailoverGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroupRequestCalls() []struct {
+	FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+	}
+	mock.lockFailoverGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.FailoverGlobalReplicationGroupRequest
+	mock.lockFailoverGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// FailoverGlobalReplicationGroupWithContext calls FailoverGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroupWithContext(contextMoqParam context.Context, failoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput, options ...request.Option) (*elasticache.FailoverGlobalReplicationGroupOutput, error) {
+	if mock.FailoverGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.FailoverGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.FailoverGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                     context.Context
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+		Options                             []request.Option
+	}{
+		ContextMoqParam:                     contextMoqParam,
+		FailoverGlobalReplicationGroupInput: failoverGlobalReplicationGroupInput,
+		Options:                             options,
+	}
+	mock.lockFailoverGlobalReplicationGroupWithContext.Lock()
+	mock.calls.FailoverGlobalReplicationGroupWithContext = append(mock.calls.FailoverGlobalReplicationGroupWithContext, callInfo)
+	mock.lockFailoverGlobalReplicationGroupWithContext.Unlock()
+	return mock.FailoverGlobalReplicationGroupWithContextFunc(contextMoqParam, failoverGlobalReplicationGroupInput, options...)
+}
+
+// FailoverGlobalReplicationGroupWithContextCalls gets all the calls that were made to FailoverGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.FailoverGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) FailoverGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                     context.Context
+	FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+	Options                             []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                     context.Context
+		FailoverGlobalReplicationGroupInput *elasticache.FailoverGlobalReplicationGroupInput
+		Options                             []request.Option
+	}
+	mock.lockFailoverGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.FailoverGlobalReplicationGroupWithContext
+	mock.lockFailoverGlobalReplicationGroupWithContext.RUnlock()
+	return calls
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroup calls IncreaseNodeGroupsInGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroup(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	if mock.IncreaseNodeGroupsInGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.IncreaseNodeGroupsInGlobalReplicationGroupFunc: method is nil but elasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+	}{
+		IncreaseNodeGroupsInGlobalReplicationGroupInput: increaseNodeGroupsInGlobalReplicationGroupInput,
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroup.Lock()
+	mock.calls.IncreaseNodeGroupsInGlobalReplicationGroup = append(mock.calls.IncreaseNodeGroupsInGlobalReplicationGroup, callInfo)
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroup.Unlock()
+	return mock.IncreaseNodeGroupsInGlobalReplicationGroupFunc(increaseNodeGroupsInGlobalReplicationGroupInput)
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupCalls gets all the calls that were made to IncreaseNodeGroupsInGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroupCalls() []struct {
+	IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroup.RLock()
+	calls = mock.calls.IncreaseNodeGroupsInGlobalReplicationGroup
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupRequest calls IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroupRequest(increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput) (*request.Request, *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput) {
+	if mock.IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+	}{
+		IncreaseNodeGroupsInGlobalReplicationGroupInput: increaseNodeGroupsInGlobalReplicationGroupInput,
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupRequest.Lock()
+	mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupRequest = append(mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupRequest, callInfo)
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupRequest.Unlock()
+	return mock.IncreaseNodeGroupsInGlobalReplicationGroupRequestFunc(increaseNodeGroupsInGlobalReplicationGroupInput)
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupRequestCalls gets all the calls that were made to IncreaseNodeGroupsInGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroupRequestCalls() []struct {
+	IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupRequest
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupWithContext calls IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroupWithContext(contextMoqParam context.Context, increaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	if mock.IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                                 context.Context
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+		Options                                         []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		IncreaseNodeGroupsInGlobalReplicationGroupInput: increaseNodeGroupsInGlobalReplicationGroupInput,
+		Options: options,
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupWithContext.Lock()
+	mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupWithContext = append(mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupWithContext, callInfo)
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupWithContext.Unlock()
+	return mock.IncreaseNodeGroupsInGlobalReplicationGroupWithContextFunc(contextMoqParam, increaseNodeGroupsInGlobalReplicationGroupInput, options...)
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupWithContextCalls gets all the calls that were made to IncreaseNodeGroupsInGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.IncreaseNodeGroupsInGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) IncreaseNodeGroupsInGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                                 context.Context
+	IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+	Options                                         []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                                 context.Context
+		IncreaseNodeGroupsInGlobalReplicationGroupInput *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput
+		Options                                         []request.Option
+	}
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.IncreaseNodeGroupsInGlobalReplicationGroupWithContext
+	mock.lockIncreaseNodeGroupsInGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // IncreaseReplicaCount calls IncreaseReplicaCountFunc.
-func (mock *elasticacheClientMock) IncreaseReplicaCount(in1 *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error) {
+func (mock *elasticacheClientMock) IncreaseReplicaCount(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*elasticache.IncreaseReplicaCountOutput, error) {
 	if mock.IncreaseReplicaCountFunc == nil {
 		panic("elasticacheClientMock.IncreaseReplicaCountFunc: method is nil but elasticacheClient.IncreaseReplicaCount was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.IncreaseReplicaCountInput
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 	}{
-		In1: in1,
+		IncreaseReplicaCountInput: increaseReplicaCountInput,
 	}
-	lockelasticacheClientMockIncreaseReplicaCount.Lock()
+	mock.lockIncreaseReplicaCount.Lock()
 	mock.calls.IncreaseReplicaCount = append(mock.calls.IncreaseReplicaCount, callInfo)
-	lockelasticacheClientMockIncreaseReplicaCount.Unlock()
-	return mock.IncreaseReplicaCountFunc(in1)
+	mock.lockIncreaseReplicaCount.Unlock()
+	return mock.IncreaseReplicaCountFunc(increaseReplicaCountInput)
 }
 
 // IncreaseReplicaCountCalls gets all the calls that were made to IncreaseReplicaCount.
 // Check the length with:
 //     len(mockedelasticacheClient.IncreaseReplicaCountCalls())
 func (mock *elasticacheClientMock) IncreaseReplicaCountCalls() []struct {
-	In1 *elasticache.IncreaseReplicaCountInput
+	IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 } {
 	var calls []struct {
-		In1 *elasticache.IncreaseReplicaCountInput
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 	}
-	lockelasticacheClientMockIncreaseReplicaCount.RLock()
+	mock.lockIncreaseReplicaCount.RLock()
 	calls = mock.calls.IncreaseReplicaCount
-	lockelasticacheClientMockIncreaseReplicaCount.RUnlock()
+	mock.lockIncreaseReplicaCount.RUnlock()
 	return calls
 }
 
 // IncreaseReplicaCountRequest calls IncreaseReplicaCountRequestFunc.
-func (mock *elasticacheClientMock) IncreaseReplicaCountRequest(in1 *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput) {
+func (mock *elasticacheClientMock) IncreaseReplicaCountRequest(increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput) (*request.Request, *elasticache.IncreaseReplicaCountOutput) {
 	if mock.IncreaseReplicaCountRequestFunc == nil {
 		panic("elasticacheClientMock.IncreaseReplicaCountRequestFunc: method is nil but elasticacheClient.IncreaseReplicaCountRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.IncreaseReplicaCountInput
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 	}{
-		In1: in1,
+		IncreaseReplicaCountInput: increaseReplicaCountInput,
 	}
-	lockelasticacheClientMockIncreaseReplicaCountRequest.Lock()
+	mock.lockIncreaseReplicaCountRequest.Lock()
 	mock.calls.IncreaseReplicaCountRequest = append(mock.calls.IncreaseReplicaCountRequest, callInfo)
-	lockelasticacheClientMockIncreaseReplicaCountRequest.Unlock()
-	return mock.IncreaseReplicaCountRequestFunc(in1)
+	mock.lockIncreaseReplicaCountRequest.Unlock()
+	return mock.IncreaseReplicaCountRequestFunc(increaseReplicaCountInput)
 }
 
 // IncreaseReplicaCountRequestCalls gets all the calls that were made to IncreaseReplicaCountRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.IncreaseReplicaCountRequestCalls())
 func (mock *elasticacheClientMock) IncreaseReplicaCountRequestCalls() []struct {
-	In1 *elasticache.IncreaseReplicaCountInput
+	IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 } {
 	var calls []struct {
-		In1 *elasticache.IncreaseReplicaCountInput
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
 	}
-	lockelasticacheClientMockIncreaseReplicaCountRequest.RLock()
+	mock.lockIncreaseReplicaCountRequest.RLock()
 	calls = mock.calls.IncreaseReplicaCountRequest
-	lockelasticacheClientMockIncreaseReplicaCountRequest.RUnlock()
+	mock.lockIncreaseReplicaCountRequest.RUnlock()
 	return calls
 }
 
 // IncreaseReplicaCountWithContext calls IncreaseReplicaCountWithContextFunc.
-func (mock *elasticacheClientMock) IncreaseReplicaCountWithContext(in1 context.Context, in2 *elasticache.IncreaseReplicaCountInput, in3 ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
+func (mock *elasticacheClientMock) IncreaseReplicaCountWithContext(contextMoqParam context.Context, increaseReplicaCountInput *elasticache.IncreaseReplicaCountInput, options ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
 	if mock.IncreaseReplicaCountWithContextFunc == nil {
 		panic("elasticacheClientMock.IncreaseReplicaCountWithContextFunc: method is nil but elasticacheClient.IncreaseReplicaCountWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.IncreaseReplicaCountInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
+		Options                   []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:           contextMoqParam,
+		IncreaseReplicaCountInput: increaseReplicaCountInput,
+		Options:                   options,
 	}
-	lockelasticacheClientMockIncreaseReplicaCountWithContext.Lock()
+	mock.lockIncreaseReplicaCountWithContext.Lock()
 	mock.calls.IncreaseReplicaCountWithContext = append(mock.calls.IncreaseReplicaCountWithContext, callInfo)
-	lockelasticacheClientMockIncreaseReplicaCountWithContext.Unlock()
-	return mock.IncreaseReplicaCountWithContextFunc(in1, in2, in3...)
+	mock.lockIncreaseReplicaCountWithContext.Unlock()
+	return mock.IncreaseReplicaCountWithContextFunc(contextMoqParam, increaseReplicaCountInput, options...)
 }
 
 // IncreaseReplicaCountWithContextCalls gets all the calls that were made to IncreaseReplicaCountWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.IncreaseReplicaCountWithContextCalls())
 func (mock *elasticacheClientMock) IncreaseReplicaCountWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.IncreaseReplicaCountInput
-	In3 []request.Option
+	ContextMoqParam           context.Context
+	IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
+	Options                   []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.IncreaseReplicaCountInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		IncreaseReplicaCountInput *elasticache.IncreaseReplicaCountInput
+		Options                   []request.Option
 	}
-	lockelasticacheClientMockIncreaseReplicaCountWithContext.RLock()
+	mock.lockIncreaseReplicaCountWithContext.RLock()
 	calls = mock.calls.IncreaseReplicaCountWithContext
-	lockelasticacheClientMockIncreaseReplicaCountWithContext.RUnlock()
+	mock.lockIncreaseReplicaCountWithContext.RUnlock()
 	return calls
 }
 
 // ListAllowedNodeTypeModifications calls ListAllowedNodeTypeModificationsFunc.
-func (mock *elasticacheClientMock) ListAllowedNodeTypeModifications(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
+func (mock *elasticacheClientMock) ListAllowedNodeTypeModifications(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
 	if mock.ListAllowedNodeTypeModificationsFunc == nil {
 		panic("elasticacheClientMock.ListAllowedNodeTypeModificationsFunc: method is nil but elasticacheClient.ListAllowedNodeTypeModifications was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ListAllowedNodeTypeModificationsInput
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 	}{
-		In1: in1,
+		ListAllowedNodeTypeModificationsInput: listAllowedNodeTypeModificationsInput,
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModifications.Lock()
+	mock.lockListAllowedNodeTypeModifications.Lock()
 	mock.calls.ListAllowedNodeTypeModifications = append(mock.calls.ListAllowedNodeTypeModifications, callInfo)
-	lockelasticacheClientMockListAllowedNodeTypeModifications.Unlock()
-	return mock.ListAllowedNodeTypeModificationsFunc(in1)
+	mock.lockListAllowedNodeTypeModifications.Unlock()
+	return mock.ListAllowedNodeTypeModificationsFunc(listAllowedNodeTypeModificationsInput)
 }
 
 // ListAllowedNodeTypeModificationsCalls gets all the calls that were made to ListAllowedNodeTypeModifications.
 // Check the length with:
 //     len(mockedelasticacheClient.ListAllowedNodeTypeModificationsCalls())
 func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsCalls() []struct {
-	In1 *elasticache.ListAllowedNodeTypeModificationsInput
+	ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 } {
 	var calls []struct {
-		In1 *elasticache.ListAllowedNodeTypeModificationsInput
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModifications.RLock()
+	mock.lockListAllowedNodeTypeModifications.RLock()
 	calls = mock.calls.ListAllowedNodeTypeModifications
-	lockelasticacheClientMockListAllowedNodeTypeModifications.RUnlock()
+	mock.lockListAllowedNodeTypeModifications.RUnlock()
 	return calls
 }
 
 // ListAllowedNodeTypeModificationsRequest calls ListAllowedNodeTypeModificationsRequestFunc.
-func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsRequest(in1 *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput) {
+func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsRequest(listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput) (*request.Request, *elasticache.ListAllowedNodeTypeModificationsOutput) {
 	if mock.ListAllowedNodeTypeModificationsRequestFunc == nil {
 		panic("elasticacheClientMock.ListAllowedNodeTypeModificationsRequestFunc: method is nil but elasticacheClient.ListAllowedNodeTypeModificationsRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ListAllowedNodeTypeModificationsInput
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 	}{
-		In1: in1,
+		ListAllowedNodeTypeModificationsInput: listAllowedNodeTypeModificationsInput,
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModificationsRequest.Lock()
+	mock.lockListAllowedNodeTypeModificationsRequest.Lock()
 	mock.calls.ListAllowedNodeTypeModificationsRequest = append(mock.calls.ListAllowedNodeTypeModificationsRequest, callInfo)
-	lockelasticacheClientMockListAllowedNodeTypeModificationsRequest.Unlock()
-	return mock.ListAllowedNodeTypeModificationsRequestFunc(in1)
+	mock.lockListAllowedNodeTypeModificationsRequest.Unlock()
+	return mock.ListAllowedNodeTypeModificationsRequestFunc(listAllowedNodeTypeModificationsInput)
 }
 
 // ListAllowedNodeTypeModificationsRequestCalls gets all the calls that were made to ListAllowedNodeTypeModificationsRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ListAllowedNodeTypeModificationsRequestCalls())
 func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsRequestCalls() []struct {
-	In1 *elasticache.ListAllowedNodeTypeModificationsInput
+	ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 } {
 	var calls []struct {
-		In1 *elasticache.ListAllowedNodeTypeModificationsInput
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModificationsRequest.RLock()
+	mock.lockListAllowedNodeTypeModificationsRequest.RLock()
 	calls = mock.calls.ListAllowedNodeTypeModificationsRequest
-	lockelasticacheClientMockListAllowedNodeTypeModificationsRequest.RUnlock()
+	mock.lockListAllowedNodeTypeModificationsRequest.RUnlock()
 	return calls
 }
 
 // ListAllowedNodeTypeModificationsWithContext calls ListAllowedNodeTypeModificationsWithContextFunc.
-func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsWithContext(in1 context.Context, in2 *elasticache.ListAllowedNodeTypeModificationsInput, in3 ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
+func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsWithContext(contextMoqParam context.Context, listAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput, options ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
 	if mock.ListAllowedNodeTypeModificationsWithContextFunc == nil {
 		panic("elasticacheClientMock.ListAllowedNodeTypeModificationsWithContextFunc: method is nil but elasticacheClient.ListAllowedNodeTypeModificationsWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ListAllowedNodeTypeModificationsInput
-		In3 []request.Option
+		ContextMoqParam                       context.Context
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
+		Options                               []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                       contextMoqParam,
+		ListAllowedNodeTypeModificationsInput: listAllowedNodeTypeModificationsInput,
+		Options:                               options,
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModificationsWithContext.Lock()
+	mock.lockListAllowedNodeTypeModificationsWithContext.Lock()
 	mock.calls.ListAllowedNodeTypeModificationsWithContext = append(mock.calls.ListAllowedNodeTypeModificationsWithContext, callInfo)
-	lockelasticacheClientMockListAllowedNodeTypeModificationsWithContext.Unlock()
-	return mock.ListAllowedNodeTypeModificationsWithContextFunc(in1, in2, in3...)
+	mock.lockListAllowedNodeTypeModificationsWithContext.Unlock()
+	return mock.ListAllowedNodeTypeModificationsWithContextFunc(contextMoqParam, listAllowedNodeTypeModificationsInput, options...)
 }
 
 // ListAllowedNodeTypeModificationsWithContextCalls gets all the calls that were made to ListAllowedNodeTypeModificationsWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ListAllowedNodeTypeModificationsWithContextCalls())
 func (mock *elasticacheClientMock) ListAllowedNodeTypeModificationsWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ListAllowedNodeTypeModificationsInput
-	In3 []request.Option
+	ContextMoqParam                       context.Context
+	ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
+	Options                               []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ListAllowedNodeTypeModificationsInput
-		In3 []request.Option
+		ContextMoqParam                       context.Context
+		ListAllowedNodeTypeModificationsInput *elasticache.ListAllowedNodeTypeModificationsInput
+		Options                               []request.Option
 	}
-	lockelasticacheClientMockListAllowedNodeTypeModificationsWithContext.RLock()
+	mock.lockListAllowedNodeTypeModificationsWithContext.RLock()
 	calls = mock.calls.ListAllowedNodeTypeModificationsWithContext
-	lockelasticacheClientMockListAllowedNodeTypeModificationsWithContext.RUnlock()
+	mock.lockListAllowedNodeTypeModificationsWithContext.RUnlock()
 	return calls
 }
 
 // ListTagsForResource calls ListTagsForResourceFunc.
-func (mock *elasticacheClientMock) ListTagsForResource(in1 *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) ListTagsForResource(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*elasticache.TagListMessage, error) {
 	if mock.ListTagsForResourceFunc == nil {
 		panic("elasticacheClientMock.ListTagsForResourceFunc: method is nil but elasticacheClient.ListTagsForResource was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ListTagsForResourceInput
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 	}{
-		In1: in1,
+		ListTagsForResourceInput: listTagsForResourceInput,
 	}
-	lockelasticacheClientMockListTagsForResource.Lock()
+	mock.lockListTagsForResource.Lock()
 	mock.calls.ListTagsForResource = append(mock.calls.ListTagsForResource, callInfo)
-	lockelasticacheClientMockListTagsForResource.Unlock()
-	return mock.ListTagsForResourceFunc(in1)
+	mock.lockListTagsForResource.Unlock()
+	return mock.ListTagsForResourceFunc(listTagsForResourceInput)
 }
 
 // ListTagsForResourceCalls gets all the calls that were made to ListTagsForResource.
 // Check the length with:
 //     len(mockedelasticacheClient.ListTagsForResourceCalls())
 func (mock *elasticacheClientMock) ListTagsForResourceCalls() []struct {
-	In1 *elasticache.ListTagsForResourceInput
+	ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.ListTagsForResourceInput
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 	}
-	lockelasticacheClientMockListTagsForResource.RLock()
+	mock.lockListTagsForResource.RLock()
 	calls = mock.calls.ListTagsForResource
-	lockelasticacheClientMockListTagsForResource.RUnlock()
+	mock.lockListTagsForResource.RUnlock()
 	return calls
 }
 
 // ListTagsForResourceRequest calls ListTagsForResourceRequestFunc.
-func (mock *elasticacheClientMock) ListTagsForResourceRequest(in1 *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage) {
+func (mock *elasticacheClientMock) ListTagsForResourceRequest(listTagsForResourceInput *elasticache.ListTagsForResourceInput) (*request.Request, *elasticache.TagListMessage) {
 	if mock.ListTagsForResourceRequestFunc == nil {
 		panic("elasticacheClientMock.ListTagsForResourceRequestFunc: method is nil but elasticacheClient.ListTagsForResourceRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ListTagsForResourceInput
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 	}{
-		In1: in1,
+		ListTagsForResourceInput: listTagsForResourceInput,
 	}
-	lockelasticacheClientMockListTagsForResourceRequest.Lock()
+	mock.lockListTagsForResourceRequest.Lock()
 	mock.calls.ListTagsForResourceRequest = append(mock.calls.ListTagsForResourceRequest, callInfo)
-	lockelasticacheClientMockListTagsForResourceRequest.Unlock()
-	return mock.ListTagsForResourceRequestFunc(in1)
+	mock.lockListTagsForResourceRequest.Unlock()
+	return mock.ListTagsForResourceRequestFunc(listTagsForResourceInput)
 }
 
 // ListTagsForResourceRequestCalls gets all the calls that were made to ListTagsForResourceRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ListTagsForResourceRequestCalls())
 func (mock *elasticacheClientMock) ListTagsForResourceRequestCalls() []struct {
-	In1 *elasticache.ListTagsForResourceInput
+	ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.ListTagsForResourceInput
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
 	}
-	lockelasticacheClientMockListTagsForResourceRequest.RLock()
+	mock.lockListTagsForResourceRequest.RLock()
 	calls = mock.calls.ListTagsForResourceRequest
-	lockelasticacheClientMockListTagsForResourceRequest.RUnlock()
+	mock.lockListTagsForResourceRequest.RUnlock()
 	return calls
 }
 
 // ListTagsForResourceWithContext calls ListTagsForResourceWithContextFunc.
-func (mock *elasticacheClientMock) ListTagsForResourceWithContext(in1 context.Context, in2 *elasticache.ListTagsForResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) ListTagsForResourceWithContext(contextMoqParam context.Context, listTagsForResourceInput *elasticache.ListTagsForResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
 	if mock.ListTagsForResourceWithContextFunc == nil {
 		panic("elasticacheClientMock.ListTagsForResourceWithContextFunc: method is nil but elasticacheClient.ListTagsForResourceWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ListTagsForResourceInput
-		In3 []request.Option
+		ContextMoqParam          context.Context
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
+		Options                  []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:          contextMoqParam,
+		ListTagsForResourceInput: listTagsForResourceInput,
+		Options:                  options,
 	}
-	lockelasticacheClientMockListTagsForResourceWithContext.Lock()
+	mock.lockListTagsForResourceWithContext.Lock()
 	mock.calls.ListTagsForResourceWithContext = append(mock.calls.ListTagsForResourceWithContext, callInfo)
-	lockelasticacheClientMockListTagsForResourceWithContext.Unlock()
-	return mock.ListTagsForResourceWithContextFunc(in1, in2, in3...)
+	mock.lockListTagsForResourceWithContext.Unlock()
+	return mock.ListTagsForResourceWithContextFunc(contextMoqParam, listTagsForResourceInput, options...)
 }
 
 // ListTagsForResourceWithContextCalls gets all the calls that were made to ListTagsForResourceWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ListTagsForResourceWithContextCalls())
 func (mock *elasticacheClientMock) ListTagsForResourceWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ListTagsForResourceInput
-	In3 []request.Option
+	ContextMoqParam          context.Context
+	ListTagsForResourceInput *elasticache.ListTagsForResourceInput
+	Options                  []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ListTagsForResourceInput
-		In3 []request.Option
+		ContextMoqParam          context.Context
+		ListTagsForResourceInput *elasticache.ListTagsForResourceInput
+		Options                  []request.Option
 	}
-	lockelasticacheClientMockListTagsForResourceWithContext.RLock()
+	mock.lockListTagsForResourceWithContext.RLock()
 	calls = mock.calls.ListTagsForResourceWithContext
-	lockelasticacheClientMockListTagsForResourceWithContext.RUnlock()
+	mock.lockListTagsForResourceWithContext.RUnlock()
 	return calls
 }
 
 // ModifyCacheCluster calls ModifyCacheClusterFunc.
-func (mock *elasticacheClientMock) ModifyCacheCluster(in1 *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) ModifyCacheCluster(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*elasticache.ModifyCacheClusterOutput, error) {
 	if mock.ModifyCacheClusterFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheClusterFunc: method is nil but elasticacheClient.ModifyCacheCluster was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheClusterInput
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 	}{
-		In1: in1,
+		ModifyCacheClusterInput: modifyCacheClusterInput,
 	}
-	lockelasticacheClientMockModifyCacheCluster.Lock()
+	mock.lockModifyCacheCluster.Lock()
 	mock.calls.ModifyCacheCluster = append(mock.calls.ModifyCacheCluster, callInfo)
-	lockelasticacheClientMockModifyCacheCluster.Unlock()
-	return mock.ModifyCacheClusterFunc(in1)
+	mock.lockModifyCacheCluster.Unlock()
+	return mock.ModifyCacheClusterFunc(modifyCacheClusterInput)
 }
 
 // ModifyCacheClusterCalls gets all the calls that were made to ModifyCacheCluster.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheClusterCalls())
 func (mock *elasticacheClientMock) ModifyCacheClusterCalls() []struct {
-	In1 *elasticache.ModifyCacheClusterInput
+	ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheClusterInput
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 	}
-	lockelasticacheClientMockModifyCacheCluster.RLock()
+	mock.lockModifyCacheCluster.RLock()
 	calls = mock.calls.ModifyCacheCluster
-	lockelasticacheClientMockModifyCacheCluster.RUnlock()
+	mock.lockModifyCacheCluster.RUnlock()
 	return calls
 }
 
 // ModifyCacheClusterRequest calls ModifyCacheClusterRequestFunc.
-func (mock *elasticacheClientMock) ModifyCacheClusterRequest(in1 *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput) {
+func (mock *elasticacheClientMock) ModifyCacheClusterRequest(modifyCacheClusterInput *elasticache.ModifyCacheClusterInput) (*request.Request, *elasticache.ModifyCacheClusterOutput) {
 	if mock.ModifyCacheClusterRequestFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheClusterRequestFunc: method is nil but elasticacheClient.ModifyCacheClusterRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheClusterInput
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 	}{
-		In1: in1,
+		ModifyCacheClusterInput: modifyCacheClusterInput,
 	}
-	lockelasticacheClientMockModifyCacheClusterRequest.Lock()
+	mock.lockModifyCacheClusterRequest.Lock()
 	mock.calls.ModifyCacheClusterRequest = append(mock.calls.ModifyCacheClusterRequest, callInfo)
-	lockelasticacheClientMockModifyCacheClusterRequest.Unlock()
-	return mock.ModifyCacheClusterRequestFunc(in1)
+	mock.lockModifyCacheClusterRequest.Unlock()
+	return mock.ModifyCacheClusterRequestFunc(modifyCacheClusterInput)
 }
 
 // ModifyCacheClusterRequestCalls gets all the calls that were made to ModifyCacheClusterRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheClusterRequestCalls())
 func (mock *elasticacheClientMock) ModifyCacheClusterRequestCalls() []struct {
-	In1 *elasticache.ModifyCacheClusterInput
+	ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheClusterInput
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
 	}
-	lockelasticacheClientMockModifyCacheClusterRequest.RLock()
+	mock.lockModifyCacheClusterRequest.RLock()
 	calls = mock.calls.ModifyCacheClusterRequest
-	lockelasticacheClientMockModifyCacheClusterRequest.RUnlock()
+	mock.lockModifyCacheClusterRequest.RUnlock()
 	return calls
 }
 
 // ModifyCacheClusterWithContext calls ModifyCacheClusterWithContextFunc.
-func (mock *elasticacheClientMock) ModifyCacheClusterWithContext(in1 context.Context, in2 *elasticache.ModifyCacheClusterInput, in3 ...request.Option) (*elasticache.ModifyCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) ModifyCacheClusterWithContext(contextMoqParam context.Context, modifyCacheClusterInput *elasticache.ModifyCacheClusterInput, options ...request.Option) (*elasticache.ModifyCacheClusterOutput, error) {
 	if mock.ModifyCacheClusterWithContextFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheClusterWithContextFunc: method is nil but elasticacheClient.ModifyCacheClusterWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
+		Options                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:         contextMoqParam,
+		ModifyCacheClusterInput: modifyCacheClusterInput,
+		Options:                 options,
 	}
-	lockelasticacheClientMockModifyCacheClusterWithContext.Lock()
+	mock.lockModifyCacheClusterWithContext.Lock()
 	mock.calls.ModifyCacheClusterWithContext = append(mock.calls.ModifyCacheClusterWithContext, callInfo)
-	lockelasticacheClientMockModifyCacheClusterWithContext.Unlock()
-	return mock.ModifyCacheClusterWithContextFunc(in1, in2, in3...)
+	mock.lockModifyCacheClusterWithContext.Unlock()
+	return mock.ModifyCacheClusterWithContextFunc(contextMoqParam, modifyCacheClusterInput, options...)
 }
 
 // ModifyCacheClusterWithContextCalls gets all the calls that were made to ModifyCacheClusterWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheClusterWithContextCalls())
 func (mock *elasticacheClientMock) ModifyCacheClusterWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ModifyCacheClusterInput
-	In3 []request.Option
+	ContextMoqParam         context.Context
+	ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
+	Options                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		ModifyCacheClusterInput *elasticache.ModifyCacheClusterInput
+		Options                 []request.Option
 	}
-	lockelasticacheClientMockModifyCacheClusterWithContext.RLock()
+	mock.lockModifyCacheClusterWithContext.RLock()
 	calls = mock.calls.ModifyCacheClusterWithContext
-	lockelasticacheClientMockModifyCacheClusterWithContext.RUnlock()
+	mock.lockModifyCacheClusterWithContext.RUnlock()
 	return calls
 }
 
 // ModifyCacheParameterGroup calls ModifyCacheParameterGroupFunc.
-func (mock *elasticacheClientMock) ModifyCacheParameterGroup(in1 *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
+func (mock *elasticacheClientMock) ModifyCacheParameterGroup(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
 	if mock.ModifyCacheParameterGroupFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheParameterGroupFunc: method is nil but elasticacheClient.ModifyCacheParameterGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheParameterGroupInput
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 	}{
-		In1: in1,
+		ModifyCacheParameterGroupInput: modifyCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockModifyCacheParameterGroup.Lock()
+	mock.lockModifyCacheParameterGroup.Lock()
 	mock.calls.ModifyCacheParameterGroup = append(mock.calls.ModifyCacheParameterGroup, callInfo)
-	lockelasticacheClientMockModifyCacheParameterGroup.Unlock()
-	return mock.ModifyCacheParameterGroupFunc(in1)
+	mock.lockModifyCacheParameterGroup.Unlock()
+	return mock.ModifyCacheParameterGroupFunc(modifyCacheParameterGroupInput)
 }
 
 // ModifyCacheParameterGroupCalls gets all the calls that were made to ModifyCacheParameterGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheParameterGroupCalls())
 func (mock *elasticacheClientMock) ModifyCacheParameterGroupCalls() []struct {
-	In1 *elasticache.ModifyCacheParameterGroupInput
+	ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheParameterGroupInput
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 	}
-	lockelasticacheClientMockModifyCacheParameterGroup.RLock()
+	mock.lockModifyCacheParameterGroup.RLock()
 	calls = mock.calls.ModifyCacheParameterGroup
-	lockelasticacheClientMockModifyCacheParameterGroup.RUnlock()
+	mock.lockModifyCacheParameterGroup.RUnlock()
 	return calls
 }
 
 // ModifyCacheParameterGroupRequest calls ModifyCacheParameterGroupRequestFunc.
-func (mock *elasticacheClientMock) ModifyCacheParameterGroupRequest(in1 *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
+func (mock *elasticacheClientMock) ModifyCacheParameterGroupRequest(modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
 	if mock.ModifyCacheParameterGroupRequestFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheParameterGroupRequestFunc: method is nil but elasticacheClient.ModifyCacheParameterGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheParameterGroupInput
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 	}{
-		In1: in1,
+		ModifyCacheParameterGroupInput: modifyCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockModifyCacheParameterGroupRequest.Lock()
+	mock.lockModifyCacheParameterGroupRequest.Lock()
 	mock.calls.ModifyCacheParameterGroupRequest = append(mock.calls.ModifyCacheParameterGroupRequest, callInfo)
-	lockelasticacheClientMockModifyCacheParameterGroupRequest.Unlock()
-	return mock.ModifyCacheParameterGroupRequestFunc(in1)
+	mock.lockModifyCacheParameterGroupRequest.Unlock()
+	return mock.ModifyCacheParameterGroupRequestFunc(modifyCacheParameterGroupInput)
 }
 
 // ModifyCacheParameterGroupRequestCalls gets all the calls that were made to ModifyCacheParameterGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheParameterGroupRequestCalls())
 func (mock *elasticacheClientMock) ModifyCacheParameterGroupRequestCalls() []struct {
-	In1 *elasticache.ModifyCacheParameterGroupInput
+	ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheParameterGroupInput
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
 	}
-	lockelasticacheClientMockModifyCacheParameterGroupRequest.RLock()
+	mock.lockModifyCacheParameterGroupRequest.RLock()
 	calls = mock.calls.ModifyCacheParameterGroupRequest
-	lockelasticacheClientMockModifyCacheParameterGroupRequest.RUnlock()
+	mock.lockModifyCacheParameterGroupRequest.RUnlock()
 	return calls
 }
 
 // ModifyCacheParameterGroupWithContext calls ModifyCacheParameterGroupWithContextFunc.
-func (mock *elasticacheClientMock) ModifyCacheParameterGroupWithContext(in1 context.Context, in2 *elasticache.ModifyCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
+func (mock *elasticacheClientMock) ModifyCacheParameterGroupWithContext(contextMoqParam context.Context, modifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
 	if mock.ModifyCacheParameterGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheParameterGroupWithContextFunc: method is nil but elasticacheClient.ModifyCacheParameterGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
+		Options                        []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		ModifyCacheParameterGroupInput: modifyCacheParameterGroupInput,
+		Options:                        options,
 	}
-	lockelasticacheClientMockModifyCacheParameterGroupWithContext.Lock()
+	mock.lockModifyCacheParameterGroupWithContext.Lock()
 	mock.calls.ModifyCacheParameterGroupWithContext = append(mock.calls.ModifyCacheParameterGroupWithContext, callInfo)
-	lockelasticacheClientMockModifyCacheParameterGroupWithContext.Unlock()
-	return mock.ModifyCacheParameterGroupWithContextFunc(in1, in2, in3...)
+	mock.lockModifyCacheParameterGroupWithContext.Unlock()
+	return mock.ModifyCacheParameterGroupWithContextFunc(contextMoqParam, modifyCacheParameterGroupInput, options...)
 }
 
 // ModifyCacheParameterGroupWithContextCalls gets all the calls that were made to ModifyCacheParameterGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheParameterGroupWithContextCalls())
 func (mock *elasticacheClientMock) ModifyCacheParameterGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ModifyCacheParameterGroupInput
-	In3 []request.Option
+	ContextMoqParam                context.Context
+	ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
+	Options                        []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam                context.Context
+		ModifyCacheParameterGroupInput *elasticache.ModifyCacheParameterGroupInput
+		Options                        []request.Option
 	}
-	lockelasticacheClientMockModifyCacheParameterGroupWithContext.RLock()
+	mock.lockModifyCacheParameterGroupWithContext.RLock()
 	calls = mock.calls.ModifyCacheParameterGroupWithContext
-	lockelasticacheClientMockModifyCacheParameterGroupWithContext.RUnlock()
+	mock.lockModifyCacheParameterGroupWithContext.RUnlock()
 	return calls
 }
 
 // ModifyCacheSubnetGroup calls ModifyCacheSubnetGroupFunc.
-func (mock *elasticacheClientMock) ModifyCacheSubnetGroup(in1 *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) ModifyCacheSubnetGroup(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
 	if mock.ModifyCacheSubnetGroupFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheSubnetGroupFunc: method is nil but elasticacheClient.ModifyCacheSubnetGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheSubnetGroupInput
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 	}{
-		In1: in1,
+		ModifyCacheSubnetGroupInput: modifyCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroup.Lock()
+	mock.lockModifyCacheSubnetGroup.Lock()
 	mock.calls.ModifyCacheSubnetGroup = append(mock.calls.ModifyCacheSubnetGroup, callInfo)
-	lockelasticacheClientMockModifyCacheSubnetGroup.Unlock()
-	return mock.ModifyCacheSubnetGroupFunc(in1)
+	mock.lockModifyCacheSubnetGroup.Unlock()
+	return mock.ModifyCacheSubnetGroupFunc(modifyCacheSubnetGroupInput)
 }
 
 // ModifyCacheSubnetGroupCalls gets all the calls that were made to ModifyCacheSubnetGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheSubnetGroupCalls())
 func (mock *elasticacheClientMock) ModifyCacheSubnetGroupCalls() []struct {
-	In1 *elasticache.ModifyCacheSubnetGroupInput
+	ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheSubnetGroupInput
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroup.RLock()
+	mock.lockModifyCacheSubnetGroup.RLock()
 	calls = mock.calls.ModifyCacheSubnetGroup
-	lockelasticacheClientMockModifyCacheSubnetGroup.RUnlock()
+	mock.lockModifyCacheSubnetGroup.RUnlock()
 	return calls
 }
 
 // ModifyCacheSubnetGroupRequest calls ModifyCacheSubnetGroupRequestFunc.
-func (mock *elasticacheClientMock) ModifyCacheSubnetGroupRequest(in1 *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput) {
+func (mock *elasticacheClientMock) ModifyCacheSubnetGroupRequest(modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput) (*request.Request, *elasticache.ModifyCacheSubnetGroupOutput) {
 	if mock.ModifyCacheSubnetGroupRequestFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheSubnetGroupRequestFunc: method is nil but elasticacheClient.ModifyCacheSubnetGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyCacheSubnetGroupInput
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 	}{
-		In1: in1,
+		ModifyCacheSubnetGroupInput: modifyCacheSubnetGroupInput,
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroupRequest.Lock()
+	mock.lockModifyCacheSubnetGroupRequest.Lock()
 	mock.calls.ModifyCacheSubnetGroupRequest = append(mock.calls.ModifyCacheSubnetGroupRequest, callInfo)
-	lockelasticacheClientMockModifyCacheSubnetGroupRequest.Unlock()
-	return mock.ModifyCacheSubnetGroupRequestFunc(in1)
+	mock.lockModifyCacheSubnetGroupRequest.Unlock()
+	return mock.ModifyCacheSubnetGroupRequestFunc(modifyCacheSubnetGroupInput)
 }
 
 // ModifyCacheSubnetGroupRequestCalls gets all the calls that were made to ModifyCacheSubnetGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheSubnetGroupRequestCalls())
 func (mock *elasticacheClientMock) ModifyCacheSubnetGroupRequestCalls() []struct {
-	In1 *elasticache.ModifyCacheSubnetGroupInput
+	ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyCacheSubnetGroupInput
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroupRequest.RLock()
+	mock.lockModifyCacheSubnetGroupRequest.RLock()
 	calls = mock.calls.ModifyCacheSubnetGroupRequest
-	lockelasticacheClientMockModifyCacheSubnetGroupRequest.RUnlock()
+	mock.lockModifyCacheSubnetGroupRequest.RUnlock()
 	return calls
 }
 
 // ModifyCacheSubnetGroupWithContext calls ModifyCacheSubnetGroupWithContextFunc.
-func (mock *elasticacheClientMock) ModifyCacheSubnetGroupWithContext(in1 context.Context, in2 *elasticache.ModifyCacheSubnetGroupInput, in3 ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
+func (mock *elasticacheClientMock) ModifyCacheSubnetGroupWithContext(contextMoqParam context.Context, modifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput, options ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
 	if mock.ModifyCacheSubnetGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.ModifyCacheSubnetGroupWithContextFunc: method is nil but elasticacheClient.ModifyCacheSubnetGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		ModifyCacheSubnetGroupInput: modifyCacheSubnetGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroupWithContext.Lock()
+	mock.lockModifyCacheSubnetGroupWithContext.Lock()
 	mock.calls.ModifyCacheSubnetGroupWithContext = append(mock.calls.ModifyCacheSubnetGroupWithContext, callInfo)
-	lockelasticacheClientMockModifyCacheSubnetGroupWithContext.Unlock()
-	return mock.ModifyCacheSubnetGroupWithContextFunc(in1, in2, in3...)
+	mock.lockModifyCacheSubnetGroupWithContext.Unlock()
+	return mock.ModifyCacheSubnetGroupWithContextFunc(contextMoqParam, modifyCacheSubnetGroupInput, options...)
 }
 
 // ModifyCacheSubnetGroupWithContextCalls gets all the calls that were made to ModifyCacheSubnetGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyCacheSubnetGroupWithContextCalls())
 func (mock *elasticacheClientMock) ModifyCacheSubnetGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ModifyCacheSubnetGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ModifyCacheSubnetGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		ModifyCacheSubnetGroupInput *elasticache.ModifyCacheSubnetGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockModifyCacheSubnetGroupWithContext.RLock()
+	mock.lockModifyCacheSubnetGroupWithContext.RLock()
 	calls = mock.calls.ModifyCacheSubnetGroupWithContext
-	lockelasticacheClientMockModifyCacheSubnetGroupWithContext.RUnlock()
+	mock.lockModifyCacheSubnetGroupWithContext.RUnlock()
+	return calls
+}
+
+// ModifyGlobalReplicationGroup calls ModifyGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroup(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*elasticache.ModifyGlobalReplicationGroupOutput, error) {
+	if mock.ModifyGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.ModifyGlobalReplicationGroupFunc: method is nil but elasticacheClient.ModifyGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+	}{
+		ModifyGlobalReplicationGroupInput: modifyGlobalReplicationGroupInput,
+	}
+	mock.lockModifyGlobalReplicationGroup.Lock()
+	mock.calls.ModifyGlobalReplicationGroup = append(mock.calls.ModifyGlobalReplicationGroup, callInfo)
+	mock.lockModifyGlobalReplicationGroup.Unlock()
+	return mock.ModifyGlobalReplicationGroupFunc(modifyGlobalReplicationGroupInput)
+}
+
+// ModifyGlobalReplicationGroupCalls gets all the calls that were made to ModifyGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroupCalls() []struct {
+	ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+	}
+	mock.lockModifyGlobalReplicationGroup.RLock()
+	calls = mock.calls.ModifyGlobalReplicationGroup
+	mock.lockModifyGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// ModifyGlobalReplicationGroupRequest calls ModifyGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroupRequest(modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput) (*request.Request, *elasticache.ModifyGlobalReplicationGroupOutput) {
+	if mock.ModifyGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.ModifyGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.ModifyGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+	}{
+		ModifyGlobalReplicationGroupInput: modifyGlobalReplicationGroupInput,
+	}
+	mock.lockModifyGlobalReplicationGroupRequest.Lock()
+	mock.calls.ModifyGlobalReplicationGroupRequest = append(mock.calls.ModifyGlobalReplicationGroupRequest, callInfo)
+	mock.lockModifyGlobalReplicationGroupRequest.Unlock()
+	return mock.ModifyGlobalReplicationGroupRequestFunc(modifyGlobalReplicationGroupInput)
+}
+
+// ModifyGlobalReplicationGroupRequestCalls gets all the calls that were made to ModifyGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroupRequestCalls() []struct {
+	ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+	}
+	mock.lockModifyGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.ModifyGlobalReplicationGroupRequest
+	mock.lockModifyGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// ModifyGlobalReplicationGroupWithContext calls ModifyGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroupWithContext(contextMoqParam context.Context, modifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput, options ...request.Option) (*elasticache.ModifyGlobalReplicationGroupOutput, error) {
+	if mock.ModifyGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.ModifyGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.ModifyGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                   context.Context
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+		Options                           []request.Option
+	}{
+		ContextMoqParam:                   contextMoqParam,
+		ModifyGlobalReplicationGroupInput: modifyGlobalReplicationGroupInput,
+		Options:                           options,
+	}
+	mock.lockModifyGlobalReplicationGroupWithContext.Lock()
+	mock.calls.ModifyGlobalReplicationGroupWithContext = append(mock.calls.ModifyGlobalReplicationGroupWithContext, callInfo)
+	mock.lockModifyGlobalReplicationGroupWithContext.Unlock()
+	return mock.ModifyGlobalReplicationGroupWithContextFunc(contextMoqParam, modifyGlobalReplicationGroupInput, options...)
+}
+
+// ModifyGlobalReplicationGroupWithContextCalls gets all the calls that were made to ModifyGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) ModifyGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                   context.Context
+	ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+	Options                           []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                   context.Context
+		ModifyGlobalReplicationGroupInput *elasticache.ModifyGlobalReplicationGroupInput
+		Options                           []request.Option
+	}
+	mock.lockModifyGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.ModifyGlobalReplicationGroupWithContext
+	mock.lockModifyGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroup calls ModifyReplicationGroupFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroup(in1 *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) ModifyReplicationGroup(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*elasticache.ModifyReplicationGroupOutput, error) {
 	if mock.ModifyReplicationGroupFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupFunc: method is nil but elasticacheClient.ModifyReplicationGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyReplicationGroupInput
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 	}{
-		In1: in1,
+		ModifyReplicationGroupInput: modifyReplicationGroupInput,
 	}
-	lockelasticacheClientMockModifyReplicationGroup.Lock()
+	mock.lockModifyReplicationGroup.Lock()
 	mock.calls.ModifyReplicationGroup = append(mock.calls.ModifyReplicationGroup, callInfo)
-	lockelasticacheClientMockModifyReplicationGroup.Unlock()
-	return mock.ModifyReplicationGroupFunc(in1)
+	mock.lockModifyReplicationGroup.Unlock()
+	return mock.ModifyReplicationGroupFunc(modifyReplicationGroupInput)
 }
 
 // ModifyReplicationGroupCalls gets all the calls that were made to ModifyReplicationGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupCalls() []struct {
-	In1 *elasticache.ModifyReplicationGroupInput
+	ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyReplicationGroupInput
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 	}
-	lockelasticacheClientMockModifyReplicationGroup.RLock()
+	mock.lockModifyReplicationGroup.RLock()
 	calls = mock.calls.ModifyReplicationGroup
-	lockelasticacheClientMockModifyReplicationGroup.RUnlock()
+	mock.lockModifyReplicationGroup.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroupRequest calls ModifyReplicationGroupRequestFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroupRequest(in1 *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput) {
+func (mock *elasticacheClientMock) ModifyReplicationGroupRequest(modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput) (*request.Request, *elasticache.ModifyReplicationGroupOutput) {
 	if mock.ModifyReplicationGroupRequestFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupRequestFunc: method is nil but elasticacheClient.ModifyReplicationGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyReplicationGroupInput
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 	}{
-		In1: in1,
+		ModifyReplicationGroupInput: modifyReplicationGroupInput,
 	}
-	lockelasticacheClientMockModifyReplicationGroupRequest.Lock()
+	mock.lockModifyReplicationGroupRequest.Lock()
 	mock.calls.ModifyReplicationGroupRequest = append(mock.calls.ModifyReplicationGroupRequest, callInfo)
-	lockelasticacheClientMockModifyReplicationGroupRequest.Unlock()
-	return mock.ModifyReplicationGroupRequestFunc(in1)
+	mock.lockModifyReplicationGroupRequest.Unlock()
+	return mock.ModifyReplicationGroupRequestFunc(modifyReplicationGroupInput)
 }
 
 // ModifyReplicationGroupRequestCalls gets all the calls that were made to ModifyReplicationGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupRequestCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupRequestCalls() []struct {
-	In1 *elasticache.ModifyReplicationGroupInput
+	ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyReplicationGroupInput
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
 	}
-	lockelasticacheClientMockModifyReplicationGroupRequest.RLock()
+	mock.lockModifyReplicationGroupRequest.RLock()
 	calls = mock.calls.ModifyReplicationGroupRequest
-	lockelasticacheClientMockModifyReplicationGroupRequest.RUnlock()
+	mock.lockModifyReplicationGroupRequest.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroupShardConfiguration calls ModifyReplicationGroupShardConfigurationFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfiguration(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
+func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfiguration(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
 	if mock.ModifyReplicationGroupShardConfigurationFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupShardConfigurationFunc: method is nil but elasticacheClient.ModifyReplicationGroupShardConfiguration was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 	}{
-		In1: in1,
+		ModifyReplicationGroupShardConfigurationInput: modifyReplicationGroupShardConfigurationInput,
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfiguration.Lock()
+	mock.lockModifyReplicationGroupShardConfiguration.Lock()
 	mock.calls.ModifyReplicationGroupShardConfiguration = append(mock.calls.ModifyReplicationGroupShardConfiguration, callInfo)
-	lockelasticacheClientMockModifyReplicationGroupShardConfiguration.Unlock()
-	return mock.ModifyReplicationGroupShardConfigurationFunc(in1)
+	mock.lockModifyReplicationGroupShardConfiguration.Unlock()
+	return mock.ModifyReplicationGroupShardConfigurationFunc(modifyReplicationGroupShardConfigurationInput)
 }
 
 // ModifyReplicationGroupShardConfigurationCalls gets all the calls that were made to ModifyReplicationGroupShardConfiguration.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupShardConfigurationCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationCalls() []struct {
-	In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+	ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfiguration.RLock()
+	mock.lockModifyReplicationGroupShardConfiguration.RLock()
 	calls = mock.calls.ModifyReplicationGroupShardConfiguration
-	lockelasticacheClientMockModifyReplicationGroupShardConfiguration.RUnlock()
+	mock.lockModifyReplicationGroupShardConfiguration.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroupShardConfigurationRequest calls ModifyReplicationGroupShardConfigurationRequestFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationRequest(in1 *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput) {
+func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationRequest(modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput) (*request.Request, *elasticache.ModifyReplicationGroupShardConfigurationOutput) {
 	if mock.ModifyReplicationGroupShardConfigurationRequestFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupShardConfigurationRequestFunc: method is nil but elasticacheClient.ModifyReplicationGroupShardConfigurationRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 	}{
-		In1: in1,
+		ModifyReplicationGroupShardConfigurationInput: modifyReplicationGroupShardConfigurationInput,
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationRequest.Lock()
+	mock.lockModifyReplicationGroupShardConfigurationRequest.Lock()
 	mock.calls.ModifyReplicationGroupShardConfigurationRequest = append(mock.calls.ModifyReplicationGroupShardConfigurationRequest, callInfo)
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationRequest.Unlock()
-	return mock.ModifyReplicationGroupShardConfigurationRequestFunc(in1)
+	mock.lockModifyReplicationGroupShardConfigurationRequest.Unlock()
+	return mock.ModifyReplicationGroupShardConfigurationRequestFunc(modifyReplicationGroupShardConfigurationInput)
 }
 
 // ModifyReplicationGroupShardConfigurationRequestCalls gets all the calls that were made to ModifyReplicationGroupShardConfigurationRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupShardConfigurationRequestCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationRequestCalls() []struct {
-	In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+	ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 } {
 	var calls []struct {
-		In1 *elasticache.ModifyReplicationGroupShardConfigurationInput
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationRequest.RLock()
+	mock.lockModifyReplicationGroupShardConfigurationRequest.RLock()
 	calls = mock.calls.ModifyReplicationGroupShardConfigurationRequest
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationRequest.RUnlock()
+	mock.lockModifyReplicationGroupShardConfigurationRequest.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroupShardConfigurationWithContext calls ModifyReplicationGroupShardConfigurationWithContextFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationWithContext(in1 context.Context, in2 *elasticache.ModifyReplicationGroupShardConfigurationInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
+func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationWithContext(contextMoqParam context.Context, modifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput, options ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
 	if mock.ModifyReplicationGroupShardConfigurationWithContextFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupShardConfigurationWithContextFunc: method is nil but elasticacheClient.ModifyReplicationGroupShardConfigurationWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ModifyReplicationGroupShardConfigurationInput
-		In3 []request.Option
+		ContextMoqParam                               context.Context
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
+		Options                                       []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam: contextMoqParam,
+		ModifyReplicationGroupShardConfigurationInput: modifyReplicationGroupShardConfigurationInput,
+		Options: options,
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationWithContext.Lock()
+	mock.lockModifyReplicationGroupShardConfigurationWithContext.Lock()
 	mock.calls.ModifyReplicationGroupShardConfigurationWithContext = append(mock.calls.ModifyReplicationGroupShardConfigurationWithContext, callInfo)
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationWithContext.Unlock()
-	return mock.ModifyReplicationGroupShardConfigurationWithContextFunc(in1, in2, in3...)
+	mock.lockModifyReplicationGroupShardConfigurationWithContext.Unlock()
+	return mock.ModifyReplicationGroupShardConfigurationWithContextFunc(contextMoqParam, modifyReplicationGroupShardConfigurationInput, options...)
 }
 
 // ModifyReplicationGroupShardConfigurationWithContextCalls gets all the calls that were made to ModifyReplicationGroupShardConfigurationWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupShardConfigurationWithContextCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupShardConfigurationWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ModifyReplicationGroupShardConfigurationInput
-	In3 []request.Option
+	ContextMoqParam                               context.Context
+	ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
+	Options                                       []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ModifyReplicationGroupShardConfigurationInput
-		In3 []request.Option
+		ContextMoqParam                               context.Context
+		ModifyReplicationGroupShardConfigurationInput *elasticache.ModifyReplicationGroupShardConfigurationInput
+		Options                                       []request.Option
 	}
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationWithContext.RLock()
+	mock.lockModifyReplicationGroupShardConfigurationWithContext.RLock()
 	calls = mock.calls.ModifyReplicationGroupShardConfigurationWithContext
-	lockelasticacheClientMockModifyReplicationGroupShardConfigurationWithContext.RUnlock()
+	mock.lockModifyReplicationGroupShardConfigurationWithContext.RUnlock()
 	return calls
 }
 
 // ModifyReplicationGroupWithContext calls ModifyReplicationGroupWithContextFunc.
-func (mock *elasticacheClientMock) ModifyReplicationGroupWithContext(in1 context.Context, in2 *elasticache.ModifyReplicationGroupInput, in3 ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
+func (mock *elasticacheClientMock) ModifyReplicationGroupWithContext(contextMoqParam context.Context, modifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput, options ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
 	if mock.ModifyReplicationGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.ModifyReplicationGroupWithContextFunc: method is nil but elasticacheClient.ModifyReplicationGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ModifyReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		ModifyReplicationGroupInput: modifyReplicationGroupInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockModifyReplicationGroupWithContext.Lock()
+	mock.lockModifyReplicationGroupWithContext.Lock()
 	mock.calls.ModifyReplicationGroupWithContext = append(mock.calls.ModifyReplicationGroupWithContext, callInfo)
-	lockelasticacheClientMockModifyReplicationGroupWithContext.Unlock()
-	return mock.ModifyReplicationGroupWithContextFunc(in1, in2, in3...)
+	mock.lockModifyReplicationGroupWithContext.Unlock()
+	return mock.ModifyReplicationGroupWithContextFunc(contextMoqParam, modifyReplicationGroupInput, options...)
 }
 
 // ModifyReplicationGroupWithContextCalls gets all the calls that were made to ModifyReplicationGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ModifyReplicationGroupWithContextCalls())
 func (mock *elasticacheClientMock) ModifyReplicationGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ModifyReplicationGroupInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ModifyReplicationGroupInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		ModifyReplicationGroupInput *elasticache.ModifyReplicationGroupInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockModifyReplicationGroupWithContext.RLock()
+	mock.lockModifyReplicationGroupWithContext.RLock()
 	calls = mock.calls.ModifyReplicationGroupWithContext
-	lockelasticacheClientMockModifyReplicationGroupWithContext.RUnlock()
+	mock.lockModifyReplicationGroupWithContext.RUnlock()
+	return calls
+}
+
+// ModifyUser calls ModifyUserFunc.
+func (mock *elasticacheClientMock) ModifyUser(modifyUserInput *elasticache.ModifyUserInput) (*elasticache.ModifyUserOutput, error) {
+	if mock.ModifyUserFunc == nil {
+		panic("elasticacheClientMock.ModifyUserFunc: method is nil but elasticacheClient.ModifyUser was just called")
+	}
+	callInfo := struct {
+		ModifyUserInput *elasticache.ModifyUserInput
+	}{
+		ModifyUserInput: modifyUserInput,
+	}
+	mock.lockModifyUser.Lock()
+	mock.calls.ModifyUser = append(mock.calls.ModifyUser, callInfo)
+	mock.lockModifyUser.Unlock()
+	return mock.ModifyUserFunc(modifyUserInput)
+}
+
+// ModifyUserCalls gets all the calls that were made to ModifyUser.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserCalls())
+func (mock *elasticacheClientMock) ModifyUserCalls() []struct {
+	ModifyUserInput *elasticache.ModifyUserInput
+} {
+	var calls []struct {
+		ModifyUserInput *elasticache.ModifyUserInput
+	}
+	mock.lockModifyUser.RLock()
+	calls = mock.calls.ModifyUser
+	mock.lockModifyUser.RUnlock()
+	return calls
+}
+
+// ModifyUserGroup calls ModifyUserGroupFunc.
+func (mock *elasticacheClientMock) ModifyUserGroup(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*elasticache.ModifyUserGroupOutput, error) {
+	if mock.ModifyUserGroupFunc == nil {
+		panic("elasticacheClientMock.ModifyUserGroupFunc: method is nil but elasticacheClient.ModifyUserGroup was just called")
+	}
+	callInfo := struct {
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+	}{
+		ModifyUserGroupInput: modifyUserGroupInput,
+	}
+	mock.lockModifyUserGroup.Lock()
+	mock.calls.ModifyUserGroup = append(mock.calls.ModifyUserGroup, callInfo)
+	mock.lockModifyUserGroup.Unlock()
+	return mock.ModifyUserGroupFunc(modifyUserGroupInput)
+}
+
+// ModifyUserGroupCalls gets all the calls that were made to ModifyUserGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserGroupCalls())
+func (mock *elasticacheClientMock) ModifyUserGroupCalls() []struct {
+	ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+} {
+	var calls []struct {
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+	}
+	mock.lockModifyUserGroup.RLock()
+	calls = mock.calls.ModifyUserGroup
+	mock.lockModifyUserGroup.RUnlock()
+	return calls
+}
+
+// ModifyUserGroupRequest calls ModifyUserGroupRequestFunc.
+func (mock *elasticacheClientMock) ModifyUserGroupRequest(modifyUserGroupInput *elasticache.ModifyUserGroupInput) (*request.Request, *elasticache.ModifyUserGroupOutput) {
+	if mock.ModifyUserGroupRequestFunc == nil {
+		panic("elasticacheClientMock.ModifyUserGroupRequestFunc: method is nil but elasticacheClient.ModifyUserGroupRequest was just called")
+	}
+	callInfo := struct {
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+	}{
+		ModifyUserGroupInput: modifyUserGroupInput,
+	}
+	mock.lockModifyUserGroupRequest.Lock()
+	mock.calls.ModifyUserGroupRequest = append(mock.calls.ModifyUserGroupRequest, callInfo)
+	mock.lockModifyUserGroupRequest.Unlock()
+	return mock.ModifyUserGroupRequestFunc(modifyUserGroupInput)
+}
+
+// ModifyUserGroupRequestCalls gets all the calls that were made to ModifyUserGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserGroupRequestCalls())
+func (mock *elasticacheClientMock) ModifyUserGroupRequestCalls() []struct {
+	ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+} {
+	var calls []struct {
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+	}
+	mock.lockModifyUserGroupRequest.RLock()
+	calls = mock.calls.ModifyUserGroupRequest
+	mock.lockModifyUserGroupRequest.RUnlock()
+	return calls
+}
+
+// ModifyUserGroupWithContext calls ModifyUserGroupWithContextFunc.
+func (mock *elasticacheClientMock) ModifyUserGroupWithContext(contextMoqParam context.Context, modifyUserGroupInput *elasticache.ModifyUserGroupInput, options ...request.Option) (*elasticache.ModifyUserGroupOutput, error) {
+	if mock.ModifyUserGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.ModifyUserGroupWithContextFunc: method is nil but elasticacheClient.ModifyUserGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam      context.Context
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+		Options              []request.Option
+	}{
+		ContextMoqParam:      contextMoqParam,
+		ModifyUserGroupInput: modifyUserGroupInput,
+		Options:              options,
+	}
+	mock.lockModifyUserGroupWithContext.Lock()
+	mock.calls.ModifyUserGroupWithContext = append(mock.calls.ModifyUserGroupWithContext, callInfo)
+	mock.lockModifyUserGroupWithContext.Unlock()
+	return mock.ModifyUserGroupWithContextFunc(contextMoqParam, modifyUserGroupInput, options...)
+}
+
+// ModifyUserGroupWithContextCalls gets all the calls that were made to ModifyUserGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserGroupWithContextCalls())
+func (mock *elasticacheClientMock) ModifyUserGroupWithContextCalls() []struct {
+	ContextMoqParam      context.Context
+	ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+	Options              []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam      context.Context
+		ModifyUserGroupInput *elasticache.ModifyUserGroupInput
+		Options              []request.Option
+	}
+	mock.lockModifyUserGroupWithContext.RLock()
+	calls = mock.calls.ModifyUserGroupWithContext
+	mock.lockModifyUserGroupWithContext.RUnlock()
+	return calls
+}
+
+// ModifyUserRequest calls ModifyUserRequestFunc.
+func (mock *elasticacheClientMock) ModifyUserRequest(modifyUserInput *elasticache.ModifyUserInput) (*request.Request, *elasticache.ModifyUserOutput) {
+	if mock.ModifyUserRequestFunc == nil {
+		panic("elasticacheClientMock.ModifyUserRequestFunc: method is nil but elasticacheClient.ModifyUserRequest was just called")
+	}
+	callInfo := struct {
+		ModifyUserInput *elasticache.ModifyUserInput
+	}{
+		ModifyUserInput: modifyUserInput,
+	}
+	mock.lockModifyUserRequest.Lock()
+	mock.calls.ModifyUserRequest = append(mock.calls.ModifyUserRequest, callInfo)
+	mock.lockModifyUserRequest.Unlock()
+	return mock.ModifyUserRequestFunc(modifyUserInput)
+}
+
+// ModifyUserRequestCalls gets all the calls that were made to ModifyUserRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserRequestCalls())
+func (mock *elasticacheClientMock) ModifyUserRequestCalls() []struct {
+	ModifyUserInput *elasticache.ModifyUserInput
+} {
+	var calls []struct {
+		ModifyUserInput *elasticache.ModifyUserInput
+	}
+	mock.lockModifyUserRequest.RLock()
+	calls = mock.calls.ModifyUserRequest
+	mock.lockModifyUserRequest.RUnlock()
+	return calls
+}
+
+// ModifyUserWithContext calls ModifyUserWithContextFunc.
+func (mock *elasticacheClientMock) ModifyUserWithContext(contextMoqParam context.Context, modifyUserInput *elasticache.ModifyUserInput, options ...request.Option) (*elasticache.ModifyUserOutput, error) {
+	if mock.ModifyUserWithContextFunc == nil {
+		panic("elasticacheClientMock.ModifyUserWithContextFunc: method is nil but elasticacheClient.ModifyUserWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam context.Context
+		ModifyUserInput *elasticache.ModifyUserInput
+		Options         []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		ModifyUserInput: modifyUserInput,
+		Options:         options,
+	}
+	mock.lockModifyUserWithContext.Lock()
+	mock.calls.ModifyUserWithContext = append(mock.calls.ModifyUserWithContext, callInfo)
+	mock.lockModifyUserWithContext.Unlock()
+	return mock.ModifyUserWithContextFunc(contextMoqParam, modifyUserInput, options...)
+}
+
+// ModifyUserWithContextCalls gets all the calls that were made to ModifyUserWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.ModifyUserWithContextCalls())
+func (mock *elasticacheClientMock) ModifyUserWithContextCalls() []struct {
+	ContextMoqParam context.Context
+	ModifyUserInput *elasticache.ModifyUserInput
+	Options         []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam context.Context
+		ModifyUserInput *elasticache.ModifyUserInput
+		Options         []request.Option
+	}
+	mock.lockModifyUserWithContext.RLock()
+	calls = mock.calls.ModifyUserWithContext
+	mock.lockModifyUserWithContext.RUnlock()
 	return calls
 }
 
 // PurchaseReservedCacheNodesOffering calls PurchaseReservedCacheNodesOfferingFunc.
-func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOffering(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
+func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOffering(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
 	if mock.PurchaseReservedCacheNodesOfferingFunc == nil {
 		panic("elasticacheClientMock.PurchaseReservedCacheNodesOfferingFunc: method is nil but elasticacheClient.PurchaseReservedCacheNodesOffering was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 	}{
-		In1: in1,
+		PurchaseReservedCacheNodesOfferingInput: purchaseReservedCacheNodesOfferingInput,
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOffering.Lock()
+	mock.lockPurchaseReservedCacheNodesOffering.Lock()
 	mock.calls.PurchaseReservedCacheNodesOffering = append(mock.calls.PurchaseReservedCacheNodesOffering, callInfo)
-	lockelasticacheClientMockPurchaseReservedCacheNodesOffering.Unlock()
-	return mock.PurchaseReservedCacheNodesOfferingFunc(in1)
+	mock.lockPurchaseReservedCacheNodesOffering.Unlock()
+	return mock.PurchaseReservedCacheNodesOfferingFunc(purchaseReservedCacheNodesOfferingInput)
 }
 
 // PurchaseReservedCacheNodesOfferingCalls gets all the calls that were made to PurchaseReservedCacheNodesOffering.
 // Check the length with:
 //     len(mockedelasticacheClient.PurchaseReservedCacheNodesOfferingCalls())
 func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingCalls() []struct {
-	In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+	PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 } {
 	var calls []struct {
-		In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOffering.RLock()
+	mock.lockPurchaseReservedCacheNodesOffering.RLock()
 	calls = mock.calls.PurchaseReservedCacheNodesOffering
-	lockelasticacheClientMockPurchaseReservedCacheNodesOffering.RUnlock()
+	mock.lockPurchaseReservedCacheNodesOffering.RUnlock()
 	return calls
 }
 
 // PurchaseReservedCacheNodesOfferingRequest calls PurchaseReservedCacheNodesOfferingRequestFunc.
-func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingRequest(in1 *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput) {
+func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingRequest(purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput) (*request.Request, *elasticache.PurchaseReservedCacheNodesOfferingOutput) {
 	if mock.PurchaseReservedCacheNodesOfferingRequestFunc == nil {
 		panic("elasticacheClientMock.PurchaseReservedCacheNodesOfferingRequestFunc: method is nil but elasticacheClient.PurchaseReservedCacheNodesOfferingRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 	}{
-		In1: in1,
+		PurchaseReservedCacheNodesOfferingInput: purchaseReservedCacheNodesOfferingInput,
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingRequest.Lock()
+	mock.lockPurchaseReservedCacheNodesOfferingRequest.Lock()
 	mock.calls.PurchaseReservedCacheNodesOfferingRequest = append(mock.calls.PurchaseReservedCacheNodesOfferingRequest, callInfo)
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingRequest.Unlock()
-	return mock.PurchaseReservedCacheNodesOfferingRequestFunc(in1)
+	mock.lockPurchaseReservedCacheNodesOfferingRequest.Unlock()
+	return mock.PurchaseReservedCacheNodesOfferingRequestFunc(purchaseReservedCacheNodesOfferingInput)
 }
 
 // PurchaseReservedCacheNodesOfferingRequestCalls gets all the calls that were made to PurchaseReservedCacheNodesOfferingRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.PurchaseReservedCacheNodesOfferingRequestCalls())
 func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingRequestCalls() []struct {
-	In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+	PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 } {
 	var calls []struct {
-		In1 *elasticache.PurchaseReservedCacheNodesOfferingInput
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingRequest.RLock()
+	mock.lockPurchaseReservedCacheNodesOfferingRequest.RLock()
 	calls = mock.calls.PurchaseReservedCacheNodesOfferingRequest
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingRequest.RUnlock()
+	mock.lockPurchaseReservedCacheNodesOfferingRequest.RUnlock()
 	return calls
 }
 
 // PurchaseReservedCacheNodesOfferingWithContext calls PurchaseReservedCacheNodesOfferingWithContextFunc.
-func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingWithContext(in1 context.Context, in2 *elasticache.PurchaseReservedCacheNodesOfferingInput, in3 ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
+func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingWithContext(contextMoqParam context.Context, purchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput, options ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
 	if mock.PurchaseReservedCacheNodesOfferingWithContextFunc == nil {
 		panic("elasticacheClientMock.PurchaseReservedCacheNodesOfferingWithContextFunc: method is nil but elasticacheClient.PurchaseReservedCacheNodesOfferingWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.PurchaseReservedCacheNodesOfferingInput
-		In3 []request.Option
+		ContextMoqParam                         context.Context
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
+		Options                                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                         contextMoqParam,
+		PurchaseReservedCacheNodesOfferingInput: purchaseReservedCacheNodesOfferingInput,
+		Options:                                 options,
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingWithContext.Lock()
+	mock.lockPurchaseReservedCacheNodesOfferingWithContext.Lock()
 	mock.calls.PurchaseReservedCacheNodesOfferingWithContext = append(mock.calls.PurchaseReservedCacheNodesOfferingWithContext, callInfo)
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingWithContext.Unlock()
-	return mock.PurchaseReservedCacheNodesOfferingWithContextFunc(in1, in2, in3...)
+	mock.lockPurchaseReservedCacheNodesOfferingWithContext.Unlock()
+	return mock.PurchaseReservedCacheNodesOfferingWithContextFunc(contextMoqParam, purchaseReservedCacheNodesOfferingInput, options...)
 }
 
 // PurchaseReservedCacheNodesOfferingWithContextCalls gets all the calls that were made to PurchaseReservedCacheNodesOfferingWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.PurchaseReservedCacheNodesOfferingWithContextCalls())
 func (mock *elasticacheClientMock) PurchaseReservedCacheNodesOfferingWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.PurchaseReservedCacheNodesOfferingInput
-	In3 []request.Option
+	ContextMoqParam                         context.Context
+	PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
+	Options                                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.PurchaseReservedCacheNodesOfferingInput
-		In3 []request.Option
+		ContextMoqParam                         context.Context
+		PurchaseReservedCacheNodesOfferingInput *elasticache.PurchaseReservedCacheNodesOfferingInput
+		Options                                 []request.Option
 	}
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingWithContext.RLock()
+	mock.lockPurchaseReservedCacheNodesOfferingWithContext.RLock()
 	calls = mock.calls.PurchaseReservedCacheNodesOfferingWithContext
-	lockelasticacheClientMockPurchaseReservedCacheNodesOfferingWithContext.RUnlock()
+	mock.lockPurchaseReservedCacheNodesOfferingWithContext.RUnlock()
+	return calls
+}
+
+// RebalanceSlotsInGlobalReplicationGroup calls RebalanceSlotsInGlobalReplicationGroupFunc.
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroup(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+	if mock.RebalanceSlotsInGlobalReplicationGroupFunc == nil {
+		panic("elasticacheClientMock.RebalanceSlotsInGlobalReplicationGroupFunc: method is nil but elasticacheClient.RebalanceSlotsInGlobalReplicationGroup was just called")
+	}
+	callInfo := struct {
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+	}{
+		RebalanceSlotsInGlobalReplicationGroupInput: rebalanceSlotsInGlobalReplicationGroupInput,
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroup.Lock()
+	mock.calls.RebalanceSlotsInGlobalReplicationGroup = append(mock.calls.RebalanceSlotsInGlobalReplicationGroup, callInfo)
+	mock.lockRebalanceSlotsInGlobalReplicationGroup.Unlock()
+	return mock.RebalanceSlotsInGlobalReplicationGroupFunc(rebalanceSlotsInGlobalReplicationGroupInput)
+}
+
+// RebalanceSlotsInGlobalReplicationGroupCalls gets all the calls that were made to RebalanceSlotsInGlobalReplicationGroup.
+// Check the length with:
+//     len(mockedelasticacheClient.RebalanceSlotsInGlobalReplicationGroupCalls())
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroupCalls() []struct {
+	RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroup.RLock()
+	calls = mock.calls.RebalanceSlotsInGlobalReplicationGroup
+	mock.lockRebalanceSlotsInGlobalReplicationGroup.RUnlock()
+	return calls
+}
+
+// RebalanceSlotsInGlobalReplicationGroupRequest calls RebalanceSlotsInGlobalReplicationGroupRequestFunc.
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroupRequest(rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput) (*request.Request, *elasticache.RebalanceSlotsInGlobalReplicationGroupOutput) {
+	if mock.RebalanceSlotsInGlobalReplicationGroupRequestFunc == nil {
+		panic("elasticacheClientMock.RebalanceSlotsInGlobalReplicationGroupRequestFunc: method is nil but elasticacheClient.RebalanceSlotsInGlobalReplicationGroupRequest was just called")
+	}
+	callInfo := struct {
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+	}{
+		RebalanceSlotsInGlobalReplicationGroupInput: rebalanceSlotsInGlobalReplicationGroupInput,
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroupRequest.Lock()
+	mock.calls.RebalanceSlotsInGlobalReplicationGroupRequest = append(mock.calls.RebalanceSlotsInGlobalReplicationGroupRequest, callInfo)
+	mock.lockRebalanceSlotsInGlobalReplicationGroupRequest.Unlock()
+	return mock.RebalanceSlotsInGlobalReplicationGroupRequestFunc(rebalanceSlotsInGlobalReplicationGroupInput)
+}
+
+// RebalanceSlotsInGlobalReplicationGroupRequestCalls gets all the calls that were made to RebalanceSlotsInGlobalReplicationGroupRequest.
+// Check the length with:
+//     len(mockedelasticacheClient.RebalanceSlotsInGlobalReplicationGroupRequestCalls())
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroupRequestCalls() []struct {
+	RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+} {
+	var calls []struct {
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroupRequest.RLock()
+	calls = mock.calls.RebalanceSlotsInGlobalReplicationGroupRequest
+	mock.lockRebalanceSlotsInGlobalReplicationGroupRequest.RUnlock()
+	return calls
+}
+
+// RebalanceSlotsInGlobalReplicationGroupWithContext calls RebalanceSlotsInGlobalReplicationGroupWithContextFunc.
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroupWithContext(contextMoqParam context.Context, rebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput, options ...request.Option) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+	if mock.RebalanceSlotsInGlobalReplicationGroupWithContextFunc == nil {
+		panic("elasticacheClientMock.RebalanceSlotsInGlobalReplicationGroupWithContextFunc: method is nil but elasticacheClient.RebalanceSlotsInGlobalReplicationGroupWithContext was just called")
+	}
+	callInfo := struct {
+		ContextMoqParam                             context.Context
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+		Options                                     []request.Option
+	}{
+		ContextMoqParam: contextMoqParam,
+		RebalanceSlotsInGlobalReplicationGroupInput: rebalanceSlotsInGlobalReplicationGroupInput,
+		Options: options,
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroupWithContext.Lock()
+	mock.calls.RebalanceSlotsInGlobalReplicationGroupWithContext = append(mock.calls.RebalanceSlotsInGlobalReplicationGroupWithContext, callInfo)
+	mock.lockRebalanceSlotsInGlobalReplicationGroupWithContext.Unlock()
+	return mock.RebalanceSlotsInGlobalReplicationGroupWithContextFunc(contextMoqParam, rebalanceSlotsInGlobalReplicationGroupInput, options...)
+}
+
+// RebalanceSlotsInGlobalReplicationGroupWithContextCalls gets all the calls that were made to RebalanceSlotsInGlobalReplicationGroupWithContext.
+// Check the length with:
+//     len(mockedelasticacheClient.RebalanceSlotsInGlobalReplicationGroupWithContextCalls())
+func (mock *elasticacheClientMock) RebalanceSlotsInGlobalReplicationGroupWithContextCalls() []struct {
+	ContextMoqParam                             context.Context
+	RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+	Options                                     []request.Option
+} {
+	var calls []struct {
+		ContextMoqParam                             context.Context
+		RebalanceSlotsInGlobalReplicationGroupInput *elasticache.RebalanceSlotsInGlobalReplicationGroupInput
+		Options                                     []request.Option
+	}
+	mock.lockRebalanceSlotsInGlobalReplicationGroupWithContext.RLock()
+	calls = mock.calls.RebalanceSlotsInGlobalReplicationGroupWithContext
+	mock.lockRebalanceSlotsInGlobalReplicationGroupWithContext.RUnlock()
 	return calls
 }
 
 // RebootCacheCluster calls RebootCacheClusterFunc.
-func (mock *elasticacheClientMock) RebootCacheCluster(in1 *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) RebootCacheCluster(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*elasticache.RebootCacheClusterOutput, error) {
 	if mock.RebootCacheClusterFunc == nil {
 		panic("elasticacheClientMock.RebootCacheClusterFunc: method is nil but elasticacheClient.RebootCacheCluster was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RebootCacheClusterInput
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 	}{
-		In1: in1,
+		RebootCacheClusterInput: rebootCacheClusterInput,
 	}
-	lockelasticacheClientMockRebootCacheCluster.Lock()
+	mock.lockRebootCacheCluster.Lock()
 	mock.calls.RebootCacheCluster = append(mock.calls.RebootCacheCluster, callInfo)
-	lockelasticacheClientMockRebootCacheCluster.Unlock()
-	return mock.RebootCacheClusterFunc(in1)
+	mock.lockRebootCacheCluster.Unlock()
+	return mock.RebootCacheClusterFunc(rebootCacheClusterInput)
 }
 
 // RebootCacheClusterCalls gets all the calls that were made to RebootCacheCluster.
 // Check the length with:
 //     len(mockedelasticacheClient.RebootCacheClusterCalls())
 func (mock *elasticacheClientMock) RebootCacheClusterCalls() []struct {
-	In1 *elasticache.RebootCacheClusterInput
+	RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.RebootCacheClusterInput
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 	}
-	lockelasticacheClientMockRebootCacheCluster.RLock()
+	mock.lockRebootCacheCluster.RLock()
 	calls = mock.calls.RebootCacheCluster
-	lockelasticacheClientMockRebootCacheCluster.RUnlock()
+	mock.lockRebootCacheCluster.RUnlock()
 	return calls
 }
 
 // RebootCacheClusterRequest calls RebootCacheClusterRequestFunc.
-func (mock *elasticacheClientMock) RebootCacheClusterRequest(in1 *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput) {
+func (mock *elasticacheClientMock) RebootCacheClusterRequest(rebootCacheClusterInput *elasticache.RebootCacheClusterInput) (*request.Request, *elasticache.RebootCacheClusterOutput) {
 	if mock.RebootCacheClusterRequestFunc == nil {
 		panic("elasticacheClientMock.RebootCacheClusterRequestFunc: method is nil but elasticacheClient.RebootCacheClusterRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RebootCacheClusterInput
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 	}{
-		In1: in1,
+		RebootCacheClusterInput: rebootCacheClusterInput,
 	}
-	lockelasticacheClientMockRebootCacheClusterRequest.Lock()
+	mock.lockRebootCacheClusterRequest.Lock()
 	mock.calls.RebootCacheClusterRequest = append(mock.calls.RebootCacheClusterRequest, callInfo)
-	lockelasticacheClientMockRebootCacheClusterRequest.Unlock()
-	return mock.RebootCacheClusterRequestFunc(in1)
+	mock.lockRebootCacheClusterRequest.Unlock()
+	return mock.RebootCacheClusterRequestFunc(rebootCacheClusterInput)
 }
 
 // RebootCacheClusterRequestCalls gets all the calls that were made to RebootCacheClusterRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.RebootCacheClusterRequestCalls())
 func (mock *elasticacheClientMock) RebootCacheClusterRequestCalls() []struct {
-	In1 *elasticache.RebootCacheClusterInput
+	RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 } {
 	var calls []struct {
-		In1 *elasticache.RebootCacheClusterInput
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
 	}
-	lockelasticacheClientMockRebootCacheClusterRequest.RLock()
+	mock.lockRebootCacheClusterRequest.RLock()
 	calls = mock.calls.RebootCacheClusterRequest
-	lockelasticacheClientMockRebootCacheClusterRequest.RUnlock()
+	mock.lockRebootCacheClusterRequest.RUnlock()
 	return calls
 }
 
 // RebootCacheClusterWithContext calls RebootCacheClusterWithContextFunc.
-func (mock *elasticacheClientMock) RebootCacheClusterWithContext(in1 context.Context, in2 *elasticache.RebootCacheClusterInput, in3 ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {
+func (mock *elasticacheClientMock) RebootCacheClusterWithContext(contextMoqParam context.Context, rebootCacheClusterInput *elasticache.RebootCacheClusterInput, options ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {
 	if mock.RebootCacheClusterWithContextFunc == nil {
 		panic("elasticacheClientMock.RebootCacheClusterWithContextFunc: method is nil but elasticacheClient.RebootCacheClusterWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.RebootCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
+		Options                 []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:         contextMoqParam,
+		RebootCacheClusterInput: rebootCacheClusterInput,
+		Options:                 options,
 	}
-	lockelasticacheClientMockRebootCacheClusterWithContext.Lock()
+	mock.lockRebootCacheClusterWithContext.Lock()
 	mock.calls.RebootCacheClusterWithContext = append(mock.calls.RebootCacheClusterWithContext, callInfo)
-	lockelasticacheClientMockRebootCacheClusterWithContext.Unlock()
-	return mock.RebootCacheClusterWithContextFunc(in1, in2, in3...)
+	mock.lockRebootCacheClusterWithContext.Unlock()
+	return mock.RebootCacheClusterWithContextFunc(contextMoqParam, rebootCacheClusterInput, options...)
 }
 
 // RebootCacheClusterWithContextCalls gets all the calls that were made to RebootCacheClusterWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.RebootCacheClusterWithContextCalls())
 func (mock *elasticacheClientMock) RebootCacheClusterWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.RebootCacheClusterInput
-	In3 []request.Option
+	ContextMoqParam         context.Context
+	RebootCacheClusterInput *elasticache.RebootCacheClusterInput
+	Options                 []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.RebootCacheClusterInput
-		In3 []request.Option
+		ContextMoqParam         context.Context
+		RebootCacheClusterInput *elasticache.RebootCacheClusterInput
+		Options                 []request.Option
 	}
-	lockelasticacheClientMockRebootCacheClusterWithContext.RLock()
+	mock.lockRebootCacheClusterWithContext.RLock()
 	calls = mock.calls.RebootCacheClusterWithContext
-	lockelasticacheClientMockRebootCacheClusterWithContext.RUnlock()
+	mock.lockRebootCacheClusterWithContext.RUnlock()
 	return calls
 }
 
 // RemoveTagsFromResource calls RemoveTagsFromResourceFunc.
-func (mock *elasticacheClientMock) RemoveTagsFromResource(in1 *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) RemoveTagsFromResource(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*elasticache.TagListMessage, error) {
 	if mock.RemoveTagsFromResourceFunc == nil {
 		panic("elasticacheClientMock.RemoveTagsFromResourceFunc: method is nil but elasticacheClient.RemoveTagsFromResource was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RemoveTagsFromResourceInput
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 	}{
-		In1: in1,
+		RemoveTagsFromResourceInput: removeTagsFromResourceInput,
 	}
-	lockelasticacheClientMockRemoveTagsFromResource.Lock()
+	mock.lockRemoveTagsFromResource.Lock()
 	mock.calls.RemoveTagsFromResource = append(mock.calls.RemoveTagsFromResource, callInfo)
-	lockelasticacheClientMockRemoveTagsFromResource.Unlock()
-	return mock.RemoveTagsFromResourceFunc(in1)
+	mock.lockRemoveTagsFromResource.Unlock()
+	return mock.RemoveTagsFromResourceFunc(removeTagsFromResourceInput)
 }
 
 // RemoveTagsFromResourceCalls gets all the calls that were made to RemoveTagsFromResource.
 // Check the length with:
 //     len(mockedelasticacheClient.RemoveTagsFromResourceCalls())
 func (mock *elasticacheClientMock) RemoveTagsFromResourceCalls() []struct {
-	In1 *elasticache.RemoveTagsFromResourceInput
+	RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.RemoveTagsFromResourceInput
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 	}
-	lockelasticacheClientMockRemoveTagsFromResource.RLock()
+	mock.lockRemoveTagsFromResource.RLock()
 	calls = mock.calls.RemoveTagsFromResource
-	lockelasticacheClientMockRemoveTagsFromResource.RUnlock()
+	mock.lockRemoveTagsFromResource.RUnlock()
 	return calls
 }
 
 // RemoveTagsFromResourceRequest calls RemoveTagsFromResourceRequestFunc.
-func (mock *elasticacheClientMock) RemoveTagsFromResourceRequest(in1 *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage) {
+func (mock *elasticacheClientMock) RemoveTagsFromResourceRequest(removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput) (*request.Request, *elasticache.TagListMessage) {
 	if mock.RemoveTagsFromResourceRequestFunc == nil {
 		panic("elasticacheClientMock.RemoveTagsFromResourceRequestFunc: method is nil but elasticacheClient.RemoveTagsFromResourceRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RemoveTagsFromResourceInput
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 	}{
-		In1: in1,
+		RemoveTagsFromResourceInput: removeTagsFromResourceInput,
 	}
-	lockelasticacheClientMockRemoveTagsFromResourceRequest.Lock()
+	mock.lockRemoveTagsFromResourceRequest.Lock()
 	mock.calls.RemoveTagsFromResourceRequest = append(mock.calls.RemoveTagsFromResourceRequest, callInfo)
-	lockelasticacheClientMockRemoveTagsFromResourceRequest.Unlock()
-	return mock.RemoveTagsFromResourceRequestFunc(in1)
+	mock.lockRemoveTagsFromResourceRequest.Unlock()
+	return mock.RemoveTagsFromResourceRequestFunc(removeTagsFromResourceInput)
 }
 
 // RemoveTagsFromResourceRequestCalls gets all the calls that were made to RemoveTagsFromResourceRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.RemoveTagsFromResourceRequestCalls())
 func (mock *elasticacheClientMock) RemoveTagsFromResourceRequestCalls() []struct {
-	In1 *elasticache.RemoveTagsFromResourceInput
+	RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 } {
 	var calls []struct {
-		In1 *elasticache.RemoveTagsFromResourceInput
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
 	}
-	lockelasticacheClientMockRemoveTagsFromResourceRequest.RLock()
+	mock.lockRemoveTagsFromResourceRequest.RLock()
 	calls = mock.calls.RemoveTagsFromResourceRequest
-	lockelasticacheClientMockRemoveTagsFromResourceRequest.RUnlock()
+	mock.lockRemoveTagsFromResourceRequest.RUnlock()
 	return calls
 }
 
 // RemoveTagsFromResourceWithContext calls RemoveTagsFromResourceWithContextFunc.
-func (mock *elasticacheClientMock) RemoveTagsFromResourceWithContext(in1 context.Context, in2 *elasticache.RemoveTagsFromResourceInput, in3 ...request.Option) (*elasticache.TagListMessage, error) {
+func (mock *elasticacheClientMock) RemoveTagsFromResourceWithContext(contextMoqParam context.Context, removeTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput, options ...request.Option) (*elasticache.TagListMessage, error) {
 	if mock.RemoveTagsFromResourceWithContextFunc == nil {
 		panic("elasticacheClientMock.RemoveTagsFromResourceWithContextFunc: method is nil but elasticacheClient.RemoveTagsFromResourceWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.RemoveTagsFromResourceInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		RemoveTagsFromResourceInput: removeTagsFromResourceInput,
+		Options:                     options,
 	}
-	lockelasticacheClientMockRemoveTagsFromResourceWithContext.Lock()
+	mock.lockRemoveTagsFromResourceWithContext.Lock()
 	mock.calls.RemoveTagsFromResourceWithContext = append(mock.calls.RemoveTagsFromResourceWithContext, callInfo)
-	lockelasticacheClientMockRemoveTagsFromResourceWithContext.Unlock()
-	return mock.RemoveTagsFromResourceWithContextFunc(in1, in2, in3...)
+	mock.lockRemoveTagsFromResourceWithContext.Unlock()
+	return mock.RemoveTagsFromResourceWithContextFunc(contextMoqParam, removeTagsFromResourceInput, options...)
 }
 
 // RemoveTagsFromResourceWithContextCalls gets all the calls that were made to RemoveTagsFromResourceWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.RemoveTagsFromResourceWithContextCalls())
 func (mock *elasticacheClientMock) RemoveTagsFromResourceWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.RemoveTagsFromResourceInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.RemoveTagsFromResourceInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		RemoveTagsFromResourceInput *elasticache.RemoveTagsFromResourceInput
+		Options                     []request.Option
 	}
-	lockelasticacheClientMockRemoveTagsFromResourceWithContext.RLock()
+	mock.lockRemoveTagsFromResourceWithContext.RLock()
 	calls = mock.calls.RemoveTagsFromResourceWithContext
-	lockelasticacheClientMockRemoveTagsFromResourceWithContext.RUnlock()
+	mock.lockRemoveTagsFromResourceWithContext.RUnlock()
 	return calls
 }
 
 // ResetCacheParameterGroup calls ResetCacheParameterGroupFunc.
-func (mock *elasticacheClientMock) ResetCacheParameterGroup(in1 *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
+func (mock *elasticacheClientMock) ResetCacheParameterGroup(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*elasticache.CacheParameterGroupNameMessage, error) {
 	if mock.ResetCacheParameterGroupFunc == nil {
 		panic("elasticacheClientMock.ResetCacheParameterGroupFunc: method is nil but elasticacheClient.ResetCacheParameterGroup was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ResetCacheParameterGroupInput
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 	}{
-		In1: in1,
+		ResetCacheParameterGroupInput: resetCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockResetCacheParameterGroup.Lock()
+	mock.lockResetCacheParameterGroup.Lock()
 	mock.calls.ResetCacheParameterGroup = append(mock.calls.ResetCacheParameterGroup, callInfo)
-	lockelasticacheClientMockResetCacheParameterGroup.Unlock()
-	return mock.ResetCacheParameterGroupFunc(in1)
+	mock.lockResetCacheParameterGroup.Unlock()
+	return mock.ResetCacheParameterGroupFunc(resetCacheParameterGroupInput)
 }
 
 // ResetCacheParameterGroupCalls gets all the calls that were made to ResetCacheParameterGroup.
 // Check the length with:
 //     len(mockedelasticacheClient.ResetCacheParameterGroupCalls())
 func (mock *elasticacheClientMock) ResetCacheParameterGroupCalls() []struct {
-	In1 *elasticache.ResetCacheParameterGroupInput
+	ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ResetCacheParameterGroupInput
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 	}
-	lockelasticacheClientMockResetCacheParameterGroup.RLock()
+	mock.lockResetCacheParameterGroup.RLock()
 	calls = mock.calls.ResetCacheParameterGroup
-	lockelasticacheClientMockResetCacheParameterGroup.RUnlock()
+	mock.lockResetCacheParameterGroup.RUnlock()
 	return calls
 }
 
 // ResetCacheParameterGroupRequest calls ResetCacheParameterGroupRequestFunc.
-func (mock *elasticacheClientMock) ResetCacheParameterGroupRequest(in1 *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
+func (mock *elasticacheClientMock) ResetCacheParameterGroupRequest(resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput) (*request.Request, *elasticache.CacheParameterGroupNameMessage) {
 	if mock.ResetCacheParameterGroupRequestFunc == nil {
 		panic("elasticacheClientMock.ResetCacheParameterGroupRequestFunc: method is nil but elasticacheClient.ResetCacheParameterGroupRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.ResetCacheParameterGroupInput
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 	}{
-		In1: in1,
+		ResetCacheParameterGroupInput: resetCacheParameterGroupInput,
 	}
-	lockelasticacheClientMockResetCacheParameterGroupRequest.Lock()
+	mock.lockResetCacheParameterGroupRequest.Lock()
 	mock.calls.ResetCacheParameterGroupRequest = append(mock.calls.ResetCacheParameterGroupRequest, callInfo)
-	lockelasticacheClientMockResetCacheParameterGroupRequest.Unlock()
-	return mock.ResetCacheParameterGroupRequestFunc(in1)
+	mock.lockResetCacheParameterGroupRequest.Unlock()
+	return mock.ResetCacheParameterGroupRequestFunc(resetCacheParameterGroupInput)
 }
 
 // ResetCacheParameterGroupRequestCalls gets all the calls that were made to ResetCacheParameterGroupRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.ResetCacheParameterGroupRequestCalls())
 func (mock *elasticacheClientMock) ResetCacheParameterGroupRequestCalls() []struct {
-	In1 *elasticache.ResetCacheParameterGroupInput
+	ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 } {
 	var calls []struct {
-		In1 *elasticache.ResetCacheParameterGroupInput
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
 	}
-	lockelasticacheClientMockResetCacheParameterGroupRequest.RLock()
+	mock.lockResetCacheParameterGroupRequest.RLock()
 	calls = mock.calls.ResetCacheParameterGroupRequest
-	lockelasticacheClientMockResetCacheParameterGroupRequest.RUnlock()
+	mock.lockResetCacheParameterGroupRequest.RUnlock()
 	return calls
 }
 
 // ResetCacheParameterGroupWithContext calls ResetCacheParameterGroupWithContextFunc.
-func (mock *elasticacheClientMock) ResetCacheParameterGroupWithContext(in1 context.Context, in2 *elasticache.ResetCacheParameterGroupInput, in3 ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
+func (mock *elasticacheClientMock) ResetCacheParameterGroupWithContext(contextMoqParam context.Context, resetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput, options ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
 	if mock.ResetCacheParameterGroupWithContextFunc == nil {
 		panic("elasticacheClientMock.ResetCacheParameterGroupWithContextFunc: method is nil but elasticacheClient.ResetCacheParameterGroupWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.ResetCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
+		Options                       []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:               contextMoqParam,
+		ResetCacheParameterGroupInput: resetCacheParameterGroupInput,
+		Options:                       options,
 	}
-	lockelasticacheClientMockResetCacheParameterGroupWithContext.Lock()
+	mock.lockResetCacheParameterGroupWithContext.Lock()
 	mock.calls.ResetCacheParameterGroupWithContext = append(mock.calls.ResetCacheParameterGroupWithContext, callInfo)
-	lockelasticacheClientMockResetCacheParameterGroupWithContext.Unlock()
-	return mock.ResetCacheParameterGroupWithContextFunc(in1, in2, in3...)
+	mock.lockResetCacheParameterGroupWithContext.Unlock()
+	return mock.ResetCacheParameterGroupWithContextFunc(contextMoqParam, resetCacheParameterGroupInput, options...)
 }
 
 // ResetCacheParameterGroupWithContextCalls gets all the calls that were made to ResetCacheParameterGroupWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.ResetCacheParameterGroupWithContextCalls())
 func (mock *elasticacheClientMock) ResetCacheParameterGroupWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.ResetCacheParameterGroupInput
-	In3 []request.Option
+	ContextMoqParam               context.Context
+	ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
+	Options                       []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.ResetCacheParameterGroupInput
-		In3 []request.Option
+		ContextMoqParam               context.Context
+		ResetCacheParameterGroupInput *elasticache.ResetCacheParameterGroupInput
+		Options                       []request.Option
 	}
-	lockelasticacheClientMockResetCacheParameterGroupWithContext.RLock()
+	mock.lockResetCacheParameterGroupWithContext.RLock()
 	calls = mock.calls.ResetCacheParameterGroupWithContext
-	lockelasticacheClientMockResetCacheParameterGroupWithContext.RUnlock()
+	mock.lockResetCacheParameterGroupWithContext.RUnlock()
 	return calls
 }
 
 // RevokeCacheSecurityGroupIngress calls RevokeCacheSecurityGroupIngressFunc.
-func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngress(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
+func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngress(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
 	if mock.RevokeCacheSecurityGroupIngressFunc == nil {
 		panic("elasticacheClientMock.RevokeCacheSecurityGroupIngressFunc: method is nil but elasticacheClient.RevokeCacheSecurityGroupIngress was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 	}{
-		In1: in1,
+		RevokeCacheSecurityGroupIngressInput: revokeCacheSecurityGroupIngressInput,
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngress.Lock()
+	mock.lockRevokeCacheSecurityGroupIngress.Lock()
 	mock.calls.RevokeCacheSecurityGroupIngress = append(mock.calls.RevokeCacheSecurityGroupIngress, callInfo)
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngress.Unlock()
-	return mock.RevokeCacheSecurityGroupIngressFunc(in1)
+	mock.lockRevokeCacheSecurityGroupIngress.Unlock()
+	return mock.RevokeCacheSecurityGroupIngressFunc(revokeCacheSecurityGroupIngressInput)
 }
 
 // RevokeCacheSecurityGroupIngressCalls gets all the calls that were made to RevokeCacheSecurityGroupIngress.
 // Check the length with:
 //     len(mockedelasticacheClient.RevokeCacheSecurityGroupIngressCalls())
 func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressCalls() []struct {
-	In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+	RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 } {
 	var calls []struct {
-		In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngress.RLock()
+	mock.lockRevokeCacheSecurityGroupIngress.RLock()
 	calls = mock.calls.RevokeCacheSecurityGroupIngress
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngress.RUnlock()
+	mock.lockRevokeCacheSecurityGroupIngress.RUnlock()
 	return calls
 }
 
 // RevokeCacheSecurityGroupIngressRequest calls RevokeCacheSecurityGroupIngressRequestFunc.
-func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressRequest(in1 *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput) {
+func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressRequest(revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput) (*request.Request, *elasticache.RevokeCacheSecurityGroupIngressOutput) {
 	if mock.RevokeCacheSecurityGroupIngressRequestFunc == nil {
 		panic("elasticacheClientMock.RevokeCacheSecurityGroupIngressRequestFunc: method is nil but elasticacheClient.RevokeCacheSecurityGroupIngressRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 	}{
-		In1: in1,
+		RevokeCacheSecurityGroupIngressInput: revokeCacheSecurityGroupIngressInput,
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressRequest.Lock()
+	mock.lockRevokeCacheSecurityGroupIngressRequest.Lock()
 	mock.calls.RevokeCacheSecurityGroupIngressRequest = append(mock.calls.RevokeCacheSecurityGroupIngressRequest, callInfo)
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressRequest.Unlock()
-	return mock.RevokeCacheSecurityGroupIngressRequestFunc(in1)
+	mock.lockRevokeCacheSecurityGroupIngressRequest.Unlock()
+	return mock.RevokeCacheSecurityGroupIngressRequestFunc(revokeCacheSecurityGroupIngressInput)
 }
 
 // RevokeCacheSecurityGroupIngressRequestCalls gets all the calls that were made to RevokeCacheSecurityGroupIngressRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.RevokeCacheSecurityGroupIngressRequestCalls())
 func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressRequestCalls() []struct {
-	In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+	RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 } {
 	var calls []struct {
-		In1 *elasticache.RevokeCacheSecurityGroupIngressInput
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressRequest.RLock()
+	mock.lockRevokeCacheSecurityGroupIngressRequest.RLock()
 	calls = mock.calls.RevokeCacheSecurityGroupIngressRequest
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressRequest.RUnlock()
+	mock.lockRevokeCacheSecurityGroupIngressRequest.RUnlock()
 	return calls
 }
 
 // RevokeCacheSecurityGroupIngressWithContext calls RevokeCacheSecurityGroupIngressWithContextFunc.
-func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressWithContext(in1 context.Context, in2 *elasticache.RevokeCacheSecurityGroupIngressInput, in3 ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
+func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressWithContext(contextMoqParam context.Context, revokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput, options ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
 	if mock.RevokeCacheSecurityGroupIngressWithContextFunc == nil {
 		panic("elasticacheClientMock.RevokeCacheSecurityGroupIngressWithContextFunc: method is nil but elasticacheClient.RevokeCacheSecurityGroupIngressWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.RevokeCacheSecurityGroupIngressInput
-		In3 []request.Option
+		ContextMoqParam                      context.Context
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
+		Options                              []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                      contextMoqParam,
+		RevokeCacheSecurityGroupIngressInput: revokeCacheSecurityGroupIngressInput,
+		Options:                              options,
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressWithContext.Lock()
+	mock.lockRevokeCacheSecurityGroupIngressWithContext.Lock()
 	mock.calls.RevokeCacheSecurityGroupIngressWithContext = append(mock.calls.RevokeCacheSecurityGroupIngressWithContext, callInfo)
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressWithContext.Unlock()
-	return mock.RevokeCacheSecurityGroupIngressWithContextFunc(in1, in2, in3...)
+	mock.lockRevokeCacheSecurityGroupIngressWithContext.Unlock()
+	return mock.RevokeCacheSecurityGroupIngressWithContextFunc(contextMoqParam, revokeCacheSecurityGroupIngressInput, options...)
 }
 
 // RevokeCacheSecurityGroupIngressWithContextCalls gets all the calls that were made to RevokeCacheSecurityGroupIngressWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.RevokeCacheSecurityGroupIngressWithContextCalls())
 func (mock *elasticacheClientMock) RevokeCacheSecurityGroupIngressWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.RevokeCacheSecurityGroupIngressInput
-	In3 []request.Option
+	ContextMoqParam                      context.Context
+	RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
+	Options                              []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.RevokeCacheSecurityGroupIngressInput
-		In3 []request.Option
+		ContextMoqParam                      context.Context
+		RevokeCacheSecurityGroupIngressInput *elasticache.RevokeCacheSecurityGroupIngressInput
+		Options                              []request.Option
 	}
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressWithContext.RLock()
+	mock.lockRevokeCacheSecurityGroupIngressWithContext.RLock()
 	calls = mock.calls.RevokeCacheSecurityGroupIngressWithContext
-	lockelasticacheClientMockRevokeCacheSecurityGroupIngressWithContext.RUnlock()
+	mock.lockRevokeCacheSecurityGroupIngressWithContext.RUnlock()
 	return calls
 }
 
 // StartMigration calls StartMigrationFunc.
-func (mock *elasticacheClientMock) StartMigration(in1 *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error) {
+func (mock *elasticacheClientMock) StartMigration(startMigrationInput *elasticache.StartMigrationInput) (*elasticache.StartMigrationOutput, error) {
 	if mock.StartMigrationFunc == nil {
 		panic("elasticacheClientMock.StartMigrationFunc: method is nil but elasticacheClient.StartMigration was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.StartMigrationInput
+		StartMigrationInput *elasticache.StartMigrationInput
 	}{
-		In1: in1,
+		StartMigrationInput: startMigrationInput,
 	}
-	lockelasticacheClientMockStartMigration.Lock()
+	mock.lockStartMigration.Lock()
 	mock.calls.StartMigration = append(mock.calls.StartMigration, callInfo)
-	lockelasticacheClientMockStartMigration.Unlock()
-	return mock.StartMigrationFunc(in1)
+	mock.lockStartMigration.Unlock()
+	return mock.StartMigrationFunc(startMigrationInput)
 }
 
 // StartMigrationCalls gets all the calls that were made to StartMigration.
 // Check the length with:
 //     len(mockedelasticacheClient.StartMigrationCalls())
 func (mock *elasticacheClientMock) StartMigrationCalls() []struct {
-	In1 *elasticache.StartMigrationInput
+	StartMigrationInput *elasticache.StartMigrationInput
 } {
 	var calls []struct {
-		In1 *elasticache.StartMigrationInput
+		StartMigrationInput *elasticache.StartMigrationInput
 	}
-	lockelasticacheClientMockStartMigration.RLock()
+	mock.lockStartMigration.RLock()
 	calls = mock.calls.StartMigration
-	lockelasticacheClientMockStartMigration.RUnlock()
+	mock.lockStartMigration.RUnlock()
 	return calls
 }
 
 // StartMigrationRequest calls StartMigrationRequestFunc.
-func (mock *elasticacheClientMock) StartMigrationRequest(in1 *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput) {
+func (mock *elasticacheClientMock) StartMigrationRequest(startMigrationInput *elasticache.StartMigrationInput) (*request.Request, *elasticache.StartMigrationOutput) {
 	if mock.StartMigrationRequestFunc == nil {
 		panic("elasticacheClientMock.StartMigrationRequestFunc: method is nil but elasticacheClient.StartMigrationRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.StartMigrationInput
+		StartMigrationInput *elasticache.StartMigrationInput
 	}{
-		In1: in1,
+		StartMigrationInput: startMigrationInput,
 	}
-	lockelasticacheClientMockStartMigrationRequest.Lock()
+	mock.lockStartMigrationRequest.Lock()
 	mock.calls.StartMigrationRequest = append(mock.calls.StartMigrationRequest, callInfo)
-	lockelasticacheClientMockStartMigrationRequest.Unlock()
-	return mock.StartMigrationRequestFunc(in1)
+	mock.lockStartMigrationRequest.Unlock()
+	return mock.StartMigrationRequestFunc(startMigrationInput)
 }
 
 // StartMigrationRequestCalls gets all the calls that were made to StartMigrationRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.StartMigrationRequestCalls())
 func (mock *elasticacheClientMock) StartMigrationRequestCalls() []struct {
-	In1 *elasticache.StartMigrationInput
+	StartMigrationInput *elasticache.StartMigrationInput
 } {
 	var calls []struct {
-		In1 *elasticache.StartMigrationInput
+		StartMigrationInput *elasticache.StartMigrationInput
 	}
-	lockelasticacheClientMockStartMigrationRequest.RLock()
+	mock.lockStartMigrationRequest.RLock()
 	calls = mock.calls.StartMigrationRequest
-	lockelasticacheClientMockStartMigrationRequest.RUnlock()
+	mock.lockStartMigrationRequest.RUnlock()
 	return calls
 }
 
 // StartMigrationWithContext calls StartMigrationWithContextFunc.
-func (mock *elasticacheClientMock) StartMigrationWithContext(in1 context.Context, in2 *elasticache.StartMigrationInput, in3 ...request.Option) (*elasticache.StartMigrationOutput, error) {
+func (mock *elasticacheClientMock) StartMigrationWithContext(contextMoqParam context.Context, startMigrationInput *elasticache.StartMigrationInput, options ...request.Option) (*elasticache.StartMigrationOutput, error) {
 	if mock.StartMigrationWithContextFunc == nil {
 		panic("elasticacheClientMock.StartMigrationWithContextFunc: method is nil but elasticacheClient.StartMigrationWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.StartMigrationInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		StartMigrationInput *elasticache.StartMigrationInput
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:     contextMoqParam,
+		StartMigrationInput: startMigrationInput,
+		Options:             options,
 	}
-	lockelasticacheClientMockStartMigrationWithContext.Lock()
+	mock.lockStartMigrationWithContext.Lock()
 	mock.calls.StartMigrationWithContext = append(mock.calls.StartMigrationWithContext, callInfo)
-	lockelasticacheClientMockStartMigrationWithContext.Unlock()
-	return mock.StartMigrationWithContextFunc(in1, in2, in3...)
+	mock.lockStartMigrationWithContext.Unlock()
+	return mock.StartMigrationWithContextFunc(contextMoqParam, startMigrationInput, options...)
 }
 
 // StartMigrationWithContextCalls gets all the calls that were made to StartMigrationWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.StartMigrationWithContextCalls())
 func (mock *elasticacheClientMock) StartMigrationWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.StartMigrationInput
-	In3 []request.Option
+	ContextMoqParam     context.Context
+	StartMigrationInput *elasticache.StartMigrationInput
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.StartMigrationInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		StartMigrationInput *elasticache.StartMigrationInput
+		Options             []request.Option
 	}
-	lockelasticacheClientMockStartMigrationWithContext.RLock()
+	mock.lockStartMigrationWithContext.RLock()
 	calls = mock.calls.StartMigrationWithContext
-	lockelasticacheClientMockStartMigrationWithContext.RUnlock()
+	mock.lockStartMigrationWithContext.RUnlock()
 	return calls
 }
 
 // TestFailover calls TestFailoverFunc.
-func (mock *elasticacheClientMock) TestFailover(in1 *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error) {
+func (mock *elasticacheClientMock) TestFailover(testFailoverInput *elasticache.TestFailoverInput) (*elasticache.TestFailoverOutput, error) {
 	if mock.TestFailoverFunc == nil {
 		panic("elasticacheClientMock.TestFailoverFunc: method is nil but elasticacheClient.TestFailover was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.TestFailoverInput
+		TestFailoverInput *elasticache.TestFailoverInput
 	}{
-		In1: in1,
+		TestFailoverInput: testFailoverInput,
 	}
-	lockelasticacheClientMockTestFailover.Lock()
+	mock.lockTestFailover.Lock()
 	mock.calls.TestFailover = append(mock.calls.TestFailover, callInfo)
-	lockelasticacheClientMockTestFailover.Unlock()
-	return mock.TestFailoverFunc(in1)
+	mock.lockTestFailover.Unlock()
+	return mock.TestFailoverFunc(testFailoverInput)
 }
 
 // TestFailoverCalls gets all the calls that were made to TestFailover.
 // Check the length with:
 //     len(mockedelasticacheClient.TestFailoverCalls())
 func (mock *elasticacheClientMock) TestFailoverCalls() []struct {
-	In1 *elasticache.TestFailoverInput
+	TestFailoverInput *elasticache.TestFailoverInput
 } {
 	var calls []struct {
-		In1 *elasticache.TestFailoverInput
+		TestFailoverInput *elasticache.TestFailoverInput
 	}
-	lockelasticacheClientMockTestFailover.RLock()
+	mock.lockTestFailover.RLock()
 	calls = mock.calls.TestFailover
-	lockelasticacheClientMockTestFailover.RUnlock()
+	mock.lockTestFailover.RUnlock()
 	return calls
 }
 
 // TestFailoverRequest calls TestFailoverRequestFunc.
-func (mock *elasticacheClientMock) TestFailoverRequest(in1 *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput) {
+func (mock *elasticacheClientMock) TestFailoverRequest(testFailoverInput *elasticache.TestFailoverInput) (*request.Request, *elasticache.TestFailoverOutput) {
 	if mock.TestFailoverRequestFunc == nil {
 		panic("elasticacheClientMock.TestFailoverRequestFunc: method is nil but elasticacheClient.TestFailoverRequest was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.TestFailoverInput
+		TestFailoverInput *elasticache.TestFailoverInput
 	}{
-		In1: in1,
+		TestFailoverInput: testFailoverInput,
 	}
-	lockelasticacheClientMockTestFailoverRequest.Lock()
+	mock.lockTestFailoverRequest.Lock()
 	mock.calls.TestFailoverRequest = append(mock.calls.TestFailoverRequest, callInfo)
-	lockelasticacheClientMockTestFailoverRequest.Unlock()
-	return mock.TestFailoverRequestFunc(in1)
+	mock.lockTestFailoverRequest.Unlock()
+	return mock.TestFailoverRequestFunc(testFailoverInput)
 }
 
 // TestFailoverRequestCalls gets all the calls that were made to TestFailoverRequest.
 // Check the length with:
 //     len(mockedelasticacheClient.TestFailoverRequestCalls())
 func (mock *elasticacheClientMock) TestFailoverRequestCalls() []struct {
-	In1 *elasticache.TestFailoverInput
+	TestFailoverInput *elasticache.TestFailoverInput
 } {
 	var calls []struct {
-		In1 *elasticache.TestFailoverInput
+		TestFailoverInput *elasticache.TestFailoverInput
 	}
-	lockelasticacheClientMockTestFailoverRequest.RLock()
+	mock.lockTestFailoverRequest.RLock()
 	calls = mock.calls.TestFailoverRequest
-	lockelasticacheClientMockTestFailoverRequest.RUnlock()
+	mock.lockTestFailoverRequest.RUnlock()
 	return calls
 }
 
 // TestFailoverWithContext calls TestFailoverWithContextFunc.
-func (mock *elasticacheClientMock) TestFailoverWithContext(in1 context.Context, in2 *elasticache.TestFailoverInput, in3 ...request.Option) (*elasticache.TestFailoverOutput, error) {
+func (mock *elasticacheClientMock) TestFailoverWithContext(contextMoqParam context.Context, testFailoverInput *elasticache.TestFailoverInput, options ...request.Option) (*elasticache.TestFailoverOutput, error) {
 	if mock.TestFailoverWithContextFunc == nil {
 		panic("elasticacheClientMock.TestFailoverWithContextFunc: method is nil but elasticacheClient.TestFailoverWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.TestFailoverInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		TestFailoverInput *elasticache.TestFailoverInput
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:   contextMoqParam,
+		TestFailoverInput: testFailoverInput,
+		Options:           options,
 	}
-	lockelasticacheClientMockTestFailoverWithContext.Lock()
+	mock.lockTestFailoverWithContext.Lock()
 	mock.calls.TestFailoverWithContext = append(mock.calls.TestFailoverWithContext, callInfo)
-	lockelasticacheClientMockTestFailoverWithContext.Unlock()
-	return mock.TestFailoverWithContextFunc(in1, in2, in3...)
+	mock.lockTestFailoverWithContext.Unlock()
+	return mock.TestFailoverWithContextFunc(contextMoqParam, testFailoverInput, options...)
 }
 
 // TestFailoverWithContextCalls gets all the calls that were made to TestFailoverWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.TestFailoverWithContextCalls())
 func (mock *elasticacheClientMock) TestFailoverWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.TestFailoverInput
-	In3 []request.Option
+	ContextMoqParam   context.Context
+	TestFailoverInput *elasticache.TestFailoverInput
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.TestFailoverInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		TestFailoverInput *elasticache.TestFailoverInput
+		Options           []request.Option
 	}
-	lockelasticacheClientMockTestFailoverWithContext.RLock()
+	mock.lockTestFailoverWithContext.RLock()
 	calls = mock.calls.TestFailoverWithContext
-	lockelasticacheClientMockTestFailoverWithContext.RUnlock()
+	mock.lockTestFailoverWithContext.RUnlock()
 	return calls
 }
 
 // WaitUntilCacheClusterAvailable calls WaitUntilCacheClusterAvailableFunc.
-func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailable(in1 *elasticache.DescribeCacheClustersInput) error {
+func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailable(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error {
 	if mock.WaitUntilCacheClusterAvailableFunc == nil {
 		panic("elasticacheClientMock.WaitUntilCacheClusterAvailableFunc: method is nil but elasticacheClient.WaitUntilCacheClusterAvailable was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}{
-		In1: in1,
+		DescribeCacheClustersInput: describeCacheClustersInput,
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterAvailable.Lock()
+	mock.lockWaitUntilCacheClusterAvailable.Lock()
 	mock.calls.WaitUntilCacheClusterAvailable = append(mock.calls.WaitUntilCacheClusterAvailable, callInfo)
-	lockelasticacheClientMockWaitUntilCacheClusterAvailable.Unlock()
-	return mock.WaitUntilCacheClusterAvailableFunc(in1)
+	mock.lockWaitUntilCacheClusterAvailable.Unlock()
+	return mock.WaitUntilCacheClusterAvailableFunc(describeCacheClustersInput)
 }
 
 // WaitUntilCacheClusterAvailableCalls gets all the calls that were made to WaitUntilCacheClusterAvailable.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilCacheClusterAvailableCalls())
 func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailableCalls() []struct {
-	In1 *elasticache.DescribeCacheClustersInput
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterAvailable.RLock()
+	mock.lockWaitUntilCacheClusterAvailable.RLock()
 	calls = mock.calls.WaitUntilCacheClusterAvailable
-	lockelasticacheClientMockWaitUntilCacheClusterAvailable.RUnlock()
+	mock.lockWaitUntilCacheClusterAvailable.RUnlock()
 	return calls
 }
 
 // WaitUntilCacheClusterAvailableWithContext calls WaitUntilCacheClusterAvailableWithContextFunc.
-func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailableWithContext(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error {
+func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailableWithContext(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error {
 	if mock.WaitUntilCacheClusterAvailableWithContextFunc == nil {
 		panic("elasticacheClientMock.WaitUntilCacheClusterAvailableWithContextFunc: method is nil but elasticacheClient.WaitUntilCacheClusterAvailableWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.WaiterOption
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		WaiterOptions              []request.WaiterOption
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:            contextMoqParam,
+		DescribeCacheClustersInput: describeCacheClustersInput,
+		WaiterOptions:              waiterOptions,
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterAvailableWithContext.Lock()
+	mock.lockWaitUntilCacheClusterAvailableWithContext.Lock()
 	mock.calls.WaitUntilCacheClusterAvailableWithContext = append(mock.calls.WaitUntilCacheClusterAvailableWithContext, callInfo)
-	lockelasticacheClientMockWaitUntilCacheClusterAvailableWithContext.Unlock()
-	return mock.WaitUntilCacheClusterAvailableWithContextFunc(in1, in2, in3...)
+	mock.lockWaitUntilCacheClusterAvailableWithContext.Unlock()
+	return mock.WaitUntilCacheClusterAvailableWithContextFunc(contextMoqParam, describeCacheClustersInput, waiterOptions...)
 }
 
 // WaitUntilCacheClusterAvailableWithContextCalls gets all the calls that were made to WaitUntilCacheClusterAvailableWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilCacheClusterAvailableWithContextCalls())
 func (mock *elasticacheClientMock) WaitUntilCacheClusterAvailableWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheClustersInput
-	In3 []request.WaiterOption
+	ContextMoqParam            context.Context
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+	WaiterOptions              []request.WaiterOption
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.WaiterOption
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		WaiterOptions              []request.WaiterOption
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterAvailableWithContext.RLock()
+	mock.lockWaitUntilCacheClusterAvailableWithContext.RLock()
 	calls = mock.calls.WaitUntilCacheClusterAvailableWithContext
-	lockelasticacheClientMockWaitUntilCacheClusterAvailableWithContext.RUnlock()
+	mock.lockWaitUntilCacheClusterAvailableWithContext.RUnlock()
 	return calls
 }
 
 // WaitUntilCacheClusterDeleted calls WaitUntilCacheClusterDeletedFunc.
-func (mock *elasticacheClientMock) WaitUntilCacheClusterDeleted(in1 *elasticache.DescribeCacheClustersInput) error {
+func (mock *elasticacheClientMock) WaitUntilCacheClusterDeleted(describeCacheClustersInput *elasticache.DescribeCacheClustersInput) error {
 	if mock.WaitUntilCacheClusterDeletedFunc == nil {
 		panic("elasticacheClientMock.WaitUntilCacheClusterDeletedFunc: method is nil but elasticacheClient.WaitUntilCacheClusterDeleted was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}{
-		In1: in1,
+		DescribeCacheClustersInput: describeCacheClustersInput,
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterDeleted.Lock()
+	mock.lockWaitUntilCacheClusterDeleted.Lock()
 	mock.calls.WaitUntilCacheClusterDeleted = append(mock.calls.WaitUntilCacheClusterDeleted, callInfo)
-	lockelasticacheClientMockWaitUntilCacheClusterDeleted.Unlock()
-	return mock.WaitUntilCacheClusterDeletedFunc(in1)
+	mock.lockWaitUntilCacheClusterDeleted.Unlock()
+	return mock.WaitUntilCacheClusterDeletedFunc(describeCacheClustersInput)
 }
 
 // WaitUntilCacheClusterDeletedCalls gets all the calls that were made to WaitUntilCacheClusterDeleted.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilCacheClusterDeletedCalls())
 func (mock *elasticacheClientMock) WaitUntilCacheClusterDeletedCalls() []struct {
-	In1 *elasticache.DescribeCacheClustersInput
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeCacheClustersInput
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterDeleted.RLock()
+	mock.lockWaitUntilCacheClusterDeleted.RLock()
 	calls = mock.calls.WaitUntilCacheClusterDeleted
-	lockelasticacheClientMockWaitUntilCacheClusterDeleted.RUnlock()
+	mock.lockWaitUntilCacheClusterDeleted.RUnlock()
 	return calls
 }
 
 // WaitUntilCacheClusterDeletedWithContext calls WaitUntilCacheClusterDeletedWithContextFunc.
-func (mock *elasticacheClientMock) WaitUntilCacheClusterDeletedWithContext(in1 context.Context, in2 *elasticache.DescribeCacheClustersInput, in3 ...request.WaiterOption) error {
+func (mock *elasticacheClientMock) WaitUntilCacheClusterDeletedWithContext(contextMoqParam context.Context, describeCacheClustersInput *elasticache.DescribeCacheClustersInput, waiterOptions ...request.WaiterOption) error {
 	if mock.WaitUntilCacheClusterDeletedWithContextFunc == nil {
 		panic("elasticacheClientMock.WaitUntilCacheClusterDeletedWithContextFunc: method is nil but elasticacheClient.WaitUntilCacheClusterDeletedWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.WaiterOption
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		WaiterOptions              []request.WaiterOption
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:            contextMoqParam,
+		DescribeCacheClustersInput: describeCacheClustersInput,
+		WaiterOptions:              waiterOptions,
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterDeletedWithContext.Lock()
+	mock.lockWaitUntilCacheClusterDeletedWithContext.Lock()
 	mock.calls.WaitUntilCacheClusterDeletedWithContext = append(mock.calls.WaitUntilCacheClusterDeletedWithContext, callInfo)
-	lockelasticacheClientMockWaitUntilCacheClusterDeletedWithContext.Unlock()
-	return mock.WaitUntilCacheClusterDeletedWithContextFunc(in1, in2, in3...)
+	mock.lockWaitUntilCacheClusterDeletedWithContext.Unlock()
+	return mock.WaitUntilCacheClusterDeletedWithContextFunc(contextMoqParam, describeCacheClustersInput, waiterOptions...)
 }
 
 // WaitUntilCacheClusterDeletedWithContextCalls gets all the calls that were made to WaitUntilCacheClusterDeletedWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilCacheClusterDeletedWithContextCalls())
 func (mock *elasticacheClientMock) WaitUntilCacheClusterDeletedWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeCacheClustersInput
-	In3 []request.WaiterOption
+	ContextMoqParam            context.Context
+	DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+	WaiterOptions              []request.WaiterOption
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeCacheClustersInput
-		In3 []request.WaiterOption
+		ContextMoqParam            context.Context
+		DescribeCacheClustersInput *elasticache.DescribeCacheClustersInput
+		WaiterOptions              []request.WaiterOption
 	}
-	lockelasticacheClientMockWaitUntilCacheClusterDeletedWithContext.RLock()
+	mock.lockWaitUntilCacheClusterDeletedWithContext.RLock()
 	calls = mock.calls.WaitUntilCacheClusterDeletedWithContext
-	lockelasticacheClientMockWaitUntilCacheClusterDeletedWithContext.RUnlock()
+	mock.lockWaitUntilCacheClusterDeletedWithContext.RUnlock()
 	return calls
 }
 
 // WaitUntilReplicationGroupAvailable calls WaitUntilReplicationGroupAvailableFunc.
-func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailable(in1 *elasticache.DescribeReplicationGroupsInput) error {
+func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailable(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error {
 	if mock.WaitUntilReplicationGroupAvailableFunc == nil {
 		panic("elasticacheClientMock.WaitUntilReplicationGroupAvailableFunc: method is nil but elasticacheClient.WaitUntilReplicationGroupAvailable was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}{
-		In1: in1,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailable.Lock()
+	mock.lockWaitUntilReplicationGroupAvailable.Lock()
 	mock.calls.WaitUntilReplicationGroupAvailable = append(mock.calls.WaitUntilReplicationGroupAvailable, callInfo)
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailable.Unlock()
-	return mock.WaitUntilReplicationGroupAvailableFunc(in1)
+	mock.lockWaitUntilReplicationGroupAvailable.Unlock()
+	return mock.WaitUntilReplicationGroupAvailableFunc(describeReplicationGroupsInput)
 }
 
 // WaitUntilReplicationGroupAvailableCalls gets all the calls that were made to WaitUntilReplicationGroupAvailable.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilReplicationGroupAvailableCalls())
 func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailableCalls() []struct {
-	In1 *elasticache.DescribeReplicationGroupsInput
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailable.RLock()
+	mock.lockWaitUntilReplicationGroupAvailable.RLock()
 	calls = mock.calls.WaitUntilReplicationGroupAvailable
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailable.RUnlock()
+	mock.lockWaitUntilReplicationGroupAvailable.RUnlock()
 	return calls
 }
 
 // WaitUntilReplicationGroupAvailableWithContext calls WaitUntilReplicationGroupAvailableWithContextFunc.
-func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailableWithContext(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error {
+func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailableWithContext(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error {
 	if mock.WaitUntilReplicationGroupAvailableWithContextFunc == nil {
 		panic("elasticacheClientMock.WaitUntilReplicationGroupAvailableWithContextFunc: method is nil but elasticacheClient.WaitUntilReplicationGroupAvailableWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.WaiterOption
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		WaiterOptions                  []request.WaiterOption
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
+		WaiterOptions:                  waiterOptions,
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailableWithContext.Lock()
+	mock.lockWaitUntilReplicationGroupAvailableWithContext.Lock()
 	mock.calls.WaitUntilReplicationGroupAvailableWithContext = append(mock.calls.WaitUntilReplicationGroupAvailableWithContext, callInfo)
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailableWithContext.Unlock()
-	return mock.WaitUntilReplicationGroupAvailableWithContextFunc(in1, in2, in3...)
+	mock.lockWaitUntilReplicationGroupAvailableWithContext.Unlock()
+	return mock.WaitUntilReplicationGroupAvailableWithContextFunc(contextMoqParam, describeReplicationGroupsInput, waiterOptions...)
 }
 
 // WaitUntilReplicationGroupAvailableWithContextCalls gets all the calls that were made to WaitUntilReplicationGroupAvailableWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilReplicationGroupAvailableWithContextCalls())
 func (mock *elasticacheClientMock) WaitUntilReplicationGroupAvailableWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReplicationGroupsInput
-	In3 []request.WaiterOption
+	ContextMoqParam                context.Context
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+	WaiterOptions                  []request.WaiterOption
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.WaiterOption
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		WaiterOptions                  []request.WaiterOption
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailableWithContext.RLock()
+	mock.lockWaitUntilReplicationGroupAvailableWithContext.RLock()
 	calls = mock.calls.WaitUntilReplicationGroupAvailableWithContext
-	lockelasticacheClientMockWaitUntilReplicationGroupAvailableWithContext.RUnlock()
+	mock.lockWaitUntilReplicationGroupAvailableWithContext.RUnlock()
 	return calls
 }
 
 // WaitUntilReplicationGroupDeleted calls WaitUntilReplicationGroupDeletedFunc.
-func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeleted(in1 *elasticache.DescribeReplicationGroupsInput) error {
+func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeleted(describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput) error {
 	if mock.WaitUntilReplicationGroupDeletedFunc == nil {
 		panic("elasticacheClientMock.WaitUntilReplicationGroupDeletedFunc: method is nil but elasticacheClient.WaitUntilReplicationGroupDeleted was just called")
 	}
 	callInfo := struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}{
-		In1: in1,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupDeleted.Lock()
+	mock.lockWaitUntilReplicationGroupDeleted.Lock()
 	mock.calls.WaitUntilReplicationGroupDeleted = append(mock.calls.WaitUntilReplicationGroupDeleted, callInfo)
-	lockelasticacheClientMockWaitUntilReplicationGroupDeleted.Unlock()
-	return mock.WaitUntilReplicationGroupDeletedFunc(in1)
+	mock.lockWaitUntilReplicationGroupDeleted.Unlock()
+	return mock.WaitUntilReplicationGroupDeletedFunc(describeReplicationGroupsInput)
 }
 
 // WaitUntilReplicationGroupDeletedCalls gets all the calls that were made to WaitUntilReplicationGroupDeleted.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilReplicationGroupDeletedCalls())
 func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeletedCalls() []struct {
-	In1 *elasticache.DescribeReplicationGroupsInput
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 } {
 	var calls []struct {
-		In1 *elasticache.DescribeReplicationGroupsInput
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupDeleted.RLock()
+	mock.lockWaitUntilReplicationGroupDeleted.RLock()
 	calls = mock.calls.WaitUntilReplicationGroupDeleted
-	lockelasticacheClientMockWaitUntilReplicationGroupDeleted.RUnlock()
+	mock.lockWaitUntilReplicationGroupDeleted.RUnlock()
 	return calls
 }
 
 // WaitUntilReplicationGroupDeletedWithContext calls WaitUntilReplicationGroupDeletedWithContextFunc.
-func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeletedWithContext(in1 context.Context, in2 *elasticache.DescribeReplicationGroupsInput, in3 ...request.WaiterOption) error {
+func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeletedWithContext(contextMoqParam context.Context, describeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput, waiterOptions ...request.WaiterOption) error {
 	if mock.WaitUntilReplicationGroupDeletedWithContextFunc == nil {
 		panic("elasticacheClientMock.WaitUntilReplicationGroupDeletedWithContextFunc: method is nil but elasticacheClient.WaitUntilReplicationGroupDeletedWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.WaiterOption
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		WaiterOptions                  []request.WaiterOption
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:                contextMoqParam,
+		DescribeReplicationGroupsInput: describeReplicationGroupsInput,
+		WaiterOptions:                  waiterOptions,
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupDeletedWithContext.Lock()
+	mock.lockWaitUntilReplicationGroupDeletedWithContext.Lock()
 	mock.calls.WaitUntilReplicationGroupDeletedWithContext = append(mock.calls.WaitUntilReplicationGroupDeletedWithContext, callInfo)
-	lockelasticacheClientMockWaitUntilReplicationGroupDeletedWithContext.Unlock()
-	return mock.WaitUntilReplicationGroupDeletedWithContextFunc(in1, in2, in3...)
+	mock.lockWaitUntilReplicationGroupDeletedWithContext.Unlock()
+	return mock.WaitUntilReplicationGroupDeletedWithContextFunc(contextMoqParam, describeReplicationGroupsInput, waiterOptions...)
 }
 
 // WaitUntilReplicationGroupDeletedWithContextCalls gets all the calls that were made to WaitUntilReplicationGroupDeletedWithContext.
 // Check the length with:
 //     len(mockedelasticacheClient.WaitUntilReplicationGroupDeletedWithContextCalls())
 func (mock *elasticacheClientMock) WaitUntilReplicationGroupDeletedWithContextCalls() []struct {
-	In1 context.Context
-	In2 *elasticache.DescribeReplicationGroupsInput
-	In3 []request.WaiterOption
+	ContextMoqParam                context.Context
+	DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+	WaiterOptions                  []request.WaiterOption
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *elasticache.DescribeReplicationGroupsInput
-		In3 []request.WaiterOption
+		ContextMoqParam                context.Context
+		DescribeReplicationGroupsInput *elasticache.DescribeReplicationGroupsInput
+		WaiterOptions                  []request.WaiterOption
 	}
-	lockelasticacheClientMockWaitUntilReplicationGroupDeletedWithContext.RLock()
+	mock.lockWaitUntilReplicationGroupDeletedWithContext.RLock()
 	calls = mock.calls.WaitUntilReplicationGroupDeletedWithContext
-	lockelasticacheClientMockWaitUntilReplicationGroupDeletedWithContext.RUnlock()
+	mock.lockWaitUntilReplicationGroupDeletedWithContext.RUnlock()
 	return calls
 }

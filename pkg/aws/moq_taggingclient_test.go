@@ -10,1595 +10,1592 @@ import (
 	"sync"
 )
 
-var (
-	locktaggingClientMockDescribeReportCreation               sync.RWMutex
-	locktaggingClientMockDescribeReportCreationRequest        sync.RWMutex
-	locktaggingClientMockDescribeReportCreationWithContext    sync.RWMutex
-	locktaggingClientMockGetComplianceSummary                 sync.RWMutex
-	locktaggingClientMockGetComplianceSummaryPages            sync.RWMutex
-	locktaggingClientMockGetComplianceSummaryPagesWithContext sync.RWMutex
-	locktaggingClientMockGetComplianceSummaryRequest          sync.RWMutex
-	locktaggingClientMockGetComplianceSummaryWithContext      sync.RWMutex
-	locktaggingClientMockGetResources                         sync.RWMutex
-	locktaggingClientMockGetResourcesPages                    sync.RWMutex
-	locktaggingClientMockGetResourcesPagesWithContext         sync.RWMutex
-	locktaggingClientMockGetResourcesRequest                  sync.RWMutex
-	locktaggingClientMockGetResourcesWithContext              sync.RWMutex
-	locktaggingClientMockGetTagKeys                           sync.RWMutex
-	locktaggingClientMockGetTagKeysPages                      sync.RWMutex
-	locktaggingClientMockGetTagKeysPagesWithContext           sync.RWMutex
-	locktaggingClientMockGetTagKeysRequest                    sync.RWMutex
-	locktaggingClientMockGetTagKeysWithContext                sync.RWMutex
-	locktaggingClientMockGetTagValues                         sync.RWMutex
-	locktaggingClientMockGetTagValuesPages                    sync.RWMutex
-	locktaggingClientMockGetTagValuesPagesWithContext         sync.RWMutex
-	locktaggingClientMockGetTagValuesRequest                  sync.RWMutex
-	locktaggingClientMockGetTagValuesWithContext              sync.RWMutex
-	locktaggingClientMockStartReportCreation                  sync.RWMutex
-	locktaggingClientMockStartReportCreationRequest           sync.RWMutex
-	locktaggingClientMockStartReportCreationWithContext       sync.RWMutex
-	locktaggingClientMockTagResources                         sync.RWMutex
-	locktaggingClientMockTagResourcesRequest                  sync.RWMutex
-	locktaggingClientMockTagResourcesWithContext              sync.RWMutex
-	locktaggingClientMockUntagResources                       sync.RWMutex
-	locktaggingClientMockUntagResourcesRequest                sync.RWMutex
-	locktaggingClientMockUntagResourcesWithContext            sync.RWMutex
-)
-
 // Ensure, that taggingClientMock does implement taggingClient.
 // If this is not the case, regenerate this file with moq.
 var _ taggingClient = &taggingClientMock{}
 
 // taggingClientMock is a mock implementation of taggingClient.
 //
-//     func TestSomethingThatUsestaggingClient(t *testing.T) {
+// 	func TestSomethingThatUsestaggingClient(t *testing.T) {
 //
-//         // make and configure a mocked taggingClient
-//         mockedtaggingClient := &taggingClientMock{
-//             DescribeReportCreationFunc: func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
-// 	               panic("mock out the DescribeReportCreation method")
-//             },
-//             DescribeReportCreationRequestFunc: func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
-// 	               panic("mock out the DescribeReportCreationRequest method")
-//             },
-//             DescribeReportCreationWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.DescribeReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
-// 	               panic("mock out the DescribeReportCreationWithContext method")
-//             },
-//             GetComplianceSummaryFunc: func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
-// 	               panic("mock out the GetComplianceSummary method")
-//             },
-//             GetComplianceSummaryPagesFunc: func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput, in2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
-// 	               panic("mock out the GetComplianceSummaryPages method")
-//             },
-//             GetComplianceSummaryPagesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the GetComplianceSummaryPagesWithContext method")
-//             },
-//             GetComplianceSummaryRequestFunc: func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
-// 	               panic("mock out the GetComplianceSummaryRequest method")
-//             },
-//             GetComplianceSummaryWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
-// 	               panic("mock out the GetComplianceSummaryWithContext method")
-//             },
-//             GetResourcesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
-// 	               panic("mock out the GetResources method")
-//             },
-//             GetResourcesPagesFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput, in2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
-// 	               panic("mock out the GetResourcesPages method")
-//             },
-//             GetResourcesPagesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the GetResourcesPagesWithContext method")
-//             },
-//             GetResourcesRequestFunc: func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
-// 	               panic("mock out the GetResourcesRequest method")
-//             },
-//             GetResourcesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
-// 	               panic("mock out the GetResourcesWithContext method")
-//             },
-//             GetTagKeysFunc: func(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
-// 	               panic("mock out the GetTagKeys method")
-//             },
-//             GetTagKeysPagesFunc: func(in1 *resourcegroupstaggingapi.GetTagKeysInput, in2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
-// 	               panic("mock out the GetTagKeysPages method")
-//             },
-//             GetTagKeysPagesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the GetTagKeysPagesWithContext method")
-//             },
-//             GetTagKeysRequestFunc: func(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
-// 	               panic("mock out the GetTagKeysRequest method")
-//             },
-//             GetTagKeysWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
-// 	               panic("mock out the GetTagKeysWithContext method")
-//             },
-//             GetTagValuesFunc: func(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
-// 	               panic("mock out the GetTagValues method")
-//             },
-//             GetTagValuesPagesFunc: func(in1 *resourcegroupstaggingapi.GetTagValuesInput, in2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
-// 	               panic("mock out the GetTagValuesPages method")
-//             },
-//             GetTagValuesPagesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, in4 ...request.Option) error {
-// 	               panic("mock out the GetTagValuesPagesWithContext method")
-//             },
-//             GetTagValuesRequestFunc: func(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
-// 	               panic("mock out the GetTagValuesRequest method")
-//             },
-//             GetTagValuesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
-// 	               panic("mock out the GetTagValuesWithContext method")
-//             },
-//             StartReportCreationFunc: func(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
-// 	               panic("mock out the StartReportCreation method")
-//             },
-//             StartReportCreationRequestFunc: func(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
-// 	               panic("mock out the StartReportCreationRequest method")
-//             },
-//             StartReportCreationWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.StartReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
-// 	               panic("mock out the StartReportCreationWithContext method")
-//             },
-//             TagResourcesFunc: func(in1 *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
-// 	               panic("mock out the TagResources method")
-//             },
-//             TagResourcesRequestFunc: func(in1 *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
-// 	               panic("mock out the TagResourcesRequest method")
-//             },
-//             TagResourcesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.TagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
-// 	               panic("mock out the TagResourcesWithContext method")
-//             },
-//             UntagResourcesFunc: func(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
-// 	               panic("mock out the UntagResources method")
-//             },
-//             UntagResourcesRequestFunc: func(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
-// 	               panic("mock out the UntagResourcesRequest method")
-//             },
-//             UntagResourcesWithContextFunc: func(in1 context.Context, in2 *resourcegroupstaggingapi.UntagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
-// 	               panic("mock out the UntagResourcesWithContext method")
-//             },
-//         }
+// 		// make and configure a mocked taggingClient
+// 		mockedtaggingClient := &taggingClientMock{
+// 			DescribeReportCreationFunc: func(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+// 				panic("mock out the DescribeReportCreation method")
+// 			},
+// 			DescribeReportCreationRequestFunc: func(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
+// 				panic("mock out the DescribeReportCreationRequest method")
+// 			},
+// 			DescribeReportCreationWithContextFunc: func(contextMoqParam context.Context, describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+// 				panic("mock out the DescribeReportCreationWithContext method")
+// 			},
+// 			GetComplianceSummaryFunc: func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+// 				panic("mock out the GetComplianceSummary method")
+// 			},
+// 			GetComplianceSummaryPagesFunc: func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
+// 				panic("mock out the GetComplianceSummaryPages method")
+// 			},
+// 			GetComplianceSummaryPagesWithContextFunc: func(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the GetComplianceSummaryPagesWithContext method")
+// 			},
+// 			GetComplianceSummaryRequestFunc: func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
+// 				panic("mock out the GetComplianceSummaryRequest method")
+// 			},
+// 			GetComplianceSummaryWithContextFunc: func(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, options ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+// 				panic("mock out the GetComplianceSummaryWithContext method")
+// 			},
+// 			GetResourcesFunc: func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+// 				panic("mock out the GetResources method")
+// 			},
+// 			GetResourcesPagesFunc: func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
+// 				panic("mock out the GetResourcesPages method")
+// 			},
+// 			GetResourcesPagesWithContextFunc: func(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the GetResourcesPagesWithContext method")
+// 			},
+// 			GetResourcesRequestFunc: func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
+// 				panic("mock out the GetResourcesRequest method")
+// 			},
+// 			GetResourcesWithContextFunc: func(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+// 				panic("mock out the GetResourcesWithContext method")
+// 			},
+// 			GetTagKeysFunc: func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+// 				panic("mock out the GetTagKeys method")
+// 			},
+// 			GetTagKeysPagesFunc: func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
+// 				panic("mock out the GetTagKeysPages method")
+// 			},
+// 			GetTagKeysPagesWithContextFunc: func(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the GetTagKeysPagesWithContext method")
+// 			},
+// 			GetTagKeysRequestFunc: func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
+// 				panic("mock out the GetTagKeysRequest method")
+// 			},
+// 			GetTagKeysWithContextFunc: func(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+// 				panic("mock out the GetTagKeysWithContext method")
+// 			},
+// 			GetTagValuesFunc: func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+// 				panic("mock out the GetTagValues method")
+// 			},
+// 			GetTagValuesPagesFunc: func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
+// 				panic("mock out the GetTagValuesPages method")
+// 			},
+// 			GetTagValuesPagesWithContextFunc: func(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, options ...request.Option) error {
+// 				panic("mock out the GetTagValuesPagesWithContext method")
+// 			},
+// 			GetTagValuesRequestFunc: func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
+// 				panic("mock out the GetTagValuesRequest method")
+// 			},
+// 			GetTagValuesWithContextFunc: func(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+// 				panic("mock out the GetTagValuesWithContext method")
+// 			},
+// 			StartReportCreationFunc: func(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+// 				panic("mock out the StartReportCreation method")
+// 			},
+// 			StartReportCreationRequestFunc: func(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
+// 				panic("mock out the StartReportCreationRequest method")
+// 			},
+// 			StartReportCreationWithContextFunc: func(contextMoqParam context.Context, startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+// 				panic("mock out the StartReportCreationWithContext method")
+// 			},
+// 			TagResourcesFunc: func(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+// 				panic("mock out the TagResources method")
+// 			},
+// 			TagResourcesRequestFunc: func(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
+// 				panic("mock out the TagResourcesRequest method")
+// 			},
+// 			TagResourcesWithContextFunc: func(contextMoqParam context.Context, tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+// 				panic("mock out the TagResourcesWithContext method")
+// 			},
+// 			UntagResourcesFunc: func(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+// 				panic("mock out the UntagResources method")
+// 			},
+// 			UntagResourcesRequestFunc: func(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
+// 				panic("mock out the UntagResourcesRequest method")
+// 			},
+// 			UntagResourcesWithContextFunc: func(contextMoqParam context.Context, untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+// 				panic("mock out the UntagResourcesWithContext method")
+// 			},
+// 		}
 //
-//         // use mockedtaggingClient in code that requires taggingClient
-//         // and then make assertions.
+// 		// use mockedtaggingClient in code that requires taggingClient
+// 		// and then make assertions.
 //
-//     }
+// 	}
 type taggingClientMock struct {
 	// DescribeReportCreationFunc mocks the DescribeReportCreation method.
-	DescribeReportCreationFunc func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error)
+	DescribeReportCreationFunc func(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error)
 
 	// DescribeReportCreationRequestFunc mocks the DescribeReportCreationRequest method.
-	DescribeReportCreationRequestFunc func(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput)
+	DescribeReportCreationRequestFunc func(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput)
 
 	// DescribeReportCreationWithContextFunc mocks the DescribeReportCreationWithContext method.
-	DescribeReportCreationWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.DescribeReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error)
+	DescribeReportCreationWithContextFunc func(contextMoqParam context.Context, describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error)
 
 	// GetComplianceSummaryFunc mocks the GetComplianceSummary method.
-	GetComplianceSummaryFunc func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error)
+	GetComplianceSummaryFunc func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error)
 
 	// GetComplianceSummaryPagesFunc mocks the GetComplianceSummaryPages method.
-	GetComplianceSummaryPagesFunc func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput, in2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error
+	GetComplianceSummaryPagesFunc func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error
 
 	// GetComplianceSummaryPagesWithContextFunc mocks the GetComplianceSummaryPagesWithContext method.
-	GetComplianceSummaryPagesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, in4 ...request.Option) error
+	GetComplianceSummaryPagesWithContextFunc func(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, options ...request.Option) error
 
 	// GetComplianceSummaryRequestFunc mocks the GetComplianceSummaryRequest method.
-	GetComplianceSummaryRequestFunc func(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput)
+	GetComplianceSummaryRequestFunc func(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput)
 
 	// GetComplianceSummaryWithContextFunc mocks the GetComplianceSummaryWithContext method.
-	GetComplianceSummaryWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error)
+	GetComplianceSummaryWithContextFunc func(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, options ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error)
 
 	// GetResourcesFunc mocks the GetResources method.
-	GetResourcesFunc func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error)
+	GetResourcesFunc func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error)
 
 	// GetResourcesPagesFunc mocks the GetResourcesPages method.
-	GetResourcesPagesFunc func(in1 *resourcegroupstaggingapi.GetResourcesInput, in2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error
+	GetResourcesPagesFunc func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error
 
 	// GetResourcesPagesWithContextFunc mocks the GetResourcesPagesWithContext method.
-	GetResourcesPagesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, in4 ...request.Option) error
+	GetResourcesPagesWithContextFunc func(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, options ...request.Option) error
 
 	// GetResourcesRequestFunc mocks the GetResourcesRequest method.
-	GetResourcesRequestFunc func(in1 *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput)
+	GetResourcesRequestFunc func(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput)
 
 	// GetResourcesWithContextFunc mocks the GetResourcesWithContext method.
-	GetResourcesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error)
+	GetResourcesWithContextFunc func(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error)
 
 	// GetTagKeysFunc mocks the GetTagKeys method.
-	GetTagKeysFunc func(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error)
+	GetTagKeysFunc func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error)
 
 	// GetTagKeysPagesFunc mocks the GetTagKeysPages method.
-	GetTagKeysPagesFunc func(in1 *resourcegroupstaggingapi.GetTagKeysInput, in2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error
+	GetTagKeysPagesFunc func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error
 
 	// GetTagKeysPagesWithContextFunc mocks the GetTagKeysPagesWithContext method.
-	GetTagKeysPagesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, in4 ...request.Option) error
+	GetTagKeysPagesWithContextFunc func(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, options ...request.Option) error
 
 	// GetTagKeysRequestFunc mocks the GetTagKeysRequest method.
-	GetTagKeysRequestFunc func(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput)
+	GetTagKeysRequestFunc func(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput)
 
 	// GetTagKeysWithContextFunc mocks the GetTagKeysWithContext method.
-	GetTagKeysWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error)
+	GetTagKeysWithContextFunc func(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error)
 
 	// GetTagValuesFunc mocks the GetTagValues method.
-	GetTagValuesFunc func(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error)
+	GetTagValuesFunc func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error)
 
 	// GetTagValuesPagesFunc mocks the GetTagValuesPages method.
-	GetTagValuesPagesFunc func(in1 *resourcegroupstaggingapi.GetTagValuesInput, in2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error
+	GetTagValuesPagesFunc func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error
 
 	// GetTagValuesPagesWithContextFunc mocks the GetTagValuesPagesWithContext method.
-	GetTagValuesPagesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, in4 ...request.Option) error
+	GetTagValuesPagesWithContextFunc func(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, options ...request.Option) error
 
 	// GetTagValuesRequestFunc mocks the GetTagValuesRequest method.
-	GetTagValuesRequestFunc func(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput)
+	GetTagValuesRequestFunc func(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput)
 
 	// GetTagValuesWithContextFunc mocks the GetTagValuesWithContext method.
-	GetTagValuesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error)
+	GetTagValuesWithContextFunc func(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error)
 
 	// StartReportCreationFunc mocks the StartReportCreation method.
-	StartReportCreationFunc func(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error)
+	StartReportCreationFunc func(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error)
 
 	// StartReportCreationRequestFunc mocks the StartReportCreationRequest method.
-	StartReportCreationRequestFunc func(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput)
+	StartReportCreationRequestFunc func(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput)
 
 	// StartReportCreationWithContextFunc mocks the StartReportCreationWithContext method.
-	StartReportCreationWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.StartReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error)
+	StartReportCreationWithContextFunc func(contextMoqParam context.Context, startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error)
 
 	// TagResourcesFunc mocks the TagResources method.
-	TagResourcesFunc func(in1 *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error)
+	TagResourcesFunc func(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error)
 
 	// TagResourcesRequestFunc mocks the TagResourcesRequest method.
-	TagResourcesRequestFunc func(in1 *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput)
+	TagResourcesRequestFunc func(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput)
 
 	// TagResourcesWithContextFunc mocks the TagResourcesWithContext method.
-	TagResourcesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.TagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error)
+	TagResourcesWithContextFunc func(contextMoqParam context.Context, tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error)
 
 	// UntagResourcesFunc mocks the UntagResources method.
-	UntagResourcesFunc func(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error)
+	UntagResourcesFunc func(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error)
 
 	// UntagResourcesRequestFunc mocks the UntagResourcesRequest method.
-	UntagResourcesRequestFunc func(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput)
+	UntagResourcesRequestFunc func(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput)
 
 	// UntagResourcesWithContextFunc mocks the UntagResourcesWithContext method.
-	UntagResourcesWithContextFunc func(in1 context.Context, in2 *resourcegroupstaggingapi.UntagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error)
+	UntagResourcesWithContextFunc func(contextMoqParam context.Context, untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error)
 
 	// calls tracks calls to the methods.
 	calls struct {
 		// DescribeReportCreation holds details about calls to the DescribeReportCreation method.
 		DescribeReportCreation []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+			// DescribeReportCreationInput is the describeReportCreationInput argument value.
+			DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 		}
 		// DescribeReportCreationRequest holds details about calls to the DescribeReportCreationRequest method.
 		DescribeReportCreationRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+			// DescribeReportCreationInput is the describeReportCreationInput argument value.
+			DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 		}
 		// DescribeReportCreationWithContext holds details about calls to the DescribeReportCreationWithContext method.
 		DescribeReportCreationWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.DescribeReportCreationInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// DescribeReportCreationInput is the describeReportCreationInput argument value.
+			DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetComplianceSummary holds details about calls to the GetComplianceSummary method.
 		GetComplianceSummary []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+			// GetComplianceSummaryInput is the getComplianceSummaryInput argument value.
+			GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 		}
 		// GetComplianceSummaryPages holds details about calls to the GetComplianceSummaryPages method.
 		GetComplianceSummaryPages []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
-			// In2 is the in2 argument value.
-			In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+			// GetComplianceSummaryInput is the getComplianceSummaryInput argument value.
+			GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 		}
 		// GetComplianceSummaryPagesWithContext holds details about calls to the GetComplianceSummaryPagesWithContext method.
 		GetComplianceSummaryPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-			// In3 is the in3 argument value.
-			In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetComplianceSummaryInput is the getComplianceSummaryInput argument value.
+			GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetComplianceSummaryRequest holds details about calls to the GetComplianceSummaryRequest method.
 		GetComplianceSummaryRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+			// GetComplianceSummaryInput is the getComplianceSummaryInput argument value.
+			GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 		}
 		// GetComplianceSummaryWithContext holds details about calls to the GetComplianceSummaryWithContext method.
 		GetComplianceSummaryWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetComplianceSummaryInput is the getComplianceSummaryInput argument value.
+			GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetResources holds details about calls to the GetResources method.
 		GetResources []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetResourcesInput
+			// GetResourcesInput is the getResourcesInput argument value.
+			GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 		}
 		// GetResourcesPages holds details about calls to the GetResourcesPages method.
 		GetResourcesPages []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetResourcesInput
-			// In2 is the in2 argument value.
-			In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+			// GetResourcesInput is the getResourcesInput argument value.
+			GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 		}
 		// GetResourcesPagesWithContext holds details about calls to the GetResourcesPagesWithContext method.
 		GetResourcesPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetResourcesInput
-			// In3 is the in3 argument value.
-			In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetResourcesInput is the getResourcesInput argument value.
+			GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetResourcesRequest holds details about calls to the GetResourcesRequest method.
 		GetResourcesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetResourcesInput
+			// GetResourcesInput is the getResourcesInput argument value.
+			GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 		}
 		// GetResourcesWithContext holds details about calls to the GetResourcesWithContext method.
 		GetResourcesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetResourcesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetResourcesInput is the getResourcesInput argument value.
+			GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetTagKeys holds details about calls to the GetTagKeys method.
 		GetTagKeys []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagKeysInput
+			// GetTagKeysInput is the getTagKeysInput argument value.
+			GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 		}
 		// GetTagKeysPages holds details about calls to the GetTagKeysPages method.
 		GetTagKeysPages []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagKeysInput
-			// In2 is the in2 argument value.
-			In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+			// GetTagKeysInput is the getTagKeysInput argument value.
+			GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 		}
 		// GetTagKeysPagesWithContext holds details about calls to the GetTagKeysPagesWithContext method.
 		GetTagKeysPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetTagKeysInput
-			// In3 is the in3 argument value.
-			In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetTagKeysInput is the getTagKeysInput argument value.
+			GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetTagKeysRequest holds details about calls to the GetTagKeysRequest method.
 		GetTagKeysRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagKeysInput
+			// GetTagKeysInput is the getTagKeysInput argument value.
+			GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 		}
 		// GetTagKeysWithContext holds details about calls to the GetTagKeysWithContext method.
 		GetTagKeysWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetTagKeysInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetTagKeysInput is the getTagKeysInput argument value.
+			GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetTagValues holds details about calls to the GetTagValues method.
 		GetTagValues []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagValuesInput
+			// GetTagValuesInput is the getTagValuesInput argument value.
+			GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 		}
 		// GetTagValuesPages holds details about calls to the GetTagValuesPages method.
 		GetTagValuesPages []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagValuesInput
-			// In2 is the in2 argument value.
-			In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+			// GetTagValuesInput is the getTagValuesInput argument value.
+			GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 		}
 		// GetTagValuesPagesWithContext holds details about calls to the GetTagValuesPagesWithContext method.
 		GetTagValuesPagesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetTagValuesInput
-			// In3 is the in3 argument value.
-			In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
-			// In4 is the in4 argument value.
-			In4 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetTagValuesInput is the getTagValuesInput argument value.
+			GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+			// Fn is the fn argument value.
+			Fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// GetTagValuesRequest holds details about calls to the GetTagValuesRequest method.
 		GetTagValuesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.GetTagValuesInput
+			// GetTagValuesInput is the getTagValuesInput argument value.
+			GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 		}
 		// GetTagValuesWithContext holds details about calls to the GetTagValuesWithContext method.
 		GetTagValuesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.GetTagValuesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// GetTagValuesInput is the getTagValuesInput argument value.
+			GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// StartReportCreation holds details about calls to the StartReportCreation method.
 		StartReportCreation []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.StartReportCreationInput
+			// StartReportCreationInput is the startReportCreationInput argument value.
+			StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 		}
 		// StartReportCreationRequest holds details about calls to the StartReportCreationRequest method.
 		StartReportCreationRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.StartReportCreationInput
+			// StartReportCreationInput is the startReportCreationInput argument value.
+			StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 		}
 		// StartReportCreationWithContext holds details about calls to the StartReportCreationWithContext method.
 		StartReportCreationWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.StartReportCreationInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// StartReportCreationInput is the startReportCreationInput argument value.
+			StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// TagResources holds details about calls to the TagResources method.
 		TagResources []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.TagResourcesInput
+			// TagResourcesInput is the tagResourcesInput argument value.
+			TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 		}
 		// TagResourcesRequest holds details about calls to the TagResourcesRequest method.
 		TagResourcesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.TagResourcesInput
+			// TagResourcesInput is the tagResourcesInput argument value.
+			TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 		}
 		// TagResourcesWithContext holds details about calls to the TagResourcesWithContext method.
 		TagResourcesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.TagResourcesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// TagResourcesInput is the tagResourcesInput argument value.
+			TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 		// UntagResources holds details about calls to the UntagResources method.
 		UntagResources []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.UntagResourcesInput
+			// UntagResourcesInput is the untagResourcesInput argument value.
+			UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 		}
 		// UntagResourcesRequest holds details about calls to the UntagResourcesRequest method.
 		UntagResourcesRequest []struct {
-			// In1 is the in1 argument value.
-			In1 *resourcegroupstaggingapi.UntagResourcesInput
+			// UntagResourcesInput is the untagResourcesInput argument value.
+			UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 		}
 		// UntagResourcesWithContext holds details about calls to the UntagResourcesWithContext method.
 		UntagResourcesWithContext []struct {
-			// In1 is the in1 argument value.
-			In1 context.Context
-			// In2 is the in2 argument value.
-			In2 *resourcegroupstaggingapi.UntagResourcesInput
-			// In3 is the in3 argument value.
-			In3 []request.Option
+			// ContextMoqParam is the contextMoqParam argument value.
+			ContextMoqParam context.Context
+			// UntagResourcesInput is the untagResourcesInput argument value.
+			UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
+			// Options is the options argument value.
+			Options []request.Option
 		}
 	}
+	lockDescribeReportCreation               sync.RWMutex
+	lockDescribeReportCreationRequest        sync.RWMutex
+	lockDescribeReportCreationWithContext    sync.RWMutex
+	lockGetComplianceSummary                 sync.RWMutex
+	lockGetComplianceSummaryPages            sync.RWMutex
+	lockGetComplianceSummaryPagesWithContext sync.RWMutex
+	lockGetComplianceSummaryRequest          sync.RWMutex
+	lockGetComplianceSummaryWithContext      sync.RWMutex
+	lockGetResources                         sync.RWMutex
+	lockGetResourcesPages                    sync.RWMutex
+	lockGetResourcesPagesWithContext         sync.RWMutex
+	lockGetResourcesRequest                  sync.RWMutex
+	lockGetResourcesWithContext              sync.RWMutex
+	lockGetTagKeys                           sync.RWMutex
+	lockGetTagKeysPages                      sync.RWMutex
+	lockGetTagKeysPagesWithContext           sync.RWMutex
+	lockGetTagKeysRequest                    sync.RWMutex
+	lockGetTagKeysWithContext                sync.RWMutex
+	lockGetTagValues                         sync.RWMutex
+	lockGetTagValuesPages                    sync.RWMutex
+	lockGetTagValuesPagesWithContext         sync.RWMutex
+	lockGetTagValuesRequest                  sync.RWMutex
+	lockGetTagValuesWithContext              sync.RWMutex
+	lockStartReportCreation                  sync.RWMutex
+	lockStartReportCreationRequest           sync.RWMutex
+	lockStartReportCreationWithContext       sync.RWMutex
+	lockTagResources                         sync.RWMutex
+	lockTagResourcesRequest                  sync.RWMutex
+	lockTagResourcesWithContext              sync.RWMutex
+	lockUntagResources                       sync.RWMutex
+	lockUntagResourcesRequest                sync.RWMutex
+	lockUntagResourcesWithContext            sync.RWMutex
 }
 
 // DescribeReportCreation calls DescribeReportCreationFunc.
-func (mock *taggingClientMock) DescribeReportCreation(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+func (mock *taggingClientMock) DescribeReportCreation(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
 	if mock.DescribeReportCreationFunc == nil {
 		panic("taggingClientMock.DescribeReportCreationFunc: method is nil but taggingClient.DescribeReportCreation was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 	}{
-		In1: in1,
+		DescribeReportCreationInput: describeReportCreationInput,
 	}
-	locktaggingClientMockDescribeReportCreation.Lock()
+	mock.lockDescribeReportCreation.Lock()
 	mock.calls.DescribeReportCreation = append(mock.calls.DescribeReportCreation, callInfo)
-	locktaggingClientMockDescribeReportCreation.Unlock()
-	return mock.DescribeReportCreationFunc(in1)
+	mock.lockDescribeReportCreation.Unlock()
+	return mock.DescribeReportCreationFunc(describeReportCreationInput)
 }
 
 // DescribeReportCreationCalls gets all the calls that were made to DescribeReportCreation.
 // Check the length with:
 //     len(mockedtaggingClient.DescribeReportCreationCalls())
 func (mock *taggingClientMock) DescribeReportCreationCalls() []struct {
-	In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+	DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 	}
-	locktaggingClientMockDescribeReportCreation.RLock()
+	mock.lockDescribeReportCreation.RLock()
 	calls = mock.calls.DescribeReportCreation
-	locktaggingClientMockDescribeReportCreation.RUnlock()
+	mock.lockDescribeReportCreation.RUnlock()
 	return calls
 }
 
 // DescribeReportCreationRequest calls DescribeReportCreationRequestFunc.
-func (mock *taggingClientMock) DescribeReportCreationRequest(in1 *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
+func (mock *taggingClientMock) DescribeReportCreationRequest(describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput) (*request.Request, *resourcegroupstaggingapi.DescribeReportCreationOutput) {
 	if mock.DescribeReportCreationRequestFunc == nil {
 		panic("taggingClientMock.DescribeReportCreationRequestFunc: method is nil but taggingClient.DescribeReportCreationRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 	}{
-		In1: in1,
+		DescribeReportCreationInput: describeReportCreationInput,
 	}
-	locktaggingClientMockDescribeReportCreationRequest.Lock()
+	mock.lockDescribeReportCreationRequest.Lock()
 	mock.calls.DescribeReportCreationRequest = append(mock.calls.DescribeReportCreationRequest, callInfo)
-	locktaggingClientMockDescribeReportCreationRequest.Unlock()
-	return mock.DescribeReportCreationRequestFunc(in1)
+	mock.lockDescribeReportCreationRequest.Unlock()
+	return mock.DescribeReportCreationRequestFunc(describeReportCreationInput)
 }
 
 // DescribeReportCreationRequestCalls gets all the calls that were made to DescribeReportCreationRequest.
 // Check the length with:
 //     len(mockedtaggingClient.DescribeReportCreationRequestCalls())
 func (mock *taggingClientMock) DescribeReportCreationRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+	DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.DescribeReportCreationInput
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
 	}
-	locktaggingClientMockDescribeReportCreationRequest.RLock()
+	mock.lockDescribeReportCreationRequest.RLock()
 	calls = mock.calls.DescribeReportCreationRequest
-	locktaggingClientMockDescribeReportCreationRequest.RUnlock()
+	mock.lockDescribeReportCreationRequest.RUnlock()
 	return calls
 }
 
 // DescribeReportCreationWithContext calls DescribeReportCreationWithContextFunc.
-func (mock *taggingClientMock) DescribeReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.DescribeReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
+func (mock *taggingClientMock) DescribeReportCreationWithContext(contextMoqParam context.Context, describeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.DescribeReportCreationOutput, error) {
 	if mock.DescribeReportCreationWithContextFunc == nil {
 		panic("taggingClientMock.DescribeReportCreationWithContextFunc: method is nil but taggingClient.DescribeReportCreationWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.DescribeReportCreationInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
+		Options                     []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:             contextMoqParam,
+		DescribeReportCreationInput: describeReportCreationInput,
+		Options:                     options,
 	}
-	locktaggingClientMockDescribeReportCreationWithContext.Lock()
+	mock.lockDescribeReportCreationWithContext.Lock()
 	mock.calls.DescribeReportCreationWithContext = append(mock.calls.DescribeReportCreationWithContext, callInfo)
-	locktaggingClientMockDescribeReportCreationWithContext.Unlock()
-	return mock.DescribeReportCreationWithContextFunc(in1, in2, in3...)
+	mock.lockDescribeReportCreationWithContext.Unlock()
+	return mock.DescribeReportCreationWithContextFunc(contextMoqParam, describeReportCreationInput, options...)
 }
 
 // DescribeReportCreationWithContextCalls gets all the calls that were made to DescribeReportCreationWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.DescribeReportCreationWithContextCalls())
 func (mock *taggingClientMock) DescribeReportCreationWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.DescribeReportCreationInput
-	In3 []request.Option
+	ContextMoqParam             context.Context
+	DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
+	Options                     []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.DescribeReportCreationInput
-		In3 []request.Option
+		ContextMoqParam             context.Context
+		DescribeReportCreationInput *resourcegroupstaggingapi.DescribeReportCreationInput
+		Options                     []request.Option
 	}
-	locktaggingClientMockDescribeReportCreationWithContext.RLock()
+	mock.lockDescribeReportCreationWithContext.RLock()
 	calls = mock.calls.DescribeReportCreationWithContext
-	locktaggingClientMockDescribeReportCreationWithContext.RUnlock()
+	mock.lockDescribeReportCreationWithContext.RUnlock()
 	return calls
 }
 
 // GetComplianceSummary calls GetComplianceSummaryFunc.
-func (mock *taggingClientMock) GetComplianceSummary(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+func (mock *taggingClientMock) GetComplianceSummary(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
 	if mock.GetComplianceSummaryFunc == nil {
 		panic("taggingClientMock.GetComplianceSummaryFunc: method is nil but taggingClient.GetComplianceSummary was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}{
-		In1: in1,
+		GetComplianceSummaryInput: getComplianceSummaryInput,
 	}
-	locktaggingClientMockGetComplianceSummary.Lock()
+	mock.lockGetComplianceSummary.Lock()
 	mock.calls.GetComplianceSummary = append(mock.calls.GetComplianceSummary, callInfo)
-	locktaggingClientMockGetComplianceSummary.Unlock()
-	return mock.GetComplianceSummaryFunc(in1)
+	mock.lockGetComplianceSummary.Unlock()
+	return mock.GetComplianceSummaryFunc(getComplianceSummaryInput)
 }
 
 // GetComplianceSummaryCalls gets all the calls that were made to GetComplianceSummary.
 // Check the length with:
 //     len(mockedtaggingClient.GetComplianceSummaryCalls())
 func (mock *taggingClientMock) GetComplianceSummaryCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+	GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}
-	locktaggingClientMockGetComplianceSummary.RLock()
+	mock.lockGetComplianceSummary.RLock()
 	calls = mock.calls.GetComplianceSummary
-	locktaggingClientMockGetComplianceSummary.RUnlock()
+	mock.lockGetComplianceSummary.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryPages calls GetComplianceSummaryPagesFunc.
-func (mock *taggingClientMock) GetComplianceSummaryPages(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput, in2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
+func (mock *taggingClientMock) GetComplianceSummaryPages(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool) error {
 	if mock.GetComplianceSummaryPagesFunc == nil {
 		panic("taggingClientMock.GetComplianceSummaryPagesFunc: method is nil but taggingClient.GetComplianceSummaryPages was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		GetComplianceSummaryInput: getComplianceSummaryInput,
+		Fn:                        fn,
 	}
-	locktaggingClientMockGetComplianceSummaryPages.Lock()
+	mock.lockGetComplianceSummaryPages.Lock()
 	mock.calls.GetComplianceSummaryPages = append(mock.calls.GetComplianceSummaryPages, callInfo)
-	locktaggingClientMockGetComplianceSummaryPages.Unlock()
-	return mock.GetComplianceSummaryPagesFunc(in1, in2)
+	mock.lockGetComplianceSummaryPages.Unlock()
+	return mock.GetComplianceSummaryPagesFunc(getComplianceSummaryInput, fn)
 }
 
 // GetComplianceSummaryPagesCalls gets all the calls that were made to GetComplianceSummaryPages.
 // Check the length with:
 //     len(mockedtaggingClient.GetComplianceSummaryPagesCalls())
 func (mock *taggingClientMock) GetComplianceSummaryPagesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
-	In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+	GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+	Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In2 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
 	}
-	locktaggingClientMockGetComplianceSummaryPages.RLock()
+	mock.lockGetComplianceSummaryPages.RLock()
 	calls = mock.calls.GetComplianceSummaryPages
-	locktaggingClientMockGetComplianceSummaryPages.RUnlock()
+	mock.lockGetComplianceSummaryPages.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryPagesWithContext calls GetComplianceSummaryPagesWithContextFunc.
-func (mock *taggingClientMock) GetComplianceSummaryPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetComplianceSummaryPagesWithContext(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, fn func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool, options ...request.Option) error {
 	if mock.GetComplianceSummaryPagesWithContextFunc == nil {
 		panic("taggingClientMock.GetComplianceSummaryPagesWithContextFunc: method is nil but taggingClient.GetComplianceSummaryPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam           context.Context
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+		Options                   []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:           contextMoqParam,
+		GetComplianceSummaryInput: getComplianceSummaryInput,
+		Fn:                        fn,
+		Options:                   options,
 	}
-	locktaggingClientMockGetComplianceSummaryPagesWithContext.Lock()
+	mock.lockGetComplianceSummaryPagesWithContext.Lock()
 	mock.calls.GetComplianceSummaryPagesWithContext = append(mock.calls.GetComplianceSummaryPagesWithContext, callInfo)
-	locktaggingClientMockGetComplianceSummaryPagesWithContext.Unlock()
-	return mock.GetComplianceSummaryPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockGetComplianceSummaryPagesWithContext.Unlock()
+	return mock.GetComplianceSummaryPagesWithContextFunc(contextMoqParam, getComplianceSummaryInput, fn, options...)
 }
 
 // GetComplianceSummaryPagesWithContextCalls gets all the calls that were made to GetComplianceSummaryPagesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetComplianceSummaryPagesWithContextCalls())
 func (mock *taggingClientMock) GetComplianceSummaryPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-	In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam           context.Context
+	GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+	Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+	Options                   []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In3 func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam           context.Context
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Fn                        func(*resourcegroupstaggingapi.GetComplianceSummaryOutput, bool) bool
+		Options                   []request.Option
 	}
-	locktaggingClientMockGetComplianceSummaryPagesWithContext.RLock()
+	mock.lockGetComplianceSummaryPagesWithContext.RLock()
 	calls = mock.calls.GetComplianceSummaryPagesWithContext
-	locktaggingClientMockGetComplianceSummaryPagesWithContext.RUnlock()
+	mock.lockGetComplianceSummaryPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryRequest calls GetComplianceSummaryRequestFunc.
-func (mock *taggingClientMock) GetComplianceSummaryRequest(in1 *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
+func (mock *taggingClientMock) GetComplianceSummaryRequest(getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput) (*request.Request, *resourcegroupstaggingapi.GetComplianceSummaryOutput) {
 	if mock.GetComplianceSummaryRequestFunc == nil {
 		panic("taggingClientMock.GetComplianceSummaryRequestFunc: method is nil but taggingClient.GetComplianceSummaryRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}{
-		In1: in1,
+		GetComplianceSummaryInput: getComplianceSummaryInput,
 	}
-	locktaggingClientMockGetComplianceSummaryRequest.Lock()
+	mock.lockGetComplianceSummaryRequest.Lock()
 	mock.calls.GetComplianceSummaryRequest = append(mock.calls.GetComplianceSummaryRequest, callInfo)
-	locktaggingClientMockGetComplianceSummaryRequest.Unlock()
-	return mock.GetComplianceSummaryRequestFunc(in1)
+	mock.lockGetComplianceSummaryRequest.Unlock()
+	return mock.GetComplianceSummaryRequestFunc(getComplianceSummaryInput)
 }
 
 // GetComplianceSummaryRequestCalls gets all the calls that were made to GetComplianceSummaryRequest.
 // Check the length with:
 //     len(mockedtaggingClient.GetComplianceSummaryRequestCalls())
 func (mock *taggingClientMock) GetComplianceSummaryRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+	GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetComplianceSummaryInput
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
 	}
-	locktaggingClientMockGetComplianceSummaryRequest.RLock()
+	mock.lockGetComplianceSummaryRequest.RLock()
 	calls = mock.calls.GetComplianceSummaryRequest
-	locktaggingClientMockGetComplianceSummaryRequest.RUnlock()
+	mock.lockGetComplianceSummaryRequest.RUnlock()
 	return calls
 }
 
 // GetComplianceSummaryWithContext calls GetComplianceSummaryWithContextFunc.
-func (mock *taggingClientMock) GetComplianceSummaryWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetComplianceSummaryInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
+func (mock *taggingClientMock) GetComplianceSummaryWithContext(contextMoqParam context.Context, getComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput, options ...request.Option) (*resourcegroupstaggingapi.GetComplianceSummaryOutput, error) {
 	if mock.GetComplianceSummaryWithContextFunc == nil {
 		panic("taggingClientMock.GetComplianceSummaryWithContextFunc: method is nil but taggingClient.GetComplianceSummaryWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Options                   []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:           contextMoqParam,
+		GetComplianceSummaryInput: getComplianceSummaryInput,
+		Options:                   options,
 	}
-	locktaggingClientMockGetComplianceSummaryWithContext.Lock()
+	mock.lockGetComplianceSummaryWithContext.Lock()
 	mock.calls.GetComplianceSummaryWithContext = append(mock.calls.GetComplianceSummaryWithContext, callInfo)
-	locktaggingClientMockGetComplianceSummaryWithContext.Unlock()
-	return mock.GetComplianceSummaryWithContextFunc(in1, in2, in3...)
+	mock.lockGetComplianceSummaryWithContext.Unlock()
+	return mock.GetComplianceSummaryWithContextFunc(contextMoqParam, getComplianceSummaryInput, options...)
 }
 
 // GetComplianceSummaryWithContextCalls gets all the calls that were made to GetComplianceSummaryWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetComplianceSummaryWithContextCalls())
 func (mock *taggingClientMock) GetComplianceSummaryWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-	In3 []request.Option
+	ContextMoqParam           context.Context
+	GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+	Options                   []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetComplianceSummaryInput
-		In3 []request.Option
+		ContextMoqParam           context.Context
+		GetComplianceSummaryInput *resourcegroupstaggingapi.GetComplianceSummaryInput
+		Options                   []request.Option
 	}
-	locktaggingClientMockGetComplianceSummaryWithContext.RLock()
+	mock.lockGetComplianceSummaryWithContext.RLock()
 	calls = mock.calls.GetComplianceSummaryWithContext
-	locktaggingClientMockGetComplianceSummaryWithContext.RUnlock()
+	mock.lockGetComplianceSummaryWithContext.RUnlock()
 	return calls
 }
 
 // GetResources calls GetResourcesFunc.
-func (mock *taggingClientMock) GetResources(in1 *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+func (mock *taggingClientMock) GetResources(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 	if mock.GetResourcesFunc == nil {
 		panic("taggingClientMock.GetResourcesFunc: method is nil but taggingClient.GetResources was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 	}{
-		In1: in1,
+		GetResourcesInput: getResourcesInput,
 	}
-	locktaggingClientMockGetResources.Lock()
+	mock.lockGetResources.Lock()
 	mock.calls.GetResources = append(mock.calls.GetResources, callInfo)
-	locktaggingClientMockGetResources.Unlock()
-	return mock.GetResourcesFunc(in1)
+	mock.lockGetResources.Unlock()
+	return mock.GetResourcesFunc(getResourcesInput)
 }
 
 // GetResourcesCalls gets all the calls that were made to GetResources.
 // Check the length with:
 //     len(mockedtaggingClient.GetResourcesCalls())
 func (mock *taggingClientMock) GetResourcesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetResourcesInput
+	GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 	}
-	locktaggingClientMockGetResources.RLock()
+	mock.lockGetResources.RLock()
 	calls = mock.calls.GetResources
-	locktaggingClientMockGetResources.RUnlock()
+	mock.lockGetResources.RUnlock()
 	return calls
 }
 
 // GetResourcesPages calls GetResourcesPagesFunc.
-func (mock *taggingClientMock) GetResourcesPages(in1 *resourcegroupstaggingapi.GetResourcesInput, in2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
+func (mock *taggingClientMock) GetResourcesPages(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool) error {
 	if mock.GetResourcesPagesFunc == nil {
 		panic("taggingClientMock.GetResourcesPagesFunc: method is nil but taggingClient.GetResourcesPages was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
-		In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		GetResourcesInput: getResourcesInput,
+		Fn:                fn,
 	}
-	locktaggingClientMockGetResourcesPages.Lock()
+	mock.lockGetResourcesPages.Lock()
 	mock.calls.GetResourcesPages = append(mock.calls.GetResourcesPages, callInfo)
-	locktaggingClientMockGetResourcesPages.Unlock()
-	return mock.GetResourcesPagesFunc(in1, in2)
+	mock.lockGetResourcesPages.Unlock()
+	return mock.GetResourcesPagesFunc(getResourcesInput, fn)
 }
 
 // GetResourcesPagesCalls gets all the calls that were made to GetResourcesPages.
 // Check the length with:
 //     len(mockedtaggingClient.GetResourcesPagesCalls())
 func (mock *taggingClientMock) GetResourcesPagesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetResourcesInput
-	In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+	GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+	Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
-		In2 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
 	}
-	locktaggingClientMockGetResourcesPages.RLock()
+	mock.lockGetResourcesPages.RLock()
 	calls = mock.calls.GetResourcesPages
-	locktaggingClientMockGetResourcesPages.RUnlock()
+	mock.lockGetResourcesPages.RUnlock()
 	return calls
 }
 
 // GetResourcesPagesWithContext calls GetResourcesPagesWithContextFunc.
-func (mock *taggingClientMock) GetResourcesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetResourcesPagesWithContext(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, fn func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, options ...request.Option) error {
 	if mock.GetResourcesPagesWithContextFunc == nil {
 		panic("taggingClientMock.GetResourcesPagesWithContextFunc: method is nil but taggingClient.GetResourcesPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetResourcesInput
-		In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam   context.Context
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:   contextMoqParam,
+		GetResourcesInput: getResourcesInput,
+		Fn:                fn,
+		Options:           options,
 	}
-	locktaggingClientMockGetResourcesPagesWithContext.Lock()
+	mock.lockGetResourcesPagesWithContext.Lock()
 	mock.calls.GetResourcesPagesWithContext = append(mock.calls.GetResourcesPagesWithContext, callInfo)
-	locktaggingClientMockGetResourcesPagesWithContext.Unlock()
-	return mock.GetResourcesPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockGetResourcesPagesWithContext.Unlock()
+	return mock.GetResourcesPagesWithContextFunc(contextMoqParam, getResourcesInput, fn, options...)
 }
 
 // GetResourcesPagesWithContextCalls gets all the calls that were made to GetResourcesPagesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetResourcesPagesWithContextCalls())
 func (mock *taggingClientMock) GetResourcesPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetResourcesInput
-	In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam   context.Context
+	GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+	Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetResourcesInput
-		In3 func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam   context.Context
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Fn                func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool
+		Options           []request.Option
 	}
-	locktaggingClientMockGetResourcesPagesWithContext.RLock()
+	mock.lockGetResourcesPagesWithContext.RLock()
 	calls = mock.calls.GetResourcesPagesWithContext
-	locktaggingClientMockGetResourcesPagesWithContext.RUnlock()
+	mock.lockGetResourcesPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetResourcesRequest calls GetResourcesRequestFunc.
-func (mock *taggingClientMock) GetResourcesRequest(in1 *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
+func (mock *taggingClientMock) GetResourcesRequest(getResourcesInput *resourcegroupstaggingapi.GetResourcesInput) (*request.Request, *resourcegroupstaggingapi.GetResourcesOutput) {
 	if mock.GetResourcesRequestFunc == nil {
 		panic("taggingClientMock.GetResourcesRequestFunc: method is nil but taggingClient.GetResourcesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 	}{
-		In1: in1,
+		GetResourcesInput: getResourcesInput,
 	}
-	locktaggingClientMockGetResourcesRequest.Lock()
+	mock.lockGetResourcesRequest.Lock()
 	mock.calls.GetResourcesRequest = append(mock.calls.GetResourcesRequest, callInfo)
-	locktaggingClientMockGetResourcesRequest.Unlock()
-	return mock.GetResourcesRequestFunc(in1)
+	mock.lockGetResourcesRequest.Unlock()
+	return mock.GetResourcesRequestFunc(getResourcesInput)
 }
 
 // GetResourcesRequestCalls gets all the calls that were made to GetResourcesRequest.
 // Check the length with:
 //     len(mockedtaggingClient.GetResourcesRequestCalls())
 func (mock *taggingClientMock) GetResourcesRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetResourcesInput
+	GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetResourcesInput
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
 	}
-	locktaggingClientMockGetResourcesRequest.RLock()
+	mock.lockGetResourcesRequest.RLock()
 	calls = mock.calls.GetResourcesRequest
-	locktaggingClientMockGetResourcesRequest.RUnlock()
+	mock.lockGetResourcesRequest.RUnlock()
 	return calls
 }
 
 // GetResourcesWithContext calls GetResourcesWithContextFunc.
-func (mock *taggingClientMock) GetResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
+func (mock *taggingClientMock) GetResourcesWithContext(contextMoqParam context.Context, getResourcesInput *resourcegroupstaggingapi.GetResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 	if mock.GetResourcesWithContextFunc == nil {
 		panic("taggingClientMock.GetResourcesWithContextFunc: method is nil but taggingClient.GetResourcesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetResourcesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:   contextMoqParam,
+		GetResourcesInput: getResourcesInput,
+		Options:           options,
 	}
-	locktaggingClientMockGetResourcesWithContext.Lock()
+	mock.lockGetResourcesWithContext.Lock()
 	mock.calls.GetResourcesWithContext = append(mock.calls.GetResourcesWithContext, callInfo)
-	locktaggingClientMockGetResourcesWithContext.Unlock()
-	return mock.GetResourcesWithContextFunc(in1, in2, in3...)
+	mock.lockGetResourcesWithContext.Unlock()
+	return mock.GetResourcesWithContextFunc(contextMoqParam, getResourcesInput, options...)
 }
 
 // GetResourcesWithContextCalls gets all the calls that were made to GetResourcesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetResourcesWithContextCalls())
 func (mock *taggingClientMock) GetResourcesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetResourcesInput
-	In3 []request.Option
+	ContextMoqParam   context.Context
+	GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetResourcesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		GetResourcesInput *resourcegroupstaggingapi.GetResourcesInput
+		Options           []request.Option
 	}
-	locktaggingClientMockGetResourcesWithContext.RLock()
+	mock.lockGetResourcesWithContext.RLock()
 	calls = mock.calls.GetResourcesWithContext
-	locktaggingClientMockGetResourcesWithContext.RUnlock()
+	mock.lockGetResourcesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagKeys calls GetTagKeysFunc.
-func (mock *taggingClientMock) GetTagKeys(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+func (mock *taggingClientMock) GetTagKeys(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	if mock.GetTagKeysFunc == nil {
 		panic("taggingClientMock.GetTagKeysFunc: method is nil but taggingClient.GetTagKeys was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 	}{
-		In1: in1,
+		GetTagKeysInput: getTagKeysInput,
 	}
-	locktaggingClientMockGetTagKeys.Lock()
+	mock.lockGetTagKeys.Lock()
 	mock.calls.GetTagKeys = append(mock.calls.GetTagKeys, callInfo)
-	locktaggingClientMockGetTagKeys.Unlock()
-	return mock.GetTagKeysFunc(in1)
+	mock.lockGetTagKeys.Unlock()
+	return mock.GetTagKeysFunc(getTagKeysInput)
 }
 
 // GetTagKeysCalls gets all the calls that were made to GetTagKeys.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagKeysCalls())
 func (mock *taggingClientMock) GetTagKeysCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagKeysInput
+	GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 	}
-	locktaggingClientMockGetTagKeys.RLock()
+	mock.lockGetTagKeys.RLock()
 	calls = mock.calls.GetTagKeys
-	locktaggingClientMockGetTagKeys.RUnlock()
+	mock.lockGetTagKeys.RUnlock()
 	return calls
 }
 
 // GetTagKeysPages calls GetTagKeysPagesFunc.
-func (mock *taggingClientMock) GetTagKeysPages(in1 *resourcegroupstaggingapi.GetTagKeysInput, in2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
+func (mock *taggingClientMock) GetTagKeysPages(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool) error {
 	if mock.GetTagKeysPagesFunc == nil {
 		panic("taggingClientMock.GetTagKeysPagesFunc: method is nil but taggingClient.GetTagKeysPages was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
-		In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		GetTagKeysInput: getTagKeysInput,
+		Fn:              fn,
 	}
-	locktaggingClientMockGetTagKeysPages.Lock()
+	mock.lockGetTagKeysPages.Lock()
 	mock.calls.GetTagKeysPages = append(mock.calls.GetTagKeysPages, callInfo)
-	locktaggingClientMockGetTagKeysPages.Unlock()
-	return mock.GetTagKeysPagesFunc(in1, in2)
+	mock.lockGetTagKeysPages.Unlock()
+	return mock.GetTagKeysPagesFunc(getTagKeysInput, fn)
 }
 
 // GetTagKeysPagesCalls gets all the calls that were made to GetTagKeysPages.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagKeysPagesCalls())
 func (mock *taggingClientMock) GetTagKeysPagesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagKeysInput
-	In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+	GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+	Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
-		In2 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
 	}
-	locktaggingClientMockGetTagKeysPages.RLock()
+	mock.lockGetTagKeysPages.RLock()
 	calls = mock.calls.GetTagKeysPages
-	locktaggingClientMockGetTagKeysPages.RUnlock()
+	mock.lockGetTagKeysPages.RUnlock()
 	return calls
 }
 
 // GetTagKeysPagesWithContext calls GetTagKeysPagesWithContextFunc.
-func (mock *taggingClientMock) GetTagKeysPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetTagKeysPagesWithContext(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, fn func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, options ...request.Option) error {
 	if mock.GetTagKeysPagesWithContextFunc == nil {
 		panic("taggingClientMock.GetTagKeysPagesWithContextFunc: method is nil but taggingClient.GetTagKeysPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagKeysInput
-		In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam context.Context
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+		Options         []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam: contextMoqParam,
+		GetTagKeysInput: getTagKeysInput,
+		Fn:              fn,
+		Options:         options,
 	}
-	locktaggingClientMockGetTagKeysPagesWithContext.Lock()
+	mock.lockGetTagKeysPagesWithContext.Lock()
 	mock.calls.GetTagKeysPagesWithContext = append(mock.calls.GetTagKeysPagesWithContext, callInfo)
-	locktaggingClientMockGetTagKeysPagesWithContext.Unlock()
-	return mock.GetTagKeysPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockGetTagKeysPagesWithContext.Unlock()
+	return mock.GetTagKeysPagesWithContextFunc(contextMoqParam, getTagKeysInput, fn, options...)
 }
 
 // GetTagKeysPagesWithContextCalls gets all the calls that were made to GetTagKeysPagesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagKeysPagesWithContextCalls())
 func (mock *taggingClientMock) GetTagKeysPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetTagKeysInput
-	In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam context.Context
+	GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+	Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+	Options         []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagKeysInput
-		In3 func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam context.Context
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Fn              func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool
+		Options         []request.Option
 	}
-	locktaggingClientMockGetTagKeysPagesWithContext.RLock()
+	mock.lockGetTagKeysPagesWithContext.RLock()
 	calls = mock.calls.GetTagKeysPagesWithContext
-	locktaggingClientMockGetTagKeysPagesWithContext.RUnlock()
+	mock.lockGetTagKeysPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagKeysRequest calls GetTagKeysRequestFunc.
-func (mock *taggingClientMock) GetTagKeysRequest(in1 *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
+func (mock *taggingClientMock) GetTagKeysRequest(getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput) (*request.Request, *resourcegroupstaggingapi.GetTagKeysOutput) {
 	if mock.GetTagKeysRequestFunc == nil {
 		panic("taggingClientMock.GetTagKeysRequestFunc: method is nil but taggingClient.GetTagKeysRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 	}{
-		In1: in1,
+		GetTagKeysInput: getTagKeysInput,
 	}
-	locktaggingClientMockGetTagKeysRequest.Lock()
+	mock.lockGetTagKeysRequest.Lock()
 	mock.calls.GetTagKeysRequest = append(mock.calls.GetTagKeysRequest, callInfo)
-	locktaggingClientMockGetTagKeysRequest.Unlock()
-	return mock.GetTagKeysRequestFunc(in1)
+	mock.lockGetTagKeysRequest.Unlock()
+	return mock.GetTagKeysRequestFunc(getTagKeysInput)
 }
 
 // GetTagKeysRequestCalls gets all the calls that were made to GetTagKeysRequest.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagKeysRequestCalls())
 func (mock *taggingClientMock) GetTagKeysRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagKeysInput
+	GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagKeysInput
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
 	}
-	locktaggingClientMockGetTagKeysRequest.RLock()
+	mock.lockGetTagKeysRequest.RLock()
 	calls = mock.calls.GetTagKeysRequest
-	locktaggingClientMockGetTagKeysRequest.RUnlock()
+	mock.lockGetTagKeysRequest.RUnlock()
 	return calls
 }
 
 // GetTagKeysWithContext calls GetTagKeysWithContextFunc.
-func (mock *taggingClientMock) GetTagKeysWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagKeysInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
+func (mock *taggingClientMock) GetTagKeysWithContext(contextMoqParam context.Context, getTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	if mock.GetTagKeysWithContextFunc == nil {
 		panic("taggingClientMock.GetTagKeysWithContextFunc: method is nil but taggingClient.GetTagKeysWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagKeysInput
-		In3 []request.Option
+		ContextMoqParam context.Context
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Options         []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam: contextMoqParam,
+		GetTagKeysInput: getTagKeysInput,
+		Options:         options,
 	}
-	locktaggingClientMockGetTagKeysWithContext.Lock()
+	mock.lockGetTagKeysWithContext.Lock()
 	mock.calls.GetTagKeysWithContext = append(mock.calls.GetTagKeysWithContext, callInfo)
-	locktaggingClientMockGetTagKeysWithContext.Unlock()
-	return mock.GetTagKeysWithContextFunc(in1, in2, in3...)
+	mock.lockGetTagKeysWithContext.Unlock()
+	return mock.GetTagKeysWithContextFunc(contextMoqParam, getTagKeysInput, options...)
 }
 
 // GetTagKeysWithContextCalls gets all the calls that were made to GetTagKeysWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagKeysWithContextCalls())
 func (mock *taggingClientMock) GetTagKeysWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetTagKeysInput
-	In3 []request.Option
+	ContextMoqParam context.Context
+	GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+	Options         []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagKeysInput
-		In3 []request.Option
+		ContextMoqParam context.Context
+		GetTagKeysInput *resourcegroupstaggingapi.GetTagKeysInput
+		Options         []request.Option
 	}
-	locktaggingClientMockGetTagKeysWithContext.RLock()
+	mock.lockGetTagKeysWithContext.RLock()
 	calls = mock.calls.GetTagKeysWithContext
-	locktaggingClientMockGetTagKeysWithContext.RUnlock()
+	mock.lockGetTagKeysWithContext.RUnlock()
 	return calls
 }
 
 // GetTagValues calls GetTagValuesFunc.
-func (mock *taggingClientMock) GetTagValues(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+func (mock *taggingClientMock) GetTagValues(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	if mock.GetTagValuesFunc == nil {
 		panic("taggingClientMock.GetTagValuesFunc: method is nil but taggingClient.GetTagValues was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 	}{
-		In1: in1,
+		GetTagValuesInput: getTagValuesInput,
 	}
-	locktaggingClientMockGetTagValues.Lock()
+	mock.lockGetTagValues.Lock()
 	mock.calls.GetTagValues = append(mock.calls.GetTagValues, callInfo)
-	locktaggingClientMockGetTagValues.Unlock()
-	return mock.GetTagValuesFunc(in1)
+	mock.lockGetTagValues.Unlock()
+	return mock.GetTagValuesFunc(getTagValuesInput)
 }
 
 // GetTagValuesCalls gets all the calls that were made to GetTagValues.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagValuesCalls())
 func (mock *taggingClientMock) GetTagValuesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagValuesInput
+	GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 	}
-	locktaggingClientMockGetTagValues.RLock()
+	mock.lockGetTagValues.RLock()
 	calls = mock.calls.GetTagValues
-	locktaggingClientMockGetTagValues.RUnlock()
+	mock.lockGetTagValues.RUnlock()
 	return calls
 }
 
 // GetTagValuesPages calls GetTagValuesPagesFunc.
-func (mock *taggingClientMock) GetTagValuesPages(in1 *resourcegroupstaggingapi.GetTagValuesInput, in2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
+func (mock *taggingClientMock) GetTagValuesPages(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool) error {
 	if mock.GetTagValuesPagesFunc == nil {
 		panic("taggingClientMock.GetTagValuesPagesFunc: method is nil but taggingClient.GetTagValuesPages was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
-		In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 	}{
-		In1: in1,
-		In2: in2,
+		GetTagValuesInput: getTagValuesInput,
+		Fn:                fn,
 	}
-	locktaggingClientMockGetTagValuesPages.Lock()
+	mock.lockGetTagValuesPages.Lock()
 	mock.calls.GetTagValuesPages = append(mock.calls.GetTagValuesPages, callInfo)
-	locktaggingClientMockGetTagValuesPages.Unlock()
-	return mock.GetTagValuesPagesFunc(in1, in2)
+	mock.lockGetTagValuesPages.Unlock()
+	return mock.GetTagValuesPagesFunc(getTagValuesInput, fn)
 }
 
 // GetTagValuesPagesCalls gets all the calls that were made to GetTagValuesPages.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagValuesPagesCalls())
 func (mock *taggingClientMock) GetTagValuesPagesCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagValuesInput
-	In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+	GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+	Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
-		In2 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
 	}
-	locktaggingClientMockGetTagValuesPages.RLock()
+	mock.lockGetTagValuesPages.RLock()
 	calls = mock.calls.GetTagValuesPages
-	locktaggingClientMockGetTagValuesPages.RUnlock()
+	mock.lockGetTagValuesPages.RUnlock()
 	return calls
 }
 
 // GetTagValuesPagesWithContext calls GetTagValuesPagesWithContextFunc.
-func (mock *taggingClientMock) GetTagValuesPagesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, in4 ...request.Option) error {
+func (mock *taggingClientMock) GetTagValuesPagesWithContext(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, fn func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, options ...request.Option) error {
 	if mock.GetTagValuesPagesWithContextFunc == nil {
 		panic("taggingClientMock.GetTagValuesPagesWithContextFunc: method is nil but taggingClient.GetTagValuesPagesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagValuesInput
-		In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam   context.Context
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
-		In4: in4,
+		ContextMoqParam:   contextMoqParam,
+		GetTagValuesInput: getTagValuesInput,
+		Fn:                fn,
+		Options:           options,
 	}
-	locktaggingClientMockGetTagValuesPagesWithContext.Lock()
+	mock.lockGetTagValuesPagesWithContext.Lock()
 	mock.calls.GetTagValuesPagesWithContext = append(mock.calls.GetTagValuesPagesWithContext, callInfo)
-	locktaggingClientMockGetTagValuesPagesWithContext.Unlock()
-	return mock.GetTagValuesPagesWithContextFunc(in1, in2, in3, in4...)
+	mock.lockGetTagValuesPagesWithContext.Unlock()
+	return mock.GetTagValuesPagesWithContextFunc(contextMoqParam, getTagValuesInput, fn, options...)
 }
 
 // GetTagValuesPagesWithContextCalls gets all the calls that were made to GetTagValuesPagesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagValuesPagesWithContextCalls())
 func (mock *taggingClientMock) GetTagValuesPagesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetTagValuesInput
-	In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
-	In4 []request.Option
+	ContextMoqParam   context.Context
+	GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+	Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagValuesInput
-		In3 func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
-		In4 []request.Option
+		ContextMoqParam   context.Context
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Fn                func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool
+		Options           []request.Option
 	}
-	locktaggingClientMockGetTagValuesPagesWithContext.RLock()
+	mock.lockGetTagValuesPagesWithContext.RLock()
 	calls = mock.calls.GetTagValuesPagesWithContext
-	locktaggingClientMockGetTagValuesPagesWithContext.RUnlock()
+	mock.lockGetTagValuesPagesWithContext.RUnlock()
 	return calls
 }
 
 // GetTagValuesRequest calls GetTagValuesRequestFunc.
-func (mock *taggingClientMock) GetTagValuesRequest(in1 *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
+func (mock *taggingClientMock) GetTagValuesRequest(getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput) (*request.Request, *resourcegroupstaggingapi.GetTagValuesOutput) {
 	if mock.GetTagValuesRequestFunc == nil {
 		panic("taggingClientMock.GetTagValuesRequestFunc: method is nil but taggingClient.GetTagValuesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 	}{
-		In1: in1,
+		GetTagValuesInput: getTagValuesInput,
 	}
-	locktaggingClientMockGetTagValuesRequest.Lock()
+	mock.lockGetTagValuesRequest.Lock()
 	mock.calls.GetTagValuesRequest = append(mock.calls.GetTagValuesRequest, callInfo)
-	locktaggingClientMockGetTagValuesRequest.Unlock()
-	return mock.GetTagValuesRequestFunc(in1)
+	mock.lockGetTagValuesRequest.Unlock()
+	return mock.GetTagValuesRequestFunc(getTagValuesInput)
 }
 
 // GetTagValuesRequestCalls gets all the calls that were made to GetTagValuesRequest.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagValuesRequestCalls())
 func (mock *taggingClientMock) GetTagValuesRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.GetTagValuesInput
+	GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.GetTagValuesInput
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
 	}
-	locktaggingClientMockGetTagValuesRequest.RLock()
+	mock.lockGetTagValuesRequest.RLock()
 	calls = mock.calls.GetTagValuesRequest
-	locktaggingClientMockGetTagValuesRequest.RUnlock()
+	mock.lockGetTagValuesRequest.RUnlock()
 	return calls
 }
 
 // GetTagValuesWithContext calls GetTagValuesWithContextFunc.
-func (mock *taggingClientMock) GetTagValuesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.GetTagValuesInput, in3 ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
+func (mock *taggingClientMock) GetTagValuesWithContext(contextMoqParam context.Context, getTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput, options ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	if mock.GetTagValuesWithContextFunc == nil {
 		panic("taggingClientMock.GetTagValuesWithContextFunc: method is nil but taggingClient.GetTagValuesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagValuesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:   contextMoqParam,
+		GetTagValuesInput: getTagValuesInput,
+		Options:           options,
 	}
-	locktaggingClientMockGetTagValuesWithContext.Lock()
+	mock.lockGetTagValuesWithContext.Lock()
 	mock.calls.GetTagValuesWithContext = append(mock.calls.GetTagValuesWithContext, callInfo)
-	locktaggingClientMockGetTagValuesWithContext.Unlock()
-	return mock.GetTagValuesWithContextFunc(in1, in2, in3...)
+	mock.lockGetTagValuesWithContext.Unlock()
+	return mock.GetTagValuesWithContextFunc(contextMoqParam, getTagValuesInput, options...)
 }
 
 // GetTagValuesWithContextCalls gets all the calls that were made to GetTagValuesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.GetTagValuesWithContextCalls())
 func (mock *taggingClientMock) GetTagValuesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.GetTagValuesInput
-	In3 []request.Option
+	ContextMoqParam   context.Context
+	GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.GetTagValuesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		GetTagValuesInput *resourcegroupstaggingapi.GetTagValuesInput
+		Options           []request.Option
 	}
-	locktaggingClientMockGetTagValuesWithContext.RLock()
+	mock.lockGetTagValuesWithContext.RLock()
 	calls = mock.calls.GetTagValuesWithContext
-	locktaggingClientMockGetTagValuesWithContext.RUnlock()
+	mock.lockGetTagValuesWithContext.RUnlock()
 	return calls
 }
 
 // StartReportCreation calls StartReportCreationFunc.
-func (mock *taggingClientMock) StartReportCreation(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+func (mock *taggingClientMock) StartReportCreation(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
 	if mock.StartReportCreationFunc == nil {
 		panic("taggingClientMock.StartReportCreationFunc: method is nil but taggingClient.StartReportCreation was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.StartReportCreationInput
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 	}{
-		In1: in1,
+		StartReportCreationInput: startReportCreationInput,
 	}
-	locktaggingClientMockStartReportCreation.Lock()
+	mock.lockStartReportCreation.Lock()
 	mock.calls.StartReportCreation = append(mock.calls.StartReportCreation, callInfo)
-	locktaggingClientMockStartReportCreation.Unlock()
-	return mock.StartReportCreationFunc(in1)
+	mock.lockStartReportCreation.Unlock()
+	return mock.StartReportCreationFunc(startReportCreationInput)
 }
 
 // StartReportCreationCalls gets all the calls that were made to StartReportCreation.
 // Check the length with:
 //     len(mockedtaggingClient.StartReportCreationCalls())
 func (mock *taggingClientMock) StartReportCreationCalls() []struct {
-	In1 *resourcegroupstaggingapi.StartReportCreationInput
+	StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.StartReportCreationInput
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 	}
-	locktaggingClientMockStartReportCreation.RLock()
+	mock.lockStartReportCreation.RLock()
 	calls = mock.calls.StartReportCreation
-	locktaggingClientMockStartReportCreation.RUnlock()
+	mock.lockStartReportCreation.RUnlock()
 	return calls
 }
 
 // StartReportCreationRequest calls StartReportCreationRequestFunc.
-func (mock *taggingClientMock) StartReportCreationRequest(in1 *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
+func (mock *taggingClientMock) StartReportCreationRequest(startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput) (*request.Request, *resourcegroupstaggingapi.StartReportCreationOutput) {
 	if mock.StartReportCreationRequestFunc == nil {
 		panic("taggingClientMock.StartReportCreationRequestFunc: method is nil but taggingClient.StartReportCreationRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.StartReportCreationInput
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 	}{
-		In1: in1,
+		StartReportCreationInput: startReportCreationInput,
 	}
-	locktaggingClientMockStartReportCreationRequest.Lock()
+	mock.lockStartReportCreationRequest.Lock()
 	mock.calls.StartReportCreationRequest = append(mock.calls.StartReportCreationRequest, callInfo)
-	locktaggingClientMockStartReportCreationRequest.Unlock()
-	return mock.StartReportCreationRequestFunc(in1)
+	mock.lockStartReportCreationRequest.Unlock()
+	return mock.StartReportCreationRequestFunc(startReportCreationInput)
 }
 
 // StartReportCreationRequestCalls gets all the calls that were made to StartReportCreationRequest.
 // Check the length with:
 //     len(mockedtaggingClient.StartReportCreationRequestCalls())
 func (mock *taggingClientMock) StartReportCreationRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.StartReportCreationInput
+	StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.StartReportCreationInput
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
 	}
-	locktaggingClientMockStartReportCreationRequest.RLock()
+	mock.lockStartReportCreationRequest.RLock()
 	calls = mock.calls.StartReportCreationRequest
-	locktaggingClientMockStartReportCreationRequest.RUnlock()
+	mock.lockStartReportCreationRequest.RUnlock()
 	return calls
 }
 
 // StartReportCreationWithContext calls StartReportCreationWithContextFunc.
-func (mock *taggingClientMock) StartReportCreationWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.StartReportCreationInput, in3 ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
+func (mock *taggingClientMock) StartReportCreationWithContext(contextMoqParam context.Context, startReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput, options ...request.Option) (*resourcegroupstaggingapi.StartReportCreationOutput, error) {
 	if mock.StartReportCreationWithContextFunc == nil {
 		panic("taggingClientMock.StartReportCreationWithContextFunc: method is nil but taggingClient.StartReportCreationWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.StartReportCreationInput
-		In3 []request.Option
+		ContextMoqParam          context.Context
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
+		Options                  []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:          contextMoqParam,
+		StartReportCreationInput: startReportCreationInput,
+		Options:                  options,
 	}
-	locktaggingClientMockStartReportCreationWithContext.Lock()
+	mock.lockStartReportCreationWithContext.Lock()
 	mock.calls.StartReportCreationWithContext = append(mock.calls.StartReportCreationWithContext, callInfo)
-	locktaggingClientMockStartReportCreationWithContext.Unlock()
-	return mock.StartReportCreationWithContextFunc(in1, in2, in3...)
+	mock.lockStartReportCreationWithContext.Unlock()
+	return mock.StartReportCreationWithContextFunc(contextMoqParam, startReportCreationInput, options...)
 }
 
 // StartReportCreationWithContextCalls gets all the calls that were made to StartReportCreationWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.StartReportCreationWithContextCalls())
 func (mock *taggingClientMock) StartReportCreationWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.StartReportCreationInput
-	In3 []request.Option
+	ContextMoqParam          context.Context
+	StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
+	Options                  []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.StartReportCreationInput
-		In3 []request.Option
+		ContextMoqParam          context.Context
+		StartReportCreationInput *resourcegroupstaggingapi.StartReportCreationInput
+		Options                  []request.Option
 	}
-	locktaggingClientMockStartReportCreationWithContext.RLock()
+	mock.lockStartReportCreationWithContext.RLock()
 	calls = mock.calls.StartReportCreationWithContext
-	locktaggingClientMockStartReportCreationWithContext.RUnlock()
+	mock.lockStartReportCreationWithContext.RUnlock()
 	return calls
 }
 
 // TagResources calls TagResourcesFunc.
-func (mock *taggingClientMock) TagResources(in1 *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+func (mock *taggingClientMock) TagResources(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
 	if mock.TagResourcesFunc == nil {
 		panic("taggingClientMock.TagResourcesFunc: method is nil but taggingClient.TagResources was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.TagResourcesInput
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 	}{
-		In1: in1,
+		TagResourcesInput: tagResourcesInput,
 	}
-	locktaggingClientMockTagResources.Lock()
+	mock.lockTagResources.Lock()
 	mock.calls.TagResources = append(mock.calls.TagResources, callInfo)
-	locktaggingClientMockTagResources.Unlock()
-	return mock.TagResourcesFunc(in1)
+	mock.lockTagResources.Unlock()
+	return mock.TagResourcesFunc(tagResourcesInput)
 }
 
 // TagResourcesCalls gets all the calls that were made to TagResources.
 // Check the length with:
 //     len(mockedtaggingClient.TagResourcesCalls())
 func (mock *taggingClientMock) TagResourcesCalls() []struct {
-	In1 *resourcegroupstaggingapi.TagResourcesInput
+	TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.TagResourcesInput
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 	}
-	locktaggingClientMockTagResources.RLock()
+	mock.lockTagResources.RLock()
 	calls = mock.calls.TagResources
-	locktaggingClientMockTagResources.RUnlock()
+	mock.lockTagResources.RUnlock()
 	return calls
 }
 
 // TagResourcesRequest calls TagResourcesRequestFunc.
-func (mock *taggingClientMock) TagResourcesRequest(in1 *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
+func (mock *taggingClientMock) TagResourcesRequest(tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput) (*request.Request, *resourcegroupstaggingapi.TagResourcesOutput) {
 	if mock.TagResourcesRequestFunc == nil {
 		panic("taggingClientMock.TagResourcesRequestFunc: method is nil but taggingClient.TagResourcesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.TagResourcesInput
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 	}{
-		In1: in1,
+		TagResourcesInput: tagResourcesInput,
 	}
-	locktaggingClientMockTagResourcesRequest.Lock()
+	mock.lockTagResourcesRequest.Lock()
 	mock.calls.TagResourcesRequest = append(mock.calls.TagResourcesRequest, callInfo)
-	locktaggingClientMockTagResourcesRequest.Unlock()
-	return mock.TagResourcesRequestFunc(in1)
+	mock.lockTagResourcesRequest.Unlock()
+	return mock.TagResourcesRequestFunc(tagResourcesInput)
 }
 
 // TagResourcesRequestCalls gets all the calls that were made to TagResourcesRequest.
 // Check the length with:
 //     len(mockedtaggingClient.TagResourcesRequestCalls())
 func (mock *taggingClientMock) TagResourcesRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.TagResourcesInput
+	TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.TagResourcesInput
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
 	}
-	locktaggingClientMockTagResourcesRequest.RLock()
+	mock.lockTagResourcesRequest.RLock()
 	calls = mock.calls.TagResourcesRequest
-	locktaggingClientMockTagResourcesRequest.RUnlock()
+	mock.lockTagResourcesRequest.RUnlock()
 	return calls
 }
 
 // TagResourcesWithContext calls TagResourcesWithContextFunc.
-func (mock *taggingClientMock) TagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.TagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
+func (mock *taggingClientMock) TagResourcesWithContext(contextMoqParam context.Context, tagResourcesInput *resourcegroupstaggingapi.TagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
 	if mock.TagResourcesWithContextFunc == nil {
 		panic("taggingClientMock.TagResourcesWithContextFunc: method is nil but taggingClient.TagResourcesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.TagResourcesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
+		Options           []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:   contextMoqParam,
+		TagResourcesInput: tagResourcesInput,
+		Options:           options,
 	}
-	locktaggingClientMockTagResourcesWithContext.Lock()
+	mock.lockTagResourcesWithContext.Lock()
 	mock.calls.TagResourcesWithContext = append(mock.calls.TagResourcesWithContext, callInfo)
-	locktaggingClientMockTagResourcesWithContext.Unlock()
-	return mock.TagResourcesWithContextFunc(in1, in2, in3...)
+	mock.lockTagResourcesWithContext.Unlock()
+	return mock.TagResourcesWithContextFunc(contextMoqParam, tagResourcesInput, options...)
 }
 
 // TagResourcesWithContextCalls gets all the calls that were made to TagResourcesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.TagResourcesWithContextCalls())
 func (mock *taggingClientMock) TagResourcesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.TagResourcesInput
-	In3 []request.Option
+	ContextMoqParam   context.Context
+	TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
+	Options           []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.TagResourcesInput
-		In3 []request.Option
+		ContextMoqParam   context.Context
+		TagResourcesInput *resourcegroupstaggingapi.TagResourcesInput
+		Options           []request.Option
 	}
-	locktaggingClientMockTagResourcesWithContext.RLock()
+	mock.lockTagResourcesWithContext.RLock()
 	calls = mock.calls.TagResourcesWithContext
-	locktaggingClientMockTagResourcesWithContext.RUnlock()
+	mock.lockTagResourcesWithContext.RUnlock()
 	return calls
 }
 
 // UntagResources calls UntagResourcesFunc.
-func (mock *taggingClientMock) UntagResources(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+func (mock *taggingClientMock) UntagResources(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
 	if mock.UntagResourcesFunc == nil {
 		panic("taggingClientMock.UntagResourcesFunc: method is nil but taggingClient.UntagResources was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.UntagResourcesInput
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 	}{
-		In1: in1,
+		UntagResourcesInput: untagResourcesInput,
 	}
-	locktaggingClientMockUntagResources.Lock()
+	mock.lockUntagResources.Lock()
 	mock.calls.UntagResources = append(mock.calls.UntagResources, callInfo)
-	locktaggingClientMockUntagResources.Unlock()
-	return mock.UntagResourcesFunc(in1)
+	mock.lockUntagResources.Unlock()
+	return mock.UntagResourcesFunc(untagResourcesInput)
 }
 
 // UntagResourcesCalls gets all the calls that were made to UntagResources.
 // Check the length with:
 //     len(mockedtaggingClient.UntagResourcesCalls())
 func (mock *taggingClientMock) UntagResourcesCalls() []struct {
-	In1 *resourcegroupstaggingapi.UntagResourcesInput
+	UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.UntagResourcesInput
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 	}
-	locktaggingClientMockUntagResources.RLock()
+	mock.lockUntagResources.RLock()
 	calls = mock.calls.UntagResources
-	locktaggingClientMockUntagResources.RUnlock()
+	mock.lockUntagResources.RUnlock()
 	return calls
 }
 
 // UntagResourcesRequest calls UntagResourcesRequestFunc.
-func (mock *taggingClientMock) UntagResourcesRequest(in1 *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
+func (mock *taggingClientMock) UntagResourcesRequest(untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput) (*request.Request, *resourcegroupstaggingapi.UntagResourcesOutput) {
 	if mock.UntagResourcesRequestFunc == nil {
 		panic("taggingClientMock.UntagResourcesRequestFunc: method is nil but taggingClient.UntagResourcesRequest was just called")
 	}
 	callInfo := struct {
-		In1 *resourcegroupstaggingapi.UntagResourcesInput
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 	}{
-		In1: in1,
+		UntagResourcesInput: untagResourcesInput,
 	}
-	locktaggingClientMockUntagResourcesRequest.Lock()
+	mock.lockUntagResourcesRequest.Lock()
 	mock.calls.UntagResourcesRequest = append(mock.calls.UntagResourcesRequest, callInfo)
-	locktaggingClientMockUntagResourcesRequest.Unlock()
-	return mock.UntagResourcesRequestFunc(in1)
+	mock.lockUntagResourcesRequest.Unlock()
+	return mock.UntagResourcesRequestFunc(untagResourcesInput)
 }
 
 // UntagResourcesRequestCalls gets all the calls that were made to UntagResourcesRequest.
 // Check the length with:
 //     len(mockedtaggingClient.UntagResourcesRequestCalls())
 func (mock *taggingClientMock) UntagResourcesRequestCalls() []struct {
-	In1 *resourcegroupstaggingapi.UntagResourcesInput
+	UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 } {
 	var calls []struct {
-		In1 *resourcegroupstaggingapi.UntagResourcesInput
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
 	}
-	locktaggingClientMockUntagResourcesRequest.RLock()
+	mock.lockUntagResourcesRequest.RLock()
 	calls = mock.calls.UntagResourcesRequest
-	locktaggingClientMockUntagResourcesRequest.RUnlock()
+	mock.lockUntagResourcesRequest.RUnlock()
 	return calls
 }
 
 // UntagResourcesWithContext calls UntagResourcesWithContextFunc.
-func (mock *taggingClientMock) UntagResourcesWithContext(in1 context.Context, in2 *resourcegroupstaggingapi.UntagResourcesInput, in3 ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
+func (mock *taggingClientMock) UntagResourcesWithContext(contextMoqParam context.Context, untagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput, options ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
 	if mock.UntagResourcesWithContextFunc == nil {
 		panic("taggingClientMock.UntagResourcesWithContextFunc: method is nil but taggingClient.UntagResourcesWithContext was just called")
 	}
 	callInfo := struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.UntagResourcesInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
+		Options             []request.Option
 	}{
-		In1: in1,
-		In2: in2,
-		In3: in3,
+		ContextMoqParam:     contextMoqParam,
+		UntagResourcesInput: untagResourcesInput,
+		Options:             options,
 	}
-	locktaggingClientMockUntagResourcesWithContext.Lock()
+	mock.lockUntagResourcesWithContext.Lock()
 	mock.calls.UntagResourcesWithContext = append(mock.calls.UntagResourcesWithContext, callInfo)
-	locktaggingClientMockUntagResourcesWithContext.Unlock()
-	return mock.UntagResourcesWithContextFunc(in1, in2, in3...)
+	mock.lockUntagResourcesWithContext.Unlock()
+	return mock.UntagResourcesWithContextFunc(contextMoqParam, untagResourcesInput, options...)
 }
 
 // UntagResourcesWithContextCalls gets all the calls that were made to UntagResourcesWithContext.
 // Check the length with:
 //     len(mockedtaggingClient.UntagResourcesWithContextCalls())
 func (mock *taggingClientMock) UntagResourcesWithContextCalls() []struct {
-	In1 context.Context
-	In2 *resourcegroupstaggingapi.UntagResourcesInput
-	In3 []request.Option
+	ContextMoqParam     context.Context
+	UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
+	Options             []request.Option
 } {
 	var calls []struct {
-		In1 context.Context
-		In2 *resourcegroupstaggingapi.UntagResourcesInput
-		In3 []request.Option
+		ContextMoqParam     context.Context
+		UntagResourcesInput *resourcegroupstaggingapi.UntagResourcesInput
+		Options             []request.Option
 	}
-	locktaggingClientMockUntagResourcesWithContext.RLock()
+	mock.lockUntagResourcesWithContext.RLock()
 	calls = mock.calls.UntagResourcesWithContext
-	locktaggingClientMockUntagResourcesWithContext.RUnlock()
+	mock.lockUntagResourcesWithContext.RUnlock()
 	return calls
 }
