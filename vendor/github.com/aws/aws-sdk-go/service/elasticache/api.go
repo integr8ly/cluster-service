@@ -29,14 +29,13 @@ const opAddTagsToResource = "AddTagsToResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the AddTagsToResourceRequest method.
+//	req, resp := client.AddTagsToResourceRequest(params)
 //
-//    // Example sending a request using the AddTagsToResourceRequest method.
-//    req, resp := client.AddTagsToResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AddTagsToResource
 func (c *ElastiCache) AddTagsToResourceRequest(input *AddTagsToResourceInput) (req *request.Request, output *TagListMessage) {
@@ -57,16 +56,20 @@ func (c *ElastiCache) AddTagsToResourceRequest(input *AddTagsToResourceInput) (r
 
 // AddTagsToResource API operation for Amazon ElastiCache.
 //
-// Adds up to 50 cost allocation tags to the named resource. A cost allocation
-// tag is a key-value pair where the key and value are case-sensitive. You can
-// use cost allocation tags to categorize and track your AWS costs.
+// A tag is a key-value pair where the key and value are case-sensitive. You
+// can use tags to categorize and track all your ElastiCache resources, with
+// the exception of global replication group. When you add or remove tags on
+// replication groups, those actions will be replicated to all nodes in the
+// replication group. For more information, see Resource-level permissions (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 //
-// When you apply tags to your ElastiCache resources, AWS generates a cost allocation
-// report as a comma-separated value (CSV) file with your usage and costs aggregated
-// by your tags. You can apply tags that represent business categories (such
-// as cost centers, application names, or owners) to organize your costs across
-// multiple services. For more information, see Using Cost Allocation Tags in
-// Amazon ElastiCache (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
+// For example, you can use cost-allocation tags to your ElastiCache resources,
+// Amazon generates a cost allocation report as a comma-separated value (CSV)
+// file with your usage and costs aggregated by your tags. You can apply tags
+// that represent business categories (such as cost centers, application names,
+// or owners) to organize your costs across multiple services.
+//
+// For more information, see Using Cost Allocation Tags in Amazon ElastiCache
+// (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 // in the ElastiCache User Guide.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
@@ -77,19 +80,47 @@ func (c *ElastiCache) AddTagsToResourceRequest(input *AddTagsToResourceInput) (r
 // API operation AddTagsToResource for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
-//   The request cannot be processed because it would cause the resource to have
-//   more than the allowed number of tags. The maximum number of tags permitted
-//   on a resource is 50.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidARNFault "InvalidARN"
-//   The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
+//
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
+//
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
+//
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
+//
+//   - ErrCodeReservedCacheNodeNotFoundFault "ReservedCacheNodeNotFound"
+//     The requested reserved cache node was not found.
+//
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidARNFault "InvalidARN"
+//     The requested Amazon Resource Name (ARN) does not refer to an existing resource.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AddTagsToResource
 func (c *ElastiCache) AddTagsToResource(input *AddTagsToResourceInput) (*TagListMessage, error) {
@@ -129,14 +160,13 @@ const opAuthorizeCacheSecurityGroupIngress = "AuthorizeCacheSecurityGroupIngress
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the AuthorizeCacheSecurityGroupIngressRequest method.
+//	req, resp := client.AuthorizeCacheSecurityGroupIngressRequest(params)
 //
-//    // Example sending a request using the AuthorizeCacheSecurityGroupIngressRequest method.
-//    req, resp := client.AuthorizeCacheSecurityGroupIngressRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AuthorizeCacheSecurityGroupIngress
 func (c *ElastiCache) AuthorizeCacheSecurityGroupIngressRequest(input *AuthorizeCacheSecurityGroupIngressInput) (req *request.Request, output *AuthorizeCacheSecurityGroupIngressOutput) {
@@ -172,22 +202,23 @@ func (c *ElastiCache) AuthorizeCacheSecurityGroupIngressRequest(input *Authorize
 // API operation AuthorizeCacheSecurityGroupIngress for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
 //
-//   * ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
-//   The current state of the cache security group does not allow deletion.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeAuthorizationAlreadyExistsFault "AuthorizationAlreadyExists"
-//   The specified Amazon EC2 security group is already authorized for the specified
-//   cache security group.
+//   - ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
+//     The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeAuthorizationAlreadyExistsFault "AuthorizationAlreadyExists"
+//     The specified Amazon EC2 security group is already authorized for the specified
+//     cache security group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AuthorizeCacheSecurityGroupIngress
 func (c *ElastiCache) AuthorizeCacheSecurityGroupIngress(input *AuthorizeCacheSecurityGroupIngressInput) (*AuthorizeCacheSecurityGroupIngressOutput, error) {
@@ -227,14 +258,13 @@ const opBatchApplyUpdateAction = "BatchApplyUpdateAction"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the BatchApplyUpdateActionRequest method.
+//	req, resp := client.BatchApplyUpdateActionRequest(params)
 //
-//    // Example sending a request using the BatchApplyUpdateActionRequest method.
-//    req, resp := client.BatchApplyUpdateActionRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/BatchApplyUpdateAction
 func (c *ElastiCache) BatchApplyUpdateActionRequest(input *BatchApplyUpdateActionInput) (req *request.Request, output *BatchApplyUpdateActionOutput) {
@@ -266,11 +296,12 @@ func (c *ElastiCache) BatchApplyUpdateActionRequest(input *BatchApplyUpdateActio
 // API operation BatchApplyUpdateAction for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
-//   The service update doesn't exist
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
+//     The service update doesn't exist
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/BatchApplyUpdateAction
 func (c *ElastiCache) BatchApplyUpdateAction(input *BatchApplyUpdateActionInput) (*BatchApplyUpdateActionOutput, error) {
@@ -310,14 +341,13 @@ const opBatchStopUpdateAction = "BatchStopUpdateAction"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the BatchStopUpdateActionRequest method.
+//	req, resp := client.BatchStopUpdateActionRequest(params)
 //
-//    // Example sending a request using the BatchStopUpdateActionRequest method.
-//    req, resp := client.BatchStopUpdateActionRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/BatchStopUpdateAction
 func (c *ElastiCache) BatchStopUpdateActionRequest(input *BatchStopUpdateActionInput) (req *request.Request, output *BatchStopUpdateActionOutput) {
@@ -349,11 +379,12 @@ func (c *ElastiCache) BatchStopUpdateActionRequest(input *BatchStopUpdateActionI
 // API operation BatchStopUpdateAction for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
-//   The service update doesn't exist
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
+//     The service update doesn't exist
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/BatchStopUpdateAction
 func (c *ElastiCache) BatchStopUpdateAction(input *BatchStopUpdateActionInput) (*BatchStopUpdateActionOutput, error) {
@@ -393,14 +424,13 @@ const opCompleteMigration = "CompleteMigration"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CompleteMigrationRequest method.
+//	req, resp := client.CompleteMigrationRequest(params)
 //
-//    // Example sending a request using the CompleteMigrationRequest method.
-//    req, resp := client.CompleteMigrationRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CompleteMigration
 func (c *ElastiCache) CompleteMigrationRequest(input *CompleteMigrationInput) (req *request.Request, output *CompleteMigrationOutput) {
@@ -431,14 +461,15 @@ func (c *ElastiCache) CompleteMigrationRequest(input *CompleteMigrationInput) (r
 // API operation CompleteMigration for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeReplicationGroupNotUnderMigrationFault "ReplicationGroupNotUnderMigrationFault"
-//   The designated replication group is not available for data migration.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
+//
+//   - ErrCodeReplicationGroupNotUnderMigrationFault "ReplicationGroupNotUnderMigrationFault"
+//     The designated replication group is not available for data migration.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CompleteMigration
 func (c *ElastiCache) CompleteMigration(input *CompleteMigrationInput) (*CompleteMigrationOutput, error) {
@@ -478,14 +509,13 @@ const opCopySnapshot = "CopySnapshot"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CopySnapshotRequest method.
+//	req, resp := client.CopySnapshotRequest(params)
 //
-//    // Example sending a request using the CopySnapshotRequest method.
-//    req, resp := client.CopySnapshotRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CopySnapshot
 func (c *ElastiCache) CopySnapshotRequest(input *CopySnapshotInput) (req *request.Request, output *CopySnapshotOutput) {
@@ -521,47 +551,47 @@ func (c *ElastiCache) CopySnapshotRequest(input *CopySnapshotInput) (req *reques
 //
 // Error Messages
 //
-//    * Error Message: The S3 bucket %s is outside of the region. Solution:
-//    Create an Amazon S3 bucket in the same region as your snapshot. For more
-//    information, see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
-//    in the ElastiCache User Guide.
+//   - Error Message: The S3 bucket %s is outside of the region. Solution:
+//     Create an Amazon S3 bucket in the same region as your snapshot. For more
+//     information, see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+//     in the ElastiCache User Guide.
 //
-//    * Error Message: The S3 bucket %s does not exist. Solution: Create an
-//    Amazon S3 bucket in the same region as your snapshot. For more information,
-//    see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
-//    in the ElastiCache User Guide.
+//   - Error Message: The S3 bucket %s does not exist. Solution: Create an
+//     Amazon S3 bucket in the same region as your snapshot. For more information,
+//     see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+//     in the ElastiCache User Guide.
 //
-//    * Error Message: The S3 bucket %s is not owned by the authenticated user.
-//    Solution: Create an Amazon S3 bucket in the same region as your snapshot.
-//    For more information, see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
-//    in the ElastiCache User Guide.
+//   - Error Message: The S3 bucket %s is not owned by the authenticated user.
+//     Solution: Create an Amazon S3 bucket in the same region as your snapshot.
+//     For more information, see Step 1: Create an Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+//     in the ElastiCache User Guide.
 //
-//    * Error Message: The authenticated user does not have sufficient permissions
-//    to perform the desired activity. Solution: Contact your system administrator
-//    to get the needed permissions.
+//   - Error Message: The authenticated user does not have sufficient permissions
+//     to perform the desired activity. Solution: Contact your system administrator
+//     to get the needed permissions.
 //
-//    * Error Message: The S3 bucket %s already contains an object with key
-//    %s. Solution: Give the TargetSnapshotName a new and unique value. If exporting
-//    a snapshot, you could alternatively create a new Amazon S3 bucket and
-//    use this same value for TargetSnapshotName.
+//   - Error Message: The S3 bucket %s already contains an object with key
+//     %s. Solution: Give the TargetSnapshotName a new and unique value. If exporting
+//     a snapshot, you could alternatively create a new Amazon S3 bucket and
+//     use this same value for TargetSnapshotName.
 //
-//    * Error Message: ElastiCache has not been granted READ permissions %s
-//    on the S3 Bucket. Solution: Add List and Read permissions on the bucket.
-//    For more information, see Step 2: Grant ElastiCache Access to Your Amazon
-//    S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
-//    in the ElastiCache User Guide.
+//   - Error Message: ElastiCache has not been granted READ permissions %s
+//     on the S3 Bucket. Solution: Add List and Read permissions on the bucket.
+//     For more information, see Step 2: Grant ElastiCache Access to Your Amazon
+//     S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+//     in the ElastiCache User Guide.
 //
-//    * Error Message: ElastiCache has not been granted WRITE permissions %s
-//    on the S3 Bucket. Solution: Add Upload/Delete permissions on the bucket.
-//    For more information, see Step 2: Grant ElastiCache Access to Your Amazon
-//    S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
-//    in the ElastiCache User Guide.
+//   - Error Message: ElastiCache has not been granted WRITE permissions %s
+//     on the S3 Bucket. Solution: Add Upload/Delete permissions on the bucket.
+//     For more information, see Step 2: Grant ElastiCache Access to Your Amazon
+//     S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+//     in the ElastiCache User Guide.
 //
-//    * Error Message: ElastiCache has not been granted READ_ACP permissions
-//    %s on the S3 Bucket. Solution: Add View Permissions on the bucket. For
-//    more information, see Step 2: Grant ElastiCache Access to Your Amazon
-//    S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
-//    in the ElastiCache User Guide.
+//   - Error Message: ElastiCache has not been granted READ_ACP permissions
+//     %s on the S3 Bucket. Solution: Add View Permissions on the bucket. For
+//     more information, see Step 2: Grant ElastiCache Access to Your Amazon
+//     S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+//     in the ElastiCache User Guide.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -571,25 +601,31 @@ func (c *ElastiCache) CopySnapshotRequest(input *CopySnapshotInput) (req *reques
 // API operation CopySnapshot for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
-//   You already have a snapshot with the given name.
 //
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
+//   - ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
+//     You already have a snapshot with the given name.
 //
-//   * ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
-//   The request cannot be processed because it would exceed the maximum number
-//   of snapshots.
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
 //
-//   * ErrCodeInvalidSnapshotStateFault "InvalidSnapshotState"
-//   The current state of the snapshot does not allow the requested operation
-//   to occur.
+//   - ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
+//     The request cannot be processed because it would exceed the maximum number
+//     of snapshots.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidSnapshotStateFault "InvalidSnapshotState"
+//     The current state of the snapshot does not allow the requested operation
+//     to occur.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CopySnapshot
 func (c *ElastiCache) CopySnapshot(input *CopySnapshotInput) (*CopySnapshotOutput, error) {
@@ -629,14 +665,13 @@ const opCreateCacheCluster = "CreateCacheCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateCacheClusterRequest method.
+//	req, resp := client.CreateCacheClusterRequest(params)
 //
-//    // Example sending a request using the CreateCacheClusterRequest method.
-//    req, resp := client.CreateCacheClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheCluster
 func (c *ElastiCache) CreateCacheClusterRequest(input *CreateCacheClusterInput) (req *request.Request, output *CreateCacheClusterOutput) {
@@ -670,57 +705,58 @@ func (c *ElastiCache) CreateCacheClusterRequest(input *CreateCacheClusterInput) 
 // API operation CreateCacheCluster for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeCacheClusterAlreadyExistsFault "CacheClusterAlreadyExists"
-//   You already have a cluster with the given identifier.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeCacheClusterAlreadyExistsFault "CacheClusterAlreadyExists"
+//     You already have a cluster with the given identifier.
 //
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
-//   The requested cache subnet group name does not refer to an existing cache
-//   subnet group.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of clusters per customer.
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
 //
-//   * ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes in a single cluster.
+//   - ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of clusters per customer.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes in a single cluster.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
-//   The request cannot be processed because it would cause the resource to have
-//   more than the allowed number of tags. The maximum number of tags permitted
-//   on a resource is 50.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheCluster
 func (c *ElastiCache) CreateCacheCluster(input *CreateCacheClusterInput) (*CreateCacheClusterOutput, error) {
@@ -760,14 +796,13 @@ const opCreateCacheParameterGroup = "CreateCacheParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateCacheParameterGroupRequest method.
+//	req, resp := client.CreateCacheParameterGroupRequest(params)
 //
-//    // Example sending a request using the CreateCacheParameterGroupRequest method.
-//    req, resp := client.CreateCacheParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheParameterGroup
 func (c *ElastiCache) CreateCacheParameterGroupRequest(input *CreateCacheParameterGroupInput) (req *request.Request, output *CreateCacheParameterGroupOutput) {
@@ -797,11 +832,11 @@ func (c *ElastiCache) CreateCacheParameterGroupRequest(input *CreateCacheParamet
 // created CacheParameterGroup you can change the values of specific parameters.
 // For more information, see:
 //
-//    * ModifyCacheParameterGroup (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
-//    in the ElastiCache API Reference.
+//   - ModifyCacheParameterGroup (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
+//     in the ElastiCache API Reference.
 //
-//    * Parameters and Parameter Groups (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
-//    in the ElastiCache User Guide.
+//   - Parameters and Parameter Groups (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
+//     in the ElastiCache User Guide.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -811,22 +846,28 @@ func (c *ElastiCache) CreateCacheParameterGroupRequest(input *CreateCacheParamet
 // API operation CreateCacheParameterGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheParameterGroupQuotaExceededFault "CacheParameterGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the maximum number
-//   of cache security groups.
 //
-//   * ErrCodeCacheParameterGroupAlreadyExistsFault "CacheParameterGroupAlreadyExists"
-//   A cache parameter group with the requested name already exists.
+//   - ErrCodeCacheParameterGroupQuotaExceededFault "CacheParameterGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the maximum number
+//     of cache security groups.
 //
-//   * ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
-//   The current state of the cache parameter group does not allow the requested
-//   operation to occur.
+//   - ErrCodeCacheParameterGroupAlreadyExistsFault "CacheParameterGroupAlreadyExists"
+//     A cache parameter group with the requested name already exists.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
+//     The current state of the cache parameter group does not allow the requested
+//     operation to occur.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheParameterGroup
 func (c *ElastiCache) CreateCacheParameterGroup(input *CreateCacheParameterGroupInput) (*CreateCacheParameterGroupOutput, error) {
@@ -866,14 +907,13 @@ const opCreateCacheSecurityGroup = "CreateCacheSecurityGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateCacheSecurityGroupRequest method.
+//	req, resp := client.CreateCacheSecurityGroupRequest(params)
 //
-//    // Example sending a request using the CreateCacheSecurityGroupRequest method.
-//    req, resp := client.CreateCacheSecurityGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSecurityGroup
 func (c *ElastiCache) CreateCacheSecurityGroupRequest(input *CreateCacheSecurityGroupInput) (req *request.Request, output *CreateCacheSecurityGroupOutput) {
@@ -910,18 +950,24 @@ func (c *ElastiCache) CreateCacheSecurityGroupRequest(input *CreateCacheSecurity
 // API operation CreateCacheSecurityGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSecurityGroupAlreadyExistsFault "CacheSecurityGroupAlreadyExists"
-//   A cache security group with the specified name already exists.
 //
-//   * ErrCodeCacheSecurityGroupQuotaExceededFault "QuotaExceeded.CacheSecurityGroup"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache security groups.
+//   - ErrCodeCacheSecurityGroupAlreadyExistsFault "CacheSecurityGroupAlreadyExists"
+//     A cache security group with the specified name already exists.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheSecurityGroupQuotaExceededFault "QuotaExceeded.CacheSecurityGroup"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache security groups.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSecurityGroup
 func (c *ElastiCache) CreateCacheSecurityGroup(input *CreateCacheSecurityGroupInput) (*CreateCacheSecurityGroupOutput, error) {
@@ -961,14 +1007,13 @@ const opCreateCacheSubnetGroup = "CreateCacheSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateCacheSubnetGroupRequest method.
+//	req, resp := client.CreateCacheSubnetGroupRequest(params)
 //
-//    // Example sending a request using the CreateCacheSubnetGroupRequest method.
-//    req, resp := client.CreateCacheSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroup
 func (c *ElastiCache) CreateCacheSubnetGroupRequest(input *CreateCacheSubnetGroupInput) (req *request.Request, output *CreateCacheSubnetGroupOutput) {
@@ -1002,20 +1047,32 @@ func (c *ElastiCache) CreateCacheSubnetGroupRequest(input *CreateCacheSubnetGrou
 // API operation CreateCacheSubnetGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSubnetGroupAlreadyExistsFault "CacheSubnetGroupAlreadyExists"
-//   The requested cache subnet group name is already in use by an existing cache
-//   subnet group.
 //
-//   * ErrCodeCacheSubnetGroupQuotaExceededFault "CacheSubnetGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache subnet groups.
+//   - ErrCodeCacheSubnetGroupAlreadyExistsFault "CacheSubnetGroupAlreadyExists"
+//     The requested cache subnet group name is already in use by an existing cache
+//     subnet group.
 //
-//   * ErrCodeCacheSubnetQuotaExceededFault "CacheSubnetQuotaExceededFault"
-//   The request cannot be processed because it would exceed the allowed number
-//   of subnets in a cache subnet group.
+//   - ErrCodeCacheSubnetGroupQuotaExceededFault "CacheSubnetGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache subnet groups.
 //
-//   * ErrCodeInvalidSubnet "InvalidSubnet"
-//   An invalid subnet identifier was specified.
+//   - ErrCodeCacheSubnetQuotaExceededFault "CacheSubnetQuotaExceededFault"
+//     The request cannot be processed because it would exceed the allowed number
+//     of subnets in a cache subnet group.
+//
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidSubnet "InvalidSubnet"
+//     An invalid subnet identifier was specified.
+//
+//   - ErrCodeSubnetNotAllowedFault "SubnetNotAllowedFault"
+//     At least one subnet ID does not match the other subnet IDs. This mismatch
+//     typically occurs when a user sets one subnet ID to a regional Availability
+//     Zone and a different one to an outpost. Or when a user sets the subnet ID
+//     to an Outpost when not subscribed on this service.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroup
 func (c *ElastiCache) CreateCacheSubnetGroup(input *CreateCacheSubnetGroupInput) (*CreateCacheSubnetGroupOutput, error) {
@@ -1039,6 +1096,106 @@ func (c *ElastiCache) CreateCacheSubnetGroupWithContext(ctx aws.Context, input *
 	return out, req.Send()
 }
 
+const opCreateGlobalReplicationGroup = "CreateGlobalReplicationGroup"
+
+// CreateGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the CreateGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See CreateGlobalReplicationGroup for more information on using the CreateGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the CreateGlobalReplicationGroupRequest method.
+//	req, resp := client.CreateGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateGlobalReplicationGroup
+func (c *ElastiCache) CreateGlobalReplicationGroupRequest(input *CreateGlobalReplicationGroupInput) (req *request.Request, output *CreateGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opCreateGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateGlobalReplicationGroupInput{}
+	}
+
+	output = &CreateGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// CreateGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Global Datastore for Redis offers fully managed, fast, reliable and secure
+// cross-region replication. Using Global Datastore for Redis, you can create
+// cross-region read replica clusters for ElastiCache for Redis to enable low-latency
+// reads and disaster recovery across regions. For more information, see Replication
+// Across Regions Using Global Datastore (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
+//
+//   - The GlobalReplicationGroupIdSuffix is the name of the Global datastore.
+//
+//   - The PrimaryReplicationGroupId represents the name of the primary cluster
+//     that accepts writes and will replicate updates to the secondary cluster.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation CreateGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
+//
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
+//
+//   - ErrCodeGlobalReplicationGroupAlreadyExistsFault "GlobalReplicationGroupAlreadyExistsFault"
+//     The Global datastore name already exists.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateGlobalReplicationGroup
+func (c *ElastiCache) CreateGlobalReplicationGroup(input *CreateGlobalReplicationGroupInput) (*CreateGlobalReplicationGroupOutput, error) {
+	req, out := c.CreateGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// CreateGlobalReplicationGroupWithContext is the same as CreateGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See CreateGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) CreateGlobalReplicationGroupWithContext(ctx aws.Context, input *CreateGlobalReplicationGroupInput, opts ...request.Option) (*CreateGlobalReplicationGroupOutput, error) {
+	req, out := c.CreateGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opCreateReplicationGroup = "CreateReplicationGroup"
 
 // CreateReplicationGroupRequest generates a "aws/request.Request" representing the
@@ -1055,14 +1212,13 @@ const opCreateReplicationGroup = "CreateReplicationGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateReplicationGroupRequest method.
+//	req, resp := client.CreateReplicationGroupRequest(params)
 //
-//    // Example sending a request using the CreateReplicationGroupRequest method.
-//    req, resp := client.CreateReplicationGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateReplicationGroup
 func (c *ElastiCache) CreateReplicationGroupRequest(input *CreateReplicationGroupInput) (req *request.Request, output *CreateReplicationGroupOutput) {
@@ -1086,23 +1242,36 @@ func (c *ElastiCache) CreateReplicationGroupRequest(input *CreateReplicationGrou
 // Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled)
 // replication group.
 //
+// This API can be used to create a standalone regional replication group or
+// a secondary replication group associated with a Global datastore.
+//
 // A Redis (cluster mode disabled) replication group is a collection of clusters,
 // where one of the clusters is a read/write primary and the others are read-only
 // replicas. Writes to the primary are asynchronously propagated to the replicas.
 //
-// A Redis (cluster mode enabled) replication group is a collection of 1 to
-// 90 node groups (shards). Each node group (shard) has one read/write primary
-// node and up to 5 read-only replica nodes. Writes to the primary are asynchronously
-// propagated to the replicas. Redis (cluster mode enabled) replication groups
-// partition the data across node groups (shards).
+// A Redis cluster-mode enabled cluster is comprised of from 1 to 90 shards
+// (API/CLI: node groups). Each shard has a primary node and up to 5 read-only
+// replica nodes. The configuration can range from 90 shards and 0 replicas
+// to 15 shards and 5 replicas, which is the maximum number or replicas allowed.
+//
+// The node or shard limit can be increased to a maximum of 500 per cluster
+// if the Redis engine version is 5.0.6 or higher. For example, you can choose
+// to configure a 500 node cluster that ranges between 83 shards (one primary
+// and 5 replicas per shard) and 500 shards (single primary and no replicas).
+// Make sure there are enough available IP addresses to accommodate the increase.
+// Common pitfalls include the subnets in the subnet group have too small a
+// CIDR range or the subnets are shared and heavily used by other clusters.
+// For more information, see Creating a Subnet Group (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html).
+// For versions below 5.0.6, the limit is 250 per cluster.
+//
+// To request a limit increase, see Amazon Service Limits (https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+// and choose the limit type Nodes per cluster per instance type.
 //
 // When a Redis (cluster mode disabled) replication group has been successfully
 // created, you can add one or more read replicas to it, up to a total of 5
-// read replicas. You cannot alter a Redis (cluster mode enabled) replication
-// group after it has been created. However, if you need to increase or decrease
-// the number of node groups (console: shards), you can avail yourself of ElastiCache
-// for Redis' enhanced backup and restore. For more information, see Restoring
-// From a Backup with Cluster Resizing (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
+// read replicas. If you need to increase or decrease the number of node groups
+// (console: shards), you can avail yourself of ElastiCache for Redis' scaling.
+// For more information, see Scaling ElastiCache for Redis Clusters (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html)
 // in the ElastiCache User Guide.
 //
 // This operation is valid for Redis only.
@@ -1115,62 +1284,75 @@ func (c *ElastiCache) CreateReplicationGroupRequest(input *CreateReplicationGrou
 // API operation CreateReplicationGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeReplicationGroupAlreadyExistsFault "ReplicationGroupAlreadyExists"
-//   The specified replication group already exists.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeReplicationGroupAlreadyExistsFault "ReplicationGroupAlreadyExists"
+//     The specified replication group already exists.
 //
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
+//   - ErrCodeInvalidUserGroupStateFault "InvalidUserGroupState"
+//     The user group is not in an active state.
 //
-//   * ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
-//   The requested cache subnet group name does not refer to an existing cache
-//   subnet group.
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
 //
-//   * ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of clusters per customer.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes in a single cluster.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of clusters per customer.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes in a single cluster.
 //
-//   * ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
-//   The request cannot be processed because it would cause the resource to have
-//   more than the allowed number of tags. The maximum number of tags permitted
-//   on a resource is 50.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the maximum allowed
-//   number of node groups (shards) in a single replication group. The default
-//   maximum is 90
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the maximum allowed
+//     number of node groups (shards) in a single replication group. The default
+//     maximum is 90
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateReplicationGroup
 func (c *ElastiCache) CreateReplicationGroup(input *CreateReplicationGroupInput) (*CreateReplicationGroupOutput, error) {
@@ -1210,14 +1392,13 @@ const opCreateSnapshot = "CreateSnapshot"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateSnapshotRequest method.
+//	req, resp := client.CreateSnapshotRequest(params)
 //
-//    // Example sending a request using the CreateSnapshotRequest method.
-//    req, resp := client.CreateSnapshotRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateSnapshot
 func (c *ElastiCache) CreateSnapshotRequest(input *CreateSnapshotInput) (req *request.Request, output *CreateSnapshotOutput) {
@@ -1251,41 +1432,47 @@ func (c *ElastiCache) CreateSnapshotRequest(input *CreateSnapshotInput) (req *re
 // API operation CreateSnapshot for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
-//   You already have a snapshot with the given name.
 //
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
+//   - ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
+//     You already have a snapshot with the given name.
 //
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
-//   The request cannot be processed because it would exceed the maximum number
-//   of snapshots.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
-//   You attempted one of the following operations:
+//   - ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
+//     The request cannot be processed because it would exceed the maximum number
+//     of snapshots.
 //
-//      * Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
-//      node.
+//   - ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
+//     You attempted one of the following operations:
 //
-//      * Creating a snapshot of a cluster that is running Memcached rather than
-//      Redis.
+//   - Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
+//     node.
 //
-//   Neither of these are supported by ElastiCache.
+//   - Creating a snapshot of a cluster that is running Memcached rather than
+//     Redis.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//     Neither of these are supported by ElastiCache.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateSnapshot
 func (c *ElastiCache) CreateSnapshot(input *CreateSnapshotInput) (*CreateSnapshotOutput, error) {
@@ -1309,6 +1496,297 @@ func (c *ElastiCache) CreateSnapshotWithContext(ctx aws.Context, input *CreateSn
 	return out, req.Send()
 }
 
+const opCreateUser = "CreateUser"
+
+// CreateUserRequest generates a "aws/request.Request" representing the
+// client's request for the CreateUser operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See CreateUser for more information on using the CreateUser
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the CreateUserRequest method.
+//	req, resp := client.CreateUserRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateUser
+func (c *ElastiCache) CreateUserRequest(input *CreateUserInput) (req *request.Request, output *CreateUserOutput) {
+	op := &request.Operation{
+		Name:       opCreateUser,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateUserInput{}
+	}
+
+	output = &CreateUserOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// CreateUser API operation for Amazon ElastiCache.
+//
+// For Redis engine version 6.0 onwards: Creates a Redis user. For more information,
+// see Using Role Based Access Control (RBAC) (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation CreateUser for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserAlreadyExistsFault "UserAlreadyExists"
+//     A user with this ID already exists.
+//
+//   - ErrCodeUserQuotaExceededFault "UserQuotaExceeded"
+//     The quota of users has been exceeded.
+//
+//   - ErrCodeDuplicateUserNameFault "DuplicateUserName"
+//     A user with this username already exists.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateUser
+func (c *ElastiCache) CreateUser(input *CreateUserInput) (*CreateUserOutput, error) {
+	req, out := c.CreateUserRequest(input)
+	return out, req.Send()
+}
+
+// CreateUserWithContext is the same as CreateUser with the addition of
+// the ability to pass a context and additional request options.
+//
+// See CreateUser for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) CreateUserWithContext(ctx aws.Context, input *CreateUserInput, opts ...request.Option) (*CreateUserOutput, error) {
+	req, out := c.CreateUserRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opCreateUserGroup = "CreateUserGroup"
+
+// CreateUserGroupRequest generates a "aws/request.Request" representing the
+// client's request for the CreateUserGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See CreateUserGroup for more information on using the CreateUserGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the CreateUserGroupRequest method.
+//	req, resp := client.CreateUserGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateUserGroup
+func (c *ElastiCache) CreateUserGroupRequest(input *CreateUserGroupInput) (req *request.Request, output *CreateUserGroupOutput) {
+	op := &request.Operation{
+		Name:       opCreateUserGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateUserGroupInput{}
+	}
+
+	output = &CreateUserGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// CreateUserGroup API operation for Amazon ElastiCache.
+//
+// For Redis engine version 6.0 onwards: Creates a Redis user group. For more
+// information, see Using Role Based Access Control (RBAC) (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation CreateUserGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeDuplicateUserNameFault "DuplicateUserName"
+//     A user with this username already exists.
+//
+//   - ErrCodeUserGroupAlreadyExistsFault "UserGroupAlreadyExists"
+//     The user group with this ID already exists.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeDefaultUserRequired "DefaultUserRequired"
+//     You must add default user to a user group.
+//
+//   - ErrCodeUserGroupQuotaExceededFault "UserGroupQuotaExceeded"
+//     The number of users exceeds the user group limit.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateUserGroup
+func (c *ElastiCache) CreateUserGroup(input *CreateUserGroupInput) (*CreateUserGroupOutput, error) {
+	req, out := c.CreateUserGroupRequest(input)
+	return out, req.Send()
+}
+
+// CreateUserGroupWithContext is the same as CreateUserGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See CreateUserGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) CreateUserGroupWithContext(ctx aws.Context, input *CreateUserGroupInput, opts ...request.Option) (*CreateUserGroupOutput, error) {
+	req, out := c.CreateUserGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opDecreaseNodeGroupsInGlobalReplicationGroup = "DecreaseNodeGroupsInGlobalReplicationGroup"
+
+// DecreaseNodeGroupsInGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the DecreaseNodeGroupsInGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DecreaseNodeGroupsInGlobalReplicationGroup for more information on using the DecreaseNodeGroupsInGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DecreaseNodeGroupsInGlobalReplicationGroupRequest method.
+//	req, resp := client.DecreaseNodeGroupsInGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DecreaseNodeGroupsInGlobalReplicationGroup
+func (c *ElastiCache) DecreaseNodeGroupsInGlobalReplicationGroupRequest(input *DecreaseNodeGroupsInGlobalReplicationGroupInput) (req *request.Request, output *DecreaseNodeGroupsInGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opDecreaseNodeGroupsInGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DecreaseNodeGroupsInGlobalReplicationGroupInput{}
+	}
+
+	output = &DecreaseNodeGroupsInGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// # Decreases the number of node groups in a Global datastore
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DecreaseNodeGroupsInGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DecreaseNodeGroupsInGlobalReplicationGroup
+func (c *ElastiCache) DecreaseNodeGroupsInGlobalReplicationGroup(input *DecreaseNodeGroupsInGlobalReplicationGroupInput) (*DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req, out := c.DecreaseNodeGroupsInGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// DecreaseNodeGroupsInGlobalReplicationGroupWithContext is the same as DecreaseNodeGroupsInGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DecreaseNodeGroupsInGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DecreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx aws.Context, input *DecreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req, out := c.DecreaseNodeGroupsInGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opDecreaseReplicaCount = "DecreaseReplicaCount"
 
 // DecreaseReplicaCountRequest generates a "aws/request.Request" representing the
@@ -1325,14 +1803,13 @@ const opDecreaseReplicaCount = "DecreaseReplicaCount"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DecreaseReplicaCountRequest method.
+//	req, resp := client.DecreaseReplicaCountRequest(params)
 //
-//    // Example sending a request using the DecreaseReplicaCountRequest method.
-//    req, resp := client.DecreaseReplicaCountRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DecreaseReplicaCount
 func (c *ElastiCache) DecreaseReplicaCountRequest(input *DecreaseReplicaCountInput) (req *request.Request, output *DecreaseReplicaCountOutput) {
@@ -1353,7 +1830,7 @@ func (c *ElastiCache) DecreaseReplicaCountRequest(input *DecreaseReplicaCountInp
 
 // DecreaseReplicaCount API operation for Amazon ElastiCache.
 //
-// Dynamically decreases the number of replics in a Redis (cluster mode disabled)
+// Dynamically decreases the number of replicas in a Redis (cluster mode disabled)
 // replication group or the number of replica nodes in one or more node groups
 // (shards) of a Redis (cluster mode enabled) replication group. This operation
 // is performed with no cluster down time.
@@ -1366,47 +1843,48 @@ func (c *ElastiCache) DecreaseReplicaCountRequest(input *DecreaseReplicaCountInp
 // API operation DecreaseReplicaCount for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of clusters per customer.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the maximum allowed
-//   number of node groups (shards) in a single replication group. The default
-//   maximum is 90
+//   - ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of clusters per customer.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the maximum allowed
+//     number of node groups (shards) in a single replication group. The default
+//     maximum is 90
 //
-//   * ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
-//   The specified service linked role (SLR) was not found.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeNoOperationFault "NoOperationFault"
-//   The operation was not performed because no changes were required.
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeNoOperationFault "NoOperationFault"
+//     The operation was not performed because no changes were required.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DecreaseReplicaCount
 func (c *ElastiCache) DecreaseReplicaCount(input *DecreaseReplicaCountInput) (*DecreaseReplicaCountOutput, error) {
@@ -1446,14 +1924,13 @@ const opDeleteCacheCluster = "DeleteCacheCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteCacheClusterRequest method.
+//	req, resp := client.DeleteCacheClusterRequest(params)
 //
-//    // Example sending a request using the DeleteCacheClusterRequest method.
-//    req, resp := client.DeleteCacheClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheCluster
 func (c *ElastiCache) DeleteCacheClusterRequest(input *DeleteCacheClusterInput) (req *request.Request, output *DeleteCacheClusterOutput) {
@@ -1481,15 +1958,19 @@ func (c *ElastiCache) DeleteCacheClusterRequest(input *DeleteCacheClusterInput) 
 //
 // This operation is not valid for:
 //
-//    * Redis (cluster mode enabled) clusters
+//   - Redis (cluster mode enabled) clusters
 //
-//    * A cluster that is the last read replica of a replication group
+//   - Redis (cluster mode disabled) clusters
 //
-//    * A node group (shard) that has Multi-AZ mode enabled
+//   - A cluster that is the last read replica of a replication group
 //
-//    * A cluster from a Redis (cluster mode enabled) replication group
+//   - A cluster that is the primary node of a replication group
 //
-//    * A cluster that is not in the available state
+//   - A node group (shard) that has Multi-AZ mode enabled
+//
+//   - A cluster from a Redis (cluster mode enabled) replication group
+//
+//   - A cluster that is not in the available state
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -1499,35 +1980,36 @@ func (c *ElastiCache) DeleteCacheClusterRequest(input *DeleteCacheClusterInput) 
 // API operation DeleteCacheCluster for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
-//   You already have a snapshot with the given name.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
-//   You attempted one of the following operations:
+//   - ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
+//     You already have a snapshot with the given name.
 //
-//      * Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
-//      node.
+//   - ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
+//     You attempted one of the following operations:
 //
-//      * Creating a snapshot of a cluster that is running Memcached rather than
-//      Redis.
+//   - Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
+//     node.
 //
-//   Neither of these are supported by ElastiCache.
+//   - Creating a snapshot of a cluster that is running Memcached rather than
+//     Redis.
 //
-//   * ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
-//   The request cannot be processed because it would exceed the maximum number
-//   of snapshots.
+//     Neither of these are supported by ElastiCache.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
+//     The request cannot be processed because it would exceed the maximum number
+//     of snapshots.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheCluster
 func (c *ElastiCache) DeleteCacheCluster(input *DeleteCacheClusterInput) (*DeleteCacheClusterOutput, error) {
@@ -1567,14 +2049,13 @@ const opDeleteCacheParameterGroup = "DeleteCacheParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteCacheParameterGroupRequest method.
+//	req, resp := client.DeleteCacheParameterGroupRequest(params)
 //
-//    // Example sending a request using the DeleteCacheParameterGroupRequest method.
-//    req, resp := client.DeleteCacheParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup
 func (c *ElastiCache) DeleteCacheParameterGroupRequest(input *DeleteCacheParameterGroupInput) (req *request.Request, output *DeleteCacheParameterGroupOutput) {
@@ -1597,7 +2078,8 @@ func (c *ElastiCache) DeleteCacheParameterGroupRequest(input *DeleteCacheParamet
 // DeleteCacheParameterGroup API operation for Amazon ElastiCache.
 //
 // Deletes the specified cache parameter group. You cannot delete a cache parameter
-// group if it is associated with any cache clusters.
+// group if it is associated with any cache clusters. You cannot delete the
+// default cache parameter groups in your account.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -1607,19 +2089,20 @@ func (c *ElastiCache) DeleteCacheParameterGroupRequest(input *DeleteCacheParamet
 // API operation DeleteCacheParameterGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
-//   The current state of the cache parameter group does not allow the requested
-//   operation to occur.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
+//     The current state of the cache parameter group does not allow the requested
+//     operation to occur.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup
 func (c *ElastiCache) DeleteCacheParameterGroup(input *DeleteCacheParameterGroupInput) (*DeleteCacheParameterGroupOutput, error) {
@@ -1659,14 +2142,13 @@ const opDeleteCacheSecurityGroup = "DeleteCacheSecurityGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteCacheSecurityGroupRequest method.
+//	req, resp := client.DeleteCacheSecurityGroupRequest(params)
 //
-//    // Example sending a request using the DeleteCacheSecurityGroupRequest method.
-//    req, resp := client.DeleteCacheSecurityGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSecurityGroup
 func (c *ElastiCache) DeleteCacheSecurityGroupRequest(input *DeleteCacheSecurityGroupInput) (req *request.Request, output *DeleteCacheSecurityGroupOutput) {
@@ -1700,18 +2182,19 @@ func (c *ElastiCache) DeleteCacheSecurityGroupRequest(input *DeleteCacheSecurity
 // API operation DeleteCacheSecurityGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
-//   The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
+//   - ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
+//     The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSecurityGroup
 func (c *ElastiCache) DeleteCacheSecurityGroup(input *DeleteCacheSecurityGroupInput) (*DeleteCacheSecurityGroupOutput, error) {
@@ -1751,14 +2234,13 @@ const opDeleteCacheSubnetGroup = "DeleteCacheSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteCacheSubnetGroupRequest method.
+//	req, resp := client.DeleteCacheSubnetGroupRequest(params)
 //
-//    // Example sending a request using the DeleteCacheSubnetGroupRequest method.
-//    req, resp := client.DeleteCacheSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSubnetGroup
 func (c *ElastiCache) DeleteCacheSubnetGroupRequest(input *DeleteCacheSubnetGroupInput) (req *request.Request, output *DeleteCacheSubnetGroupOutput) {
@@ -1782,7 +2264,8 @@ func (c *ElastiCache) DeleteCacheSubnetGroupRequest(input *DeleteCacheSubnetGrou
 //
 // Deletes a cache subnet group.
 //
-// You cannot delete a cache subnet group if it is associated with any clusters.
+// You cannot delete a default cache subnet group or one that is associated
+// with any clusters.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -1792,12 +2275,13 @@ func (c *ElastiCache) DeleteCacheSubnetGroupRequest(input *DeleteCacheSubnetGrou
 // API operation DeleteCacheSubnetGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSubnetGroupInUse "CacheSubnetGroupInUse"
-//   The requested cache subnet group is currently in use.
 //
-//   * ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
-//   The requested cache subnet group name does not refer to an existing cache
-//   subnet group.
+//   - ErrCodeCacheSubnetGroupInUse "CacheSubnetGroupInUse"
+//     The requested cache subnet group is currently in use.
+//
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSubnetGroup
 func (c *ElastiCache) DeleteCacheSubnetGroup(input *DeleteCacheSubnetGroupInput) (*DeleteCacheSubnetGroupOutput, error) {
@@ -1821,6 +2305,107 @@ func (c *ElastiCache) DeleteCacheSubnetGroupWithContext(ctx aws.Context, input *
 	return out, req.Send()
 }
 
+const opDeleteGlobalReplicationGroup = "DeleteGlobalReplicationGroup"
+
+// DeleteGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the DeleteGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DeleteGlobalReplicationGroup for more information on using the DeleteGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DeleteGlobalReplicationGroupRequest method.
+//	req, resp := client.DeleteGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteGlobalReplicationGroup
+func (c *ElastiCache) DeleteGlobalReplicationGroupRequest(input *DeleteGlobalReplicationGroupInput) (req *request.Request, output *DeleteGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opDeleteGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteGlobalReplicationGroupInput{}
+	}
+
+	output = &DeleteGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DeleteGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Deleting a Global datastore is a two-step process:
+//
+//   - First, you must DisassociateGlobalReplicationGroup to remove the secondary
+//     clusters in the Global datastore.
+//
+//   - Once the Global datastore contains only the primary cluster, you can
+//     use the DeleteGlobalReplicationGroup API to delete the Global datastore
+//     while retainining the primary cluster using RetainPrimaryReplicationGroup=true.
+//
+// Since the Global Datastore has only a primary cluster, you can delete the
+// Global Datastore while retaining the primary by setting RetainPrimaryReplicationGroup=true.
+// The primary cluster is never deleted when deleting a Global Datastore. It
+// can only be deleted when it no longer is associated with any Global Datastore.
+//
+// When you receive a successful response from this operation, Amazon ElastiCache
+// immediately begins deleting the selected resources; you cannot cancel or
+// revert this operation.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DeleteGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteGlobalReplicationGroup
+func (c *ElastiCache) DeleteGlobalReplicationGroup(input *DeleteGlobalReplicationGroupInput) (*DeleteGlobalReplicationGroupOutput, error) {
+	req, out := c.DeleteGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// DeleteGlobalReplicationGroupWithContext is the same as DeleteGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DeleteGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DeleteGlobalReplicationGroupWithContext(ctx aws.Context, input *DeleteGlobalReplicationGroupInput, opts ...request.Option) (*DeleteGlobalReplicationGroupOutput, error) {
+	req, out := c.DeleteGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opDeleteReplicationGroup = "DeleteReplicationGroup"
 
 // DeleteReplicationGroupRequest generates a "aws/request.Request" representing the
@@ -1837,14 +2422,13 @@ const opDeleteReplicationGroup = "DeleteReplicationGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteReplicationGroupRequest method.
+//	req, resp := client.DeleteReplicationGroupRequest(params)
 //
-//    // Example sending a request using the DeleteReplicationGroupRequest method.
-//    req, resp := client.DeleteReplicationGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteReplicationGroup
 func (c *ElastiCache) DeleteReplicationGroupRequest(input *DeleteReplicationGroupInput) (req *request.Request, output *DeleteReplicationGroupOutput) {
@@ -1885,35 +2469,36 @@ func (c *ElastiCache) DeleteReplicationGroupRequest(input *DeleteReplicationGrou
 // API operation DeleteReplicationGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
-//   You already have a snapshot with the given name.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
-//   You attempted one of the following operations:
+//   - ErrCodeSnapshotAlreadyExistsFault "SnapshotAlreadyExistsFault"
+//     You already have a snapshot with the given name.
 //
-//      * Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
-//      node.
+//   - ErrCodeSnapshotFeatureNotSupportedFault "SnapshotFeatureNotSupportedFault"
+//     You attempted one of the following operations:
 //
-//      * Creating a snapshot of a cluster that is running Memcached rather than
-//      Redis.
+//   - Creating a snapshot of a Redis cluster running on a cache.t1.micro cache
+//     node.
 //
-//   Neither of these are supported by ElastiCache.
+//   - Creating a snapshot of a cluster that is running Memcached rather than
+//     Redis.
 //
-//   * ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
-//   The request cannot be processed because it would exceed the maximum number
-//   of snapshots.
+//     Neither of these are supported by ElastiCache.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeSnapshotQuotaExceededFault "SnapshotQuotaExceededFault"
+//     The request cannot be processed because it would exceed the maximum number
+//     of snapshots.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteReplicationGroup
 func (c *ElastiCache) DeleteReplicationGroup(input *DeleteReplicationGroupInput) (*DeleteReplicationGroupOutput, error) {
@@ -1953,14 +2538,13 @@ const opDeleteSnapshot = "DeleteSnapshot"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteSnapshotRequest method.
+//	req, resp := client.DeleteSnapshotRequest(params)
 //
-//    // Example sending a request using the DeleteSnapshotRequest method.
-//    req, resp := client.DeleteSnapshotRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteSnapshot
 func (c *ElastiCache) DeleteSnapshotRequest(input *DeleteSnapshotInput) (req *request.Request, output *DeleteSnapshotOutput) {
@@ -1995,18 +2579,19 @@ func (c *ElastiCache) DeleteSnapshotRequest(input *DeleteSnapshotInput) (req *re
 // API operation DeleteSnapshot for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
 //
-//   * ErrCodeInvalidSnapshotStateFault "InvalidSnapshotState"
-//   The current state of the snapshot does not allow the requested operation
-//   to occur.
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidSnapshotStateFault "InvalidSnapshotState"
+//     The current state of the snapshot does not allow the requested operation
+//     to occur.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteSnapshot
 func (c *ElastiCache) DeleteSnapshot(input *DeleteSnapshotInput) (*DeleteSnapshotOutput, error) {
@@ -2030,6 +2615,189 @@ func (c *ElastiCache) DeleteSnapshotWithContext(ctx aws.Context, input *DeleteSn
 	return out, req.Send()
 }
 
+const opDeleteUser = "DeleteUser"
+
+// DeleteUserRequest generates a "aws/request.Request" representing the
+// client's request for the DeleteUser operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DeleteUser for more information on using the DeleteUser
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DeleteUserRequest method.
+//	req, resp := client.DeleteUserRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteUser
+func (c *ElastiCache) DeleteUserRequest(input *DeleteUserInput) (req *request.Request, output *DeleteUserOutput) {
+	op := &request.Operation{
+		Name:       opDeleteUser,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteUserInput{}
+	}
+
+	output = &DeleteUserOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DeleteUser API operation for Amazon ElastiCache.
+//
+// For Redis engine version 6.0 onwards: Deletes a user. The user will be removed
+// from all user groups and in turn removed from all replication groups. For
+// more information, see Using Role Based Access Control (RBAC) (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DeleteUser for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeInvalidUserStateFault "InvalidUserState"
+//     The user is not in active state.
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeDefaultUserAssociatedToUserGroupFault "DefaultUserAssociatedToUserGroup"
+//     The default user assigned to the user group.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteUser
+func (c *ElastiCache) DeleteUser(input *DeleteUserInput) (*DeleteUserOutput, error) {
+	req, out := c.DeleteUserRequest(input)
+	return out, req.Send()
+}
+
+// DeleteUserWithContext is the same as DeleteUser with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DeleteUser for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DeleteUserWithContext(ctx aws.Context, input *DeleteUserInput, opts ...request.Option) (*DeleteUserOutput, error) {
+	req, out := c.DeleteUserRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opDeleteUserGroup = "DeleteUserGroup"
+
+// DeleteUserGroupRequest generates a "aws/request.Request" representing the
+// client's request for the DeleteUserGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DeleteUserGroup for more information on using the DeleteUserGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DeleteUserGroupRequest method.
+//	req, resp := client.DeleteUserGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteUserGroup
+func (c *ElastiCache) DeleteUserGroupRequest(input *DeleteUserGroupInput) (req *request.Request, output *DeleteUserGroupOutput) {
+	op := &request.Operation{
+		Name:       opDeleteUserGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteUserGroupInput{}
+	}
+
+	output = &DeleteUserGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DeleteUserGroup API operation for Amazon ElastiCache.
+//
+// For Redis engine version 6.0 onwards: Deletes a user group. The user group
+// must first be disassociated from the replication group before it can be deleted.
+// For more information, see Using Role Based Access Control (RBAC) (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DeleteUserGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeInvalidUserGroupStateFault "InvalidUserGroupState"
+//     The user group is not in an active state.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteUserGroup
+func (c *ElastiCache) DeleteUserGroup(input *DeleteUserGroupInput) (*DeleteUserGroupOutput, error) {
+	req, out := c.DeleteUserGroupRequest(input)
+	return out, req.Send()
+}
+
+// DeleteUserGroupWithContext is the same as DeleteUserGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DeleteUserGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DeleteUserGroupWithContext(ctx aws.Context, input *DeleteUserGroupInput, opts ...request.Option) (*DeleteUserGroupOutput, error) {
+	req, out := c.DeleteUserGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opDescribeCacheClusters = "DescribeCacheClusters"
 
 // DescribeCacheClustersRequest generates a "aws/request.Request" representing the
@@ -2046,14 +2814,13 @@ const opDescribeCacheClusters = "DescribeCacheClusters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheClustersRequest method.
+//	req, resp := client.DescribeCacheClustersRequest(params)
 //
-//    // Example sending a request using the DescribeCacheClustersRequest method.
-//    req, resp := client.DescribeCacheClustersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClusters
 func (c *ElastiCache) DescribeCacheClustersRequest(input *DescribeCacheClustersInput) (req *request.Request, output *DescribeCacheClustersOutput) {
@@ -2111,14 +2878,15 @@ func (c *ElastiCache) DescribeCacheClustersRequest(input *DescribeCacheClustersI
 // API operation DescribeCacheClusters for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClusters
 func (c *ElastiCache) DescribeCacheClusters(input *DescribeCacheClustersInput) (*DescribeCacheClustersOutput, error) {
@@ -2150,15 +2918,14 @@ func (c *ElastiCache) DescribeCacheClustersWithContext(ctx aws.Context, input *D
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheClusters operation.
-//    pageNum := 0
-//    err := client.DescribeCacheClustersPages(params,
-//        func(page *elasticache.DescribeCacheClustersOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheClusters operation.
+//	pageNum := 0
+//	err := client.DescribeCacheClustersPages(params,
+//	    func(page *elasticache.DescribeCacheClustersOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheClustersPages(input *DescribeCacheClustersInput, fn func(*DescribeCacheClustersOutput, bool) bool) error {
 	return c.DescribeCacheClustersPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2210,14 +2977,13 @@ const opDescribeCacheEngineVersions = "DescribeCacheEngineVersions"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheEngineVersionsRequest method.
+//	req, resp := client.DescribeCacheEngineVersionsRequest(params)
 //
-//    // Example sending a request using the DescribeCacheEngineVersionsRequest method.
-//    req, resp := client.DescribeCacheEngineVersionsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheEngineVersions
 func (c *ElastiCache) DescribeCacheEngineVersionsRequest(input *DescribeCacheEngineVersionsInput) (req *request.Request, output *DescribeCacheEngineVersionsOutput) {
@@ -2282,15 +3048,14 @@ func (c *ElastiCache) DescribeCacheEngineVersionsWithContext(ctx aws.Context, in
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheEngineVersions operation.
-//    pageNum := 0
-//    err := client.DescribeCacheEngineVersionsPages(params,
-//        func(page *elasticache.DescribeCacheEngineVersionsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheEngineVersions operation.
+//	pageNum := 0
+//	err := client.DescribeCacheEngineVersionsPages(params,
+//	    func(page *elasticache.DescribeCacheEngineVersionsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheEngineVersionsPages(input *DescribeCacheEngineVersionsInput, fn func(*DescribeCacheEngineVersionsOutput, bool) bool) error {
 	return c.DescribeCacheEngineVersionsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2342,14 +3107,13 @@ const opDescribeCacheParameterGroups = "DescribeCacheParameterGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheParameterGroupsRequest method.
+//	req, resp := client.DescribeCacheParameterGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeCacheParameterGroupsRequest method.
-//    req, resp := client.DescribeCacheParameterGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameterGroups
 func (c *ElastiCache) DescribeCacheParameterGroupsRequest(input *DescribeCacheParameterGroupsInput) (req *request.Request, output *DescribeCacheParameterGroupsOutput) {
@@ -2388,15 +3152,16 @@ func (c *ElastiCache) DescribeCacheParameterGroupsRequest(input *DescribeCachePa
 // API operation DescribeCacheParameterGroups for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameterGroups
 func (c *ElastiCache) DescribeCacheParameterGroups(input *DescribeCacheParameterGroupsInput) (*DescribeCacheParameterGroupsOutput, error) {
@@ -2428,15 +3193,14 @@ func (c *ElastiCache) DescribeCacheParameterGroupsWithContext(ctx aws.Context, i
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheParameterGroups operation.
-//    pageNum := 0
-//    err := client.DescribeCacheParameterGroupsPages(params,
-//        func(page *elasticache.DescribeCacheParameterGroupsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheParameterGroups operation.
+//	pageNum := 0
+//	err := client.DescribeCacheParameterGroupsPages(params,
+//	    func(page *elasticache.DescribeCacheParameterGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheParameterGroupsPages(input *DescribeCacheParameterGroupsInput, fn func(*DescribeCacheParameterGroupsOutput, bool) bool) error {
 	return c.DescribeCacheParameterGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2488,14 +3252,13 @@ const opDescribeCacheParameters = "DescribeCacheParameters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheParametersRequest method.
+//	req, resp := client.DescribeCacheParametersRequest(params)
 //
-//    // Example sending a request using the DescribeCacheParametersRequest method.
-//    req, resp := client.DescribeCacheParametersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameters
 func (c *ElastiCache) DescribeCacheParametersRequest(input *DescribeCacheParametersInput) (req *request.Request, output *DescribeCacheParametersOutput) {
@@ -2532,15 +3295,16 @@ func (c *ElastiCache) DescribeCacheParametersRequest(input *DescribeCacheParamet
 // API operation DescribeCacheParameters for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameters
 func (c *ElastiCache) DescribeCacheParameters(input *DescribeCacheParametersInput) (*DescribeCacheParametersOutput, error) {
@@ -2572,15 +3336,14 @@ func (c *ElastiCache) DescribeCacheParametersWithContext(ctx aws.Context, input 
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheParameters operation.
-//    pageNum := 0
-//    err := client.DescribeCacheParametersPages(params,
-//        func(page *elasticache.DescribeCacheParametersOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheParameters operation.
+//	pageNum := 0
+//	err := client.DescribeCacheParametersPages(params,
+//	    func(page *elasticache.DescribeCacheParametersOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheParametersPages(input *DescribeCacheParametersInput, fn func(*DescribeCacheParametersOutput, bool) bool) error {
 	return c.DescribeCacheParametersPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2632,14 +3395,13 @@ const opDescribeCacheSecurityGroups = "DescribeCacheSecurityGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheSecurityGroupsRequest method.
+//	req, resp := client.DescribeCacheSecurityGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeCacheSecurityGroupsRequest method.
-//    req, resp := client.DescribeCacheSecurityGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSecurityGroups
 func (c *ElastiCache) DescribeCacheSecurityGroupsRequest(input *DescribeCacheSecurityGroupsInput) (req *request.Request, output *DescribeCacheSecurityGroupsOutput) {
@@ -2678,15 +3440,16 @@ func (c *ElastiCache) DescribeCacheSecurityGroupsRequest(input *DescribeCacheSec
 // API operation DescribeCacheSecurityGroups for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSecurityGroups
 func (c *ElastiCache) DescribeCacheSecurityGroups(input *DescribeCacheSecurityGroupsInput) (*DescribeCacheSecurityGroupsOutput, error) {
@@ -2718,15 +3481,14 @@ func (c *ElastiCache) DescribeCacheSecurityGroupsWithContext(ctx aws.Context, in
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheSecurityGroups operation.
-//    pageNum := 0
-//    err := client.DescribeCacheSecurityGroupsPages(params,
-//        func(page *elasticache.DescribeCacheSecurityGroupsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheSecurityGroups operation.
+//	pageNum := 0
+//	err := client.DescribeCacheSecurityGroupsPages(params,
+//	    func(page *elasticache.DescribeCacheSecurityGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheSecurityGroupsPages(input *DescribeCacheSecurityGroupsInput, fn func(*DescribeCacheSecurityGroupsOutput, bool) bool) error {
 	return c.DescribeCacheSecurityGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2778,14 +3540,13 @@ const opDescribeCacheSubnetGroups = "DescribeCacheSubnetGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeCacheSubnetGroupsRequest method.
+//	req, resp := client.DescribeCacheSubnetGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeCacheSubnetGroupsRequest method.
-//    req, resp := client.DescribeCacheSubnetGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSubnetGroups
 func (c *ElastiCache) DescribeCacheSubnetGroupsRequest(input *DescribeCacheSubnetGroupsInput) (req *request.Request, output *DescribeCacheSubnetGroupsOutput) {
@@ -2825,9 +3586,9 @@ func (c *ElastiCache) DescribeCacheSubnetGroupsRequest(input *DescribeCacheSubne
 // API operation DescribeCacheSubnetGroups for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
-//   The requested cache subnet group name does not refer to an existing cache
-//   subnet group.
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSubnetGroups
 func (c *ElastiCache) DescribeCacheSubnetGroups(input *DescribeCacheSubnetGroupsInput) (*DescribeCacheSubnetGroupsOutput, error) {
@@ -2859,15 +3620,14 @@ func (c *ElastiCache) DescribeCacheSubnetGroupsWithContext(ctx aws.Context, inpu
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeCacheSubnetGroups operation.
-//    pageNum := 0
-//    err := client.DescribeCacheSubnetGroupsPages(params,
-//        func(page *elasticache.DescribeCacheSubnetGroupsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeCacheSubnetGroups operation.
+//	pageNum := 0
+//	err := client.DescribeCacheSubnetGroupsPages(params,
+//	    func(page *elasticache.DescribeCacheSubnetGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeCacheSubnetGroupsPages(input *DescribeCacheSubnetGroupsInput, fn func(*DescribeCacheSubnetGroupsOutput, bool) bool) error {
 	return c.DescribeCacheSubnetGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -2919,14 +3679,13 @@ const opDescribeEngineDefaultParameters = "DescribeEngineDefaultParameters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeEngineDefaultParametersRequest method.
+//	req, resp := client.DescribeEngineDefaultParametersRequest(params)
 //
-//    // Example sending a request using the DescribeEngineDefaultParametersRequest method.
-//    req, resp := client.DescribeEngineDefaultParametersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEngineDefaultParameters
 func (c *ElastiCache) DescribeEngineDefaultParametersRequest(input *DescribeEngineDefaultParametersInput) (req *request.Request, output *DescribeEngineDefaultParametersOutput) {
@@ -2964,11 +3723,12 @@ func (c *ElastiCache) DescribeEngineDefaultParametersRequest(input *DescribeEngi
 // API operation DescribeEngineDefaultParameters for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEngineDefaultParameters
 func (c *ElastiCache) DescribeEngineDefaultParameters(input *DescribeEngineDefaultParametersInput) (*DescribeEngineDefaultParametersOutput, error) {
@@ -3000,15 +3760,14 @@ func (c *ElastiCache) DescribeEngineDefaultParametersWithContext(ctx aws.Context
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeEngineDefaultParameters operation.
-//    pageNum := 0
-//    err := client.DescribeEngineDefaultParametersPages(params,
-//        func(page *elasticache.DescribeEngineDefaultParametersOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeEngineDefaultParameters operation.
+//	pageNum := 0
+//	err := client.DescribeEngineDefaultParametersPages(params,
+//	    func(page *elasticache.DescribeEngineDefaultParametersOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeEngineDefaultParametersPages(input *DescribeEngineDefaultParametersInput, fn func(*DescribeEngineDefaultParametersOutput, bool) bool) error {
 	return c.DescribeEngineDefaultParametersPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3060,14 +3819,13 @@ const opDescribeEvents = "DescribeEvents"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeEventsRequest method.
+//	req, resp := client.DescribeEventsRequest(params)
 //
-//    // Example sending a request using the DescribeEventsRequest method.
-//    req, resp := client.DescribeEventsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEvents
 func (c *ElastiCache) DescribeEventsRequest(input *DescribeEventsInput) (req *request.Request, output *DescribeEventsOutput) {
@@ -3109,11 +3867,12 @@ func (c *ElastiCache) DescribeEventsRequest(input *DescribeEventsInput) (req *re
 // API operation DescribeEvents for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEvents
 func (c *ElastiCache) DescribeEvents(input *DescribeEventsInput) (*DescribeEventsOutput, error) {
@@ -3145,15 +3904,14 @@ func (c *ElastiCache) DescribeEventsWithContext(ctx aws.Context, input *Describe
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeEvents operation.
-//    pageNum := 0
-//    err := client.DescribeEventsPages(params,
-//        func(page *elasticache.DescribeEventsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeEvents operation.
+//	pageNum := 0
+//	err := client.DescribeEventsPages(params,
+//	    func(page *elasticache.DescribeEventsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeEventsPages(input *DescribeEventsInput, fn func(*DescribeEventsOutput, bool) bool) error {
 	return c.DescribeEventsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3189,6 +3947,149 @@ func (c *ElastiCache) DescribeEventsPagesWithContext(ctx aws.Context, input *Des
 	return p.Err()
 }
 
+const opDescribeGlobalReplicationGroups = "DescribeGlobalReplicationGroups"
+
+// DescribeGlobalReplicationGroupsRequest generates a "aws/request.Request" representing the
+// client's request for the DescribeGlobalReplicationGroups operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DescribeGlobalReplicationGroups for more information on using the DescribeGlobalReplicationGroups
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DescribeGlobalReplicationGroupsRequest method.
+//	req, resp := client.DescribeGlobalReplicationGroupsRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeGlobalReplicationGroups
+func (c *ElastiCache) DescribeGlobalReplicationGroupsRequest(input *DescribeGlobalReplicationGroupsInput) (req *request.Request, output *DescribeGlobalReplicationGroupsOutput) {
+	op := &request.Operation{
+		Name:       opDescribeGlobalReplicationGroups,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &request.Paginator{
+			InputTokens:     []string{"Marker"},
+			OutputTokens:    []string{"Marker"},
+			LimitToken:      "MaxRecords",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &DescribeGlobalReplicationGroupsInput{}
+	}
+
+	output = &DescribeGlobalReplicationGroupsOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DescribeGlobalReplicationGroups API operation for Amazon ElastiCache.
+//
+// Returns information about a particular global replication group. If no identifier
+// is specified, returns information about all Global datastores.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DescribeGlobalReplicationGroups for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeGlobalReplicationGroups
+func (c *ElastiCache) DescribeGlobalReplicationGroups(input *DescribeGlobalReplicationGroupsInput) (*DescribeGlobalReplicationGroupsOutput, error) {
+	req, out := c.DescribeGlobalReplicationGroupsRequest(input)
+	return out, req.Send()
+}
+
+// DescribeGlobalReplicationGroupsWithContext is the same as DescribeGlobalReplicationGroups with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DescribeGlobalReplicationGroups for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeGlobalReplicationGroupsWithContext(ctx aws.Context, input *DescribeGlobalReplicationGroupsInput, opts ...request.Option) (*DescribeGlobalReplicationGroupsOutput, error) {
+	req, out := c.DescribeGlobalReplicationGroupsRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+// DescribeGlobalReplicationGroupsPages iterates over the pages of a DescribeGlobalReplicationGroups operation,
+// calling the "fn" function with the response data for each page. To stop
+// iterating, return false from the fn function.
+//
+// See DescribeGlobalReplicationGroups method for more information on how to use this operation.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//	// Example iterating over at most 3 pages of a DescribeGlobalReplicationGroups operation.
+//	pageNum := 0
+//	err := client.DescribeGlobalReplicationGroupsPages(params,
+//	    func(page *elasticache.DescribeGlobalReplicationGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
+func (c *ElastiCache) DescribeGlobalReplicationGroupsPages(input *DescribeGlobalReplicationGroupsInput, fn func(*DescribeGlobalReplicationGroupsOutput, bool) bool) error {
+	return c.DescribeGlobalReplicationGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
+}
+
+// DescribeGlobalReplicationGroupsPagesWithContext same as DescribeGlobalReplicationGroupsPages except
+// it takes a Context and allows setting request options on the pages.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeGlobalReplicationGroupsPagesWithContext(ctx aws.Context, input *DescribeGlobalReplicationGroupsInput, fn func(*DescribeGlobalReplicationGroupsOutput, bool) bool, opts ...request.Option) error {
+	p := request.Pagination{
+		NewRequest: func() (*request.Request, error) {
+			var inCpy *DescribeGlobalReplicationGroupsInput
+			if input != nil {
+				tmp := *input
+				inCpy = &tmp
+			}
+			req, _ := c.DescribeGlobalReplicationGroupsRequest(inCpy)
+			req.SetContext(ctx)
+			req.ApplyOptions(opts...)
+			return req, nil
+		},
+	}
+
+	for p.Next() {
+		if !fn(p.Page().(*DescribeGlobalReplicationGroupsOutput), !p.HasNextPage()) {
+			break
+		}
+	}
+
+	return p.Err()
+}
+
 const opDescribeReplicationGroups = "DescribeReplicationGroups"
 
 // DescribeReplicationGroupsRequest generates a "aws/request.Request" representing the
@@ -3205,14 +4106,13 @@ const opDescribeReplicationGroups = "DescribeReplicationGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeReplicationGroupsRequest method.
+//	req, resp := client.DescribeReplicationGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeReplicationGroupsRequest method.
-//    req, resp := client.DescribeReplicationGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups
 func (c *ElastiCache) DescribeReplicationGroupsRequest(input *DescribeReplicationGroupsInput) (req *request.Request, output *DescribeReplicationGroupsOutput) {
@@ -3253,14 +4153,15 @@ func (c *ElastiCache) DescribeReplicationGroupsRequest(input *DescribeReplicatio
 // API operation DescribeReplicationGroups for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups
 func (c *ElastiCache) DescribeReplicationGroups(input *DescribeReplicationGroupsInput) (*DescribeReplicationGroupsOutput, error) {
@@ -3292,15 +4193,14 @@ func (c *ElastiCache) DescribeReplicationGroupsWithContext(ctx aws.Context, inpu
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeReplicationGroups operation.
-//    pageNum := 0
-//    err := client.DescribeReplicationGroupsPages(params,
-//        func(page *elasticache.DescribeReplicationGroupsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeReplicationGroups operation.
+//	pageNum := 0
+//	err := client.DescribeReplicationGroupsPages(params,
+//	    func(page *elasticache.DescribeReplicationGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeReplicationGroupsPages(input *DescribeReplicationGroupsInput, fn func(*DescribeReplicationGroupsOutput, bool) bool) error {
 	return c.DescribeReplicationGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3352,14 +4252,13 @@ const opDescribeReservedCacheNodes = "DescribeReservedCacheNodes"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeReservedCacheNodesRequest method.
+//	req, resp := client.DescribeReservedCacheNodesRequest(params)
 //
-//    // Example sending a request using the DescribeReservedCacheNodesRequest method.
-//    req, resp := client.DescribeReservedCacheNodesRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodes
 func (c *ElastiCache) DescribeReservedCacheNodesRequest(input *DescribeReservedCacheNodesInput) (req *request.Request, output *DescribeReservedCacheNodesOutput) {
@@ -3397,14 +4296,15 @@ func (c *ElastiCache) DescribeReservedCacheNodesRequest(input *DescribeReservedC
 // API operation DescribeReservedCacheNodes for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReservedCacheNodeNotFoundFault "ReservedCacheNodeNotFound"
-//   The requested reserved cache node was not found.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeReservedCacheNodeNotFoundFault "ReservedCacheNodeNotFound"
+//     The requested reserved cache node was not found.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodes
 func (c *ElastiCache) DescribeReservedCacheNodes(input *DescribeReservedCacheNodesInput) (*DescribeReservedCacheNodesOutput, error) {
@@ -3436,15 +4336,14 @@ func (c *ElastiCache) DescribeReservedCacheNodesWithContext(ctx aws.Context, inp
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeReservedCacheNodes operation.
-//    pageNum := 0
-//    err := client.DescribeReservedCacheNodesPages(params,
-//        func(page *elasticache.DescribeReservedCacheNodesOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeReservedCacheNodes operation.
+//	pageNum := 0
+//	err := client.DescribeReservedCacheNodesPages(params,
+//	    func(page *elasticache.DescribeReservedCacheNodesOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeReservedCacheNodesPages(input *DescribeReservedCacheNodesInput, fn func(*DescribeReservedCacheNodesOutput, bool) bool) error {
 	return c.DescribeReservedCacheNodesPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3496,14 +4395,13 @@ const opDescribeReservedCacheNodesOfferings = "DescribeReservedCacheNodesOfferin
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeReservedCacheNodesOfferingsRequest method.
+//	req, resp := client.DescribeReservedCacheNodesOfferingsRequest(params)
 //
-//    // Example sending a request using the DescribeReservedCacheNodesOfferingsRequest method.
-//    req, resp := client.DescribeReservedCacheNodesOfferingsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesOfferings
 func (c *ElastiCache) DescribeReservedCacheNodesOfferingsRequest(input *DescribeReservedCacheNodesOfferingsInput) (req *request.Request, output *DescribeReservedCacheNodesOfferingsOutput) {
@@ -3540,14 +4438,15 @@ func (c *ElastiCache) DescribeReservedCacheNodesOfferingsRequest(input *Describe
 // API operation DescribeReservedCacheNodesOfferings for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReservedCacheNodesOfferingNotFoundFault "ReservedCacheNodesOfferingNotFound"
-//   The requested cache node offering does not exist.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeReservedCacheNodesOfferingNotFoundFault "ReservedCacheNodesOfferingNotFound"
+//     The requested cache node offering does not exist.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesOfferings
 func (c *ElastiCache) DescribeReservedCacheNodesOfferings(input *DescribeReservedCacheNodesOfferingsInput) (*DescribeReservedCacheNodesOfferingsOutput, error) {
@@ -3579,15 +4478,14 @@ func (c *ElastiCache) DescribeReservedCacheNodesOfferingsWithContext(ctx aws.Con
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeReservedCacheNodesOfferings operation.
-//    pageNum := 0
-//    err := client.DescribeReservedCacheNodesOfferingsPages(params,
-//        func(page *elasticache.DescribeReservedCacheNodesOfferingsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeReservedCacheNodesOfferings operation.
+//	pageNum := 0
+//	err := client.DescribeReservedCacheNodesOfferingsPages(params,
+//	    func(page *elasticache.DescribeReservedCacheNodesOfferingsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeReservedCacheNodesOfferingsPages(input *DescribeReservedCacheNodesOfferingsInput, fn func(*DescribeReservedCacheNodesOfferingsOutput, bool) bool) error {
 	return c.DescribeReservedCacheNodesOfferingsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3639,14 +4537,13 @@ const opDescribeServiceUpdates = "DescribeServiceUpdates"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeServiceUpdatesRequest method.
+//	req, resp := client.DescribeServiceUpdatesRequest(params)
 //
-//    // Example sending a request using the DescribeServiceUpdatesRequest method.
-//    req, resp := client.DescribeServiceUpdatesRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeServiceUpdates
 func (c *ElastiCache) DescribeServiceUpdatesRequest(input *DescribeServiceUpdatesInput) (req *request.Request, output *DescribeServiceUpdatesOutput) {
@@ -3673,7 +4570,7 @@ func (c *ElastiCache) DescribeServiceUpdatesRequest(input *DescribeServiceUpdate
 
 // DescribeServiceUpdates API operation for Amazon ElastiCache.
 //
-// Returns details of the service updates
+// # Returns details of the service updates
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -3683,14 +4580,15 @@ func (c *ElastiCache) DescribeServiceUpdatesRequest(input *DescribeServiceUpdate
 // API operation DescribeServiceUpdates for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
-//   The service update doesn't exist
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeServiceUpdateNotFoundFault "ServiceUpdateNotFoundFault"
+//     The service update doesn't exist
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeServiceUpdates
 func (c *ElastiCache) DescribeServiceUpdates(input *DescribeServiceUpdatesInput) (*DescribeServiceUpdatesOutput, error) {
@@ -3722,15 +4620,14 @@ func (c *ElastiCache) DescribeServiceUpdatesWithContext(ctx aws.Context, input *
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeServiceUpdates operation.
-//    pageNum := 0
-//    err := client.DescribeServiceUpdatesPages(params,
-//        func(page *elasticache.DescribeServiceUpdatesOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeServiceUpdates operation.
+//	pageNum := 0
+//	err := client.DescribeServiceUpdatesPages(params,
+//	    func(page *elasticache.DescribeServiceUpdatesOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeServiceUpdatesPages(input *DescribeServiceUpdatesInput, fn func(*DescribeServiceUpdatesOutput, bool) bool) error {
 	return c.DescribeServiceUpdatesPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3782,14 +4679,13 @@ const opDescribeSnapshots = "DescribeSnapshots"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeSnapshotsRequest method.
+//	req, resp := client.DescribeSnapshotsRequest(params)
 //
-//    // Example sending a request using the DescribeSnapshotsRequest method.
-//    req, resp := client.DescribeSnapshotsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots
 func (c *ElastiCache) DescribeSnapshotsRequest(input *DescribeSnapshotsInput) (req *request.Request, output *DescribeSnapshotsOutput) {
@@ -3831,17 +4727,18 @@ func (c *ElastiCache) DescribeSnapshotsRequest(input *DescribeSnapshotsInput) (r
 // API operation DescribeSnapshots for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots
 func (c *ElastiCache) DescribeSnapshots(input *DescribeSnapshotsInput) (*DescribeSnapshotsOutput, error) {
@@ -3873,15 +4770,14 @@ func (c *ElastiCache) DescribeSnapshotsWithContext(ctx aws.Context, input *Descr
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeSnapshots operation.
-//    pageNum := 0
-//    err := client.DescribeSnapshotsPages(params,
-//        func(page *elasticache.DescribeSnapshotsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeSnapshots operation.
+//	pageNum := 0
+//	err := client.DescribeSnapshotsPages(params,
+//	    func(page *elasticache.DescribeSnapshotsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeSnapshotsPages(input *DescribeSnapshotsInput, fn func(*DescribeSnapshotsOutput, bool) bool) error {
 	return c.DescribeSnapshotsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -3933,14 +4829,13 @@ const opDescribeUpdateActions = "DescribeUpdateActions"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeUpdateActionsRequest method.
+//	req, resp := client.DescribeUpdateActionsRequest(params)
 //
-//    // Example sending a request using the DescribeUpdateActionsRequest method.
-//    req, resp := client.DescribeUpdateActionsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUpdateActions
 func (c *ElastiCache) DescribeUpdateActionsRequest(input *DescribeUpdateActionsInput) (req *request.Request, output *DescribeUpdateActionsOutput) {
@@ -3967,7 +4862,7 @@ func (c *ElastiCache) DescribeUpdateActionsRequest(input *DescribeUpdateActionsI
 
 // DescribeUpdateActions API operation for Amazon ElastiCache.
 //
-// Returns details of the update actions
+// # Returns details of the update actions
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -3977,11 +4872,12 @@ func (c *ElastiCache) DescribeUpdateActionsRequest(input *DescribeUpdateActionsI
 // API operation DescribeUpdateActions for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUpdateActions
 func (c *ElastiCache) DescribeUpdateActions(input *DescribeUpdateActionsInput) (*DescribeUpdateActionsOutput, error) {
@@ -4013,15 +4909,14 @@ func (c *ElastiCache) DescribeUpdateActionsWithContext(ctx aws.Context, input *D
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a DescribeUpdateActions operation.
-//    pageNum := 0
-//    err := client.DescribeUpdateActionsPages(params,
-//        func(page *elasticache.DescribeUpdateActionsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a DescribeUpdateActions operation.
+//	pageNum := 0
+//	err := client.DescribeUpdateActionsPages(params,
+//	    func(page *elasticache.DescribeUpdateActionsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *ElastiCache) DescribeUpdateActionsPages(input *DescribeUpdateActionsInput, fn func(*DescribeUpdateActionsOutput, bool) bool) error {
 	return c.DescribeUpdateActionsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -4057,6 +4952,555 @@ func (c *ElastiCache) DescribeUpdateActionsPagesWithContext(ctx aws.Context, inp
 	return p.Err()
 }
 
+const opDescribeUserGroups = "DescribeUserGroups"
+
+// DescribeUserGroupsRequest generates a "aws/request.Request" representing the
+// client's request for the DescribeUserGroups operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DescribeUserGroups for more information on using the DescribeUserGroups
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DescribeUserGroupsRequest method.
+//	req, resp := client.DescribeUserGroupsRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUserGroups
+func (c *ElastiCache) DescribeUserGroupsRequest(input *DescribeUserGroupsInput) (req *request.Request, output *DescribeUserGroupsOutput) {
+	op := &request.Operation{
+		Name:       opDescribeUserGroups,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &request.Paginator{
+			InputTokens:     []string{"Marker"},
+			OutputTokens:    []string{"Marker"},
+			LimitToken:      "MaxRecords",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &DescribeUserGroupsInput{}
+	}
+
+	output = &DescribeUserGroupsOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DescribeUserGroups API operation for Amazon ElastiCache.
+//
+// Returns a list of user groups.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DescribeUserGroups for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUserGroups
+func (c *ElastiCache) DescribeUserGroups(input *DescribeUserGroupsInput) (*DescribeUserGroupsOutput, error) {
+	req, out := c.DescribeUserGroupsRequest(input)
+	return out, req.Send()
+}
+
+// DescribeUserGroupsWithContext is the same as DescribeUserGroups with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DescribeUserGroups for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeUserGroupsWithContext(ctx aws.Context, input *DescribeUserGroupsInput, opts ...request.Option) (*DescribeUserGroupsOutput, error) {
+	req, out := c.DescribeUserGroupsRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+// DescribeUserGroupsPages iterates over the pages of a DescribeUserGroups operation,
+// calling the "fn" function with the response data for each page. To stop
+// iterating, return false from the fn function.
+//
+// See DescribeUserGroups method for more information on how to use this operation.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//	// Example iterating over at most 3 pages of a DescribeUserGroups operation.
+//	pageNum := 0
+//	err := client.DescribeUserGroupsPages(params,
+//	    func(page *elasticache.DescribeUserGroupsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
+func (c *ElastiCache) DescribeUserGroupsPages(input *DescribeUserGroupsInput, fn func(*DescribeUserGroupsOutput, bool) bool) error {
+	return c.DescribeUserGroupsPagesWithContext(aws.BackgroundContext(), input, fn)
+}
+
+// DescribeUserGroupsPagesWithContext same as DescribeUserGroupsPages except
+// it takes a Context and allows setting request options on the pages.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeUserGroupsPagesWithContext(ctx aws.Context, input *DescribeUserGroupsInput, fn func(*DescribeUserGroupsOutput, bool) bool, opts ...request.Option) error {
+	p := request.Pagination{
+		NewRequest: func() (*request.Request, error) {
+			var inCpy *DescribeUserGroupsInput
+			if input != nil {
+				tmp := *input
+				inCpy = &tmp
+			}
+			req, _ := c.DescribeUserGroupsRequest(inCpy)
+			req.SetContext(ctx)
+			req.ApplyOptions(opts...)
+			return req, nil
+		},
+	}
+
+	for p.Next() {
+		if !fn(p.Page().(*DescribeUserGroupsOutput), !p.HasNextPage()) {
+			break
+		}
+	}
+
+	return p.Err()
+}
+
+const opDescribeUsers = "DescribeUsers"
+
+// DescribeUsersRequest generates a "aws/request.Request" representing the
+// client's request for the DescribeUsers operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DescribeUsers for more information on using the DescribeUsers
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DescribeUsersRequest method.
+//	req, resp := client.DescribeUsersRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUsers
+func (c *ElastiCache) DescribeUsersRequest(input *DescribeUsersInput) (req *request.Request, output *DescribeUsersOutput) {
+	op := &request.Operation{
+		Name:       opDescribeUsers,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &request.Paginator{
+			InputTokens:     []string{"Marker"},
+			OutputTokens:    []string{"Marker"},
+			LimitToken:      "MaxRecords",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &DescribeUsersInput{}
+	}
+
+	output = &DescribeUsersOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DescribeUsers API operation for Amazon ElastiCache.
+//
+// Returns a list of users.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DescribeUsers for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeUsers
+func (c *ElastiCache) DescribeUsers(input *DescribeUsersInput) (*DescribeUsersOutput, error) {
+	req, out := c.DescribeUsersRequest(input)
+	return out, req.Send()
+}
+
+// DescribeUsersWithContext is the same as DescribeUsers with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DescribeUsers for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeUsersWithContext(ctx aws.Context, input *DescribeUsersInput, opts ...request.Option) (*DescribeUsersOutput, error) {
+	req, out := c.DescribeUsersRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+// DescribeUsersPages iterates over the pages of a DescribeUsers operation,
+// calling the "fn" function with the response data for each page. To stop
+// iterating, return false from the fn function.
+//
+// See DescribeUsers method for more information on how to use this operation.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//	// Example iterating over at most 3 pages of a DescribeUsers operation.
+//	pageNum := 0
+//	err := client.DescribeUsersPages(params,
+//	    func(page *elasticache.DescribeUsersOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
+func (c *ElastiCache) DescribeUsersPages(input *DescribeUsersInput, fn func(*DescribeUsersOutput, bool) bool) error {
+	return c.DescribeUsersPagesWithContext(aws.BackgroundContext(), input, fn)
+}
+
+// DescribeUsersPagesWithContext same as DescribeUsersPages except
+// it takes a Context and allows setting request options on the pages.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DescribeUsersPagesWithContext(ctx aws.Context, input *DescribeUsersInput, fn func(*DescribeUsersOutput, bool) bool, opts ...request.Option) error {
+	p := request.Pagination{
+		NewRequest: func() (*request.Request, error) {
+			var inCpy *DescribeUsersInput
+			if input != nil {
+				tmp := *input
+				inCpy = &tmp
+			}
+			req, _ := c.DescribeUsersRequest(inCpy)
+			req.SetContext(ctx)
+			req.ApplyOptions(opts...)
+			return req, nil
+		},
+	}
+
+	for p.Next() {
+		if !fn(p.Page().(*DescribeUsersOutput), !p.HasNextPage()) {
+			break
+		}
+	}
+
+	return p.Err()
+}
+
+const opDisassociateGlobalReplicationGroup = "DisassociateGlobalReplicationGroup"
+
+// DisassociateGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the DisassociateGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DisassociateGlobalReplicationGroup for more information on using the DisassociateGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the DisassociateGlobalReplicationGroupRequest method.
+//	req, resp := client.DisassociateGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DisassociateGlobalReplicationGroup
+func (c *ElastiCache) DisassociateGlobalReplicationGroupRequest(input *DisassociateGlobalReplicationGroupInput) (req *request.Request, output *DisassociateGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opDisassociateGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DisassociateGlobalReplicationGroupInput{}
+	}
+
+	output = &DisassociateGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// DisassociateGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Remove a secondary cluster from the Global datastore using the Global datastore
+// name. The secondary cluster will no longer receive updates from the primary
+// cluster, but will remain as a standalone cluster in that Amazon region.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation DisassociateGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DisassociateGlobalReplicationGroup
+func (c *ElastiCache) DisassociateGlobalReplicationGroup(input *DisassociateGlobalReplicationGroupInput) (*DisassociateGlobalReplicationGroupOutput, error) {
+	req, out := c.DisassociateGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// DisassociateGlobalReplicationGroupWithContext is the same as DisassociateGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DisassociateGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) DisassociateGlobalReplicationGroupWithContext(ctx aws.Context, input *DisassociateGlobalReplicationGroupInput, opts ...request.Option) (*DisassociateGlobalReplicationGroupOutput, error) {
+	req, out := c.DisassociateGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opFailoverGlobalReplicationGroup = "FailoverGlobalReplicationGroup"
+
+// FailoverGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the FailoverGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See FailoverGlobalReplicationGroup for more information on using the FailoverGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the FailoverGlobalReplicationGroupRequest method.
+//	req, resp := client.FailoverGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/FailoverGlobalReplicationGroup
+func (c *ElastiCache) FailoverGlobalReplicationGroupRequest(input *FailoverGlobalReplicationGroupInput) (req *request.Request, output *FailoverGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opFailoverGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &FailoverGlobalReplicationGroupInput{}
+	}
+
+	output = &FailoverGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// FailoverGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Used to failover the primary region to a selected secondary region. The selected
+// secondary region will become primary, and all other clusters will become
+// secondary.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation FailoverGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/FailoverGlobalReplicationGroup
+func (c *ElastiCache) FailoverGlobalReplicationGroup(input *FailoverGlobalReplicationGroupInput) (*FailoverGlobalReplicationGroupOutput, error) {
+	req, out := c.FailoverGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// FailoverGlobalReplicationGroupWithContext is the same as FailoverGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See FailoverGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) FailoverGlobalReplicationGroupWithContext(ctx aws.Context, input *FailoverGlobalReplicationGroupInput, opts ...request.Option) (*FailoverGlobalReplicationGroupOutput, error) {
+	req, out := c.FailoverGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opIncreaseNodeGroupsInGlobalReplicationGroup = "IncreaseNodeGroupsInGlobalReplicationGroup"
+
+// IncreaseNodeGroupsInGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the IncreaseNodeGroupsInGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See IncreaseNodeGroupsInGlobalReplicationGroup for more information on using the IncreaseNodeGroupsInGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the IncreaseNodeGroupsInGlobalReplicationGroupRequest method.
+//	req, resp := client.IncreaseNodeGroupsInGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/IncreaseNodeGroupsInGlobalReplicationGroup
+func (c *ElastiCache) IncreaseNodeGroupsInGlobalReplicationGroupRequest(input *IncreaseNodeGroupsInGlobalReplicationGroupInput) (req *request.Request, output *IncreaseNodeGroupsInGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opIncreaseNodeGroupsInGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &IncreaseNodeGroupsInGlobalReplicationGroupInput{}
+	}
+
+	output = &IncreaseNodeGroupsInGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// # Increase the number of node groups in the Global datastore
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation IncreaseNodeGroupsInGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/IncreaseNodeGroupsInGlobalReplicationGroup
+func (c *ElastiCache) IncreaseNodeGroupsInGlobalReplicationGroup(input *IncreaseNodeGroupsInGlobalReplicationGroupInput) (*IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req, out := c.IncreaseNodeGroupsInGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// IncreaseNodeGroupsInGlobalReplicationGroupWithContext is the same as IncreaseNodeGroupsInGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See IncreaseNodeGroupsInGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) IncreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx aws.Context, input *IncreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req, out := c.IncreaseNodeGroupsInGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opIncreaseReplicaCount = "IncreaseReplicaCount"
 
 // IncreaseReplicaCountRequest generates a "aws/request.Request" representing the
@@ -4073,14 +5517,13 @@ const opIncreaseReplicaCount = "IncreaseReplicaCount"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the IncreaseReplicaCountRequest method.
+//	req, resp := client.IncreaseReplicaCountRequest(params)
 //
-//    // Example sending a request using the IncreaseReplicaCountRequest method.
-//    req, resp := client.IncreaseReplicaCountRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/IncreaseReplicaCount
 func (c *ElastiCache) IncreaseReplicaCountRequest(input *IncreaseReplicaCountInput) (req *request.Request, output *IncreaseReplicaCountOutput) {
@@ -4101,7 +5544,7 @@ func (c *ElastiCache) IncreaseReplicaCountRequest(input *IncreaseReplicaCountInp
 
 // IncreaseReplicaCount API operation for Amazon ElastiCache.
 //
-// Dynamically increases the number of replics in a Redis (cluster mode disabled)
+// Dynamically increases the number of replicas in a Redis (cluster mode disabled)
 // replication group or the number of replica nodes in one or more node groups
 // (shards) of a Redis (cluster mode enabled) replication group. This operation
 // is performed with no cluster down time.
@@ -4114,47 +5557,48 @@ func (c *ElastiCache) IncreaseReplicaCountRequest(input *IncreaseReplicaCountInp
 // API operation IncreaseReplicaCount for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of clusters per customer.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the maximum allowed
-//   number of node groups (shards) in a single replication group. The default
-//   maximum is 90
+//   - ErrCodeClusterQuotaForCustomerExceededFault "ClusterQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of clusters per customer.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the maximum allowed
+//     number of node groups (shards) in a single replication group. The default
+//     maximum is 90
 //
-//   * ErrCodeNoOperationFault "NoOperationFault"
-//   The operation was not performed because no changes were required.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
-//   The KMS key supplied is not valid.
+//   - ErrCodeNoOperationFault "NoOperationFault"
+//     The operation was not performed because no changes were required.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
+//     The KMS key supplied is not valid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/IncreaseReplicaCount
 func (c *ElastiCache) IncreaseReplicaCount(input *IncreaseReplicaCountInput) (*IncreaseReplicaCountOutput, error) {
@@ -4194,14 +5638,13 @@ const opListAllowedNodeTypeModifications = "ListAllowedNodeTypeModifications"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ListAllowedNodeTypeModificationsRequest method.
+//	req, resp := client.ListAllowedNodeTypeModificationsRequest(params)
 //
-//    // Example sending a request using the ListAllowedNodeTypeModificationsRequest method.
-//    req, resp := client.ListAllowedNodeTypeModificationsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListAllowedNodeTypeModifications
 func (c *ElastiCache) ListAllowedNodeTypeModificationsRequest(input *ListAllowedNodeTypeModificationsInput) (req *request.Request, output *ListAllowedNodeTypeModificationsOutput) {
@@ -4237,17 +5680,18 @@ func (c *ElastiCache) ListAllowedNodeTypeModificationsRequest(input *ListAllowed
 // API operation ListAllowedNodeTypeModifications for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListAllowedNodeTypeModifications
 func (c *ElastiCache) ListAllowedNodeTypeModifications(input *ListAllowedNodeTypeModificationsInput) (*ListAllowedNodeTypeModificationsOutput, error) {
@@ -4287,14 +5731,13 @@ const opListTagsForResource = "ListTagsForResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ListTagsForResourceRequest method.
+//	req, resp := client.ListTagsForResourceRequest(params)
 //
-//    // Example sending a request using the ListTagsForResourceRequest method.
-//    req, resp := client.ListTagsForResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListTagsForResource
 func (c *ElastiCache) ListTagsForResourceRequest(input *ListTagsForResourceInput) (req *request.Request, output *TagListMessage) {
@@ -4315,16 +5758,16 @@ func (c *ElastiCache) ListTagsForResourceRequest(input *ListTagsForResourceInput
 
 // ListTagsForResource API operation for Amazon ElastiCache.
 //
-// Lists all cost allocation tags currently on the named resource. A cost allocation
-// tag is a key-value pair where the key is case-sensitive and the value is
-// optional. You can use cost allocation tags to categorize and track your AWS
-// costs.
+// Lists all tags currently on a named resource.
+//
+// A tag is a key-value pair where the key and value are case-sensitive. You
+// can use tags to categorize and track all your ElastiCache resources, with
+// the exception of global replication group. When you add or remove tags on
+// replication groups, those actions will be replicated to all nodes in the
+// replication group. For more information, see Resource-level permissions (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 //
 // If the cluster is not in the available state, ListTagsForResource returns
 // an error.
-//
-// You can have a maximum of 50 cost allocation tags on an ElastiCache resource.
-// For more information, see Monitoring Costs with Tags (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -4334,14 +5777,42 @@ func (c *ElastiCache) ListTagsForResourceRequest(input *ListTagsForResourceInput
 // API operation ListTagsForResource for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidARNFault "InvalidARN"
-//   The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
+//
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
+//
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
+//
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
+//
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
+//
+//   - ErrCodeReservedCacheNodeNotFoundFault "ReservedCacheNodeNotFound"
+//     The requested reserved cache node was not found.
+//
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeInvalidARNFault "InvalidARN"
+//     The requested Amazon Resource Name (ARN) does not refer to an existing resource.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListTagsForResource
 func (c *ElastiCache) ListTagsForResource(input *ListTagsForResourceInput) (*TagListMessage, error) {
@@ -4381,14 +5852,13 @@ const opModifyCacheCluster = "ModifyCacheCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ModifyCacheClusterRequest method.
+//	req, resp := client.ModifyCacheClusterRequest(params)
 //
-//    // Example sending a request using the ModifyCacheClusterRequest method.
-//    req, resp := client.ModifyCacheClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheCluster
 func (c *ElastiCache) ModifyCacheClusterRequest(input *ModifyCacheClusterInput) (req *request.Request, output *ModifyCacheClusterOutput) {
@@ -4421,44 +5891,45 @@ func (c *ElastiCache) ModifyCacheClusterRequest(input *ModifyCacheClusterInput) 
 // API operation ModifyCacheCluster for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
 //
-//   * ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
-//   The current state of the cache security group does not allow deletion.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
+//     The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes in a single cluster.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes in a single cluster.
 //
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheCluster
 func (c *ElastiCache) ModifyCacheCluster(input *ModifyCacheClusterInput) (*ModifyCacheClusterOutput, error) {
@@ -4498,14 +5969,13 @@ const opModifyCacheParameterGroup = "ModifyCacheParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ModifyCacheParameterGroupRequest method.
+//	req, resp := client.ModifyCacheParameterGroupRequest(params)
 //
-//    // Example sending a request using the ModifyCacheParameterGroupRequest method.
-//    req, resp := client.ModifyCacheParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroup
 func (c *ElastiCache) ModifyCacheParameterGroupRequest(input *ModifyCacheParameterGroupInput) (req *request.Request, output *CacheParameterGroupNameMessage) {
@@ -4538,19 +6008,23 @@ func (c *ElastiCache) ModifyCacheParameterGroupRequest(input *ModifyCacheParamet
 // API operation ModifyCacheParameterGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
 //
-//   * ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
-//   The current state of the cache parameter group does not allow the requested
-//   operation to occur.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
+//     The current state of the cache parameter group does not allow the requested
+//     operation to occur.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroup
 func (c *ElastiCache) ModifyCacheParameterGroup(input *ModifyCacheParameterGroupInput) (*CacheParameterGroupNameMessage, error) {
@@ -4590,14 +6064,13 @@ const opModifyCacheSubnetGroup = "ModifyCacheSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ModifyCacheSubnetGroupRequest method.
+//	req, resp := client.ModifyCacheSubnetGroupRequest(params)
 //
-//    // Example sending a request using the ModifyCacheSubnetGroupRequest method.
-//    req, resp := client.ModifyCacheSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheSubnetGroup
 func (c *ElastiCache) ModifyCacheSubnetGroupRequest(input *ModifyCacheSubnetGroupInput) (req *request.Request, output *ModifyCacheSubnetGroupOutput) {
@@ -4628,19 +6101,26 @@ func (c *ElastiCache) ModifyCacheSubnetGroupRequest(input *ModifyCacheSubnetGrou
 // API operation ModifyCacheSubnetGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
-//   The requested cache subnet group name does not refer to an existing cache
-//   subnet group.
 //
-//   * ErrCodeCacheSubnetQuotaExceededFault "CacheSubnetQuotaExceededFault"
-//   The request cannot be processed because it would exceed the allowed number
-//   of subnets in a cache subnet group.
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
 //
-//   * ErrCodeSubnetInUse "SubnetInUse"
-//   The requested subnet is being used by another cache subnet group.
+//   - ErrCodeCacheSubnetQuotaExceededFault "CacheSubnetQuotaExceededFault"
+//     The request cannot be processed because it would exceed the allowed number
+//     of subnets in a cache subnet group.
 //
-//   * ErrCodeInvalidSubnet "InvalidSubnet"
-//   An invalid subnet identifier was specified.
+//   - ErrCodeSubnetInUse "SubnetInUse"
+//     The requested subnet is being used by another cache subnet group.
+//
+//   - ErrCodeInvalidSubnet "InvalidSubnet"
+//     An invalid subnet identifier was specified.
+//
+//   - ErrCodeSubnetNotAllowedFault "SubnetNotAllowedFault"
+//     At least one subnet ID does not match the other subnet IDs. This mismatch
+//     typically occurs when a user sets one subnet ID to a regional Availability
+//     Zone and a different one to an outpost. Or when a user sets the subnet ID
+//     to an Outpost when not subscribed on this service.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheSubnetGroup
 func (c *ElastiCache) ModifyCacheSubnetGroup(input *ModifyCacheSubnetGroupInput) (*ModifyCacheSubnetGroupOutput, error) {
@@ -4664,6 +6144,91 @@ func (c *ElastiCache) ModifyCacheSubnetGroupWithContext(ctx aws.Context, input *
 	return out, req.Send()
 }
 
+const opModifyGlobalReplicationGroup = "ModifyGlobalReplicationGroup"
+
+// ModifyGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the ModifyGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See ModifyGlobalReplicationGroup for more information on using the ModifyGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the ModifyGlobalReplicationGroupRequest method.
+//	req, resp := client.ModifyGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyGlobalReplicationGroup
+func (c *ElastiCache) ModifyGlobalReplicationGroupRequest(input *ModifyGlobalReplicationGroupInput) (req *request.Request, output *ModifyGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opModifyGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ModifyGlobalReplicationGroupInput{}
+	}
+
+	output = &ModifyGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// ModifyGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Modifies the settings for a Global datastore.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation ModifyGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyGlobalReplicationGroup
+func (c *ElastiCache) ModifyGlobalReplicationGroup(input *ModifyGlobalReplicationGroupInput) (*ModifyGlobalReplicationGroupOutput, error) {
+	req, out := c.ModifyGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// ModifyGlobalReplicationGroupWithContext is the same as ModifyGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See ModifyGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) ModifyGlobalReplicationGroupWithContext(ctx aws.Context, input *ModifyGlobalReplicationGroupInput, opts ...request.Option) (*ModifyGlobalReplicationGroupOutput, error) {
+	req, out := c.ModifyGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opModifyReplicationGroup = "ModifyReplicationGroup"
 
 // ModifyReplicationGroupRequest generates a "aws/request.Request" representing the
@@ -4680,14 +6245,13 @@ const opModifyReplicationGroup = "ModifyReplicationGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ModifyReplicationGroupRequest method.
+//	req, resp := client.ModifyReplicationGroupRequest(params)
 //
-//    // Example sending a request using the ModifyReplicationGroupRequest method.
-//    req, resp := client.ModifyReplicationGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroup
 func (c *ElastiCache) ModifyReplicationGroupRequest(input *ModifyReplicationGroupInput) (req *request.Request, output *ModifyReplicationGroupOutput) {
@@ -4710,15 +6274,11 @@ func (c *ElastiCache) ModifyReplicationGroupRequest(input *ModifyReplicationGrou
 //
 // Modifies the settings for a replication group.
 //
-// For Redis (cluster mode enabled) clusters, this operation cannot be used
-// to change a cluster's node type or engine version. For more information,
-// see:
+//   - Scaling for Amazon ElastiCache for Redis (cluster mode enabled) (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
+//     in the ElastiCache User Guide
 //
-//    * Scaling for Amazon ElastiCache for Redis (cluster mode enabled) (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
-//    in the ElastiCache User Guide
-//
-//    * ModifyReplicationGroupShardConfiguration (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
-//    in the ElastiCache API Reference
+//   - ModifyReplicationGroupShardConfiguration (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
+//     in the ElastiCache API Reference
 //
 // This operation is valid for Redis only.
 //
@@ -4730,53 +6290,60 @@ func (c *ElastiCache) ModifyReplicationGroupRequest(input *ModifyReplicationGrou
 // API operation ModifyReplicationGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
-//   The current state of the cache security group does not allow deletion.
+//   - ErrCodeInvalidUserGroupStateFault "InvalidUserGroupState"
+//     The user group is not in an active state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
 //
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes in a single cluster.
+//   - ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
+//     The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeNodeQuotaForClusterExceededFault "NodeQuotaForClusterExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes in a single cluster.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
-//   The KMS key supplied is not valid.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
+//
+//   - ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
+//     The KMS key supplied is not valid.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroup
 func (c *ElastiCache) ModifyReplicationGroup(input *ModifyReplicationGroupInput) (*ModifyReplicationGroupOutput, error) {
@@ -4816,14 +6383,13 @@ const opModifyReplicationGroupShardConfiguration = "ModifyReplicationGroupShardC
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ModifyReplicationGroupShardConfigurationRequest method.
+//	req, resp := client.ModifyReplicationGroupShardConfigurationRequest(params)
 //
-//    // Example sending a request using the ModifyReplicationGroupShardConfigurationRequest method.
-//    req, resp := client.ModifyReplicationGroupShardConfigurationRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroupShardConfiguration
 func (c *ElastiCache) ModifyReplicationGroupShardConfigurationRequest(input *ModifyReplicationGroupShardConfigurationInput) (req *request.Request, output *ModifyReplicationGroupShardConfigurationOutput) {
@@ -4845,7 +6411,7 @@ func (c *ElastiCache) ModifyReplicationGroupShardConfigurationRequest(input *Mod
 // ModifyReplicationGroupShardConfiguration API operation for Amazon ElastiCache.
 //
 // Modifies a replication group's shards (node groups) by allowing you to add
-// shards, remove shards, or rebalance the keyspaces among exisiting shards.
+// shards, remove shards, or rebalance the keyspaces among existing shards.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -4855,40 +6421,41 @@ func (c *ElastiCache) ModifyReplicationGroupShardConfigurationRequest(input *Mod
 // API operation ModifyReplicationGroupShardConfiguration for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
-//   The VPC network is in an invalid state.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
-//   The requested cache node type is not available in the specified Availability
-//   Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
-//   in the ElastiCache User Guide.
+//   - ErrCodeInvalidVPCNetworkStateFault "InvalidVPCNetworkStateFault"
+//     The VPC network is in an invalid state.
 //
-//   * ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
-//   The request cannot be processed because it would exceed the maximum allowed
-//   number of node groups (shards) in a single replication group. The default
-//   maximum is 90
+//   - ErrCodeInsufficientCacheClusterCapacityFault "InsufficientCacheClusterCapacity"
+//     The requested cache node type is not available in the specified Availability
+//     Zone. For more information, see InsufficientCacheClusterCapacity (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY)
+//     in the ElastiCache User Guide.
 //
-//   * ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
-//   The request cannot be processed because it would exceed the allowed number
-//   of cache nodes per customer.
+//   - ErrCodeNodeGroupsPerReplicationGroupQuotaExceededFault "NodeGroupsPerReplicationGroupQuotaExceeded"
+//     The request cannot be processed because it would exceed the maximum allowed
+//     number of node groups (shards) in a single replication group. The default
+//     maximum is 90
 //
-//   * ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
-//   The KMS key supplied is not valid.
+//   - ErrCodeNodeQuotaForCustomerExceededFault "NodeQuotaForCustomerExceeded"
+//     The request cannot be processed because it would exceed the allowed number
+//     of cache nodes per customer.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
+//     The KMS key supplied is not valid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroupShardConfiguration
 func (c *ElastiCache) ModifyReplicationGroupShardConfiguration(input *ModifyReplicationGroupShardConfigurationInput) (*ModifyReplicationGroupShardConfigurationOutput, error) {
@@ -4912,6 +6479,197 @@ func (c *ElastiCache) ModifyReplicationGroupShardConfigurationWithContext(ctx aw
 	return out, req.Send()
 }
 
+const opModifyUser = "ModifyUser"
+
+// ModifyUserRequest generates a "aws/request.Request" representing the
+// client's request for the ModifyUser operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See ModifyUser for more information on using the ModifyUser
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the ModifyUserRequest method.
+//	req, resp := client.ModifyUserRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyUser
+func (c *ElastiCache) ModifyUserRequest(input *ModifyUserInput) (req *request.Request, output *ModifyUserOutput) {
+	op := &request.Operation{
+		Name:       opModifyUser,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ModifyUserInput{}
+	}
+
+	output = &ModifyUserOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// ModifyUser API operation for Amazon ElastiCache.
+//
+// Changes user password(s) and/or access string.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation ModifyUser for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeInvalidUserStateFault "InvalidUserState"
+//     The user is not in active state.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyUser
+func (c *ElastiCache) ModifyUser(input *ModifyUserInput) (*ModifyUserOutput, error) {
+	req, out := c.ModifyUserRequest(input)
+	return out, req.Send()
+}
+
+// ModifyUserWithContext is the same as ModifyUser with the addition of
+// the ability to pass a context and additional request options.
+//
+// See ModifyUser for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) ModifyUserWithContext(ctx aws.Context, input *ModifyUserInput, opts ...request.Option) (*ModifyUserOutput, error) {
+	req, out := c.ModifyUserRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opModifyUserGroup = "ModifyUserGroup"
+
+// ModifyUserGroupRequest generates a "aws/request.Request" representing the
+// client's request for the ModifyUserGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See ModifyUserGroup for more information on using the ModifyUserGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the ModifyUserGroupRequest method.
+//	req, resp := client.ModifyUserGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyUserGroup
+func (c *ElastiCache) ModifyUserGroupRequest(input *ModifyUserGroupInput) (req *request.Request, output *ModifyUserGroupOutput) {
+	op := &request.Operation{
+		Name:       opModifyUserGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ModifyUserGroupInput{}
+	}
+
+	output = &ModifyUserGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// ModifyUserGroup API operation for Amazon ElastiCache.
+//
+// Changes the list of users that belong to the user group.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation ModifyUserGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeDuplicateUserNameFault "DuplicateUserName"
+//     A user with this username already exists.
+//
+//   - ErrCodeServiceLinkedRoleNotFoundFault "ServiceLinkedRoleNotFoundFault"
+//     The specified service linked role (SLR) was not found.
+//
+//   - ErrCodeDefaultUserRequired "DefaultUserRequired"
+//     You must add default user to a user group.
+//
+//   - ErrCodeInvalidUserGroupStateFault "InvalidUserGroupState"
+//     The user group is not in an active state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyUserGroup
+func (c *ElastiCache) ModifyUserGroup(input *ModifyUserGroupInput) (*ModifyUserGroupOutput, error) {
+	req, out := c.ModifyUserGroupRequest(input)
+	return out, req.Send()
+}
+
+// ModifyUserGroupWithContext is the same as ModifyUserGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See ModifyUserGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) ModifyUserGroupWithContext(ctx aws.Context, input *ModifyUserGroupInput, opts ...request.Option) (*ModifyUserGroupOutput, error) {
+	req, out := c.ModifyUserGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opPurchaseReservedCacheNodesOffering = "PurchaseReservedCacheNodesOffering"
 
 // PurchaseReservedCacheNodesOfferingRequest generates a "aws/request.Request" representing the
@@ -4928,14 +6686,13 @@ const opPurchaseReservedCacheNodesOffering = "PurchaseReservedCacheNodesOffering
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the PurchaseReservedCacheNodesOfferingRequest method.
+//	req, resp := client.PurchaseReservedCacheNodesOfferingRequest(params)
 //
-//    // Example sending a request using the PurchaseReservedCacheNodesOfferingRequest method.
-//    req, resp := client.PurchaseReservedCacheNodesOfferingRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PurchaseReservedCacheNodesOffering
 func (c *ElastiCache) PurchaseReservedCacheNodesOfferingRequest(input *PurchaseReservedCacheNodesOfferingInput) (req *request.Request, output *PurchaseReservedCacheNodesOfferingOutput) {
@@ -4956,7 +6713,11 @@ func (c *ElastiCache) PurchaseReservedCacheNodesOfferingRequest(input *PurchaseR
 
 // PurchaseReservedCacheNodesOffering API operation for Amazon ElastiCache.
 //
-// Allows you to purchase a reserved cache node offering.
+// Allows you to purchase a reserved cache node offering. Reserved nodes are
+// not eligible for cancellation and are non-refundable. For more information,
+// see Managing Costs with Reserved Nodes (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/reserved-nodes.html)
+// for Redis or Managing Costs with Reserved Nodes (https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/reserved-nodes.html)
+// for Memcached.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -4966,21 +6727,27 @@ func (c *ElastiCache) PurchaseReservedCacheNodesOfferingRequest(input *PurchaseR
 // API operation PurchaseReservedCacheNodesOffering for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReservedCacheNodesOfferingNotFoundFault "ReservedCacheNodesOfferingNotFound"
-//   The requested cache node offering does not exist.
 //
-//   * ErrCodeReservedCacheNodeAlreadyExistsFault "ReservedCacheNodeAlreadyExists"
-//   You already have a reservation with the given identifier.
+//   - ErrCodeReservedCacheNodesOfferingNotFoundFault "ReservedCacheNodesOfferingNotFound"
+//     The requested cache node offering does not exist.
 //
-//   * ErrCodeReservedCacheNodeQuotaExceededFault "ReservedCacheNodeQuotaExceeded"
-//   The request cannot be processed because it would exceed the user's cache
-//   node quota.
+//   - ErrCodeReservedCacheNodeAlreadyExistsFault "ReservedCacheNodeAlreadyExists"
+//     You already have a reservation with the given identifier.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeReservedCacheNodeQuotaExceededFault "ReservedCacheNodeQuotaExceeded"
+//     The request cannot be processed because it would exceed the user's cache
+//     node quota.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeTagQuotaPerResourceExceeded "TagQuotaPerResourceExceeded"
+//     The request cannot be processed because it would cause the resource to have
+//     more than the allowed number of tags. The maximum number of tags permitted
+//     on a resource is 50.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PurchaseReservedCacheNodesOffering
 func (c *ElastiCache) PurchaseReservedCacheNodesOffering(input *PurchaseReservedCacheNodesOfferingInput) (*PurchaseReservedCacheNodesOfferingOutput, error) {
@@ -5004,6 +6771,92 @@ func (c *ElastiCache) PurchaseReservedCacheNodesOfferingWithContext(ctx aws.Cont
 	return out, req.Send()
 }
 
+const opRebalanceSlotsInGlobalReplicationGroup = "RebalanceSlotsInGlobalReplicationGroup"
+
+// RebalanceSlotsInGlobalReplicationGroupRequest generates a "aws/request.Request" representing the
+// client's request for the RebalanceSlotsInGlobalReplicationGroup operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See RebalanceSlotsInGlobalReplicationGroup for more information on using the RebalanceSlotsInGlobalReplicationGroup
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//	// Example sending a request using the RebalanceSlotsInGlobalReplicationGroupRequest method.
+//	req, resp := client.RebalanceSlotsInGlobalReplicationGroupRequest(params)
+//
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebalanceSlotsInGlobalReplicationGroup
+func (c *ElastiCache) RebalanceSlotsInGlobalReplicationGroupRequest(input *RebalanceSlotsInGlobalReplicationGroupInput) (req *request.Request, output *RebalanceSlotsInGlobalReplicationGroupOutput) {
+	op := &request.Operation{
+		Name:       opRebalanceSlotsInGlobalReplicationGroup,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &RebalanceSlotsInGlobalReplicationGroupInput{}
+	}
+
+	output = &RebalanceSlotsInGlobalReplicationGroupOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// RebalanceSlotsInGlobalReplicationGroup API operation for Amazon ElastiCache.
+//
+// Redistribute slots to ensure uniform distribution across existing shards
+// in the cluster.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon ElastiCache's
+// API operation RebalanceSlotsInGlobalReplicationGroup for usage and error information.
+//
+// Returned Error Codes:
+//
+//   - ErrCodeGlobalReplicationGroupNotFoundFault "GlobalReplicationGroupNotFoundFault"
+//     The Global datastore does not exist
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebalanceSlotsInGlobalReplicationGroup
+func (c *ElastiCache) RebalanceSlotsInGlobalReplicationGroup(input *RebalanceSlotsInGlobalReplicationGroupInput) (*RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+	req, out := c.RebalanceSlotsInGlobalReplicationGroupRequest(input)
+	return out, req.Send()
+}
+
+// RebalanceSlotsInGlobalReplicationGroupWithContext is the same as RebalanceSlotsInGlobalReplicationGroup with the addition of
+// the ability to pass a context and additional request options.
+//
+// See RebalanceSlotsInGlobalReplicationGroup for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *ElastiCache) RebalanceSlotsInGlobalReplicationGroupWithContext(ctx aws.Context, input *RebalanceSlotsInGlobalReplicationGroupInput, opts ...request.Option) (*RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+	req, out := c.RebalanceSlotsInGlobalReplicationGroupRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opRebootCacheCluster = "RebootCacheCluster"
 
 // RebootCacheClusterRequest generates a "aws/request.Request" representing the
@@ -5020,14 +6873,13 @@ const opRebootCacheCluster = "RebootCacheCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the RebootCacheClusterRequest method.
+//	req, resp := client.RebootCacheClusterRequest(params)
 //
-//    // Example sending a request using the RebootCacheClusterRequest method.
-//    req, resp := client.RebootCacheClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebootCacheCluster
 func (c *ElastiCache) RebootCacheClusterRequest(input *RebootCacheClusterInput) (req *request.Request, output *RebootCacheClusterOutput) {
@@ -5063,7 +6915,7 @@ func (c *ElastiCache) RebootCacheClusterRequest(input *RebootCacheClusterInput) 
 // enabled) clusters.
 //
 // If you make changes to parameters that require a Redis (cluster mode enabled)
-// cluster reboot for the changes to be applied, see Rebooting a Cluster (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html)
+// cluster reboot for the changes to be applied, see Rebooting a Cluster (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html)
 // for an alternate process.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
@@ -5074,11 +6926,12 @@ func (c *ElastiCache) RebootCacheClusterRequest(input *RebootCacheClusterInput) 
 // API operation RebootCacheCluster for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
 //
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
+//
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebootCacheCluster
 func (c *ElastiCache) RebootCacheCluster(input *RebootCacheClusterInput) (*RebootCacheClusterOutput, error) {
@@ -5118,14 +6971,13 @@ const opRemoveTagsFromResource = "RemoveTagsFromResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the RemoveTagsFromResourceRequest method.
+//	req, resp := client.RemoveTagsFromResourceRequest(params)
 //
-//    // Example sending a request using the RemoveTagsFromResourceRequest method.
-//    req, resp := client.RemoveTagsFromResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RemoveTagsFromResource
 func (c *ElastiCache) RemoveTagsFromResourceRequest(input *RemoveTagsFromResourceInput) (req *request.Request, output *TagListMessage) {
@@ -5147,6 +6999,11 @@ func (c *ElastiCache) RemoveTagsFromResourceRequest(input *RemoveTagsFromResourc
 // RemoveTagsFromResource API operation for Amazon ElastiCache.
 //
 // Removes the tags identified by the TagKeys list from the named resource.
+// A tag is a key-value pair where the key and value are case-sensitive. You
+// can use tags to categorize and track all your ElastiCache resources, with
+// the exception of global replication group. When you add or remove tags on
+// replication groups, those actions will be replicated to all nodes in the
+// replication group. For more information, see Resource-level permissions (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -5156,17 +7013,45 @@ func (c *ElastiCache) RemoveTagsFromResourceRequest(input *RemoveTagsFromResourc
 // API operation RemoveTagsFromResource for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
-//   The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
-//   The requested snapshot name does not refer to an existing snapshot.
+//   - ErrCodeCacheClusterNotFoundFault "CacheClusterNotFound"
+//     The requested cluster ID does not refer to an existing cluster.
 //
-//   * ErrCodeInvalidARNFault "InvalidARN"
-//   The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeTagNotFoundFault "TagNotFound"
-//   The requested tag was not found on this resource.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
+//
+//   - ErrCodeCacheSubnetGroupNotFoundFault "CacheSubnetGroupNotFoundFault"
+//     The requested cache subnet group name does not refer to an existing cache
+//     subnet group.
+//
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
+//
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
+//
+//   - ErrCodeReservedCacheNodeNotFoundFault "ReservedCacheNodeNotFound"
+//     The requested reserved cache node was not found.
+//
+//   - ErrCodeSnapshotNotFoundFault "SnapshotNotFoundFault"
+//     The requested snapshot name does not refer to an existing snapshot.
+//
+//   - ErrCodeUserNotFoundFault "UserNotFound"
+//     The user does not exist or could not be found.
+//
+//   - ErrCodeUserGroupNotFoundFault "UserGroupNotFound"
+//     The user group was not found or does not exist
+//
+//   - ErrCodeInvalidARNFault "InvalidARN"
+//     The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+//
+//   - ErrCodeTagNotFoundFault "TagNotFound"
+//     The requested tag was not found on this resource.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RemoveTagsFromResource
 func (c *ElastiCache) RemoveTagsFromResource(input *RemoveTagsFromResourceInput) (*TagListMessage, error) {
@@ -5206,14 +7091,13 @@ const opResetCacheParameterGroup = "ResetCacheParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ResetCacheParameterGroupRequest method.
+//	req, resp := client.ResetCacheParameterGroupRequest(params)
 //
-//    // Example sending a request using the ResetCacheParameterGroupRequest method.
-//    req, resp := client.ResetCacheParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup
 func (c *ElastiCache) ResetCacheParameterGroupRequest(input *ResetCacheParameterGroupInput) (req *request.Request, output *CacheParameterGroupNameMessage) {
@@ -5247,19 +7131,23 @@ func (c *ElastiCache) ResetCacheParameterGroupRequest(input *ResetCacheParameter
 // API operation ResetCacheParameterGroup for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
-//   The current state of the cache parameter group does not allow the requested
-//   operation to occur.
 //
-//   * ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
-//   The requested cache parameter group name does not refer to an existing cache
-//   parameter group.
+//   - ErrCodeInvalidCacheParameterGroupStateFault "InvalidCacheParameterGroupState"
+//     The current state of the cache parameter group does not allow the requested
+//     operation to occur.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeCacheParameterGroupNotFoundFault "CacheParameterGroupNotFound"
+//     The requested cache parameter group name does not refer to an existing cache
+//     parameter group.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
+//
+//   - ErrCodeInvalidGlobalReplicationGroupStateFault "InvalidGlobalReplicationGroupState"
+//     The Global datastore is not available or in primary-only state.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup
 func (c *ElastiCache) ResetCacheParameterGroup(input *ResetCacheParameterGroupInput) (*CacheParameterGroupNameMessage, error) {
@@ -5299,14 +7187,13 @@ const opRevokeCacheSecurityGroupIngress = "RevokeCacheSecurityGroupIngress"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the RevokeCacheSecurityGroupIngressRequest method.
+//	req, resp := client.RevokeCacheSecurityGroupIngressRequest(params)
 //
-//    // Example sending a request using the RevokeCacheSecurityGroupIngressRequest method.
-//    req, resp := client.RevokeCacheSecurityGroupIngressRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RevokeCacheSecurityGroupIngress
 func (c *ElastiCache) RevokeCacheSecurityGroupIngressRequest(input *RevokeCacheSecurityGroupIngressInput) (req *request.Request, output *RevokeCacheSecurityGroupIngressOutput) {
@@ -5338,22 +7225,23 @@ func (c *ElastiCache) RevokeCacheSecurityGroupIngressRequest(input *RevokeCacheS
 // API operation RevokeCacheSecurityGroupIngress for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
-//   The requested cache security group name does not refer to an existing cache
-//   security group.
 //
-//   * ErrCodeAuthorizationNotFoundFault "AuthorizationNotFound"
-//   The specified Amazon EC2 security group is not authorized for the specified
-//   cache security group.
+//   - ErrCodeCacheSecurityGroupNotFoundFault "CacheSecurityGroupNotFound"
+//     The requested cache security group name does not refer to an existing cache
+//     security group.
 //
-//   * ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
-//   The current state of the cache security group does not allow deletion.
+//   - ErrCodeAuthorizationNotFoundFault "AuthorizationNotFound"
+//     The specified Amazon EC2 security group is not authorized for the specified
+//     cache security group.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidCacheSecurityGroupStateFault "InvalidCacheSecurityGroupState"
+//     The current state of the cache security group does not allow deletion.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RevokeCacheSecurityGroupIngress
 func (c *ElastiCache) RevokeCacheSecurityGroupIngress(input *RevokeCacheSecurityGroupIngressInput) (*RevokeCacheSecurityGroupIngressOutput, error) {
@@ -5393,14 +7281,13 @@ const opStartMigration = "StartMigration"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the StartMigrationRequest method.
+//	req, resp := client.StartMigrationRequest(params)
 //
-//    // Example sending a request using the StartMigrationRequest method.
-//    req, resp := client.StartMigrationRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/StartMigration
 func (c *ElastiCache) StartMigrationRequest(input *StartMigrationInput) (req *request.Request, output *StartMigrationOutput) {
@@ -5431,17 +7318,18 @@ func (c *ElastiCache) StartMigrationRequest(input *StartMigrationInput) (req *re
 // API operation StartMigration for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeReplicationGroupAlreadyUnderMigrationFault "ReplicationGroupAlreadyUnderMigrationFault"
-//   The targeted replication group is not available.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeReplicationGroupAlreadyUnderMigrationFault "ReplicationGroupAlreadyUnderMigrationFault"
+//     The targeted replication group is not available.
+//
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/StartMigration
 func (c *ElastiCache) StartMigration(input *StartMigrationInput) (*StartMigrationOutput, error) {
@@ -5481,14 +7369,13 @@ const opTestFailover = "TestFailover"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the TestFailoverRequest method.
+//	req, resp := client.TestFailoverRequest(params)
 //
-//    // Example sending a request using the TestFailoverRequest method.
-//    req, resp := client.TestFailoverRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/TestFailover
 func (c *ElastiCache) TestFailoverRequest(input *TestFailoverInput) (req *request.Request, output *TestFailoverOutput) {
@@ -5513,33 +7400,39 @@ func (c *ElastiCache) TestFailoverRequest(input *TestFailoverInput) (req *reques
 // on a specified node group (called shard in the console) in a replication
 // group (called cluster in the console).
 //
+// This API is designed for testing the behavior of your application in case
+// of ElastiCache failover. It is not designed to be an operational tool for
+// initiating a failover to overcome a problem you may have with the cluster.
+// Moreover, in certain conditions such as large-scale operational events, Amazon
+// may block this API.
+//
 // Note the following
 //
-//    * A customer can use this operation to test automatic failover on up to
-//    5 shards (called node groups in the ElastiCache API and AWS CLI) in any
-//    rolling 24-hour period.
+//   - A customer can use this operation to test automatic failover on up to
+//     5 shards (called node groups in the ElastiCache API and Amazon CLI) in
+//     any rolling 24-hour period.
 //
-//    * If calling this operation on shards in different clusters (called replication
-//    groups in the API and CLI), the calls can be made concurrently.
+//   - If calling this operation on shards in different clusters (called replication
+//     groups in the API and CLI), the calls can be made concurrently.
 //
-//    * If calling this operation multiple times on different shards in the
-//    same Redis (cluster mode enabled) replication group, the first node replacement
-//    must complete before a subsequent call can be made.
+//   - If calling this operation multiple times on different shards in the
+//     same Redis (cluster mode enabled) replication group, the first node replacement
+//     must complete before a subsequent call can be made.
 //
-//    * To determine whether the node replacement is complete you can check
-//    Events using the Amazon ElastiCache console, the AWS CLI, or the ElastiCache
-//    API. Look for the following automatic failover related events, listed
-//    here in order of occurrance: Replication group message: Test Failover
-//    API called for node group <node-group-id> Cache cluster message: Failover
-//    from master node <primary-node-id> to replica node <node-id> completed
-//    Replication group message: Failover from master node <primary-node-id>
-//    to replica node <node-id> completed Cache cluster message: Recovering
-//    cache nodes <node-id> Cache cluster message: Finished recovery for cache
-//    nodes <node-id> For more information see: Viewing ElastiCache Events (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
-//    in the ElastiCache User Guide DescribeEvents (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
-//    in the ElastiCache API Reference
+//   - To determine whether the node replacement is complete you can check
+//     Events using the Amazon ElastiCache console, the Amazon CLI, or the ElastiCache
+//     API. Look for the following automatic failover related events, listed
+//     here in order of occurrance: Replication group message: Test Failover
+//     API called for node group <node-group-id> Cache cluster message: Failover
+//     from primary node <primary-node-id> to replica node <node-id> completed
+//     Replication group message: Failover from primary node <primary-node-id>
+//     to replica node <node-id> completed Cache cluster message: Recovering
+//     cache nodes <node-id> Cache cluster message: Finished recovery for cache
+//     nodes <node-id> For more information see: Viewing ElastiCache Events (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
+//     in the ElastiCache User Guide DescribeEvents (https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
+//     in the ElastiCache API Reference
 //
-// Also see, Testing Multi-AZ with Automatic Failover (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
+// Also see, Testing Multi-AZ (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 // in the ElastiCache User Guide.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
@@ -5550,34 +7443,35 @@ func (c *ElastiCache) TestFailoverRequest(input *TestFailoverInput) (req *reques
 // API operation TestFailover for usage and error information.
 //
 // Returned Error Codes:
-//   * ErrCodeAPICallRateForCustomerExceededFault "APICallRateForCustomerExceeded"
-//   The customer has exceeded the allowed rate of API calls.
 //
-//   * ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
-//   The requested cluster is not in the available state.
+//   - ErrCodeAPICallRateForCustomerExceededFault "APICallRateForCustomerExceeded"
+//     The customer has exceeded the allowed rate of API calls.
 //
-//   * ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
-//   The requested replication group is not in the available state.
+//   - ErrCodeInvalidCacheClusterStateFault "InvalidCacheClusterState"
+//     The requested cluster is not in the available state.
 //
-//   * ErrCodeNodeGroupNotFoundFault "NodeGroupNotFoundFault"
-//   The node group specified by the NodeGroupId parameter could not be found.
-//   Please verify that the node group exists and that you spelled the NodeGroupId
-//   value correctly.
+//   - ErrCodeInvalidReplicationGroupStateFault "InvalidReplicationGroupState"
+//     The requested replication group is not in the available state.
 //
-//   * ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
-//   The specified replication group does not exist.
+//   - ErrCodeNodeGroupNotFoundFault "NodeGroupNotFoundFault"
+//     The node group specified by the NodeGroupId parameter could not be found.
+//     Please verify that the node group exists and that you spelled the NodeGroupId
+//     value correctly.
 //
-//   * ErrCodeTestFailoverNotAvailableFault "TestFailoverNotAvailableFault"
-//   The TestFailover action is not available.
+//   - ErrCodeReplicationGroupNotFoundFault "ReplicationGroupNotFoundFault"
+//     The specified replication group does not exist.
 //
-//   * ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
-//   The KMS key supplied is not valid.
+//   - ErrCodeTestFailoverNotAvailableFault "TestFailoverNotAvailableFault"
+//     The TestFailover action is not available.
 //
-//   * ErrCodeInvalidParameterValueException "InvalidParameterValue"
-//   The value for a parameter is invalid.
+//   - ErrCodeInvalidKMSKeyFault "InvalidKMSKeyFault"
+//     The KMS key supplied is not valid.
 //
-//   * ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
-//   Two or more incompatible parameters were specified.
+//   - ErrCodeInvalidParameterValueException "InvalidParameterValue"
+//     The value for a parameter is invalid.
+//
+//   - ErrCodeInvalidParameterCombinationException "InvalidParameterCombination"
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/TestFailover
 func (c *ElastiCache) TestFailover(input *TestFailoverInput) (*TestFailoverOutput, error) {
@@ -5610,25 +7504,33 @@ type AddTagsToResourceInput struct {
 	// or arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot. ElastiCache
 	// resources are cluster and snapshot.
 	//
-	// For more information about ARNs, see Amazon Resource Names (ARNs) and AWS
+	// For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon
 	// Service Namespaces (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 	//
 	// ResourceName is a required field
 	ResourceName *string `type:"string" required:"true"`
 
-	// A list of cost allocation tags to be added to this resource. A tag is a key-value
-	// pair. A tag key must be accompanied by a tag value.
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
 	//
 	// Tags is a required field
 	Tags []*Tag `locationNameList:"Tag" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AddTagsToResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AddTagsToResourceInput) GoString() string {
 	return s.String()
 }
@@ -5661,6 +7563,47 @@ func (s *AddTagsToResourceInput) SetTags(v []*Tag) *AddTagsToResourceInput {
 	return s
 }
 
+// Indicates whether the user requires a password to authenticate.
+type Authentication struct {
+	_ struct{} `type:"structure"`
+
+	// The number of passwords belonging to the user. The maximum is two.
+	PasswordCount *int64 `type:"integer"`
+
+	// Indicates whether the user requires a password to authenticate.
+	Type *string `type:"string" enum:"AuthenticationType"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s Authentication) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s Authentication) GoString() string {
+	return s.String()
+}
+
+// SetPasswordCount sets the PasswordCount field's value.
+func (s *Authentication) SetPasswordCount(v int64) *Authentication {
+	s.PasswordCount = &v
+	return s
+}
+
+// SetType sets the Type field's value.
+func (s *Authentication) SetType(v string) *Authentication {
+	s.Type = &v
+	return s
+}
+
 // Represents the input of an AuthorizeCacheSecurityGroupIngress operation.
 type AuthorizeCacheSecurityGroupIngressInput struct {
 	_ struct{} `type:"structure"`
@@ -5676,20 +7619,28 @@ type AuthorizeCacheSecurityGroupIngressInput struct {
 	// EC2SecurityGroupName is a required field
 	EC2SecurityGroupName *string `type:"string" required:"true"`
 
-	// The AWS account number of the Amazon EC2 security group owner. Note that
-	// this is not the same thing as an AWS access key ID - you must provide a valid
-	// AWS account number for this parameter.
+	// The Amazon account number of the Amazon EC2 security group owner. Note that
+	// this is not the same thing as an Amazon access key ID - you must provide
+	// a valid Amazon account number for this parameter.
 	//
 	// EC2SecurityGroupOwnerId is a required field
 	EC2SecurityGroupOwnerId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AuthorizeCacheSecurityGroupIngressInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AuthorizeCacheSecurityGroupIngressInput) GoString() string {
 	return s.String()
 }
@@ -5744,12 +7695,20 @@ type AuthorizeCacheSecurityGroupIngressOutput struct {
 	CacheSecurityGroup *CacheSecurityGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AuthorizeCacheSecurityGroupIngressOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AuthorizeCacheSecurityGroupIngressOutput) GoString() string {
 	return s.String()
 }
@@ -5768,12 +7727,20 @@ type AvailabilityZone struct {
 	Name *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AvailabilityZone) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AvailabilityZone) GoString() string {
 	return s.String()
 }
@@ -5799,12 +7766,20 @@ type BatchApplyUpdateActionInput struct {
 	ServiceUpdateName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchApplyUpdateActionInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchApplyUpdateActionInput) GoString() string {
 	return s.String()
 }
@@ -5850,12 +7825,20 @@ type BatchApplyUpdateActionOutput struct {
 	UnprocessedUpdateActions []*UnprocessedUpdateAction `locationNameList:"UnprocessedUpdateAction" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchApplyUpdateActionOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchApplyUpdateActionOutput) GoString() string {
 	return s.String()
 }
@@ -5887,12 +7870,20 @@ type BatchStopUpdateActionInput struct {
 	ServiceUpdateName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchStopUpdateActionInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchStopUpdateActionInput) GoString() string {
 	return s.String()
 }
@@ -5938,12 +7929,20 @@ type BatchStopUpdateActionOutput struct {
 	UnprocessedUpdateActions []*UnprocessedUpdateAction `locationNameList:"UnprocessedUpdateAction" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchStopUpdateActionOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s BatchStopUpdateActionOutput) GoString() string {
 	return s.String()
 }
@@ -5963,6 +7962,9 @@ func (s *BatchStopUpdateActionOutput) SetUnprocessedUpdateActions(v []*Unprocess
 // Contains all of the attributes of a specific cluster.
 type CacheCluster struct {
 	_ struct{} `type:"structure"`
+
+	// The ARN (Amazon Resource Name) of the cache cluster.
+	ARN *string `type:"string"`
 
 	// A flag that enables encryption at-rest when set to true.
 	//
@@ -5984,7 +7986,9 @@ type CacheCluster struct {
 	// The date the auth token was last modified
 	AuthTokenLastModifiedDate *time.Time `type:"timestamp"`
 
-	// This parameter is currently disabled.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
 	// The date and time when the cluster was created.
@@ -6005,25 +8009,44 @@ type CacheCluster struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types: (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -6053,9 +8076,9 @@ type CacheCluster struct {
 	// library.
 	ClientDownloadLandingPage *string `type:"string"`
 
-	// Represents a Memcached cluster endpoint which, if Automatic Discovery is
-	// enabled on the cluster, can be used by an application to connect to any node
-	// in the cluster. The configuration endpoint will always have .cfg in it.
+	// Represents a Memcached cluster endpoint which can be used by an application
+	// to connect to any node in the cluster. The configuration endpoint will always
+	// have .cfg in it.
 	//
 	// Example: mem-3.9dvc4r.cfg.usw2.cache.amazonaws.com:11211
 	ConfigurationEndpoint *Endpoint `type:"structure"`
@@ -6066,6 +8089,9 @@ type CacheCluster struct {
 	// The version of the cache engine that is used in this cluster.
 	EngineVersion *string `type:"string"`
 
+	// Returns the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfiguration `locationNameList:"LogDeliveryConfiguration" type:"list"`
+
 	// Describes a notification topic and its status. Notification topics are used
 	// for publishing ElastiCache events to subscribers using Amazon Simple Notification
 	// Service (SNS).
@@ -6074,7 +8100,7 @@ type CacheCluster struct {
 	// The number of cache nodes in the cluster.
 	//
 	// For clusters running Redis, this value must be 1. For clusters running Memcached,
-	// this value must be between 1 and 20.
+	// this value must be between 1 and 40.
 	NumCacheNodes *int64 `type:"integer"`
 
 	// A group of settings that are applied to the cluster in the future, or that
@@ -6108,9 +8134,16 @@ type CacheCluster struct {
 	// Example: sun:23:00-mon:01:30
 	PreferredMaintenanceWindow *string `type:"string"`
 
+	// The outpost ARN in which the cache cluster is created.
+	PreferredOutpostArn *string `type:"string"`
+
 	// The replication group to which this cluster belongs. If this field is empty,
 	// the cluster is not associated with any replication group.
 	ReplicationGroupId *string `type:"string"`
+
+	// A boolean value indicating whether log delivery is enabled for the replication
+	// group.
+	ReplicationGroupLogDeliveryEnabled *bool `type:"boolean"`
 
 	// A list of VPC Security Groups associated with the cluster.
 	SecurityGroups []*SecurityGroupMembership `type:"list"`
@@ -6142,14 +8175,28 @@ type CacheCluster struct {
 	TransitEncryptionEnabled *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheCluster) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheCluster) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CacheCluster) SetARN(v string) *CacheCluster {
+	s.ARN = &v
+	return s
 }
 
 // SetAtRestEncryptionEnabled sets the AtRestEncryptionEnabled field's value.
@@ -6248,6 +8295,12 @@ func (s *CacheCluster) SetEngineVersion(v string) *CacheCluster {
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *CacheCluster) SetLogDeliveryConfigurations(v []*LogDeliveryConfiguration) *CacheCluster {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetNotificationConfiguration sets the NotificationConfiguration field's value.
 func (s *CacheCluster) SetNotificationConfiguration(v *NotificationConfiguration) *CacheCluster {
 	s.NotificationConfiguration = v
@@ -6278,9 +8331,21 @@ func (s *CacheCluster) SetPreferredMaintenanceWindow(v string) *CacheCluster {
 	return s
 }
 
+// SetPreferredOutpostArn sets the PreferredOutpostArn field's value.
+func (s *CacheCluster) SetPreferredOutpostArn(v string) *CacheCluster {
+	s.PreferredOutpostArn = &v
+	return s
+}
+
 // SetReplicationGroupId sets the ReplicationGroupId field's value.
 func (s *CacheCluster) SetReplicationGroupId(v string) *CacheCluster {
 	s.ReplicationGroupId = &v
+	return s
+}
+
+// SetReplicationGroupLogDeliveryEnabled sets the ReplicationGroupLogDeliveryEnabled field's value.
+func (s *CacheCluster) SetReplicationGroupLogDeliveryEnabled(v bool) *CacheCluster {
+	s.ReplicationGroupLogDeliveryEnabled = &v
 	return s
 }
 
@@ -6320,8 +8385,8 @@ type CacheEngineVersion struct {
 
 	// The name of the cache parameter group family associated with this cache engine.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x
 	CacheParameterGroupFamily *string `type:"string"`
 
 	// The name of the cache engine.
@@ -6331,12 +8396,20 @@ type CacheEngineVersion struct {
 	EngineVersion *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheEngineVersion) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheEngineVersion) GoString() string {
 	return s.String()
 }
@@ -6379,36 +8452,55 @@ func (s *CacheEngineVersion) SetEngineVersion(v string) *CacheEngineVersion {
 // the current generation types provide more memory and computational power
 // at lower cost when compared to their equivalent previous generation counterparts.
 //
-//    * General purpose: Current generation: M5 node types: cache.m5.large,
-//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-//    cache.m3.2xlarge
+//   - General purpose: Current generation: M6g node types: (available only
+//     for Redis engine version 5.0.6 onward and for Memcached engine version
+//     1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+//     cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+//     For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+//     M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+//     cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+//     cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+//     only for Redis engine version 5.0.6 onward and for Memcached engine version
+//     1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+//     node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+//     cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+//     recommended. Existing clusters are still supported but creation of new
+//     clusters is not supported for these types.) T1 node types: cache.t1.micro
+//     M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+//     M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 //
-//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-//    cache.c1.xlarge
+//   - Compute optimized: Previous generation: (not recommended. Existing clusters
+//     are still supported but creation of new clusters is not supported for
+//     these types.) C1 node types: cache.c1.xlarge
 //
-//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-//    cache.r3.8xlarge
+//   - Memory optimized with data tiering: Current generation: R6gd node types
+//     (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+//     cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+//     cache.r6gd.16xlarge
+//
+//   - Memory optimized: Current generation: R6g node types (available only
+//     for Redis engine version 5.0.6 onward and for Memcached engine version
+//     1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+//     cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+//     For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+//     R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+//     cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+//     cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+//     Previous generation: (not recommended. Existing clusters are still supported
+//     but creation of new clusters is not supported for these types.) M2 node
+//     types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+//     cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 //
 // Additional node type info
 //
-//    * All current generation instance types are created in Amazon VPC by default.
+//   - All current generation instance types are created in Amazon VPC by default.
 //
-//    * Redis append-only files (AOF) are not supported for T1 or T2 instances.
+//   - Redis append-only files (AOF) are not supported for T1 or T2 instances.
 //
-//    * Redis Multi-AZ with automatic failover is not supported on T1 instances.
+//   - Redis Multi-AZ with automatic failover is not supported on T1 instances.
 //
-//    * Redis configuration variables appendonly and appendfsync are not supported
-//    on Redis version 2.8.22 and later.
+//   - Redis configuration variables appendonly and appendfsync are not supported
+//     on Redis version 2.8.22 and later.
 type CacheNode struct {
 	_ struct{} `type:"structure"`
 
@@ -6417,14 +8509,18 @@ type CacheNode struct {
 
 	// The cache node identifier. A node ID is a numeric identifier (0001, 0002,
 	// etc.). The combination of cluster ID and node ID uniquely identifies every
-	// cache node used in a customer's AWS account.
+	// cache node used in a customer's Amazon account.
 	CacheNodeId *string `type:"string"`
 
-	// The current state of this cache node.
+	// The current state of this cache node, one of the following values: available,
+	// creating, rebooting, or deleting.
 	CacheNodeStatus *string `type:"string"`
 
 	// The Availability Zone where this node was created and now resides.
 	CustomerAvailabilityZone *string `type:"string"`
+
+	// The customer outpost ARN of the cache node.
+	CustomerOutpostArn *string `type:"string"`
 
 	// The hostname for connecting to this cache node.
 	Endpoint *Endpoint `type:"structure"`
@@ -6437,12 +8533,20 @@ type CacheNode struct {
 	SourceCacheNodeId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNode) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNode) GoString() string {
 	return s.String()
 }
@@ -6468,6 +8572,12 @@ func (s *CacheNode) SetCacheNodeStatus(v string) *CacheNode {
 // SetCustomerAvailabilityZone sets the CustomerAvailabilityZone field's value.
 func (s *CacheNode) SetCustomerAvailabilityZone(v string) *CacheNode {
 	s.CustomerAvailabilityZone = &v
+	return s
+}
+
+// SetCustomerOutpostArn sets the CustomerOutpostArn field's value.
+func (s *CacheNode) SetCustomerOutpostArn(v string) *CacheNode {
+	s.CustomerOutpostArn = &v
 	return s
 }
 
@@ -6528,12 +8638,20 @@ type CacheNodeTypeSpecificParameter struct {
 	Source *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeTypeSpecificParameter) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeTypeSpecificParameter) GoString() string {
 	return s.String()
 }
@@ -6603,12 +8721,20 @@ type CacheNodeTypeSpecificValue struct {
 	Value *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeTypeSpecificValue) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeTypeSpecificValue) GoString() string {
 	return s.String()
 }
@@ -6655,12 +8781,20 @@ type CacheNodeUpdateStatus struct {
 	NodeUpdateStatusModifiedDate *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeUpdateStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheNodeUpdateStatus) GoString() string {
 	return s.String()
 }
@@ -6717,11 +8851,14 @@ func (s *CacheNodeUpdateStatus) SetNodeUpdateStatusModifiedDate(v time.Time) *Ca
 type CacheParameterGroup struct {
 	_ struct{} `type:"structure"`
 
+	// The ARN (Amazon Resource Name) of the cache parameter group.
+	ARN *string `type:"string"`
+
 	// The name of the cache parameter group family that this cache parameter group
 	// is compatible with.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x |
 	CacheParameterGroupFamily *string `type:"string"`
 
 	// The name of the cache parameter group.
@@ -6729,16 +8866,33 @@ type CacheParameterGroup struct {
 
 	// The description for this cache parameter group.
 	Description *string `type:"string"`
+
+	// Indicates whether the parameter group is associated with a Global datastore
+	IsGlobal *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroup) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CacheParameterGroup) SetARN(v string) *CacheParameterGroup {
+	s.ARN = &v
+	return s
 }
 
 // SetCacheParameterGroupFamily sets the CacheParameterGroupFamily field's value.
@@ -6759,11 +8913,17 @@ func (s *CacheParameterGroup) SetDescription(v string) *CacheParameterGroup {
 	return s
 }
 
+// SetIsGlobal sets the IsGlobal field's value.
+func (s *CacheParameterGroup) SetIsGlobal(v bool) *CacheParameterGroup {
+	s.IsGlobal = &v
+	return s
+}
+
 // Represents the output of one of the following operations:
 //
-//    * ModifyCacheParameterGroup
+//   - ModifyCacheParameterGroup
 //
-//    * ResetCacheParameterGroup
+//   - ResetCacheParameterGroup
 type CacheParameterGroupNameMessage struct {
 	_ struct{} `type:"structure"`
 
@@ -6771,12 +8931,20 @@ type CacheParameterGroupNameMessage struct {
 	CacheParameterGroupName *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroupNameMessage) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroupNameMessage) GoString() string {
 	return s.String()
 }
@@ -6802,12 +8970,20 @@ type CacheParameterGroupStatus struct {
 	ParameterApplyStatus *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroupStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheParameterGroupStatus) GoString() string {
 	return s.String()
 }
@@ -6832,13 +9008,16 @@ func (s *CacheParameterGroupStatus) SetParameterApplyStatus(v string) *CachePara
 
 // Represents the output of one of the following operations:
 //
-//    * AuthorizeCacheSecurityGroupIngress
+//   - AuthorizeCacheSecurityGroupIngress
 //
-//    * CreateCacheSecurityGroup
+//   - CreateCacheSecurityGroup
 //
-//    * RevokeCacheSecurityGroupIngress
+//   - RevokeCacheSecurityGroupIngress
 type CacheSecurityGroup struct {
 	_ struct{} `type:"structure"`
+
+	// The ARN of the cache security group,
+	ARN *string `type:"string"`
 
 	// The name of the cache security group.
 	CacheSecurityGroupName *string `type:"string"`
@@ -6850,18 +9029,32 @@ type CacheSecurityGroup struct {
 	// security group.
 	EC2SecurityGroups []*EC2SecurityGroup `locationNameList:"EC2SecurityGroup" type:"list"`
 
-	// The AWS account ID of the cache security group owner.
+	// The Amazon account ID of the cache security group owner.
 	OwnerId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSecurityGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSecurityGroup) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CacheSecurityGroup) SetARN(v string) *CacheSecurityGroup {
+	s.ARN = &v
+	return s
 }
 
 // SetCacheSecurityGroupName sets the CacheSecurityGroupName field's value.
@@ -6901,12 +9094,20 @@ type CacheSecurityGroupMembership struct {
 	Status *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSecurityGroupMembership) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSecurityGroupMembership) GoString() string {
 	return s.String()
 }
@@ -6925,11 +9126,14 @@ func (s *CacheSecurityGroupMembership) SetStatus(v string) *CacheSecurityGroupMe
 
 // Represents the output of one of the following operations:
 //
-//    * CreateCacheSubnetGroup
+//   - CreateCacheSubnetGroup
 //
-//    * ModifyCacheSubnetGroup
+//   - ModifyCacheSubnetGroup
 type CacheSubnetGroup struct {
 	_ struct{} `type:"structure"`
+
+	// The ARN (Amazon Resource Name) of the cache subnet group.
+	ARN *string `type:"string"`
 
 	// The description of the cache subnet group.
 	CacheSubnetGroupDescription *string `type:"string"`
@@ -6945,14 +9149,28 @@ type CacheSubnetGroup struct {
 	VpcId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSubnetGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CacheSubnetGroup) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CacheSubnetGroup) SetARN(v string) *CacheSubnetGroup {
+	s.ARN = &v
+	return s
 }
 
 // SetCacheSubnetGroupDescription sets the CacheSubnetGroupDescription field's value.
@@ -6979,6 +9197,38 @@ func (s *CacheSubnetGroup) SetVpcId(v string) *CacheSubnetGroup {
 	return s
 }
 
+// The configuration details of the CloudWatch Logs destination.
+type CloudWatchLogsDestinationDetails struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the CloudWatch Logs log group.
+	LogGroup *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CloudWatchLogsDestinationDetails) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CloudWatchLogsDestinationDetails) GoString() string {
+	return s.String()
+}
+
+// SetLogGroup sets the LogGroup field's value.
+func (s *CloudWatchLogsDestinationDetails) SetLogGroup(v string) *CloudWatchLogsDestinationDetails {
+	s.LogGroup = &v
+	return s
+}
+
 type CompleteMigrationInput struct {
 	_ struct{} `type:"structure"`
 
@@ -6993,12 +9243,20 @@ type CompleteMigrationInput struct {
 	ReplicationGroupId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CompleteMigrationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CompleteMigrationInput) GoString() string {
 	return s.String()
 }
@@ -7035,12 +9293,20 @@ type CompleteMigrationOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CompleteMigrationOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CompleteMigrationOutput) GoString() string {
 	return s.String()
 }
@@ -7063,8 +9329,7 @@ type ConfigureShard struct {
 	//
 	// The minimum number of replicas in a shard or replication group is:
 	//
-	//    * Redis (cluster mode disabled) If Multi-AZ with Automatic Failover is
-	//    enabled: 1 If Multi-AZ with Automatic Failover is not enable: 0
+	//    * Redis (cluster mode disabled) If Multi-AZ: 1 If Multi-AZ: 0
 	//
 	//    * Redis (cluster mode enabled): 0 (though you will not be able to failover
 	//    to a replica if your primary node fails)
@@ -7086,14 +9351,25 @@ type ConfigureShard struct {
 	// primary node. If this member of ReplicaConfiguration is omitted, ElastiCache
 	// for Redis selects the availability zone for each of the replicas.
 	PreferredAvailabilityZones []*string `locationNameList:"PreferredAvailabilityZone" type:"list"`
+
+	// The outpost ARNs in which the cache cluster is created.
+	PreferredOutpostArns []*string `locationNameList:"PreferredOutpostArn" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ConfigureShard) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ConfigureShard) GoString() string {
 	return s.String()
 }
@@ -7135,6 +9411,12 @@ func (s *ConfigureShard) SetPreferredAvailabilityZones(v []*string) *ConfigureSh
 	return s
 }
 
+// SetPreferredOutpostArns sets the PreferredOutpostArns field's value.
+func (s *ConfigureShard) SetPreferredOutpostArns(v []*string) *ConfigureShard {
+	s.PreferredOutpostArns = v
+	return s
+}
+
 // Represents the input of a CopySnapshotMessage operation.
 type CopySnapshotInput struct {
 	_ struct{} `type:"structure"`
@@ -7147,6 +9429,10 @@ type CopySnapshotInput struct {
 	// SourceSnapshotName is a required field
 	SourceSnapshotName *string `type:"string" required:"true"`
 
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
+
 	// The Amazon S3 bucket to which the snapshot is exported. This parameter is
 	// used only when exporting a snapshot for external access.
 	//
@@ -7155,7 +9441,7 @@ type CopySnapshotInput struct {
 	// 2: Grant ElastiCache Access to Your Amazon S3 Bucket (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 	// in the Amazon ElastiCache User Guide.
 	//
-	// For more information, see Exporting a Snapshot (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
+	// For more information, see Exporting a Snapshot (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 	// in the Amazon ElastiCache User Guide.
 	TargetBucket *string `type:"string"`
 
@@ -7167,12 +9453,20 @@ type CopySnapshotInput struct {
 	TargetSnapshotName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CopySnapshotInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CopySnapshotInput) GoString() string {
 	return s.String()
 }
@@ -7205,6 +9499,12 @@ func (s *CopySnapshotInput) SetSourceSnapshotName(v string) *CopySnapshotInput {
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *CopySnapshotInput) SetTags(v []*Tag) *CopySnapshotInput {
+	s.Tags = v
+	return s
+}
+
 // SetTargetBucket sets the TargetBucket field's value.
 func (s *CopySnapshotInput) SetTargetBucket(v string) *CopySnapshotInput {
 	s.TargetBucket = &v
@@ -7225,12 +9525,20 @@ type CopySnapshotOutput struct {
 	Snapshot *Snapshot `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CopySnapshotOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CopySnapshotOutput) GoString() string {
 	return s.String()
 }
@@ -7271,7 +9579,9 @@ type CreateCacheClusterInput struct {
 	// http://redis.io/commands/AUTH.
 	AuthToken *string `type:"string"`
 
-	// This parameter is currently disabled.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
 	// The node group (shard) identifier. This parameter is stored as a lowercase
@@ -7294,25 +9604,39 @@ type CreateCacheClusterInput struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -7364,6 +9688,9 @@ type CreateCacheClusterInput struct {
 	// group and create it anew with the earlier engine version.
 	EngineVersion *string `type:"string"`
 
+	// Specifies the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfigurationRequest `locationNameList:"LogDeliveryConfigurationRequest" type:"list"`
+
 	// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
 	// (SNS) topic to which notifications are sent.
 	//
@@ -7373,21 +9700,25 @@ type CreateCacheClusterInput struct {
 	// The initial number of cache nodes that the cluster has.
 	//
 	// For clusters running Redis, this value must be 1. For clusters running Memcached,
-	// this value must be between 1 and 20.
+	// this value must be between 1 and 40.
 	//
-	// If you need more than 20 nodes for your Memcached cluster, please fill out
+	// If you need more than 40 nodes for your Memcached cluster, please fill out
 	// the ElastiCache Limit Increase Request form at http://aws.amazon.com/contact-us/elasticache-node-limit-request/
 	// (http://aws.amazon.com/contact-us/elasticache-node-limit-request/).
 	NumCacheNodes *int64 `type:"integer"`
+
+	// Specifies whether the nodes in the cluster are created in a single outpost
+	// or across multiple outposts.
+	OutpostMode *string `type:"string" enum:"OutpostMode"`
 
 	// The port number on which each of the cache nodes accepts connections.
 	Port *int64 `type:"integer"`
 
 	// The EC2 Availability Zone in which the cluster is created.
 	//
-	// All nodes belonging to this Memcached cluster are placed in the preferred
-	// Availability Zone. If you want to create your nodes across multiple Availability
-	// Zones, use PreferredAvailabilityZones.
+	// All nodes belonging to this cluster are placed in the preferred Availability
+	// Zone. If you want to create your nodes across multiple Availability Zones,
+	// use PreferredAvailabilityZones.
 	//
 	// Default: System chosen Availability Zone.
 	PreferredAvailabilityZone *string `type:"string"`
@@ -7411,31 +9742,14 @@ type CreateCacheClusterInput struct {
 
 	// Specifies the weekly time range during which maintenance on the cluster is
 	// performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi
-	// (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid
-	// values for ddd are:
-	//
-	// Specifies the weekly time range during which maintenance on the cluster is
-	// performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi
 	// (24H Clock UTC). The minimum maintenance window is a 60 minute period.
-	//
-	// Valid values for ddd are:
-	//
-	//    * sun
-	//
-	//    * mon
-	//
-	//    * tue
-	//
-	//    * wed
-	//
-	//    * thu
-	//
-	//    * fri
-	//
-	//    * sat
-	//
-	// Example: sun:23:00-mon:01:30
 	PreferredMaintenanceWindow *string `type:"string"`
+
+	// The outpost ARN in which the cache cluster is created.
+	PreferredOutpostArn *string `type:"string"`
+
+	// The outpost ARNs in which the cache cluster is created.
+	PreferredOutpostArns []*string `locationNameList:"PreferredOutpostArn" type:"list"`
 
 	// The ID of the replication group to which this cluster should belong. If this
 	// parameter is specified, the cluster is added to the specified replication
@@ -7492,16 +9806,33 @@ type CreateCacheClusterInput struct {
 	// This parameter is only valid if the Engine parameter is redis.
 	SnapshotWindow *string `type:"string"`
 
-	// A list of cost allocation tags to be added to this resource.
+	// A list of tags to be added to this resource.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
+
+	// A flag that enables in-transit encryption when set to true. You cannot modify
+	// the value of TransitEncryptionEnabled after the cluster is created. To enable
+	// in-transit encryption on a cluster you must set TransitEncryptionEnabled
+	// to true when you create a cluster.
+	//
+	// Required: Only available when creating a cache cluster in an Amazon VPC using
+	// Memcached version 1.6.12 or later.
+	TransitEncryptionEnabled *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheClusterInput) GoString() string {
 	return s.String()
 }
@@ -7579,6 +9910,12 @@ func (s *CreateCacheClusterInput) SetEngineVersion(v string) *CreateCacheCluster
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *CreateCacheClusterInput) SetLogDeliveryConfigurations(v []*LogDeliveryConfigurationRequest) *CreateCacheClusterInput {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetNotificationTopicArn sets the NotificationTopicArn field's value.
 func (s *CreateCacheClusterInput) SetNotificationTopicArn(v string) *CreateCacheClusterInput {
 	s.NotificationTopicArn = &v
@@ -7588,6 +9925,12 @@ func (s *CreateCacheClusterInput) SetNotificationTopicArn(v string) *CreateCache
 // SetNumCacheNodes sets the NumCacheNodes field's value.
 func (s *CreateCacheClusterInput) SetNumCacheNodes(v int64) *CreateCacheClusterInput {
 	s.NumCacheNodes = &v
+	return s
+}
+
+// SetOutpostMode sets the OutpostMode field's value.
+func (s *CreateCacheClusterInput) SetOutpostMode(v string) *CreateCacheClusterInput {
+	s.OutpostMode = &v
 	return s
 }
 
@@ -7612,6 +9955,18 @@ func (s *CreateCacheClusterInput) SetPreferredAvailabilityZones(v []*string) *Cr
 // SetPreferredMaintenanceWindow sets the PreferredMaintenanceWindow field's value.
 func (s *CreateCacheClusterInput) SetPreferredMaintenanceWindow(v string) *CreateCacheClusterInput {
 	s.PreferredMaintenanceWindow = &v
+	return s
+}
+
+// SetPreferredOutpostArn sets the PreferredOutpostArn field's value.
+func (s *CreateCacheClusterInput) SetPreferredOutpostArn(v string) *CreateCacheClusterInput {
+	s.PreferredOutpostArn = &v
+	return s
+}
+
+// SetPreferredOutpostArns sets the PreferredOutpostArns field's value.
+func (s *CreateCacheClusterInput) SetPreferredOutpostArns(v []*string) *CreateCacheClusterInput {
+	s.PreferredOutpostArns = v
 	return s
 }
 
@@ -7657,6 +10012,12 @@ func (s *CreateCacheClusterInput) SetTags(v []*Tag) *CreateCacheClusterInput {
 	return s
 }
 
+// SetTransitEncryptionEnabled sets the TransitEncryptionEnabled field's value.
+func (s *CreateCacheClusterInput) SetTransitEncryptionEnabled(v bool) *CreateCacheClusterInput {
+	s.TransitEncryptionEnabled = &v
+	return s
+}
+
 type CreateCacheClusterOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -7664,12 +10025,20 @@ type CreateCacheClusterOutput struct {
 	CacheCluster *CacheCluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheClusterOutput) GoString() string {
 	return s.String()
 }
@@ -7687,8 +10056,8 @@ type CreateCacheParameterGroupInput struct {
 	// The name of the cache parameter group family that the cache parameter group
 	// can be used with.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x
 	//
 	// CacheParameterGroupFamily is a required field
 	CacheParameterGroupFamily *string `type:"string" required:"true"`
@@ -7702,14 +10071,26 @@ type CreateCacheParameterGroupInput struct {
 	//
 	// Description is a required field
 	Description *string `type:"string" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -7751,6 +10132,12 @@ func (s *CreateCacheParameterGroupInput) SetDescription(v string) *CreateCachePa
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *CreateCacheParameterGroupInput) SetTags(v []*Tag) *CreateCacheParameterGroupInput {
+	s.Tags = v
+	return s
+}
+
 type CreateCacheParameterGroupOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -7758,12 +10145,20 @@ type CreateCacheParameterGroupOutput struct {
 	CacheParameterGroup *CacheParameterGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheParameterGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheParameterGroupOutput) GoString() string {
 	return s.String()
 }
@@ -7793,14 +10188,26 @@ type CreateCacheSecurityGroupInput struct {
 	//
 	// Description is a required field
 	Description *string `type:"string" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSecurityGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSecurityGroupInput) GoString() string {
 	return s.String()
 }
@@ -7833,6 +10240,12 @@ func (s *CreateCacheSecurityGroupInput) SetDescription(v string) *CreateCacheSec
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *CreateCacheSecurityGroupInput) SetTags(v []*Tag) *CreateCacheSecurityGroupInput {
+	s.Tags = v
+	return s
+}
+
 type CreateCacheSecurityGroupOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -7846,12 +10259,20 @@ type CreateCacheSecurityGroupOutput struct {
 	CacheSecurityGroup *CacheSecurityGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSecurityGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSecurityGroupOutput) GoString() string {
 	return s.String()
 }
@@ -7884,14 +10305,26 @@ type CreateCacheSubnetGroupInput struct {
 	//
 	// SubnetIds is a required field
 	SubnetIds []*string `locationNameList:"SubnetIdentifier" type:"list" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -7933,6 +10366,12 @@ func (s *CreateCacheSubnetGroupInput) SetSubnetIds(v []*string) *CreateCacheSubn
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *CreateCacheSubnetGroupInput) SetTags(v []*Tag) *CreateCacheSubnetGroupInput {
+	s.Tags = v
+	return s
+}
+
 type CreateCacheSubnetGroupOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -7944,12 +10383,20 @@ type CreateCacheSubnetGroupOutput struct {
 	CacheSubnetGroup *CacheSubnetGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCacheSubnetGroupOutput) GoString() string {
 	return s.String()
 }
@@ -7957,6 +10404,121 @@ func (s CreateCacheSubnetGroupOutput) GoString() string {
 // SetCacheSubnetGroup sets the CacheSubnetGroup field's value.
 func (s *CreateCacheSubnetGroupOutput) SetCacheSubnetGroup(v *CacheSubnetGroup) *CreateCacheSubnetGroupOutput {
 	s.CacheSubnetGroup = v
+	return s
+}
+
+type CreateGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// Provides details of the Global datastore
+	GlobalReplicationGroupDescription *string `type:"string"`
+
+	// The suffix name of a Global datastore. Amazon ElastiCache automatically applies
+	// a prefix to the Global datastore ID when it is created. Each Amazon Region
+	// has its own prefix. For instance, a Global datastore ID created in the US-West-1
+	// region will begin with "dsdfu" along with the suffix name you provide. The
+	// suffix, combined with the auto-generated prefix, guarantees uniqueness of
+	// the Global datastore name across multiple regions.
+	//
+	// For a full list of Amazon Regions and their respective Global datastore iD
+	// prefixes, see Using the Amazon CLI with Global datastores (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html).
+	//
+	// GlobalReplicationGroupIdSuffix is a required field
+	GlobalReplicationGroupIdSuffix *string `type:"string" required:"true"`
+
+	// The name of the primary cluster that accepts writes and will replicate updates
+	// to the secondary cluster.
+	//
+	// PrimaryReplicationGroupId is a required field
+	PrimaryReplicationGroupId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "CreateGlobalReplicationGroupInput"}
+	if s.GlobalReplicationGroupIdSuffix == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupIdSuffix"))
+	}
+	if s.PrimaryReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("PrimaryReplicationGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetGlobalReplicationGroupDescription sets the GlobalReplicationGroupDescription field's value.
+func (s *CreateGlobalReplicationGroupInput) SetGlobalReplicationGroupDescription(v string) *CreateGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupDescription = &v
+	return s
+}
+
+// SetGlobalReplicationGroupIdSuffix sets the GlobalReplicationGroupIdSuffix field's value.
+func (s *CreateGlobalReplicationGroupInput) SetGlobalReplicationGroupIdSuffix(v string) *CreateGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupIdSuffix = &v
+	return s
+}
+
+// SetPrimaryReplicationGroupId sets the PrimaryReplicationGroupId field's value.
+func (s *CreateGlobalReplicationGroupInput) SetPrimaryReplicationGroupId(v string) *CreateGlobalReplicationGroupInput {
+	s.PrimaryReplicationGroupId = &v
+	return s
+}
+
+type CreateGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *CreateGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *CreateGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
 	return s
 }
 
@@ -7999,28 +10561,18 @@ type CreateReplicationGroupInput struct {
 	// http://redis.io/commands/AUTH.
 	AuthToken *string `type:"string"`
 
-	// This parameter is currently disabled.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
 	// Specifies whether a read-only replica is automatically promoted to read/write
 	// primary if the existing primary fails.
 	//
-	// If true, Multi-AZ is enabled for this replication group. If false, Multi-AZ
-	// is disabled for this replication group.
-	//
 	// AutomaticFailoverEnabled must be enabled for Redis (cluster mode enabled)
 	// replication groups.
 	//
 	// Default: false
-	//
-	// Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover
-	// on:
-	//
-	//    * Redis versions earlier than 2.8.6.
-	//
-	//    * Redis (cluster mode disabled): T1 node types.
-	//
-	//    * Redis (cluster mode enabled): T1 node types.
 	AutomaticFailoverEnabled *bool `type:"boolean"`
 
 	// The compute and memory capacity of the nodes in the node group (shard).
@@ -8029,25 +10581,44 @@ type CreateReplicationGroupInput struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -8064,9 +10635,6 @@ type CreateReplicationGroupInput struct {
 	// The name of the parameter group to associate with this replication group.
 	// If this argument is omitted, the default cache parameter group for the specified
 	// engine is used.
-	//
-	// If you are restoring to an engine version that is different than the original,
-	// you must specify the default version of that version. For example, CacheParameterGroupName=default.redis4.0.
 	//
 	// If you are running Redis version 3.2.4 or later, only one node group (shard),
 	// and want to use a default parameter group, we recommend that you specify
@@ -8087,8 +10655,13 @@ type CreateReplicationGroupInput struct {
 	// see Subnets and Subnet Groups (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
 	CacheSubnetGroupName *string `type:"string"`
 
+	// Enables data tiering. Data tiering is only supported for replication groups
+	// using the r6gd node type. This parameter must be set to true when using r6gd
+	// nodes. For more information, see Data tiering (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+	DataTieringEnabled *bool `type:"boolean"`
+
 	// The name of the cache engine to be used for the clusters in this replication
-	// group.
+	// group. Must be Redis.
 	Engine *string `type:"string"`
 
 	// The version number of the cache engine to be used for the clusters in this
@@ -8103,8 +10676,18 @@ type CreateReplicationGroupInput struct {
 	// engine version.
 	EngineVersion *string `type:"string"`
 
-	// The ID of the KMS key used to encrypt the disk on the cluster.
+	// The name of the Global datastore
+	GlobalReplicationGroupId *string `type:"string"`
+
+	// The ID of the KMS key used to encrypt the disk in the cluster.
 	KmsKeyId *string `type:"string"`
+
+	// Specifies the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfigurationRequest `locationNameList:"LogDeliveryConfigurationRequest" type:"list"`
+
+	// A flag indicating if you have Multi-AZ enabled to enhance fault tolerance.
+	// For more information, see Minimizing Downtime: Multi-AZ (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
+	MultiAZEnabled *bool `type:"boolean"`
 
 	// A list of node group (shard) configuration options. Each node group (shard)
 	// configuration has the following members: PrimaryAvailabilityZone, ReplicaAvailabilityZones,
@@ -8112,10 +10695,10 @@ type CreateReplicationGroupInput struct {
 	//
 	// If you're creating a Redis (cluster mode disabled) or a Redis (cluster mode
 	// enabled) replication group, you can use this parameter to individually configure
-	// each node group (shard), or you can omit this parameter. However, when seeding
-	// a Redis (cluster mode enabled) cluster from a S3 rdb file, you must configure
-	// each node group (shard) using this parameter because you must specify the
-	// slots for each node group.
+	// each node group (shard), or you can omit this parameter. However, it is required
+	// when seeding a Redis (cluster mode enabled) cluster from a S3 rdb file. You
+	// must configure each node group (shard) using this parameter because you must
+	// specify the slots for each node group.
 	NodeGroupConfiguration []*NodeGroupConfiguration `locationNameList:"NodeGroupConfiguration" type:"list"`
 
 	// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
@@ -8260,9 +10843,10 @@ type CreateReplicationGroupInput struct {
 	// appropriate time range.
 	SnapshotWindow *string `type:"string"`
 
-	// A list of cost allocation tags to be added to this resource. Tags are comma-separated
-	// key,value pairs (e.g. Key=myKey, Value=myKeyValue. You can include multiple
-	// tags as shown following: Key=myKey, Value=myKeyValue Key=mySecondKey, Value=mySecondKeyValue.
+	// A list of tags to be added to this resource. Tags are comma-separated key,value
+	// pairs (e.g. Key=myKey, Value=myKeyValue. You can include multiple tags as
+	// shown following: Key=myKey, Value=myKeyValue Key=mySecondKey, Value=mySecondKeyValue.
+	// Tags on replication groups will be replicated to all nodes.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
 	// A flag that enables in-transit encryption when set to true.
@@ -8285,14 +10869,25 @@ type CreateReplicationGroupInput struct {
 	// For HIPAA compliance, you must specify TransitEncryptionEnabled as true,
 	// an AuthToken, and a CacheSubnetGroup.
 	TransitEncryptionEnabled *bool `type:"boolean"`
+
+	// The user group to associate with the replication group.
+	UserGroupIds []*string `min:"1" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateReplicationGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateReplicationGroupInput) GoString() string {
 	return s.String()
 }
@@ -8305,6 +10900,9 @@ func (s *CreateReplicationGroupInput) Validate() error {
 	}
 	if s.ReplicationGroupId == nil {
 		invalidParams.Add(request.NewErrParamRequired("ReplicationGroupId"))
+	}
+	if s.UserGroupIds != nil && len(s.UserGroupIds) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserGroupIds", 1))
 	}
 	if s.NodeGroupConfiguration != nil {
 		for i, v := range s.NodeGroupConfiguration {
@@ -8371,6 +10969,12 @@ func (s *CreateReplicationGroupInput) SetCacheSubnetGroupName(v string) *CreateR
 	return s
 }
 
+// SetDataTieringEnabled sets the DataTieringEnabled field's value.
+func (s *CreateReplicationGroupInput) SetDataTieringEnabled(v bool) *CreateReplicationGroupInput {
+	s.DataTieringEnabled = &v
+	return s
+}
+
 // SetEngine sets the Engine field's value.
 func (s *CreateReplicationGroupInput) SetEngine(v string) *CreateReplicationGroupInput {
 	s.Engine = &v
@@ -8383,9 +10987,27 @@ func (s *CreateReplicationGroupInput) SetEngineVersion(v string) *CreateReplicat
 	return s
 }
 
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *CreateReplicationGroupInput) SetGlobalReplicationGroupId(v string) *CreateReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
 // SetKmsKeyId sets the KmsKeyId field's value.
 func (s *CreateReplicationGroupInput) SetKmsKeyId(v string) *CreateReplicationGroupInput {
 	s.KmsKeyId = &v
+	return s
+}
+
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *CreateReplicationGroupInput) SetLogDeliveryConfigurations(v []*LogDeliveryConfigurationRequest) *CreateReplicationGroupInput {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
+// SetMultiAZEnabled sets the MultiAZEnabled field's value.
+func (s *CreateReplicationGroupInput) SetMultiAZEnabled(v bool) *CreateReplicationGroupInput {
+	s.MultiAZEnabled = &v
 	return s
 }
 
@@ -8497,6 +11119,12 @@ func (s *CreateReplicationGroupInput) SetTransitEncryptionEnabled(v bool) *Creat
 	return s
 }
 
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *CreateReplicationGroupInput) SetUserGroupIds(v []*string) *CreateReplicationGroupInput {
+	s.UserGroupIds = v
+	return s
+}
+
 type CreateReplicationGroupOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -8504,12 +11132,20 @@ type CreateReplicationGroupOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateReplicationGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateReplicationGroupOutput) GoString() string {
 	return s.String()
 }
@@ -8539,14 +11175,26 @@ type CreateSnapshotInput struct {
 	//
 	// SnapshotName is a required field
 	SnapshotName *string `type:"string" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSnapshotInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSnapshotInput) GoString() string {
 	return s.String()
 }
@@ -8588,6 +11236,12 @@ func (s *CreateSnapshotInput) SetSnapshotName(v string) *CreateSnapshotInput {
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *CreateSnapshotInput) SetTags(v []*Tag) *CreateSnapshotInput {
+	s.Tags = v
+	return s
+}
+
 type CreateSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -8596,12 +11250,20 @@ type CreateSnapshotOutput struct {
 	Snapshot *Snapshot `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSnapshotOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSnapshotOutput) GoString() string {
 	return s.String()
 }
@@ -8609,6 +11271,411 @@ func (s CreateSnapshotOutput) GoString() string {
 // SetSnapshot sets the Snapshot field's value.
 func (s *CreateSnapshotOutput) SetSnapshot(v *Snapshot) *CreateSnapshotOutput {
 	s.Snapshot = v
+	return s
+}
+
+type CreateUserGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The current supported value is Redis.
+	//
+	// Engine is a required field
+	Engine *string `type:"string" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
+
+	// The ID of the user group.
+	//
+	// UserGroupId is a required field
+	UserGroupId *string `type:"string" required:"true"`
+
+	// The list of user IDs that belong to the user group.
+	UserIds []*string `min:"1" type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateUserGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "CreateUserGroupInput"}
+	if s.Engine == nil {
+		invalidParams.Add(request.NewErrParamRequired("Engine"))
+	}
+	if s.UserGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserGroupId"))
+	}
+	if s.UserIds != nil && len(s.UserIds) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserIds", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetEngine sets the Engine field's value.
+func (s *CreateUserGroupInput) SetEngine(v string) *CreateUserGroupInput {
+	s.Engine = &v
+	return s
+}
+
+// SetTags sets the Tags field's value.
+func (s *CreateUserGroupInput) SetTags(v []*Tag) *CreateUserGroupInput {
+	s.Tags = v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *CreateUserGroupInput) SetUserGroupId(v string) *CreateUserGroupInput {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIds sets the UserIds field's value.
+func (s *CreateUserGroupInput) SetUserIds(v []*string) *CreateUserGroupInput {
+	s.UserIds = v
+	return s
+}
+
+type CreateUserGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user group.
+	ARN *string `type:"string"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// A list of updates being applied to the user group.
+	PendingChanges *UserGroupPendingChanges `type:"structure"`
+
+	// A list of replication groups that the user group can access.
+	ReplicationGroups []*string `type:"list"`
+
+	// Indicates user group status. Can be "creating", "active", "modifying", "deleting".
+	Status *string `type:"string"`
+
+	// The ID of the user group.
+	UserGroupId *string `type:"string"`
+
+	// The list of user IDs that belong to the user group.
+	UserIds []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CreateUserGroupOutput) SetARN(v string) *CreateUserGroupOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *CreateUserGroupOutput) SetEngine(v string) *CreateUserGroupOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *CreateUserGroupOutput) SetMinimumEngineVersion(v string) *CreateUserGroupOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetPendingChanges sets the PendingChanges field's value.
+func (s *CreateUserGroupOutput) SetPendingChanges(v *UserGroupPendingChanges) *CreateUserGroupOutput {
+	s.PendingChanges = v
+	return s
+}
+
+// SetReplicationGroups sets the ReplicationGroups field's value.
+func (s *CreateUserGroupOutput) SetReplicationGroups(v []*string) *CreateUserGroupOutput {
+	s.ReplicationGroups = v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *CreateUserGroupOutput) SetStatus(v string) *CreateUserGroupOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *CreateUserGroupOutput) SetUserGroupId(v string) *CreateUserGroupOutput {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIds sets the UserIds field's value.
+func (s *CreateUserGroupOutput) SetUserIds(v []*string) *CreateUserGroupOutput {
+	s.UserIds = v
+	return s
+}
+
+type CreateUserInput struct {
+	_ struct{} `type:"structure"`
+
+	// Access permissions string used for this user.
+	//
+	// AccessString is a required field
+	AccessString *string `type:"string" required:"true"`
+
+	// The current supported value is Redis.
+	//
+	// Engine is a required field
+	Engine *string `type:"string" required:"true"`
+
+	// Indicates a password is not required for this user.
+	NoPasswordRequired *bool `type:"boolean"`
+
+	// Passwords used for this user. You can create up to two passwords for each
+	// user.
+	Passwords []*string `min:"1" type:"list"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
+
+	// The ID of the user.
+	//
+	// UserId is a required field
+	UserId *string `min:"1" type:"string" required:"true"`
+
+	// The username of the user.
+	//
+	// UserName is a required field
+	UserName *string `min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateUserInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "CreateUserInput"}
+	if s.AccessString == nil {
+		invalidParams.Add(request.NewErrParamRequired("AccessString"))
+	}
+	if s.Engine == nil {
+		invalidParams.Add(request.NewErrParamRequired("Engine"))
+	}
+	if s.Passwords != nil && len(s.Passwords) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Passwords", 1))
+	}
+	if s.UserId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserId"))
+	}
+	if s.UserId != nil && len(*s.UserId) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserId", 1))
+	}
+	if s.UserName == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserName"))
+	}
+	if s.UserName != nil && len(*s.UserName) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserName", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *CreateUserInput) SetAccessString(v string) *CreateUserInput {
+	s.AccessString = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *CreateUserInput) SetEngine(v string) *CreateUserInput {
+	s.Engine = &v
+	return s
+}
+
+// SetNoPasswordRequired sets the NoPasswordRequired field's value.
+func (s *CreateUserInput) SetNoPasswordRequired(v bool) *CreateUserInput {
+	s.NoPasswordRequired = &v
+	return s
+}
+
+// SetPasswords sets the Passwords field's value.
+func (s *CreateUserInput) SetPasswords(v []*string) *CreateUserInput {
+	s.Passwords = v
+	return s
+}
+
+// SetTags sets the Tags field's value.
+func (s *CreateUserInput) SetTags(v []*Tag) *CreateUserInput {
+	s.Tags = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *CreateUserInput) SetUserId(v string) *CreateUserInput {
+	s.UserId = &v
+	return s
+}
+
+// SetUserName sets the UserName field's value.
+func (s *CreateUserInput) SetUserName(v string) *CreateUserInput {
+	s.UserName = &v
+	return s
+}
+
+type CreateUserOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user.
+	ARN *string `type:"string"`
+
+	// Access permissions string used for this user.
+	AccessString *string `type:"string"`
+
+	// Denotes whether the user requires a password to authenticate.
+	Authentication *Authentication `type:"structure"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// Indicates the user status. Can be "active", "modifying" or "deleting".
+	Status *string `type:"string"`
+
+	// Returns a list of the user group IDs the user belongs to.
+	UserGroupIds []*string `type:"list"`
+
+	// The ID of the user.
+	UserId *string `type:"string"`
+
+	// The username of the user.
+	UserName *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s CreateUserOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *CreateUserOutput) SetARN(v string) *CreateUserOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *CreateUserOutput) SetAccessString(v string) *CreateUserOutput {
+	s.AccessString = &v
+	return s
+}
+
+// SetAuthentication sets the Authentication field's value.
+func (s *CreateUserOutput) SetAuthentication(v *Authentication) *CreateUserOutput {
+	s.Authentication = v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *CreateUserOutput) SetEngine(v string) *CreateUserOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *CreateUserOutput) SetMinimumEngineVersion(v string) *CreateUserOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *CreateUserOutput) SetStatus(v string) *CreateUserOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *CreateUserOutput) SetUserGroupIds(v []*string) *CreateUserOutput {
+	s.UserGroupIds = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *CreateUserOutput) SetUserId(v string) *CreateUserOutput {
+	s.UserId = &v
+	return s
+}
+
+// SetUserName sets the UserName field's value.
+func (s *CreateUserOutput) SetUserName(v string) *CreateUserOutput {
+	s.UserName = &v
 	return s
 }
 
@@ -8623,12 +11690,20 @@ type CustomerNodeEndpoint struct {
 	Port *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CustomerNodeEndpoint) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CustomerNodeEndpoint) GoString() string {
 	return s.String()
 }
@@ -8642,6 +11717,145 @@ func (s *CustomerNodeEndpoint) SetAddress(v string) *CustomerNodeEndpoint {
 // SetPort sets the Port field's value.
 func (s *CustomerNodeEndpoint) SetPort(v int64) *CustomerNodeEndpoint {
 	s.Port = &v
+	return s
+}
+
+type DecreaseNodeGroupsInGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// Indicates that the shard reconfiguration process begins immediately. At present,
+	// the only permitted value for this parameter is true.
+	//
+	// ApplyImmediately is a required field
+	ApplyImmediately *bool `type:"boolean" required:"true"`
+
+	// If the value of NodeGroupCount is less than the current number of node groups
+	// (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required.
+	// GlobalNodeGroupsToRemove is a list of NodeGroupIds to remove from the cluster.
+	// ElastiCache for Redis will attempt to remove all node groups listed by GlobalNodeGroupsToRemove
+	// from the cluster.
+	GlobalNodeGroupsToRemove []*string `locationNameList:"GlobalNodeGroupId" type:"list"`
+
+	// If the value of NodeGroupCount is less than the current number of node groups
+	// (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required.
+	// GlobalNodeGroupsToRetain is a list of NodeGroupIds to retain from the cluster.
+	// ElastiCache for Redis will attempt to retain all node groups listed by GlobalNodeGroupsToRetain
+	// from the cluster.
+	GlobalNodeGroupsToRetain []*string `locationNameList:"GlobalNodeGroupId" type:"list"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+
+	// The number of node groups (shards) that results from the modification of
+	// the shard configuration
+	//
+	// NodeGroupCount is a required field
+	NodeGroupCount *int64 `type:"integer" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DecreaseNodeGroupsInGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DecreaseNodeGroupsInGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DecreaseNodeGroupsInGlobalReplicationGroupInput"}
+	if s.ApplyImmediately == nil {
+		invalidParams.Add(request.NewErrParamRequired("ApplyImmediately"))
+	}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+	if s.NodeGroupCount == nil {
+		invalidParams.Add(request.NewErrParamRequired("NodeGroupCount"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetApplyImmediately sets the ApplyImmediately field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) SetApplyImmediately(v bool) *DecreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.ApplyImmediately = &v
+	return s
+}
+
+// SetGlobalNodeGroupsToRemove sets the GlobalNodeGroupsToRemove field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) SetGlobalNodeGroupsToRemove(v []*string) *DecreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.GlobalNodeGroupsToRemove = v
+	return s
+}
+
+// SetGlobalNodeGroupsToRetain sets the GlobalNodeGroupsToRetain field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) SetGlobalNodeGroupsToRetain(v []*string) *DecreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.GlobalNodeGroupsToRetain = v
+	return s
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *DecreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetNodeGroupCount sets the NodeGroupCount field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupInput) SetNodeGroupCount(v int64) *DecreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.NodeGroupCount = &v
+	return s
+}
+
+type DecreaseNodeGroupsInGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DecreaseNodeGroupsInGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DecreaseNodeGroupsInGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *DecreaseNodeGroupsInGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *DecreaseNodeGroupsInGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
 	return s
 }
 
@@ -8662,8 +11876,8 @@ type DecreaseReplicaCountInput struct {
 	//
 	// The minimum number of replicas in a shard or replication group is:
 	//
-	//    * Redis (cluster mode disabled) If Multi-AZ with Automatic Failover is
-	//    enabled: 1 If Multi-AZ with Automatic Failover is not enabled: 0
+	//    * Redis (cluster mode disabled) If Multi-AZ is enabled: 1 If Multi-AZ
+	//    is not enabled: 0
 	//
 	//    * Redis (cluster mode enabled): 0 (though you will not be able to failover
 	//    to a replica if your primary node fails)
@@ -8684,12 +11898,20 @@ type DecreaseReplicaCountInput struct {
 	ReplicationGroupId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicaCountInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicaCountInput) GoString() string {
 	return s.String()
 }
@@ -8757,12 +11979,20 @@ type DecreaseReplicaCountOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicaCountOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicaCountOutput) GoString() string {
 	return s.String()
 }
@@ -8789,12 +12019,20 @@ type DeleteCacheClusterInput struct {
 	FinalSnapshotIdentifier *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheClusterInput) GoString() string {
 	return s.String()
 }
@@ -8831,12 +12069,20 @@ type DeleteCacheClusterOutput struct {
 	CacheCluster *CacheCluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheClusterOutput) GoString() string {
 	return s.String()
 }
@@ -8859,12 +12105,20 @@ type DeleteCacheParameterGroupInput struct {
 	CacheParameterGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -8892,12 +12146,20 @@ type DeleteCacheParameterGroupOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheParameterGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheParameterGroupOutput) GoString() string {
 	return s.String()
 }
@@ -8914,12 +12176,20 @@ type DeleteCacheSecurityGroupInput struct {
 	CacheSecurityGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSecurityGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSecurityGroupInput) GoString() string {
 	return s.String()
 }
@@ -8947,12 +12217,20 @@ type DeleteCacheSecurityGroupOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSecurityGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSecurityGroupOutput) GoString() string {
 	return s.String()
 }
@@ -8969,12 +12247,20 @@ type DeleteCacheSubnetGroupInput struct {
 	CacheSubnetGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -9002,14 +12288,119 @@ type DeleteCacheSubnetGroupOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteCacheSubnetGroupOutput) GoString() string {
 	return s.String()
+}
+
+type DeleteGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+
+	// The primary replication group is retained as a standalone replication group.
+	//
+	// RetainPrimaryReplicationGroup is a required field
+	RetainPrimaryReplicationGroup *bool `type:"boolean" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DeleteGlobalReplicationGroupInput"}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+	if s.RetainPrimaryReplicationGroup == nil {
+		invalidParams.Add(request.NewErrParamRequired("RetainPrimaryReplicationGroup"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *DeleteGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *DeleteGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetRetainPrimaryReplicationGroup sets the RetainPrimaryReplicationGroup field's value.
+func (s *DeleteGlobalReplicationGroupInput) SetRetainPrimaryReplicationGroup(v bool) *DeleteGlobalReplicationGroupInput {
+	s.RetainPrimaryReplicationGroup = &v
+	return s
+}
+
+type DeleteGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *DeleteGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *DeleteGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
+	return s
 }
 
 // Represents the input of a DeleteReplicationGroup operation.
@@ -9033,12 +12424,20 @@ type DeleteReplicationGroupInput struct {
 	RetainPrimaryCluster *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteReplicationGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteReplicationGroupInput) GoString() string {
 	return s.String()
 }
@@ -9081,12 +12480,20 @@ type DeleteReplicationGroupOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteReplicationGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteReplicationGroupOutput) GoString() string {
 	return s.String()
 }
@@ -9107,12 +12514,20 @@ type DeleteSnapshotInput struct {
 	SnapshotName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSnapshotInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSnapshotInput) GoString() string {
 	return s.String()
 }
@@ -9144,12 +12559,20 @@ type DeleteSnapshotOutput struct {
 	Snapshot *Snapshot `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSnapshotOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSnapshotOutput) GoString() string {
 	return s.String()
 }
@@ -9157,6 +12580,298 @@ func (s DeleteSnapshotOutput) GoString() string {
 // SetSnapshot sets the Snapshot field's value.
 func (s *DeleteSnapshotOutput) SetSnapshot(v *Snapshot) *DeleteSnapshotOutput {
 	s.Snapshot = v
+	return s
+}
+
+type DeleteUserGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ID of the user group.
+	//
+	// UserGroupId is a required field
+	UserGroupId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteUserGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DeleteUserGroupInput"}
+	if s.UserGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *DeleteUserGroupInput) SetUserGroupId(v string) *DeleteUserGroupInput {
+	s.UserGroupId = &v
+	return s
+}
+
+type DeleteUserGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user group.
+	ARN *string `type:"string"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// A list of updates being applied to the user group.
+	PendingChanges *UserGroupPendingChanges `type:"structure"`
+
+	// A list of replication groups that the user group can access.
+	ReplicationGroups []*string `type:"list"`
+
+	// Indicates user group status. Can be "creating", "active", "modifying", "deleting".
+	Status *string `type:"string"`
+
+	// The ID of the user group.
+	UserGroupId *string `type:"string"`
+
+	// The list of user IDs that belong to the user group.
+	UserIds []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *DeleteUserGroupOutput) SetARN(v string) *DeleteUserGroupOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *DeleteUserGroupOutput) SetEngine(v string) *DeleteUserGroupOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *DeleteUserGroupOutput) SetMinimumEngineVersion(v string) *DeleteUserGroupOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetPendingChanges sets the PendingChanges field's value.
+func (s *DeleteUserGroupOutput) SetPendingChanges(v *UserGroupPendingChanges) *DeleteUserGroupOutput {
+	s.PendingChanges = v
+	return s
+}
+
+// SetReplicationGroups sets the ReplicationGroups field's value.
+func (s *DeleteUserGroupOutput) SetReplicationGroups(v []*string) *DeleteUserGroupOutput {
+	s.ReplicationGroups = v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *DeleteUserGroupOutput) SetStatus(v string) *DeleteUserGroupOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *DeleteUserGroupOutput) SetUserGroupId(v string) *DeleteUserGroupOutput {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIds sets the UserIds field's value.
+func (s *DeleteUserGroupOutput) SetUserIds(v []*string) *DeleteUserGroupOutput {
+	s.UserIds = v
+	return s
+}
+
+type DeleteUserInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ID of the user.
+	//
+	// UserId is a required field
+	UserId *string `min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteUserInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DeleteUserInput"}
+	if s.UserId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserId"))
+	}
+	if s.UserId != nil && len(*s.UserId) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserId", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetUserId sets the UserId field's value.
+func (s *DeleteUserInput) SetUserId(v string) *DeleteUserInput {
+	s.UserId = &v
+	return s
+}
+
+type DeleteUserOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user.
+	ARN *string `type:"string"`
+
+	// Access permissions string used for this user.
+	AccessString *string `type:"string"`
+
+	// Denotes whether the user requires a password to authenticate.
+	Authentication *Authentication `type:"structure"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// Indicates the user status. Can be "active", "modifying" or "deleting".
+	Status *string `type:"string"`
+
+	// Returns a list of the user group IDs the user belongs to.
+	UserGroupIds []*string `type:"list"`
+
+	// The ID of the user.
+	UserId *string `type:"string"`
+
+	// The username of the user.
+	UserName *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DeleteUserOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *DeleteUserOutput) SetARN(v string) *DeleteUserOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *DeleteUserOutput) SetAccessString(v string) *DeleteUserOutput {
+	s.AccessString = &v
+	return s
+}
+
+// SetAuthentication sets the Authentication field's value.
+func (s *DeleteUserOutput) SetAuthentication(v *Authentication) *DeleteUserOutput {
+	s.Authentication = v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *DeleteUserOutput) SetEngine(v string) *DeleteUserOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *DeleteUserOutput) SetMinimumEngineVersion(v string) *DeleteUserOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *DeleteUserOutput) SetStatus(v string) *DeleteUserOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *DeleteUserOutput) SetUserGroupIds(v []*string) *DeleteUserOutput {
+	s.UserGroupIds = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *DeleteUserOutput) SetUserId(v string) *DeleteUserOutput {
+	s.UserId = &v
+	return s
+}
+
+// SetUserName sets the UserName field's value.
+func (s *DeleteUserOutput) SetUserName(v string) *DeleteUserOutput {
+	s.UserName = &v
 	return s
 }
 
@@ -9193,12 +12908,20 @@ type DescribeCacheClustersInput struct {
 	ShowCacheNodeInfo *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheClustersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheClustersInput) GoString() string {
 	return s.String()
 }
@@ -9245,12 +12968,20 @@ type DescribeCacheClustersOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheClustersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheClustersOutput) GoString() string {
 	return s.String()
 }
@@ -9273,8 +13004,8 @@ type DescribeCacheEngineVersionsInput struct {
 
 	// The name of a specific cache parameter group family to return details for.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x | redis6.2
 	//
 	// Constraints:
 	//
@@ -9312,12 +13043,20 @@ type DescribeCacheEngineVersionsInput struct {
 	MaxRecords *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheEngineVersionsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheEngineVersionsInput) GoString() string {
 	return s.String()
 }
@@ -9370,12 +13109,20 @@ type DescribeCacheEngineVersionsOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheEngineVersionsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheEngineVersionsOutput) GoString() string {
 	return s.String()
 }
@@ -9414,12 +13161,20 @@ type DescribeCacheParameterGroupsInput struct {
 	MaxRecords *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParameterGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParameterGroupsInput) GoString() string {
 	return s.String()
 }
@@ -9454,12 +13209,20 @@ type DescribeCacheParameterGroupsOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParameterGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParameterGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -9505,12 +13268,20 @@ type DescribeCacheParametersInput struct {
 	Source *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParametersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParametersInput) GoString() string {
 	return s.String()
 }
@@ -9567,12 +13338,20 @@ type DescribeCacheParametersOutput struct {
 	Parameters []*Parameter `locationNameList:"Parameter" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParametersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheParametersOutput) GoString() string {
 	return s.String()
 }
@@ -9617,12 +13396,20 @@ type DescribeCacheSecurityGroupsInput struct {
 	MaxRecords *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSecurityGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSecurityGroupsInput) GoString() string {
 	return s.String()
 }
@@ -9657,12 +13444,20 @@ type DescribeCacheSecurityGroupsOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSecurityGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSecurityGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -9701,12 +13496,20 @@ type DescribeCacheSubnetGroupsInput struct {
 	MaxRecords *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSubnetGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSubnetGroupsInput) GoString() string {
 	return s.String()
 }
@@ -9741,12 +13544,20 @@ type DescribeCacheSubnetGroupsOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSubnetGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeCacheSubnetGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -9769,8 +13580,8 @@ type DescribeEngineDefaultParametersInput struct {
 
 	// The name of the cache parameter group family.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.x | redis6.2
 	//
 	// CacheParameterGroupFamily is a required field
 	CacheParameterGroupFamily *string `type:"string" required:"true"`
@@ -9790,12 +13601,20 @@ type DescribeEngineDefaultParametersInput struct {
 	MaxRecords *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEngineDefaultParametersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEngineDefaultParametersInput) GoString() string {
 	return s.String()
 }
@@ -9838,12 +13657,20 @@ type DescribeEngineDefaultParametersOutput struct {
 	EngineDefaults *EngineDefaults `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEngineDefaultParametersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEngineDefaultParametersOutput) GoString() string {
 	return s.String()
 }
@@ -9896,12 +13723,20 @@ type DescribeEventsInput struct {
 	StartTime *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsInput) GoString() string {
 	return s.String()
 }
@@ -9960,12 +13795,20 @@ type DescribeEventsOutput struct {
 	Marker *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsOutput) GoString() string {
 	return s.String()
 }
@@ -9978,6 +13821,111 @@ func (s *DescribeEventsOutput) SetEvents(v []*Event) *DescribeEventsOutput {
 
 // SetMarker sets the Marker field's value.
 func (s *DescribeEventsOutput) SetMarker(v string) *DescribeEventsOutput {
+	s.Marker = &v
+	return s
+}
+
+type DescribeGlobalReplicationGroupsInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Global datastore
+	GlobalReplicationGroupId *string `type:"string"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	Marker *string `type:"string"`
+
+	// The maximum number of records to include in the response. If more records
+	// exist than the specified MaxRecords value, a marker is included in the response
+	// so that the remaining results can be retrieved.
+	MaxRecords *int64 `type:"integer"`
+
+	// Returns the list of members that comprise the Global datastore.
+	ShowMemberInfo *bool `type:"boolean"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeGlobalReplicationGroupsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeGlobalReplicationGroupsInput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *DescribeGlobalReplicationGroupsInput) SetGlobalReplicationGroupId(v string) *DescribeGlobalReplicationGroupsInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeGlobalReplicationGroupsInput) SetMarker(v string) *DescribeGlobalReplicationGroupsInput {
+	s.Marker = &v
+	return s
+}
+
+// SetMaxRecords sets the MaxRecords field's value.
+func (s *DescribeGlobalReplicationGroupsInput) SetMaxRecords(v int64) *DescribeGlobalReplicationGroupsInput {
+	s.MaxRecords = &v
+	return s
+}
+
+// SetShowMemberInfo sets the ShowMemberInfo field's value.
+func (s *DescribeGlobalReplicationGroupsInput) SetShowMemberInfo(v bool) *DescribeGlobalReplicationGroupsInput {
+	s.ShowMemberInfo = &v
+	return s
+}
+
+type DescribeGlobalReplicationGroupsOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Indicates the slot configuration and global identifier for each slice group.
+	GlobalReplicationGroups []*GlobalReplicationGroup `locationNameList:"GlobalReplicationGroup" type:"list"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	// >
+	Marker *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeGlobalReplicationGroupsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeGlobalReplicationGroupsOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroups sets the GlobalReplicationGroups field's value.
+func (s *DescribeGlobalReplicationGroupsOutput) SetGlobalReplicationGroups(v []*GlobalReplicationGroup) *DescribeGlobalReplicationGroupsOutput {
+	s.GlobalReplicationGroups = v
+	return s
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeGlobalReplicationGroupsOutput) SetMarker(v string) *DescribeGlobalReplicationGroupsOutput {
 	s.Marker = &v
 	return s
 }
@@ -10008,12 +13956,20 @@ type DescribeReplicationGroupsInput struct {
 	ReplicationGroupId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReplicationGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReplicationGroupsInput) GoString() string {
 	return s.String()
 }
@@ -10048,12 +14004,20 @@ type DescribeReplicationGroupsOutput struct {
 	ReplicationGroups []*ReplicationGroup `locationNameList:"ReplicationGroup" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReplicationGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReplicationGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -10081,25 +14045,44 @@ type DescribeReservedCacheNodesInput struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types: (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -10136,7 +14119,8 @@ type DescribeReservedCacheNodesInput struct {
 	// The offering type filter value. Use this parameter to show only the available
 	// offerings matching the specified offering type.
 	//
-	// Valid values: "Light Utilization"|"Medium Utilization"|"Heavy Utilization"
+	// Valid values: "Light Utilization"|"Medium Utilization"|"Heavy Utilization"|"All
+	// Upfront"|"Partial Upfront"| "No Upfront"
 	OfferingType *string `type:"string"`
 
 	// The product description filter value. Use this parameter to show only those
@@ -10152,12 +14136,20 @@ type DescribeReservedCacheNodesInput struct {
 	ReservedCacheNodesOfferingId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesInput) GoString() string {
 	return s.String()
 }
@@ -10221,25 +14213,44 @@ type DescribeReservedCacheNodesOfferingsInput struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types: (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward) cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge, cache.m6g.4xlarge,
+	//    cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge For region availability,
+	//    see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -10277,6 +14288,7 @@ type DescribeReservedCacheNodesOfferingsInput struct {
 	// offerings matching the specified offering type.
 	//
 	// Valid Values: "Light Utilization"|"Medium Utilization"|"Heavy Utilization"
+	// |"All Upfront"|"Partial Upfront"| "No Upfront"
 	OfferingType *string `type:"string"`
 
 	// The product description filter value. Use this parameter to show only the
@@ -10290,12 +14302,20 @@ type DescribeReservedCacheNodesOfferingsInput struct {
 	ReservedCacheNodesOfferingId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOfferingsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOfferingsInput) GoString() string {
 	return s.String()
 }
@@ -10354,12 +14374,20 @@ type DescribeReservedCacheNodesOfferingsOutput struct {
 	ReservedCacheNodesOfferings []*ReservedCacheNodesOffering `locationNameList:"ReservedCacheNodesOffering" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOfferingsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOfferingsOutput) GoString() string {
 	return s.String()
 }
@@ -10388,12 +14416,20 @@ type DescribeReservedCacheNodesOutput struct {
 	ReservedCacheNodes []*ReservedCacheNode `locationNameList:"ReservedCacheNode" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeReservedCacheNodesOutput) GoString() string {
 	return s.String()
 }
@@ -10425,15 +14461,23 @@ type DescribeServiceUpdatesInput struct {
 	ServiceUpdateName *string `type:"string"`
 
 	// The status of the service update
-	ServiceUpdateStatus []*string `type:"list"`
+	ServiceUpdateStatus []*string `type:"list" enum:"ServiceUpdateStatus"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeServiceUpdatesInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeServiceUpdatesInput) GoString() string {
 	return s.String()
 }
@@ -10474,12 +14518,20 @@ type DescribeServiceUpdatesOutput struct {
 	ServiceUpdates []*ServiceUpdate `locationNameList:"ServiceUpdate" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeServiceUpdatesOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeServiceUpdatesOutput) GoString() string {
 	return s.String()
 }
@@ -10537,12 +14589,20 @@ type DescribeSnapshotsInput struct {
 	SnapshotSource *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSnapshotsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSnapshotsInput) GoString() string {
 	return s.String()
 }
@@ -10603,12 +14663,20 @@ type DescribeSnapshotsOutput struct {
 	Snapshots []*Snapshot `locationNameList:"Snapshot" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSnapshotsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSnapshotsOutput) GoString() string {
 	return s.String()
 }
@@ -10649,7 +14717,7 @@ type DescribeUpdateActionsInput struct {
 	ServiceUpdateName *string `type:"string"`
 
 	// The status of the service update
-	ServiceUpdateStatus []*string `type:"list"`
+	ServiceUpdateStatus []*string `type:"list" enum:"ServiceUpdateStatus"`
 
 	// The range of time specified to search for service updates that are in available
 	// status
@@ -10659,15 +14727,23 @@ type DescribeUpdateActionsInput struct {
 	ShowNodeLevelUpdateStatus *bool `type:"boolean"`
 
 	// The status of the update action.
-	UpdateActionStatus []*string `type:"list"`
+	UpdateActionStatus []*string `type:"list" enum:"UpdateActionStatus"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeUpdateActionsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeUpdateActionsInput) GoString() string {
 	return s.String()
 }
@@ -10744,12 +14820,20 @@ type DescribeUpdateActionsOutput struct {
 	UpdateActions []*UpdateAction `locationNameList:"UpdateAction" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeUpdateActionsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeUpdateActionsOutput) GoString() string {
 	return s.String()
 }
@@ -10766,6 +14850,395 @@ func (s *DescribeUpdateActionsOutput) SetUpdateActions(v []*UpdateAction) *Descr
 	return s
 }
 
+type DescribeUserGroupsInput struct {
+	_ struct{} `type:"structure"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	// >
+	Marker *string `type:"string"`
+
+	// The maximum number of records to include in the response. If more records
+	// exist than the specified MaxRecords value, a marker is included in the response
+	// so that the remaining results can be retrieved.
+	MaxRecords *int64 `type:"integer"`
+
+	// The ID of the user group.
+	UserGroupId *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUserGroupsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUserGroupsInput) GoString() string {
+	return s.String()
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeUserGroupsInput) SetMarker(v string) *DescribeUserGroupsInput {
+	s.Marker = &v
+	return s
+}
+
+// SetMaxRecords sets the MaxRecords field's value.
+func (s *DescribeUserGroupsInput) SetMaxRecords(v int64) *DescribeUserGroupsInput {
+	s.MaxRecords = &v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *DescribeUserGroupsInput) SetUserGroupId(v string) *DescribeUserGroupsInput {
+	s.UserGroupId = &v
+	return s
+}
+
+type DescribeUserGroupsOutput struct {
+	_ struct{} `type:"structure"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	// >
+	Marker *string `type:"string"`
+
+	// Returns a list of user groups.
+	UserGroups []*UserGroup `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUserGroupsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUserGroupsOutput) GoString() string {
+	return s.String()
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeUserGroupsOutput) SetMarker(v string) *DescribeUserGroupsOutput {
+	s.Marker = &v
+	return s
+}
+
+// SetUserGroups sets the UserGroups field's value.
+func (s *DescribeUserGroupsOutput) SetUserGroups(v []*UserGroup) *DescribeUserGroupsOutput {
+	s.UserGroups = v
+	return s
+}
+
+type DescribeUsersInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Redis engine.
+	Engine *string `type:"string"`
+
+	// Filter to determine the list of User IDs to return.
+	Filters []*Filter `type:"list"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	// >
+	Marker *string `type:"string"`
+
+	// The maximum number of records to include in the response. If more records
+	// exist than the specified MaxRecords value, a marker is included in the response
+	// so that the remaining results can be retrieved.
+	MaxRecords *int64 `type:"integer"`
+
+	// The ID of the user.
+	UserId *string `min:"1" type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUsersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUsersInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeUsersInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DescribeUsersInput"}
+	if s.UserId != nil && len(*s.UserId) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserId", 1))
+	}
+	if s.Filters != nil {
+		for i, v := range s.Filters {
+			if v == nil {
+				continue
+			}
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Filters", i), err.(request.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetEngine sets the Engine field's value.
+func (s *DescribeUsersInput) SetEngine(v string) *DescribeUsersInput {
+	s.Engine = &v
+	return s
+}
+
+// SetFilters sets the Filters field's value.
+func (s *DescribeUsersInput) SetFilters(v []*Filter) *DescribeUsersInput {
+	s.Filters = v
+	return s
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeUsersInput) SetMarker(v string) *DescribeUsersInput {
+	s.Marker = &v
+	return s
+}
+
+// SetMaxRecords sets the MaxRecords field's value.
+func (s *DescribeUsersInput) SetMaxRecords(v int64) *DescribeUsersInput {
+	s.MaxRecords = &v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *DescribeUsersInput) SetUserId(v string) *DescribeUsersInput {
+	s.UserId = &v
+	return s
+}
+
+type DescribeUsersOutput struct {
+	_ struct{} `type:"structure"`
+
+	// An optional marker returned from a prior request. Use this marker for pagination
+	// of results from this operation. If this parameter is specified, the response
+	// includes only records beyond the marker, up to the value specified by MaxRecords.
+	// >
+	Marker *string `type:"string"`
+
+	// A list of users.
+	Users []*User `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUsersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DescribeUsersOutput) GoString() string {
+	return s.String()
+}
+
+// SetMarker sets the Marker field's value.
+func (s *DescribeUsersOutput) SetMarker(v string) *DescribeUsersOutput {
+	s.Marker = &v
+	return s
+}
+
+// SetUsers sets the Users field's value.
+func (s *DescribeUsersOutput) SetUsers(v []*User) *DescribeUsersOutput {
+	s.Users = v
+	return s
+}
+
+// Configuration details of either a CloudWatch Logs destination or Kinesis
+// Data Firehose destination.
+type DestinationDetails struct {
+	_ struct{} `type:"structure"`
+
+	// The configuration details of the CloudWatch Logs destination.
+	CloudWatchLogsDetails *CloudWatchLogsDestinationDetails `type:"structure"`
+
+	// The configuration details of the Kinesis Data Firehose destination.
+	KinesisFirehoseDetails *KinesisFirehoseDestinationDetails `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DestinationDetails) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DestinationDetails) GoString() string {
+	return s.String()
+}
+
+// SetCloudWatchLogsDetails sets the CloudWatchLogsDetails field's value.
+func (s *DestinationDetails) SetCloudWatchLogsDetails(v *CloudWatchLogsDestinationDetails) *DestinationDetails {
+	s.CloudWatchLogsDetails = v
+	return s
+}
+
+// SetKinesisFirehoseDetails sets the KinesisFirehoseDetails field's value.
+func (s *DestinationDetails) SetKinesisFirehoseDetails(v *KinesisFirehoseDestinationDetails) *DestinationDetails {
+	s.KinesisFirehoseDetails = v
+	return s
+}
+
+type DisassociateGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+
+	// The name of the secondary cluster you wish to remove from the Global datastore
+	//
+	// ReplicationGroupId is a required field
+	ReplicationGroupId *string `type:"string" required:"true"`
+
+	// The Amazon region of secondary cluster you wish to remove from the Global
+	// datastore
+	//
+	// ReplicationGroupRegion is a required field
+	ReplicationGroupRegion *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DisassociateGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DisassociateGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DisassociateGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DisassociateGlobalReplicationGroupInput"}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+	if s.ReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("ReplicationGroupId"))
+	}
+	if s.ReplicationGroupRegion == nil {
+		invalidParams.Add(request.NewErrParamRequired("ReplicationGroupRegion"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *DisassociateGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *DisassociateGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetReplicationGroupId sets the ReplicationGroupId field's value.
+func (s *DisassociateGlobalReplicationGroupInput) SetReplicationGroupId(v string) *DisassociateGlobalReplicationGroupInput {
+	s.ReplicationGroupId = &v
+	return s
+}
+
+// SetReplicationGroupRegion sets the ReplicationGroupRegion field's value.
+func (s *DisassociateGlobalReplicationGroupInput) SetReplicationGroupRegion(v string) *DisassociateGlobalReplicationGroupInput {
+	s.ReplicationGroupRegion = &v
+	return s
+}
+
+type DisassociateGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DisassociateGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s DisassociateGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *DisassociateGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *DisassociateGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
+	return s
+}
+
 // Provides ownership and status information for an Amazon EC2 security group.
 type EC2SecurityGroup struct {
 	_ struct{} `type:"structure"`
@@ -10773,19 +15246,27 @@ type EC2SecurityGroup struct {
 	// The name of the Amazon EC2 security group.
 	EC2SecurityGroupName *string `type:"string"`
 
-	// The AWS account ID of the Amazon EC2 security group owner.
+	// The Amazon account ID of the Amazon EC2 security group owner.
 	EC2SecurityGroupOwnerId *string `type:"string"`
 
 	// The status of the Amazon EC2 security group.
 	Status *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s EC2SecurityGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s EC2SecurityGroup) GoString() string {
 	return s.String()
 }
@@ -10820,12 +15301,20 @@ type Endpoint struct {
 	Port *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Endpoint) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Endpoint) GoString() string {
 	return s.String()
 }
@@ -10853,8 +15342,8 @@ type EngineDefaults struct {
 	// Specifies the name of the cache parameter group family to which the engine
 	// default parameters apply.
 	//
-	// Valid values are: memcached1.4 | memcached1.5 | redis2.6 | redis2.8 | redis3.2
-	// | redis4.0 | redis5.0 |
+	// Valid values are: memcached1.4 | memcached1.5 | memcached1.6 | redis2.6 |
+	// redis2.8 | redis3.2 | redis4.0 | redis5.0 | redis6.0 | redis6.x
 	CacheParameterGroupFamily *string `type:"string"`
 
 	// Provides an identifier to allow retrieval of paginated results.
@@ -10864,12 +15353,20 @@ type EngineDefaults struct {
 	Parameters []*Parameter `locationNameList:"Parameter" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s EngineDefaults) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s EngineDefaults) GoString() string {
 	return s.String()
 }
@@ -10919,12 +15416,20 @@ type Event struct {
 	SourceType *string `type:"string" enum:"SourceType"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Event) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Event) GoString() string {
 	return s.String()
 }
@@ -10950,6 +15455,628 @@ func (s *Event) SetSourceIdentifier(v string) *Event {
 // SetSourceType sets the SourceType field's value.
 func (s *Event) SetSourceType(v string) *Event {
 	s.SourceType = &v
+	return s
+}
+
+type FailoverGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+
+	// The Amazon region of the primary cluster of the Global datastore
+	//
+	// PrimaryRegion is a required field
+	PrimaryRegion *string `type:"string" required:"true"`
+
+	// The name of the primary replication group
+	//
+	// PrimaryReplicationGroupId is a required field
+	PrimaryReplicationGroupId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s FailoverGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s FailoverGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *FailoverGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "FailoverGlobalReplicationGroupInput"}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+	if s.PrimaryRegion == nil {
+		invalidParams.Add(request.NewErrParamRequired("PrimaryRegion"))
+	}
+	if s.PrimaryReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("PrimaryReplicationGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *FailoverGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *FailoverGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetPrimaryRegion sets the PrimaryRegion field's value.
+func (s *FailoverGlobalReplicationGroupInput) SetPrimaryRegion(v string) *FailoverGlobalReplicationGroupInput {
+	s.PrimaryRegion = &v
+	return s
+}
+
+// SetPrimaryReplicationGroupId sets the PrimaryReplicationGroupId field's value.
+func (s *FailoverGlobalReplicationGroupInput) SetPrimaryReplicationGroupId(v string) *FailoverGlobalReplicationGroupInput {
+	s.PrimaryReplicationGroupId = &v
+	return s
+}
+
+type FailoverGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s FailoverGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s FailoverGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *FailoverGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *FailoverGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
+	return s
+}
+
+// Used to streamline results of a search based on the property being filtered.
+type Filter struct {
+	_ struct{} `type:"structure"`
+
+	// The property being filtered. For example, UserId.
+	//
+	// Name is a required field
+	Name *string `type:"string" required:"true"`
+
+	// The property values to filter on. For example, "user-123".
+	//
+	// Values is a required field
+	Values []*string `min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s Filter) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s Filter) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *Filter) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "Filter"}
+	if s.Name == nil {
+		invalidParams.Add(request.NewErrParamRequired("Name"))
+	}
+	if s.Values == nil {
+		invalidParams.Add(request.NewErrParamRequired("Values"))
+	}
+	if s.Values != nil && len(s.Values) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Values", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetName sets the Name field's value.
+func (s *Filter) SetName(v string) *Filter {
+	s.Name = &v
+	return s
+}
+
+// SetValues sets the Values field's value.
+func (s *Filter) SetValues(v []*string) *Filter {
+	s.Values = v
+	return s
+}
+
+// Indicates the slot configuration and global identifier for a slice group.
+type GlobalNodeGroup struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the global node group
+	GlobalNodeGroupId *string `type:"string"`
+
+	// The keyspace for this node group
+	Slots *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalNodeGroup) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalNodeGroup) GoString() string {
+	return s.String()
+}
+
+// SetGlobalNodeGroupId sets the GlobalNodeGroupId field's value.
+func (s *GlobalNodeGroup) SetGlobalNodeGroupId(v string) *GlobalNodeGroup {
+	s.GlobalNodeGroupId = &v
+	return s
+}
+
+// SetSlots sets the Slots field's value.
+func (s *GlobalNodeGroup) SetSlots(v string) *GlobalNodeGroup {
+	s.Slots = &v
+	return s
+}
+
+// Consists of a primary cluster that accepts writes and an associated secondary
+// cluster that resides in a different Amazon region. The secondary cluster
+// accepts only reads. The primary cluster automatically replicates updates
+// to the secondary cluster.
+//
+//   - The GlobalReplicationGroupIdSuffix represents the name of the Global
+//     datastore, which is what you use to associate a secondary cluster.
+type GlobalReplicationGroup struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN (Amazon Resource Name) of the global replication group.
+	ARN *string `type:"string"`
+
+	// A flag that enables encryption at rest when set to true.
+	//
+	// You cannot modify the value of AtRestEncryptionEnabled after the replication
+	// group is created. To enable encryption at rest on a replication group you
+	// must set AtRestEncryptionEnabled to true when you create the replication
+	// group.
+	//
+	// Required: Only available when creating a replication group in an Amazon VPC
+	// using redis version 3.2.6, 4.x or later.
+	AtRestEncryptionEnabled *bool `type:"boolean"`
+
+	// A flag that enables using an AuthToken (password) when issuing Redis commands.
+	//
+	// Default: false
+	AuthTokenEnabled *bool `type:"boolean"`
+
+	// The cache node type of the Global datastore
+	CacheNodeType *string `type:"string"`
+
+	// A flag that indicates whether the Global datastore is cluster enabled.
+	ClusterEnabled *bool `type:"boolean"`
+
+	// The Elasticache engine. For Redis only.
+	Engine *string `type:"string"`
+
+	// The Elasticache Redis engine version.
+	EngineVersion *string `type:"string"`
+
+	// Indicates the slot configuration and global identifier for each slice group.
+	GlobalNodeGroups []*GlobalNodeGroup `locationNameList:"GlobalNodeGroup" type:"list"`
+
+	// The optional description of the Global datastore
+	GlobalReplicationGroupDescription *string `type:"string"`
+
+	// The name of the Global datastore
+	GlobalReplicationGroupId *string `type:"string"`
+
+	// The replication groups that comprise the Global datastore.
+	Members []*GlobalReplicationGroupMember `locationNameList:"GlobalReplicationGroupMember" type:"list"`
+
+	// The status of the Global datastore
+	Status *string `type:"string"`
+
+	// A flag that enables in-transit encryption when set to true. You cannot modify
+	// the value of TransitEncryptionEnabled after the cluster is created. To enable
+	// in-transit encryption on a cluster you must set TransitEncryptionEnabled
+	// to true when you create a cluster.
+	//
+	// Required: Only available when creating a replication group in an Amazon VPC
+	// using redis version 3.2.6, 4.x or later.
+	TransitEncryptionEnabled *bool `type:"boolean"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroup) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroup) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *GlobalReplicationGroup) SetARN(v string) *GlobalReplicationGroup {
+	s.ARN = &v
+	return s
+}
+
+// SetAtRestEncryptionEnabled sets the AtRestEncryptionEnabled field's value.
+func (s *GlobalReplicationGroup) SetAtRestEncryptionEnabled(v bool) *GlobalReplicationGroup {
+	s.AtRestEncryptionEnabled = &v
+	return s
+}
+
+// SetAuthTokenEnabled sets the AuthTokenEnabled field's value.
+func (s *GlobalReplicationGroup) SetAuthTokenEnabled(v bool) *GlobalReplicationGroup {
+	s.AuthTokenEnabled = &v
+	return s
+}
+
+// SetCacheNodeType sets the CacheNodeType field's value.
+func (s *GlobalReplicationGroup) SetCacheNodeType(v string) *GlobalReplicationGroup {
+	s.CacheNodeType = &v
+	return s
+}
+
+// SetClusterEnabled sets the ClusterEnabled field's value.
+func (s *GlobalReplicationGroup) SetClusterEnabled(v bool) *GlobalReplicationGroup {
+	s.ClusterEnabled = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *GlobalReplicationGroup) SetEngine(v string) *GlobalReplicationGroup {
+	s.Engine = &v
+	return s
+}
+
+// SetEngineVersion sets the EngineVersion field's value.
+func (s *GlobalReplicationGroup) SetEngineVersion(v string) *GlobalReplicationGroup {
+	s.EngineVersion = &v
+	return s
+}
+
+// SetGlobalNodeGroups sets the GlobalNodeGroups field's value.
+func (s *GlobalReplicationGroup) SetGlobalNodeGroups(v []*GlobalNodeGroup) *GlobalReplicationGroup {
+	s.GlobalNodeGroups = v
+	return s
+}
+
+// SetGlobalReplicationGroupDescription sets the GlobalReplicationGroupDescription field's value.
+func (s *GlobalReplicationGroup) SetGlobalReplicationGroupDescription(v string) *GlobalReplicationGroup {
+	s.GlobalReplicationGroupDescription = &v
+	return s
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *GlobalReplicationGroup) SetGlobalReplicationGroupId(v string) *GlobalReplicationGroup {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetMembers sets the Members field's value.
+func (s *GlobalReplicationGroup) SetMembers(v []*GlobalReplicationGroupMember) *GlobalReplicationGroup {
+	s.Members = v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *GlobalReplicationGroup) SetStatus(v string) *GlobalReplicationGroup {
+	s.Status = &v
+	return s
+}
+
+// SetTransitEncryptionEnabled sets the TransitEncryptionEnabled field's value.
+func (s *GlobalReplicationGroup) SetTransitEncryptionEnabled(v bool) *GlobalReplicationGroup {
+	s.TransitEncryptionEnabled = &v
+	return s
+}
+
+// The name of the Global datastore and role of this replication group in the
+// Global datastore.
+type GlobalReplicationGroupInfo struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Global datastore
+	GlobalReplicationGroupId *string `type:"string"`
+
+	// The role of the replication group in a Global datastore. Can be primary or
+	// secondary.
+	GlobalReplicationGroupMemberRole *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroupInfo) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroupInfo) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *GlobalReplicationGroupInfo) SetGlobalReplicationGroupId(v string) *GlobalReplicationGroupInfo {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetGlobalReplicationGroupMemberRole sets the GlobalReplicationGroupMemberRole field's value.
+func (s *GlobalReplicationGroupInfo) SetGlobalReplicationGroupMemberRole(v string) *GlobalReplicationGroupInfo {
+	s.GlobalReplicationGroupMemberRole = &v
+	return s
+}
+
+// A member of a Global datastore. It contains the Replication Group Id, the
+// Amazon region and the role of the replication group.
+type GlobalReplicationGroupMember struct {
+	_ struct{} `type:"structure"`
+
+	// Indicates whether automatic failover is enabled for the replication group.
+	AutomaticFailover *string `type:"string" enum:"AutomaticFailoverStatus"`
+
+	// The replication group id of the Global datastore member.
+	ReplicationGroupId *string `type:"string"`
+
+	// The Amazon region of the Global datastore member.
+	ReplicationGroupRegion *string `type:"string"`
+
+	// Indicates the role of the replication group, primary or secondary.
+	Role *string `type:"string"`
+
+	// The status of the membership of the replication group.
+	Status *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroupMember) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s GlobalReplicationGroupMember) GoString() string {
+	return s.String()
+}
+
+// SetAutomaticFailover sets the AutomaticFailover field's value.
+func (s *GlobalReplicationGroupMember) SetAutomaticFailover(v string) *GlobalReplicationGroupMember {
+	s.AutomaticFailover = &v
+	return s
+}
+
+// SetReplicationGroupId sets the ReplicationGroupId field's value.
+func (s *GlobalReplicationGroupMember) SetReplicationGroupId(v string) *GlobalReplicationGroupMember {
+	s.ReplicationGroupId = &v
+	return s
+}
+
+// SetReplicationGroupRegion sets the ReplicationGroupRegion field's value.
+func (s *GlobalReplicationGroupMember) SetReplicationGroupRegion(v string) *GlobalReplicationGroupMember {
+	s.ReplicationGroupRegion = &v
+	return s
+}
+
+// SetRole sets the Role field's value.
+func (s *GlobalReplicationGroupMember) SetRole(v string) *GlobalReplicationGroupMember {
+	s.Role = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *GlobalReplicationGroupMember) SetStatus(v string) *GlobalReplicationGroupMember {
+	s.Status = &v
+	return s
+}
+
+type IncreaseNodeGroupsInGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// Indicates that the process begins immediately. At present, the only permitted
+	// value for this parameter is true.
+	//
+	// ApplyImmediately is a required field
+	ApplyImmediately *bool `type:"boolean" required:"true"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+
+	// The number of node groups you wish to add
+	//
+	// NodeGroupCount is a required field
+	NodeGroupCount *int64 `type:"integer" required:"true"`
+
+	// Describes the replication group IDs, the Amazon regions where they are stored
+	// and the shard configuration for each that comprise the Global datastore
+	RegionalConfigurations []*RegionalConfiguration `locationNameList:"RegionalConfiguration" type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s IncreaseNodeGroupsInGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s IncreaseNodeGroupsInGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "IncreaseNodeGroupsInGlobalReplicationGroupInput"}
+	if s.ApplyImmediately == nil {
+		invalidParams.Add(request.NewErrParamRequired("ApplyImmediately"))
+	}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+	if s.NodeGroupCount == nil {
+		invalidParams.Add(request.NewErrParamRequired("NodeGroupCount"))
+	}
+	if s.RegionalConfigurations != nil {
+		for i, v := range s.RegionalConfigurations {
+			if v == nil {
+				continue
+			}
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "RegionalConfigurations", i), err.(request.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetApplyImmediately sets the ApplyImmediately field's value.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupInput) SetApplyImmediately(v bool) *IncreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.ApplyImmediately = &v
+	return s
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *IncreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+// SetNodeGroupCount sets the NodeGroupCount field's value.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupInput) SetNodeGroupCount(v int64) *IncreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.NodeGroupCount = &v
+	return s
+}
+
+// SetRegionalConfigurations sets the RegionalConfigurations field's value.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupInput) SetRegionalConfigurations(v []*RegionalConfiguration) *IncreaseNodeGroupsInGlobalReplicationGroupInput {
+	s.RegionalConfigurations = v
+	return s
+}
+
+type IncreaseNodeGroupsInGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s IncreaseNodeGroupsInGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s IncreaseNodeGroupsInGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *IncreaseNodeGroupsInGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *IncreaseNodeGroupsInGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
 	return s
 }
 
@@ -10980,12 +16107,20 @@ type IncreaseReplicaCountInput struct {
 	ReplicationGroupId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicaCountInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicaCountInput) GoString() string {
 	return s.String()
 }
@@ -11047,12 +16182,20 @@ type IncreaseReplicaCountOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicaCountOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicaCountOutput) GoString() string {
 	return s.String()
 }
@@ -11060,6 +16203,38 @@ func (s IncreaseReplicaCountOutput) GoString() string {
 // SetReplicationGroup sets the ReplicationGroup field's value.
 func (s *IncreaseReplicaCountOutput) SetReplicationGroup(v *ReplicationGroup) *IncreaseReplicaCountOutput {
 	s.ReplicationGroup = v
+	return s
+}
+
+// The configuration details of the Kinesis Data Firehose destination.
+type KinesisFirehoseDestinationDetails struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Kinesis Data Firehose delivery stream.
+	DeliveryStream *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s KinesisFirehoseDestinationDetails) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s KinesisFirehoseDestinationDetails) GoString() string {
+	return s.String()
+}
+
+// SetDeliveryStream sets the DeliveryStream field's value.
+func (s *KinesisFirehoseDestinationDetails) SetDeliveryStream(v string) *KinesisFirehoseDestinationDetails {
+	s.DeliveryStream = &v
 	return s
 }
 
@@ -11083,12 +16258,20 @@ type ListAllowedNodeTypeModificationsInput struct {
 	ReplicationGroupId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListAllowedNodeTypeModificationsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListAllowedNodeTypeModificationsInput) GoString() string {
 	return s.String()
 }
@@ -11111,11 +16294,9 @@ type ListAllowedNodeTypeModificationsOutput struct {
 	_ struct{} `type:"structure"`
 
 	// A string list, each element of which specifies a cache node type which you
-	// can use to scale your cluster or replication group.
-	//
-	// When scaling down on a Redis cluster or replication group using ModifyCacheCluster
-	// or ModifyReplicationGroup, use a value from this list for the CacheNodeType
-	// parameter.
+	// can use to scale your cluster or replication group. When scaling down a Redis
+	// cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+	// use a value from this list for the CacheNodeType parameter.
 	ScaleDownModifications []*string `type:"list"`
 
 	// A string list, each element of which specifies a cache node type which you
@@ -11127,12 +16308,20 @@ type ListAllowedNodeTypeModificationsOutput struct {
 	ScaleUpModifications []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListAllowedNodeTypeModificationsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListAllowedNodeTypeModificationsOutput) GoString() string {
 	return s.String()
 }
@@ -11157,19 +16346,27 @@ type ListTagsForResourceInput struct {
 	// of tags, for example arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster
 	// or arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot.
 	//
-	// For more information about ARNs, see Amazon Resource Names (ARNs) and AWS
-	// Service Namespaces (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+	// For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon
+	// Web Services Service Namespaces (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 	//
 	// ResourceName is a required field
 	ResourceName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceInput) GoString() string {
 	return s.String()
 }
@@ -11190,6 +16387,154 @@ func (s *ListTagsForResourceInput) Validate() error {
 // SetResourceName sets the ResourceName field's value.
 func (s *ListTagsForResourceInput) SetResourceName(v string) *ListTagsForResourceInput {
 	s.ResourceName = &v
+	return s
+}
+
+// Returns the destination, format and type of the logs.
+type LogDeliveryConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// Configuration details of either a CloudWatch Logs destination or Kinesis
+	// Data Firehose destination.
+	DestinationDetails *DestinationDetails `type:"structure"`
+
+	// Returns the destination type, either cloudwatch-logs or kinesis-firehose.
+	DestinationType *string `type:"string" enum:"DestinationType"`
+
+	// Returns the log format, either JSON or TEXT.
+	LogFormat *string `type:"string" enum:"LogFormat"`
+
+	// Refers to slow-log (https://redis.io/commands/slowlog) or engine-log.
+	LogType *string `type:"string" enum:"LogType"`
+
+	// Returns an error message for the log delivery configuration.
+	Message *string `type:"string"`
+
+	// Returns the log delivery configuration status. Values are one of enabling
+	// | disabling | modifying | active | error
+	Status *string `type:"string" enum:"LogDeliveryConfigurationStatus"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s LogDeliveryConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s LogDeliveryConfiguration) GoString() string {
+	return s.String()
+}
+
+// SetDestinationDetails sets the DestinationDetails field's value.
+func (s *LogDeliveryConfiguration) SetDestinationDetails(v *DestinationDetails) *LogDeliveryConfiguration {
+	s.DestinationDetails = v
+	return s
+}
+
+// SetDestinationType sets the DestinationType field's value.
+func (s *LogDeliveryConfiguration) SetDestinationType(v string) *LogDeliveryConfiguration {
+	s.DestinationType = &v
+	return s
+}
+
+// SetLogFormat sets the LogFormat field's value.
+func (s *LogDeliveryConfiguration) SetLogFormat(v string) *LogDeliveryConfiguration {
+	s.LogFormat = &v
+	return s
+}
+
+// SetLogType sets the LogType field's value.
+func (s *LogDeliveryConfiguration) SetLogType(v string) *LogDeliveryConfiguration {
+	s.LogType = &v
+	return s
+}
+
+// SetMessage sets the Message field's value.
+func (s *LogDeliveryConfiguration) SetMessage(v string) *LogDeliveryConfiguration {
+	s.Message = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *LogDeliveryConfiguration) SetStatus(v string) *LogDeliveryConfiguration {
+	s.Status = &v
+	return s
+}
+
+// Specifies the destination, format and type of the logs.
+type LogDeliveryConfigurationRequest struct {
+	_ struct{} `type:"structure"`
+
+	// Configuration details of either a CloudWatch Logs destination or Kinesis
+	// Data Firehose destination.
+	DestinationDetails *DestinationDetails `type:"structure"`
+
+	// Specify either cloudwatch-logs or kinesis-firehose as the destination type.
+	DestinationType *string `type:"string" enum:"DestinationType"`
+
+	// Specify if log delivery is enabled. Default true.
+	Enabled *bool `type:"boolean"`
+
+	// Specifies either JSON or TEXT
+	LogFormat *string `type:"string" enum:"LogFormat"`
+
+	// Refers to slow-log (https://redis.io/commands/slowlog) or engine-log..
+	LogType *string `type:"string" enum:"LogType"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s LogDeliveryConfigurationRequest) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s LogDeliveryConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+// SetDestinationDetails sets the DestinationDetails field's value.
+func (s *LogDeliveryConfigurationRequest) SetDestinationDetails(v *DestinationDetails) *LogDeliveryConfigurationRequest {
+	s.DestinationDetails = v
+	return s
+}
+
+// SetDestinationType sets the DestinationType field's value.
+func (s *LogDeliveryConfigurationRequest) SetDestinationType(v string) *LogDeliveryConfigurationRequest {
+	s.DestinationType = &v
+	return s
+}
+
+// SetEnabled sets the Enabled field's value.
+func (s *LogDeliveryConfigurationRequest) SetEnabled(v bool) *LogDeliveryConfigurationRequest {
+	s.Enabled = &v
+	return s
+}
+
+// SetLogFormat sets the LogFormat field's value.
+func (s *LogDeliveryConfigurationRequest) SetLogFormat(v string) *LogDeliveryConfigurationRequest {
+	s.LogFormat = &v
+	return s
+}
+
+// SetLogType sets the LogType field's value.
+func (s *LogDeliveryConfigurationRequest) SetLogType(v string) *LogDeliveryConfigurationRequest {
+	s.LogType = &v
 	return s
 }
 
@@ -11246,10 +16591,12 @@ type ModifyCacheClusterInput struct {
 	//
 	//    * Set
 	//
-	// For more information, see Authenticating Users with Redis AUTH (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+	// For more information, see Authenticating Users with Redis AUTH (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
 	AuthTokenUpdateStrategy *string `type:"string" enum:"AuthTokenUpdateStrategyType"`
 
-	// This parameter is currently disabled.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
 	// The cluster identifier. This value is stored as a lowercase string.
@@ -11296,14 +16643,18 @@ type ModifyCacheClusterInput struct {
 	// it anew with the earlier engine version.
 	EngineVersion *string `type:"string"`
 
+	// Specifies the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfigurationRequest `locationNameList:"LogDeliveryConfigurationRequest" type:"list"`
+
+	//
+	// This option is only supported on Memcached clusters.
+	//
 	// The list of Availability Zones where the new Memcached cache nodes are created.
 	//
 	// This parameter is only valid when NumCacheNodes in the request is greater
 	// than the sum of the number of active cache nodes and the number of cache
 	// nodes pending creation (which may be zero). The number of Availability Zones
 	// supplied in this list must match the cache nodes being added in this request.
-	//
-	// This option is only supported on Memcached clusters.
 	//
 	// Scenarios:
 	//
@@ -11369,7 +16720,7 @@ type ModifyCacheClusterInput struct {
 	// to provide the IDs of the specific cache nodes to remove.
 	//
 	// For clusters running Redis, this value must be 1. For clusters running Memcached,
-	// this value must be between 1 and 20.
+	// this value must be between 1 and 40.
 	//
 	// Adding or removing Memcached cache nodes can be applied immediately or as
 	// a pending operation (see ApplyImmediately).
@@ -11433,12 +16784,20 @@ type ModifyCacheClusterInput struct {
 	SnapshotWindow *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheClusterInput) GoString() string {
 	return s.String()
 }
@@ -11522,6 +16881,12 @@ func (s *ModifyCacheClusterInput) SetEngineVersion(v string) *ModifyCacheCluster
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *ModifyCacheClusterInput) SetLogDeliveryConfigurations(v []*LogDeliveryConfigurationRequest) *ModifyCacheClusterInput {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetNewAvailabilityZones sets the NewAvailabilityZones field's value.
 func (s *ModifyCacheClusterInput) SetNewAvailabilityZones(v []*string) *ModifyCacheClusterInput {
 	s.NewAvailabilityZones = v
@@ -11577,12 +16942,20 @@ type ModifyCacheClusterOutput struct {
 	CacheCluster *CacheCluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheClusterOutput) GoString() string {
 	return s.String()
 }
@@ -11610,12 +16983,20 @@ type ModifyCacheParameterGroupInput struct {
 	ParameterNameValues []*ParameterNameValue `locationNameList:"ParameterNameValue" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -11669,12 +17050,20 @@ type ModifyCacheSubnetGroupInput struct {
 	SubnetIds []*string `locationNameList:"SubnetIdentifier" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -11721,12 +17110,20 @@ type ModifyCacheSubnetGroupOutput struct {
 	CacheSubnetGroup *CacheSubnetGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyCacheSubnetGroupOutput) GoString() string {
 	return s.String()
 }
@@ -11734,6 +17131,153 @@ func (s ModifyCacheSubnetGroupOutput) GoString() string {
 // SetCacheSubnetGroup sets the CacheSubnetGroup field's value.
 func (s *ModifyCacheSubnetGroupOutput) SetCacheSubnetGroup(v *CacheSubnetGroup) *ModifyCacheSubnetGroupOutput {
 	s.CacheSubnetGroup = v
+	return s
+}
+
+type ModifyGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// This parameter causes the modifications in this request and any pending modifications
+	// to be applied, asynchronously and as soon as possible. Modifications to Global
+	// Replication Groups cannot be requested to be applied in PreferredMaintenceWindow.
+	//
+	// ApplyImmediately is a required field
+	ApplyImmediately *bool `type:"boolean" required:"true"`
+
+	// Determines whether a read replica is automatically promoted to read/write
+	// primary if the existing primary encounters a failure.
+	AutomaticFailoverEnabled *bool `type:"boolean"`
+
+	// A valid cache node type that you want to scale this Global datastore to.
+	CacheNodeType *string `type:"string"`
+
+	// The name of the cache parameter group to use with the Global datastore. It
+	// must be compatible with the major engine version used by the Global datastore.
+	CacheParameterGroupName *string `type:"string"`
+
+	// The upgraded version of the cache engine to be run on the clusters in the
+	// Global datastore.
+	EngineVersion *string `type:"string"`
+
+	// A description of the Global datastore
+	GlobalReplicationGroupDescription *string `type:"string"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ModifyGlobalReplicationGroupInput"}
+	if s.ApplyImmediately == nil {
+		invalidParams.Add(request.NewErrParamRequired("ApplyImmediately"))
+	}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetApplyImmediately sets the ApplyImmediately field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetApplyImmediately(v bool) *ModifyGlobalReplicationGroupInput {
+	s.ApplyImmediately = &v
+	return s
+}
+
+// SetAutomaticFailoverEnabled sets the AutomaticFailoverEnabled field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetAutomaticFailoverEnabled(v bool) *ModifyGlobalReplicationGroupInput {
+	s.AutomaticFailoverEnabled = &v
+	return s
+}
+
+// SetCacheNodeType sets the CacheNodeType field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetCacheNodeType(v string) *ModifyGlobalReplicationGroupInput {
+	s.CacheNodeType = &v
+	return s
+}
+
+// SetCacheParameterGroupName sets the CacheParameterGroupName field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetCacheParameterGroupName(v string) *ModifyGlobalReplicationGroupInput {
+	s.CacheParameterGroupName = &v
+	return s
+}
+
+// SetEngineVersion sets the EngineVersion field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetEngineVersion(v string) *ModifyGlobalReplicationGroupInput {
+	s.EngineVersion = &v
+	return s
+}
+
+// SetGlobalReplicationGroupDescription sets the GlobalReplicationGroupDescription field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetGlobalReplicationGroupDescription(v string) *ModifyGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupDescription = &v
+	return s
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *ModifyGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *ModifyGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+type ModifyGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *ModifyGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *ModifyGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
 	return s
 }
 
@@ -11774,25 +17318,18 @@ type ModifyReplicationGroupInput struct {
 	//
 	//    * Set
 	//
-	// For more information, see Authenticating Users with Redis AUTH (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+	// For more information, see Authenticating Users with Redis AUTH (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
 	AuthTokenUpdateStrategy *string `type:"string" enum:"AuthTokenUpdateStrategyType"`
 
-	// This parameter is currently disabled.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
 	// Determines whether a read replica is automatically promoted to read/write
 	// primary if the existing primary encounters a failure.
 	//
 	// Valid values: true | false
-	//
-	// Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover
-	// on:
-	//
-	//    * Redis versions earlier than 2.8.6.
-	//
-	//    * Redis (cluster mode disabled): T1 node types.
-	//
-	//    * Redis (cluster mode enabled): T1 node types.
 	AutomaticFailoverEnabled *bool `type:"boolean"`
 
 	// A valid cache node type that you want to scale this replication group to.
@@ -11823,6 +17360,12 @@ type ModifyReplicationGroupInput struct {
 	// an earlier engine version, you must delete the existing replication group
 	// and create it anew with the earlier engine version.
 	EngineVersion *string `type:"string"`
+
+	// Specifies the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfigurationRequest `locationNameList:"LogDeliveryConfigurationRequest" type:"list"`
+
+	// A flag to indicate MultiAZ is enabled.
+	MultiAZEnabled *bool `type:"boolean"`
 
 	// Deprecated. This parameter is not used.
 	//
@@ -11870,6 +17413,9 @@ type ModifyReplicationGroupInput struct {
 	// are read replicas.
 	PrimaryClusterId *string `type:"string"`
 
+	// Removes the user group associated with this replication group.
+	RemoveUserGroups *bool `type:"boolean"`
+
 	// A description for the replication group. Maximum length is 255 characters.
 	ReplicationGroupDescription *string `type:"string"`
 
@@ -11907,14 +17453,29 @@ type ModifyReplicationGroupInput struct {
 	// group. This parameter cannot be set for Redis (cluster mode enabled) replication
 	// groups.
 	SnapshottingClusterId *string `type:"string"`
+
+	// The ID of the user group you are associating with the replication group.
+	UserGroupIdsToAdd []*string `type:"list"`
+
+	// The ID of the user group to disassociate from the replication group, meaning
+	// the users in the group no longer can access the replication group.
+	UserGroupIdsToRemove []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupInput) GoString() string {
 	return s.String()
 }
@@ -11986,6 +17547,18 @@ func (s *ModifyReplicationGroupInput) SetEngineVersion(v string) *ModifyReplicat
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *ModifyReplicationGroupInput) SetLogDeliveryConfigurations(v []*LogDeliveryConfigurationRequest) *ModifyReplicationGroupInput {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
+// SetMultiAZEnabled sets the MultiAZEnabled field's value.
+func (s *ModifyReplicationGroupInput) SetMultiAZEnabled(v bool) *ModifyReplicationGroupInput {
+	s.MultiAZEnabled = &v
+	return s
+}
+
 // SetNodeGroupId sets the NodeGroupId field's value.
 func (s *ModifyReplicationGroupInput) SetNodeGroupId(v string) *ModifyReplicationGroupInput {
 	s.NodeGroupId = &v
@@ -12013,6 +17586,12 @@ func (s *ModifyReplicationGroupInput) SetPreferredMaintenanceWindow(v string) *M
 // SetPrimaryClusterId sets the PrimaryClusterId field's value.
 func (s *ModifyReplicationGroupInput) SetPrimaryClusterId(v string) *ModifyReplicationGroupInput {
 	s.PrimaryClusterId = &v
+	return s
+}
+
+// SetRemoveUserGroups sets the RemoveUserGroups field's value.
+func (s *ModifyReplicationGroupInput) SetRemoveUserGroups(v bool) *ModifyReplicationGroupInput {
+	s.RemoveUserGroups = &v
 	return s
 }
 
@@ -12052,6 +17631,18 @@ func (s *ModifyReplicationGroupInput) SetSnapshottingClusterId(v string) *Modify
 	return s
 }
 
+// SetUserGroupIdsToAdd sets the UserGroupIdsToAdd field's value.
+func (s *ModifyReplicationGroupInput) SetUserGroupIdsToAdd(v []*string) *ModifyReplicationGroupInput {
+	s.UserGroupIdsToAdd = v
+	return s
+}
+
+// SetUserGroupIdsToRemove sets the UserGroupIdsToRemove field's value.
+func (s *ModifyReplicationGroupInput) SetUserGroupIdsToRemove(v []*string) *ModifyReplicationGroupInput {
+	s.UserGroupIdsToRemove = v
+	return s
+}
+
 type ModifyReplicationGroupOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -12059,12 +17650,20 @@ type ModifyReplicationGroupOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupOutput) GoString() string {
 	return s.String()
 }
@@ -12126,12 +17725,20 @@ type ModifyReplicationGroupShardConfigurationInput struct {
 	ReshardingConfiguration []*ReshardingConfiguration `locationNameList:"ReshardingConfiguration" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupShardConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupShardConfigurationInput) GoString() string {
 	return s.String()
 }
@@ -12208,12 +17815,20 @@ type ModifyReplicationGroupShardConfigurationOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupShardConfigurationOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModifyReplicationGroupShardConfigurationOutput) GoString() string {
 	return s.String()
 }
@@ -12221,6 +17836,361 @@ func (s ModifyReplicationGroupShardConfigurationOutput) GoString() string {
 // SetReplicationGroup sets the ReplicationGroup field's value.
 func (s *ModifyReplicationGroupShardConfigurationOutput) SetReplicationGroup(v *ReplicationGroup) *ModifyReplicationGroupShardConfigurationOutput {
 	s.ReplicationGroup = v
+	return s
+}
+
+type ModifyUserGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ID of the user group.
+	//
+	// UserGroupId is a required field
+	UserGroupId *string `type:"string" required:"true"`
+
+	// The list of user IDs to add to the user group.
+	UserIdsToAdd []*string `min:"1" type:"list"`
+
+	// The list of user IDs to remove from the user group.
+	UserIdsToRemove []*string `min:"1" type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyUserGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ModifyUserGroupInput"}
+	if s.UserGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserGroupId"))
+	}
+	if s.UserIdsToAdd != nil && len(s.UserIdsToAdd) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserIdsToAdd", 1))
+	}
+	if s.UserIdsToRemove != nil && len(s.UserIdsToRemove) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserIdsToRemove", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *ModifyUserGroupInput) SetUserGroupId(v string) *ModifyUserGroupInput {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIdsToAdd sets the UserIdsToAdd field's value.
+func (s *ModifyUserGroupInput) SetUserIdsToAdd(v []*string) *ModifyUserGroupInput {
+	s.UserIdsToAdd = v
+	return s
+}
+
+// SetUserIdsToRemove sets the UserIdsToRemove field's value.
+func (s *ModifyUserGroupInput) SetUserIdsToRemove(v []*string) *ModifyUserGroupInput {
+	s.UserIdsToRemove = v
+	return s
+}
+
+type ModifyUserGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user group.
+	ARN *string `type:"string"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// A list of updates being applied to the user group.
+	PendingChanges *UserGroupPendingChanges `type:"structure"`
+
+	// A list of replication groups that the user group can access.
+	ReplicationGroups []*string `type:"list"`
+
+	// Indicates user group status. Can be "creating", "active", "modifying", "deleting".
+	Status *string `type:"string"`
+
+	// The ID of the user group.
+	UserGroupId *string `type:"string"`
+
+	// The list of user IDs that belong to the user group.
+	UserIds []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *ModifyUserGroupOutput) SetARN(v string) *ModifyUserGroupOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *ModifyUserGroupOutput) SetEngine(v string) *ModifyUserGroupOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *ModifyUserGroupOutput) SetMinimumEngineVersion(v string) *ModifyUserGroupOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetPendingChanges sets the PendingChanges field's value.
+func (s *ModifyUserGroupOutput) SetPendingChanges(v *UserGroupPendingChanges) *ModifyUserGroupOutput {
+	s.PendingChanges = v
+	return s
+}
+
+// SetReplicationGroups sets the ReplicationGroups field's value.
+func (s *ModifyUserGroupOutput) SetReplicationGroups(v []*string) *ModifyUserGroupOutput {
+	s.ReplicationGroups = v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *ModifyUserGroupOutput) SetStatus(v string) *ModifyUserGroupOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *ModifyUserGroupOutput) SetUserGroupId(v string) *ModifyUserGroupOutput {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIds sets the UserIds field's value.
+func (s *ModifyUserGroupOutput) SetUserIds(v []*string) *ModifyUserGroupOutput {
+	s.UserIds = v
+	return s
+}
+
+type ModifyUserInput struct {
+	_ struct{} `type:"structure"`
+
+	// Access permissions string used for this user.
+	AccessString *string `type:"string"`
+
+	// Adds additional user permissions to the access string.
+	AppendAccessString *string `type:"string"`
+
+	// Indicates no password is required for the user.
+	NoPasswordRequired *bool `type:"boolean"`
+
+	// The passwords belonging to the user. You are allowed up to two.
+	Passwords []*string `min:"1" type:"list"`
+
+	// The ID of the user.
+	//
+	// UserId is a required field
+	UserId *string `min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyUserInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ModifyUserInput"}
+	if s.Passwords != nil && len(s.Passwords) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Passwords", 1))
+	}
+	if s.UserId == nil {
+		invalidParams.Add(request.NewErrParamRequired("UserId"))
+	}
+	if s.UserId != nil && len(*s.UserId) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("UserId", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *ModifyUserInput) SetAccessString(v string) *ModifyUserInput {
+	s.AccessString = &v
+	return s
+}
+
+// SetAppendAccessString sets the AppendAccessString field's value.
+func (s *ModifyUserInput) SetAppendAccessString(v string) *ModifyUserInput {
+	s.AppendAccessString = &v
+	return s
+}
+
+// SetNoPasswordRequired sets the NoPasswordRequired field's value.
+func (s *ModifyUserInput) SetNoPasswordRequired(v bool) *ModifyUserInput {
+	s.NoPasswordRequired = &v
+	return s
+}
+
+// SetPasswords sets the Passwords field's value.
+func (s *ModifyUserInput) SetPasswords(v []*string) *ModifyUserInput {
+	s.Passwords = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *ModifyUserInput) SetUserId(v string) *ModifyUserInput {
+	s.UserId = &v
+	return s
+}
+
+type ModifyUserOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user.
+	ARN *string `type:"string"`
+
+	// Access permissions string used for this user.
+	AccessString *string `type:"string"`
+
+	// Denotes whether the user requires a password to authenticate.
+	Authentication *Authentication `type:"structure"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// Indicates the user status. Can be "active", "modifying" or "deleting".
+	Status *string `type:"string"`
+
+	// Returns a list of the user group IDs the user belongs to.
+	UserGroupIds []*string `type:"list"`
+
+	// The ID of the user.
+	UserId *string `type:"string"`
+
+	// The username of the user.
+	UserName *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ModifyUserOutput) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *ModifyUserOutput) SetARN(v string) *ModifyUserOutput {
+	s.ARN = &v
+	return s
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *ModifyUserOutput) SetAccessString(v string) *ModifyUserOutput {
+	s.AccessString = &v
+	return s
+}
+
+// SetAuthentication sets the Authentication field's value.
+func (s *ModifyUserOutput) SetAuthentication(v *Authentication) *ModifyUserOutput {
+	s.Authentication = v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *ModifyUserOutput) SetEngine(v string) *ModifyUserOutput {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *ModifyUserOutput) SetMinimumEngineVersion(v string) *ModifyUserOutput {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *ModifyUserOutput) SetStatus(v string) *ModifyUserOutput {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *ModifyUserOutput) SetUserGroupIds(v []*string) *ModifyUserOutput {
+	s.UserGroupIds = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *ModifyUserOutput) SetUserId(v string) *ModifyUserOutput {
+	s.UserId = &v
+	return s
+}
+
+// SetUserName sets the UserName field's value.
+func (s *ModifyUserOutput) SetUserName(v string) *ModifyUserOutput {
+	s.UserName = &v
 	return s
 }
 
@@ -12250,16 +18220,25 @@ type NodeGroup struct {
 	// The keyspace for this node group (shard).
 	Slots *string `type:"string"`
 
-	// The current state of this replication group - creating, available, etc.
+	// The current state of this replication group - creating, available, modifying,
+	// deleting.
 	Status *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroup) GoString() string {
 	return s.String()
 }
@@ -12314,6 +18293,9 @@ type NodeGroupConfiguration struct {
 	// launched.
 	PrimaryAvailabilityZone *string `type:"string"`
 
+	// The outpost ARN of the primary node.
+	PrimaryOutpostArn *string `type:"string"`
+
 	// A list of Availability Zones to be used for the read replicas. The number
 	// of Availability Zones in this list must match the value of ReplicaCount or
 	// ReplicasPerNodeGroup if not specified.
@@ -12322,6 +18304,9 @@ type NodeGroupConfiguration struct {
 	// The number of read replica nodes in this node group (shard).
 	ReplicaCount *int64 `type:"integer"`
 
+	// The outpost ARN of the node replicas.
+	ReplicaOutpostArns []*string `locationNameList:"OutpostArn" type:"list"`
+
 	// A string that specifies the keyspace for a particular node group. Keyspaces
 	// range from 0 to 16,383. The string is in the format startkey-endkey.
 	//
@@ -12329,12 +18314,20 @@ type NodeGroupConfiguration struct {
 	Slots *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupConfiguration) GoString() string {
 	return s.String()
 }
@@ -12364,6 +18357,12 @@ func (s *NodeGroupConfiguration) SetPrimaryAvailabilityZone(v string) *NodeGroup
 	return s
 }
 
+// SetPrimaryOutpostArn sets the PrimaryOutpostArn field's value.
+func (s *NodeGroupConfiguration) SetPrimaryOutpostArn(v string) *NodeGroupConfiguration {
+	s.PrimaryOutpostArn = &v
+	return s
+}
+
 // SetReplicaAvailabilityZones sets the ReplicaAvailabilityZones field's value.
 func (s *NodeGroupConfiguration) SetReplicaAvailabilityZones(v []*string) *NodeGroupConfiguration {
 	s.ReplicaAvailabilityZones = v
@@ -12373,6 +18372,12 @@ func (s *NodeGroupConfiguration) SetReplicaAvailabilityZones(v []*string) *NodeG
 // SetReplicaCount sets the ReplicaCount field's value.
 func (s *NodeGroupConfiguration) SetReplicaCount(v int64) *NodeGroupConfiguration {
 	s.ReplicaCount = &v
+	return s
+}
+
+// SetReplicaOutpostArns sets the ReplicaOutpostArns field's value.
+func (s *NodeGroupConfiguration) SetReplicaOutpostArns(v []*string) *NodeGroupConfiguration {
+	s.ReplicaOutpostArns = v
 	return s
 }
 
@@ -12400,18 +18405,29 @@ type NodeGroupMember struct {
 	// The name of the Availability Zone in which the node is located.
 	PreferredAvailabilityZone *string `type:"string"`
 
+	// The outpost ARN of the node group member.
+	PreferredOutpostArn *string `type:"string"`
+
 	// The information required for client programs to connect to a node for read
 	// operations. The read endpoint is only applicable on Redis (cluster mode disabled)
 	// clusters.
 	ReadEndpoint *Endpoint `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupMember) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupMember) GoString() string {
 	return s.String()
 }
@@ -12437,6 +18453,12 @@ func (s *NodeGroupMember) SetCurrentRole(v string) *NodeGroupMember {
 // SetPreferredAvailabilityZone sets the PreferredAvailabilityZone field's value.
 func (s *NodeGroupMember) SetPreferredAvailabilityZone(v string) *NodeGroupMember {
 	s.PreferredAvailabilityZone = &v
+	return s
+}
+
+// SetPreferredOutpostArn sets the PreferredOutpostArn field's value.
+func (s *NodeGroupMember) SetPreferredOutpostArn(v string) *NodeGroupMember {
+	s.PreferredOutpostArn = &v
 	return s
 }
 
@@ -12479,12 +18501,20 @@ type NodeGroupMemberUpdateStatus struct {
 	NodeUpdateStatusModifiedDate *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupMemberUpdateStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupMemberUpdateStatus) GoString() string {
 	return s.String()
 }
@@ -12554,12 +18584,20 @@ type NodeGroupUpdateStatus struct {
 	NodeGroupMemberUpdateStatus []*NodeGroupMemberUpdateStatus `locationNameList:"NodeGroupMemberUpdateStatus" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupUpdateStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeGroupUpdateStatus) GoString() string {
 	return s.String()
 }
@@ -12603,12 +18641,20 @@ type NodeSnapshot struct {
 	SnapshotCreateTime *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeSnapshot) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeSnapshot) GoString() string {
 	return s.String()
 }
@@ -12668,12 +18714,20 @@ type NotificationConfiguration struct {
 	TopicStatus *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NotificationConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NotificationConfiguration) GoString() string {
 	return s.String()
 }
@@ -12728,12 +18782,20 @@ type Parameter struct {
 	Source *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Parameter) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Parameter) GoString() string {
 	return s.String()
 }
@@ -12803,12 +18865,20 @@ type ParameterNameValue struct {
 	ParameterValue *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterNameValue) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterNameValue) GoString() string {
 	return s.String()
 }
@@ -12822,6 +18892,66 @@ func (s *ParameterNameValue) SetParameterName(v string) *ParameterNameValue {
 // SetParameterValue sets the ParameterValue field's value.
 func (s *ParameterNameValue) SetParameterValue(v string) *ParameterNameValue {
 	s.ParameterValue = &v
+	return s
+}
+
+// The log delivery configurations being modified
+type PendingLogDeliveryConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// Configuration details of either a CloudWatch Logs destination or Kinesis
+	// Data Firehose destination.
+	DestinationDetails *DestinationDetails `type:"structure"`
+
+	// Returns the destination type, either CloudWatch Logs or Kinesis Data Firehose.
+	DestinationType *string `type:"string" enum:"DestinationType"`
+
+	// Returns the log format, either JSON or TEXT
+	LogFormat *string `type:"string" enum:"LogFormat"`
+
+	// Refers to slow-log (https://redis.io/commands/slowlog) or engine-log..
+	LogType *string `type:"string" enum:"LogType"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s PendingLogDeliveryConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s PendingLogDeliveryConfiguration) GoString() string {
+	return s.String()
+}
+
+// SetDestinationDetails sets the DestinationDetails field's value.
+func (s *PendingLogDeliveryConfiguration) SetDestinationDetails(v *DestinationDetails) *PendingLogDeliveryConfiguration {
+	s.DestinationDetails = v
+	return s
+}
+
+// SetDestinationType sets the DestinationType field's value.
+func (s *PendingLogDeliveryConfiguration) SetDestinationType(v string) *PendingLogDeliveryConfiguration {
+	s.DestinationType = &v
+	return s
+}
+
+// SetLogFormat sets the LogFormat field's value.
+func (s *PendingLogDeliveryConfiguration) SetLogFormat(v string) *PendingLogDeliveryConfiguration {
+	s.LogFormat = &v
+	return s
+}
+
+// SetLogType sets the LogType field's value.
+func (s *PendingLogDeliveryConfiguration) SetLogType(v string) *PendingLogDeliveryConfiguration {
+	s.LogType = &v
 	return s
 }
 
@@ -12843,19 +18973,30 @@ type PendingModifiedValues struct {
 	// The new cache engine version that the cluster runs.
 	EngineVersion *string `type:"string"`
 
+	// The log delivery configurations being modified
+	LogDeliveryConfigurations []*PendingLogDeliveryConfiguration `locationName:"PendingLogDeliveryConfiguration" type:"list"`
+
 	// The new number of cache nodes for the cluster.
 	//
 	// For clusters running Redis, this value must be 1. For clusters running Memcached,
-	// this value must be between 1 and 20.
+	// this value must be between 1 and 40.
 	NumCacheNodes *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PendingModifiedValues) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PendingModifiedValues) GoString() string {
 	return s.String()
 }
@@ -12884,6 +19025,12 @@ func (s *PendingModifiedValues) SetEngineVersion(v string) *PendingModifiedValue
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *PendingModifiedValues) SetLogDeliveryConfigurations(v []*PendingLogDeliveryConfiguration) *PendingModifiedValues {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetNumCacheNodes sets the NumCacheNodes field's value.
 func (s *PendingModifiedValues) SetNumCacheNodes(v int64) *PendingModifiedValues {
 	s.NumCacheNodes = &v
@@ -12907,12 +19054,20 @@ type ProcessedUpdateAction struct {
 	UpdateActionStatus *string `type:"string" enum:"UpdateActionStatus"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ProcessedUpdateAction) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ProcessedUpdateAction) GoString() string {
 	return s.String()
 }
@@ -12965,14 +19120,26 @@ type PurchaseReservedCacheNodesOfferingInput struct {
 	//
 	// ReservedCacheNodesOfferingId is a required field
 	ReservedCacheNodesOfferingId *string `type:"string" required:"true"`
+
+	// A list of tags to be added to this resource. A tag is a key-value pair. A
+	// tag key must be accompanied by a tag value, although null is accepted.
+	Tags []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PurchaseReservedCacheNodesOfferingInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PurchaseReservedCacheNodesOfferingInput) GoString() string {
 	return s.String()
 }
@@ -13008,6 +19175,12 @@ func (s *PurchaseReservedCacheNodesOfferingInput) SetReservedCacheNodesOfferingI
 	return s
 }
 
+// SetTags sets the Tags field's value.
+func (s *PurchaseReservedCacheNodesOfferingInput) SetTags(v []*Tag) *PurchaseReservedCacheNodesOfferingInput {
+	s.Tags = v
+	return s
+}
+
 type PurchaseReservedCacheNodesOfferingOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -13015,12 +19188,20 @@ type PurchaseReservedCacheNodesOfferingOutput struct {
 	ReservedCacheNode *ReservedCacheNode `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PurchaseReservedCacheNodesOfferingOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PurchaseReservedCacheNodesOfferingOutput) GoString() string {
 	return s.String()
 }
@@ -13028,6 +19209,103 @@ func (s PurchaseReservedCacheNodesOfferingOutput) GoString() string {
 // SetReservedCacheNode sets the ReservedCacheNode field's value.
 func (s *PurchaseReservedCacheNodesOfferingOutput) SetReservedCacheNode(v *ReservedCacheNode) *PurchaseReservedCacheNodesOfferingOutput {
 	s.ReservedCacheNode = v
+	return s
+}
+
+type RebalanceSlotsInGlobalReplicationGroupInput struct {
+	_ struct{} `type:"structure"`
+
+	// If True, redistribution is applied immediately.
+	//
+	// ApplyImmediately is a required field
+	ApplyImmediately *bool `type:"boolean" required:"true"`
+
+	// The name of the Global datastore
+	//
+	// GlobalReplicationGroupId is a required field
+	GlobalReplicationGroupId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RebalanceSlotsInGlobalReplicationGroupInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RebalanceSlotsInGlobalReplicationGroupInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RebalanceSlotsInGlobalReplicationGroupInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "RebalanceSlotsInGlobalReplicationGroupInput"}
+	if s.ApplyImmediately == nil {
+		invalidParams.Add(request.NewErrParamRequired("ApplyImmediately"))
+	}
+	if s.GlobalReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("GlobalReplicationGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetApplyImmediately sets the ApplyImmediately field's value.
+func (s *RebalanceSlotsInGlobalReplicationGroupInput) SetApplyImmediately(v bool) *RebalanceSlotsInGlobalReplicationGroupInput {
+	s.ApplyImmediately = &v
+	return s
+}
+
+// SetGlobalReplicationGroupId sets the GlobalReplicationGroupId field's value.
+func (s *RebalanceSlotsInGlobalReplicationGroupInput) SetGlobalReplicationGroupId(v string) *RebalanceSlotsInGlobalReplicationGroupInput {
+	s.GlobalReplicationGroupId = &v
+	return s
+}
+
+type RebalanceSlotsInGlobalReplicationGroupOutput struct {
+	_ struct{} `type:"structure"`
+
+	// Consists of a primary cluster that accepts writes and an associated secondary
+	// cluster that resides in a different Amazon region. The secondary cluster
+	// accepts only reads. The primary cluster automatically replicates updates
+	// to the secondary cluster.
+	//
+	//    * The GlobalReplicationGroupIdSuffix represents the name of the Global
+	//    datastore, which is what you use to associate a secondary cluster.
+	GlobalReplicationGroup *GlobalReplicationGroup `type:"structure"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RebalanceSlotsInGlobalReplicationGroupOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RebalanceSlotsInGlobalReplicationGroupOutput) GoString() string {
+	return s.String()
+}
+
+// SetGlobalReplicationGroup sets the GlobalReplicationGroup field's value.
+func (s *RebalanceSlotsInGlobalReplicationGroupOutput) SetGlobalReplicationGroup(v *GlobalReplicationGroup) *RebalanceSlotsInGlobalReplicationGroupOutput {
+	s.GlobalReplicationGroup = v
 	return s
 }
 
@@ -13047,12 +19325,20 @@ type RebootCacheClusterInput struct {
 	CacheNodeIdsToReboot []*string `locationNameList:"CacheNodeId" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootCacheClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootCacheClusterInput) GoString() string {
 	return s.String()
 }
@@ -13092,12 +19378,20 @@ type RebootCacheClusterOutput struct {
 	CacheCluster *CacheCluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootCacheClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootCacheClusterOutput) GoString() string {
 	return s.String()
 }
@@ -13120,12 +19414,20 @@ type RecurringCharge struct {
 	RecurringChargeFrequency *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RecurringCharge) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RecurringCharge) GoString() string {
 	return s.String()
 }
@@ -13142,6 +19444,92 @@ func (s *RecurringCharge) SetRecurringChargeFrequency(v string) *RecurringCharge
 	return s
 }
 
+// A list of the replication groups
+type RegionalConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the secondary cluster
+	//
+	// ReplicationGroupId is a required field
+	ReplicationGroupId *string `type:"string" required:"true"`
+
+	// The Amazon region where the cluster is stored
+	//
+	// ReplicationGroupRegion is a required field
+	ReplicationGroupRegion *string `type:"string" required:"true"`
+
+	// A list of PreferredAvailabilityZones objects that specifies the configuration
+	// of a node group in the resharded cluster.
+	//
+	// ReshardingConfiguration is a required field
+	ReshardingConfiguration []*ReshardingConfiguration `locationNameList:"ReshardingConfiguration" type:"list" required:"true"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RegionalConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s RegionalConfiguration) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RegionalConfiguration) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "RegionalConfiguration"}
+	if s.ReplicationGroupId == nil {
+		invalidParams.Add(request.NewErrParamRequired("ReplicationGroupId"))
+	}
+	if s.ReplicationGroupRegion == nil {
+		invalidParams.Add(request.NewErrParamRequired("ReplicationGroupRegion"))
+	}
+	if s.ReshardingConfiguration == nil {
+		invalidParams.Add(request.NewErrParamRequired("ReshardingConfiguration"))
+	}
+	if s.ReshardingConfiguration != nil {
+		for i, v := range s.ReshardingConfiguration {
+			if v == nil {
+				continue
+			}
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ReshardingConfiguration", i), err.(request.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetReplicationGroupId sets the ReplicationGroupId field's value.
+func (s *RegionalConfiguration) SetReplicationGroupId(v string) *RegionalConfiguration {
+	s.ReplicationGroupId = &v
+	return s
+}
+
+// SetReplicationGroupRegion sets the ReplicationGroupRegion field's value.
+func (s *RegionalConfiguration) SetReplicationGroupRegion(v string) *RegionalConfiguration {
+	s.ReplicationGroupRegion = &v
+	return s
+}
+
+// SetReshardingConfiguration sets the ReshardingConfiguration field's value.
+func (s *RegionalConfiguration) SetReshardingConfiguration(v []*ReshardingConfiguration) *RegionalConfiguration {
+	s.ReshardingConfiguration = v
+	return s
+}
+
 // Represents the input of a RemoveTagsFromResource operation.
 type RemoveTagsFromResourceInput struct {
 	_ struct{} `type:"structure"`
@@ -13150,7 +19538,7 @@ type RemoveTagsFromResourceInput struct {
 	// removed, for example arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster
 	// or arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot.
 	//
-	// For more information about ARNs, see Amazon Resource Names (ARNs) and AWS
+	// For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon
 	// Service Namespaces (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 	//
 	// ResourceName is a required field
@@ -13162,12 +19550,20 @@ type RemoveTagsFromResourceInput struct {
 	TagKeys []*string `type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RemoveTagsFromResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RemoveTagsFromResourceInput) GoString() string {
 	return s.String()
 }
@@ -13204,6 +19600,9 @@ func (s *RemoveTagsFromResourceInput) SetTagKeys(v []*string) *RemoveTagsFromRes
 type ReplicationGroup struct {
 	_ struct{} `type:"structure"`
 
+	// The ARN (Amazon Resource Name) of the replication group.
+	ARN *string `type:"string"`
+
 	// A flag that enables encryption at-rest when set to true.
 	//
 	// You cannot modify the value of AtRestEncryptionEnabled after the cluster
@@ -13224,17 +19623,12 @@ type ReplicationGroup struct {
 	// The date the auth token was last modified
 	AuthTokenLastModifiedDate *time.Time `type:"timestamp"`
 
-	// Indicates the status of Multi-AZ with automatic failover for this Redis replication
-	// group.
-	//
-	// Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover
-	// on:
-	//
-	//    * Redis versions earlier than 2.8.6.
-	//
-	//    * Redis (cluster mode disabled): T1 node types.
-	//
-	//    * Redis (cluster mode enabled): T1 node types.
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
+	AutoMinorVersionUpgrade *bool `type:"boolean"`
+
+	// Indicates the status of automatic failover for this Redis replication group.
 	AutomaticFailover *string `type:"string" enum:"AutomaticFailoverStatus"`
 
 	// The name of the compute and memory capacity node type for each node in the
@@ -13252,14 +19646,33 @@ type ReplicationGroup struct {
 	// endpoint to connect to this replication group.
 	ConfigurationEndpoint *Endpoint `type:"structure"`
 
+	// Enables data tiering. Data tiering is only supported for replication groups
+	// using the r6gd node type. This parameter must be set to true when using r6gd
+	// nodes. For more information, see Data tiering (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+	DataTiering *string `type:"string" enum:"DataTieringStatus"`
+
 	// The user supplied description of the replication group.
 	Description *string `type:"string"`
+
+	// The name of the Global datastore and role of this replication group in the
+	// Global datastore.
+	GlobalReplicationGroupInfo *GlobalReplicationGroupInfo `type:"structure"`
 
 	// The ID of the KMS key used to encrypt the disk in the cluster.
 	KmsKeyId *string `type:"string"`
 
+	// Returns the destination, format and type of the logs.
+	LogDeliveryConfigurations []*LogDeliveryConfiguration `locationNameList:"LogDeliveryConfiguration" type:"list"`
+
 	// The names of all the cache clusters that are part of this replication group.
 	MemberClusters []*string `locationNameList:"ClusterId" type:"list"`
+
+	// The outpost ARNs of the replication group's member clusters.
+	MemberClustersOutpostArns []*string `locationNameList:"ReplicationGroupOutpostArn" type:"list"`
+
+	// A flag indicating if you have Multi-AZ enabled to enhance fault tolerance.
+	// For more information, see Minimizing Downtime: Multi-AZ (http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html)
+	MultiAZ *string `type:"string" enum:"MultiAZStatus"`
 
 	// A list of node groups in this replication group. For Redis (cluster mode
 	// disabled) replication groups, this is a single-element list. For Redis (cluster
@@ -13270,6 +19683,9 @@ type ReplicationGroup struct {
 	// A group of settings to be applied to the replication group, either immediately
 	// or during the next maintenance window.
 	PendingModifiedValues *ReplicationGroupPendingModifiedValues `type:"structure"`
+
+	// The date and time when the cluster was created.
+	ReplicationGroupCreateTime *time.Time `type:"timestamp"`
 
 	// The identifier for the replication group.
 	ReplicationGroupId *string `type:"string"`
@@ -13312,16 +19728,33 @@ type ReplicationGroup struct {
 	//
 	// Default: false
 	TransitEncryptionEnabled *bool `type:"boolean"`
+
+	// The ID of the user group associated to the replication group.
+	UserGroupIds []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReplicationGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReplicationGroup) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *ReplicationGroup) SetARN(v string) *ReplicationGroup {
+	s.ARN = &v
+	return s
 }
 
 // SetAtRestEncryptionEnabled sets the AtRestEncryptionEnabled field's value.
@@ -13339,6 +19772,12 @@ func (s *ReplicationGroup) SetAuthTokenEnabled(v bool) *ReplicationGroup {
 // SetAuthTokenLastModifiedDate sets the AuthTokenLastModifiedDate field's value.
 func (s *ReplicationGroup) SetAuthTokenLastModifiedDate(v time.Time) *ReplicationGroup {
 	s.AuthTokenLastModifiedDate = &v
+	return s
+}
+
+// SetAutoMinorVersionUpgrade sets the AutoMinorVersionUpgrade field's value.
+func (s *ReplicationGroup) SetAutoMinorVersionUpgrade(v bool) *ReplicationGroup {
+	s.AutoMinorVersionUpgrade = &v
 	return s
 }
 
@@ -13366,9 +19805,21 @@ func (s *ReplicationGroup) SetConfigurationEndpoint(v *Endpoint) *ReplicationGro
 	return s
 }
 
+// SetDataTiering sets the DataTiering field's value.
+func (s *ReplicationGroup) SetDataTiering(v string) *ReplicationGroup {
+	s.DataTiering = &v
+	return s
+}
+
 // SetDescription sets the Description field's value.
 func (s *ReplicationGroup) SetDescription(v string) *ReplicationGroup {
 	s.Description = &v
+	return s
+}
+
+// SetGlobalReplicationGroupInfo sets the GlobalReplicationGroupInfo field's value.
+func (s *ReplicationGroup) SetGlobalReplicationGroupInfo(v *GlobalReplicationGroupInfo) *ReplicationGroup {
+	s.GlobalReplicationGroupInfo = v
 	return s
 }
 
@@ -13378,9 +19829,27 @@ func (s *ReplicationGroup) SetKmsKeyId(v string) *ReplicationGroup {
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *ReplicationGroup) SetLogDeliveryConfigurations(v []*LogDeliveryConfiguration) *ReplicationGroup {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetMemberClusters sets the MemberClusters field's value.
 func (s *ReplicationGroup) SetMemberClusters(v []*string) *ReplicationGroup {
 	s.MemberClusters = v
+	return s
+}
+
+// SetMemberClustersOutpostArns sets the MemberClustersOutpostArns field's value.
+func (s *ReplicationGroup) SetMemberClustersOutpostArns(v []*string) *ReplicationGroup {
+	s.MemberClustersOutpostArns = v
+	return s
+}
+
+// SetMultiAZ sets the MultiAZ field's value.
+func (s *ReplicationGroup) SetMultiAZ(v string) *ReplicationGroup {
+	s.MultiAZ = &v
 	return s
 }
 
@@ -13393,6 +19862,12 @@ func (s *ReplicationGroup) SetNodeGroups(v []*NodeGroup) *ReplicationGroup {
 // SetPendingModifiedValues sets the PendingModifiedValues field's value.
 func (s *ReplicationGroup) SetPendingModifiedValues(v *ReplicationGroupPendingModifiedValues) *ReplicationGroup {
 	s.PendingModifiedValues = v
+	return s
+}
+
+// SetReplicationGroupCreateTime sets the ReplicationGroupCreateTime field's value.
+func (s *ReplicationGroup) SetReplicationGroupCreateTime(v time.Time) *ReplicationGroup {
+	s.ReplicationGroupCreateTime = &v
 	return s
 }
 
@@ -13432,6 +19907,12 @@ func (s *ReplicationGroup) SetTransitEncryptionEnabled(v bool) *ReplicationGroup
 	return s
 }
 
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *ReplicationGroup) SetUserGroupIds(v []*string) *ReplicationGroup {
+	s.UserGroupIds = v
+	return s
+}
+
 // The settings to be applied to the Redis replication group, either immediately
 // or during the next maintenance window.
 type ReplicationGroupPendingModifiedValues struct {
@@ -13440,18 +19921,11 @@ type ReplicationGroupPendingModifiedValues struct {
 	// The auth token status
 	AuthTokenStatus *string `type:"string" enum:"AuthTokenUpdateStatus"`
 
-	// Indicates the status of Multi-AZ with automatic failover for this Redis replication
-	// group.
-	//
-	// Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover
-	// on:
-	//
-	//    * Redis versions earlier than 2.8.6.
-	//
-	//    * Redis (cluster mode disabled): T1 node types.
-	//
-	//    * Redis (cluster mode enabled): T1 node types.
+	// Indicates the status of automatic failover for this Redis replication group.
 	AutomaticFailoverStatus *string `type:"string" enum:"PendingAutomaticFailoverStatus"`
+
+	// The log delivery configurations being modified
+	LogDeliveryConfigurations []*PendingLogDeliveryConfiguration `locationName:"PendingLogDeliveryConfiguration" type:"list"`
 
 	// The primary cluster ID that is applied immediately (if --apply-immediately
 	// was specified), or during the next maintenance window.
@@ -13459,14 +19933,25 @@ type ReplicationGroupPendingModifiedValues struct {
 
 	// The status of an online resharding operation.
 	Resharding *ReshardingStatus `type:"structure"`
+
+	// The user group being modified.
+	UserGroups *UserGroupsUpdateStatus `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReplicationGroupPendingModifiedValues) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReplicationGroupPendingModifiedValues) GoString() string {
 	return s.String()
 }
@@ -13483,6 +19968,12 @@ func (s *ReplicationGroupPendingModifiedValues) SetAutomaticFailoverStatus(v str
 	return s
 }
 
+// SetLogDeliveryConfigurations sets the LogDeliveryConfigurations field's value.
+func (s *ReplicationGroupPendingModifiedValues) SetLogDeliveryConfigurations(v []*PendingLogDeliveryConfiguration) *ReplicationGroupPendingModifiedValues {
+	s.LogDeliveryConfigurations = v
+	return s
+}
+
 // SetPrimaryClusterId sets the PrimaryClusterId field's value.
 func (s *ReplicationGroupPendingModifiedValues) SetPrimaryClusterId(v string) *ReplicationGroupPendingModifiedValues {
 	s.PrimaryClusterId = &v
@@ -13492,6 +19983,12 @@ func (s *ReplicationGroupPendingModifiedValues) SetPrimaryClusterId(v string) *R
 // SetResharding sets the Resharding field's value.
 func (s *ReplicationGroupPendingModifiedValues) SetResharding(v *ReshardingStatus) *ReplicationGroupPendingModifiedValues {
 	s.Resharding = v
+	return s
+}
+
+// SetUserGroups sets the UserGroups field's value.
+func (s *ReplicationGroupPendingModifiedValues) SetUserGroups(v *UserGroupsUpdateStatus) *ReplicationGroupPendingModifiedValues {
+	s.UserGroups = v
 	return s
 }
 
@@ -13508,25 +20005,44 @@ type ReservedCacheNode struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types: (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -13576,12 +20092,20 @@ type ReservedCacheNode struct {
 	UsagePrice *float64 `type:"double"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReservedCacheNode) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReservedCacheNode) GoString() string {
 	return s.String()
 }
@@ -13674,25 +20198,44 @@ type ReservedCacheNodesOffering struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types: (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward): cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -13728,12 +20271,20 @@ type ReservedCacheNodesOffering struct {
 	UsagePrice *float64 `type:"double"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReservedCacheNodesOffering) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReservedCacheNodesOffering) GoString() string {
 	return s.String()
 }
@@ -13808,12 +20359,20 @@ type ResetCacheParameterGroupInput struct {
 	ResetAllParameters *bool `type:"boolean"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ResetCacheParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ResetCacheParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -13862,12 +20421,20 @@ type ReshardingConfiguration struct {
 	PreferredAvailabilityZones []*string `locationNameList:"AvailabilityZone" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReshardingConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReshardingConfiguration) GoString() string {
 	return s.String()
 }
@@ -13905,12 +20472,20 @@ type ReshardingStatus struct {
 	SlotMigration *SlotMigration `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReshardingStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ReshardingStatus) GoString() string {
 	return s.String()
 }
@@ -13935,20 +20510,28 @@ type RevokeCacheSecurityGroupIngressInput struct {
 	// EC2SecurityGroupName is a required field
 	EC2SecurityGroupName *string `type:"string" required:"true"`
 
-	// The AWS account number of the Amazon EC2 security group owner. Note that
-	// this is not the same thing as an AWS access key ID - you must provide a valid
-	// AWS account number for this parameter.
+	// The Amazon account number of the Amazon EC2 security group owner. Note that
+	// this is not the same thing as an Amazon access key ID - you must provide
+	// a valid Amazon account number for this parameter.
 	//
 	// EC2SecurityGroupOwnerId is a required field
 	EC2SecurityGroupOwnerId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RevokeCacheSecurityGroupIngressInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RevokeCacheSecurityGroupIngressInput) GoString() string {
 	return s.String()
 }
@@ -14003,12 +20586,20 @@ type RevokeCacheSecurityGroupIngressOutput struct {
 	CacheSecurityGroup *CacheSecurityGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RevokeCacheSecurityGroupIngressOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RevokeCacheSecurityGroupIngressOutput) GoString() string {
 	return s.String()
 }
@@ -14032,12 +20623,20 @@ type SecurityGroupMembership struct {
 	Status *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SecurityGroupMembership) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SecurityGroupMembership) GoString() string {
 	return s.String()
 }
@@ -14099,12 +20698,20 @@ type ServiceUpdate struct {
 	ServiceUpdateType *string `type:"string" enum:"ServiceUpdateType"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ServiceUpdate) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ServiceUpdate) GoString() string {
 	return s.String()
 }
@@ -14189,12 +20796,20 @@ type SlotMigration struct {
 	ProgressPercentage *float64 `type:"double"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SlotMigration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SlotMigration) GoString() string {
 	return s.String()
 }
@@ -14210,20 +20825,16 @@ func (s *SlotMigration) SetProgressPercentage(v float64) *SlotMigration {
 type Snapshot struct {
 	_ struct{} `type:"structure"`
 
-	// This parameter is currently disabled.
+	// The ARN (Amazon Resource Name) of the snapshot.
+	ARN *string `type:"string"`
+
+	// If you are running Redis engine version 6.0 or later, set this parameter
+	// to yes if you want to opt-in to the next auto minor version upgrade campaign.
+	// This parameter is disabled for previous versions.
 	AutoMinorVersionUpgrade *bool `type:"boolean"`
 
-	// Indicates the status of Multi-AZ with automatic failover for the source Redis
-	// replication group.
-	//
-	// Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover
-	// on:
-	//
-	//    * Redis versions earlier than 2.8.6.
-	//
-	//    * Redis (cluster mode disabled): T1 node types.
-	//
-	//    * Redis (cluster mode enabled): T1 node types.
+	// Indicates the status of automatic failover for the source Redis replication
+	// group.
 	AutomaticFailover *string `type:"string" enum:"AutomaticFailoverStatus"`
 
 	// The date and time when the source cluster was created.
@@ -14238,25 +20849,45 @@ type Snapshot struct {
 	// the current generation types provide more memory and computational power
 	// at lower cost when compared to their equivalent previous generation counterparts.
 	//
-	//    * General purpose: Current generation: M5 node types: cache.m5.large,
-	//    cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge, cache.m5.12xlarge,
-	//    cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge, cache.m4.2xlarge,
-	//    cache.m4.4xlarge, cache.m4.10xlarge T2 node types: cache.t2.micro, cache.t2.small,
-	//    cache.t2.medium Previous generation: (not recommended) T1 node types:
-	//    cache.t1.micro M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large,
-	//    cache.m1.xlarge M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge,
-	//    cache.m3.2xlarge
+	//    * General purpose: Current generation: M6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.m6g.large, cache.m6g.xlarge, cache.m6g.2xlarge,
+	//    cache.m6g.4xlarge, cache.m6g.8xlarge, cache.m6g.12xlarge, cache.m6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    M5 node types: cache.m5.large, cache.m5.xlarge, cache.m5.2xlarge, cache.m5.4xlarge,
+	//    cache.m5.12xlarge, cache.m5.24xlarge M4 node types: cache.m4.large, cache.m4.xlarge,
+	//    cache.m4.2xlarge, cache.m4.4xlarge, cache.m4.10xlarge T4g node types (available
+	//    only for Redis engine version 5.0.6 onward and Memcached engine version
+	//    1.5.16 onward): cache.t4g.micro, cache.t4g.small, cache.t4g.medium T3
+	//    node types: cache.t3.micro, cache.t3.small, cache.t3.medium T2 node types:
+	//    cache.t2.micro, cache.t2.small, cache.t2.medium Previous generation: (not
+	//    recommended. Existing clusters are still supported but creation of new
+	//    clusters is not supported for these types.) T1 node types: cache.t1.micro
+	//    M1 node types: cache.m1.small, cache.m1.medium, cache.m1.large, cache.m1.xlarge
+	//    M3 node types: cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge
 	//
-	//    * Compute optimized: Previous generation: (not recommended) C1 node types:
-	//    cache.c1.xlarge
+	//    * Compute optimized: Previous generation: (not recommended. Existing clusters
+	//    are still supported but creation of new clusters is not supported for
+	//    these types.) C1 node types: cache.c1.xlarge
 	//
-	//    * Memory optimized: Current generation: R5 node types: cache.r5.large,
-	//    cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge, cache.r5.12xlarge,
-	//    cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge, cache.r4.2xlarge,
-	//    cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge Previous generation:
-	//    (not recommended) M2 node types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge
-	//    R3 node types: cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge,
-	//    cache.r3.8xlarge
+	//    * Memory optimized with data tiering: Current generation: R6gd node types
+	//    (available only for Redis engine version 6.2 onward). cache.r6gd.xlarge,
+	//    cache.r6gd.2xlarge, cache.r6gd.4xlarge, cache.r6gd.8xlarge, cache.r6gd.12xlarge,
+	//    cache.r6gd.16xlarge
+	//
+	//    * Memory optimized: Current generation: R6g node types (available only
+	//    for Redis engine version 5.0.6 onward and for Memcached engine version
+	//    1.5.16 onward). cache.r6g.large, cache.r6g.xlarge, cache.r6g.2xlarge,
+	//    cache.r6g.4xlarge, cache.r6g.8xlarge, cache.r6g.12xlarge, cache.r6g.16xlarge
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    For region availability, see Supported Node Types (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+	//    R5 node types: cache.r5.large, cache.r5.xlarge, cache.r5.2xlarge, cache.r5.4xlarge,
+	//    cache.r5.12xlarge, cache.r5.24xlarge R4 node types: cache.r4.large, cache.r4.xlarge,
+	//    cache.r4.2xlarge, cache.r4.4xlarge, cache.r4.8xlarge, cache.r4.16xlarge
+	//    Previous generation: (not recommended. Existing clusters are still supported
+	//    but creation of new clusters is not supported for these types.) M2 node
+	//    types: cache.m2.xlarge, cache.m2.2xlarge, cache.m2.4xlarge R3 node types:
+	//    cache.r3.large, cache.r3.xlarge, cache.r3.2xlarge, cache.r3.4xlarge, cache.r3.8xlarge
 	//
 	// Additional node type info
 	//
@@ -14276,6 +20907,11 @@ type Snapshot struct {
 	// The name of the cache subnet group associated with the source cluster.
 	CacheSubnetGroupName *string `type:"string"`
 
+	// Enables data tiering. Data tiering is only supported for replication groups
+	// using the r6gd node type. This parameter must be set to true when using r6gd
+	// nodes. For more information, see Data tiering (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+	DataTiering *string `type:"string" enum:"DataTieringStatus"`
+
 	// The name of the cache engine (memcached or redis) used by the source cluster.
 	Engine *string `type:"string"`
 
@@ -14291,7 +20927,7 @@ type Snapshot struct {
 	// The number of cache nodes in the source cluster.
 	//
 	// For clusters running Redis, this value must be 1. For clusters running Memcached,
-	// this value must be between 1 and 20.
+	// this value must be between 1 and 40.
 	NumCacheNodes *int64 `type:"integer"`
 
 	// The number of node groups (shards) in this snapshot. When restoring from
@@ -14327,6 +20963,9 @@ type Snapshot struct {
 	//
 	// Example: sun:23:00-mon:01:30
 	PreferredMaintenanceWindow *string `type:"string"`
+
+	// The ARN (Amazon Resource Name) of the preferred outpost.
+	PreferredOutpostArn *string `type:"string"`
 
 	// A description of the source replication group.
 	ReplicationGroupDescription *string `type:"string"`
@@ -14371,14 +21010,28 @@ type Snapshot struct {
 	VpcId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Snapshot) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Snapshot) GoString() string {
 	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *Snapshot) SetARN(v string) *Snapshot {
+	s.ARN = &v
+	return s
 }
 
 // SetAutoMinorVersionUpgrade sets the AutoMinorVersionUpgrade field's value.
@@ -14420,6 +21073,12 @@ func (s *Snapshot) SetCacheParameterGroupName(v string) *Snapshot {
 // SetCacheSubnetGroupName sets the CacheSubnetGroupName field's value.
 func (s *Snapshot) SetCacheSubnetGroupName(v string) *Snapshot {
 	s.CacheSubnetGroupName = &v
+	return s
+}
+
+// SetDataTiering sets the DataTiering field's value.
+func (s *Snapshot) SetDataTiering(v string) *Snapshot {
+	s.DataTiering = &v
 	return s
 }
 
@@ -14474,6 +21133,12 @@ func (s *Snapshot) SetPreferredAvailabilityZone(v string) *Snapshot {
 // SetPreferredMaintenanceWindow sets the PreferredMaintenanceWindow field's value.
 func (s *Snapshot) SetPreferredMaintenanceWindow(v string) *Snapshot {
 	s.PreferredMaintenanceWindow = &v
+	return s
+}
+
+// SetPreferredOutpostArn sets the PreferredOutpostArn field's value.
+func (s *Snapshot) SetPreferredOutpostArn(v string) *Snapshot {
+	s.PreferredOutpostArn = &v
 	return s
 }
 
@@ -14546,12 +21211,20 @@ type StartMigrationInput struct {
 	ReplicationGroupId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StartMigrationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StartMigrationInput) GoString() string {
 	return s.String()
 }
@@ -14591,12 +21264,20 @@ type StartMigrationOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StartMigrationOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StartMigrationOutput) GoString() string {
 	return s.String()
 }
@@ -14618,14 +21299,25 @@ type Subnet struct {
 
 	// The unique identifier for the subnet.
 	SubnetIdentifier *string `type:"string"`
+
+	// The outpost ARN of the subnet.
+	SubnetOutpost *SubnetOutpost `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Subnet) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Subnet) GoString() string {
 	return s.String()
 }
@@ -14642,9 +21334,50 @@ func (s *Subnet) SetSubnetIdentifier(v string) *Subnet {
 	return s
 }
 
-// A cost allocation Tag that can be added to an ElastiCache cluster or replication
-// group. Tags are composed of a Key/Value pair. A tag with a null Value is
-// permitted.
+// SetSubnetOutpost sets the SubnetOutpost field's value.
+func (s *Subnet) SetSubnetOutpost(v *SubnetOutpost) *Subnet {
+	s.SubnetOutpost = v
+	return s
+}
+
+// The ID of the outpost subnet.
+type SubnetOutpost struct {
+	_ struct{} `type:"structure"`
+
+	// The outpost ARN of the subnet.
+	SubnetOutpostArn *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s SubnetOutpost) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s SubnetOutpost) GoString() string {
+	return s.String()
+}
+
+// SetSubnetOutpostArn sets the SubnetOutpostArn field's value.
+func (s *SubnetOutpost) SetSubnetOutpostArn(v string) *SubnetOutpost {
+	s.SubnetOutpostArn = &v
+	return s
+}
+
+// A tag that can be added to an ElastiCache cluster or replication group. Tags
+// are composed of a Key/Value pair. You can use tags to categorize and track
+// all your ElastiCache resources, with the exception of global replication
+// group. When you add or remove tags on replication groups, those actions will
+// be replicated to all nodes in the replication group. A tag with a null Value
+// is permitted.
 type Tag struct {
 	_ struct{} `type:"structure"`
 
@@ -14655,12 +21388,20 @@ type Tag struct {
 	Value *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Tag) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Tag) GoString() string {
 	return s.String()
 }
@@ -14682,16 +21423,24 @@ func (s *Tag) SetValue(v string) *Tag {
 type TagListMessage struct {
 	_ struct{} `type:"structure"`
 
-	// A list of cost allocation tags as key-value pairs.
+	// A list of tags as key-value pairs.
 	TagList []*Tag `locationNameList:"Tag" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagListMessage) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagListMessage) GoString() string {
 	return s.String()
 }
@@ -14719,12 +21468,20 @@ type TestFailoverInput struct {
 	ReplicationGroupId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TestFailoverInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TestFailoverInput) GoString() string {
 	return s.String()
 }
@@ -14767,12 +21524,20 @@ type TestFailoverOutput struct {
 	ReplicationGroup *ReplicationGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TestFailoverOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TestFailoverOutput) GoString() string {
 	return s.String()
 }
@@ -14795,12 +21560,20 @@ type TimeRangeFilter struct {
 	StartTime *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TimeRangeFilter) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TimeRangeFilter) GoString() string {
 	return s.String()
 }
@@ -14838,12 +21611,20 @@ type UnprocessedUpdateAction struct {
 	ServiceUpdateName *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UnprocessedUpdateAction) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UnprocessedUpdateAction) GoString() string {
 	return s.String()
 }
@@ -14939,12 +21720,20 @@ type UpdateAction struct {
 	UpdateActionStatusModifiedDate *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateAction) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateAction) GoString() string {
 	return s.String()
 }
@@ -15051,6 +21840,285 @@ func (s *UpdateAction) SetUpdateActionStatusModifiedDate(v time.Time) *UpdateAct
 	return s
 }
 
+type User struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user.
+	ARN *string `type:"string"`
+
+	// Access permissions string used for this user.
+	AccessString *string `type:"string"`
+
+	// Denotes whether the user requires a password to authenticate.
+	Authentication *Authentication `type:"structure"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// Indicates the user status. Can be "active", "modifying" or "deleting".
+	Status *string `type:"string"`
+
+	// Returns a list of the user group IDs the user belongs to.
+	UserGroupIds []*string `type:"list"`
+
+	// The ID of the user.
+	UserId *string `type:"string"`
+
+	// The username of the user.
+	UserName *string `type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s User) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s User) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *User) SetARN(v string) *User {
+	s.ARN = &v
+	return s
+}
+
+// SetAccessString sets the AccessString field's value.
+func (s *User) SetAccessString(v string) *User {
+	s.AccessString = &v
+	return s
+}
+
+// SetAuthentication sets the Authentication field's value.
+func (s *User) SetAuthentication(v *Authentication) *User {
+	s.Authentication = v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *User) SetEngine(v string) *User {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *User) SetMinimumEngineVersion(v string) *User {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *User) SetStatus(v string) *User {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupIds sets the UserGroupIds field's value.
+func (s *User) SetUserGroupIds(v []*string) *User {
+	s.UserGroupIds = v
+	return s
+}
+
+// SetUserId sets the UserId field's value.
+func (s *User) SetUserId(v string) *User {
+	s.UserId = &v
+	return s
+}
+
+// SetUserName sets the UserName field's value.
+func (s *User) SetUserName(v string) *User {
+	s.UserName = &v
+	return s
+}
+
+type UserGroup struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the user group.
+	ARN *string `type:"string"`
+
+	// The current supported value is Redis.
+	Engine *string `type:"string"`
+
+	// The minimum engine version required, which is Redis 6.0
+	MinimumEngineVersion *string `type:"string"`
+
+	// A list of updates being applied to the user group.
+	PendingChanges *UserGroupPendingChanges `type:"structure"`
+
+	// A list of replication groups that the user group can access.
+	ReplicationGroups []*string `type:"list"`
+
+	// Indicates user group status. Can be "creating", "active", "modifying", "deleting".
+	Status *string `type:"string"`
+
+	// The ID of the user group.
+	UserGroupId *string `type:"string"`
+
+	// The list of user IDs that belong to the user group.
+	UserIds []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroup) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroup) GoString() string {
+	return s.String()
+}
+
+// SetARN sets the ARN field's value.
+func (s *UserGroup) SetARN(v string) *UserGroup {
+	s.ARN = &v
+	return s
+}
+
+// SetEngine sets the Engine field's value.
+func (s *UserGroup) SetEngine(v string) *UserGroup {
+	s.Engine = &v
+	return s
+}
+
+// SetMinimumEngineVersion sets the MinimumEngineVersion field's value.
+func (s *UserGroup) SetMinimumEngineVersion(v string) *UserGroup {
+	s.MinimumEngineVersion = &v
+	return s
+}
+
+// SetPendingChanges sets the PendingChanges field's value.
+func (s *UserGroup) SetPendingChanges(v *UserGroupPendingChanges) *UserGroup {
+	s.PendingChanges = v
+	return s
+}
+
+// SetReplicationGroups sets the ReplicationGroups field's value.
+func (s *UserGroup) SetReplicationGroups(v []*string) *UserGroup {
+	s.ReplicationGroups = v
+	return s
+}
+
+// SetStatus sets the Status field's value.
+func (s *UserGroup) SetStatus(v string) *UserGroup {
+	s.Status = &v
+	return s
+}
+
+// SetUserGroupId sets the UserGroupId field's value.
+func (s *UserGroup) SetUserGroupId(v string) *UserGroup {
+	s.UserGroupId = &v
+	return s
+}
+
+// SetUserIds sets the UserIds field's value.
+func (s *UserGroup) SetUserIds(v []*string) *UserGroup {
+	s.UserIds = v
+	return s
+}
+
+// Returns the updates being applied to the user group.
+type UserGroupPendingChanges struct {
+	_ struct{} `type:"structure"`
+
+	// The list of user IDs to add.
+	UserIdsToAdd []*string `type:"list"`
+
+	// The list of user IDs to remove.
+	UserIdsToRemove []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroupPendingChanges) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroupPendingChanges) GoString() string {
+	return s.String()
+}
+
+// SetUserIdsToAdd sets the UserIdsToAdd field's value.
+func (s *UserGroupPendingChanges) SetUserIdsToAdd(v []*string) *UserGroupPendingChanges {
+	s.UserIdsToAdd = v
+	return s
+}
+
+// SetUserIdsToRemove sets the UserIdsToRemove field's value.
+func (s *UserGroupPendingChanges) SetUserIdsToRemove(v []*string) *UserGroupPendingChanges {
+	s.UserIdsToRemove = v
+	return s
+}
+
+// The status of the user group update.
+type UserGroupsUpdateStatus struct {
+	_ struct{} `type:"structure"`
+
+	// The ID of the user group to add.
+	UserGroupIdsToAdd []*string `type:"list"`
+
+	// The ID of the user group to remove.
+	UserGroupIdsToRemove []*string `type:"list"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroupsUpdateStatus) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s UserGroupsUpdateStatus) GoString() string {
+	return s.String()
+}
+
+// SetUserGroupIdsToAdd sets the UserGroupIdsToAdd field's value.
+func (s *UserGroupsUpdateStatus) SetUserGroupIdsToAdd(v []*string) *UserGroupsUpdateStatus {
+	s.UserGroupIdsToAdd = v
+	return s
+}
+
+// SetUserGroupIdsToRemove sets the UserGroupIdsToRemove field's value.
+func (s *UserGroupsUpdateStatus) SetUserGroupIdsToRemove(v []*string) *UserGroupsUpdateStatus {
+	s.UserGroupIdsToRemove = v
+	return s
+}
+
 const (
 	// AZModeSingleAz is a AZMode enum value
 	AZModeSingleAz = "single-az"
@@ -15058,6 +22126,14 @@ const (
 	// AZModeCrossAz is a AZMode enum value
 	AZModeCrossAz = "cross-az"
 )
+
+// AZMode_Values returns all elements of the AZMode enum
+func AZMode_Values() []string {
+	return []string{
+		AZModeSingleAz,
+		AZModeCrossAz,
+	}
+}
 
 const (
 	// AuthTokenUpdateStatusSetting is a AuthTokenUpdateStatus enum value
@@ -15067,13 +22143,49 @@ const (
 	AuthTokenUpdateStatusRotating = "ROTATING"
 )
 
+// AuthTokenUpdateStatus_Values returns all elements of the AuthTokenUpdateStatus enum
+func AuthTokenUpdateStatus_Values() []string {
+	return []string{
+		AuthTokenUpdateStatusSetting,
+		AuthTokenUpdateStatusRotating,
+	}
+}
+
 const (
 	// AuthTokenUpdateStrategyTypeSet is a AuthTokenUpdateStrategyType enum value
 	AuthTokenUpdateStrategyTypeSet = "SET"
 
 	// AuthTokenUpdateStrategyTypeRotate is a AuthTokenUpdateStrategyType enum value
 	AuthTokenUpdateStrategyTypeRotate = "ROTATE"
+
+	// AuthTokenUpdateStrategyTypeDelete is a AuthTokenUpdateStrategyType enum value
+	AuthTokenUpdateStrategyTypeDelete = "DELETE"
 )
+
+// AuthTokenUpdateStrategyType_Values returns all elements of the AuthTokenUpdateStrategyType enum
+func AuthTokenUpdateStrategyType_Values() []string {
+	return []string{
+		AuthTokenUpdateStrategyTypeSet,
+		AuthTokenUpdateStrategyTypeRotate,
+		AuthTokenUpdateStrategyTypeDelete,
+	}
+}
+
+const (
+	// AuthenticationTypePassword is a AuthenticationType enum value
+	AuthenticationTypePassword = "password"
+
+	// AuthenticationTypeNoPassword is a AuthenticationType enum value
+	AuthenticationTypeNoPassword = "no-password"
+)
+
+// AuthenticationType_Values returns all elements of the AuthenticationType enum
+func AuthenticationType_Values() []string {
+	return []string{
+		AuthenticationTypePassword,
+		AuthenticationTypeNoPassword,
+	}
+}
 
 const (
 	// AutomaticFailoverStatusEnabled is a AutomaticFailoverStatus enum value
@@ -15089,6 +22201,16 @@ const (
 	AutomaticFailoverStatusDisabling = "disabling"
 )
 
+// AutomaticFailoverStatus_Values returns all elements of the AutomaticFailoverStatus enum
+func AutomaticFailoverStatus_Values() []string {
+	return []string{
+		AutomaticFailoverStatusEnabled,
+		AutomaticFailoverStatusDisabled,
+		AutomaticFailoverStatusEnabling,
+		AutomaticFailoverStatusDisabling,
+	}
+}
+
 const (
 	// ChangeTypeImmediate is a ChangeType enum value
 	ChangeTypeImmediate = "immediate"
@@ -15097,6 +22219,122 @@ const (
 	ChangeTypeRequiresReboot = "requires-reboot"
 )
 
+// ChangeType_Values returns all elements of the ChangeType enum
+func ChangeType_Values() []string {
+	return []string{
+		ChangeTypeImmediate,
+		ChangeTypeRequiresReboot,
+	}
+}
+
+const (
+	// DataTieringStatusEnabled is a DataTieringStatus enum value
+	DataTieringStatusEnabled = "enabled"
+
+	// DataTieringStatusDisabled is a DataTieringStatus enum value
+	DataTieringStatusDisabled = "disabled"
+)
+
+// DataTieringStatus_Values returns all elements of the DataTieringStatus enum
+func DataTieringStatus_Values() []string {
+	return []string{
+		DataTieringStatusEnabled,
+		DataTieringStatusDisabled,
+	}
+}
+
+const (
+	// DestinationTypeCloudwatchLogs is a DestinationType enum value
+	DestinationTypeCloudwatchLogs = "cloudwatch-logs"
+
+	// DestinationTypeKinesisFirehose is a DestinationType enum value
+	DestinationTypeKinesisFirehose = "kinesis-firehose"
+)
+
+// DestinationType_Values returns all elements of the DestinationType enum
+func DestinationType_Values() []string {
+	return []string{
+		DestinationTypeCloudwatchLogs,
+		DestinationTypeKinesisFirehose,
+	}
+}
+
+const (
+	// LogDeliveryConfigurationStatusActive is a LogDeliveryConfigurationStatus enum value
+	LogDeliveryConfigurationStatusActive = "active"
+
+	// LogDeliveryConfigurationStatusEnabling is a LogDeliveryConfigurationStatus enum value
+	LogDeliveryConfigurationStatusEnabling = "enabling"
+
+	// LogDeliveryConfigurationStatusModifying is a LogDeliveryConfigurationStatus enum value
+	LogDeliveryConfigurationStatusModifying = "modifying"
+
+	// LogDeliveryConfigurationStatusDisabling is a LogDeliveryConfigurationStatus enum value
+	LogDeliveryConfigurationStatusDisabling = "disabling"
+
+	// LogDeliveryConfigurationStatusError is a LogDeliveryConfigurationStatus enum value
+	LogDeliveryConfigurationStatusError = "error"
+)
+
+// LogDeliveryConfigurationStatus_Values returns all elements of the LogDeliveryConfigurationStatus enum
+func LogDeliveryConfigurationStatus_Values() []string {
+	return []string{
+		LogDeliveryConfigurationStatusActive,
+		LogDeliveryConfigurationStatusEnabling,
+		LogDeliveryConfigurationStatusModifying,
+		LogDeliveryConfigurationStatusDisabling,
+		LogDeliveryConfigurationStatusError,
+	}
+}
+
+const (
+	// LogFormatText is a LogFormat enum value
+	LogFormatText = "text"
+
+	// LogFormatJson is a LogFormat enum value
+	LogFormatJson = "json"
+)
+
+// LogFormat_Values returns all elements of the LogFormat enum
+func LogFormat_Values() []string {
+	return []string{
+		LogFormatText,
+		LogFormatJson,
+	}
+}
+
+const (
+	// LogTypeSlowLog is a LogType enum value
+	LogTypeSlowLog = "slow-log"
+
+	// LogTypeEngineLog is a LogType enum value
+	LogTypeEngineLog = "engine-log"
+)
+
+// LogType_Values returns all elements of the LogType enum
+func LogType_Values() []string {
+	return []string{
+		LogTypeSlowLog,
+		LogTypeEngineLog,
+	}
+}
+
+const (
+	// MultiAZStatusEnabled is a MultiAZStatus enum value
+	MultiAZStatusEnabled = "enabled"
+
+	// MultiAZStatusDisabled is a MultiAZStatus enum value
+	MultiAZStatusDisabled = "disabled"
+)
+
+// MultiAZStatus_Values returns all elements of the MultiAZStatus enum
+func MultiAZStatus_Values() []string {
+	return []string{
+		MultiAZStatusEnabled,
+		MultiAZStatusDisabled,
+	}
+}
+
 const (
 	// NodeUpdateInitiatedBySystem is a NodeUpdateInitiatedBy enum value
 	NodeUpdateInitiatedBySystem = "system"
@@ -15104,6 +22342,14 @@ const (
 	// NodeUpdateInitiatedByCustomer is a NodeUpdateInitiatedBy enum value
 	NodeUpdateInitiatedByCustomer = "customer"
 )
+
+// NodeUpdateInitiatedBy_Values returns all elements of the NodeUpdateInitiatedBy enum
+func NodeUpdateInitiatedBy_Values() []string {
+	return []string{
+		NodeUpdateInitiatedBySystem,
+		NodeUpdateInitiatedByCustomer,
+	}
+}
 
 const (
 	// NodeUpdateStatusNotApplied is a NodeUpdateStatus enum value
@@ -15125,6 +22371,34 @@ const (
 	NodeUpdateStatusComplete = "complete"
 )
 
+// NodeUpdateStatus_Values returns all elements of the NodeUpdateStatus enum
+func NodeUpdateStatus_Values() []string {
+	return []string{
+		NodeUpdateStatusNotApplied,
+		NodeUpdateStatusWaitingToStart,
+		NodeUpdateStatusInProgress,
+		NodeUpdateStatusStopping,
+		NodeUpdateStatusStopped,
+		NodeUpdateStatusComplete,
+	}
+}
+
+const (
+	// OutpostModeSingleOutpost is a OutpostMode enum value
+	OutpostModeSingleOutpost = "single-outpost"
+
+	// OutpostModeCrossOutpost is a OutpostMode enum value
+	OutpostModeCrossOutpost = "cross-outpost"
+)
+
+// OutpostMode_Values returns all elements of the OutpostMode enum
+func OutpostMode_Values() []string {
+	return []string{
+		OutpostModeSingleOutpost,
+		OutpostModeCrossOutpost,
+	}
+}
+
 const (
 	// PendingAutomaticFailoverStatusEnabled is a PendingAutomaticFailoverStatus enum value
 	PendingAutomaticFailoverStatusEnabled = "enabled"
@@ -15132,6 +22406,14 @@ const (
 	// PendingAutomaticFailoverStatusDisabled is a PendingAutomaticFailoverStatus enum value
 	PendingAutomaticFailoverStatusDisabled = "disabled"
 )
+
+// PendingAutomaticFailoverStatus_Values returns all elements of the PendingAutomaticFailoverStatus enum
+func PendingAutomaticFailoverStatus_Values() []string {
+	return []string{
+		PendingAutomaticFailoverStatusEnabled,
+		PendingAutomaticFailoverStatusDisabled,
+	}
+}
 
 const (
 	// ServiceUpdateSeverityCritical is a ServiceUpdateSeverity enum value
@@ -15147,6 +22429,16 @@ const (
 	ServiceUpdateSeverityLow = "low"
 )
 
+// ServiceUpdateSeverity_Values returns all elements of the ServiceUpdateSeverity enum
+func ServiceUpdateSeverity_Values() []string {
+	return []string{
+		ServiceUpdateSeverityCritical,
+		ServiceUpdateSeverityImportant,
+		ServiceUpdateSeverityMedium,
+		ServiceUpdateSeverityLow,
+	}
+}
+
 const (
 	// ServiceUpdateStatusAvailable is a ServiceUpdateStatus enum value
 	ServiceUpdateStatusAvailable = "available"
@@ -15158,10 +22450,26 @@ const (
 	ServiceUpdateStatusExpired = "expired"
 )
 
+// ServiceUpdateStatus_Values returns all elements of the ServiceUpdateStatus enum
+func ServiceUpdateStatus_Values() []string {
+	return []string{
+		ServiceUpdateStatusAvailable,
+		ServiceUpdateStatusCancelled,
+		ServiceUpdateStatusExpired,
+	}
+}
+
 const (
 	// ServiceUpdateTypeSecurityUpdate is a ServiceUpdateType enum value
 	ServiceUpdateTypeSecurityUpdate = "security-update"
 )
+
+// ServiceUpdateType_Values returns all elements of the ServiceUpdateType enum
+func ServiceUpdateType_Values() []string {
+	return []string{
+		ServiceUpdateTypeSecurityUpdate,
+	}
+}
 
 const (
 	// SlaMetYes is a SlaMet enum value
@@ -15173,6 +22481,15 @@ const (
 	// SlaMetNA is a SlaMet enum value
 	SlaMetNA = "n/a"
 )
+
+// SlaMet_Values returns all elements of the SlaMet enum
+func SlaMet_Values() []string {
+	return []string{
+		SlaMetYes,
+		SlaMetNo,
+		SlaMetNA,
+	}
+}
 
 const (
 	// SourceTypeCacheCluster is a SourceType enum value
@@ -15189,7 +22506,26 @@ const (
 
 	// SourceTypeReplicationGroup is a SourceType enum value
 	SourceTypeReplicationGroup = "replication-group"
+
+	// SourceTypeUser is a SourceType enum value
+	SourceTypeUser = "user"
+
+	// SourceTypeUserGroup is a SourceType enum value
+	SourceTypeUserGroup = "user-group"
 )
+
+// SourceType_Values returns all elements of the SourceType enum
+func SourceType_Values() []string {
+	return []string{
+		SourceTypeCacheCluster,
+		SourceTypeCacheParameterGroup,
+		SourceTypeCacheSecurityGroup,
+		SourceTypeCacheSubnetGroup,
+		SourceTypeReplicationGroup,
+		SourceTypeUser,
+		SourceTypeUserGroup,
+	}
+}
 
 const (
 	// UpdateActionStatusNotApplied is a UpdateActionStatus enum value
@@ -15209,4 +22545,28 @@ const (
 
 	// UpdateActionStatusComplete is a UpdateActionStatus enum value
 	UpdateActionStatusComplete = "complete"
+
+	// UpdateActionStatusScheduling is a UpdateActionStatus enum value
+	UpdateActionStatusScheduling = "scheduling"
+
+	// UpdateActionStatusScheduled is a UpdateActionStatus enum value
+	UpdateActionStatusScheduled = "scheduled"
+
+	// UpdateActionStatusNotApplicable is a UpdateActionStatus enum value
+	UpdateActionStatusNotApplicable = "not-applicable"
 )
+
+// UpdateActionStatus_Values returns all elements of the UpdateActionStatus enum
+func UpdateActionStatus_Values() []string {
+	return []string{
+		UpdateActionStatusNotApplied,
+		UpdateActionStatusWaitingToStart,
+		UpdateActionStatusInProgress,
+		UpdateActionStatusStopping,
+		UpdateActionStatusStopped,
+		UpdateActionStatusComplete,
+		UpdateActionStatusScheduling,
+		UpdateActionStatusScheduled,
+		UpdateActionStatusNotApplicable,
+	}
+}

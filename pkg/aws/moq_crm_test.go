@@ -8,33 +8,28 @@ import (
 	"sync"
 )
 
-var (
-	lockClusterResourceManagerMockDeleteResourcesForCluster sync.RWMutex
-	lockClusterResourceManagerMockGetName                   sync.RWMutex
-)
-
 // Ensure, that ClusterResourceManagerMock does implement ClusterResourceManager.
 // If this is not the case, regenerate this file with moq.
 var _ ClusterResourceManager = &ClusterResourceManagerMock{}
 
 // ClusterResourceManagerMock is a mock implementation of ClusterResourceManager.
 //
-//     func TestSomethingThatUsesClusterResourceManager(t *testing.T) {
+// 	func TestSomethingThatUsesClusterResourceManager(t *testing.T) {
 //
-//         // make and configure a mocked ClusterResourceManager
-//         mockedClusterResourceManager := &ClusterResourceManagerMock{
-//             DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
-// 	               panic("mock out the DeleteResourcesForCluster method")
-//             },
-//             GetNameFunc: func() string {
-// 	               panic("mock out the GetName method")
-//             },
-//         }
+// 		// make and configure a mocked ClusterResourceManager
+// 		mockedClusterResourceManager := &ClusterResourceManagerMock{
+// 			DeleteResourcesForClusterFunc: func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error) {
+// 				panic("mock out the DeleteResourcesForCluster method")
+// 			},
+// 			GetNameFunc: func() string {
+// 				panic("mock out the GetName method")
+// 			},
+// 		}
 //
-//         // use mockedClusterResourceManager in code that requires ClusterResourceManager
-//         // and then make assertions.
+// 		// use mockedClusterResourceManager in code that requires ClusterResourceManager
+// 		// and then make assertions.
 //
-//     }
+// 	}
 type ClusterResourceManagerMock struct {
 	// DeleteResourcesForClusterFunc mocks the DeleteResourcesForCluster method.
 	DeleteResourcesForClusterFunc func(clusterId string, tags map[string]string, dryRun bool) ([]*clusterservice.ReportItem, error)
@@ -57,6 +52,8 @@ type ClusterResourceManagerMock struct {
 		GetName []struct {
 		}
 	}
+	lockDeleteResourcesForCluster sync.RWMutex
+	lockGetName                   sync.RWMutex
 }
 
 // DeleteResourcesForCluster calls DeleteResourcesForClusterFunc.
@@ -73,9 +70,9 @@ func (mock *ClusterResourceManagerMock) DeleteResourcesForCluster(clusterId stri
 		Tags:      tags,
 		DryRun:    dryRun,
 	}
-	lockClusterResourceManagerMockDeleteResourcesForCluster.Lock()
+	mock.lockDeleteResourcesForCluster.Lock()
 	mock.calls.DeleteResourcesForCluster = append(mock.calls.DeleteResourcesForCluster, callInfo)
-	lockClusterResourceManagerMockDeleteResourcesForCluster.Unlock()
+	mock.lockDeleteResourcesForCluster.Unlock()
 	return mock.DeleteResourcesForClusterFunc(clusterId, tags, dryRun)
 }
 
@@ -92,9 +89,9 @@ func (mock *ClusterResourceManagerMock) DeleteResourcesForClusterCalls() []struc
 		Tags      map[string]string
 		DryRun    bool
 	}
-	lockClusterResourceManagerMockDeleteResourcesForCluster.RLock()
+	mock.lockDeleteResourcesForCluster.RLock()
 	calls = mock.calls.DeleteResourcesForCluster
-	lockClusterResourceManagerMockDeleteResourcesForCluster.RUnlock()
+	mock.lockDeleteResourcesForCluster.RUnlock()
 	return calls
 }
 
@@ -105,9 +102,9 @@ func (mock *ClusterResourceManagerMock) GetName() string {
 	}
 	callInfo := struct {
 	}{}
-	lockClusterResourceManagerMockGetName.Lock()
+	mock.lockGetName.Lock()
 	mock.calls.GetName = append(mock.calls.GetName, callInfo)
-	lockClusterResourceManagerMockGetName.Unlock()
+	mock.lockGetName.Unlock()
 	return mock.GetNameFunc()
 }
 
@@ -118,8 +115,8 @@ func (mock *ClusterResourceManagerMock) GetNameCalls() []struct {
 } {
 	var calls []struct {
 	}
-	lockClusterResourceManagerMockGetName.RLock()
+	mock.lockGetName.RLock()
 	calls = mock.calls.GetName
-	lockClusterResourceManagerMockGetName.RUnlock()
+	mock.lockGetName.RUnlock()
 	return calls
 }

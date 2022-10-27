@@ -2,8 +2,8 @@
 // requests and responses.
 package jsonrpc
 
-//go:generate go run -tags codegen ../../../models/protocol_tests/generate.go ../../../models/protocol_tests/input/json.json build_test.go
-//go:generate go run -tags codegen ../../../models/protocol_tests/generate.go ../../../models/protocol_tests/output/json.json unmarshal_test.go
+//go:generate go run -tags codegen ../../../private/model/cli/gen-protocol-tests ../../../models/protocol_tests/input/json.json build_test.go
+//go:generate go run -tags codegen ../../../private/model/cli/gen-protocol-tests ../../../models/protocol_tests/output/json.json unmarshal_test.go
 
 import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -49,9 +49,8 @@ func Build(req *request.Request) {
 		buf = emptyJSON
 	}
 
-	if req.ClientInfo.TargetPrefix != "" || string(buf) != "{}" {
-		req.SetBufferBody(buf)
-	}
+	// Always serialize the body, don't suppress it.
+	req.SetBufferBody(buf)
 
 	if req.ClientInfo.TargetPrefix != "" {
 		target := req.ClientInfo.TargetPrefix + "." + req.Operation.Name

@@ -23,37 +23,37 @@ import (
 // can be stubbed out for unit testing your code with the SDK without needing
 // to inject custom request handlers into the SDK's request pipeline.
 //
-//    // myFunc uses an SDK service client to make a request to
-//    // Amazon Relational Database Service.
-//    func myFunc(svc rdsiface.RDSAPI) bool {
-//        // Make svc.AddRoleToDBCluster request
-//    }
+//	// myFunc uses an SDK service client to make a request to
+//	// Amazon Relational Database Service.
+//	func myFunc(svc rdsiface.RDSAPI) bool {
+//	    // Make svc.AddRoleToDBCluster request
+//	}
 //
-//    func main() {
-//        sess := session.New()
-//        svc := rds.New(sess)
+//	func main() {
+//	    sess := session.New()
+//	    svc := rds.New(sess)
 //
-//        myFunc(svc)
-//    }
+//	    myFunc(svc)
+//	}
 //
 // In your _test.go file:
 //
-//    // Define a mock struct to be used in your unit tests of myFunc.
-//    type mockRDSClient struct {
-//        rdsiface.RDSAPI
-//    }
-//    func (m *mockRDSClient) AddRoleToDBCluster(input *rds.AddRoleToDBClusterInput) (*rds.AddRoleToDBClusterOutput, error) {
-//        // mock response/functionality
-//    }
+//	// Define a mock struct to be used in your unit tests of myFunc.
+//	type mockRDSClient struct {
+//	    rdsiface.RDSAPI
+//	}
+//	func (m *mockRDSClient) AddRoleToDBCluster(input *rds.AddRoleToDBClusterInput) (*rds.AddRoleToDBClusterOutput, error) {
+//	    // mock response/functionality
+//	}
 //
-//    func TestMyFunc(t *testing.T) {
-//        // Setup Test
-//        mockSvc := &mockRDSClient{}
+//	func TestMyFunc(t *testing.T) {
+//	    // Setup Test
+//	    mockSvc := &mockRDSClient{}
 //
-//        myfunc(mockSvc)
+//	    myfunc(mockSvc)
 //
-//        // Verify myFunc's functionality
-//    }
+//	    // Verify myFunc's functionality
+//	}
 //
 // It is important to note that this interface will have breaking changes
 // when the service model is updated and adds new API operations, paginators,
@@ -112,9 +112,9 @@ type RDSAPI interface {
 	CopyOptionGroupWithContext(aws.Context, *rds.CopyOptionGroupInput, ...request.Option) (*rds.CopyOptionGroupOutput, error)
 	CopyOptionGroupRequest(*rds.CopyOptionGroupInput) (*request.Request, *rds.CopyOptionGroupOutput)
 
-	CreateCustomAvailabilityZone(*rds.CreateCustomAvailabilityZoneInput) (*rds.CreateCustomAvailabilityZoneOutput, error)
-	CreateCustomAvailabilityZoneWithContext(aws.Context, *rds.CreateCustomAvailabilityZoneInput, ...request.Option) (*rds.CreateCustomAvailabilityZoneOutput, error)
-	CreateCustomAvailabilityZoneRequest(*rds.CreateCustomAvailabilityZoneInput) (*request.Request, *rds.CreateCustomAvailabilityZoneOutput)
+	CreateCustomDBEngineVersion(*rds.CreateCustomDBEngineVersionInput) (*rds.CreateCustomDBEngineVersionOutput, error)
+	CreateCustomDBEngineVersionWithContext(aws.Context, *rds.CreateCustomDBEngineVersionInput, ...request.Option) (*rds.CreateCustomDBEngineVersionOutput, error)
+	CreateCustomDBEngineVersionRequest(*rds.CreateCustomDBEngineVersionInput) (*request.Request, *rds.CreateCustomDBEngineVersionOutput)
 
 	CreateDBCluster(*rds.CreateDBClusterInput) (*rds.CreateDBClusterOutput, error)
 	CreateDBClusterWithContext(aws.Context, *rds.CreateDBClusterInput, ...request.Option) (*rds.CreateDBClusterOutput, error)
@@ -148,6 +148,10 @@ type RDSAPI interface {
 	CreateDBProxyWithContext(aws.Context, *rds.CreateDBProxyInput, ...request.Option) (*rds.CreateDBProxyOutput, error)
 	CreateDBProxyRequest(*rds.CreateDBProxyInput) (*request.Request, *rds.CreateDBProxyOutput)
 
+	CreateDBProxyEndpoint(*rds.CreateDBProxyEndpointInput) (*rds.CreateDBProxyEndpointOutput, error)
+	CreateDBProxyEndpointWithContext(aws.Context, *rds.CreateDBProxyEndpointInput, ...request.Option) (*rds.CreateDBProxyEndpointOutput, error)
+	CreateDBProxyEndpointRequest(*rds.CreateDBProxyEndpointInput) (*request.Request, *rds.CreateDBProxyEndpointOutput)
+
 	CreateDBSecurityGroup(*rds.CreateDBSecurityGroupInput) (*rds.CreateDBSecurityGroupOutput, error)
 	CreateDBSecurityGroupWithContext(aws.Context, *rds.CreateDBSecurityGroupInput, ...request.Option) (*rds.CreateDBSecurityGroupOutput, error)
 	CreateDBSecurityGroupRequest(*rds.CreateDBSecurityGroupInput) (*request.Request, *rds.CreateDBSecurityGroupOutput)
@@ -172,9 +176,9 @@ type RDSAPI interface {
 	CreateOptionGroupWithContext(aws.Context, *rds.CreateOptionGroupInput, ...request.Option) (*rds.CreateOptionGroupOutput, error)
 	CreateOptionGroupRequest(*rds.CreateOptionGroupInput) (*request.Request, *rds.CreateOptionGroupOutput)
 
-	DeleteCustomAvailabilityZone(*rds.DeleteCustomAvailabilityZoneInput) (*rds.DeleteCustomAvailabilityZoneOutput, error)
-	DeleteCustomAvailabilityZoneWithContext(aws.Context, *rds.DeleteCustomAvailabilityZoneInput, ...request.Option) (*rds.DeleteCustomAvailabilityZoneOutput, error)
-	DeleteCustomAvailabilityZoneRequest(*rds.DeleteCustomAvailabilityZoneInput) (*request.Request, *rds.DeleteCustomAvailabilityZoneOutput)
+	DeleteCustomDBEngineVersion(*rds.DeleteCustomDBEngineVersionInput) (*rds.DeleteCustomDBEngineVersionOutput, error)
+	DeleteCustomDBEngineVersionWithContext(aws.Context, *rds.DeleteCustomDBEngineVersionInput, ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
+	DeleteCustomDBEngineVersionRequest(*rds.DeleteCustomDBEngineVersionInput) (*request.Request, *rds.DeleteCustomDBEngineVersionOutput)
 
 	DeleteDBCluster(*rds.DeleteDBClusterInput) (*rds.DeleteDBClusterOutput, error)
 	DeleteDBClusterWithContext(aws.Context, *rds.DeleteDBClusterInput, ...request.Option) (*rds.DeleteDBClusterOutput, error)
@@ -208,6 +212,10 @@ type RDSAPI interface {
 	DeleteDBProxyWithContext(aws.Context, *rds.DeleteDBProxyInput, ...request.Option) (*rds.DeleteDBProxyOutput, error)
 	DeleteDBProxyRequest(*rds.DeleteDBProxyInput) (*request.Request, *rds.DeleteDBProxyOutput)
 
+	DeleteDBProxyEndpoint(*rds.DeleteDBProxyEndpointInput) (*rds.DeleteDBProxyEndpointOutput, error)
+	DeleteDBProxyEndpointWithContext(aws.Context, *rds.DeleteDBProxyEndpointInput, ...request.Option) (*rds.DeleteDBProxyEndpointOutput, error)
+	DeleteDBProxyEndpointRequest(*rds.DeleteDBProxyEndpointInput) (*request.Request, *rds.DeleteDBProxyEndpointOutput)
+
 	DeleteDBSecurityGroup(*rds.DeleteDBSecurityGroupInput) (*rds.DeleteDBSecurityGroupOutput, error)
 	DeleteDBSecurityGroupWithContext(aws.Context, *rds.DeleteDBSecurityGroupInput, ...request.Option) (*rds.DeleteDBSecurityGroupOutput, error)
 	DeleteDBSecurityGroupRequest(*rds.DeleteDBSecurityGroupInput) (*request.Request, *rds.DeleteDBSecurityGroupOutput)
@@ -228,10 +236,6 @@ type RDSAPI interface {
 	DeleteGlobalClusterWithContext(aws.Context, *rds.DeleteGlobalClusterInput, ...request.Option) (*rds.DeleteGlobalClusterOutput, error)
 	DeleteGlobalClusterRequest(*rds.DeleteGlobalClusterInput) (*request.Request, *rds.DeleteGlobalClusterOutput)
 
-	DeleteInstallationMedia(*rds.DeleteInstallationMediaInput) (*rds.DeleteInstallationMediaOutput, error)
-	DeleteInstallationMediaWithContext(aws.Context, *rds.DeleteInstallationMediaInput, ...request.Option) (*rds.DeleteInstallationMediaOutput, error)
-	DeleteInstallationMediaRequest(*rds.DeleteInstallationMediaInput) (*request.Request, *rds.DeleteInstallationMediaOutput)
-
 	DeleteOptionGroup(*rds.DeleteOptionGroupInput) (*rds.DeleteOptionGroupOutput, error)
 	DeleteOptionGroupWithContext(aws.Context, *rds.DeleteOptionGroupInput, ...request.Option) (*rds.DeleteOptionGroupOutput, error)
 	DeleteOptionGroupRequest(*rds.DeleteOptionGroupInput) (*request.Request, *rds.DeleteOptionGroupOutput)
@@ -248,28 +252,36 @@ type RDSAPI interface {
 	DescribeCertificatesWithContext(aws.Context, *rds.DescribeCertificatesInput, ...request.Option) (*rds.DescribeCertificatesOutput, error)
 	DescribeCertificatesRequest(*rds.DescribeCertificatesInput) (*request.Request, *rds.DescribeCertificatesOutput)
 
-	DescribeCustomAvailabilityZones(*rds.DescribeCustomAvailabilityZonesInput) (*rds.DescribeCustomAvailabilityZonesOutput, error)
-	DescribeCustomAvailabilityZonesWithContext(aws.Context, *rds.DescribeCustomAvailabilityZonesInput, ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error)
-	DescribeCustomAvailabilityZonesRequest(*rds.DescribeCustomAvailabilityZonesInput) (*request.Request, *rds.DescribeCustomAvailabilityZonesOutput)
-
-	DescribeCustomAvailabilityZonesPages(*rds.DescribeCustomAvailabilityZonesInput, func(*rds.DescribeCustomAvailabilityZonesOutput, bool) bool) error
-	DescribeCustomAvailabilityZonesPagesWithContext(aws.Context, *rds.DescribeCustomAvailabilityZonesInput, func(*rds.DescribeCustomAvailabilityZonesOutput, bool) bool, ...request.Option) error
+	DescribeCertificatesPages(*rds.DescribeCertificatesInput, func(*rds.DescribeCertificatesOutput, bool) bool) error
+	DescribeCertificatesPagesWithContext(aws.Context, *rds.DescribeCertificatesInput, func(*rds.DescribeCertificatesOutput, bool) bool, ...request.Option) error
 
 	DescribeDBClusterBacktracks(*rds.DescribeDBClusterBacktracksInput) (*rds.DescribeDBClusterBacktracksOutput, error)
 	DescribeDBClusterBacktracksWithContext(aws.Context, *rds.DescribeDBClusterBacktracksInput, ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
 	DescribeDBClusterBacktracksRequest(*rds.DescribeDBClusterBacktracksInput) (*request.Request, *rds.DescribeDBClusterBacktracksOutput)
 
+	DescribeDBClusterBacktracksPages(*rds.DescribeDBClusterBacktracksInput, func(*rds.DescribeDBClusterBacktracksOutput, bool) bool) error
+	DescribeDBClusterBacktracksPagesWithContext(aws.Context, *rds.DescribeDBClusterBacktracksInput, func(*rds.DescribeDBClusterBacktracksOutput, bool) bool, ...request.Option) error
+
 	DescribeDBClusterEndpoints(*rds.DescribeDBClusterEndpointsInput) (*rds.DescribeDBClusterEndpointsOutput, error)
 	DescribeDBClusterEndpointsWithContext(aws.Context, *rds.DescribeDBClusterEndpointsInput, ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error)
 	DescribeDBClusterEndpointsRequest(*rds.DescribeDBClusterEndpointsInput) (*request.Request, *rds.DescribeDBClusterEndpointsOutput)
+
+	DescribeDBClusterEndpointsPages(*rds.DescribeDBClusterEndpointsInput, func(*rds.DescribeDBClusterEndpointsOutput, bool) bool) error
+	DescribeDBClusterEndpointsPagesWithContext(aws.Context, *rds.DescribeDBClusterEndpointsInput, func(*rds.DescribeDBClusterEndpointsOutput, bool) bool, ...request.Option) error
 
 	DescribeDBClusterParameterGroups(*rds.DescribeDBClusterParameterGroupsInput) (*rds.DescribeDBClusterParameterGroupsOutput, error)
 	DescribeDBClusterParameterGroupsWithContext(aws.Context, *rds.DescribeDBClusterParameterGroupsInput, ...request.Option) (*rds.DescribeDBClusterParameterGroupsOutput, error)
 	DescribeDBClusterParameterGroupsRequest(*rds.DescribeDBClusterParameterGroupsInput) (*request.Request, *rds.DescribeDBClusterParameterGroupsOutput)
 
+	DescribeDBClusterParameterGroupsPages(*rds.DescribeDBClusterParameterGroupsInput, func(*rds.DescribeDBClusterParameterGroupsOutput, bool) bool) error
+	DescribeDBClusterParameterGroupsPagesWithContext(aws.Context, *rds.DescribeDBClusterParameterGroupsInput, func(*rds.DescribeDBClusterParameterGroupsOutput, bool) bool, ...request.Option) error
+
 	DescribeDBClusterParameters(*rds.DescribeDBClusterParametersInput) (*rds.DescribeDBClusterParametersOutput, error)
 	DescribeDBClusterParametersWithContext(aws.Context, *rds.DescribeDBClusterParametersInput, ...request.Option) (*rds.DescribeDBClusterParametersOutput, error)
 	DescribeDBClusterParametersRequest(*rds.DescribeDBClusterParametersInput) (*request.Request, *rds.DescribeDBClusterParametersOutput)
+
+	DescribeDBClusterParametersPages(*rds.DescribeDBClusterParametersInput, func(*rds.DescribeDBClusterParametersOutput, bool) bool) error
+	DescribeDBClusterParametersPagesWithContext(aws.Context, *rds.DescribeDBClusterParametersInput, func(*rds.DescribeDBClusterParametersOutput, bool) bool, ...request.Option) error
 
 	DescribeDBClusterSnapshotAttributes(*rds.DescribeDBClusterSnapshotAttributesInput) (*rds.DescribeDBClusterSnapshotAttributesOutput, error)
 	DescribeDBClusterSnapshotAttributesWithContext(aws.Context, *rds.DescribeDBClusterSnapshotAttributesInput, ...request.Option) (*rds.DescribeDBClusterSnapshotAttributesOutput, error)
@@ -278,6 +290,9 @@ type RDSAPI interface {
 	DescribeDBClusterSnapshots(*rds.DescribeDBClusterSnapshotsInput) (*rds.DescribeDBClusterSnapshotsOutput, error)
 	DescribeDBClusterSnapshotsWithContext(aws.Context, *rds.DescribeDBClusterSnapshotsInput, ...request.Option) (*rds.DescribeDBClusterSnapshotsOutput, error)
 	DescribeDBClusterSnapshotsRequest(*rds.DescribeDBClusterSnapshotsInput) (*request.Request, *rds.DescribeDBClusterSnapshotsOutput)
+
+	DescribeDBClusterSnapshotsPages(*rds.DescribeDBClusterSnapshotsInput, func(*rds.DescribeDBClusterSnapshotsOutput, bool) bool) error
+	DescribeDBClusterSnapshotsPagesWithContext(aws.Context, *rds.DescribeDBClusterSnapshotsInput, func(*rds.DescribeDBClusterSnapshotsOutput, bool) bool, ...request.Option) error
 
 	DescribeDBClusters(*rds.DescribeDBClustersInput) (*rds.DescribeDBClustersOutput, error)
 	DescribeDBClustersWithContext(aws.Context, *rds.DescribeDBClustersInput, ...request.Option) (*rds.DescribeDBClustersOutput, error)
@@ -334,6 +349,13 @@ type RDSAPI interface {
 
 	DescribeDBProxiesPages(*rds.DescribeDBProxiesInput, func(*rds.DescribeDBProxiesOutput, bool) bool) error
 	DescribeDBProxiesPagesWithContext(aws.Context, *rds.DescribeDBProxiesInput, func(*rds.DescribeDBProxiesOutput, bool) bool, ...request.Option) error
+
+	DescribeDBProxyEndpoints(*rds.DescribeDBProxyEndpointsInput) (*rds.DescribeDBProxyEndpointsOutput, error)
+	DescribeDBProxyEndpointsWithContext(aws.Context, *rds.DescribeDBProxyEndpointsInput, ...request.Option) (*rds.DescribeDBProxyEndpointsOutput, error)
+	DescribeDBProxyEndpointsRequest(*rds.DescribeDBProxyEndpointsInput) (*request.Request, *rds.DescribeDBProxyEndpointsOutput)
+
+	DescribeDBProxyEndpointsPages(*rds.DescribeDBProxyEndpointsInput, func(*rds.DescribeDBProxyEndpointsOutput, bool) bool) error
+	DescribeDBProxyEndpointsPagesWithContext(aws.Context, *rds.DescribeDBProxyEndpointsInput, func(*rds.DescribeDBProxyEndpointsOutput, bool) bool, ...request.Option) error
 
 	DescribeDBProxyTargetGroups(*rds.DescribeDBProxyTargetGroupsInput) (*rds.DescribeDBProxyTargetGroupsOutput, error)
 	DescribeDBProxyTargetGroupsWithContext(aws.Context, *rds.DescribeDBProxyTargetGroupsInput, ...request.Option) (*rds.DescribeDBProxyTargetGroupsOutput, error)
@@ -417,13 +439,6 @@ type RDSAPI interface {
 	DescribeGlobalClustersPages(*rds.DescribeGlobalClustersInput, func(*rds.DescribeGlobalClustersOutput, bool) bool) error
 	DescribeGlobalClustersPagesWithContext(aws.Context, *rds.DescribeGlobalClustersInput, func(*rds.DescribeGlobalClustersOutput, bool) bool, ...request.Option) error
 
-	DescribeInstallationMedia(*rds.DescribeInstallationMediaInput) (*rds.DescribeInstallationMediaOutput, error)
-	DescribeInstallationMediaWithContext(aws.Context, *rds.DescribeInstallationMediaInput, ...request.Option) (*rds.DescribeInstallationMediaOutput, error)
-	DescribeInstallationMediaRequest(*rds.DescribeInstallationMediaInput) (*request.Request, *rds.DescribeInstallationMediaOutput)
-
-	DescribeInstallationMediaPages(*rds.DescribeInstallationMediaInput, func(*rds.DescribeInstallationMediaOutput, bool) bool) error
-	DescribeInstallationMediaPagesWithContext(aws.Context, *rds.DescribeInstallationMediaInput, func(*rds.DescribeInstallationMediaOutput, bool) bool, ...request.Option) error
-
 	DescribeOptionGroupOptions(*rds.DescribeOptionGroupOptionsInput) (*rds.DescribeOptionGroupOptionsOutput, error)
 	DescribeOptionGroupOptionsWithContext(aws.Context, *rds.DescribeOptionGroupOptionsInput, ...request.Option) (*rds.DescribeOptionGroupOptionsOutput, error)
 	DescribeOptionGroupOptionsRequest(*rds.DescribeOptionGroupOptionsInput) (*request.Request, *rds.DescribeOptionGroupOptionsOutput)
@@ -449,6 +464,9 @@ type RDSAPI interface {
 	DescribePendingMaintenanceActionsWithContext(aws.Context, *rds.DescribePendingMaintenanceActionsInput, ...request.Option) (*rds.DescribePendingMaintenanceActionsOutput, error)
 	DescribePendingMaintenanceActionsRequest(*rds.DescribePendingMaintenanceActionsInput) (*request.Request, *rds.DescribePendingMaintenanceActionsOutput)
 
+	DescribePendingMaintenanceActionsPages(*rds.DescribePendingMaintenanceActionsInput, func(*rds.DescribePendingMaintenanceActionsOutput, bool) bool) error
+	DescribePendingMaintenanceActionsPagesWithContext(aws.Context, *rds.DescribePendingMaintenanceActionsInput, func(*rds.DescribePendingMaintenanceActionsOutput, bool) bool, ...request.Option) error
+
 	DescribeReservedDBInstances(*rds.DescribeReservedDBInstancesInput) (*rds.DescribeReservedDBInstancesOutput, error)
 	DescribeReservedDBInstancesWithContext(aws.Context, *rds.DescribeReservedDBInstancesInput, ...request.Option) (*rds.DescribeReservedDBInstancesOutput, error)
 	DescribeReservedDBInstancesRequest(*rds.DescribeReservedDBInstancesInput) (*request.Request, *rds.DescribeReservedDBInstancesOutput)
@@ -467,6 +485,9 @@ type RDSAPI interface {
 	DescribeSourceRegionsWithContext(aws.Context, *rds.DescribeSourceRegionsInput, ...request.Option) (*rds.DescribeSourceRegionsOutput, error)
 	DescribeSourceRegionsRequest(*rds.DescribeSourceRegionsInput) (*request.Request, *rds.DescribeSourceRegionsOutput)
 
+	DescribeSourceRegionsPages(*rds.DescribeSourceRegionsInput, func(*rds.DescribeSourceRegionsOutput, bool) bool) error
+	DescribeSourceRegionsPagesWithContext(aws.Context, *rds.DescribeSourceRegionsInput, func(*rds.DescribeSourceRegionsOutput, bool) bool, ...request.Option) error
+
 	DescribeValidDBInstanceModifications(*rds.DescribeValidDBInstanceModificationsInput) (*rds.DescribeValidDBInstanceModificationsOutput, error)
 	DescribeValidDBInstanceModificationsWithContext(aws.Context, *rds.DescribeValidDBInstanceModificationsInput, ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error)
 	DescribeValidDBInstanceModificationsRequest(*rds.DescribeValidDBInstanceModificationsInput) (*request.Request, *rds.DescribeValidDBInstanceModificationsOutput)
@@ -482,13 +503,17 @@ type RDSAPI interface {
 	FailoverDBClusterWithContext(aws.Context, *rds.FailoverDBClusterInput, ...request.Option) (*rds.FailoverDBClusterOutput, error)
 	FailoverDBClusterRequest(*rds.FailoverDBClusterInput) (*request.Request, *rds.FailoverDBClusterOutput)
 
-	ImportInstallationMedia(*rds.ImportInstallationMediaInput) (*rds.ImportInstallationMediaOutput, error)
-	ImportInstallationMediaWithContext(aws.Context, *rds.ImportInstallationMediaInput, ...request.Option) (*rds.ImportInstallationMediaOutput, error)
-	ImportInstallationMediaRequest(*rds.ImportInstallationMediaInput) (*request.Request, *rds.ImportInstallationMediaOutput)
+	FailoverGlobalCluster(*rds.FailoverGlobalClusterInput) (*rds.FailoverGlobalClusterOutput, error)
+	FailoverGlobalClusterWithContext(aws.Context, *rds.FailoverGlobalClusterInput, ...request.Option) (*rds.FailoverGlobalClusterOutput, error)
+	FailoverGlobalClusterRequest(*rds.FailoverGlobalClusterInput) (*request.Request, *rds.FailoverGlobalClusterOutput)
 
 	ListTagsForResource(*rds.ListTagsForResourceInput) (*rds.ListTagsForResourceOutput, error)
 	ListTagsForResourceWithContext(aws.Context, *rds.ListTagsForResourceInput, ...request.Option) (*rds.ListTagsForResourceOutput, error)
 	ListTagsForResourceRequest(*rds.ListTagsForResourceInput) (*request.Request, *rds.ListTagsForResourceOutput)
+
+	ModifyActivityStream(*rds.ModifyActivityStreamInput) (*rds.ModifyActivityStreamOutput, error)
+	ModifyActivityStreamWithContext(aws.Context, *rds.ModifyActivityStreamInput, ...request.Option) (*rds.ModifyActivityStreamOutput, error)
+	ModifyActivityStreamRequest(*rds.ModifyActivityStreamInput) (*request.Request, *rds.ModifyActivityStreamOutput)
 
 	ModifyCertificates(*rds.ModifyCertificatesInput) (*rds.ModifyCertificatesOutput, error)
 	ModifyCertificatesWithContext(aws.Context, *rds.ModifyCertificatesInput, ...request.Option) (*rds.ModifyCertificatesOutput, error)
@@ -497,6 +522,10 @@ type RDSAPI interface {
 	ModifyCurrentDBClusterCapacity(*rds.ModifyCurrentDBClusterCapacityInput) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
 	ModifyCurrentDBClusterCapacityWithContext(aws.Context, *rds.ModifyCurrentDBClusterCapacityInput, ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
 	ModifyCurrentDBClusterCapacityRequest(*rds.ModifyCurrentDBClusterCapacityInput) (*request.Request, *rds.ModifyCurrentDBClusterCapacityOutput)
+
+	ModifyCustomDBEngineVersion(*rds.ModifyCustomDBEngineVersionInput) (*rds.ModifyCustomDBEngineVersionOutput, error)
+	ModifyCustomDBEngineVersionWithContext(aws.Context, *rds.ModifyCustomDBEngineVersionInput, ...request.Option) (*rds.ModifyCustomDBEngineVersionOutput, error)
+	ModifyCustomDBEngineVersionRequest(*rds.ModifyCustomDBEngineVersionInput) (*request.Request, *rds.ModifyCustomDBEngineVersionOutput)
 
 	ModifyDBCluster(*rds.ModifyDBClusterInput) (*rds.ModifyDBClusterOutput, error)
 	ModifyDBClusterWithContext(aws.Context, *rds.ModifyDBClusterInput, ...request.Option) (*rds.ModifyDBClusterOutput, error)
@@ -525,6 +554,10 @@ type RDSAPI interface {
 	ModifyDBProxy(*rds.ModifyDBProxyInput) (*rds.ModifyDBProxyOutput, error)
 	ModifyDBProxyWithContext(aws.Context, *rds.ModifyDBProxyInput, ...request.Option) (*rds.ModifyDBProxyOutput, error)
 	ModifyDBProxyRequest(*rds.ModifyDBProxyInput) (*request.Request, *rds.ModifyDBProxyOutput)
+
+	ModifyDBProxyEndpoint(*rds.ModifyDBProxyEndpointInput) (*rds.ModifyDBProxyEndpointOutput, error)
+	ModifyDBProxyEndpointWithContext(aws.Context, *rds.ModifyDBProxyEndpointInput, ...request.Option) (*rds.ModifyDBProxyEndpointOutput, error)
+	ModifyDBProxyEndpointRequest(*rds.ModifyDBProxyEndpointInput) (*request.Request, *rds.ModifyDBProxyEndpointOutput)
 
 	ModifyDBProxyTargetGroup(*rds.ModifyDBProxyTargetGroupInput) (*rds.ModifyDBProxyTargetGroupOutput, error)
 	ModifyDBProxyTargetGroupWithContext(aws.Context, *rds.ModifyDBProxyTargetGroupInput, ...request.Option) (*rds.ModifyDBProxyTargetGroupOutput, error)
@@ -565,6 +598,10 @@ type RDSAPI interface {
 	PurchaseReservedDBInstancesOffering(*rds.PurchaseReservedDBInstancesOfferingInput) (*rds.PurchaseReservedDBInstancesOfferingOutput, error)
 	PurchaseReservedDBInstancesOfferingWithContext(aws.Context, *rds.PurchaseReservedDBInstancesOfferingInput, ...request.Option) (*rds.PurchaseReservedDBInstancesOfferingOutput, error)
 	PurchaseReservedDBInstancesOfferingRequest(*rds.PurchaseReservedDBInstancesOfferingInput) (*request.Request, *rds.PurchaseReservedDBInstancesOfferingOutput)
+
+	RebootDBCluster(*rds.RebootDBClusterInput) (*rds.RebootDBClusterOutput, error)
+	RebootDBClusterWithContext(aws.Context, *rds.RebootDBClusterInput, ...request.Option) (*rds.RebootDBClusterOutput, error)
+	RebootDBClusterRequest(*rds.RebootDBClusterInput) (*request.Request, *rds.RebootDBClusterOutput)
 
 	RebootDBInstance(*rds.RebootDBInstanceInput) (*rds.RebootDBInstanceOutput, error)
 	RebootDBInstanceWithContext(aws.Context, *rds.RebootDBInstanceInput, ...request.Option) (*rds.RebootDBInstanceOutput, error)
@@ -642,6 +679,10 @@ type RDSAPI interface {
 	StartDBInstanceWithContext(aws.Context, *rds.StartDBInstanceInput, ...request.Option) (*rds.StartDBInstanceOutput, error)
 	StartDBInstanceRequest(*rds.StartDBInstanceInput) (*request.Request, *rds.StartDBInstanceOutput)
 
+	StartDBInstanceAutomatedBackupsReplication(*rds.StartDBInstanceAutomatedBackupsReplicationInput) (*rds.StartDBInstanceAutomatedBackupsReplicationOutput, error)
+	StartDBInstanceAutomatedBackupsReplicationWithContext(aws.Context, *rds.StartDBInstanceAutomatedBackupsReplicationInput, ...request.Option) (*rds.StartDBInstanceAutomatedBackupsReplicationOutput, error)
+	StartDBInstanceAutomatedBackupsReplicationRequest(*rds.StartDBInstanceAutomatedBackupsReplicationInput) (*request.Request, *rds.StartDBInstanceAutomatedBackupsReplicationOutput)
+
 	StartExportTask(*rds.StartExportTaskInput) (*rds.StartExportTaskOutput, error)
 	StartExportTaskWithContext(aws.Context, *rds.StartExportTaskInput, ...request.Option) (*rds.StartExportTaskOutput, error)
 	StartExportTaskRequest(*rds.StartExportTaskInput) (*request.Request, *rds.StartExportTaskOutput)
@@ -657,6 +698,20 @@ type RDSAPI interface {
 	StopDBInstance(*rds.StopDBInstanceInput) (*rds.StopDBInstanceOutput, error)
 	StopDBInstanceWithContext(aws.Context, *rds.StopDBInstanceInput, ...request.Option) (*rds.StopDBInstanceOutput, error)
 	StopDBInstanceRequest(*rds.StopDBInstanceInput) (*request.Request, *rds.StopDBInstanceOutput)
+
+	StopDBInstanceAutomatedBackupsReplication(*rds.StopDBInstanceAutomatedBackupsReplicationInput) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
+	StopDBInstanceAutomatedBackupsReplicationWithContext(aws.Context, *rds.StopDBInstanceAutomatedBackupsReplicationInput, ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
+	StopDBInstanceAutomatedBackupsReplicationRequest(*rds.StopDBInstanceAutomatedBackupsReplicationInput) (*request.Request, *rds.StopDBInstanceAutomatedBackupsReplicationOutput)
+
+	SwitchoverReadReplica(*rds.SwitchoverReadReplicaInput) (*rds.SwitchoverReadReplicaOutput, error)
+	SwitchoverReadReplicaWithContext(aws.Context, *rds.SwitchoverReadReplicaInput, ...request.Option) (*rds.SwitchoverReadReplicaOutput, error)
+	SwitchoverReadReplicaRequest(*rds.SwitchoverReadReplicaInput) (*request.Request, *rds.SwitchoverReadReplicaOutput)
+
+	WaitUntilDBClusterAvailable(*rds.DescribeDBClustersInput) error
+	WaitUntilDBClusterAvailableWithContext(aws.Context, *rds.DescribeDBClustersInput, ...request.WaiterOption) error
+
+	WaitUntilDBClusterDeleted(*rds.DescribeDBClustersInput) error
+	WaitUntilDBClusterDeletedWithContext(aws.Context, *rds.DescribeDBClustersInput, ...request.WaiterOption) error
 
 	WaitUntilDBClusterSnapshotAvailable(*rds.DescribeDBClusterSnapshotsInput) error
 	WaitUntilDBClusterSnapshotAvailableWithContext(aws.Context, *rds.DescribeDBClusterSnapshotsInput, ...request.WaiterOption) error

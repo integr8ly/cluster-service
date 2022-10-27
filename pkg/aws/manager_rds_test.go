@@ -332,7 +332,7 @@ func TestRDSEngine_DeleteResourcesForCluster(t *testing.T) {
 					return errors.New("delete db instance call count should be 1")
 				}
 
-				callInput := mock.DeleteDBInstanceCalls()[0].In1
+				callInput := mock.DeleteDBInstanceCalls()[0].DeleteDBInstanceInput
 				if !aws.BoolValue(callInput.DeleteAutomatedBackups) {
 					return errors.New("delete automated backups option must be true when deleting db instance")
 				}
